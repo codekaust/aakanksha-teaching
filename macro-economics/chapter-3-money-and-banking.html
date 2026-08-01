@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch 3 · Money and Banking</title>
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body>
+
+<div id="bar">
+  <span class="brand">CH 3 · MONEY AND BANKING</span>
+  <span class="sect" id="sect"></span>
+  <span class="tools">
+    <button id="menuBtn">Menu · m</button>
+    <button id="fsBtn">Full screen · f</button>
+    <span id="counter">1 / 1</span>
+  </span>
+</div>
+<div id="progress"></div>
+
+<div id="menu">
+  <h3>Slides</h3>
+  <div class="mlist"></div>
+  <p class="hint">Press <b>m</b> or <b>Esc</b> to close</p>
+</div>
+
+<div id="stage">
+
+<!-- ============================================================ TITLE -->
+<section class="slide title-slide" data-section="Opening">
+  <div class="kicker">Class XII · Introductory Macroeconomics</div>
+  <h1>Chapter 3<br>Money and Banking</h1>
+  <div class="rule"></div>
+  <p class="sub">What money is and why it exists, how much of it there is, how commercial banks
+     create it out of a single deposit, and how the RBI controls the whole machine.</p>
+</section>
+
+<section class="slide" data-section="Opening">
+  <h2>Where we left off</h2>
+  <div class="bridge">
+    <span class="tag">Recall · Chapters 1 and 2</span>
+    <p>We drew the circular flow and then measured it. But look again at what we measured:
+      <b>every single arrow was a rupee payment</b>. Factor incomes in ₹, consumption expenditure
+      in ₹, GDP in ₹ crore.</p>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">The question that opens this chapter</span>
+    <p>We used money as a <b>measuring rod</b> for two whole chapters without ever asking what it
+      is, where it comes from, or who decides how much of it exists. Today we open that box.</p>
+  </div>
+  <div class="reveal grid3">
+    <div class="card"><h4>1 · Barter and money</h4><p class="small">Why money had to be invented; its functions; what makes it money.</p></div>
+    <div class="card"><h4>2 · The supply of money</h4><p class="small">M1, M2, M3, M4 and high-powered money.</p></div>
+    <div class="card"><h4>3 · Commercial banks</h4><p class="small">Their functions and the deposit multiplier — worked in full.</p></div>
+    <div class="card"><h4>4 · The RBI</h4><p class="small">Six functions, including lender of last resort.</p></div>
+    <div class="card"><h4>5 · Monetary policy</h4><p class="small">Quantitative and qualitative instruments.</p></div>
+    <div class="card"><h4>6 · Why it matters</h4><p class="small">The bridge into Chapter 4's excess and deficient demand.</p></div>
+  </div>
+</section>
+
+<!-- ============================================================ BARTER -->
+<section class="slide" data-section="1 · Barter and money">
+  <h2><span class="num">3.1</span>Life before money: the barter system</h2>
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Barter system</span> — a system of exchange in which <b>goods and services
+      are exchanged directly for other goods and services</b>, without the use of any medium of
+      exchange.</p>
+  </div>
+  <div class="reveal eg">
+    <span class="tag">Example</span>
+    <p>A weaver with cloth wants rice. He must find a rice farmer who happens to want cloth — and
+      wants it <i>today</i>, and wants roughly as much cloth as the rice is worth.</p>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">The idea to hold on to</span>
+    <p>Every drawback of barter below is really the <b>same</b> drawback wearing different clothes:
+      barter forces two parties to agree on <i>everything at once</i> — what, when, and how much.
+      Money's entire purpose is to <b>split one exchange into two separate half-exchanges</b>, so
+      that each side can be settled independently.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="1 · Barter and money">
+  <h2>The five drawbacks of barter</h2>
+  <ol class="steps">
+    <li class="reveal"><b>Lack of double coincidence of wants.</b> A trade needs A to want what B has
+      <i>and</i> B to want what A has, simultaneously. Most of the time, no such pair exists.</li>
+    <li class="reveal"><b>Lack of a common measure of value.</b> With <i>n</i> goods there are
+      <span class="mono">n(n−1)/2</span> exchange ratios to remember. With 100 goods that is
+      <b>4,950 prices</b>. With money there are just 100.</li>
+    <li class="reveal"><b>Lack of a store of value.</b> To save under barter you must store goods —
+      which rot, rust, take up space and cost money to guard. A farmer cannot save a harvest for
+      twenty years.</li>
+    <li class="reveal"><b>Difficulty in making deferred payments.</b> Lending and borrowing is almost
+      impossible: in what good is the loan to be repaid, and how do you settle disputes about the
+      quality of that good years later?</li>
+    <li class="reveal"><b>Lack of divisibility.</b> If a cow is worth 40 kg of rice but you only want
+      10 kg, you cannot pay with a quarter of a live cow.</li>
+  </ol>
+  <div class="reveal insight">
+    <span class="tag">And each drawback is cured by one function of money</span>
+    <p>Drawback 1 → <b>medium of exchange</b>. Drawback 2 → <b>unit of account</b>.
+       Drawback 3 → <b>store of value</b>. Drawback 4 → <b>standard of deferred payment</b>.
+       Drawback 5 → divisibility, a property that follows from money being a unit of account.</p>
+    <p class="small">If a question asks "how does money overcome the shortcomings of barter?", this
+      pairing <b>is</b> the answer. Write it as a pairing, not as two separate lists.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="1 · Barter and money">
+  <h2>What money is, and what it does</h2>
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Money</span> — anything that is <b>generally accepted</b> as a medium of
+      exchange, and which also serves as a measure of value, a store of value and a standard of
+      deferred payment.</p>
+    <p class="small">Note the definition is <b>functional</b>: money is whatever <i>does these jobs</i>.
+      It has never been defined by what it is made of.</p>
+  </div>
+  <div class="grid2">
+    <div class="reveal card">
+      <h4>Primary (main) functions</h4>
+      <ul class="small">
+        <li><b>Medium of exchange</b> — money is accepted in exchange for goods and services, so a
+          sale and a purchase need no longer be the same transaction. Removes the need for a double
+          coincidence of wants.</li>
+        <li><b>Measure of value / unit of account</b> — all values are expressed in one common unit,
+          so goods can be compared, accounts kept and national income computed.</li>
+      </ul>
+    </div>
+    <div class="reveal card">
+      <h4>Secondary (derived) functions</h4>
+      <ul class="small">
+        <li><b>Standard of deferred payment</b> — debts can be contracted now and settled later in
+          money terms, making credit possible.</li>
+        <li><b>Store of value</b> — purchasing power can be held over time at low cost, since money
+          is the most <b>liquid</b> of all assets.</li>
+        <li><b>Transfer of value</b> — value can be shifted from person to person and place to place
+          easily.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">The one weakness of money as a store of value</span>
+    <p>Money stores value well only if <b>prices are stable</b>. During high inflation money loses
+      purchasing power steadily, and people flee into gold, land or foreign currency. A store of
+      value is only as good as the price level behind it.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="1 · Barter and money">
+  <h2>Fiat money and legal tender</h2>
+  <div class="grid2">
+    <div class="defn">
+      <span class="tag">Definition</span>
+      <p><span class="term">Fiat money</span> — money issued by the <b>order (fiat) of the
+        government</b>, which has no intrinsic value of its own and is not backed by any commodity.
+        A ₹500 note is a piece of paper worth almost nothing as paper.</p>
+    </div>
+    <div class="defn">
+      <span class="tag">Definition</span>
+      <p><span class="term">Legal tender</span> — money that the law says <b>cannot be refused</b> in
+        settlement of a debt. Currency notes and coins in India are legal tender.</p>
+    </div>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">The distinction examiners love</span>
+    <p>Both fiat money and legal tender describe <b>currency</b>. But a <b>cheque</b> is neither: it
+      is money only because the person receiving it <i>chooses</i> to accept it. Nobody is obliged
+      to take your cheque. So cheques and demand deposits are money by <b>general acceptability</b>,
+      not by law.</p>
+  </div>
+  <div class="reveal grid2">
+    <div class="card">
+      <h4>Full-bodied money</h4>
+      <p class="small">Money whose <b>value as a commodity equals its value as money</b> — a gold coin
+        worth ₹5,000 containing ₹5,000 of gold. Historical; no country uses it now.</p>
+    </div>
+    <div class="card">
+      <h4>Credit / token money</h4>
+      <p class="small">Money whose <b>face value far exceeds</b> its commodity value — every note and
+        coin in your pocket, plus demand deposits created by banks.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SUPPLY OF MONEY -->
+<section class="slide" data-section="2 · The supply of money">
+  <h2><span class="num">3.2</span>The supply of money</h2>
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Money supply</span> — the <b>total stock</b> of money held by the
+      <b>public</b> at a <b>point of time</b>.</p>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">Three words that carry marks</span>
+    <ul>
+      <li><b>Stock</b> — money supply is measured on a date, never "per year". (Chapter 1's test.)</li>
+      <li><b>Held by the public</b> — money held by the <b>government</b> and by the <b>banking
+        system itself</b> is <b>excluded</b>. Cash in a bank's own vault is not part of money supply;
+        it is not available for spending.</li>
+      <li>Only money in <b>circulation</b> counts.</li>
+    </ul>
+  </div>
+  <div class="reveal defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">High-powered money (H)</span>, also called <b>reserve money</b> or the
+      <b>monetary base</b> — the total money <b>created by the RBI</b>: currency held by the public
+      <b>plus</b> the cash reserves held by commercial banks.</p>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">Why "high-powered"</span>
+    <p>Because every ₹1 of it can support several rupees of deposits once banks lend it out and
+      re-lend it. It is the <b>raw material</b> from which the far larger money supply is
+      manufactured. We will see exactly how in a few slides.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="2 · The supply of money">
+  <h2>The four measures: M1 to M4</h2>
+  <figure>
+    <svg viewBox="0 0 800 380" role="img"
+         aria-label="Stacked bars showing M1 as currency plus demand deposits plus other deposits with RBI; M2 adds post office savings deposits; M3 adds net time deposits with banks; M4 adds total post office deposits.">
+      <!-- M1 -->
+      <rect x="150" y="30"  width="180" height="42" class="fill-blue"/>
+      <rect x="330" y="30"  width="200" height="42" class="fill-blue"/>
+      <rect x="530" y="30"  width="60"  height="42" class="fill-blue"/>
+      <text x="240" y="57" class="sm" text-anchor="middle">Currency with public</text>
+      <text x="430" y="57" class="sm" text-anchor="middle">Demand deposits with banks</text>
+      <text x="560" y="57" class="sm" text-anchor="middle">OD*</text>
+      <text x="130" y="57" class="lab" text-anchor="end" fill="var(--blue-t)">M1</text>
+
+      <!-- M2 -->
+      <rect x="150" y="102" width="440" height="42" class="fill-blue"/>
+      <rect x="590" y="102" width="110" height="42" class="fill-violet"/>
+      <text x="370" y="129" class="sm" text-anchor="middle">M1</text>
+      <text x="645" y="123" class="sm" text-anchor="middle">+ Post office</text>
+      <text x="645" y="141" class="sm" text-anchor="middle">savings deposits</text>
+      <text x="130" y="129" class="lab" text-anchor="end" fill="var(--blue-t)">M2</text>
+
+      <!-- M3 -->
+      <rect x="150" y="174" width="440" height="42" class="fill-blue"/>
+      <rect x="590" y="174" width="180" height="42" class="fill-teal"/>
+      <text x="370" y="201" class="sm" text-anchor="middle">M1</text>
+      <text x="680" y="195" class="sm" text-anchor="middle">+ Net time deposits</text>
+      <text x="680" y="213" class="sm" text-anchor="middle">with commercial banks</text>
+      <text x="130" y="201" class="lab" text-anchor="end" fill="var(--teal-t)">M3</text>
+
+      <!-- M4 -->
+      <rect x="150" y="246" width="620" height="42" class="fill-teal"/>
+      <text x="460" y="273" class="sm" text-anchor="middle">M3</text>
+      <rect x="150" y="246" width="0" height="42"/>
+      <text x="130" y="273" class="lab" text-anchor="end">M4</text>
+      <text x="785" y="273" class="sm" text-anchor="start">+ all PO deposits</text>
+
+      <text x="150" y="322" class="sm">* OD = "Other deposits" with the RBI — deposits of foreign central banks, the IMF etc.</text>
+      <text x="150" y="346" class="lab" fill="var(--blue-t)">M1 and M2 are NARROW money.</text>
+      <text x="420" y="346" class="lab" fill="var(--teal-t)">M3 and M4 are BROAD money.</text>
+      <text x="150" y="370" class="sm">Liquidity FALLS as you move down: M1 is the most liquid, M4 the least.</text>
+    </svg>
+    <figcaption>Each measure is the one above it plus a slightly less liquid asset.</figcaption>
+  </figure>
+</section>
+
+<section class="slide" data-section="2 · The supply of money">
+  <h2>M1 to M4, written out</h2>
+  <table>
+    <thead><tr><th>Measure</th><th class="lbl">Composition</th><th class="lbl">Name</th></tr></thead>
+    <tbody>
+      <tr><td class="hi">M1</td><td class="lbl">Currency with the public (notes + coins) <b>+</b> Demand deposits with commercial banks <b>+</b> Other deposits with the RBI</td><td class="lbl">Narrow money · most liquid</td></tr>
+      <tr><td>M2</td><td class="lbl">M1 <b>+</b> Savings deposits with post office savings banks</td><td class="lbl">Narrow money</td></tr>
+      <tr><td class="hi">M3</td><td class="lbl">M1 <b>+</b> Net time deposits with commercial banks</td><td class="lbl">Broad money · <b>aggregate monetary resources</b></td></tr>
+      <tr><td>M4</td><td class="lbl">M3 <b>+</b> Total deposits with post office savings organisations (excluding National Savings Certificates)</td><td class="lbl">Broad money · least liquid</td></tr>
+    </tbody>
+    <caption>M1 and M3 are the two that matter in practice — M3 is the measure the RBI actually watches.</caption>
+  </table>
+  <div class="reveal warn">
+    <span class="tag">The four things students get wrong here</span>
+    <ul>
+      <li><b>Demand deposits are in M1; time deposits are not.</b> A demand deposit (current or
+        savings account) can be withdrawn on demand by cheque — it <i>is</i> a medium of exchange.
+        A fixed deposit cannot, so it enters only at M3.</li>
+      <li><b>"Currency with the public"</b>, not "currency issued". Notes lying in bank vaults and
+        with the government are excluded.</li>
+      <li><b>M1 &lt; M2 &lt; M3 &lt; M4</b> in size, but <b>liquidity falls</b> in the same direction.
+        Bigger measure, less liquid.</li>
+      <li>M2 and M4 differ from M1 and M3 only by <b>post office</b> deposits.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide" data-section="2 · The supply of money">
+  <h2>Check yourself</h2>
+  <div class="qcard">
+    <span class="tag">Question 1</span>
+    <p>From the following, calculate <b>M1</b> and <b>M3</b> (₹ crore):</p>
+    <table>
+      <tbody>
+        <tr><td class="lbl">Currency with the public</td><td>2,000</td><td class="lbl">Net time deposits with banks</td><td>5,000</td></tr>
+        <tr><td class="lbl">Demand deposits with banks</td><td>3,000</td><td class="lbl">Post office savings deposits</td><td>400</td></tr>
+        <tr><td class="lbl">Other deposits with RBI</td><td>100</td><td class="lbl">Cash held in bank vaults</td><td>800</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <ol class="steps">
+    <li class="reveal">M1 = Currency with public + Demand deposits + Other deposits with RBI</li>
+    <li class="reveal">M1 = 2,000 + 3,000 + 100 = <b>₹5,100 crore</b></li>
+    <li class="reveal">M3 = M1 + Net time deposits = 5,100 + 5,000 = <b>₹10,100 crore</b></li>
+  </ol>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>M1 = ₹5,100 crore · M3 = ₹10,100 crore.</b></p>
+    <p><b>Cash held in bank vaults (₹800 crore) is excluded from both.</b> It is not held by the
+      public. <b>Post office savings deposits (₹400 crore) is also excluded</b> — it belongs to M2
+      and M4, not to M1 or M3.</p>
+  </div>
+</section>
+
+<!-- ============================================================ COMMERCIAL BANKS -->
+<section class="slide" data-section="3 · Commercial banks">
+  <h2><span class="num">3.3</span>What a commercial bank does</h2>
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Commercial bank</span> — a financial institution that <b>accepts deposits
+      from the public</b> which are repayable on demand or otherwise, and <b>lends</b> those funds
+      out for the purpose of earning a profit.</p>
+  </div>
+  <div class="grid2">
+    <div class="reveal card">
+      <h4>Primary functions</h4>
+      <ul class="small">
+        <li><b>Accepting deposits</b> — current (no interest, cheque facility), savings (some
+          interest, limited withdrawals), fixed/time (highest interest, locked in), recurring.</li>
+        <li><b>Advancing loans</b> — cash credit, overdraft, term loans, discounting bills of
+          exchange.</li>
+      </ul>
+    </div>
+    <div class="reveal card">
+      <h4>Secondary functions</h4>
+      <ul class="small">
+        <li><b>Agency functions</b> — collecting cheques and dividends, paying bills, buying and
+          selling securities on the customer's behalf.</li>
+        <li><b>General utility</b> — lockers, foreign exchange, letters of credit, debit and credit
+          cards.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">The function that is not on either list</span>
+    <p>The most important thing a commercial bank does is not "accept deposits" or "give loans".
+      It is <b>creating money</b> — and it does this as a by-product of doing both. That is the
+      next section, and it is the heart of the chapter.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="3 · Commercial banks">
+  <h2>Why a bank can lend more than it "has"</h2>
+  <div class="qcard">
+    <span class="tag">Start with the puzzle</span>
+    <p>A bank receives a deposit of ₹1,000. Can it lend out ₹1,000? Can it lend more? What stops it
+      from lending everything?</p>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">The banker's observation</span>
+    <p>On any given day, <b>only a small fraction of depositors come to withdraw cash</b>. The rest
+      of the money simply sits there. And when the bank lends, the borrower does not walk away with
+      cash — they <b>deposit it in a bank account</b> and pay by cheque. The money never leaves the
+      banking system.</p>
+  </div>
+  <div class="reveal defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Legal Reserve Ratio (LRR)</span> — the minimum fraction of its total
+      deposits that a commercial bank is legally required to keep as reserves.</p>
+    <p class="small">It has two parts:<br>
+      <b>CRR</b> (Cash Reserve Ratio) — the fraction kept as cash <b>with the RBI</b>;<br>
+      <b>SLR</b> (Statutory Liquidity Ratio) — the fraction kept with <b>itself</b> in cash, gold or
+      approved government securities.</p>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">Say it precisely</span>
+    <p>The bank does <b>not</b> lend out the same rupee many times. It <b>creates a new deposit</b>
+      each time it makes a loan — and a deposit <i>is</i> money. This is why the process is called
+      <b>credit creation</b> or <b>deposit creation</b>, not "lending".</p>
+  </div>
+</section>
+
+<section class="slide" data-section="3 · Commercial banks">
+  <h2>Credit creation, drawn</h2>
+  <p class="lead">Initial deposit <b>₹1,000</b>. LRR = <b>20%</b>. Watch what the banking system as a
+     whole does with it.</p>
+  <figure>
+    <svg viewBox="0 0 800 400" role="img"
+         aria-label="Cascade of shrinking bars: an initial deposit of 1000 leads to a loan of 800, which returns as a deposit of 800, leading to a loan of 640, and so on, with total deposits reaching 5000.">
+      <text x="120" y="30" class="lab" text-anchor="end">Round</text>
+      <text x="132" y="30" class="lab">Deposit received &nbsp;→&nbsp; kept as reserve (20%) + lent out (80%)</text>
+
+      <!-- Round 1 : 1000 -->
+      <g class="reveal">
+        <text x="120" y="72" class="lab" text-anchor="end">1</text>
+        <rect x="132" y="50" width="80"  height="32" class="fill-rose"/>
+        <rect x="212" y="50" width="320" height="32" class="fill-teal"/>
+        <text x="172" y="72" class="sm" text-anchor="middle">200</text>
+        <text x="372" y="72" class="sm" text-anchor="middle">lent out 800</text>
+        <text x="548" y="72" class="sm">deposit = 1,000</text>
+      </g>
+
+      <!-- Round 2 : 800 -->
+      <g class="reveal">
+        <text x="120" y="120" class="lab" text-anchor="end">2</text>
+        <rect x="132" y="98" width="64"  height="32" class="fill-rose"/>
+        <rect x="196" y="98" width="256" height="32" class="fill-teal"/>
+        <text x="164" y="120" class="sm" text-anchor="middle">160</text>
+        <text x="324" y="120" class="sm" text-anchor="middle">lent out 640</text>
+        <text x="548" y="120" class="sm">deposit = 800</text>
+      </g>
+
+      <!-- Round 3 : 640 -->
+      <g class="reveal">
+        <text x="120" y="168" class="lab" text-anchor="end">3</text>
+        <rect x="132" y="146" width="51.2" height="32" class="fill-rose"/>
+        <rect x="183.2" y="146" width="204.8" height="32" class="fill-teal"/>
+        <text x="158" y="168" class="sm" text-anchor="middle">128</text>
+        <text x="286" y="168" class="sm" text-anchor="middle">lent out 512</text>
+        <text x="548" y="168" class="sm">deposit = 640</text>
+      </g>
+
+      <!-- Round 4 : 512 -->
+      <g class="reveal">
+        <text x="120" y="216" class="lab" text-anchor="end">4</text>
+        <rect x="132" y="194" width="41" height="32" class="fill-rose"/>
+        <rect x="173" y="194" width="163.8" height="32" class="fill-teal"/>
+        <text x="152" y="216" class="sm" text-anchor="middle">102</text>
+        <text x="255" y="216" class="sm" text-anchor="middle">lent out 410</text>
+        <text x="548" y="216" class="sm">deposit = 512</text>
+      </g>
+
+      <!-- dots -->
+      <g class="reveal">
+        <text x="300" y="252" class="lab" text-anchor="middle">⋮ &nbsp; and so on, each round 80% of the last</text>
+      </g>
+
+      <!-- total : drawn at one-fifth the scale above, so it fits — proportions are exact -->
+      <g class="reveal">
+        <line x1="132" y1="268" x2="700" y2="268" class="axis"/>
+        <text x="120" y="304" class="lab" text-anchor="end">TOTAL</text>
+        <rect x="132" y="282" width="80"  height="32" class="fill-rose"/>
+        <rect x="212" y="282" width="320" height="32" class="fill-amber"/>
+        <text x="172" y="304" class="sm" text-anchor="middle">1,000</text>
+        <text x="372" y="304" class="lab" text-anchor="middle" fill="var(--amber-t)">total credit created = 4,000</text>
+        <text x="548" y="304" class="lab">deposits = 5,000</text>
+        <text x="132" y="330" class="sm" font-style="italic">↑ this bar shows the 20 : 80 split of ₹5,000 — it is drawn at one-fifth the scale of the rounds above, so that it fits.</text>
+        <text x="132" y="360" class="sm">Reserves stay at exactly ₹1,000 — the original cash never grew.</text>
+        <text x="132" y="384" class="sm">But deposits, which ARE money, reached ₹5,000. The banking system created ₹4,000 of new money.</text>
+      </g>
+    </svg>
+    <figcaption>Rose = reserves the banks must hold. Teal = fresh loans, which return as fresh
+      deposits. Amber = the money the system created.</figcaption>
+  </figure>
+</section>
+
+<section class="slide" data-section="3 · Commercial banks">
+  <h2>The same process as a table</h2>
+  <table>
+    <thead><tr><th>Round</th><th>Deposit received</th><th>Reserve kept (20%)</th><th>Loan given (80%)</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>1,000.00</td><td>200.00</td><td>800.00</td></tr>
+      <tr><td>2</td><td>800.00</td><td>160.00</td><td>640.00</td></tr>
+      <tr><td>3</td><td>640.00</td><td>128.00</td><td>512.00</td></tr>
+      <tr><td>4</td><td>512.00</td><td>102.40</td><td>409.60</td></tr>
+      <tr><td>5</td><td>409.60</td><td>81.92</td><td>327.68</td></tr>
+      <tr><td class="lbl">⋮</td><td class="lbl">⋮</td><td class="lbl">⋮</td><td class="lbl">⋮</td></tr>
+      <tr><td class="lbl"><b>Total</b></td><td class="hi">5,000</td><td class="hi2">1,000</td><td class="hi">4,000</td></tr>
+    </tbody>
+    <caption>₹. Notice the total reserve column equals the original deposit exactly — no new cash was ever created.</caption>
+  </table>
+  <div class="reveal insight">
+    <span class="tag">Why the total is exactly 5,000</span>
+    <p>The deposits form a geometric series:</p>
+    <p class="center mono">1,000 + 800 + 640 + 512 + … = 1,000 × (1 + 0.8 + 0.8² + 0.8³ + …)</p>
+    <p>and the sum of that infinite series is <span class="mono">1 ÷ (1 − 0.8) = 5</span>.
+      So total deposits = 1,000 × 5 = <b>₹5,000</b>.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="3 · Commercial banks">
+  <h2>The money (deposit) multiplier</h2>
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Money multiplier</span> — the number of times the total deposits of the
+      banking system exceed the initial deposit; equivalently, the ratio of total money supply to
+      high-powered money.</p>
+  </div>
+  <div class="formula">
+    Money multiplier =
+    <span class="frac"><span>1</span><span>LRR</span></span>
+    &nbsp;&nbsp;·&nbsp;&nbsp;
+    Total deposits = Initial deposit ×
+    <span class="frac"><span>1</span><span>LRR</span></span>
+  </div>
+  <div class="reveal eg">
+    <span class="tag">Our example</span>
+    <p>LRR = 20% = 0.2 ⟹ multiplier = 1 ÷ 0.2 = <b>5</b>.<br>
+      Total deposits = 1,000 × 5 = <b>₹5,000</b>. Credit created = 5,000 − 1,000 = <b>₹4,000</b>.</p>
+  </div>
+  <div class="reveal grid2">
+    <div class="card">
+      <h4>What raises the multiplier</h4>
+      <p class="small">A <b>lower</b> LRR. If LRR fell to 10%, the multiplier would be 10 and total
+        deposits ₹10,000 from the same ₹1,000.</p>
+    </div>
+    <div class="card">
+      <h4>What lowers it</h4>
+      <p class="small">A <b>higher</b> LRR. At LRR = 50% the multiplier is only 2.
+        <b>Multiplier and LRR move in opposite directions</b> — this is exactly the lever the RBI
+        pulls with the CRR.</p>
+    </div>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">Two limits the formula hides</span>
+    <ul>
+      <li>It assumes <b>every rupee lent comes back as a deposit</b>. If the public holds some as
+        cash, the multiplier is smaller.</li>
+      <li>It assumes banks always find <b>willing, creditworthy borrowers</b>. In a downturn they
+        may hold excess reserves and lend less than they legally could.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide" data-section="3 · Commercial banks">
+  <h2>Worked numerical · credit creation</h2>
+  <div class="qcard">
+    <span class="tag">Question 2</span>
+    <p>(a) The total deposits of a banking system are <b>₹8,000 crore</b> and the legal reserve ratio
+      is <b>25%</b>. Find the initial deposit and the total credit created.</p>
+    <p>(b) If the RBI now <b>raises</b> the LRR to 40% while the initial deposit is unchanged, find
+      the new total deposits. Comment.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <ol class="steps">
+    <li class="reveal">Money multiplier = 1 ÷ LRR = 1 ÷ 0.25 = <b>4</b></li>
+    <li class="reveal">Total deposits = Initial deposit × multiplier ⟹ 8,000 = Initial × 4</li>
+    <li class="reveal">Initial deposit = 8,000 ÷ 4 = <b>₹2,000 crore</b></li>
+    <li class="reveal">Total credit created = Total deposits − Initial deposit = 8,000 − 2,000 = <b>₹6,000 crore</b></li>
+    <li class="reveal"><b>(b)</b> New multiplier = 1 ÷ 0.40 = <b>2.5</b></li>
+    <li class="reveal">New total deposits = 2,000 × 2.5 = <b>₹5,000 crore</b> — a fall of ₹3,000 crore</li>
+  </ol>
+  <div class="reveal answer">
+    <span class="tag">Answer · the comment</span>
+    <p>Raising the LRR from 25% to 40% cut the multiplier from 4 to 2.5, and so cut the money supply
+      the same ₹2,000 crore of cash can support from ₹8,000 crore to ₹5,000 crore. <b>The RBI changed
+      the money supply by ₹3,000 crore without printing or destroying a single note.</b></p>
+  </div>
+  <div class="reveal challenge">
+    <span class="tag">Challenge</span>
+    <p>"Commercial banks create money out of nothing." Is that fair?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>Partly.</b> Banks certainly create <b>deposit money</b> — the ₹4,000 crore of new deposits
+      in our example did not exist before. But they cannot do it out of nothing: they need an initial
+      injection of <b>high-powered money</b> from the RBI to start the process, and the LRR caps how
+      far it can go. They multiply money; they do not conjure it. And every new deposit they create
+      is matched by a new <b>loan</b> — an equal liability of somebody else.</p>
+  </div>
+</section>
+
+<!-- ============================================================ THE RBI -->
+<section class="slide" data-section="4 · The Reserve Bank of India">
+  <h2><span class="num">3.4</span>The central bank</h2>
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Central bank</span> — the apex institution of a country's monetary and
+      banking system, which controls the supply of money and credit and regulates the banking
+      system in the national interest. In India: the <b>Reserve Bank of India</b>, established
+      in <b>1935</b>.</p>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">The one line that distinguishes it</span>
+    <p>A commercial bank exists to make a <b>profit</b>. A central bank exists to serve the
+      <b>public interest</b> — and it does not deal with the general public at all.</p>
+  </div>
+  <ol class="steps">
+    <li class="reveal"><b>Currency authority / bank of issue.</b> The sole authority to issue currency
+      notes (all except the ₹1 note and coins, issued by the Government of India). A single issuer
+      gives uniformity and lets the money supply be controlled.</li>
+    <li class="reveal"><b>Banker to the government.</b> Keeps the government's accounts, receives its
+      receipts, makes its payments, manages its debt, and advises it on economic matters.</li>
+    <li class="reveal"><b>Bankers' bank and supervisor.</b> Holds commercial banks' cash reserves
+      (CRR), lends to them, clears their inter-bank settlements, and licenses and inspects them.</li>
+    <li class="reveal"><b>Lender of last resort.</b> When a solvent bank cannot get funds anywhere
+      else, the RBI lends to it — preventing a temporary shortage from becoming a bank failure and
+      a panic.</li>
+    <li class="reveal"><b>Custodian of foreign exchange reserves.</b> Holds the country's gold and
+      foreign currency reserves and manages the exchange rate. <span class="small">(Chapter 6.)</span></li>
+    <li class="reveal"><b>Controller of credit.</b> The function that carries the whole of the rest
+      of this chapter — the instruments of monetary policy.</li>
+  </ol>
+</section>
+
+<section class="slide" data-section="4 · The Reserve Bank of India">
+  <h2>Lender of last resort — worth its own slide</h2>
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Lender of last resort</span> — the central bank's role of providing funds
+      to a commercial bank that is <b>solvent but temporarily short of liquidity</b>, when no other
+      lender will.</p>
+  </div>
+  <div class="reveal eg">
+    <span class="tag">Example · why it matters</span>
+    <p>A bank has ₹1,000 crore of good loans outstanding but only ₹20 crore of cash. A rumour spreads
+      and depositors queue up. The loans are sound but cannot be called back today. Without a lender
+      of last resort the bank fails — <b>even though it was never insolvent</b> — and the panic
+      spreads to healthy banks.</p>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">The deeper point</span>
+    <p>Banking works only because banks lend out most of what is deposited. That is precisely why
+      <b>no bank can ever repay all its depositors at once</b>. The system is therefore stable only
+      if confidence holds — and the lender of last resort exists to make confidence rational.</p>
+  </div>
+</section>
+
+<!-- ============================================================ MONETARY POLICY -->
+<section class="slide" data-section="5 · Monetary policy">
+  <h2><span class="num">3.5</span>The instruments of monetary policy</h2>
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Monetary policy</span> — the policy of the central bank concerning the
+      <b>supply of money and the cost and availability of credit</b>, used to achieve
+      macroeconomic objectives such as price stability and growth.</p>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h4>Quantitative instruments</h4>
+      <p class="small">Affect the <b>total volume</b> of credit in the economy. General, impersonal,
+        apply to all sectors alike.</p>
+      <p class="small">Bank rate · Repo rate · Reverse repo rate · CRR · SLR · Open market operations</p>
+    </div>
+    <div class="card">
+      <h4>Qualitative instruments</h4>
+      <p class="small">Affect the <b>direction and use</b> of credit — which sectors get it. Selective
+        and discriminating.</p>
+      <p class="small">Margin requirement · Moral suasion · Selective credit controls · Rationing of credit</p>
+    </div>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">The single logic behind every instrument</span>
+    <p>To <b>reduce</b> the money supply (fight inflation / excess demand): make credit
+      <b>costlier and scarcer</b> → <b>raise</b> every rate and ratio, <b>sell</b> securities.<br>
+      To <b>increase</b> it (fight deflation / deficient demand): make credit <b>cheaper and more
+      plentiful</b> → <b>lower</b> every rate and ratio, <b>buy</b> securities.</p>
+    <p class="small">You do not need to memorise the direction of each instrument separately.
+      Everything moves together.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="5 · Monetary policy">
+  <h2>The quantitative instruments</h2>
+  <table>
+    <thead><tr><th class="lbl">Instrument</th><th class="lbl">What it is</th><th class="lbl">To fight inflation (excess demand)</th></tr></thead>
+    <tbody>
+      <tr><td class="lbl"><b>Repo rate</b></td><td class="lbl">The rate at which the RBI lends short-term to commercial banks <b>against government securities</b></td><td class="lbl"><b>Raise it</b> → banks' borrowing costs rise → they charge more → less borrowing → money supply falls</td></tr>
+      <tr><td class="lbl"><b>Reverse repo rate</b></td><td class="lbl">The rate at which the RBI <b>borrows from</b> commercial banks (banks park surplus funds with the RBI)</td><td class="lbl"><b>Raise it</b> → parking money with the RBI becomes more attractive than lending it → less credit</td></tr>
+      <tr><td class="lbl"><b>Bank rate</b></td><td class="lbl">The rate at which the RBI lends to commercial banks <b>long-term</b>, without collateral</td><td class="lbl"><b>Raise it</b> → same effect as the repo rate, at longer maturities</td></tr>
+      <tr><td class="lbl"><b>CRR</b><br><span class="small">Cash Reserve Ratio</span></td><td class="lbl">The % of total deposits banks must keep as cash <b>with the RBI</b></td><td class="lbl"><b>Raise it</b> → less left to lend, and the money multiplier falls → money supply falls</td></tr>
+      <tr><td class="lbl"><b>SLR</b><br><span class="small">Statutory Liquidity Ratio</span></td><td class="lbl">The % of deposits banks must keep <b>with themselves</b> in cash, gold or approved securities</td><td class="lbl"><b>Raise it</b> → same effect: less available to lend</td></tr>
+      <tr><td class="lbl"><b>Open market operations</b></td><td class="lbl">The RBI's <b>buying and selling of government securities</b> in the open market</td><td class="lbl"><b>Sell</b> securities → the public pays the RBI → cash drains out of the banking system → money supply falls</td></tr>
+    </tbody>
+    <caption>To fight deflation or deficient demand, reverse every entry in the last column.</caption>
+  </table>
+</section>
+
+<section class="slide" data-section="5 · Monetary policy">
+  <h2>The qualitative instruments</h2>
+  <div class="grid2">
+    <div class="reveal card">
+      <h4>Margin requirement</h4>
+      <p class="small">The gap between the <b>value of the security</b> pledged and the <b>amount
+        lent</b> against it. If a borrower pledges ₹1,00,000 of shares and the margin is 30%, the
+        bank may lend only ₹70,000.</p>
+      <p class="small"><b>Raise the margin</b> → less credit against the same collateral.
+        Can be set <b>differently for different sectors</b> — a high margin on speculative
+        commodity lending, a low one on farm loans.</p>
+    </div>
+    <div class="reveal card">
+      <h4>Moral suasion</h4>
+      <p class="small">Persuasion, advice and pressure — letters, meetings, informal requests from the
+        RBI to banks to restrain or expand lending in particular directions.</p>
+      <p class="small">Carries <b>no legal force</b>; it works on the banks' need to stay in the
+        regulator's good books.</p>
+    </div>
+    <div class="reveal card">
+      <h4>Selective credit controls</h4>
+      <p class="small">Direct instructions to banks to <b>restrict</b> credit to specified uses
+        (hoarding of foodgrains, speculation in shares) or to <b>direct</b> it to priority sectors
+        (agriculture, small industry, exports).</p>
+    </div>
+    <div class="reveal card">
+      <h4>Rationing of credit</h4>
+      <p class="small">Fixing <b>ceilings</b> on the amount of credit a bank may extend to a
+        particular sector or borrower.</p>
+    </div>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">The distinction to state clearly</span>
+    <p>Quantitative tools change <b>how much</b> credit there is and hit all sectors alike.
+      Qualitative tools change <b>who gets it</b>, leaving the total roughly unchanged. An exam
+      answer that says "margin requirement reduces the money supply" has missed the point.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="5 · Monetary policy">
+  <h2>Current policy rates — illustrative only</h2>
+  <div class="warn">
+    <span class="tag">Read this before the numbers</span>
+    <p>These figures <b>change several times a year</b> and are <b>not examinable</b>. They are here
+      so the concepts have something concrete attached. Always check
+      <b>rbi.org.in</b> before quoting a rate, and always state the date it belongs to.</p>
+  </div>
+  <table>
+    <thead><tr><th class="lbl">Rate / ratio</th><th>Level</th><th class="lbl">As at</th></tr></thead>
+    <tbody>
+      <tr><td class="lbl">Repo rate</td><td>5.50%</td><td class="lbl">RBI Monetary Policy, June 2025 (after cuts from 6.50% during 2025)</td></tr>
+      <tr><td class="lbl">Cash Reserve Ratio (CRR)</td><td>3%</td><td class="lbl">reduced in phases from 4% during late 2025</td></tr>
+      <tr><td class="lbl">Statutory Liquidity Ratio (SLR)</td><td>18%</td><td class="lbl">unchanged since 2020</td></tr>
+    </tbody>
+    <caption>Illustrative figures for classroom context only — verify the current position before use.</caption>
+  </table>
+  <div class="reveal insight">
+    <span class="tag">What the direction of travel tells you</span>
+    <p>Rates being <b>cut</b> and the CRR being <b>reduced</b> is an <b>easy (expansionary)</b>
+      monetary policy: the RBI is trying to make credit cheaper and more plentiful to support demand
+      and growth. Rates being <b>raised</b> would signal a <b>tight (contractionary)</b> stance
+      aimed at inflation. Read any policy announcement by asking only: <b>which way, and why?</b></p>
+  </div>
+</section>
+
+<section class="slide" data-section="5 · Monetary policy">
+  <h2>Check yourself · apply the whole toolkit</h2>
+  <div class="qcard">
+    <span class="tag">Question 3</span>
+    <p>The economy is facing <b>rising inflation</b>. Suggest <b>three</b> monetary measures the RBI
+      could take, and explain the chain of reasoning for each — from the instrument to the price
+      level.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <ol>
+      <li><b>Raise the repo rate.</b> Banks' cost of borrowing from the RBI rises → they raise their
+        own lending rates → households and firms borrow less → aggregate demand falls → the upward
+        pressure on prices eases.</li>
+      <li><b>Raise the CRR.</b> Banks must keep a larger share of deposits with the RBI → less is
+        available to lend <i>and</i> the money multiplier falls → money supply contracts → demand
+        falls → prices ease.</li>
+      <li><b>Sell government securities in the open market.</b> Buyers pay the RBI out of their bank
+        accounts → cash drains out of the banking system → banks' lendable resources shrink → credit
+        and demand fall.</li>
+    </ol>
+    <p class="small">A fourth, qualitative, measure: <b>raise the margin requirement</b> on loans
+      against goods being hoarded, to squeeze speculative demand specifically.</p>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">How to earn full marks here</span>
+    <p>Do not stop at "raise the repo rate". The marks are in the <b>chain</b>: instrument →
+      cost/availability of credit → borrowing → aggregate demand → price level. Write all four
+      links every time.</p>
+  </div>
+</section>
+
+<!-- ============================================================ RECAP -->
+<section class="slide" data-section="6 · Recap and exercises">
+  <h2>Recap — Chapter 3 in one screen</h2>
+  <div class="chips">
+    <span class="chip">Barter · double coincidence of wants</span>
+    <span class="chip k">Medium of exchange</span>
+    <span class="chip">Unit of account</span>
+    <span class="chip">Store of value</span>
+    <span class="chip">Fiat money · legal tender</span>
+    <span class="chip k">M1 = C + DD + OD</span>
+    <span class="chip k">M3 = M1 + time deposits</span>
+    <span class="chip">High-powered money</span>
+    <span class="chip k">LRR = CRR + SLR</span>
+    <span class="chip k">Money multiplier = 1/LRR</span>
+    <span class="chip">Credit creation</span>
+    <span class="chip">Lender of last resort</span>
+    <span class="chip k">Repo · CRR · SLR · OMO</span>
+    <span class="chip">Margin requirement · moral suasion</span>
+  </div>
+  <div class="grid2">
+    <div class="reveal card">
+      <h4>The three things to be able to do</h4>
+      <ol class="small">
+        <li>Compute M1 and M3 from a list, excluding vault cash and post office deposits.</li>
+        <li>Run the credit-creation multiplier in both directions (find deposits from LRR, or LRR
+          from deposits).</li>
+        <li>Give the full causal chain from any instrument to the price level.</li>
+      </ol>
+    </div>
+    <div class="reveal card">
+      <h4>The one sentence that ties the chapter together</h4>
+      <p class="small">The RBI creates a small amount of <b>high-powered money</b>; commercial banks
+        multiply it into a much larger <b>money supply</b>; and the RBI controls the size of that
+        multiplication — and hence total spending — through the LRR and the price of credit.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-section="6 · Recap and exercises">
+  <h2>NCERT exercises · money and its functions</h2>
+  <div class="qcard">
+    <span class="tag">NCERT Q2</span>
+    <p>What are the main functions of money? How does money overcome the shortcomings of a barter
+      system?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer · answer it as a pairing</span>
+    <ul>
+      <li><b>Medium of exchange</b> — money is generally accepted, so a sale and a purchase become
+        two separate transactions. This removes the need for a <b>double coincidence of wants</b>.</li>
+      <li><b>Measure of value (unit of account)</b> — all goods are priced in one common unit,
+        so only <i>n</i> prices need be known instead of <span class="mono">n(n−1)/2</span> exchange
+        ratios. This removes the <b>lack of a common measure of value</b>.</li>
+      <li><b>Store of value</b> — purchasing power can be held in a form that does not perish and
+        costs little to store. This removes the <b>difficulty of storing wealth</b>.</li>
+      <li><b>Standard of deferred payment</b> — loans can be contracted and repaid in money terms,
+        making credit possible. This removes the <b>difficulty of deferred payments</b>.</li>
+    </ul>
+    <p class="small">A fifth function, <b>transfer of value</b>, lets purchasing power be moved easily
+      between people and places.</p>
+  </div>
+  <div class="reveal qcard">
+    <span class="tag">NCERT Q6 and Q8</span>
+    <p>What is High Powered Money? What is the money multiplier and what determines its value?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>High-powered money</b> is the money created by the RBI — currency held by the public plus
+      the cash reserves of commercial banks. It is the base on which the money supply is built,
+      hence "high-powered".</p>
+    <p>The <b>money multiplier</b> is the ratio of total money supply to high-powered money — the
+      number of times total deposits exceed the initial deposit. It equals <b>1 ÷ LRR</b>. Its value
+      is therefore determined by the <b>legal reserve ratio</b>: the lower the LRR, the larger the
+      multiplier. In practice it is also reduced by the public's preference for holding cash rather
+      than deposits, and by banks holding excess reserves.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="6 · Recap and exercises">
+  <h2>NCERT Q10 and Q11</h2>
+  <div class="qcard">
+    <span class="tag">NCERT Q10</span>
+    <p>Do you consider a commercial bank a "creator of money" in the economy?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>Yes.</b> A commercial bank does not create currency, but it creates <b>deposits</b>, and
+      demand deposits are money. Because only a fraction of deposits (the LRR) needs to be held as
+      reserve, a bank lends out the rest; the borrower's spending returns to the banking system as a
+      fresh deposit; and the process repeats. Starting from an initial deposit of ₹1,000 with an LRR
+      of 20%, the system ends with total deposits of <b>₹5,000</b> — ₹4,000 of newly created money —
+      although the cash reserves are still only ₹1,000.</p>
+    <p class="small">The qualification worth adding: banks can only <i>multiply</i> the
+      high-powered money the RBI supplies, and the RBI caps the multiplication through the LRR.</p>
+  </div>
+  <div class="reveal qcard">
+    <span class="tag">NCERT Q11</span>
+    <p>What role of the RBI is known as "lender of last resort"?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p>When a commercial bank is <b>solvent</b> — its assets are sound — but faces a <b>temporary
+      shortage of cash</b>, and can raise funds from no other source, the RBI lends to it against
+      approved securities. This prevents an otherwise healthy bank from collapsing merely because
+      it cannot convert its long-term loans into cash quickly, and stops the loss of confidence
+      spreading to other banks. It is called "of last resort" because the RBI is approached only
+      after every other avenue has failed.</p>
+  </div>
+</section>
+
+<section class="slide title-slide" data-section="6 · Recap and exercises">
+  <div class="kicker">End of Chapter 3 · Next</div>
+  <h1>Chapter 4<br>Determination of Income and Employment</h1>
+  <div class="rule"></div>
+  <p class="sub">We know what the flow is made of. Now: what fixes its size?</p>
+  <div class="bridge" style="max-width:44rem;text-align:left;margin-top:1.4rem">
+    <span class="tag">The question Chapter 4 answers</span>
+    <p>You have just seen the RBI raise or lower the money supply to fight inflation or a slump.
+      But <b>why</b> does more credit raise output, and why does an economy sit below full employment
+      in the first place? Chapter 4 is Keynes's answer, in a diagram and a schedule — and it is
+      where every instrument you just learned finally gets its justification.</p>
+  </div>
+</section>
+
+</div>
+
+<button class="nav" id="prev" aria-label="Previous slide">‹</button>
+<button class="nav" id="next" aria-label="Next slide">›</button>
+
+<script src="assets/deck.js"></script>
+</body>
+</html>

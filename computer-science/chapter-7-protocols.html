@@ -1,0 +1,985 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 7 · Applications and Protocols — Class XII Computer Science</title>
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body>
+
+<div id="bar">
+  <div class="brand">CH 7 · APPLICATIONS &amp; PROTOCOLS</div>
+  <div class="sect" id="sect"></div>
+  <div class="tools">
+    <button id="menuBtn">Menu (m)</button>
+    <button id="fsBtn">Full screen (f)</button>
+    <span id="counter"></span>
+  </div>
+</div>
+<div id="progress"></div>
+
+<div id="menu">
+  <h3>Chapter 7 — Applications and Protocols</h3>
+  <div class="mlist"></div>
+  <p class="hint">Press <kbd>m</kbd> or <kbd>Esc</kbd> to close</p>
+</div>
+
+<div id="stage">
+
+<!-- ===================== ORIENTATION ===================== -->
+
+<section class="slide title-slide" data-section="Orientation">
+  <div class="kicker">Unit 2 · Computer Networks</div>
+  <h1>Chapter 7<br>Applications<br>and Protocols</h1>
+  <div class="rule"></div>
+  <p class="sub">Chapter 6 laid the cables. This chapter is the set of rules that
+     turns a cable into a conversation.</p>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.1</span> Where we have got to</h2>
+
+  <div class="bridge">
+    <span class="tag">Chapter 6</span>
+    <p>Nodes, media, devices and topologies. Two machines are now physically able to send
+       each other electricity, light or radio waves.</p>
+  </div>
+
+  <div class="cosplit">
+    <div>
+      <div class="card">
+        <h4>Which is not the same as talking</h4>
+        <p>A wire between two computers is like a telephone line between two people who
+           share no language. Signal, yes. Meaning, no.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <h4>What is missing</h4>
+        <p>An agreement: <b>who speaks first, how the message is packaged, how the other
+           end confirms it arrived, and what to do when it does not.</b> That agreement is
+           a protocol.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Protocol</span> — a set of rules that governs how data is
+       formatted, transmitted, received and acknowledged between devices on a network.
+       Both ends must follow the same protocol to communicate.</p>
+  </div>
+
+  <div class="insight">
+    <span class="tag">Why there is more than one</span>
+    <p>Different jobs need different rules. Fetching a web page, sending mail, moving a
+       large file and carrying a live voice call have completely different requirements —
+       so each has its own protocol, all running over the same cables.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.2</span> How this chapter runs</h2>
+
+  <div class="grid2">
+    <div>
+      <h3>Five stops</h3>
+      <ol>
+        <li><b>The client–server model</b> — who asks, who answers</li>
+        <li><b>Addressing</b> — IP addresses, domain names, DNS, URL</li>
+        <li><b>The web</b> — HTTP and HTTPS</li>
+        <li><b>Moving files and mail</b> — FTP, SMTP, POP3</li>
+        <li><b>TCP/IP, PPP and VoIP</b> — the foundation and the live voice</li>
+      </ol>
+    </div>
+    <div>
+      <h3>Every protocol, on one screen</h3>
+      <table>
+        <tr><th class="lbl">Protocol</th><th class="lbl">Full form</th><th class="lbl">Job</th></tr>
+        <tr><td class="lbl"><b>HTTP</b></td><td class="lbl">HyperText Transfer Protocol</td><td class="lbl">fetch web pages</td></tr>
+        <tr><td class="lbl"><b>HTTPS</b></td><td class="lbl">HTTP Secure</td><td class="lbl">fetch them, encrypted</td></tr>
+        <tr><td class="lbl"><b>FTP</b></td><td class="lbl">File Transfer Protocol</td><td class="lbl">upload and download files</td></tr>
+        <tr><td class="lbl"><b>SMTP</b></td><td class="lbl">Simple Mail Transfer Protocol</td><td class="lbl"><b>send</b> email</td></tr>
+        <tr><td class="lbl"><b>POP3</b></td><td class="lbl">Post Office Protocol v3</td><td class="lbl"><b>retrieve</b> email</td></tr>
+        <tr><td class="lbl"><b>TCP/IP</b></td><td class="lbl">Transmission Control Protocol / Internet Protocol</td><td class="lbl">the foundation of the Internet</td></tr>
+        <tr><td class="lbl"><b>PPP</b></td><td class="lbl">Point to Point Protocol</td><td class="lbl">a direct link between two nodes</td></tr>
+        <tr><td class="lbl"><b>VoIP</b></td><td class="lbl">Voice over Internet Protocol</td><td class="lbl">carry voice calls over the Internet</td></tr>
+      </table>
+      <div class="warn">
+        <span class="tag">Full forms are marks</span>
+        <p>"Write the full form of SMTP and state its use" is a routine one-mark question.
+           Learn the table above verbatim.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 1 · CLIENT AND SERVER ===================== -->
+
+<section class="slide" data-section="1 · The client–server model">
+  <h2><span class="num">2.1</span> Who asks, who answers</h2>
+
+  <figure>
+    <svg viewBox="0 0 880 260" role="img" aria-label="Client server sequence: the browser sends a request to the server, the server processes it and looks up the page, then sends a response back which the browser renders">
+      <defs>
+        <marker id="arw-req" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#1f7ab8"/>
+        </marker>
+        <marker id="arw-res" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#748500"/>
+        </marker>
+      </defs>
+
+      <rect x="30" y="80" width="180" height="90" rx="10" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <text x="120" y="118" class="lab" text-anchor="middle">CLIENT</text>
+      <text x="120" y="144" text-anchor="middle">your browser</text>
+
+      <rect x="670" y="80" width="180" height="90" rx="10" fill="#fdf6e3" stroke="#c62b28" stroke-width="3"/>
+      <text x="760" y="118" class="lab" text-anchor="middle">SERVER</text>
+      <text x="760" y="144" text-anchor="middle">holds the pages</text>
+
+      <path class="curve c-blue" d="M216,106 L664,106" marker-end="url(#arw-req)"/>
+      <text x="440" y="94" text-anchor="middle" fill="#175f90">① request — GET /index.html</text>
+
+      <path class="curve c-teal" d="M664,150 L216,150" marker-end="url(#arw-res)"/>
+      <text x="440" y="176" text-anchor="middle" fill="#586600">③ response — the HTML, plus a status code</text>
+
+      <text x="760" y="204" text-anchor="middle">② finds or builds the page</text>
+
+      <text x="120" y="204" text-anchor="middle">④ renders it on screen</text>
+
+      <text x="440" y="42" class="lab" text-anchor="middle">The client always speaks first. The server never calls you.</text>
+    </svg>
+    <figcaption>Request → process → response → render. Every protocol in this chapter follows this shape.</figcaption>
+  </figure>
+
+  <div class="cosplit">
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Client</span> — a computer or program that <b>requests</b> a
+           service or resource.<br>
+           <span class="term">Server</span> — a computer or program that <b>provides</b>
+           that service, waiting for requests and responding to them.</p>
+      </div>
+    </div>
+    <div>
+      <div class="insight">
+        <span class="tag">Client and server are roles, not machines</span>
+        <p>The same computer can be a server for one conversation and a client in another
+           — a web server is a client when it fetches data from a database server. Say
+           <b>"the machine acting as the client"</b> and you are always right.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 2 · ADDRESSING ===================== -->
+
+<section class="slide" data-section="2 · Addressing — IP, DNS, URL">
+  <h2><span class="num">3.1</span> The IP address</h2>
+
+  <div class="cosplit">
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">IP address</span> — a unique numeric address assigned to
+           every device on a network, which identifies <b>where</b> the device is and
+           allows data to be routed to it.</p>
+      </div>
+      <figure>
+        <svg viewBox="0 0 460 160" role="img" aria-label="An IPv4 address 192.168.1.10 split into four octets, each between 0 and 255">
+          <rect x="20" y="46" width="96" height="52" rx="8" fill="#eee8d5" stroke="#1f7ab8" stroke-width="3"/>
+          <rect x="126" y="46" width="96" height="52" rx="8" fill="#eee8d5" stroke="#1f7ab8" stroke-width="3"/>
+          <rect x="232" y="46" width="96" height="52" rx="8" fill="#eee8d5" stroke="#1f7ab8" stroke-width="3"/>
+          <rect x="338" y="46" width="96" height="52" rx="8" fill="#eee8d5" stroke="#1f7ab8" stroke-width="3"/>
+
+          <text x="68" y="80" class="lab" text-anchor="middle">192</text>
+          <text x="174" y="80" class="lab" text-anchor="middle">168</text>
+          <text x="280" y="80" class="lab" text-anchor="middle">1</text>
+          <text x="386" y="80" class="lab" text-anchor="middle">10</text>
+
+          <text x="121" y="80" class="lab" text-anchor="middle">.</text>
+          <text x="227" y="80" class="lab" text-anchor="middle">.</text>
+          <text x="333" y="80" class="lab" text-anchor="middle">.</text>
+
+          <text x="227" y="30" class="lab" text-anchor="middle">4 octets, each 8 bits = 32 bits in total</text>
+          <text x="227" y="126" text-anchor="middle">each part must be between 0 and 255</text>
+          <text x="227" y="148" text-anchor="middle">so about 4.3 billion addresses exist — and they ran out</text>
+        </svg>
+      </figure>
+    </div>
+    <div>
+      <div class="qcard">
+        <span class="tag">Worked example</span>
+        <p>Which of these are <b>valid</b> IPv4 addresses?</p>
+        <p><b>(a)</b> <code>192.168.0.1</code> &nbsp;
+           <b>(b)</b> <code>256.100.4.9</code> &nbsp;
+           <b>(c)</b> <code>10.0.0</code> &nbsp;
+           <b>(d)</b> <code>172.16.254.255</code></p>
+      </div>
+      <div class="reveal ready ephemeral">Check each octet. 🤔</div>
+      <div class="reveal answer">
+        <span class="tag">Answer</span>
+        <p><b>(a) Valid.</b><br>
+           <b>(b) Invalid</b> — <code>256</code> exceeds 255. An octet is 8 bits, so the
+           largest value is 2<sup>8</sup> − 1 = 255.<br>
+           <b>(c) Invalid</b> — only three parts; IPv4 needs exactly four.<br>
+           <b>(d) Valid</b> — 255 is allowed as a value.</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">IPv4 and IPv6</span>
+        <p>The 32-bit form above is <b>IPv4</b>. Because 4.3 billion was not enough,
+           <b>IPv6</b> uses <b>128 bits</b>, written as eight hexadecimal groups —
+           <code>2001:0db8:85a3::8a2e:0370:7334</code>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal warn">
+    <span class="tag">IP address vs MAC address — the guaranteed question</span>
+    <p>A <b>MAC address</b> is permanent, assigned by the manufacturer, identifies the
+       <b>device itself</b>, and is used by a <b>switch</b> inside a LAN.<br>
+       An <b>IP address</b> is assigned by the network, <b>changes</b> when the device
+       moves to another network, identifies its <b>location</b>, and is used by a
+       <b>router</b> between networks.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.2</span> Domain names, and why they exist</h2>
+
+  <div class="cosplit">
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Domain name</span> — a human-readable name given to an IP
+           address, so that a site can be reached by a memorable name instead of a number.</p>
+      </div>
+      <figure>
+        <svg viewBox="0 0 480 170" role="img" aria-label="The domain name www dot ncert dot nic dot in split into subdomain, second level domain, and top level domains, read right to left">
+          <text x="240" y="44" class="lab" text-anchor="middle">www . ncert . nic . in</text>
+
+          <line class="axis" x1="70" y1="60" x2="70" y2="88"/>
+          <text x="70" y="108" text-anchor="middle" fill="#175f90">sub-</text>
+          <text x="70" y="128" text-anchor="middle" fill="#175f90">domain</text>
+
+          <line class="axis" x1="168" y1="60" x2="168" y2="88"/>
+          <text x="168" y="108" text-anchor="middle" fill="#586600">second-level</text>
+          <text x="168" y="128" text-anchor="middle" fill="#586600">domain</text>
+
+          <line class="axis" x1="290" y1="60" x2="290" y2="88"/>
+          <text x="290" y="108" text-anchor="middle" fill="#755900">generic</text>
+          <text x="290" y="128" text-anchor="middle" fill="#755900">TLD</text>
+
+          <line class="axis" x1="380" y1="60" x2="380" y2="88"/>
+          <text x="380" y="108" text-anchor="middle" fill="#b02522">country</text>
+          <text x="380" y="128" text-anchor="middle" fill="#b02522">TLD</text>
+
+          <text x="240" y="160" text-anchor="middle">read RIGHT to LEFT — the most general part is on the right</text>
+        </svg>
+      </figure>
+    </div>
+    <div>
+      <table>
+        <tr><th class="lbl">TLD</th><th class="lbl">Meaning</th></tr>
+        <tr><td class="lbl"><code>.com</code></td><td class="lbl">commercial</td></tr>
+        <tr><td class="lbl"><code>.org</code></td><td class="lbl">organisation, usually non-profit</td></tr>
+        <tr><td class="lbl"><code>.edu</code></td><td class="lbl">educational institution</td></tr>
+        <tr><td class="lbl"><code>.gov</code></td><td class="lbl">government</td></tr>
+        <tr><td class="lbl"><code>.net</code></td><td class="lbl">network infrastructure</td></tr>
+        <tr><td class="lbl"><code>.nic</code></td><td class="lbl">network information centre</td></tr>
+        <tr><td class="lbl"><code>.in</code> <code>.uk</code> <code>.au</code></td><td class="lbl">country codes</td></tr>
+      </table>
+      <div class="insight">
+        <span class="tag">The point of a domain name</span>
+        <p>Nobody can remember <code>164.100.60.11</code>, and the site's IP address may
+           change when it moves to a new server. The <b>name stays the same</b> and simply
+           points somewhere new — so users and links never break.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.3</span> DNS — turning the name into a number</h2>
+
+  <figure>
+    <svg viewBox="0 0 900 290" role="img" aria-label="DNS lookup sequence: the browser asks the DNS server for the IP address of a domain, the DNS server replies with the address, the browser then requests the page from the web server, which returns it">
+      <defs>
+        <marker id="arw-dns" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#1f7ab8"/>
+        </marker>
+        <marker id="arw-dns2" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#748500"/>
+        </marker>
+      </defs>
+
+      <rect x="20" y="110" width="170" height="86" rx="10" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <text x="105" y="146" class="lab" text-anchor="middle">BROWSER</text>
+      <text x="105" y="172" text-anchor="middle">ncert.nic.in</text>
+
+      <rect x="360" y="16" width="180" height="80" rx="10" fill="#fdf6e3" stroke="#a17a00" stroke-width="3"/>
+      <text x="450" y="50" class="lab" text-anchor="middle">DNS SERVER</text>
+      <text x="450" y="76" text-anchor="middle">the phone book</text>
+
+      <rect x="700" y="110" width="180" height="86" rx="10" fill="#fdf6e3" stroke="#c62b28" stroke-width="3"/>
+      <text x="790" y="146" class="lab" text-anchor="middle">WEB SERVER</text>
+      <text x="790" y="172" text-anchor="middle">164.100.60.11</text>
+
+      <path class="curve c-blue" d="M170,116 L358,66" marker-end="url(#arw-dns)"/>
+      <text x="240" y="80" fill="#175f90">① what is the IP</text>
+      <text x="240" y="100" fill="#175f90">of ncert.nic.in?</text>
+
+      <path class="curve c-teal" d="M400,100 L160,150" marker-end="url(#arw-dns2)"/>
+      <text x="300" y="142" fill="#586600">② it is 164.100.60.11</text>
+
+      <path class="curve c-blue" d="M196,168 L694,142" marker-end="url(#arw-dns)"/>
+      <text x="450" y="188" text-anchor="middle" fill="#175f90">③ HTTP GET to 164.100.60.11</text>
+
+      <path class="curve c-teal" d="M694,186 L196,192" marker-end="url(#arw-dns2)"/>
+      <text x="450" y="222" text-anchor="middle" fill="#586600">④ the page comes back</text>
+
+      <text x="450" y="266" class="lab" text-anchor="middle">Steps ① and ② happen before a single byte of the page is requested.</text>
+    </svg>
+    <figcaption>The DNS lookup happens <b>first</b> and is invisible to the user.</figcaption>
+  </figure>
+
+  <div class="cosplit">
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">DNS — Domain Name System</span> — a distributed naming
+           service that <b>translates domain names into IP addresses</b>, so that users can
+           use memorable names while the network routes using numbers.</p>
+      </div>
+    </div>
+    <div>
+      <div class="insight">
+        <span class="tag">The analogy that earns the mark</span>
+        <p>DNS is the <b>telephone directory</b> of the Internet. You know the person's
+           name; the directory gives you the number; you dial the number. You never dial
+           the name.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.4</span> The URL, dissected</h2>
+
+  <figure>
+    <svg viewBox="0 0 900 210" role="img" aria-label="A URL broken into protocol, domain name, path and file name, with each part labelled">
+      <text x="450" y="52" class="lab" text-anchor="middle">https:// www.ncert.nic.in / textbook / pdf / lecs109.pdf</text>
+
+      <line class="axis" x1="146" y1="66" x2="146" y2="96"/>
+      <text x="146" y="120" text-anchor="middle" fill="#5055a0">protocol</text>
+      <text x="146" y="142" text-anchor="middle" fill="#5055a0">how to fetch it</text>
+
+      <line class="axis" x1="352" y1="66" x2="352" y2="96"/>
+      <text x="352" y="120" text-anchor="middle" fill="#175f90">domain name</text>
+      <text x="352" y="142" text-anchor="middle" fill="#175f90">which server</text>
+
+      <line class="axis" x1="588" y1="66" x2="588" y2="96"/>
+      <text x="588" y="120" text-anchor="middle" fill="#586600">path</text>
+      <text x="588" y="142" text-anchor="middle" fill="#586600">which folder</text>
+
+      <line class="axis" x1="775" y1="66" x2="775" y2="96"/>
+      <text x="775" y="120" text-anchor="middle" fill="#b02522">file name</text>
+      <text x="775" y="142" text-anchor="middle" fill="#b02522">which document</text>
+
+      <text x="450" y="188" text-anchor="middle">Together they identify exactly one resource, anywhere in the world.</text>
+    </svg>
+    <figcaption>Four parts. A question asking you to "identify the domain name in the given URL" is asking for the second one.</figcaption>
+  </figure>
+
+  <div class="cosplit">
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">URL — Uniform Resource Locator</span> — the complete address
+           of a resource on the Internet, specifying the <b>protocol</b>, the <b>domain
+           name</b> of the server, and the <b>path and file name</b> of the resource.</p>
+      </div>
+    </div>
+    <div>
+      <div class="qcard">
+        <span class="tag">Question 1</span>
+        <p>For <code>http://school.edu.in/library/books/list.html</code>, name the
+           <b>protocol</b>, the <b>domain name</b>, the <b>path</b> and the <b>file</b>.</p>
+      </div>
+      <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+      <div class="reveal answer">
+        <span class="tag">Answer</span>
+        <p><b>Protocol:</b> <code>http</code><br>
+           <b>Domain name:</b> <code>school.edu.in</code><br>
+           <b>Path:</b> <code>/library/books/</code><br>
+           <b>File name:</b> <code>list.html</code></p>
+        <p class="small">The domain name stops at the <b>first single slash</b> after the
+           <code>//</code>. Everything after it is on the server, not part of its name.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 3 · THE WEB ===================== -->
+
+<section class="slide" data-section="3 · The web — HTTP and HTTPS">
+  <h2><span class="num">4.1</span> HTTP and HTTPS</h2>
+
+  <div class="cosplit">
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">HTTP — HyperText Transfer Protocol</span> — the protocol used
+           by the World Wide Web to transfer web pages between a web server and a browser.
+           It is a <b>request–response</b> protocol.</p>
+      </div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">HTTPS — HTTP Secure</span> — HTTP with all data
+           <b>encrypted</b>, so that anyone intercepting it cannot read it. It also proves
+           the server is who it claims to be, using a digital certificate.</p>
+      </div>
+      <div class="warn">
+        <span class="tag">When HTTPS is compulsory</span>
+        <p>Any page that carries a <b>password, a payment or personal data</b>. Over plain
+           HTTP, every device between you and the server — including the café Wi-Fi router
+           — can read the whole exchange in plain text.</p>
+      </div>
+    </div>
+    <div>
+      <table>
+        <tr><th class="lbl">&nbsp;</th><th>HTTP</th><th>HTTPS</th></tr>
+        <tr><td class="lbl">Data is</td><td class="hi">plain text</td><td class="hi2">encrypted</td></tr>
+        <tr><td class="lbl">Default port</td><td>80</td><td>443</td></tr>
+        <tr><td class="lbl">Certificate needed</td><td class="hi">No</td><td class="hi2">Yes</td></tr>
+        <tr><td class="lbl">Browser shows</td><td class="hi">"Not secure"</td><td class="hi2">a padlock</td></tr>
+        <tr><td class="lbl">Speed</td><td class="hi2">marginally faster</td><td>slight encryption cost</td></tr>
+      </table>
+      <div class="insight">
+        <span class="tag">Hypertext — the idea underneath</span>
+        <p><b>Hypertext</b> is text containing <b>links</b> to other text. Follow a link
+           and you jump to another document, possibly on another continent. That single
+           idea is what makes the Web a <b>web</b> rather than a library of separate
+           files.</p>
+      </div>
+      <div class="note">
+        <span class="tag">Web page, website, web server, browser</span>
+        <p>A <b>web page</b> is a single document. A <b>website</b> is a collection of
+           related pages. A <b>web server</b> is the machine that stores and serves them.
+           A <b>web browser</b> is the client program that requests and displays them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 4 · FILES AND MAIL ===================== -->
+
+<section class="slide" data-section="4 · Files and mail">
+  <h2><span class="num">5.1</span> FTP — moving whole files</h2>
+
+  <div class="cosplit">
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">FTP — File Transfer Protocol</span> — a standard protocol for
+           transferring files between a client and a server over a network, supporting both
+           <b>upload</b> and <b>download</b>, and usually requiring a username and password.</p>
+      </div>
+      <div class="insight">
+        <span class="tag">FTP vs HTTP — why both exist</span>
+        <p><b>HTTP</b> is built to fetch a document and <b>display</b> it. <b>FTP</b> is
+           built to transfer a file and <b>store</b> it — in either direction, in bulk,
+           with directory listings and resumable transfers.</p>
+        <p>Uploading your school website to its host is FTP. Viewing that website
+           afterwards is HTTP.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <h4>Typical uses</h4>
+        <ul>
+          <li>Uploading a website to a hosting server</li>
+          <li>Downloading large software or datasets</li>
+          <li>Sharing files inside an organisation</li>
+          <li>Transferring backups between machines</li>
+        </ul>
+      </div>
+      <div class="warn">
+        <span class="tag">Anonymous FTP</span>
+        <p>Some public servers allow login with the username <code>anonymous</code> and any
+           email address as password, for openly downloadable files. Plain FTP sends the
+           password <b>unencrypted</b>, which is why secure variants (SFTP, FTPS) have
+           replaced it for anything private.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.2</span> Email — SMTP out, POP3 in</h2>
+
+  <figure>
+    <svg viewBox="0 0 900 260" role="img" aria-label="Email flow: the sender's client uses SMTP to push mail to the sender's mail server, which uses SMTP to reach the recipient's mail server, and the recipient's client uses POP3 to pull the mail down">
+      <defs>
+        <marker id="arw-smtp" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#1f7ab8"/>
+        </marker>
+        <marker id="arw-pop" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#748500"/>
+        </marker>
+      </defs>
+
+      <rect x="14" y="96" width="150" height="78" rx="10" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <text x="89" y="128" class="lab" text-anchor="middle">SENDER</text>
+      <text x="89" y="152" text-anchor="middle">mail client</text>
+
+      <rect x="250" y="96" width="160" height="78" rx="10" fill="#fdf6e3" stroke="#1f7ab8" stroke-width="3"/>
+      <text x="330" y="128" class="lab" text-anchor="middle">sender's</text>
+      <text x="330" y="152" class="lab" text-anchor="middle">mail server</text>
+
+      <rect x="500" y="96" width="160" height="78" rx="10" fill="#fdf6e3" stroke="#748500" stroke-width="3"/>
+      <text x="580" y="128" class="lab" text-anchor="middle">recipient's</text>
+      <text x="580" y="152" class="lab" text-anchor="middle">mail server</text>
+
+      <rect x="742" y="96" width="150" height="78" rx="10" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <text x="817" y="128" class="lab" text-anchor="middle">RECIPIENT</text>
+      <text x="817" y="152" text-anchor="middle">mail client</text>
+
+      <path class="curve c-blue" d="M170,135 L244,135" marker-end="url(#arw-smtp)"/>
+      <text x="207" y="82" text-anchor="middle" fill="#175f90">SMTP</text>
+
+      <path class="curve c-blue" d="M416,135 L494,135" marker-end="url(#arw-smtp)"/>
+      <text x="455" y="82" text-anchor="middle" fill="#175f90">SMTP</text>
+
+      <path class="curve c-teal" d="M736,135 L666,135" marker-end="url(#arw-pop)"/>
+      <text x="701" y="82" text-anchor="middle" fill="#586600">POP3</text>
+
+      <text x="330" y="212" text-anchor="middle" fill="#175f90">PUSH — the mail is sent onward</text>
+      <text x="750" y="212" text-anchor="middle" fill="#586600">PULL — the client fetches it</text>
+
+      <text x="450" y="246" class="lab" text-anchor="middle">SMTP moves mail towards the recipient; POP3 collects it from the mailbox.</text>
+    </svg>
+    <figcaption>Notice the arrow direction: SMTP arrows point right, the POP3 arrow points <b>left</b>.</figcaption>
+  </figure>
+
+  <div class="cosplit">
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">SMTP — Simple Mail Transfer Protocol</span> — the protocol
+           used to <b>send</b> email from a client to a mail server, and between mail
+           servers. It <b>pushes</b> mail towards its destination.</p>
+      </div>
+    </div>
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">POP3 — Post Office Protocol version 3</span> — the protocol
+           used to <b>retrieve</b> email from a mail server to a client. It <b>pulls</b>
+           mail down, and by default <b>removes it from the server</b> once downloaded.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <span class="tag">The distinction that is examined every year</span>
+    <p><b>SMTP sends, POP3 receives.</b> If a question describes mail "leaving the
+       outbox", the answer is SMTP; "arriving in the inbox", POP3. Remembering
+       <b>S</b>MTP = <b>S</b>end is worth the mark.</p>
+  </div>
+</section>
+
+<!-- ===================== 5 · THE FOUNDATION ===================== -->
+
+<section class="slide" data-section="5 · TCP/IP, PPP and VoIP">
+  <h2><span class="num">6.1</span> TCP/IP — the two halves</h2>
+
+  <figure>
+    <svg viewBox="0 0 900 250" role="img" aria-label="A message split by TCP into four numbered packets which travel by different routes across the network and are reassembled in order at the destination">
+      <defs>
+        <marker id="arw-pkt" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#6c71c4"/>
+        </marker>
+      </defs>
+
+      <rect x="14" y="96" width="120" height="66" rx="10" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <text x="74" y="126" class="lab" text-anchor="middle">message</text>
+      <text x="74" y="150" text-anchor="middle">at sender</text>
+
+      <rect x="200" y="34" width="60" height="40" rx="6" fill="#fdf6e3" stroke="#6c71c4" stroke-width="2"/>
+      <text x="230" y="60" class="lab" text-anchor="middle">1</text>
+      <rect x="200" y="94" width="60" height="40" rx="6" fill="#fdf6e3" stroke="#6c71c4" stroke-width="2"/>
+      <text x="230" y="120" class="lab" text-anchor="middle">2</text>
+      <rect x="200" y="154" width="60" height="40" rx="6" fill="#fdf6e3" stroke="#6c71c4" stroke-width="2"/>
+      <text x="230" y="180" class="lab" text-anchor="middle">3</text>
+      <rect x="200" y="204" width="60" height="40" rx="6" fill="#fdf6e3" stroke="#6c71c4" stroke-width="2"/>
+      <text x="230" y="230" class="lab" text-anchor="middle">4</text>
+
+      <path class="curve c-violet" d="M266,54 C360,44 420,70 520,60" marker-end="url(#arw-pkt)"/>
+      <path class="curve c-violet" d="M266,114 C370,150 430,100 520,110" marker-end="url(#arw-pkt)"/>
+      <path class="curve c-violet" d="M266,174 C360,120 440,200 520,160" marker-end="url(#arw-pkt)"/>
+      <path class="curve c-violet" d="M266,224 C380,230 440,180 520,206" marker-end="url(#arw-pkt)"/>
+
+      <text x="390" y="26" text-anchor="middle" fill="#5055a0">different routes, arriving out of order</text>
+
+      <rect x="560" y="34" width="60" height="40" rx="6" fill="#fdf6e3" stroke="#748500" stroke-width="2"/>
+      <text x="590" y="60" class="lab" text-anchor="middle">1</text>
+      <rect x="560" y="86" width="60" height="40" rx="6" fill="#fdf6e3" stroke="#748500" stroke-width="2"/>
+      <text x="590" y="112" class="lab" text-anchor="middle">2</text>
+      <rect x="560" y="138" width="60" height="40" rx="6" fill="#fdf6e3" stroke="#748500" stroke-width="2"/>
+      <text x="590" y="164" class="lab" text-anchor="middle">3</text>
+      <rect x="560" y="190" width="60" height="40" rx="6" fill="#fdf6e3" stroke="#748500" stroke-width="2"/>
+      <text x="590" y="216" class="lab" text-anchor="middle">4</text>
+
+      <rect x="700" y="96" width="180" height="66" rx="10" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <text x="790" y="126" class="lab" text-anchor="middle">message</text>
+      <text x="790" y="150" text-anchor="middle">reassembled in order</text>
+
+      <path class="curve c-teal" d="M626,132 L694,132" marker-end="url(#arw-pkt)"/>
+
+      <text x="230" y="20" text-anchor="middle" fill="#5055a0">TCP splits it</text>
+      <text x="620" y="248" text-anchor="middle" fill="#586600">TCP reorders and checks</text>
+    </svg>
+    <figcaption>Packets may take different routes and arrive out of order. TCP puts them back together.</figcaption>
+  </figure>
+
+  <div class="cosplit">
+    <div>
+      <div class="defn">
+        <span class="tag">TCP — Transmission Control Protocol</span>
+        <p>Splits the message into numbered <b>packets</b>, ensures every packet
+           <b>arrives</b>, requests re-transmission of any that are lost, and
+           <b>reassembles</b> them in the correct order at the destination.</p>
+      </div>
+    </div>
+    <div>
+      <div class="defn">
+        <span class="tag">IP — Internet Protocol</span>
+        <p>Gives every packet a <b>source and destination IP address</b> and handles
+           <b>routing</b> — getting each packet across the network, one hop at a time.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <span class="tag">The division of labour, in one line</span>
+    <p><b>IP delivers; TCP guarantees.</b> IP is the postal service that carries each
+       envelope. TCP is the numbering on the envelopes plus the checking that all of them
+       arrived and were put back in order.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.2</span> PPP and VoIP</h2>
+
+  <div class="cosplit">
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">PPP — Point to Point Protocol</span> — a protocol used to
+           establish a <b>direct link between exactly two nodes</b>, for example between a
+           user's computer and an Internet Service Provider over a dial-up or DSL line. It
+           provides authentication, error detection and compression.</p>
+      </div>
+      <div class="note">
+        <span class="tag">Where PPP fits</span>
+        <p>PPP is how a single machine <b>joins</b> the Internet over a serial link; TCP/IP
+           is what it speaks <b>once it is there</b>. PPP is the on-ramp, not the
+           motorway.</p>
+      </div>
+    </div>
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">VoIP — Voice over Internet Protocol</span> — technology that
+           converts <b>analog voice into digital packets</b> and carries them over the
+           Internet instead of the traditional telephone network.</p>
+      </div>
+      <div class="cosplit">
+        <div class="card">
+          <h4>Advantages</h4>
+          <ul>
+            <li>Far cheaper, especially internationally</li>
+            <li>Voice, video and data on one network</li>
+            <li>Portable — the number travels with you</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Disadvantages</h4>
+          <ul>
+            <li>Needs a reliable Internet connection</li>
+            <li>Quality drops on a congested link</li>
+            <li>No power, no phone</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <span class="tag">Why voice is a hard case for a network</span>
+    <p>A late web page is merely annoying; a late voice packet is <b>useless</b> — the
+       conversation has moved on. So VoIP prefers to <b>drop</b> a packet rather than wait
+       for it to be re-sent, which is the opposite of what TCP does for a file.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.3</span> Email and chat, compared</h2>
+
+  <table>
+    <tr><th class="lbl">&nbsp;</th><th>Email</th><th>Chat / instant messaging</th><th>VoIP</th></tr>
+    <tr><td class="lbl">Timing</td><td class="lbl">asynchronous — reply later</td><td class="lbl">near real time</td><td class="lbl">real time</td></tr>
+    <tr><td class="lbl">Both parties online?</td><td class="hi2">No</td><td class="hi">Usually yes</td><td class="hi">Yes</td></tr>
+    <tr><td class="lbl">Stored on a server</td><td class="hi2">Yes, until fetched</td><td class="lbl">usually</td><td class="hi">No</td></tr>
+    <tr><td class="lbl">Protocols</td><td class="lbl">SMTP, POP3</td><td class="lbl">application-specific</td><td class="lbl">VoIP over IP</td></tr>
+    <tr><td class="lbl">Best for</td><td class="lbl">formal, long, with attachments</td><td class="lbl">quick exchanges</td><td class="lbl">conversation</td></tr>
+  </table>
+
+  <div class="defn">
+    <span class="tag">Definitions</span>
+    <p><span class="term">Email</span> — the exchange of digital messages, stored on a mail
+       server until the recipient retrieves them. Because it is <b>asynchronous</b>, the
+       recipient need not be online when it is sent.<br>
+       <span class="term">Chat</span> — real-time textual communication between two or more
+       users who are online at the same time.</p>
+  </div>
+
+  <div class="insight">
+    <span class="tag">The one property that explains the whole table</span>
+    <p><b>Whether the message is stored.</b> Email is stored, so the recipient can be
+       absent. A voice call is not stored, so both must be present. Chat sits in between —
+       which is why it feels like both.</p>
+  </div>
+</section>
+
+<!-- ===================== RECAP AND EXAM PRACTICE ===================== -->
+
+<section class="slide" data-section="Recap and exam practice">
+  <h2><span class="num">7.1</span> Everything on one screen</h2>
+
+  <h3>The model</h3>
+  <div class="chips">
+    <span class="chip k">client requests, server responds</span>
+    <span class="chip k">protocol = agreed rules</span>
+    <span class="chip">client and server are roles</span>
+  </div>
+
+  <h3>Addressing</h3>
+  <div class="chips">
+    <span class="chip k">IP address — 4 octets, 0–255</span>
+    <span class="chip">IPv6 — 128 bits</span>
+    <span class="chip k">MAC = device · IP = location</span>
+    <span class="chip k">DNS = name → IP</span>
+    <span class="chip k">URL = protocol + domain + path + file</span>
+  </div>
+
+  <h3>Protocols</h3>
+  <div class="chips">
+    <span class="chip k">HTTP — web pages, port 80</span>
+    <span class="chip k">HTTPS — encrypted, port 443</span>
+    <span class="chip k">FTP — file transfer</span>
+    <span class="chip k">SMTP — SEND mail</span>
+    <span class="chip k">POP3 — RECEIVE mail</span>
+    <span class="chip k">TCP — packets, order, reliability</span>
+    <span class="chip k">IP — addressing and routing</span>
+    <span class="chip">PPP — two nodes, direct link</span>
+    <span class="chip">VoIP — voice as packets</span>
+  </div>
+
+  <div class="insight">
+    <span class="tag">The three sentences worth the most marks</span>
+    <p>“<b>A protocol is a set of rules governing how data is formatted, transmitted and
+       received between devices.</b>”<br>
+       “<b>DNS translates a domain name into its corresponding IP address.</b>”<br>
+       “<b>SMTP is used to send email; POP3 is used to retrieve it.</b>”</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.2</span> Exam question 1 — name the protocol</h2>
+
+  <div class="qcard">
+    <span class="tag">4 marks</span>
+    <p>Name the protocol used in each situation.</p>
+    <ol>
+      <li>Ravi uploads his school project website to the hosting server.</li>
+      <li>Meera's browser fetches a page from <code>ncert.nic.in</code>.</li>
+      <li>Aarav enters his card details on a shopping site.</li>
+      <li>Riya's mail client downloads new messages into her inbox.</li>
+      <li>A message leaves Riya's outbox towards its destination.</li>
+      <li>Two colleagues in different countries speak using their laptops.</li>
+    </ol>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <table>
+      <tr><th>#</th><th class="lbl">Protocol</th><th class="lbl">Keyword that gives it away</th></tr>
+      <tr><td>1</td><td class="lbl"><b>FTP</b></td><td class="lbl">"uploads … files to a server"</td></tr>
+      <tr><td>2</td><td class="lbl"><b>HTTP</b></td><td class="lbl">"browser fetches a page"</td></tr>
+      <tr><td>3</td><td class="lbl"><b>HTTPS</b></td><td class="lbl">"card details" — must be encrypted</td></tr>
+      <tr><td>4</td><td class="lbl"><b>POP3</b></td><td class="lbl">"downloads … into her inbox"</td></tr>
+      <tr><td>5</td><td class="lbl"><b>SMTP</b></td><td class="lbl">"leaves the outbox"</td></tr>
+      <tr><td>6</td><td class="lbl"><b>VoIP</b></td><td class="lbl">"speak … using laptops"</td></tr>
+    </table>
+    <p class="small">Answers 4 and 5 are the pair examiners set together to see whether you
+       really know which direction each one goes.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.3</span> Exam question 2 — the differences</h2>
+
+  <div class="qcard">
+    <span class="tag">2 + 2 + 2 marks</span>
+    <ol>
+      <li>Differentiate between <b>HTTP</b> and <b>HTTPS</b>.</li>
+      <li>Differentiate between an <b>IP address</b> and a <b>MAC address</b>.</li>
+      <li>What is <b>DNS</b>? Explain with an example what happens when a user types
+          <code>www.ncert.nic.in</code> into a browser.</li>
+    </ol>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 1</span>
+    <p><b>HTTP</b> transfers web pages in <b>plain text</b>, so the data can be read by
+       anyone who intercepts it. It uses port <b>80</b>.</p>
+    <p><b>HTTPS</b> is HTTP with the data <b>encrypted</b>, and it requires the server to
+       hold a valid digital certificate proving its identity. It uses port <b>443</b> and
+       is essential for passwords and payments.</p>
+  </div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 2</span>
+    <p>A <b>MAC address</b> is a permanent 48-bit hardware address assigned by the
+       manufacturer to the NIC. It identifies the <b>device itself</b>, never changes, and
+       is used by a <b>switch</b> within a LAN.</p>
+    <p>An <b>IP address</b> is a 32-bit (IPv4) logical address assigned by the network. It
+       identifies the device's <b>location on the network</b>, <b>changes</b> when the
+       device joins a different network, and is used by a <b>router</b> to move packets
+       between networks.</p>
+  </div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 3</span>
+    <p><b>DNS (Domain Name System)</b> is the service that translates human-readable domain
+       names into the numeric IP addresses the network actually routes with.</p>
+    <p>When the user types <code>www.ncert.nic.in</code>:</p>
+    <ol class="steps">
+      <li>The browser sends the name to a <b>DNS server</b>, asking for its IP address.</li>
+      <li>The DNS server looks it up and replies with the address, e.g.
+          <code>164.100.60.11</code>.</li>
+      <li>The browser sends an <b>HTTP request</b> to that IP address.</li>
+      <li>The web server returns the page, and the browser renders it.</li>
+    </ol>
+    <p class="small">Steps 1 and 2 finish before the page is requested at all — the mark is
+       for showing that the lookup comes <b>first</b>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.4</span> Exam question 3 — URL and addresses</h2>
+
+  <div class="qcard">
+    <span class="tag">3 marks</span>
+    <p>Consider the URL
+       <code>https://www.cbse.gov.in/results/class12/marks.html</code></p>
+    <ol>
+      <li>Identify the protocol, domain name and file name.</li>
+      <li>Which part is used by DNS, and what does it return?</li>
+      <li>Is <code>203.94.243.71</code> a valid IPv4 address? Is
+          <code>203.94.300.71</code>?</li>
+    </ol>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>1.</b> Protocol: <code>https</code> · Domain name:
+       <code>www.cbse.gov.in</code> · Path: <code>/results/class12/</code> ·
+       File name: <code>marks.html</code></p>
+    <p><b>2.</b> DNS uses the <b>domain name</b>, <code>www.cbse.gov.in</code>, and returns
+       the <b>IP address</b> of the server hosting the site. The path and file name are
+       meaningful only to that server, once it has been reached.</p>
+    <p><b>3.</b> <code>203.94.243.71</code> is <b>valid</b> — all four octets lie between 0
+       and 255. <code>203.94.300.71</code> is <b>invalid</b>, because <code>300</code>
+       exceeds the maximum value of 255 an 8-bit octet can hold.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.5</span> One last challenge</h2>
+
+  <div class="challenge">
+    <span class="tag">Challenge</span>
+    <p>Riya, in Delhi, emails a 4 MB photograph to Sam in London, who reads it the next
+       morning. List, <b>in order</b>, every protocol and mechanism involved from the moment
+       she presses Send.</p>
+  </div>
+
+  <div class="reveal ready ephemeral">At least five things. 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <ol class="steps">
+      <li><b>DNS</b> — Riya's mail client resolves her mail server's name to an IP address.</li>
+      <li><b>SMTP</b> — the message and attachment are pushed from her client to her mail
+          server.</li>
+      <li><b>TCP</b> — the 4 MB is split into numbered packets, and every packet is
+          acknowledged or re-sent.</li>
+      <li><b>IP</b> — each packet is addressed and routed hop by hop, through
+          <b>routers</b>, across the WAN to London.</li>
+      <li><b>SMTP</b> again — Riya's mail server transfers the message to Sam's mail
+          server, where it is <b>stored</b>.</li>
+      <li><b>POP3</b> — the next morning, Sam's client pulls the message down into his
+          inbox.</li>
+    </ol>
+    <p><b>The mark for insight:</b> because email is <b>asynchronous</b> and the message is
+       stored on Sam's mail server, he need not have been online at all when Riya
+       pressed Send. That is the property that makes the whole sequence possible.</p>
+  </div>
+</section>
+
+<section class="slide title-slide">
+  <div class="kicker">End of Unit 2</div>
+  <h1>Next: Databases</h1>
+  <div class="rule"></div>
+  <p class="sub">Unit 2 is complete: you know how machines are connected and how they
+     agree to talk. Unit 3 is what they are usually talking <b>about</b> — data held in a
+     relational database, and the language used to ask it questions.</p>
+
+  <div class="bridge narrow">
+    <span class="tag">Carry these three forward</span>
+    <p><b>①</b> A <b>database server</b> is a server in exactly the sense of §2.1 — your
+       Python program will be the client.<br>
+       <b>②</b> Chapter 10 connects to MySQL over the network using a <b>host and
+       port</b>, which is the addressing you just learned.<br>
+       <b>③</b> A database <b>table</b> is a list of records — the same shape as the CSV
+       file in Chapter 4.</p>
+  </div>
+</section>
+
+</div>
+
+<button class="nav" id="prev" aria-label="Previous slide">←</button>
+<button class="nav" id="next" aria-label="Next slide">→</button>
+
+<script src="assets/deck.js"></script>
+</body>
+</html>

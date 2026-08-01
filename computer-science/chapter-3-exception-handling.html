@@ -1,0 +1,1732 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 3 · Exception Handling — Class XII Computer Science</title>
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body>
+
+<div id="bar">
+  <div class="brand">CH 3 · EXCEPTION HANDLING</div>
+  <div class="sect" id="sect"></div>
+  <div class="tools">
+    <button id="menuBtn">Menu (m)</button>
+    <button id="fsBtn">Full screen (f)</button>
+    <span id="counter"></span>
+  </div>
+</div>
+<div id="progress"></div>
+
+<div id="menu">
+  <h3>Chapter 3 — Exception Handling</h3>
+  <div class="mlist"></div>
+  <p class="hint">Press <kbd>m</kbd> or <kbd>Esc</kbd> to close</p>
+</div>
+
+<div id="stage">
+
+<!-- ===================== ORIENTATION ===================== -->
+
+<section class="slide title-slide" data-section="Orientation">
+  <div class="kicker">Unit 1 · Computational Thinking and Programming</div>
+  <h1>Chapter 3<br>Exception Handling</h1>
+  <div class="rule"></div>
+  <p class="sub">Your programs already crash. This chapter is about deciding
+     what happens when they do — instead of letting Python decide.</p>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.1</span> Where we have got to</h2>
+
+  <div class="grid2">
+    <div class="card">
+      <h4>Chapter 1 gave you the names</h4>
+      <p>You met <code>ValueError</code>, <code>TypeError</code> and
+         <code>KeyError</code> as <b>accidents</b> — red boxes that ended the program.
+         You learned to read a traceback and name the exception.</p>
+    </div>
+    <div class="card">
+      <h4>Chapter 2 gave you the structure</h4>
+      <p>You learned to put code inside a <code>def</code>, pass it arguments and
+         <code>return</code> a value. A function that crashes returns
+         <b>nothing at all</b> — the caller never gets its answer.</p>
+    </div>
+  </div>
+
+  <div class="bridge">
+    <span class="tag">This chapter</span>
+    <p>Those same errors, but <b>caught</b>. A crash becomes a message, a retry, or a
+       sensible default — and the program keeps running.</p>
+  </div>
+
+  <div class="insight">
+    <span class="tag">Why it is worth a whole chapter</span>
+    <p>Every program from here on <b>touches the outside world</b> — a file that may not
+       exist, a number typed by a user, a database that may be down. Outside-world code
+       fails, and Chapter 4 onwards is entirely outside-world code.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.2</span> How this chapter runs</h2>
+
+  <div class="grid2">
+    <div>
+      <h3>Six stops</h3>
+      <ol>
+        <li><b>Three kinds of error</b> — and only one of them is catchable</li>
+        <li><b>The built-in exceptions</b> — seen live, not listed</li>
+        <li><b>try / except</b> — the basic guard</li>
+        <li><b>Several handlers</b> — and the dangerous shortcut</li>
+        <li><b>else and finally</b> — the two optional blocks</li>
+        <li><b>raise and assert</b> — throwing one deliberately</li>
+      </ol>
+    </div>
+    <div>
+      <h3>The rule for this chapter</h3>
+      <div class="warn">
+        <span class="tag">You cannot handle what you cannot name</span>
+        <p>Every handler you write names an exception. So the first half of this chapter
+           is spent <b>deliberately breaking programs</b> and reading what Python calls
+           the wreckage.</p>
+      </div>
+      <div class="note">
+        <span class="tag">Same colour code as always</span>
+        <p><b>Blue</b> = what you wrote · <b>Green</b> = what it printed ·
+           <b>Red</b> = what went wrong. In this chapter red boxes are the
+           <b>subject</b>, not the failure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 1 · THREE KINDS OF ERROR ===================== -->
+
+<section class="slide" data-section="1 · Three kinds of error">
+  <h2><span class="num">2.1</span> A program that will not even start</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">main.py</span><span class="ln">1</span>marks = <span class="n">50</span>
+<span class="ln">2</span><span class="k">if</span> marks &gt; <span class="n">40</span>
+<span class="ln">3</span>    <span class="b">print</span>(<span class="s">"Pass"</span>)</pre>
+      <div class="reveal ready ephemeral">What is missing, and what does Python say? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal err"><span class="tag">Traceback</span>  File "main.py", line 2
+    if marks &gt; 40
+                 ^
+<span class="etype">SyntaxError</span>: expected ':'</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Syntax error</span> — a breach of the grammar of the
+           language, detected by the interpreter <b>before the program runs</b>. Also
+           called a <b>parsing error</b>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal insight">
+    <span class="tag">Look at what is NOT in the output</span>
+    <p>Line 1 is a perfectly good statement, and it <b>never ran</b>. There is no
+       <code>Traceback (most recent call last):</code> header either, because there is no
+       execution to trace. Python read the whole file, refused it, and stopped.</p>
+  </div>
+
+  <div class="reveal warn">
+    <span class="tag">So</span>
+    <p>A syntax error <b>cannot be handled</b>. <code>try</code> and <code>except</code>
+       are useless against it — the file will not compile, so your handler does not exist
+       either. You fix it; you do not catch it.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.2</span> A program that starts, then dies</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">main.py</span><span class="ln">1</span><span class="b">print</span>(<span class="s">"Report starting"</span>)
+<span class="ln">2</span>marks = [<span class="n">90</span>, <span class="n">85</span>, <span class="n">70</span>]
+<span class="ln">3</span>n = <span class="n">0</span>
+<span class="ln">4</span><span class="b">print</span>(<span class="s">"Average:"</span>, <span class="b">sum</span>(marks) / n)
+<span class="ln">5</span><span class="b">print</span>(<span class="s">"Report done"</span>)</pre>
+      <div class="reveal ready ephemeral">How much of this runs? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>Report starting</div>
+      <div class="reveal err"><span class="tag">…then the traceback</span>Traceback (most recent call last):
+  File "main.py", line 4, in &lt;module&gt;
+    print("Average:", sum(marks) / n)
+                      ~~~~~~~~~~~^~~
+<span class="etype">ZeroDivisionError</span>: division by zero</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Exception</span> — an error detected <b>during execution</b>
+           of a syntactically correct program. An exception is a Python <b>object</b>
+           representing the error; when it occurs it is said to be <b>raised</b>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal insight">
+    <span class="tag">The difference from §2.1, in one observation</span>
+    <p><code>Report starting</code> <b>did</b> print. Lines 1–3 ran normally; line 4
+       raised; line 5 never got the chance. The program was grammatically perfect —
+       it just could not do what it was told.</p>
+  </div>
+
+  <div class="reveal eg">
+    <span class="tag">And this one IS catchable</span>
+    <p>Everything from §3 onwards exists to stop that red box appearing and print
+       <code>Report done</code> anyway.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.3</span> A program that runs perfectly, and lies</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">average.py</span>marks = [<span class="n">90</span>, <span class="n">85</span>, <span class="n">70</span>]
+<span class="hl">average = <span class="b">sum</span>(marks) / <span class="b">len</span>(marks) * <span class="n">100</span></span>
+<span class="b">print</span>(<span class="s">"Average:"</span>, average)</pre>
+      <div class="reveal ready ephemeral">No error. Is the answer right? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>Average: 8166.666666666667</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Logical error</span> — the program is grammatically correct
+           and runs to completion, but produces the <b>wrong result</b>, because the logic
+           the programmer wrote is not the logic they intended.</p>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">The most dangerous of the three</span>
+        <p>Python raises nothing. Nobody is warned. The mistake was the stray
+           <code>* 100</code> — the average of three marks out of 100 cannot be 8166.
+           <b>Only you can catch this, by checking that the answer is sensible.</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.4</span> The three, side by side</h2>
+
+  <table>
+    <tr><th class="lbl">&nbsp;</th><th>Syntax error</th><th>Exception</th><th>Logical error</th></tr>
+    <tr><td class="lbl">Detected</td><td>before running</td><td class="hi">while running</td><td>never, by Python</td></tr>
+    <tr><td class="lbl">Does any code run?</td><td class="hi">No</td><td class="hi2">Yes, until the bad line</td><td class="hi2">Yes, all of it</td></tr>
+    <tr><td class="lbl">Python complains?</td><td>Yes</td><td>Yes</td><td class="hi">No</td></tr>
+    <tr><td class="lbl">Can <code>try…except</code> catch it?</td><td class="hi">No</td><td class="hi2">Yes</td><td class="hi">No</td></tr>
+    <tr><td class="lbl">Example</td><td>missing <code>:</code></td><td><code>50 / 0</code></td><td><code>* 100</code> too many</td></tr>
+    <tr><td class="lbl">You fix it by</td><td class="lbl">correcting the grammar</td><td class="lbl">writing a handler</td><td class="lbl">testing the output</td></tr>
+    <caption>Only the middle column is what this chapter is about.</caption>
+  </table>
+
+  <div class="note">
+    <span class="tag">One honest caveat</span>
+    <p><code>SyntaxError</code> <b>is</b> an exception class in Python, and NCERT says so.
+       But it is raised at <b>compile</b> time, not while your code is running — so a
+       <code>try</code> block in the same file can never catch it.
+       <button class="info" aria-controls="syntaxerror-exception" aria-expanded="false"
+               title="If SyntaxError is an exception, why can't I catch it?">i</button></p>
+  </div>
+
+  <div class="infopanel" id="syntaxerror-exception">
+    <span class="tag">If <code>SyntaxError</code> is an exception, why can't I catch it?</span>
+    <p>Because of <b>when</b> it happens. Python reads your whole file and turns it into
+       bytecode <b>first</b>; only then does it start executing line 1. A syntax error is
+       found during that first pass — before your <code>try</code> statement has come into
+       existence.</p>
+    <div class="q">
+      <b>Your objection is right in one case:</b> if the broken code is in a
+      <em>different</em> file or a string, the compile happens later, during execution —
+      and then it <b>is</b> catchable:<br>
+      <code>try: import broken</code><br>
+      <code>except SyntaxError: print("that file is broken")</code>
+    </div>
+    <p><b>What to write in the exam:</b> "Syntax errors are detected by the interpreter
+       before execution begins, so they cannot be handled by <code>try…except</code>;
+       they must be corrected." That is the answer the marking scheme wants, and the
+       exception in the box above is well outside the syllabus.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.5</span> Check yourself</h2>
+
+  <div class="qcard">
+    <span class="tag">Question 1</span>
+    <p>Classify each as a <b>syntax error</b>, an <b>exception</b>, or a
+       <b>logical error</b>.</p>
+    <ol>
+      <li><code>print("Total is " + 500)</code></li>
+      <li><code>for i in range(5)</code> &nbsp;<span class="small">(no colon)</span></li>
+      <li>A program that prints the <b>largest</b> number when asked for the smallest</li>
+      <li><code>L = [1, 2, 3]</code> then <code>print(L[3])</code></li>
+      <li>A loop written <code>while i &lt; 10</code> that never changes <code>i</code></li>
+    </ol>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <table>
+      <tr><th>#</th><th class="lbl">Kind</th><th class="lbl">Name / reason</th></tr>
+      <tr><td>1</td><td class="lbl">Exception</td><td class="lbl"><code>TypeError</code> — can only concatenate str to str</td></tr>
+      <tr><td>2</td><td class="lbl">Syntax error</td><td class="lbl">missing colon; nothing runs</td></tr>
+      <tr><td>3</td><td class="lbl">Logical error</td><td class="lbl">runs fine, answer is wrong</td></tr>
+      <tr><td>4</td><td class="lbl">Exception</td><td class="lbl"><code>IndexError</code> — list index out of range</td></tr>
+      <tr><td>5</td><td class="lbl">Logical error</td><td class="lbl">an infinite loop is bad logic, not bad grammar</td></tr>
+    </table>
+    <p class="small">Number 5 catches people out. Python is perfectly happy to run a loop
+       forever — that is exactly what you told it to do.</p>
+  </div>
+</section>
+
+<!-- ===================== 2 · THE BUILT-IN EXCEPTIONS ===================== -->
+
+<section class="slide" data-section="2 · The built-in exceptions">
+  <h2><span class="num">3.1</span> Four you have already met</h2>
+
+  <div class="grid2">
+    <div>
+<pre class="code"><span class="tag">main.py</span><span class="ln">1</span>a = <span class="n">10</span>
+<span class="ln">2</span>b = <span class="n">0</span>
+<span class="ln">3</span><span class="b">print</span>(a / b)</pre>
+      <div class="reveal err"><span class="tag">Traceback</span>  File "main.py", line 3, in &lt;module&gt;
+    print(a / b)
+          ~~^~~
+<span class="etype">ZeroDivisionError</span>: division by zero</div>
+    </div>
+    <div>
+<pre class="code"><span class="tag">main.py</span><span class="ln">1</span>n = <span class="b">int</span>(<span class="s">"12a"</span>)</pre>
+      <div class="reveal err"><span class="tag">Traceback</span>  File "main.py", line 1, in &lt;module&gt;
+    n = int("12a")
+        ^^^^^^^^^^
+<span class="etype">ValueError</span>: invalid literal for int() with base 10: '12a'</div>
+    </div>
+    <div>
+<pre class="code"><span class="tag">main.py</span><span class="ln">1</span><span class="b">print</span>(<span class="s">"Total: "</span> + <span class="n">500</span>)</pre>
+      <div class="reveal err"><span class="tag">Traceback</span>  File "main.py", line 1, in &lt;module&gt;
+    print("Total: " + 500)
+          ~~~~~~~~~~^~~~~
+<span class="etype">TypeError</span>: can only concatenate str (not "int") to str</div>
+    </div>
+    <div>
+<pre class="code"><span class="tag">main.py</span><span class="ln">1</span>d = {<span class="s">"a"</span>: <span class="n">1</span>}
+<span class="ln">2</span><span class="b">print</span>(d[<span class="s">"b"</span>])</pre>
+      <div class="reveal err"><span class="tag">Traceback</span>  File "main.py", line 2, in &lt;module&gt;
+    print(d["b"])
+          ~^^^^^
+<span class="etype">KeyError</span>: 'b'</div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">The <code>Traceback (most recent call last):</code> line</span>
+    <p>It has been trimmed off these four boxes to fit them on one screen. It is always
+       there — write it in the exam if you are asked to reproduce a traceback.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.2</span> …and three more you will meet in Chapter 4</h2>
+
+  <div class="grid3">
+    <div>
+<pre class="code"><span class="tag">main.py</span><span class="ln">1</span>marks = <span class="n">90</span>
+<span class="ln">2</span><span class="b">print</span>(total)</pre>
+      <div class="reveal err"><span class="tag">Traceback</span>  File "main.py", line 2, in &lt;module&gt;
+    print(total)
+          ^^^^^
+<span class="etype">NameError</span>: name 'total' is not defined</div>
+      <p class="small reveal">A name that was never bound — usually a typo.</p>
+    </div>
+    <div>
+<pre class="code"><span class="tag">main.py</span><span class="ln">1</span>L = [<span class="n">10</span>, <span class="n">20</span>, <span class="n">30</span>]
+<span class="ln">2</span><span class="b">print</span>(L[<span class="n">3</span>])</pre>
+      <div class="reveal err"><span class="tag">Traceback</span>  File "main.py", line 2, in &lt;module&gt;
+    print(L[3])
+          ~^^^
+<span class="etype">IndexError</span>: list index out of range</div>
+      <p class="small reveal">Valid indices are 0, 1, 2 — never <code>len(L)</code>.</p>
+    </div>
+    <div>
+<pre class="code"><span class="tag">main.py</span><span class="ln">1</span>f = <span class="b">open</span>(<span class="s">"marks.txt"</span>, <span class="s">"r"</span>)</pre>
+      <div class="reveal err"><span class="tag">Traceback</span>  File "main.py", line 1, in &lt;module&gt;
+    f = open("marks.txt", "r")
+        ^^^^^^^^^^^^^^^^^^^^^^
+<span class="etype">FileNotFoundError</span>: [Errno 2] No such
+file or directory: 'marks.txt'</div>
+      <p class="small reveal">The whole reason Chapter 4 needs this chapter.</p>
+    </div>
+  </div>
+
+  <div class="reveal bridge">
+    <span class="tag">Forward link</span>
+    <p><code>FileNotFoundError</code> is a subclass of <code>IOError</code>, which is the
+       name the NCERT table uses. Opening a file for reading is the single most common
+       real-world exception in this syllabus, and in Chapter 4 you will wrap every
+       <code>open()</code> in a handler.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.3</span> The table to learn</h2>
+
+  <table>
+    <tr><th class="lbl">Exception</th><th class="lbl">Raised when…</th><th class="lbl">Typical trigger</th></tr>
+    <tr><td class="lbl"><code>SyntaxError</code></td><td class="lbl">the grammar of Python is broken</td><td class="lbl">missing <code>:</code>, unbalanced bracket</td></tr>
+    <tr><td class="lbl"><code>IndentationError</code></td><td class="lbl">indentation is wrong or inconsistent</td><td class="lbl">a stray space at the start of a line</td></tr>
+    <tr><td class="lbl"><code>NameError</code></td><td class="lbl">a name is used before it is bound</td><td class="lbl">misspelling a variable</td></tr>
+    <tr><td class="lbl"><code>TypeError</code></td><td class="lbl">an operation gets the wrong <b>type</b></td><td class="lbl"><code>"a" + 5</code>, <code>len(5)</code></td></tr>
+    <tr><td class="lbl"><code>ValueError</code></td><td class="lbl">right type, <b>unusable value</b></td><td class="lbl"><code>int("abc")</code></td></tr>
+    <tr><td class="lbl"><code>ZeroDivisionError</code></td><td class="lbl">the divisor is zero</td><td class="lbl"><code>a / 0</code>, <code>a % 0</code></td></tr>
+    <tr><td class="lbl"><code>IndexError</code></td><td class="lbl">a sequence index is out of range</td><td class="lbl"><code>L[len(L)]</code></td></tr>
+    <tr><td class="lbl"><code>KeyError</code></td><td class="lbl">a dictionary key does not exist</td><td class="lbl"><code>d["missing"]</code></td></tr>
+    <tr><td class="lbl"><code>IOError</code> / <code>FileNotFoundError</code></td><td class="lbl">a file cannot be opened</td><td class="lbl"><code>open("nofile.txt")</code></td></tr>
+    <tr><td class="lbl"><code>ImportError</code></td><td class="lbl">a module cannot be found</td><td class="lbl"><code>import maths</code></td></tr>
+    <tr><td class="lbl"><code>EOFError</code></td><td class="lbl"><code>input()</code> hits end of input</td><td class="lbl"><kbd>Ctrl</kbd>+<kbd>D</kbd> at a prompt</td></tr>
+    <tr><td class="lbl"><code>OverflowError</code></td><td class="lbl">a numeric result is too large</td><td class="lbl"><code>math.exp(1000)</code></td></tr>
+    <tr><td class="lbl"><code>KeyboardInterrupt</code></td><td class="lbl">the user interrupts the program</td><td class="lbl"><kbd>Ctrl</kbd>+<kbd>C</kbd></td></tr>
+  </table>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.4</span> <code>TypeError</code> or <code>ValueError</code>?</h2>
+  <p class="lead">The one distinction the paper tests, every year.</p>
+
+  <div class="cosplit">
+    <div>
+      <div class="defn">
+        <span class="tag">TypeError</span>
+        <p>The argument is of the <b>wrong kind of thing</b>. No value of that type would
+           have worked.</p>
+      </div>
+<pre class="code"><span class="tag">wrong TYPE</span><span class="b">int</span>([<span class="n">1</span>, <span class="n">2</span>])      <span class="c"># a list? never</span>
+<span class="s">"age: "</span> + <span class="n">18</span>     <span class="c"># an int? never</span>
+<span class="b">len</span>(<span class="n">100</span>)         <span class="c"># a number has no length</span></pre>
+    </div>
+    <div>
+      <div class="defn">
+        <span class="tag">ValueError</span>
+        <p>The argument is of the <b>right kind of thing</b>, but this particular value
+           cannot be used.</p>
+      </div>
+<pre class="code"><span class="tag">wrong VALUE</span><span class="b">int</span>(<span class="s">"12a"</span>)       <span class="c"># a str is fine — "25" works</span>
+<span class="b">int</span>(<span class="s">""</span>)          <span class="c"># a str, but empty</span>
+[<span class="n">1</span>,<span class="n">2</span>,<span class="n">3</span>].index(<span class="n">9</span>) <span class="c"># an int is fine — 2 works</span></pre>
+    </div>
+  </div>
+
+  <div class="insight">
+    <span class="tag">The test that always works</span>
+    <p>Ask: <b>“could some other value of this same type have succeeded?”</b><br>
+       <code>int("abc")</code> — yes, <code>int("25")</code> works → <b>ValueError</b>.<br>
+       <code>int([1, 2])</code> — no, no list ever works → <b>TypeError</b>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.5</span> Check yourself</h2>
+
+  <div class="qcard">
+    <span class="tag">Question 2</span>
+    <p>Name the exception each line raises.</p>
+<pre class="code"><span class="ln">1</span><span class="b">print</span>(<span class="n">10</span> / (<span class="n">5</span> - <span class="n">5</span>))
+<span class="ln">2</span><span class="b">print</span>(<span class="b">int</span>(<span class="s">"seventeen"</span>))
+<span class="ln">3</span>T = (<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>); <span class="b">print</span>(T[<span class="n">3</span>])
+<span class="ln">4</span><span class="b">print</span>(<span class="b">len</span>(<span class="n">2024</span>))
+<span class="ln">5</span>D = {<span class="s">"x"</span>: <span class="n">1</span>}; <span class="b">print</span>(D[<span class="s">"y"</span>])
+<span class="ln">6</span><span class="b">print</span>(marks + <span class="n">1</span>)  <span class="c"># marks never assigned</span></pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <table>
+      <tr><th>Line</th><th class="lbl">Exception</th><th class="lbl">Why</th></tr>
+      <tr><td>1</td><td class="lbl"><code>ZeroDivisionError</code></td><td class="lbl">the bracket evaluates to 0 first</td></tr>
+      <tr><td>2</td><td class="lbl"><code>ValueError</code></td><td class="lbl">a str is acceptable; this one is not convertible</td></tr>
+      <tr><td>3</td><td class="lbl"><code>IndexError</code></td><td class="lbl">valid indices are 0, 1, 2 — tuples index like lists</td></tr>
+      <tr><td>4</td><td class="lbl"><code>TypeError</code></td><td class="lbl">no integer has a length</td></tr>
+      <tr><td>5</td><td class="lbl"><code>KeyError</code></td><td class="lbl">the key is absent</td></tr>
+      <tr><td>6</td><td class="lbl"><code>NameError</code></td><td class="lbl">the name was never bound</td></tr>
+    </table>
+    <p class="small">Line 1 is the trap: students write <code>ValueError</code> because
+       they see the subtraction. Python evaluates <code>5 - 5</code> to <code>0</code>
+       perfectly happily — the failure is the division.</p>
+  </div>
+</section>
+
+<!-- ===================== 3 · TRY AND EXCEPT ===================== -->
+
+<section class="slide" data-section="3 · try and except">
+  <h2><span class="num">4.1</span> The problem, stated exactly</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">no guard — main.py</span><span class="b">print</span>(<span class="s">"Start"</span>)
+a = <span class="n">50</span>
+b = <span class="n">0</span>
+<span class="hl"><span class="b">print</span>(a / b)</span>
+<span class="b">print</span>(<span class="s">"End"</span>)</pre>
+      <div class="reveal out"><span class="tag">Output</span>Start</div>
+      <div class="reveal err"><span class="tag">…then the traceback</span>Traceback (most recent call last):
+  File "main.py", line 4, in &lt;module&gt;
+    print(a / b)
+          ~~^~~
+<span class="etype">ZeroDivisionError</span>: division by zero</div>
+    </div>
+    <div>
+<pre class="code"><span class="tag">guarded</span><span class="b">print</span>(<span class="s">"Start"</span>)
+a = <span class="n">50</span>
+b = <span class="n">0</span>
+<span class="k">try</span>:
+    <span class="b">print</span>(a / b)
+<span class="k">except</span> <span class="b">ZeroDivisionError</span>:
+    <span class="b">print</span>(<span class="s">"Cannot divide by zero"</span>)
+<span class="b">print</span>(<span class="s">"End"</span>)</pre>
+      <div class="reveal out"><span class="tag">Output</span>Start
+Cannot divide by zero
+End</div>
+    </div>
+  </div>
+
+  <div class="reveal insight">
+    <span class="tag">Read what changed</span>
+    <p>Same bug, same division by zero. But now <code>End</code> printed, the exit was
+       clean, and the user got a sentence instead of a traceback.
+       <b>Exception handling does not fix the error — it decides what the error costs.</b></p>
+  </div>
+
+  <div class="reveal defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Exception handling</span> — writing code that anticipates a
+       runtime error, catches the exception when it is raised, and takes a defined action,
+       so that the program does not terminate abnormally.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.2</span> What Python actually does</h2>
+
+  <figure>
+    <svg viewBox="0 0 900 300" role="img" aria-label="Flow diagram: a statement raises an exception, Python builds an exception object, hands it to the runtime system, which searches for a matching handler; if found the handler runs and the program continues, if not the program stops with a traceback">
+      <defs>
+        <marker id="arw-flow" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#1f7ab8"/>
+        </marker>
+        <marker id="arw-flow-ok" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#748500"/>
+        </marker>
+        <marker id="arw-flow-bad" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#c62b28"/>
+        </marker>
+      </defs>
+
+      <rect x="20" y="118" width="150" height="62" rx="10" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <text x="95" y="144" class="lab" text-anchor="middle">a statement</text>
+      <text x="95" y="165" class="lab" text-anchor="middle">fails</text>
+
+      <rect x="222" y="118" width="164" height="62" rx="10" fill="#fdf6e3" stroke="#1f7ab8" stroke-width="3"/>
+      <text x="304" y="144" class="lab" text-anchor="middle">exception</text>
+      <text x="304" y="165" class="lab" text-anchor="middle">object built</text>
+
+      <rect x="438" y="112" width="170" height="74" rx="10" fill="#fdf6e3" stroke="#a17a00" stroke-width="3"/>
+      <text x="523" y="138" class="lab" text-anchor="middle">is there a</text>
+      <text x="523" y="159" class="lab" text-anchor="middle">matching</text>
+      <text x="523" y="179" class="lab" text-anchor="middle">except block?</text>
+
+      <rect x="672" y="30" width="206" height="72" rx="10" fill="#fdf6e3" stroke="#748500" stroke-width="3"/>
+      <text x="775" y="58" class="lab" text-anchor="middle">handler runs</text>
+      <text x="775" y="82" text-anchor="middle">program carries on</text>
+
+      <rect x="672" y="196" width="206" height="72" rx="10" fill="#fdf6e3" stroke="#c62b28" stroke-width="3"/>
+      <text x="775" y="224" class="lab" text-anchor="middle">program stops</text>
+      <text x="775" y="248" text-anchor="middle">traceback printed</text>
+
+      <path class="curve c-blue" d="M174,149 L216,149" marker-end="url(#arw-flow)"/>
+      <path class="curve c-blue" d="M390,149 L432,149" marker-end="url(#arw-flow)"/>
+      <path class="curve c-teal" d="M612,132 L668,80" marker-end="url(#arw-flow-ok)"/>
+      <path class="curve c-rose" d="M612,166 L668,220" marker-end="url(#arw-flow-bad)"/>
+
+      <text x="628" y="92" fill="#586600" class="lab">YES</text>
+      <text x="628" y="215" fill="#b02522" class="lab">NO</text>
+
+      <text x="450" y="290" text-anchor="middle">The remaining statements in the try block are abandoned either way.</text>
+    </svg>
+    <figcaption>Raising an exception is <b>throwing</b>; running a matching handler is <b>catching</b>.</figcaption>
+  </figure>
+
+  <div class="defn">
+    <span class="tag">Vocabulary the paper uses</span>
+    <p><span class="term">Throwing</span> — creating the exception object and handing it to
+       the runtime system.<br>
+       <span class="term">Catching</span> — finding and executing a handler that matches
+       it.<br>
+       <span class="term">Call stack</span> — the chain of function calls the runtime
+       searches, innermost first, looking for that handler.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.3</span> The anatomy of the statement</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">syntax</span><span class="k">try</span>:
+    <span class="c"># statements that might fail</span>
+    <span class="c"># — the SUSPECT code</span>
+<span class="k">except</span> ExceptionName:
+    <span class="c"># what to do if that</span>
+    <span class="c"># exception is raised</span></pre>
+      <div class="note">
+        <span class="tag">Both blocks are indented</span>
+        <p><code>except</code> lines up with <code>try</code>, not inside it. Getting
+           that wrong is an <code>IndentationError</code> before you even test the logic.</p>
+      </div>
+    </div>
+    <div>
+      <div class="defn">
+        <span class="tag">try</span>
+        <p>Holds the <b>suspect</b> statements — the ones you believe might raise. Keep it
+           <b>short</b>: only the lines that can actually fail.</p>
+      </div>
+      <div class="defn">
+        <span class="tag">except</span>
+        <p>Holds the <b>handler</b> — what to do when that named exception is raised. It
+           runs <b>only</b> if the exception occurs, and only if the name matches.</p>
+      </div>
+      <div class="warn">
+        <span class="tag">A try with no except is a SyntaxError</span>
+        <p>Every <code>try</code> must be followed by at least one <code>except</code>
+           or a <code>finally</code>. It cannot stand alone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.4</span> The rest of the <code>try</code> block is abandoned</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">skip.py</span><span class="k">try</span>:
+    <span class="b">print</span>(<span class="s">"A"</span>)
+    x = <span class="n">10</span> / <span class="n">0</span>
+<span class="hl">    <span class="b">print</span>(<span class="s">"B"</span>)</span>
+<span class="k">except</span> <span class="b">ZeroDivisionError</span>:
+    <span class="b">print</span>(<span class="s">"C"</span>)
+<span class="b">print</span>(<span class="s">"D"</span>)</pre>
+      <div class="reveal ready ephemeral">Does B print? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>A
+C
+D</div>
+      <div class="reveal insight">
+        <span class="tag">B never prints</span>
+        <p>The moment a statement inside <code>try</code> raises, control leaves the block
+           <b>immediately</b>. Everything below the failing line — the amber line here —
+           is skipped, whether or not it would have worked.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal warn">
+    <span class="tag">Why this makes short try blocks a rule, not a style</span>
+    <p>If you wrap forty lines in one <code>try</code>, a failure on line 3 silently
+       skips the other thirty-seven — and your handler cannot tell which of them ran.
+       <b>Put only the risky statement inside.</b></p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.5</span> The board's favourite example</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">divide.py</span><span class="b">print</span>(<span class="s">"Marks calculator"</span>)
+<span class="k">try</span>:
+    numerator = <span class="n">50</span>
+    denom = <span class="b">int</span>(<span class="b">input</span>(<span class="s">"Enter the denominator: "</span>))
+    quotient = numerator / denom
+    <span class="b">print</span>(<span class="s">"Division performed successfully"</span>)
+<span class="k">except</span> <span class="b">ZeroDivisionError</span>:
+    <span class="b">print</span>(<span class="s">"Denominator as ZERO is not allowed"</span>)
+<span class="b">print</span>(<span class="s">"OUTSIDE the try..except block"</span>)</pre>
+      <div class="reveal ready ephemeral">Two runs: the user types 5, then 0. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Run 1 — user types 5</span>Marks calculator
+Enter the denominator: 5
+Division performed successfully
+OUTSIDE the try..except block</div>
+      <div class="reveal out"><span class="tag">Run 2 — user types 0</span>Marks calculator
+Enter the denominator: 0
+Denominator as ZERO is not allowed
+OUTSIDE the try..except block</div>
+      <div class="reveal note">
+        <span class="tag">Compare the two</span>
+        <p>In run 1 the <code>except</code> block was <b>skipped entirely</b>.
+           In run 2 <code>"Division performed successfully"</code> was skipped instead.
+           The last line printed in <b>both</b> — it is outside the statement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.6</span> Check yourself</h2>
+
+  <div class="qcard">
+    <span class="tag">Question 3</span>
+    <p>Predict the exact output.</p>
+<pre class="code">L = [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]
+<span class="k">try</span>:
+    <span class="b">print</span>(L[<span class="n">1</span>])
+    <span class="b">print</span>(L[<span class="n">5</span>])
+    <span class="b">print</span>(L[<span class="n">2</span>])
+<span class="k">except</span> <span class="b">IndexError</span>:
+    <span class="b">print</span>(<span class="s">"Index problem"</span>)
+<span class="b">print</span>(<span class="s">"Bye"</span>)</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>2
+Index problem
+Bye</div>
+    <p><code>L[1]</code> succeeded and printed <code>2</code>. <code>L[5]</code> raised,
+       so the handler ran. <b><code>L[2]</code> was never reached</b> — even though it
+       would have worked perfectly. Then execution resumed after the statement.</p>
+  </div>
+</section>
+
+<!-- ===================== 4 · SEVERAL HANDLERS ===================== -->
+
+<section class="slide" data-section="4 · Handling more than one thing">
+  <h2><span class="num">5.1</span> Two things can go wrong</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">divide.py</span><span class="k">def</span> <span class="b">divide</span>(a, b):
+    <span class="k">try</span>:
+        <span class="k">return</span> a / b
+<span class="hl">    <span class="k">except</span> <span class="b">ZeroDivisionError</span>:</span>
+        <span class="k">return</span> <span class="s">"Zero not allowed"</span>
+<span class="hl">    <span class="k">except</span> <span class="b">TypeError</span>:</span>
+        <span class="k">return</span> <span class="s">"Numbers only"</span>
+
+<span class="b">print</span>(<span class="b">divide</span>(<span class="n">50</span>, <span class="n">5</span>))
+<span class="b">print</span>(<span class="b">divide</span>(<span class="n">50</span>, <span class="n">0</span>))
+<span class="b">print</span>(<span class="b">divide</span>(<span class="n">50</span>, <span class="s">"x"</span>))</pre>
+      <div class="reveal ready ephemeral">Three lines. Mind the first one. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>10.0
+Zero not allowed
+Numbers only</div>
+      <div class="reveal defn">
+        <span class="tag">The rule</span>
+        <p>One <code>try</code> may be followed by <b>several</b> <code>except</code>
+           blocks. Python compares the raised exception against each in turn,
+           <b>top to bottom</b>, and runs the <b>first</b> that matches. The rest are
+           skipped.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Why the first line is <code>10.0</code> and not <code>10</code></span>
+    <p>Chapter 1, §3.1 — <code>/</code> always returns a float. Exception handling changed
+       nothing about that.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.2</span> Catching the exception <em>object</em></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">asobj.py</span>values = [<span class="s">"8"</span>, <span class="s">"0"</span>, <span class="s">"abc"</span>]
+
+<span class="k">for</span> v <span class="k">in</span> values:
+    <span class="k">try</span>:
+        <span class="b">print</span>(<span class="n">100</span> / <span class="b">int</span>(v))
+<span class="hl">    <span class="k">except</span> <span class="b">ZeroDivisionError</span> <span class="k">as</span> e:</span>
+        <span class="b">print</span>(<span class="s">"ZeroDivisionError -&gt;"</span>, e)
+<span class="hl">    <span class="k">except</span> <span class="b">ValueError</span> <span class="k">as</span> e:</span>
+        <span class="b">print</span>(<span class="s">"ValueError -&gt;"</span>, e)</pre>
+      <div class="reveal ready ephemeral">Three lines. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>12.5
+ZeroDivisionError -&gt; division by zero
+ValueError -&gt; invalid literal for int() with base 10: 'abc'</div>
+      <div class="reveal insight">
+        <span class="tag">What <code>as e</code> gives you</span>
+        <p><code>e</code> is the <b>exception object itself</b>. Printing it gives the
+           message text — the part after the colon in a traceback. Chapter 1 said an
+           exception is an object; this is where you finally hold one.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Which exception hit which line</span>
+    <p><code>int("0")</code> succeeded and gave <code>0</code>, so the failure was the
+       <b>division</b>. <code>int("abc")</code> failed before any division was attempted.
+       Two different statements on one line, two different exceptions.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.3</span> The catch-all <code>except</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">bare.py</span>values = [<span class="s">"8"</span>, <span class="s">"0"</span>, <span class="s">"abc"</span>]
+
+<span class="k">for</span> v <span class="k">in</span> values:
+    <span class="k">try</span>:
+        <span class="b">print</span>(<span class="n">100</span> / <span class="b">int</span>(v))
+    <span class="k">except</span> <span class="b">ZeroDivisionError</span>:
+        <span class="b">print</span>(<span class="s">"Denominator is zero"</span>)
+<span class="hl">    <span class="k">except</span>:</span>
+        <span class="b">print</span>(<span class="s">"Some other error"</span>)</pre>
+      <div class="reveal ready ephemeral">What catches the <code>"abc"</code>? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>12.5
+Denominator is zero
+Some other error</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p>An <code>except:</code> with <b>no exception name</b> catches
+           <b>every</b> exception. It is the safety net for the ones you did not
+           anticipate, and it <b>must be the last</b> clause.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal">
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">WRONG — main.py</span><span class="k">try</span>:
+    x = <span class="n">10</span> / <span class="n">0</span>
+<span class="k">except</span>:
+    <span class="b">print</span>(<span class="s">"caught"</span>)
+<span class="k">except</span> <span class="b">ZeroDivisionError</span>:
+    <span class="b">print</span>(<span class="s">"never"</span>)</pre>
+    </div>
+    <div>
+      <div class="err"><span class="tag">Traceback</span>  File "main.py", line 3
+    except:
+    ^^^^^^^
+<span class="etype">SyntaxError</span>: default 'except:' must be last</div>
+      <p class="small">Python refuses outright — a bare <code>except</code> before a named
+         one would make the named one unreachable.</p>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.4</span> Why a bare <code>except</code> is dangerous</h2>
+
+  <div class="warn">
+    <span class="tag">It catches things you did not mean to catch</span>
+    <p>A bare <code>except</code> swallows <code>NameError</code> from your typo,
+       <code>KeyboardInterrupt</code> when the user presses <kbd>Ctrl</kbd>+<kbd>C</kbd>,
+       and every bug you have not found yet — and prints your cheerful message instead of
+       telling you what really happened.</p>
+  </div>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">hides a typo</span><span class="k">try</span>:
+    total = <span class="n">50</span> / dnom   <span class="c"># typo: denom</span>
+<span class="k">except</span>:
+    <span class="b">print</span>(<span class="s">"Zero not allowed"</span>)</pre>
+      <div class="out"><span class="tag">Output</span>Zero not allowed</div>
+      <p class="small">A completely wrong diagnosis. The real error was
+         <code>NameError</code>, and you will hunt for it for an hour.</p>
+    </div>
+    <div>
+<pre class="code"><span class="tag">honest</span><span class="k">try</span>:
+    total = <span class="n">50</span> / dnom
+<span class="k">except</span> <span class="b">ZeroDivisionError</span>:
+    <span class="b">print</span>(<span class="s">"Zero not allowed"</span>)</pre>
+      <div class="err"><span class="tag">Traceback</span><span class="etype">NameError</span>: name 'dnom' is not defined</div>
+      <p class="small">The bug surfaces immediately, because the handler did not match.</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <span class="tag">Board position</span>
+    <p>NCERT teaches the bare <code>except</code> as the final clause, and you should be
+       able to write it. <b>Name your exceptions wherever you can</b>, and keep the bare
+       one as a genuine last resort — say that in a written answer and you have shown
+       judgement, not just recall.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.5</span> Check yourself</h2>
+
+  <div class="qcard">
+    <span class="tag">Question 4</span>
+    <p>What is the output, and why does the third call behave differently?</p>
+<pre class="code"><span class="k">def</span> <span class="b">safe</span>(L, i):
+    <span class="k">try</span>:
+        <span class="k">return</span> L[i] * <span class="n">2</span>
+    <span class="k">except</span> <span class="b">IndexError</span>:
+        <span class="k">return</span> <span class="s">"bad index"</span>
+
+<span class="b">print</span>(<span class="b">safe</span>([<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>], <span class="n">1</span>))
+<span class="b">print</span>(<span class="b">safe</span>([<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>], <span class="n">7</span>))
+<span class="b">print</span>(<span class="b">safe</span>([<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>], <span class="s">"x"</span>))</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">First two lines print</span>4
+bad index</div>
+    <div class="err"><span class="tag">Then the third call crashes</span><span class="etype">TypeError</span>: list indices must be integers or slices, not str</div>
+    <p>Only <code>IndexError</code> is handled. <code>L["x"]</code> raises
+       <code>TypeError</code>, no <code>except</code> clause matches, so the exception
+       propagates out of the function and terminates the program. <b>An unmatched
+       handler is no handler at all.</b></p>
+  </div>
+
+  <div class="reveal challenge">
+    <span class="tag">Challenge</span>
+    <p>Add <b>one line</b> so that all three calls print something sensible, without
+       hiding real bugs.</p>
+  </div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+<pre class="code"><span class="k">except</span> <span class="b">TypeError</span>:
+    <span class="k">return</span> <span class="s">"index must be an integer"</span></pre>
+    <p>Adding <code>except TypeError:</code> is better than <code>except:</code> — it
+       names the thing you expected, so a genuine bug elsewhere still surfaces.</p>
+  </div>
+</section>
+
+<!-- ===================== 5 · ELSE AND FINALLY ===================== -->
+
+<section class="slide" data-section="5 · else and finally">
+  <h2><span class="num">6.1</span> <code>else</code> — the block that runs when nothing went wrong</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">withelse.py</span><span class="k">def</span> <span class="b">divide</span>(a, b):
+    <span class="k">try</span>:
+        q = a / b
+    <span class="k">except</span> <span class="b">ZeroDivisionError</span>:
+        <span class="b">print</span>(<span class="s">"Zero not allowed"</span>)
+<span class="hl">    <span class="k">else</span>:</span>
+        <span class="b">print</span>(<span class="s">"Quotient is"</span>, q)
+
+<span class="b">divide</span>(<span class="n">50</span>, <span class="n">5</span>)
+<span class="b">divide</span>(<span class="n">50</span>, <span class="n">0</span>)</pre>
+      <div class="reveal ready ephemeral">Two calls, how many lines out? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>Quotient is 10.0
+Zero not allowed</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">else</span> — an optional block after all the
+           <code>except</code> clauses. It runs <b>only if the try block completed
+           without raising</b>. If any exception occurred, <code>else</code> is skipped
+           entirely.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal insight">
+    <span class="tag">Why not just put that line inside <code>try</code>?</span>
+    <p>Because then <b>it too</b> would be guarded. If <code>print</code> itself raised,
+       your <code>except ZeroDivisionError</code> would be pointed at the wrong statement.
+       <code>else</code> holds the code that <b>depends on</b> the try succeeding but is
+       not itself suspect. <b>Keep the try block to the risky line only.</b></p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.2</span> <code>finally</code> — the block that always runs</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">withfinally.py</span><span class="k">def</span> <span class="b">divide</span>(a, b):
+    <span class="k">try</span>:
+        q = a / b
+    <span class="k">except</span> <span class="b">ZeroDivisionError</span>:
+        <span class="b">print</span>(<span class="s">"Zero not allowed"</span>)
+    <span class="k">else</span>:
+        <span class="b">print</span>(<span class="s">"Quotient is"</span>, q)
+<span class="hl">    <span class="k">finally</span>:</span>
+        <span class="b">print</span>(<span class="s">"-- attempt over --"</span>)
+
+<span class="b">divide</span>(<span class="n">50</span>, <span class="n">5</span>)
+<span class="b">divide</span>(<span class="n">50</span>, <span class="n">0</span>)</pre>
+      <div class="reveal ready ephemeral">Four lines now. In what order? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>Quotient is 10.0
+-- attempt over --
+Zero not allowed
+-- attempt over --</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">finally</span> — an optional block that is executed
+           <b>always</b>, whether or not an exception was raised and whether or not it was
+           handled. If present it must be <b>last</b>, after every <code>except</code> and
+           after <code>else</code>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal bridge">
+    <span class="tag">Forward link — this is what it is for</span>
+    <p>In Chapter 4 you will write <code>f = open(...)</code> in <code>try</code> and
+       <code>f.close()</code> in <code>finally</code>, so the file is closed even if
+       reading it blew up. A file left open is the classic 1-mark deduction.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.3</span> The complete statement</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">the full skeleton</span><span class="k">try</span>:
+    <span class="c"># risky statements</span>
+<span class="k">except</span> FirstError:
+    <span class="c"># runs if FirstError raised</span>
+<span class="k">except</span> SecondError:
+    <span class="c"># runs if SecondError raised</span>
+<span class="k">except</span>:
+    <span class="c"># runs for anything else</span>
+<span class="k">else</span>:
+    <span class="c"># runs if NOTHING was raised</span>
+<span class="k">finally</span>:
+    <span class="c"># runs in every case</span></pre>
+      <div class="warn">
+        <span class="tag">The order is fixed</span>
+        <p><code>try</code> → <code>except</code>s → <code>else</code> →
+           <code>finally</code>. Putting <code>else</code> after <code>finally</code>, or
+           a bare <code>except</code> before a named one, is a
+           <code>SyntaxError</code>.</p>
+      </div>
+    </div>
+    <div>
+      <table>
+        <tr><th class="lbl">Block</th><th>Optional?</th><th class="lbl">Runs when</th></tr>
+        <tr><td class="lbl"><code>try</code></td><td>required</td><td class="lbl">always entered</td></tr>
+        <tr><td class="lbl"><code>except</code></td><td>see note</td><td class="lbl">its exception was raised</td></tr>
+        <tr><td class="lbl"><code>else</code></td><td>optional</td><td class="lbl"><b>no</b> exception was raised</td></tr>
+        <tr><td class="lbl"><code>finally</code></td><td>optional</td><td class="lbl">always, last</td></tr>
+      </table>
+      <div class="note">
+        <span class="tag">Note</span>
+        <p>A <code>try</code> needs <b>at least one</b> <code>except</code> <b>or</b> a
+           <code>finally</code>. <code>else</code> cannot appear without at least one
+           <code>except</code>.</p>
+      </div>
+      <div class="insight">
+        <span class="tag">One sentence for each, for the paper</span>
+        <p><code>try</code> — the code that may fail.<br>
+           <code>except</code> — what to do if it did.<br>
+           <code>else</code> — what to do if it did not.<br>
+           <code>finally</code> — the tidying up, either way.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.4</span> Which blocks run — all three cases at once</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">cases.py</span><span class="k">def</span> <span class="b">risky</span>(v):
+    <span class="k">try</span>:
+        <span class="b">print</span>(<span class="s">"try   :"</span>, <span class="n">100</span> / <span class="b">int</span>(v))
+    <span class="k">except</span> <span class="b">ZeroDivisionError</span>:
+        <span class="b">print</span>(<span class="s">"except: zero"</span>)
+    <span class="k">finally</span>:
+        <span class="b">print</span>(<span class="s">"finally: always"</span>)
+
+<span class="b">risky</span>(<span class="s">"4"</span>)
+<span class="b">print</span>(<span class="s">"---"</span>)
+<span class="b">risky</span>(<span class="s">"0"</span>)
+<span class="b">print</span>(<span class="s">"---"</span>)
+<span class="hl"><span class="b">risky</span>(<span class="s">"abc"</span>)</span>
+<span class="b">print</span>(<span class="s">"never printed"</span>)</pre>
+      <div class="reveal ready ephemeral">Only <code>ZeroDivisionError</code> is handled. What happens on the amber line? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>try   : 25.0
+finally: always
+---
+except: zero
+finally: always
+---
+finally: always</div>
+      <div class="reveal err"><span class="tag">then the traceback</span>Traceback (most recent call last):
+  File "main.py", line 13, in &lt;module&gt;
+    risky("abc")
+  File "main.py", line 3, in risky
+    print("try   :", 100 / int(v))
+                           ^^^^^^
+<span class="etype">ValueError</span>: invalid literal for int() with base 10: 'abc'</div>
+    </div>
+  </div>
+
+  <div class="reveal insight">
+    <span class="tag">Two things happened on the third call</span>
+    <p><b>①</b> <code>finally</code> ran <b>even though nothing handled the exception</b>.<br>
+       <b>②</b> Then the exception was <b>re-raised</b> and killed the program, so
+       <code>"never printed"</code> never printed.
+       <b><code>finally</code> does not swallow an exception — it only guarantees the
+       tidying up happens first.</b></p>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Read the traceback — it has two frames</span>
+    <p>The bottom frame is where the exception was raised (<code>risky</code>, line 3);
+       the frame above it is who called that (<code>&lt;module&gt;</code>, line 13). That
+       chain is the <b>call stack</b> the runtime searched, innermost first, looking for a
+       handler. This is exactly the search in §4.2.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.5</span> The master table</h2>
+
+  <table>
+    <tr>
+      <th class="lbl">Scenario</th>
+      <th><code>try</code> statements</th>
+      <th>matching <code>except</code></th>
+      <th><code>else</code></th>
+      <th><code>finally</code></th>
+      <th class="lbl">Program after</th>
+    </tr>
+    <tr>
+      <td class="lbl">No exception</td>
+      <td class="hi2">all run</td><td>skipped</td>
+      <td class="hi2">runs</td><td class="hi2">runs</td>
+      <td class="lbl">continues</td>
+    </tr>
+    <tr>
+      <td class="lbl">Exception, handled</td>
+      <td class="hi">stops at the failure</td><td class="hi2">runs</td>
+      <td>skipped</td><td class="hi2">runs</td>
+      <td class="lbl">continues</td>
+    </tr>
+    <tr>
+      <td class="lbl">Exception, not handled</td>
+      <td class="hi">stops at the failure</td><td>none matches</td>
+      <td>skipped</td><td class="hi2">runs</td>
+      <td class="lbl"><b>terminates</b> with a traceback</td>
+    </tr>
+    <caption>Three rows. If you can reproduce this table, you can answer any
+      "what is the output" question in this chapter.</caption>
+  </table>
+
+  <div class="insight">
+    <span class="tag">Read the <code>finally</code> column</span>
+    <p>It is the only column that says <b>runs</b> three times out of three. That is the
+       whole definition, and it is the one-mark answer.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.6</span> The full board program</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">full.py</span><span class="b">print</span>(<span class="s">"Marks calculator"</span>)
+<span class="k">try</span>:
+    numerator = <span class="n">50</span>
+    denom = <span class="b">int</span>(<span class="b">input</span>(<span class="s">"Enter the denominator: "</span>))
+    quotient = numerator / denom
+    <span class="b">print</span>(<span class="s">"Division performed successfully"</span>)
+<span class="k">except</span> <span class="b">ZeroDivisionError</span>:
+    <span class="b">print</span>(<span class="s">"Denominator as ZERO is not allowed"</span>)
+<span class="k">except</span> <span class="b">ValueError</span>:
+    <span class="b">print</span>(<span class="s">"Only INTEGERS should be entered"</span>)
+<span class="k">else</span>:
+    <span class="b">print</span>(<span class="s">"The result of division operation is"</span>, quotient)
+<span class="k">finally</span>:
+    <span class="b">print</span>(<span class="s">"OVER AND OUT"</span>)</pre>
+      <div class="reveal ready ephemeral">Three runs: 5, then 0, then abc. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Run 1 — user types 5</span>Marks calculator
+Enter the denominator: 5
+Division performed successfully
+The result of division operation is 10.0
+OVER AND OUT</div>
+      <div class="reveal out"><span class="tag">Run 2 — user types 0</span>Marks calculator
+Enter the denominator: 0
+Denominator as ZERO is not allowed
+OVER AND OUT</div>
+      <div class="reveal out"><span class="tag">Run 3 — user types abc</span>Marks calculator
+Enter the denominator: abc
+Only INTEGERS should be entered
+OVER AND OUT</div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Three details worth a mark each</span>
+    <p><b>①</b> <code>OVER AND OUT</code> appears in all three runs.<br>
+       <b>②</b> <code>"Division performed successfully"</code> appears only in run 1 —
+       in runs 2 and 3 the <code>try</code> block was abandoned before reaching it.<br>
+       <b>③</b> The result is <code>10.0</code>, not <code>10</code>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.7</span> Check yourself</h2>
+
+  <div class="qcard">
+    <span class="tag">Question 5</span>
+    <p>Predict the exact output — and note the order carefully.</p>
+<pre class="code"><span class="k">def</span> <span class="b">f</span>(x):
+    <span class="k">try</span>:
+        <span class="k">return</span> <span class="n">10</span> / x
+    <span class="k">except</span> <span class="b">ZeroDivisionError</span>:
+        <span class="k">return</span> -<span class="n">1</span>
+    <span class="k">finally</span>:
+        <span class="b">print</span>(<span class="s">"in finally"</span>, x)
+
+<span class="b">print</span>(<span class="b">f</span>(<span class="n">2</span>))
+<span class="b">print</span>(<span class="b">f</span>(<span class="n">0</span>))</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>in finally 2
+5.0
+in finally 0
+-1</div>
+    <p><b>The order is the point.</b> <code>finally</code> runs <b>before</b> the function
+       actually hands its value back — so <code>in finally 2</code> prints before
+       <code>5.0</code> does. A <code>return</code> inside <code>try</code> cannot skip
+       <code>finally</code>; nothing can.</p>
+  </div>
+
+  <div class="reveal challenge">
+    <span class="tag">Challenge</span>
+    <p>If <code>finally</code> contained <code>return 99</code> instead of a
+       <code>print</code>, what would <code>f(2)</code> give?</p>
+  </div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><code>99</code>. A <code>return</code> in <code>finally</code> <b>replaces</b> the
+       one from <code>try</code> — and would swallow an unhandled exception too. It is
+       legal, it is confusing, and you should never write it. Knowing why it is a bad
+       idea is worth more than knowing that it works.</p>
+  </div>
+</section>
+
+<!-- ===================== 6 · RAISE AND ASSERT ===================== -->
+
+<section class="slide" data-section="6 · raise and assert">
+  <h2><span class="num">7.1</span> Throwing one on purpose</h2>
+  <p class="lead">So far Python raised the exceptions. Now you do.</p>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">main.py</span><span class="ln">1</span>age = -<span class="n">5</span>
+<span class="ln">2</span><span class="k">if</span> age &lt; <span class="n">0</span>:
+<span class="ln">3</span>    <span class="k">raise</span> <span class="b">ValueError</span>(<span class="s">"Age cannot be negative"</span>)
+<span class="ln">4</span><span class="b">print</span>(<span class="s">"Age accepted"</span>)</pre>
+      <div class="reveal ready ephemeral">Does line 4 run? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal err"><span class="tag">Traceback</span>Traceback (most recent call last):
+  File "main.py", line 3, in &lt;module&gt;
+    raise ValueError("Age cannot be negative")
+<span class="etype">ValueError</span>: Age cannot be negative</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">raise</span> — forcibly throws an exception.<br>
+           Syntax: <code>raise ExceptionName("message")</code><br>
+           The message is optional and is shown after the colon in the traceback.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal insight">
+    <span class="tag">Note two things</span>
+    <p><b>①</b> <code>"Age accepted"</code> never printed — once an exception is raised,
+       <b>no further statement in that block runs</b>.<br>
+       <b>②</b> The message in the traceback is <b>yours</b>. You chose both the exception
+       type and the wording.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.2</span> Why you would ever want to</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">validate.py</span><span class="k">def</span> <span class="b">set_age</span>(age):
+    <span class="k">if</span> age &lt; <span class="n">0</span>:
+        <span class="k">raise</span> <span class="b">ValueError</span>(<span class="s">"Age cannot be negative"</span>)
+    <span class="k">return</span> age
+
+<span class="k">for</span> a <span class="k">in</span> [<span class="n">21</span>, -<span class="n">5</span>]:
+    <span class="k">try</span>:
+        <span class="b">print</span>(<span class="s">"Accepted:"</span>, <span class="b">set_age</span>(a))
+    <span class="k">except</span> <span class="b">ValueError</span> <span class="k">as</span> e:
+        <span class="b">print</span>(<span class="s">"Rejected:"</span>, e)</pre>
+      <div class="reveal ready ephemeral">Two lines. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>Accepted: 21
+Rejected: Age cannot be negative</div>
+      <div class="reveal insight">
+        <span class="tag">The division of labour</span>
+        <p>The <b>function</b> knows what is invalid, but not what to do about it.
+           The <b>caller</b> knows what to do, but not how to check. <code>raise</code>
+           lets the function report the problem, and <code>except</code> lets the caller
+           decide the response.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Compare with returning an error string</span>
+    <p><code>return "error"</code> can be silently ignored by the caller, and it pollutes
+       the return type — <code>set_age()</code> would sometimes give an int and sometimes
+       a string. An exception <b>cannot</b> be ignored: either the caller handles it or
+       the program stops.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.3</span> <code>assert</code> — a check you can state in one line</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">main.py</span><span class="ln">1</span><span class="k">def</span> <span class="b">negativecheck</span>(number):
+<span class="ln">2</span>    <span class="k">assert</span> number &gt;= <span class="n">0</span>, <span class="s">"OOPS... Negative Number"</span>
+<span class="ln">3</span>    <span class="b">print</span>(number * number)
+<span class="ln">4</span>
+<span class="ln">5</span><span class="b">negativecheck</span>(<span class="n">100</span>)
+<span class="ln">6</span><span class="b">negativecheck</span>(-<span class="n">350</span>)</pre>
+      <div class="reveal ready ephemeral">One number prints, one does not. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>10000</div>
+      <div class="reveal err"><span class="tag">then the traceback</span>Traceback (most recent call last):
+  File "main.py", line 6, in &lt;module&gt;
+    negativecheck(-350)
+  File "main.py", line 2, in negativecheck
+    assert number &gt;= 0, "OOPS... Negative Number"
+           ^^^^^^^^^^^
+<span class="etype">AssertionError</span>: OOPS... Negative Number</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">assert</span> — tests an expression. If it is <b>False</b>,
+           an <code>AssertionError</code> is raised with the given message; if
+           <b>True</b>, nothing happens at all.<br>
+           Syntax: <code>assert expression, message</code></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">The comma is not optional punctuation</span>
+    <p><code>assert (number &gt;= 0, "message")</code> — with brackets round both — is
+       always <b>True</b>, because a non-empty tuple is truthy, so the check silently
+       never fires. Write <code>assert number &gt;= 0, "message"</code>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.4</span> <code>raise</code> or <code>assert</code>?</h2>
+
+  <div class="cosplit">
+    <div>
+      <div class="defn">
+        <span class="tag">raise</span>
+        <p>For conditions you <b>expect</b> to happen in normal use — bad user input, a
+           missing record, a negative age typed into a form. You choose the exception
+           type, so the caller can handle it precisely.</p>
+      </div>
+<pre class="code"><span class="tag">expected</span><span class="k">if</span> age &lt; <span class="n">0</span>:
+    <span class="k">raise</span> <span class="b">ValueError</span>(<span class="s">"Age negative"</span>)</pre>
+    </div>
+    <div>
+      <div class="defn">
+        <span class="tag">assert</span>
+        <p>For conditions that should be <b>impossible</b> if your program is correct —
+           a sanity check on your own logic. Always raises
+           <code>AssertionError</code>, so the caller cannot handle it precisely.</p>
+      </div>
+<pre class="code"><span class="tag">should be impossible</span><span class="k">assert</span> total &gt;= <span class="n">0</span>, <span class="s">"total went negative!"</span></pre>
+    </div>
+  </div>
+
+  <div class="warn">
+    <span class="tag">One practical warning</span>
+    <p>Every <code>assert</code> in a file is <b>removed</b> when Python is run with the
+       <code>-O</code> (optimise) flag. So an <code>assert</code> must never be the only
+       thing validating real user input — use <code>raise</code> for that. NCERT does not
+       press this point, but it is the reason professionals use them differently.</p>
+  </div>
+
+  <div class="insight">
+    <span class="tag">One line for the paper</span>
+    <p><code>raise</code> throws <b>any</b> exception you name; <code>assert</code> tests a
+       condition and throws <b>AssertionError</b> if it is false.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.5</span> Check yourself</h2>
+
+  <div class="qcard">
+    <span class="tag">Question 6</span>
+    <p>Predict the output, including the traceback if there is one.</p>
+<pre class="code">marks = {<span class="s">"Riya"</span>: <span class="n">88</span>, <span class="s">"Aarav"</span>: <span class="n">91</span>}
+
+<span class="k">def</span> <span class="b">show</span>(name):
+    <span class="k">try</span>:
+        <span class="b">print</span>(name, <span class="s">"scored"</span>, marks[name])
+    <span class="k">except</span> <span class="b">KeyError</span>:
+        <span class="b">print</span>(name, <span class="s">"is not in the list"</span>)
+        <span class="k">raise</span>
+
+<span class="b">show</span>(<span class="s">"Riya"</span>)
+<span class="b">show</span>(<span class="s">"Kabir"</span>)</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">What does a bare <code>raise</code> inside an <code>except</code> do? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>Riya scored 88
+Kabir is not in the list</div>
+    <div class="err"><span class="tag">then</span>Traceback (most recent call last):
+  File "main.py", line 11, in &lt;module&gt;
+    show("Kabir")
+  File "main.py", line 5, in show
+    print(name, "scored", marks[name])
+                          ~~~~~^^^^^^
+<span class="etype">KeyError</span>: 'Kabir'</div>
+    <p>A bare <code>raise</code> inside an <code>except</code> block <b>re-raises the
+       exception it just caught</b>, unchanged. It is how you log a problem and still let
+       it travel up to whoever should really deal with it — note that the traceback still
+       points at line 5, the original failure, not at the <code>raise</code>.</p>
+  </div>
+</section>
+
+<!-- ===================== RECAP AND EXAM PRACTICE ===================== -->
+
+<section class="slide" data-section="Recap and exam practice">
+  <h2><span class="num">8.1</span> Everything on one screen</h2>
+
+  <h3>The three kinds of error</h3>
+  <div class="chips">
+    <span class="chip k">syntax error — before running, not catchable</span>
+    <span class="chip k">exception — while running, catchable</span>
+    <span class="chip k">logical error — never reported</span>
+  </div>
+
+  <h3>The exceptions</h3>
+  <div class="chips">
+    <span class="chip">ZeroDivisionError</span>
+    <span class="chip k">ValueError — right type, bad value</span>
+    <span class="chip k">TypeError — wrong type</span>
+    <span class="chip">NameError</span>
+    <span class="chip">IndexError</span>
+    <span class="chip">KeyError</span>
+    <span class="chip">FileNotFoundError / IOError</span>
+    <span class="chip">ImportError</span>
+    <span class="chip">EOFError</span>
+    <span class="chip">AssertionError</span>
+  </div>
+
+  <h3>The statement</h3>
+  <div class="chips">
+    <span class="chip k">try — the risky lines only</span>
+    <span class="chip k">except Name — runs if that was raised</span>
+    <span class="chip">except Name as e — gives you the object</span>
+    <span class="chip">bare except — must be last</span>
+    <span class="chip k">else — runs if nothing was raised</span>
+    <span class="chip k">finally — always runs</span>
+  </div>
+
+  <h3>Throwing your own</h3>
+  <div class="chips">
+    <span class="chip k">raise ValueError("msg")</span>
+    <span class="chip">bare raise — re-raise what you caught</span>
+    <span class="chip k">assert cond, "msg" → AssertionError</span>
+  </div>
+
+  <div class="insight">
+    <span class="tag">The two sentences worth the most marks</span>
+    <p>“<b>An exception is a Python object representing a runtime error; when the error
+       occurs the exception is said to be raised.</b>”<br>
+       “<b>The <code>finally</code> block executes whether or not an exception occurred,
+       and whether or not it was handled.</b>”</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">8.2</span> Exam question 1 — find the output</h2>
+
+  <div class="qcard">
+    <span class="tag">3 marks</span>
+    <p>Write the output of the following code.</p>
+<pre class="code">L = [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]
+<span class="k">try</span>:
+    <span class="b">print</span>(L[<span class="n">1</span>])
+    <span class="b">print</span>(L[<span class="n">5</span>])
+    <span class="b">print</span>(L[<span class="n">2</span>])
+<span class="k">except</span> <span class="b">IndexError</span>:
+    <span class="b">print</span>(<span class="s">"Index problem"</span>)
+<span class="k">except</span>:
+    <span class="b">print</span>(<span class="s">"Other problem"</span>)
+<span class="k">finally</span>:
+    <span class="b">print</span>(<span class="s">"Done"</span>)
+<span class="b">print</span>(<span class="s">"Bye"</span>)</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>2
+Index problem
+Done
+Bye</div>
+    <table>
+      <tr><th class="lbl">Line</th><th class="lbl">What happened</th></tr>
+      <tr><td class="lbl"><code>print(L[1])</code></td><td class="lbl">printed <code>2</code></td></tr>
+      <tr><td class="lbl"><code>print(L[5])</code></td><td class="lbl">raised <code>IndexError</code> — try block abandoned</td></tr>
+      <tr><td class="lbl"><code>print(L[2])</code></td><td class="lbl">never reached</td></tr>
+      <tr><td class="lbl">first <code>except</code></td><td class="lbl">matched, so the bare one was skipped</td></tr>
+      <tr><td class="lbl"><code>finally</code></td><td class="lbl">ran, as it always does</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">8.3</span> Exam question 2 — find the output</h2>
+
+  <div class="qcard">
+    <span class="tag">3 marks</span>
+    <p>Write the output. Six lines.</p>
+<pre class="code">D = {<span class="s">"a"</span>: <span class="n">1</span>, <span class="s">"b"</span>: <span class="n">2</span>}
+<span class="k">for</span> k <span class="k">in</span> [<span class="s">"a"</span>, <span class="s">"c"</span>, <span class="s">"b"</span>]:
+    <span class="k">try</span>:
+        <span class="b">print</span>(k, D[k])
+    <span class="k">except</span> <span class="b">KeyError</span>:
+        <span class="b">print</span>(k, <span class="s">"missing"</span>)
+    <span class="k">else</span>:
+        <span class="b">print</span>(k, <span class="s">"found"</span>)</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>a 1
+a found
+c missing
+b 2
+b found</div>
+    <p><b>Five lines, not six.</b> That is the trap. For <code>"c"</code> the
+       <code>except</code> ran, so the <code>else</code> was skipped — one line instead of
+       two. <code>else</code> and <code>except</code> are <b>mutually exclusive</b>: never
+       both, on any single pass.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">8.4</span> Exam question 3 — write the program</h2>
+
+  <div class="qcard">
+    <span class="tag">3 marks</span>
+    <p>Write a program that reads two numbers from the user and prints their quotient.
+       It must handle a non-numeric entry and a zero divisor separately, print the result
+       only when the division succeeded, and print <code>"Thank you"</code> in every case.</p>
+  </div>
+
+  <div class="reveal ready ephemeral">All four blocks. Write it fully. 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="cosplit">
+      <div>
+<pre class="code"><span class="tag">quotient.py</span><span class="k">try</span>:
+    a = <span class="b">int</span>(<span class="b">input</span>(<span class="s">"Enter numerator: "</span>))
+    b = <span class="b">int</span>(<span class="b">input</span>(<span class="s">"Enter denominator: "</span>))
+    q = a / b
+<span class="k">except</span> <span class="b">ValueError</span>:
+    <span class="b">print</span>(<span class="s">"Please enter whole numbers only"</span>)
+<span class="k">except</span> <span class="b">ZeroDivisionError</span>:
+    <span class="b">print</span>(<span class="s">"Denominator cannot be zero"</span>)
+<span class="k">else</span>:
+    <span class="b">print</span>(<span class="s">"Quotient ="</span>, q)
+<span class="k">finally</span>:
+    <span class="b">print</span>(<span class="s">"Thank you"</span>)</pre>
+      </div>
+      <div>
+        <div class="out"><span class="tag">Run — 50 and 4</span>Enter numerator: 50
+Enter denominator: 4
+Quotient = 12.5
+Thank you</div>
+        <div class="out"><span class="tag">Run — 50 and 0</span>Enter numerator: 50
+Enter denominator: 0
+Denominator cannot be zero
+Thank you</div>
+        <div class="note">
+          <span class="tag">Where the three marks are</span>
+          <p><b>①</b> two <b>separately named</b> <code>except</code> blocks<br>
+             <b>②</b> the result in <code>else</code>, not in <code>try</code> — because
+             the question said "only when the division succeeded"<br>
+             <b>③</b> <code>"Thank you"</code> in <code>finally</code> — because the
+             question said "in every case"</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">8.5</span> Exam question 4 — two-mark theory</h2>
+
+  <div class="qcard">
+    <span class="tag">2 + 2 marks</span>
+    <ol>
+      <li>Differentiate between a <b>syntax error</b> and an <b>exception</b>, with one
+          example of each.</li>
+      <li>What is the purpose of the <code>finally</code> block? How is it different from
+          <code>else</code>?</li>
+    </ol>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 1</span>
+    <p>A <b>syntax error</b> is a violation of the grammar of Python. It is detected by
+       the interpreter <b>before execution begins</b>, so no part of the program runs, and
+       it cannot be handled by <code>try…except</code> — it must be corrected.
+       Example: <code>if x &gt; 5</code> written without a colon.</p>
+    <p>An <b>exception</b> is an error detected <b>during execution</b> of a
+       syntactically correct program. Statements before it have already run, and it
+       <b>can</b> be handled. Example: <code>int("abc")</code> raising
+       <code>ValueError</code>.</p>
+  </div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 2</span>
+    <p>The <code>finally</code> block contains code that must run <b>whatever
+       happens</b> — typically releasing a resource, such as closing a file. It executes
+       whether or not an exception was raised, and whether or not it was handled.</p>
+    <p>The <code>else</code> block runs <b>only when no exception was raised</b>. So on a
+       run where an exception occurs, <code>else</code> is skipped but <code>finally</code>
+       still runs.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">8.6</span> One last challenge</h2>
+
+  <div class="challenge">
+    <span class="tag">Challenge</span>
+    <p>Predict the exact output. Every idea in this chapter is in here somewhere.</p>
+<pre class="code"><span class="k">def</span> <span class="b">check</span>(v):
+    <span class="k">try</span>:
+        n = <span class="b">int</span>(v)
+        <span class="k">assert</span> n &gt; <span class="n">0</span>, <span class="s">"must be positive"</span>
+        <span class="k">return</span> <span class="n">100</span> // n
+    <span class="k">except</span> <span class="b">ValueError</span>:
+        <span class="k">return</span> <span class="s">"not a number"</span>
+    <span class="k">except</span> <span class="b">AssertionError</span> <span class="k">as</span> e:
+        <span class="k">return</span> <span class="b">str</span>(e)
+    <span class="k">finally</span>:
+        <span class="b">print</span>(<span class="s">"checked"</span>, v)
+
+<span class="k">for</span> item <span class="k">in</span> [<span class="s">"4"</span>, <span class="s">"0"</span>, <span class="s">"xy"</span>]:
+    <span class="b">print</span>(<span class="b">check</span>(item))</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Six lines. Mind the order. 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>checked 4
+25
+checked 0
+must be positive
+checked xy
+not a number</div>
+    <p><b>"4"</b> — converts, passes the assert, returns 25. <code>finally</code> prints
+       <b>before</b> the value is handed back.<br>
+       <b>"0"</b> — converts fine, so no <code>ValueError</code>; the
+       <code>assert</code> fails, and <code>str(e)</code> gives the message you supplied.
+       The division by zero <b>never happens</b> — the assert stopped it.<br>
+       <b>"xy"</b> — <code>int()</code> raises <code>ValueError</code> immediately.</p>
+  </div>
+</section>
+
+<section class="slide title-slide">
+  <div class="kicker">End of Chapter 3</div>
+  <h1>Next: File Handling</h1>
+  <div class="rule"></div>
+  <p class="sub">Everything so far has lived and died inside one run of the program.
+     Chapter 4 makes data survive — text files, binary files with <code>pickle</code>,
+     and CSV. It is also where every single thing you learned here gets used.</p>
+
+  <div class="bridge narrow">
+    <span class="tag">Carry these three forward</span>
+    <p><b>①</b> <code>open()</code> on a missing file raises
+       <code>FileNotFoundError</code> — every read gets a handler.<br>
+       <b>②</b> <code>f.close()</code> belongs in <code>finally</code>, so the file is
+       closed even when reading it fails.<br>
+       <b>③</b> A file converted with <code>int()</code> line by line will meet
+       <code>ValueError</code> the first time a line has a stray space.</p>
+  </div>
+</section>
+
+</div>
+
+<button class="nav" id="prev" aria-label="Previous slide">←</button>
+<button class="nav" id="next" aria-label="Next slide">→</button>
+
+<script src="assets/deck.js"></script>
+</body>
+</html>

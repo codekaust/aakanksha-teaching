@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 3 — Production and Costs | Class XII Microeconomics</title>
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body>
+
+<div id="bar">
+  <span class="brand">CH 3 · PRODUCTION AND COSTS</span>
+  <span class="sect" id="sect"></span>
+  <span class="tools">
+    <span id="counter">1 / 1</span>
+    <button id="menuBtn" title="Slide menu (m)">☰ Menu</button>
+    <button id="fsBtn" title="Fullscreen (f)">⛶</button>
+    <button onclick="location.href='index.html'" title="Course home">⌂</button>
+  </span>
+</div>
+<div id="progress" style="width:0"></div>
+
+<div id="menu">
+  <h3>Chapter 3 — Production and Costs</h3>
+  <p class="hint">Click any slide to jump · press <b>m</b> or <b>Esc</b> to close</p>
+  <div class="mlist"></div>
+</div>
+
+<div id="stage">
+
+<!-- ================= OPENING ================= -->
+<section class="slide title-slide" data-section="Opening">
+  <div class="kicker">Introductory Microeconomics · Class XII</div>
+  <h1>Chapter 3<br>Production and Costs</h1>
+  <div class="rule"></div>
+  <p class="sub">We cross to the other side of the market. A firm turns inputs into output —
+  and every unit of output has a cost. Out of those costs, Chapter 4 will build the
+  <b>supply curve</b>.</p>
+</section>
+
+<section class="slide">
+  <h2>Where we are</h2>
+  <div class="split">
+    <div>
+      <div class="box bridge">
+        <span class="tag">What Chapter 2 gave us</span>
+        <p>Starting from a consumer's preferences and her budget, we derived the
+        <b>market demand curve</b> — one blade of the scissors.</p>
+      </div>
+      <div class="box insight">
+        <span class="tag">What Chapters 3 and 4 will give us</span>
+        <p><b>Chapter 3</b> — how inputs become output, and what that output <b>costs</b>.<br>
+        <b>Chapter 4</b> — how a profit-maximising firm turns those costs into a
+        <b>supply curve</b>.</p>
+        <p><b>Chapter 5</b> then crosses the two blades and cuts out the price.</p>
+      </div>
+    </div>
+    <figure>
+      <svg viewBox="0 0 420 300" role="img" aria-label="Inputs pass through the production process to become output, with cost and revenue on either side">
+        <defs>
+          <marker id="c3a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+            <path d="M0,0 L10,4 L0,8 z" fill="#a17a00"/>
+          </marker>
+        </defs>
+        <rect x="14" y="105" width="110" height="70" rx="12" fill="#eee8d5" stroke="#1f7ab8" stroke-width="2"/>
+        <text class="lab" x="69" y="133" text-anchor="middle">INPUTS</text>
+        <text x="69" y="155" text-anchor="middle">land, labour,</text>
+        <text x="69" y="171" text-anchor="middle">capital</text>
+
+        <line x1="128" y1="140" x2="163" y2="140" class="axis" stroke="#a17a00" marker-end="url(#c3a)"/>
+
+        <rect x="170" y="100" width="110" height="80" rx="12" fill="#e4dcc4" stroke="#a17a00" stroke-width="2.5"/>
+        <text class="lab" x="225" y="132" text-anchor="middle">PRODUCTION</text>
+        <text x="225" y="154" text-anchor="middle">the firm</text>
+        <text x="225" y="172" text-anchor="middle">q = f(L, K)</text>
+
+        <line x1="285" y1="140" x2="320" y2="140" class="axis" stroke="#a17a00" marker-end="url(#c3a)"/>
+
+        <rect x="327" y="105" width="80" height="70" rx="12" fill="#eee8d5" stroke="#748500" stroke-width="2"/>
+        <text class="lab" x="367" y="145" text-anchor="middle">OUTPUT</text>
+
+        <text x="69" y="222" text-anchor="middle" style="fill:#b02522">paying for these</text>
+        <text x="69" y="240" text-anchor="middle" style="fill:#b02522">= COST</text>
+        <text x="367" y="222" text-anchor="middle" style="fill:#586600">selling this</text>
+        <text x="367" y="240" text-anchor="middle" style="fill:#586600">= REVENUE</text>
+        <text class="lab" x="225" y="268" text-anchor="middle">PROFIT = Revenue − Cost</text>
+        <text x="225" y="60" text-anchor="middle" style="fill:#755900">Chapter 3 studies the left side</text>
+      </svg>
+    </figure>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Route map</h2>
+  <div class="grid2">
+    <div class="card"><h4>Part A · The production function</h4>
+      <p>How inputs map to output. Isoquants. Short run vs long run.</p></div>
+    <div class="card"><h4>Part B · Product curves</h4>
+      <p>TP, AP and MP — and the law of variable proportions.</p></div>
+    <div class="card"><h4>Part C · Returns to scale</h4>
+      <p>What happens when <i>all</i> inputs change together.</p></div>
+    <div class="card"><h4>Part D · Short run costs</h4>
+      <p>TFC, TVC, TC · AFC, AVC, SAC · SMC, and why they are U-shaped.</p></div>
+    <div class="card"><h4>Part E · Long run costs</h4>
+      <p>LRAC and LRMC, and how returns to scale shape them.</p></div>
+    <div class="card"><h4>Throughout</h4>
+      <p>Every "marginal vs average" rule you met in Chapter 2 returns here — in a
+      new costume.</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Vocabulary before we begin</h2>
+  <div class="grid2">
+    <div class="box defn">
+      <span class="tag">Definition</span>
+      <p><span class="term">Production</span> is the process by which <b>inputs are transformed
+      into output</b>.</p>
+    </div>
+    <div class="box defn">
+      <span class="tag">Definition</span>
+      <p>A <span class="term">firm</span> is the unit that carries out production — it acquires
+      inputs, produces output, and sells it.</p>
+    </div>
+  </div>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p>The inputs a firm uses are called <span class="term">factors of production</span>.
+    To keep everything drawable we use just two: <b>labour (L)</b> and <b>capital (K)</b>.</p>
+  </div>
+  <div class="box note">
+    <span class="tag">Simplifying assumptions</span>
+    <ul>
+      <li>Production is <b>instantaneous</b> — no time passes between combining inputs and getting output.</li>
+      <li>The firm <b>sells whatever it produces</b>, so "production" and "supply" are used interchangeably.</li>
+      <li>The firm's objective is to earn the <b>maximum profit</b> it can.</li>
+    </ul>
+  </div>
+  <div class="formula">Profit (π) = Total Revenue − Total Cost</div>
+</section>
+
+<!-- ================= PART A ================= -->
+<section class="slide" data-section="3.1 Production Function">
+  <h2><span class="num">3.1</span>The production function</h2>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p>The <span class="term">production function</span> of a firm is the relationship between
+    the inputs used and the output produced. For various quantities of inputs, it gives the
+    <b>maximum quantity of output</b> that can be produced.</p>
+  </div>
+  <div class="formula">q = f(L, K) &nbsp;&nbsp;&nbsp;&nbsp;<span class="small">…(3.1)</span></div>
+  <div class="grid2">
+    <div class="box warn">
+      <span class="tag">The word "maximum" is doing real work</span>
+      <p>Because the function reports the <b>maximum</b> obtainable output, it already assumes
+      the inputs are used <b>efficiently</b>. <b>Efficiency</b> means it is <b>not possible to get
+      any more output from the same level of inputs</b>.</p>
+      <p class="small">A lazy or badly organised firm is not "on" its production function.</p>
+    </div>
+    <div class="box insight">
+      <span class="tag">A production function assumes a given technology</span>
+      <p>Technological knowledge is what determines the maximum output obtainable from any input
+      combination. <b>If technology improves, we get a new production function</b> — the old one
+      does not stretch, it is replaced.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>A numerical production function</h2>
+  <table>
+    <caption>Table 3.1 — Output for each combination of labour and capital</caption>
+    <thead>
+      <tr><th class="lbl">Labour ↓ / Capital →</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="lbl">0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td class="lbl">1</td><td>0</td><td>1</td><td>3</td><td>7</td><td class="hi">10</td><td>12</td><td>13</td></tr>
+      <tr><td class="lbl">2</td><td>0</td><td>3</td><td>10</td><td>18</td><td class="hi">24</td><td>29</td><td>33</td></tr>
+      <tr><td class="lbl">3</td><td>0</td><td>7</td><td>18</td><td>30</td><td class="hi">40</td><td>46</td><td>50</td></tr>
+      <tr><td class="lbl">4</td><td>0</td><td>10</td><td>24</td><td>40</td><td class="hi">50</td><td>56</td><td>57</td></tr>
+      <tr><td class="lbl">5</td><td>0</td><td>12</td><td>29</td><td>46</td><td class="hi">56</td><td>58</td><td>59</td></tr>
+      <tr><td class="lbl">6</td><td>0</td><td>13</td><td>33</td><td>50</td><td class="hi">57</td><td>59</td><td>60</td></tr>
+    </tbody>
+  </table>
+  <div class="grid2">
+    <div class="box eg">
+      <span class="tag">Reading the table</span>
+      <p>1 labour + 1 capital → at most <b>1</b> unit.<br>
+      2 labour + 2 capital → at most <b>10</b> units.<br>
+      3 labour + 2 capital → at most <b>18</b> units.</p>
+    </div>
+    <div class="box insight">
+      <span class="tag">Two things to notice</span>
+      <ul>
+        <li><b>Both inputs are necessary.</b> If either is zero, output is zero — read the top
+        row and the first column.</li>
+        <li><b>More of any input raises output</b> — move right or down and the numbers rise.</li>
+      </ul>
+      <p class="small">The <b>highlighted column (K = 4)</b> is the one we will live in for the
+      next several slides.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The isoquant — an old friend in new clothes</h2>
+  <div class="split">
+    <figure>
+      <svg viewBox="0 0 440 340" role="img" aria-label="Isoquant map showing three isoquants for output levels q1, q2 and q3">
+        <line class="axis" x1="66" y1="290" x2="66" y2="28"/>
+        <line class="axis" x1="66" y1="290" x2="412" y2="290"/>
+        <text class="lab" x="240" y="330" text-anchor="middle">LABOUR (L)</text>
+        <text class="lab" x="22" y="160" text-anchor="middle" transform="rotate(-90 22 160)">CAPITAL (K)</text>
+        <text x="58" y="308" text-anchor="end">O</text>
+
+        <path class="curve c-blue"   d="M88,116 C124,164 160,196 200,214 C242,232 292,246 352,254"/>
+        <path class="curve c-violet" d="M100,74  C142,124 186,162 232,184 C280,206 334,222 396,230"/>
+        <path class="curve c-teal"   d="M118,40  C164,90  216,134 266,158 C316,182 364,196 410,204"/>
+
+        <text class="lab" x="356" y="272" style="fill:#175f90">q = q₁</text>
+        <text class="lab" x="400" y="248" style="fill:#5055a0">q = q₂</text>
+        <text class="lab" x="414" y="222" style="fill:#586600">q = q₃</text>
+
+        <circle class="pt" cx="128" cy="176" r="6"/>
+        <circle class="pt" cx="252" cy="228" r="6"/>
+        <text x="90" y="172" style="fill:#755900">(L₁,K₂)</text>
+        <text x="262" y="248" style="fill:#755900">(L₂,K₁)</text>
+        <text x="150" y="66" style="fill:#5b6966">higher isoquant = more output</text>
+      </svg>
+    </figure>
+    <div>
+      <div class="box defn">
+        <span class="tag">Definition</span>
+        <p>An <span class="term">isoquant</span> is the set of <b>all possible combinations of
+        the two inputs that yield the same maximum possible level of output</b>. Each isoquant
+        is labelled with that output.</p>
+      </div>
+      <div class="box eg">
+        <span class="tag">From Table 3.1</span>
+        <p>Output of <b>10</b> can be produced three ways:
+        <b>(4L, 1K)</b>, <b>(2L, 2K)</b>, <b>(1L, 4K)</b>.<br>
+        All three lie on the <b>same isoquant</b>, labelled q = 10.</p>
+      </div>
+      <div class="box bridge">
+        <span class="tag">Compare with Chapter 2</span>
+        <p>An isoquant is the <b>producer's version of an indifference curve</b>. Both are
+        downward sloping, both join points that are "equally good", both come in families —
+        and on both, the <b>slope is a rate of substitution</b>.</p>
+        <p class="small">Why downward sloping? When marginal products are positive, keeping
+        output constant while using <b>more</b> of one input requires <b>less</b> of the other.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Check your understanding</h2>
+  <div class="qcard">
+    <span class="tag">Question 1</span>
+    <p>Using Table 3.1, identify all the input combinations that lie on the isoquant
+    <b>q = 50</b>.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p>Scan the table for every cell containing <b>50</b>:</p>
+    <p><b>(3L, 6K)</b> &nbsp;·&nbsp; <b>(4L, 4K)</b> &nbsp;·&nbsp; <b>(6L, 3K)</b></p>
+    <p>All three produce exactly 50 units, so all three lie on the isoquant labelled q = 50.</p>
+    <p class="small">Notice the trade-off along it: moving from (3L, 6K) to (6L, 3K), the firm
+    substitutes <b>3 more labour for 3 less capital</b> and output is unchanged. That is the
+    isoquant's downward slope in numbers.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Challenge</h2>
+  <div class="challenge">
+    <span class="tag">Challenge — section 3.1</span>
+    <p>A student writes: <i>"Table 3.1 shows that 2 labour and 2 capital produce 10 units.
+    So if the firm employs 2 labour and 2 capital but produces only 7 units because the
+    manager is careless, then <b>q = 7</b> is also a point on the production function."</i></p>
+    <p>Is the student right? Explain, and say what the diagram of this situation would look like.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>The student is wrong</b>, and the error is in overlooking the word <b>maximum</b>.</p>
+    <p>The production function reports, for each input combination, the <b>maximum</b> output
+    obtainable. It is therefore defined <b>only over efficient production</b>. Producing 7 units
+    from (2L, 2K) is certainly <i>possible</i> — but it is <b>not on the production function</b>,
+    because 10 is obtainable from the same inputs.</p>
+    <p><b>The parallel with Chapter 1 is exact.</b> A point <i>inside</i> the PPF was attainable
+    but inefficient; the PPF itself was the boundary of what is possible. Here, (2L, 2K, 7 units)
+    is attainable but inefficient, and it lies <b>below</b> the production function.</p>
+    <div class="q">
+      <p>PPF (Ch 1) : boundary of attainable <b>output combinations</b> for a society<br>
+      Production function (Ch 3) : boundary of attainable <b>output</b> for a firm</p>
+      <p>Both are <b>frontiers</b>. Inefficiency puts you inside; it never moves the frontier.</p>
+    </div>
+    <p><b>Why economists build it this way:</b> if the function reported every possible output
+    including wasteful ones, then <i>every</i> quantity from 0 to 10 would "belong" to (2L, 2K)
+    and <code>f</code> would not be a <b>function</b> at all — one input combination would map to
+    many outputs. Taking the maximum is what makes the relationship well defined.</p>
+    <p class="small"><b>A careless manager</b> does not change the production function. He moves
+    the firm <b>off</b> it — and in Chapter 4 that shows up as a cost higher than the cost
+    function says it should be.</p>
+  </div>
+</section>
+
+<!-- ================= SHORT RUN / LONG RUN ================= -->
+<section class="slide" data-section="3.2 Short Run and Long Run">
+  <h2><span class="num">3.2</span>The short run and the long run</h2>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p>The <span class="term">short run</span> is a period in which <b>at least one factor of
+    production cannot be varied</b> and therefore remains fixed.</p>
+  </div>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p>The <span class="term">long run</span> is a period in which <b>all factors of production
+    can be varied</b>. In the long run there is <b>no fixed factor</b>.</p>
+  </div>
+  <div class="grid2">
+    <div class="card"><h4>Fixed factor</h4>
+      <p>The factor that <b>cannot</b> be varied in the short run. Typically capital — a
+      factory building, a plot of land, a machine.</p></div>
+    <div class="card"><h4>Variable factor</h4>
+      <p>The factor the firm <b>can</b> vary in the short run. Typically labour, raw materials,
+      power.</p></div>
+  </div>
+  <div class="warn box">
+    <span class="tag">The single most examined misconception</span>
+    <p>Short run and long run are <b>not</b> defined in days, months or years. It is
+    <b>not advisable</b> to define them by calendar time at all.</p>
+    <p><b>The only test:</b> <i>can all inputs be varied?</i> If no → short run. If yes → long run.</p>
+    <p class="small">For a roadside tea stall the long run may be a few weeks; for a steel plant
+    it may be a decade. Same economics, different clocks.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Challenge</h2>
+  <div class="challenge">
+    <span class="tag">Challenge — section 3.2</span>
+    <p>Two firms are described:</p>
+    <p><b>Firm A</b> — a software company. It can hire or release programmers within a week and
+    rent additional cloud servers within an hour.</p>
+    <p><b>Firm B</b> — a nuclear power company. It can hire engineers within a month, but a new
+    reactor takes eleven years to build.</p>
+    <p>For a planning horizon of <b>one year</b>, is each firm in the short run or the long run?
+    Now explain <b>why the same one-year horizon gives different answers</b>, and what this
+    implies about drawing "the" short-run cost curve for an industry.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>Firm A is in the long run.</b> Within a year it can vary <i>every</i> input — labour
+    and servers alike. Nothing is fixed, so by definition it is in the long run.</p>
+    <p><b>Firm B is in the short run.</b> Labour is variable within a year, but the reactor —
+    its capital — is not. At least one factor is fixed, so it is in the short run.</p>
+    <p><b>Why the same year gives different answers:</b> because the short run/long run
+    distinction is <b>not a property of time</b>. It is a property of <b>the relationship between
+    a firm's technology and the horizon being considered</b>. The question "is one year long?" is
+    meaningless on its own — long <i>relative to what</i>? A year is an eternity for a
+    software firm's capital and an instant for a reactor.</p>
+    <div class="q">
+      <p>Short run is not "soon". Long run is not "later".<br>
+      <b>Short run = some input is stuck. Long run = nothing is stuck.</b></p>
+    </div>
+    <p><b>What it implies for cost curves:</b> a firm does not have <i>one</i> short-run cost
+    curve — it has a <b>different one for every level of the fixed factor</b>. Firm B's
+    short-run average cost curve with one reactor is a different curve from its SAC with two
+    reactors. The long-run curve is the one the firm can reach once it is free to choose the
+    reactor count as well.</p>
+    <p class="small"><b>This is exactly why LRAC lies below every SAC curve.</b> In the long run
+    the firm has <i>strictly more freedom</i> — it can pick the best plant size for the output
+    it wants, instead of being stuck with whatever plant it happens to have. More choice can
+    never make you worse off, so long-run cost can never exceed short-run cost.</p>
+  </div>
+</section>
+
+<!-- ================= TP AP MP ================= -->
+<section class="slide" data-section="3.3 Total, Average and Marginal Product">
+  <h2><span class="num">3.3</span>Three ways to describe output</h2>
+  <p class="lead">Hold capital fixed at <b>K = 4</b> and vary labour. The highlighted column of
+  Table 3.1 becomes our whole world.</p>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Total Product (TP)</span> of a variable input is the relationship
+    between that input and output, <b>all other inputs held constant</b> — the total output
+    produced at each level of the variable input.</p>
+  </div>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Average Product (AP)</span> is output <b>per unit of the variable
+    input</b>.</p>
+  </div>
+  <div class="formula">
+    AP<sub>L</sub> = <span class="frac"><span>TP<sub>L</sub></span><span>L</span></span>
+    &nbsp;&nbsp;<span class="small">…(3.2)</span>
+  </div>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Marginal Product (MP)</span> is the <b>change in output per unit
+    change in the variable input</b>, all other inputs held constant.</p>
+  </div>
+  <div class="formula">
+    MP<sub>L</sub> = <span class="frac"><span>ΔTP<sub>L</sub></span><span>ΔL</span></span>
+    &nbsp;=&nbsp; TP<sub>L</sub> − TP<sub>L−1</sub>
+    &nbsp;&nbsp;<span class="small">…(3.3), (3.4)</span>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The schedule</h2>
+  <div class="split">
+    <div>
+      <table>
+        <caption>Table 3.2 — Product schedule of labour (capital fixed at 4)</caption>
+        <thead><tr><th>Labour</th><th>TP</th><th>MP<sub>L</sub></th><th>AP<sub>L</sub></th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td>0</td><td>—</td><td>—</td></tr>
+          <tr><td>1</td><td>10</td><td>10</td><td>10</td></tr>
+          <tr><td>2</td><td>24</td><td>14</td><td>12</td></tr>
+          <tr><td class="hi">3</td><td class="hi">40</td><td class="hi">16</td><td class="hi">13.33</td></tr>
+          <tr><td>4</td><td>50</td><td>10</td><td>12.5</td></tr>
+          <tr><td>5</td><td>56</td><td>6</td><td>11.2</td></tr>
+          <tr><td>6</td><td>57</td><td>1</td><td>9.5</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="box eg">
+        <span class="tag">Verify a row</span>
+        <p>At L = 2: &nbsp;<code>MP = 24 − 10 = 14</code> ✓ &nbsp;&nbsp;
+        <code>AP = 24 / 2 = 12</code> ✓</p>
+      </div>
+      <div class="box insight">
+        <span class="tag">Two properties worth memorising</span>
+        <p><b>1. TP is the sum of the MPs.</b><br>
+        <code>10 + 14 + 16 + 10 + 6 + 1 = 57</code> ✓</p>
+        <p><b>2. AP is the average of all MPs up to that level.</b><br>
+        At L = 3: <code>(10 + 14 + 16)/3 = 13.33</code> ✓</p>
+      </div>
+      <div class="box warn">
+        <span class="tag">Note</span>
+        <p>MP is <b>undefined at zero</b> input — inputs cannot be negative, so there is no
+        "previous" unit to compare against.</p>
+        <p>Also note <b>MP₁ = AP₁ = 10</b>. For the first unit they must be equal, since the
+        average of one number is that number.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>TP, MP and AP — plotted from Table 3.2</h2>
+  <figure>
+    <svg viewBox="0 0 520 600" role="img" aria-label="Total product curve above, with marginal product and average product curves below, plotted from Table 3.2">
+      <!-- ===== TP panel ===== -->
+      <g class="grid">
+        <line x1="60" y1="100" x2="470" y2="100"/>
+        <line x1="60" y1="180" x2="470" y2="180"/>
+        <line x1="60" y1="260" x2="470" y2="260"/>
+      </g>
+      <line class="axis" x1="60" y1="300" x2="60" y2="45"/>
+      <line class="axis" x1="60" y1="300" x2="480" y2="300"/>
+      <text x="50" y="305" text-anchor="end">0</text>
+      <text x="50" y="265" text-anchor="end">10</text>
+      <text x="50" y="185" text-anchor="end">30</text>
+      <text x="50" y="105" text-anchor="end">50</text>
+      <text class="lab" x="20" y="175" text-anchor="middle" transform="rotate(-90 20 175)">TOTAL PRODUCT</text>
+
+      <path class="curve c-amber"
+            d="M60,300 C70.33,293.3 101.3,276 122,260 C142.7,244 163.3,224 184,204
+                       C204.7,184 225.3,157.3 246,140 C266.7,122.7 287.3,110.7 308,100
+                       C328.7,89.33 349.3,80.67 370,76 C390.7,71.33 421.7,72.67 432,72"/>
+      <circle class="pt" cx="122" cy="260" r="5"/>
+      <circle class="pt" cx="184" cy="204" r="5"/>
+      <circle class="pt" cx="246" cy="140" r="5"/>
+      <circle class="pt" cx="308" cy="100" r="5"/>
+      <circle class="pt" cx="370" cy="76"  r="5"/>
+      <circle class="pt" cx="432" cy="72"  r="5"/>
+      <text class="lab" x="440" y="62" style="fill:#755900">TP</text>
+
+      <!-- inflexion at L=3 -->
+      <line class="dash" stroke="#5055a0" x1="246" y1="140" x2="246" y2="560"/>
+      <text x="252" y="132" style="fill:#5055a0">inflexion: TP stops</text>
+      <text x="252" y="150" style="fill:#5055a0">rising ever faster</text>
+
+      <!-- last data point: TP still rising, MP = +1 -->
+      <line class="dash" stroke="#b02522" x1="432" y1="72" x2="432" y2="560"/>
+      <text x="368" y="46" text-anchor="middle" style="fill:#b02522">last data point — TP is still</text>
+      <text x="368" y="62" text-anchor="middle" style="fill:#b02522">rising, since MP₆ = +1</text>
+
+      <!-- ===== MP / AP panel ===== -->
+      <line class="axis" x1="60" y1="530" x2="60" y2="340"/>
+      <line class="axis" x1="60" y1="530" x2="480" y2="530"/>
+      <text x="50" y="535" text-anchor="end">0</text>
+      <text x="50" y="465" text-anchor="end">6</text>
+      <text x="50" y="425" text-anchor="end">10</text>
+      <text x="50" y="365" text-anchor="end">16</text>
+      <text class="lab" x="20" y="440" text-anchor="middle" transform="rotate(-90 20 440)">MP  and  AP</text>
+
+      <path class="curve c-blue"
+            d="M122,420 C132.3,413.3 163.3,390 184,380 C204.7,380 225.3,360 246,360
+                       C266.7,366.7 287.3,403.3 308,420 C328.7,436.7 349.3,445 370,460
+                       C390.7,475 421.7,501.7 432,510"/>
+      <path class="curve c-teal"
+            d="M122,420 C132.3,416.7 163.3,405.6 184,400 C204.7,400 225.3,386.7 246,386.7
+                       C266.7,385.8 287.3,391.4 308,395 C328.7,398.6 349.3,403 370,408
+                       C390.7,413 421.7,422.2 432,425"/>
+
+      <circle cx="122" cy="420" r="5" fill="#1f7ab8" stroke="#fdf6e3" stroke-width="2"/>
+      <circle cx="184" cy="380" r="5" fill="#1f7ab8" stroke="#fdf6e3" stroke-width="2"/>
+      <circle cx="246" cy="360" r="5" fill="#1f7ab8" stroke="#fdf6e3" stroke-width="2"/>
+      <circle cx="308" cy="420" r="5" fill="#1f7ab8" stroke="#fdf6e3" stroke-width="2"/>
+      <circle cx="370" cy="460" r="5" fill="#1f7ab8" stroke="#fdf6e3" stroke-width="2"/>
+      <circle cx="432" cy="510" r="5" fill="#1f7ab8" stroke="#fdf6e3" stroke-width="2"/>
+      <circle cx="184" cy="400" r="5" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+      <circle cx="246" cy="386.7" r="5" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+      <circle cx="308" cy="395" r="5" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+      <circle cx="370" cy="408" r="5" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+      <circle cx="432" cy="425" r="5" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+
+      <text class="lab" x="440" y="518" style="fill:#175f90">MP</text>
+      <text class="lab" x="440" y="436" style="fill:#586600">AP</text>
+
+      <!-- MP cuts AP at AP max -->
+      <circle cx="282" cy="392" r="8" fill="none" stroke="#b02522" stroke-width="3"/>
+      <text x="292" y="378" style="fill:#b02522">MP cuts AP from above,</text>
+      <text x="292" y="396" style="fill:#b02522">at AP's maximum</text>
+
+      <!-- x axis -->
+      <text x="122" y="552" text-anchor="middle">1</text>
+      <text x="184" y="552" text-anchor="middle">2</text>
+      <text x="246" y="552" text-anchor="middle">3</text>
+      <text x="308" y="552" text-anchor="middle">4</text>
+      <text x="370" y="552" text-anchor="middle">5</text>
+      <text x="432" y="552" text-anchor="middle">6</text>
+      <text class="lab" x="265" y="582" text-anchor="middle">LABOUR (units)</text>
+    </svg>
+    <figcaption>Every plotted point is a row of Table 3.2. With discrete data AP peaks at
+    <b>L = 3</b> (13.33) and MP drops below AP between L = 3 and L = 4 — so the smooth curves
+    cross in that interval. <b>Note that TP has not yet reached its maximum</b> within the table:
+    MP₆ is still <b>+1</b>, so TP would keep rising a little further, and would peak only once
+    MP reached zero — beyond L = 6.</figcaption>
+  </figure>
+</section>
+
+<section class="slide">
+  <h2>The TP–MP relationship</h2>
+  <table>
+    <thead><tr><th class="lbl">When MP is…</th><th>TP does…</th><th>In Table 3.2</th></tr></thead>
+    <tbody>
+      <tr><td class="lbl">positive and <b>rising</b></td><td>rises at an <b>increasing</b> rate</td><td>L = 1 to 3</td></tr>
+      <tr><td class="lbl">positive but <b>falling</b></td><td>rises at a <b>decreasing</b> rate</td><td>L = 4 to 6</td></tr>
+      <tr><td class="lbl"><b>zero</b></td><td>is at its <b>maximum</b></td><td>just beyond L = 6</td></tr>
+      <tr><td class="lbl"><b>negative</b></td><td><b>falls</b></td><td>beyond that point</td></tr>
+    </tbody>
+  </table>
+  <div class="bridge box">
+    <span class="tag">You have seen this exact table before</span>
+    <p>In <b>Chapter 2</b>, for <b>Total Utility and Marginal Utility</b>. Swap the words and the
+    logic is untouched:</p>
+    <div class="grid2">
+      <div><p class="small"><b>Ch 2:</b> MU &gt; 0 → TU rises · MU = 0 → TU max · MU &lt; 0 → TU falls</p></div>
+      <div><p class="small"><b>Ch 3:</b> MP &gt; 0 → TP rises · MP = 0 → TP max · MP &lt; 0 → TP falls</p></div>
+    </div>
+    <p>This is not a coincidence and not a memory trick. <b>A total is the running sum of its
+    marginals</b> — so the marginal is the <i>rate of change</i> of the total. Whenever you add a
+    positive number the total grows; add zero and it stands still; add a negative and it shrinks.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The AP–MP relationship</h2>
+  <div class="grid2">
+    <div class="box defn">
+      <span class="tag">The rule</span>
+      <ul>
+        <li>When <b>MP &gt; AP</b>, AP is <b>rising</b></li>
+        <li>When <b>MP = AP</b>, AP is at its <b>maximum</b></li>
+        <li>When <b>MP &lt; AP</b>, AP is <b>falling</b></li>
+      </ul>
+      <p><b>MP cuts AP from above, at AP's maximum.</b></p>
+    </div>
+    <div class="box eg">
+      <span class="tag">The cricket analogy</span>
+      <p>Your batting <b>average</b> is 40. In the next innings — the <b>marginal</b> one —
+      you score:</p>
+      <p><b>90</b> → above your average → average <b>rises</b><br>
+      <b>40</b> → equal to it → average <b>unchanged</b><br>
+      <b>10</b> → below it → average <b>falls</b></p>
+      <p class="small">A new value pulls an average <i>towards itself</i>. Always.</p>
+    </div>
+  </div>
+  <div class="insight box">
+    <span class="tag">Why this matters far beyond this slide</span>
+    <p>This is a <b>purely arithmetic</b> fact about averages and marginals — nothing to do with
+    production. So it must hold everywhere the pair appears.</p>
+    <p>You will use it three more times in this book: <b>SMC cuts AVC at min AVC</b>,
+    <b>SMC cuts SAC at min SAC</b>, and <b>LRMC cuts LRAC at min LRAC</b>. One idea, four
+    applications.</p>
+    <p class="small"><b>Note the direction flips.</b> MP cuts AP at its <b>maximum</b> (from
+    above); MC cuts AC at its <b>minimum</b> (from below). The rule is the same — "marginal pulls
+    average towards itself" — but product curves are inverse-U and cost curves are U.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Check your understanding</h2>
+  <div class="qcard">
+    <span class="tag">Question 2 — NCERT Ex. 24</span>
+    <p>The marginal product schedule of labour is given below, and TP is zero at zero labour.
+    Calculate the <b>total</b> and <b>average</b> product schedules.</p>
+    <table>
+      <thead><tr><th>L</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
+      <tbody><tr><td class="lbl">MP<sub>L</sub></td><td>3</td><td>5</td><td>7</td><td>5</td><td>3</td><td>1</td></tr></tbody>
+    </table>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>TP = running sum of MP</b> &nbsp;·&nbsp; <b>AP = TP ÷ L</b></p>
+    <table>
+      <thead><tr><th>L</th><th>MP<sub>L</sub></th><th>TP<sub>L</sub></th><th>AP<sub>L</sub></th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>3</td><td class="hi2">3</td><td class="hi2">3.00</td></tr>
+        <tr><td>2</td><td>5</td><td class="hi2">8</td><td class="hi2">4.00</td></tr>
+        <tr><td>3</td><td>7</td><td class="hi2">15</td><td class="hi2">5.00</td></tr>
+        <tr><td>4</td><td>5</td><td class="hi2">20</td><td class="hi2">5.00</td></tr>
+        <tr><td>5</td><td>3</td><td class="hi2">23</td><td class="hi2">4.60</td></tr>
+        <tr><td>6</td><td>1</td><td class="hi2">24</td><td class="hi2">4.00</td></tr>
+      </tbody>
+    </table>
+    <p class="small"><b>Check the relationship holds:</b> MP peaks at L = 3, but AP peaks later —
+    it is <b>tied at its maximum of 5.00 at both L = 3 and L = 4</b>, and <b>MP = AP exactly at
+    L = 4</b>. For L = 2 and 3, MP &gt; AP and AP rises (at L = 1 they are equal, as they always
+    are for the first unit). From L = 5, MP &lt; AP and AP falls. Exactly as the rule predicts.</p>
+  </div>
+</section>
+
+<!-- ================= LAW OF VARIABLE PROPORTIONS ================= -->
+<section class="slide" data-section="3.4 Law of Variable Proportions">
+  <h2><span class="num">3.4</span>The Law of Variable Proportions</h2>
+  <div class="box defn">
+    <span class="tag">Definition — learn word for word</span>
+    <p>The <span class="term">Law of Variable Proportions</span> states that the marginal product
+    of a factor input <b>initially rises</b> with its employment level, but <b>after reaching a
+    certain level of employment it starts falling</b>.</p>
+  </div>
+  <div class="box defn">
+    <span class="tag">The same law, under a second name</span>
+    <p>NCERT gives this tendency <b>two names for one law</b>: "This tendency of the MP to first
+    increase and then fall is called the <span class="term">law of variable proportions</span>
+    <b>or</b> the <span class="term">law of diminishing marginal product</span>."</p>
+    <p>The glossary phrases the second name as: if we keep increasing the employment of an input
+    with other inputs fixed, then <b>eventually a point will be reached after which the marginal
+    product of that input will start falling</b>.</p>
+  </div>
+  <div class="warn box">
+    <span class="tag">Exam warning</span>
+    <p>These are <b>not two different laws</b>, and the second is <b>not</b> a narrower "falling
+    only" version. If a question asks "What is the law of diminishing marginal product?", your
+    answer should describe the <b>full rise-then-fall pattern</b>, exactly as for the law of
+    variable proportions. Describing only the falling phase risks an incomplete answer.</p>
+  </div>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Factor proportions</span> are the <b>ratio in which the two inputs are
+    combined</b> to produce output.</p>
+  </div>
+  <div class="warn box">
+    <span class="tag">Why the law only operates in the short run</span>
+    <p>It requires <b>one factor fixed while another varies</b> — that is what makes the
+    <i>proportions</i> change. In the long run all factors vary together, so the proportions can
+    be held constant, and this law does not apply. There we use <b>returns to scale</b> instead.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Why marginal product rises, then falls</h2>
+  <p class="lead">A farmer has <b>4 hectares</b> of land — fixed — and chooses how much labour to use.</p>
+  <div class="grid2">
+    <div class="box eg">
+      <span class="tag">Phase 1 · MP rising (L = 1 to 3)</span>
+      <p>With only <b>1 worker</b> there is <b>far too much land</b> for one person to cultivate.
+      The factor proportions are badly out of balance.</p>
+      <p>As workers are added, land per worker falls towards a sensible ratio. Specialisation
+      becomes possible. <b>Each extra worker adds proportionally more</b> — MP rises: 10, 14, 16.</p>
+    </div>
+    <div class="box warn">
+      <span class="tag">Phase 2 · MP falling (L = 4 onward)</span>
+      <p>When the <b>4th worker</b> is hired the land begins to get <b>crowded</b>. Each worker
+      now has insufficient land to work efficiently.</p>
+      <p>The output added by each additional worker is now proportionally <b>less</b> — MP falls:
+      10, 6, 1.</p>
+    </div>
+  </div>
+  <div class="insight box">
+    <span class="tag">The single sentence that explains the whole law</span>
+    <p>As you hold one factor fixed and keep increasing the other, <b>the factor proportions
+    change</b>. First they improve towards the ideal ratio — MP rises. Then they deteriorate past
+    it — MP falls.</p>
+    <p class="small"><b>The classic exam trap:</b> "MP falls because the extra workers are less
+    skilled." <b>Wrong.</b> All units of the variable factor are assumed <b>homogeneous</b> —
+    every worker is identical. MP falls because of the <b>changing ratio</b> to the fixed factor,
+    not because of any difference between the workers.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Challenge</h2>
+  <div class="challenge">
+    <span class="tag">Challenge — sections 3.3–3.4</span>
+    <p>In Table 3.2, the marginal product of the 6th worker is <b>+1</b> — still positive.
+    A student concludes: <i>"Since the 6th worker adds to total output, the farmer should
+    definitely hire him."</i></p>
+    <p>(a) Is total product still rising at L = 6?<br>
+    (b) Is average product rising or falling there?<br>
+    (c) Is the student's conclusion sound? What information is missing?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>(a) Yes.</b> MP₆ = +1 &gt; 0, so TP rises from 56 to 57. Output <i>is</i> higher with
+    six workers than with five.</p>
+    <p><b>(b) Falling.</b> AP goes 11.2 → 9.5. Consistent with the rule, since MP (1) is well
+    below AP (9.5), and a marginal below the average drags the average down.</p>
+    <p><b>(c) The conclusion does not follow — the missing information is cost.</b></p>
+    <div class="q">
+      <p>"Adds to output" answers a <b>technical</b> question.<br>
+      "Should hire" is an <b>economic</b> question, and it needs <b>prices</b>.</p>
+    </div>
+    <p>The 6th worker produces <b>1 extra unit</b>. Whether to hire him depends on whether that
+    one unit is worth more than his wage:</p>
+    <p>If output sells for <b>₹50</b> and the wage is <b>₹300</b>, the worker adds ₹50 of value
+    and costs ₹300. Hiring him <b>reduces profit by ₹250</b> — even though he raises output.</p>
+    <p><b>The deeper point:</b> a profit-maximising firm does <b>not</b> maximise output. Nothing
+    in this chapter tells you how much to produce — Chapter 3 only describes what is
+    <i>technically possible</i> and what it <i>costs</i>. The decision rule arrives in
+    <b>Chapter 4</b>, and it is not "produce the most" but <b>MR = MC</b> — or, for hiring a
+    factor, hire until <b>wage = value of marginal product</b>.</p>
+    <p class="small">Notice too that the student's logic would justify hiring workers right up to
+    the point where MP = 0 — maximum TP. A firm doing that would be pouring wages into workers
+    whose last unit of output is worth almost nothing.</p>
+  </div>
+</section>
+
+<!-- ================= RETURNS TO SCALE ================= -->
+<section class="slide" data-section="3.6 Returns to Scale">
+  <h2><span class="num">3.6</span>What if <i>all</i> inputs change together?</h2>
+  <div class="insight box">
+    <span class="tag">A different question entirely</span>
+    <p>The law of variable proportions asked: what happens when <b>one</b> input rises and the
+    factor proportions <b>change</b>?</p>
+    <p>Returns to scale asks: what happens when <b>all</b> inputs rise <b>in the same
+    proportion</b>, so factor proportions stay <b>constant</b>? This can only happen in the
+    <b>long run</b>.</p>
+  </div>
+  <div class="grid3">
+    <div class="card"><h4>Increasing returns (IRS)</h4>
+      <p>A proportional increase in all inputs raises output by a <b>larger</b> proportion.</p>
+      <p class="small">Double inputs → <b>more</b> than double output.</p></div>
+    <div class="card"><h4>Constant returns (CRS)</h4>
+      <p>A proportional increase in all inputs raises output by the <b>same</b> proportion.</p>
+      <p class="small">Double inputs → <b>exactly</b> double output.</p></div>
+    <div class="card"><h4>Decreasing returns (DRS)</h4>
+      <p>A proportional increase in all inputs raises output by a <b>smaller</b> proportion.</p>
+      <p class="small">Double inputs → <b>less</b> than double output.</p></div>
+  </div>
+  <div class="box defn">
+    <span class="tag">Formally</span>
+    <p>For a production function <code>q = f(x₁, x₂)</code>, scale both inputs by
+    <code>t &gt; 1</code>:</p>
+    <p><b>CRS:</b> <code>f(tx₁, tx₂) = t · f(x₁, x₂)</code><br>
+    <b>IRS:</b> <code>f(tx₁, tx₂) &gt; t · f(x₁, x₂)</code><br>
+    <b>DRS:</b> <code>f(tx₁, tx₂) &lt; t · f(x₁, x₂)</code></p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Returns to scale in Table 3.1</h2>
+  <table>
+    <thead><tr><th>From (L, K)</th><th>Output</th><th>To (L, K)</th><th>Output</th><th>Inputs ×</th><th>Output ×</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr><td>(1, 1)</td><td>1</td><td>(2, 2)</td><td>10</td><td>2</td><td>10</td><td class="hi">IRS</td></tr>
+      <tr><td>(2, 2)</td><td>10</td><td>(4, 4)</td><td>50</td><td>2</td><td>5</td><td class="hi">IRS</td></tr>
+      <tr><td>(3, 3)</td><td>30</td><td>(6, 6)</td><td>60</td><td>2</td><td>2</td><td class="hi2">CRS</td></tr>
+    </tbody>
+  </table>
+  <div class="box eg">
+    <span class="tag">The Cobb–Douglas shortcut</span>
+    <p>For <code>q = x₁<sup>α</sup> · x₂<sup>β</sup></code>, scaling both inputs by <i>t</i> gives
+    <code>t<sup>α+β</sup></code> times the output. So the exponents decide everything:</p>
+    <p><b>α + β = 1</b> → CRS &nbsp;·&nbsp; <b>α + β &gt; 1</b> → IRS &nbsp;·&nbsp;
+    <b>α + β &lt; 1</b> → DRS</p>
+    <p class="small">Example: <code>q = 5L<sup>½</sup>K<sup>½</sup></code> has α + β = 1 → <b>CRS</b>.
+    <code>q = 2L²K²</code> has α + β = 4 → <b>IRS</b>.</p>
+  </div>
+  <div class="warn box">
+    <span class="tag">Do not confuse the two laws</span>
+    <table>
+      <thead><tr><th class="lbl">Basis</th><th>Law of variable proportions</th><th>Returns to scale</th></tr></thead>
+      <tbody>
+        <tr><td class="lbl">Which inputs change</td><td><b>One</b> input</td><td><b>All</b> inputs</td></tr>
+        <tr><td class="lbl">Factor proportions</td><td><b>Change</b></td><td>Stay <b>constant</b></td></tr>
+        <tr><td class="lbl">Time period</td><td><b>Short run</b></td><td><b>Long run</b></td></tr>
+        <tr><td class="lbl">Measured by</td><td>MP of the variable factor</td><td>Proportional change in output</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Challenge</h2>
+  <div class="challenge">
+    <span class="tag">Challenge — section 3.6</span>
+    <p>A production function shows <b>increasing returns to scale</b> throughout.</p>
+    <p>A student argues: <i>"If doubling all inputs more than doubles output, then the law of
+    diminishing marginal product must be false for this firm — output is rising faster than
+    inputs, so marginal product cannot be falling."</i></p>
+    <p>Show that the student is confusing two different things, using
+    <code>q = 2L²K²</code> as your example.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>The two laws answer different questions and are perfectly compatible.</b> One holds an
+    input fixed; the other does not.</p>
+    <p><b>Returns to scale — vary both.</b> For <code>q = 2L²K²</code>, α + β = 4, so scaling both
+    inputs by <i>t</i> multiplies output by <code>t⁴</code>. Doubling inputs gives <b>16 times</b>
+    the output. Strong IRS. ✓</p>
+    <p><b>Marginal product — hold K fixed.</b> Set <b>K = 1</b>, so <code>q = 2L²</code>:</p>
+    <table>
+      <thead><tr><th>L</th><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead>
+      <tbody>
+        <tr><td class="lbl">q = 2L²</td><td>2</td><td>8</td><td>18</td><td>32</td></tr>
+        <tr><td class="lbl">MP<sub>L</sub></td><td>2</td><td>6</td><td>10</td><td>14</td></tr>
+      </tbody>
+    </table>
+    <p>Here MP is <b>rising</b>, not falling — so for <i>this particular</i> function the
+    diminishing phase never arrives.</p>
+    <div class="q">
+      <p><b>But that does not vindicate the student's reasoning.</b> He inferred "MP cannot fall"
+      <i>from</i> IRS. That inference is invalid, even though the conclusion happens to hold here.</p>
+    </div>
+    <p><b>The counter-example that settles it:</b> take <code>q = L<sup>½</sup>K<sup>½</sup></code>
+    scaled up — say <code>q = L<sup>0.8</sup>K<sup>0.8</sup></code>. Then α + β = 1.6 &gt; 1, so
+    <b>IRS holds</b>. But hold K fixed at 1 and <code>q = L<sup>0.8</sup></code>, whose marginal
+    product <b>falls</b> as L rises (each extra unit of L adds less than the last).</p>
+    <p><b>So a firm can display IRS and diminishing MP simultaneously.</b> They are not in
+    conflict because:</p>
+    <p><b>Returns to scale</b> is about the <b>long run</b>, all inputs moving together, factor
+    proportions <b>constant</b>.<br>
+    <b>Diminishing MP</b> is about the <b>short run</b>, one input moving alone, factor proportions
+    <b>changing</b>.</p>
+    <p class="small"><b>The intuition:</b> the reason MP eventually falls is <i>crowding</i> —
+    too much labour per unit of fixed land. Scaling <i>everything</i> up adds land as well as
+    labour, so no crowding ever occurs. Remove the fixed factor and you remove the cause.</p>
+  </div>
+</section>
+
+<!-- ================= SHORT RUN COSTS ================= -->
+<section class="slide" data-section="3.7.1 Short Run Costs">
+  <h2><span class="num">3.7</span>From production to cost</h2>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p>The <span class="term">cost function</span> describes, for every level of output, the
+    <b>minimum cost</b> of producing it, given the prices of factors and the technology.</p>
+  </div>
+  <div class="insight box">
+    <span class="tag">Where the word "minimum" comes from</span>
+    <p>A given output can usually be produced by <b>many</b> input combinations. From Table 3.1,
+    50 units come from (6L, 3K), (4L, 4K) or (3L, 6K).</p>
+    <p>With input prices given, the firm picks the <b>least expensive</b> of them. So for every
+    level of output the firm chooses the <b>least-cost input combination</b> — and the cost
+    function records that cost.</p>
+  </div>
+  <div class="bridge box">
+    <span class="tag">This answers Chapter 1's second central problem</span>
+    <p>"<b>How</b> to produce?" — choose the technique that produces the desired output at
+    <b>least cost</b>, given factor prices. Chapter 1 stated it in words; this is the same idea
+    with a name and a formula.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The three total cost concepts</h2>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Total Fixed Cost (TFC)</span> is the cost a firm incurs to employ the
+    <b>fixed</b> inputs. It <b>does not change</b> with the level of output — it is incurred even
+    at zero output.</p>
+    <p class="small">Rent on a factory, insurance, interest on a loan for machinery.</p>
+  </div>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Total Variable Cost (TVC)</span> is the cost a firm incurs to employ the
+    <b>variable</b> inputs. It <b>rises as output rises</b>, and is <b>zero at zero output</b>.</p>
+    <p class="small">Wages of casual labour, raw materials, power.</p>
+  </div>
+  <div class="formula">TC = TFC + TVC &nbsp;&nbsp;<span class="small">…(3.6)</span></div>
+  <div class="warn box">
+    <span class="tag">The two facts that let you complete any cost table</span>
+    <p><b>At q = 0: TVC = 0, so TC = TFC.</b> This is how you find TFC when a question gives you
+    only a TC schedule — read off the value at zero output.</p>
+    <p><b>TFC is a horizontal line; TVC and TC start apart and stay a constant distance apart</b>
+    — that vertical gap <i>is</i> TFC, at every level of output.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The full cost schedule</h2>
+  <table>
+    <caption>Table 3.3 — All seven cost concepts (TFC = ₹20)</caption>
+    <thead>
+      <tr><th>q</th><th>TFC</th><th>TVC</th><th>TC</th><th>AFC</th><th>AVC</th><th>SAC</th><th>SMC</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>0</td><td>20</td><td>0</td><td class="hi">20</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>1</td><td>20</td><td>10</td><td>30</td><td>20</td><td>10</td><td>30</td><td>10</td></tr>
+      <tr><td>2</td><td>20</td><td>18</td><td>38</td><td>10</td><td>9</td><td>19</td><td>8</td></tr>
+      <tr><td>3</td><td>20</td><td>24</td><td>44</td><td>6.67</td><td>8</td><td>14.67</td><td>6</td></tr>
+      <tr><td>4</td><td>20</td><td>29</td><td>49</td><td>5</td><td>7.25</td><td>12.25</td><td>5</td></tr>
+      <tr><td>5</td><td>20</td><td>33</td><td>53</td><td>4</td><td>6.6</td><td>10.6</td><td class="hi2">4</td></tr>
+      <tr><td>6</td><td>20</td><td>39</td><td>59</td><td>3.33</td><td class="hi">6.5</td><td>9.83</td><td>6</td></tr>
+      <tr><td>7</td><td>20</td><td>47</td><td>67</td><td>2.86</td><td>6.71</td><td class="hi">9.57</td><td>8</td></tr>
+      <tr><td>8</td><td>20</td><td>60</td><td>80</td><td>2.5</td><td>7.5</td><td>10</td><td>13</td></tr>
+      <tr><td>9</td><td>20</td><td>75</td><td>95</td><td>2.22</td><td>8.33</td><td>10.56</td><td>15</td></tr>
+      <tr><td>10</td><td>20</td><td>95</td><td>115</td><td>2</td><td>9.5</td><td>11.5</td><td>20</td></tr>
+    </tbody>
+  </table>
+  <div class="grid3">
+    <div class="card"><h4>AFC = TFC / q</h4><p>Falls continuously — a fixed number spread over
+    more units.</p></div>
+    <div class="card"><h4>AVC = TVC / q &nbsp;·&nbsp; SAC = TC / q</h4>
+      <p><b>SAC = AVC + AFC</b> &nbsp;…(3.10)</p></div>
+    <div class="card"><h4>SMC = ΔTC / Δq</h4>
+      <p>Also <b>= ΔTVC / Δq</b>, since TFC never changes.</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Total cost curves</h2>
+  <figure>
+    <svg viewBox="0 0 520 400" role="img" aria-label="Total fixed cost, total variable cost and total cost curves plotted from Table 3.3">
+      <line class="axis" x1="60" y1="340" x2="60" y2="40"/>
+      <line class="axis" x1="60" y1="340" x2="490" y2="340"/>
+      <text class="lab" x="270" y="386" text-anchor="middle">OUTPUT (units)</text>
+      <text class="lab" x="20" y="190" text-anchor="middle" transform="rotate(-90 20 190)">COST (₹)</text>
+      <text x="52" y="345" text-anchor="end">0</text>
+      <text x="52" y="297" text-anchor="end">20</text>
+      <text x="52" y="249" text-anchor="end">40</text>
+      <text x="52" y="201" text-anchor="end">60</text>
+      <text x="52" y="153" text-anchor="end">80</text>
+      <text x="52" y="105" text-anchor="end">100</text>
+
+      <!-- TFC -->
+      <line class="curve c-rose" x1="60" y1="292" x2="440" y2="292"/>
+      <text class="lab" x="446" y="297" style="fill:#b02522">TFC</text>
+
+      <!-- TVC -->
+      <path class="curve c-teal"
+            d="M60,340 C66.33,336 85.33,323.2 98,316 C110.7,308.8 123.3,302.4 136,296.8
+                       C148.7,291.2 161.3,286.8 174,282.4 C186.7,278 199.3,274 212,270.4
+                       C224.7,266.8 237.3,264.8 250,260.8 C262.7,256.8 275.3,252 288,246.4
+                       C300.7,240.8 313.3,235.6 326,227.2 C338.7,218.8 351.3,207.2 364,196
+                       C376.7,184.8 389.3,174 402,160 C414.7,146 433.7,120 440,112"/>
+      <text class="lab" x="446" y="112" style="fill:#586600">TVC</text>
+
+      <!-- TC -->
+      <path class="curve c-amber"
+            d="M60,292 C66.33,288 85.33,275.2 98,268 C110.7,260.8 123.3,254.4 136,248.8
+                       C148.7,243.2 161.3,238.8 174,234.4 C186.7,230 199.3,226 212,222.4
+                       C224.7,218.8 237.3,216.8 250,212.8 C262.7,208.8 275.3,204 288,198.4
+                       C300.7,192.8 313.3,187.6 326,179.2 C338.7,170.8 351.3,159.2 364,148
+                       C376.7,136.8 389.3,126 402,112 C414.7,98 433.7,72 440,64"/>
+      <text class="lab" x="446" y="64" style="fill:#755900">TC</text>
+
+      <!-- vertical gap = TFC -->
+      <line class="dash" stroke="#5055a0" x1="326" y1="179.2" x2="326" y2="227.2"/>
+      <line class="dash" stroke="#5055a0" x1="174" y1="234.4" x2="174" y2="282.4"/>
+      <text x="334" y="208" style="fill:#5055a0">gap = TFC = ₹20</text>
+      <text x="182" y="262" style="fill:#5055a0">same gap</text>
+
+      <circle class="pt" cx="60" cy="292" r="6"/>
+      <text x="70" y="284" style="fill:#755900">at q = 0, TC = TFC = 20</text>
+      <circle cx="60" cy="340" r="6" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+      <text x="70" y="358" style="fill:#586600">TVC starts at 0</text>
+    </svg>
+    <figcaption>Plotted from Table 3.3. <b>TC and TVC are parallel</b> — the vertical distance
+    between them is TFC, constant at ₹20 for every level of output.</figcaption>
+  </figure>
+</section>
+
+<section class="slide">
+  <h2>Average fixed cost — a rectangular hyperbola</h2>
+  <div class="split">
+    <figure>
+      <svg viewBox="0 0 470 380" role="img" aria-label="Average fixed cost curve falling continuously as a rectangular hyperbola">
+        <line class="axis" x1="60" y1="330" x2="60" y2="40"/>
+        <line class="axis" x1="60" y1="330" x2="450" y2="330"/>
+        <text class="lab" x="255" y="372" text-anchor="middle">OUTPUT (units)</text>
+        <text class="lab" x="20" y="185" text-anchor="middle" transform="rotate(-90 20 185)">AFC (₹)</text>
+        <text x="52" y="335" text-anchor="end">0</text>
+
+        <path class="curve c-blue"
+              d="M98,80 C104.3,101.7 123.3,181.1 136,210 C148.7,238.9 161.3,242.5 174,253.3
+                        C186.7,264.2 199.3,269.2 212,275 C224.7,280.8 237.3,284.4 250,288
+                        C262.7,291.6 275.3,294.2 288,296.7 C300.7,299.1 313.3,301.1 326,302.9
+                        C338.7,304.7 351.3,306.1 364,307.5 C376.7,308.9 389.3,310 402,311.1
+                        C414.7,312.2 433.7,313.5 440,314"/>
+        <text class="lab" x="446" y="308" style="fill:#175f90">AFC</text>
+
+        <!-- equal-area rectangles -->
+        <rect x="60" y="80"  width="38"  height="250" fill="rgba(181,137,0,0.16)" stroke="#a17a00" stroke-dasharray="4 4"/>
+        <rect x="60" y="275" width="152" height="55"  fill="rgba(181,137,0,0.16)" stroke="#a17a00" stroke-dasharray="4 4"/>
+        <text x="106" y="70" style="fill:#755900">q=1, AFC=20</text>
+        <text x="220" y="300" style="fill:#755900">q=4, AFC=5</text>
+
+        <text x="250" y="140" style="fill:#5055a0">both rectangles have</text>
+        <text x="250" y="160" style="fill:#5055a0">area = TFC = ₹20</text>
+        <text x="250" y="200" style="fill:#5b6966">approaches, but never</text>
+        <text x="250" y="220" style="fill:#5b6966">touches, the axis</text>
+      </svg>
+    </figure>
+    <div>
+      <div class="box defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Average Fixed Cost (AFC)</span> is total fixed cost per unit of
+        output: <code>AFC = TFC / q</code> &nbsp;…(3.9)</p>
+      </div>
+      <div class="box insight">
+        <span class="tag">Why it is a rectangular hyperbola</span>
+        <p>TFC is a <b>constant</b>. So <code>AFC × q = TFC</code> always — the product of the two
+        axes is fixed. That is exactly the equation <code>xy = c</code> of a
+        <b>rectangular hyperbola</b>.</p>
+        <p>Geometrically: the <b>area of the rectangle</b> under any point on the AFC curve equals
+        TFC, whichever point you pick.</p>
+      </div>
+      <div class="box warn">
+        <span class="tag">Two consequences</span>
+        <p><b>AFC falls continuously</b> and never rises — the same ₹20 spread over more and more
+        units.</p>
+        <p><b>It never touches the horizontal axis.</b> As output → ∞, AFC → 0, but TFC is still
+        being paid, so AFC stays strictly positive.</p>
+      </div>
+      <div class="box bridge">
+        <span class="tag">Seen before</span>
+        <p>The <b>unitary elastic demand curve</b> in Chapter 2 was also a rectangular hyperbola —
+        there, <code>p × q</code> was constant. Same curve, different variables.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The short-run cost family</h2>
+  <figure>
+    <svg viewBox="0 0 520 400" role="img" aria-label="Short run marginal cost, average variable cost and short run average cost curves plotted from Table 3.3">
+      <line class="axis" x1="60" y1="340" x2="60" y2="30"/>
+      <line class="axis" x1="60" y1="340" x2="490" y2="340"/>
+      <text class="lab" x="270" y="386" text-anchor="middle">OUTPUT (units)</text>
+      <text class="lab" x="20" y="190" text-anchor="middle" transform="rotate(-90 20 190)">COST per unit (₹)</text>
+      <text x="52" y="345" text-anchor="end">0</text>
+      <text x="52" y="245" text-anchor="end">10</text>
+      <text x="52" y="145" text-anchor="end">20</text>
+      <text x="52" y="45"  text-anchor="end">30</text>
+
+      <!-- SAC -->
+      <path class="curve c-amber"
+            d="M98,40 C104.3,58.33 123.3,124.4 136,150 C148.7,175.6 161.3,182.1 174,193.3
+                      C186.7,204.6 199.3,210.7 212,217.5 C224.7,224.3 237.3,230 250,234
+                      C262.7,238 275.3,240 288,241.7 C300.7,241.7 313.3,244.3 326,244.3
+                      C338.7,244 351.3,241.6 364,240 C376.7,238.4 389.3,236.9 402,234.4
+                      C414.7,231.9 433.7,226.6 440,225"/>
+      <!-- AVC -->
+      <path class="curve c-teal"
+            d="M98,240 C104.3,241.7 123.3,246.7 136,250 C148.7,253.3 161.3,257.1 174,260
+                      C186.7,262.9 199.3,265.2 212,267.5 C224.7,269.8 237.3,272.8 250,274
+                      C262.7,274 275.3,275 288,275 C300.7,274.8 313.3,274.5 326,272.9
+                      C338.7,271.2 351.3,267.7 364,265 C376.7,262.3 389.3,260 402,256.7
+                      C414.7,253.3 433.7,246.9 440,245"/>
+      <!-- SMC -->
+      <path class="curve c-blue"
+            d="M98,240 C104.3,243.3 123.3,253.3 136,260 C148.7,266.7 161.3,275 174,280
+                      C186.7,285 199.3,286.7 212,290 C224.7,290 237.3,300 250,300
+                      C262.7,298.3 275.3,286.7 288,280 C300.7,273.3 313.3,271.7 326,260
+                      C338.7,248.3 351.3,221.7 364,210 C376.7,198.3 389.3,201.7 402,190
+                      C414.7,178.3 433.7,148.3 440,140"/>
+
+      <text class="lab" x="446" y="222" style="fill:#755900">SAC</text>
+      <text class="lab" x="446" y="248" style="fill:#586600">AVC</text>
+      <text class="lab" x="446" y="136" style="fill:#175f90">SMC</text>
+
+      <!-- min AVC at q=6 -->
+      <circle cx="288" cy="275" r="8" fill="none" stroke="#748500" stroke-width="3"/>
+      <line class="dash" stroke="#748500" x1="288" y1="275" x2="288" y2="340"/>
+      <text x="288" y="360" text-anchor="middle" style="fill:#586600">q=6</text>
+      <text x="196" y="312" style="fill:#586600">min AVC = 6.5</text>
+
+      <!-- min SAC at q=7 -->
+      <circle cx="326" cy="244.3" r="8" fill="none" stroke="#a17a00" stroke-width="3"/>
+      <line class="dash" stroke="#a17a00" x1="326" y1="244.3" x2="326" y2="340"/>
+      <text x="330" y="360" text-anchor="middle" style="fill:#755900">q=7</text>
+      <text x="336" y="212" style="fill:#755900">min SAC = 9.57</text>
+
+      <!-- AFC gap -->
+      <line class="dash" stroke="#5055a0" x1="212" y1="217.5" x2="212" y2="267.5"/>
+      <text x="120" y="200" style="fill:#5055a0">vertical gap</text>
+      <text x="120" y="218" style="fill:#5055a0">= AFC (shrinking)</text>
+    </svg>
+    <figcaption>All three plotted from Table 3.3. <b>SMC cuts AVC from below at min AVC</b> and
+    <b>cuts SAC from below at min SAC</b>. On this discrete data AVC bottoms at q = 6 and SAC at
+    q = 7, and the actual crossings fall <i>between</i> whole units (SMC₆ = 6 &lt; AVC₆ = 6.5, but
+    SMC₇ = 8 &gt; AVC₇ = 6.71). For smooth curves, minimum SAC always lies to the <b>right</b> of
+    minimum AVC.</figcaption>
+  </figure>
+</section>
+
+<section class="slide">
+  <h2>Why each curve has the shape it has</h2>
+  <div class="grid2">
+    <div class="box defn">
+      <span class="tag">SMC is U-shaped</span>
+      <p>Straight from the <b>law of variable proportions</b>. Initially MP <b>rises</b>, so each
+      extra unit of output needs <b>less and less</b> of the variable factor — with the factor
+      price given, SMC <b>falls</b>.</p>
+      <p>After a point MP <b>falls</b>, so each extra unit needs <b>more and more</b> of the
+      factor — SMC <b>rises</b>.</p>
+      <p class="small"><b>SMC is the mirror image of MP.</b> Where MP peaks, SMC bottoms out.</p>
+    </div>
+    <div class="box defn">
+      <span class="tag">AVC is U-shaped</span>
+      <p>AVC is the <b>average of all the marginal costs</b> up to that output. While SMC is below
+      AVC it drags AVC down; once SMC rises above AVC it pulls AVC up.</p>
+      <p class="small"><b>AVC mirrors AP</b>, just as SMC mirrors MP.</p>
+    </div>
+  </div>
+  <div class="box defn">
+    <span class="tag">SAC is U-shaped — and its minimum is to the right of AVC's</span>
+    <p><code>SAC = AVC + AFC</code>. Initially <b>both</b> components fall, so SAC falls.</p>
+    <p>Past min AVC, AVC starts <b>rising</b> while AFC is still <b>falling</b>. For a while the
+    fall in AFC <b>outweighs</b> the rise in AVC, so SAC keeps falling. Only when the rise in AVC
+    finally exceeds the fall in AFC does SAC turn upward.</p>
+    <p><b>That lag is exactly why min SAC (q = 7) lies to the right of min AVC (q = 6).</b></p>
+  </div>
+  <div class="insight box">
+    <span class="tag">Why SMC cuts both averages at their minimum</span>
+    <p>The batting-average rule again. <b>While SMC &lt; average, the average falls; while SMC &gt;
+    average, the average rises.</b> So the average can only be at its <b>lowest</b> at the moment
+    SMC crosses it — cutting it <b>from below</b>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Check your understanding</h2>
+  <div class="qcard">
+    <span class="tag">Question 3 — NCERT Ex. 26</span>
+    <p>A firm's total cost schedule is given. The <b>average fixed cost at 4 units is ₹5</b>.
+    Find TFC, TVC, AFC, AVC, SAC and SMC.</p>
+    <table>
+      <thead><tr><th>Q</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
+      <tbody><tr><td class="lbl">TC</td><td>50</td><td>65</td><td>75</td><td>95</td><td>130</td><td>185</td></tr></tbody>
+    </table>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>Step 1 — recover TFC.</b> AFC = TFC / q, so at q = 4:
+    <code>5 = TFC / 4</code> → <b>TFC = ₹20</b> at every level of output.</p>
+    <p><b>Step 2 — TVC = TC − TFC</b>, then divide through.</p>
+    <table>
+      <thead><tr><th>Q</th><th>TC</th><th>TFC</th><th>TVC</th><th>AFC</th><th>AVC</th><th>SAC</th><th>SMC</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>50</td><td>20</td><td>30</td><td>20</td><td>30</td><td>50</td><td>—</td></tr>
+        <tr><td>2</td><td>65</td><td>20</td><td>45</td><td>10</td><td>22.5</td><td>32.5</td><td>15</td></tr>
+        <tr><td>3</td><td>75</td><td>20</td><td>55</td><td>6.67</td><td>18.33</td><td class="hi2">25</td><td class="hi2">10</td></tr>
+        <tr><td>4</td><td>95</td><td>20</td><td>75</td><td>5</td><td class="hi2">18.75</td><td>23.75</td><td>20</td></tr>
+        <tr><td>5</td><td>130</td><td>20</td><td>110</td><td>4</td><td>22</td><td>26</td><td>35</td></tr>
+        <tr><td>6</td><td>185</td><td>20</td><td>165</td><td>3.33</td><td>27.5</td><td>30.83</td><td>55</td></tr>
+      </tbody>
+    </table>
+    <p class="small"><b>Sanity checks:</b> AVC + AFC = SAC throughout (e.g. at q = 4:
+    18.75 + 5 = 23.75 ✓). AVC bottoms at q = 3 (18.33) and SAC bottoms at q = 4 (23.75) — SAC's
+    minimum to the <b>right</b> of AVC's, as it must be. SMC rises past both minima. ✓</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Challenge</h2>
+  <div class="challenge">
+    <span class="tag">Challenge — section 3.7.1</span>
+    <p>In Table 3.3, look at output <b>q = 7</b>: SAC is at its minimum of ₹9.57.</p>
+    <p>A student says: <i>"Minimum average cost means cost is lowest there, so the firm should
+    always produce 7 units. Producing 8 units is wasteful because average cost rises to ₹10."</i></p>
+    <p>(a) Is it true that producing 8 units costs the firm more <b>in total</b> than 7?<br>
+    (b) Is the student's advice correct? Under what circumstance would producing 8 be better?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>(a) Yes in total, but that is not the point.</b> TC rises from ₹67 to ₹80. Every extra
+    unit costs <i>something</i> — total cost rises at <b>every</b> output level, on both sides of
+    min SAC. That is true of the 2nd unit as much as the 8th, so it cannot by itself be an
+    argument against producing more.</p>
+    <p><b>(b) The advice is wrong. It confuses minimising cost with maximising profit.</b></p>
+    <div class="q">
+      <p>Minimum average cost is the point of greatest <b>technical efficiency</b> — most output
+      per rupee. It is <b>not</b> the point of greatest <b>profit</b>.</p>
+    </div>
+    <p><b>The circumstance that decides it is the price.</b> The 8th unit costs
+    <b>SMC = ₹13</b> to produce.</p>
+    <p>If the good sells for <b>₹20</b>, the 8th unit brings in ₹20 and costs ₹13 — it adds
+    <b>₹7 to profit</b>. Refusing to produce it, to keep average cost "low", would <b>throw away
+    ₹7</b>. The firm should certainly produce it, and consider the 9th too (SMC = ₹15, still below
+    ₹20).</p>
+    <p>If the good sells for <b>₹10</b>, the 8th unit costs ₹13 and earns ₹10 — it
+    <b>subtracts ₹3</b>. Now the firm should stop earlier.</p>
+    <p><b>So the answer is not a quantity at all until you are told the price.</b> This is precisely
+    the gap Chapter 4 fills, with the rule <b>P = MC</b>: produce every unit whose marginal cost
+    is covered by the price, and stop at the one where they are equal.</p>
+    <p class="small"><b>Where minimum SAC does matter:</b> it is the <b>break-even point</b> — the
+    lowest price at which the firm can cover all its costs. And <b>minimum AVC</b> is the
+    <b>shut-down point</b>. Both are landmarks on the supply curve, but neither is a target output.</p>
+  </div>
+</section>
+
+<!-- ================= LONG RUN COSTS ================= -->
+<section class="slide" data-section="3.7.2 Long Run Costs">
+  <h2><span class="num">3.7.2</span>Long run costs</h2>
+  <div class="insight box">
+    <span class="tag">What changes in the long run</span>
+    <p><b>All inputs are variable, so there are no fixed costs.</b> Consequently
+    <b>TC and TVC coincide</b>, and there is no AFC to speak of.</p>
+  </div>
+  <div class="grid2">
+    <div class="box defn">
+      <span class="tag">Definition</span>
+      <p><span class="term">Long Run Average Cost (LRAC)</span> is cost per unit of output in the
+      long run: <code>LRAC = TC / q</code> …(3.13)</p>
+    </div>
+    <div class="box defn">
+      <span class="tag">Definition</span>
+      <p><span class="term">Long Run Marginal Cost (LRMC)</span> is the change in total cost per
+      unit change in output: <code>LRMC = TC(q₁) − TC(q₁−1)</code> …(3.14)</p>
+    </div>
+  </div>
+  <div class="box defn">
+    <span class="tag">Where the U-shape comes from — returns to scale, not variable proportions</span>
+    <table>
+      <thead><tr><th class="lbl">Phase</th><th>To raise output by a given %, inputs must rise by…</th><th>LRAC</th></tr></thead>
+      <tbody>
+        <tr><td class="lbl"><b>IRS</b></td><td><b>less</b> than that % → cost rises less than output</td><td><b>falls</b></td></tr>
+        <tr><td class="lbl"><b>CRS</b></td><td>the <b>same</b> % → cost rises in step with output</td><td><b>constant</b> (its minimum)</td></tr>
+        <tr><td class="lbl"><b>DRS</b></td><td><b>more</b> than that % → cost rises faster than output</td><td><b>rises</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>LRAC and LRMC</h2>
+  <figure>
+    <svg viewBox="0 0 520 380" role="img" aria-label="U-shaped long run average cost and long run marginal cost curves, with LRMC cutting LRAC at its minimum">
+      <line class="axis" x1="60" y1="320" x2="60" y2="30"/>
+      <line class="axis" x1="60" y1="320" x2="490" y2="320"/>
+      <text class="lab" x="270" y="364" text-anchor="middle">OUTPUT</text>
+      <text class="lab" x="20" y="175" text-anchor="middle" transform="rotate(-90 20 175)">COST per unit</text>
+      <text x="52" y="325" text-anchor="end">O</text>
+
+      <!-- LRAC -->
+      <path class="curve c-amber"
+            d="M92,90 C130,148 175,196 230,214 C285,232 340,208 390,158 C420,128 442,102 462,80"/>
+      <!-- LRMC -->
+      <path class="curve c-blue"
+            d="M88,150 C120,208 158,250 196,258 C240,266 278,238 312,196 C348,152 384,110 414,74"/>
+
+      <text class="lab" x="466" y="70" style="fill:#755900">LRAC</text>
+      <text class="lab" x="418" y="62" style="fill:#175f90">LRMC</text>
+
+      <!-- min LRAC -->
+      <circle cx="248" cy="216" r="9" fill="none" stroke="#b02522" stroke-width="3"/>
+      <line class="dash" stroke="#b02522" x1="248" y1="216" x2="248" y2="320"/>
+      <text x="248" y="342" text-anchor="middle" style="fill:#b02522">q₁</text>
+      <text x="258" y="248" style="fill:#b02522">LRMC cuts LRAC from</text>
+      <text x="258" y="266" style="fill:#b02522">below, at min LRAC</text>
+
+      <!-- phase labels -->
+      <text x="120" y="300" style="fill:#586600">IRS</text>
+      <text x="240" y="300" style="fill:#586600">CRS</text>
+      <text x="370" y="300" style="fill:#586600">DRS</text>
+      <line class="dash" stroke="#93a1a1" x1="180" y1="285" x2="180" y2="320"/>
+      <line class="dash" stroke="#93a1a1" x1="310" y1="285" x2="310" y2="320"/>
+      <text x="270" y="60" text-anchor="middle" style="fill:#5b6966">LRAC falls under IRS, is flat at CRS, rises under DRS</text>
+    </svg>
+    <figcaption>Both curves are U-shaped. LRMC lies <b>below</b> LRAC while LRAC falls, and
+    <b>above</b> it while LRAC rises — so it must cut LRAC at its minimum.</figcaption>
+  </figure>
+  <div class="insight box">
+    <span class="tag">The same rule, for the fourth time</span>
+    <p>MP cuts AP at max AP · SMC cuts AVC at min AVC · SMC cuts SAC at min SAC ·
+    <b>LRMC cuts LRAC at min LRAC</b>. If you learned the batting average once, you now have all
+    four for free.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Challenge</h2>
+  <div class="challenge">
+    <span class="tag">Challenge — section 3.7.2</span>
+    <p>Explain why the following statement must be <b>true</b> for any firm:</p>
+    <p><i>"At every level of output, long-run average cost is less than or equal to short-run
+    average cost — and they are equal at only one output level for a given plant size."</i></p>
+    <p>Then use this to explain why a question asking "can there be fixed costs in the long run?"
+    has the answer it does.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>The argument is about freedom of choice, not about arithmetic.</b></p>
+    <p>In the <b>short run</b> the firm is stuck with whatever plant it happens to have. To produce
+    any output it must use <b>that</b> plant, however ill-suited.</p>
+    <p>In the <b>long run</b> the firm may choose <b>any</b> plant size — including the one it is
+    currently stuck with. So the long-run choice set <b>contains</b> the short-run choice set.</p>
+    <div class="q">
+      <p>Whenever you choose from a <b>larger menu</b>, you can never do <b>worse</b>. At worst you
+      pick the same option you would have been forced into.</p>
+      <p>Therefore <b>LRAC ≤ SAC</b> at every output.</p>
+    </div>
+    <p><b>When are they equal?</b> At exactly the output for which that plant is the
+    <b>optimal</b> one. There, the long-run choice and the short-run constraint happen to coincide,
+    so the curves touch. At every other output the firm would have preferred a different plant, so
+    LRAC is strictly below. This is why <b>LRAC is the "envelope"</b> of all the short-run
+    average cost curves — touching each at one point and lying below it everywhere else.</p>
+    <p><b>Now the fixed-cost question.</b> "Can there be fixed costs in the long run?"
+    <b>No — and this is why.</b> A cost is fixed precisely because the firm <i>cannot vary the
+    input causing it</i>. But the long run is <b>defined</b> as the period in which all inputs can
+    be varied. So a fixed cost in the long run would be a contradiction in terms: an input that is
+    simultaneously variable (long run) and not variable (fixed).</p>
+    <p class="small"><b>Both answers come from the same source.</b> The long run is not "a lot of
+    time" — it is <b>the absence of constraints</b>. That absence is what removes fixed costs, and
+    it is what guarantees LRAC can never exceed SAC. One idea, two results.</p>
+  </div>
+</section>
+
+<!-- ================= WRAP ================= -->
+<section class="slide" data-section="Recap and Exercises">
+  <h2>Chapter 3 in one page</h2>
+  <figure>
+    <svg viewBox="0 0 940 250" role="img" aria-label="Logical flow of Chapter 3 from production function to cost curves to the supply curve">
+      <defs>
+        <marker id="c3f" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+          <path d="M0,0 L10,4 L0,8 z" fill="#a17a00"/>
+        </marker>
+      </defs>
+      <rect x="14" y="80" width="180" height="80" rx="12" fill="#eee8d5" stroke="#1f7ab8" stroke-width="2"/>
+      <text class="lab" x="104" y="110" text-anchor="middle">PRODUCTION</text>
+      <text class="lab" x="104" y="130" text-anchor="middle">FUNCTION</text>
+      <text x="104" y="150" text-anchor="middle">q = f(L, K)</text>
+
+      <line x1="199" y1="120" x2="242" y2="120" class="axis" stroke="#a17a00" marker-end="url(#c3f)"/>
+
+      <rect x="250" y="80" width="180" height="80" rx="12" fill="#eee8d5" stroke="#748500" stroke-width="2"/>
+      <text class="lab" x="340" y="110" text-anchor="middle">TP · AP · MP</text>
+      <text x="340" y="132" text-anchor="middle">law of variable</text>
+      <text x="340" y="150" text-anchor="middle">proportions</text>
+
+      <line x1="435" y1="120" x2="478" y2="120" class="axis" stroke="#a17a00" marker-end="url(#c3f)"/>
+
+      <rect x="486" y="80" width="180" height="80" rx="12" fill="#e4dcc4" stroke="#a17a00" stroke-width="2.5"/>
+      <text class="lab" x="576" y="110" text-anchor="middle">COST CURVES</text>
+      <text x="576" y="132" text-anchor="middle">SMC · AVC · SAC</text>
+      <text x="576" y="150" text-anchor="middle">LRMC · LRAC</text>
+
+      <line x1="671" y1="120" x2="714" y2="120" class="axis" stroke="#a17a00" marker-end="url(#c3f)"/>
+
+      <rect x="722" y="80" width="200" height="80" rx="12" fill="#eee8d5" stroke="#6c71c4" stroke-width="2"/>
+      <text class="lab" x="822" y="110" text-anchor="middle">CHAPTER 4</text>
+      <text class="lab" x="822" y="132" text-anchor="middle">SUPPLY CURVE</text>
+      <text x="822" y="150" text-anchor="middle">the rising part of MC</text>
+
+      <text x="470" y="40" text-anchor="middle" class="lab" style="fill:#755900">Technology decides what is possible · factor prices turn that into cost</text>
+      <text x="470" y="220" text-anchor="middle" style="fill:#5b6966">MP falling is the reason SMC rises — the cost curves are the product curves, priced.</text>
+    </svg>
+  </figure>
+</section>
+
+<section class="slide">
+  <h2>Key concepts — recap</h2>
+  <div class="chips">
+    <span class="chip k">Production function</span><span class="chip">Isoquant</span>
+    <span class="chip k">Short run</span><span class="chip k">Long run</span>
+    <span class="chip">Fixed factor</span><span class="chip">Variable factor</span>
+    <span class="chip k">Total product</span><span class="chip k">Average product</span>
+    <span class="chip k">Marginal product</span>
+    <span class="chip k">Law of variable proportions</span>
+    <span class="chip">Law of diminishing marginal product</span>
+    <span class="chip">Factor proportions</span>
+    <span class="chip k">Returns to scale</span><span class="chip">IRS · CRS · DRS</span>
+    <span class="chip k">Cost function</span>
+    <span class="chip">TFC</span><span class="chip">TVC</span><span class="chip">TC</span>
+    <span class="chip k">AFC</span><span class="chip k">AVC</span><span class="chip k">SAC</span>
+    <span class="chip k">SMC</span><span class="chip">LRAC</span><span class="chip">LRMC</span>
+  </div>
+  <div class="grid2">
+    <div class="box insight">
+      <span class="tag">The results to never forget</span>
+      <ol>
+        <li><b>TC = TFC + TVC</b> · <b>SAC = AVC + AFC</b></li>
+        <li>TP is the <b>sum</b> of MPs; AP is the <b>average</b> of MPs</li>
+        <li><b>Marginal cuts average at the average's extremum</b> — MP cuts AP at its max;
+        SMC cuts AVC and SAC at their minima; LRMC cuts LRAC at its min</li>
+        <li>min SAC lies to the <b>right</b> of min AVC</li>
+      </ol>
+    </div>
+    <div class="box warn">
+      <span class="tag">The traps</span>
+      <ol>
+        <li>Short run/long run is <b>not calendar time</b> — it is whether any input is fixed.</li>
+        <li>MP falls because of <b>changing factor proportions</b>, not inferior workers.</li>
+        <li>Law of variable proportions (one input) ≠ returns to scale (all inputs).</li>
+        <li>Minimum average cost is <b>not</b> the profit-maximising output.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>NCERT Exercise 25</h2>
+  <div class="qcard">
+    <span class="tag">Exercise 25</span>
+    <p>The total cost schedule is given. Find TFC, and calculate TVC, AFC, AVC, SAC and SMC.</p>
+    <table>
+      <thead><tr><th>Q</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
+      <tbody><tr><td class="lbl">TC</td><td>10</td><td>30</td><td>45</td><td>55</td><td>70</td><td>90</td><td>120</td></tr></tbody>
+    </table>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>At q = 0, TVC = 0, so TC = TFC = ₹10</b> at every output.</p>
+    <table>
+      <thead><tr><th>Q</th><th>TC</th><th>TFC</th><th>TVC</th><th>AFC</th><th>AVC</th><th>SAC</th><th>SMC</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>10</td><td>10</td><td>0</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td>1</td><td>30</td><td>10</td><td>20</td><td>10</td><td>20</td><td>30</td><td>20</td></tr>
+        <tr><td>2</td><td>45</td><td>10</td><td>35</td><td>5</td><td>17.5</td><td>22.5</td><td>15</td></tr>
+        <tr><td>3</td><td>55</td><td>10</td><td>45</td><td>3.33</td><td class="hi2">15</td><td class="hi2">18.33</td><td class="hi2">10</td></tr>
+        <tr><td>4</td><td>70</td><td>10</td><td>60</td><td>2.5</td><td class="hi2">15</td><td>17.5</td><td>15</td></tr>
+        <tr><td>5</td><td>90</td><td>10</td><td>80</td><td>2</td><td>16</td><td>18</td><td>20</td></tr>
+        <tr><td>6</td><td>120</td><td>10</td><td>110</td><td>1.67</td><td>18.33</td><td>20</td><td>30</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Note SAC bottoms at q = 4 (17.5) while AVC bottoms at q = 3–4 (15) — SAC's
+    minimum again lies at or to the right of AVC's. ✓</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>NCERT Exercise 27</h2>
+  <div class="qcard">
+    <span class="tag">Exercise 27</span>
+    <p>A firm's <b>SMC</b> schedule is shown. Total fixed cost is <b>₹100</b>. Find TVC, TC, AVC
+    and SAC.</p>
+    <table>
+      <thead><tr><th>Q</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
+      <tbody><tr><td class="lbl">SMC</td><td>500</td><td>300</td><td>200</td><td>300</td><td>500</td><td>800</td></tr></tbody>
+    </table>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>Key idea:</b> the sum of marginal costs up to any output <b>is</b> the total variable
+    cost at that output. So TVC is the running total of SMC.</p>
+    <table>
+      <thead><tr><th>Q</th><th>SMC</th><th>TVC</th><th>TFC</th><th>TC</th><th>AVC</th><th>SAC</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>500</td><td>500</td><td>100</td><td>600</td><td>500</td><td>600</td></tr>
+        <tr><td>2</td><td>300</td><td>800</td><td>100</td><td>900</td><td>400</td><td>450</td></tr>
+        <tr><td>3</td><td>200</td><td>1000</td><td>100</td><td>1100</td><td class="hi2">333.33</td><td>366.67</td></tr>
+        <tr><td>4</td><td>300</td><td>1300</td><td>100</td><td>1400</td><td>325</td><td class="hi2">350</td></tr>
+        <tr><td>5</td><td>500</td><td>1800</td><td>100</td><td>1900</td><td>360</td><td>380</td></tr>
+        <tr><td>6</td><td>800</td><td>2600</td><td>100</td><td>2700</td><td>433.33</td><td>450</td></tr>
+      </tbody>
+    </table>
+    <p class="small"><b>Watch the crossings.</b> AVC bottoms at q = 4 (325); SMC at q = 4 is 300,
+    below it, and at q = 5 is 500, above it — so SMC cuts AVC between 4 and 5. Both averages turn
+    upward once SMC has risen past them. ✓</p>
+    <div class="q">
+      <p><b>Why do AVC and SAC both appear to bottom at q = 4 here?</b> Because the data are
+      <b>coarse</b>. "Minimum SAC lies strictly to the right of minimum AVC" is a theorem about
+      <b>smooth</b> curves: since <code>SAC = AVC + AFC</code> and AFC is <i>always</i> falling,
+      SAC keeps being pulled down for a little longer after AVC has turned up.</p>
+      <p>With only whole-number outputs, that "little longer" can be less than one unit — so the
+      two minima land in the <b>same</b> column. The theorem is not violated; the table is simply
+      too coarse to show the gap.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>NCERT Exercises 28–30</h2>
+  <div class="qcard">
+    <span class="tag">Exercises 28, 29 and 30</span>
+    <p><b>28.</b> <code>Q = 5 L<sup>½</sup> K<sup>½</sup></code> — maximum output with L = 100, K = 100?<br>
+    <b>29.</b> <code>Q = 2L²K²</code> — output with L = 5, K = 2? And with L = 0, K = 10?<br>
+    <b>30.</b> <code>Q = 5L + 2K</code> — output with L = 0, K = 10?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>28.</b> <code>Q = 5 × 100<sup>½</sup> × 100<sup>½</sup> = 5 × 10 × 10 = <b>500</b></code></p>
+    <p><b>29.</b> <code>Q = 2 × 5² × 2² = 2 × 25 × 4 = <b>200</b></code><br>
+    With L = 0: <code>Q = 2 × 0² × 10² = <b>0</b></code></p>
+    <p><b>30.</b> <code>Q = 5(0) + 2(10) = <b>20</b></code></p>
+    <div class="q">
+      <p><b>Compare 29 and 30 carefully — this is the point of the pair.</b></p>
+      <p>In <b>29</b> the inputs are <b>multiplied</b>, so <b>both are essential</b>: with zero
+      labour, output is zero no matter how much capital there is.</p>
+      <p>In <b>30</b> the inputs are <b>added</b>, so they are <b>perfect substitutes</b>: capital
+      alone can produce output without any labour at all.</p>
+    </div>
+    <p class="small">Note also that 29 has α + β = 4 → strong <b>IRS</b>, while 28 has
+    α + β = 1 → <b>CRS</b>.</p>
+  </div>
+</section>
+
+<section class="slide title-slide">
+  <div class="kicker">End of Chapter 3</div>
+  <h1>Next: the firm decides</h1>
+  <div class="rule"></div>
+  <p class="sub">We now know what production costs. But Chapter 3 never told us
+  <b>how much to produce</b> — deliberately, because that question needs a <b>price</b>.
+  Chapter 4 supplies one, assumes the firm is a ruthless profit maximiser, and derives the
+  <b>supply curve</b> from the cost curves we have just built.</p>
+  <p style="margin-top:1.6rem" class="small">Watch for the payoff: the firm's supply curve turns
+  out to be nothing but <b>the rising part of the marginal cost curve</b>, and its two landmarks —
+  the shut-down point and the break-even point — are <b>min AVC</b> and <b>min SAC</b>.</p>
+  <p style="margin-top:1.6rem"><a href="chapter-4-firm-perfect-competition.html" style="color:#755900;font-weight:700">Chapter 4 — The Firm under Perfect Competition →</a></p>
+</section>
+
+</div>
+
+<button class="nav" id="prev" title="Previous (←)">‹</button>
+<button class="nav" id="next" title="Next (→)">›</button>
+<script src="assets/deck.js"></script>
+</body>
+</html>

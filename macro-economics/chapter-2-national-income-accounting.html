@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch 2 · National Income Accounting</title>
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body>
+
+<div id="bar">
+  <span class="brand">CH 2 · NATIONAL INCOME ACCOUNTING</span>
+  <span class="sect" id="sect"></span>
+  <span class="tools">
+    <button id="menuBtn">Menu · m</button>
+    <button id="fsBtn">Full screen · f</button>
+    <span id="counter">1 / 1</span>
+  </span>
+</div>
+<div id="progress"></div>
+
+<div id="menu">
+  <h3>Slides</h3>
+  <div class="mlist"></div>
+  <p class="hint">Press <b>m</b> or <b>Esc</b> to close</p>
+</div>
+
+<div id="stage">
+
+<!-- ============================================================ TITLE -->
+<section class="slide title-slide" data-section="Opening">
+  <div class="kicker">Class XII · Introductory Macroeconomics</div>
+  <h1>Chapter 2<br>National Income Accounting</h1>
+  <div class="rule"></div>
+  <p class="sub">The aggregates, the three methods of measuring them, the conversions between
+     them, real versus nominal, and what the number does <i>not</i> tell you.</p>
+  <p class="small">The most arithmetic-heavy chapter of the course. Half its marks are in
+     knowing which items to include.</p>
+</section>
+
+<section class="slide" data-section="Opening">
+  <h2>Where we left off</h2>
+  <p class="lead">Chapter 1 ended with a circle and a claim.</p>
+  <div class="bridge">
+    <span class="tag">Recall · Chapter 1</span>
+    <p>Income flows in a circle between households and firms. Cut that circle at any of three
+      points — <b>production</b>, <b>income</b>, <b>expenditure</b> — and you measure the same
+      quantity.</p>
+    <div class="formula" style="margin-top:.8rem">
+      Value of output ≡ Total factor income ≡ Total expenditure
+    </div>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">Today's job</span>
+    <p>Turn that identity into a <b>number</b>. Which transactions count? Which are double-counted?
+      Which look like income but are not? And once we have the number, what exactly have we
+      measured?</p>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">Set your expectation now</span>
+    <p>Almost every mark lost in this chapter is lost on <b>one item in a list</b> — a pension
+      added, an intermediate good counted, a subsidy subtracted instead of added. The arithmetic
+      is trivial. The <b>classification</b> is the exam.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="Opening">
+  <h2>Today's route map</h2>
+  <div class="grid3">
+    <div class="card"><h4>1 · The vocabulary</h4><p class="small">Final vs intermediate, consumption vs capital, investment, depreciation, inventory.</p></div>
+    <div class="card"><h4>2 · Domestic vs national</h4><p class="small">Domestic territory, normal resident, NFIA.</p></div>
+    <div class="card"><h4>3 · The eight aggregates</h4><p class="small">GDP, NDP, GNP, NNP at MP and at FC — and the conversions.</p></div>
+    <div class="card"><h4>4 · Value added method</h4><p class="small">Worked, firm by firm.</p></div>
+    <div class="card"><h4>5 · Expenditure method</h4><p class="small">C + I + G + (X − M), worked.</p></div>
+    <div class="card"><h4>6 · Income method</h4><p class="small">COE + OS + MI, worked — same answer.</p></div>
+    <div class="card"><h4>7 · The doubtful items</h4><p class="small">Include or exclude, and the one-line reason for each.</p></div>
+    <div class="card"><h4>8 · Real vs nominal</h4><p class="small">The GDP deflator, CPI, WPI.</p></div>
+    <div class="card"><h4>9 · GDP and welfare</h4><p class="small">Why a bigger GDP is not automatically a better country.</p></div>
+  </div>
+</section>
+
+<!-- ============================================================ VOCABULARY -->
+<section class="slide" data-section="1 · The vocabulary">
+  <h2><span class="num">2.1</span>Final goods and intermediate goods</h2>
+  <p class="lead">The single most important classification in the chapter. Get it wrong and every
+     total is wrong.</p>
+  <div class="grid2">
+    <div class="defn">
+      <span class="tag">Definition</span>
+      <p><span class="term">Final good</span> — a good that has crossed the <b>boundary line of
+        production</b> and is ready for use by its final user: either for <b>consumption</b> or as
+        <b>investment</b>. It will not be resold or used up in producing something else this year.</p>
+    </div>
+    <div class="defn">
+      <span class="tag">Definition</span>
+      <p><span class="term">Intermediate good</span> — a good bought by one producer from another
+        <b>for resale</b> or <b>for use up as a raw material</b> in production during the same year.</p>
+    </div>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">The trap that catches everybody</span>
+    <p>Whether a good is final or intermediate depends <b>entirely on who buys it and why</b> —
+      never on the physical good itself.</p>
+    <table>
+      <thead><tr><th class="lbl">The same good</th><th class="lbl">Bought by</th><th>Classification</th></tr></thead>
+      <tbody>
+        <tr><td class="lbl">Milk</td><td class="lbl">A household, to drink</td><td class="hi2">Final (consumption)</td></tr>
+        <tr><td class="lbl">Milk</td><td class="lbl">A sweet shop, to make barfi</td><td class="hi">Intermediate</td></tr>
+        <tr><td class="lbl">A car</td><td class="lbl">A family, to drive</td><td class="hi2">Final (consumption)</td></tr>
+        <tr><td class="lbl">A car</td><td class="lbl">A taxi company, to run as a taxi</td><td class="hi2">Final (investment)</td></tr>
+        <tr><td class="lbl">A car</td><td class="lbl">A dealer, to resell</td><td class="hi">Intermediate</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">Why we bother</span>
+    <p>Only <b>final</b> goods are counted in national income. Counting intermediate goods too would
+      count the same value twice — the <b>problem of double counting</b>.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="1 · The vocabulary">
+  <h2>The problem of double counting — and its two solutions</h2>
+  <div class="qcard">
+    <span class="tag">See the problem first</span>
+    <p>A farmer grows wheat worth ₹1,000 and sells it to a miller. The miller makes flour worth
+      ₹1,600 and sells it to a baker. The baker makes bread worth ₹2,400 and sells it to households.</p>
+    <p>Is the contribution of these three firms ₹1,000 + ₹1,600 + ₹2,400 = <b>₹5,000</b>?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>No.</b> The ₹1,000 of wheat is counted three times — once as wheat, again inside the value
+      of flour, and again inside the value of bread. The economy has not produced ₹5,000 of new
+      value; only <b>₹2,400 of bread</b> plus whatever wheat and flour went directly to households.</p>
+  </div>
+  <div class="reveal grid2">
+    <div class="card">
+      <h4>Solution 1 · The final goods route</h4>
+      <p class="small">Count <b>only the value of final goods</b>. Ignore all inter-firm sales.
+        Used by the <b>expenditure method</b>.</p>
+    </div>
+    <div class="card">
+      <h4>Solution 2 · The value added route</h4>
+      <p class="small">Count <b>every</b> firm, but only the value it <i>adds</i>: its output minus
+        what it bought in. Used by the <b>value added (product) method</b>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-section="1 · The vocabulary">
+  <h2>Consumption goods and capital goods</h2>
+  <div class="grid2">
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Consumption goods</span> — final goods that <b>directly satisfy human
+          wants</b>.</p>
+        <ul class="small">
+          <li><b>Durable</b> — TV, car, refrigerator (used over years)</li>
+          <li><b>Semi-durable</b> — clothes, crockery (about a year)</li>
+          <li><b>Non-durable</b> — milk, petrol (used up at once)</li>
+          <li><b>Services</b> — a doctor's visit, a bus ride</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Capital goods</span> — final goods used in the <b>process of
+          production</b> for more than one year, and which are themselves <b>not used up</b> in
+          production.</p>
+        <p class="small">Machinery, plant, factory buildings, transport equipment.</p>
+      </div>
+      <div class="warn">
+        <span class="tag">Distinguish carefully</span>
+        <p class="small">Capital goods are <b>durable and reusable</b>. Raw materials are also bought
+          by producers, but they are <b>used up</b> in one round — so they are intermediate goods,
+          not capital goods.</p>
+      </div>
+    </div>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">The one durable-goods trap</span>
+    <p>A refrigerator bought by a <b>household</b> is a <i>consumer durable</i> — final consumption.
+      The identical refrigerator bought by a <b>restaurant</b> is a <i>capital good</i> — investment.
+      Both are final goods; they enter national income under different heads.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="1 · The vocabulary">
+  <h2>Investment, depreciation, and the inventory that trips everyone</h2>
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Gross investment</span> (Gross capital formation) = expenditure on
+      <b>fixed capital</b> (machines, buildings) <b>+ change in inventory</b> (change in stock).</p>
+  </div>
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Inventory</span> — the stock of <b>unsold finished goods, semi-finished
+      goods and raw materials</b> that a firm carries from one period to the next.
+      Inventory is a <b>stock</b>; the <b>change</b> in inventory during the year is a <b>flow</b>,
+      and it is that change which enters investment.</p>
+  </div>
+  <div class="reveal formula">
+    Change in stock = Closing stock − Opening stock
+  </div>
+  <div class="reveal grid2">
+    <div class="card">
+      <h4>Planned (intended) inventory change
+        <button class="info" aria-controls="planned-unplanned" aria-expanded="false"
+                title="Why does an unplanned inventory build-up signal that output will fall?">i</button></h4>
+      <p class="small">The firm <b>decided</b> to add to stock — e.g. building up before the festival
+        season. A deliberate investment decision.</p>
+    </div>
+    <div class="card">
+      <h4>Unplanned (unintended) inventory change</h4>
+      <p class="small">Sales turned out different from expectations. Goods went <b>unsold</b>, so
+        stock rose without the firm intending it — or a sales surge ran stock down.</p>
+    </div>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">Both are counted</span>
+    <p>National income accounting counts <b>all</b> change in stock as investment, planned or not.
+      A firm that fails to sell has, in the accounts, "invested in its own goods". This is a
+      bookkeeping device that makes the identity <i>output = expenditure</i> hold every single year —
+      and it is exactly the device Chapter 4 uses to explain how equilibrium is reached.</p>
+  </div>
+  <div class="infopanel" id="planned-unplanned">
+    <span class="tag">Why does an unplanned inventory build-up signal that output will fall?</span>
+    <p>An <b>unplanned rise</b> in inventory means firms produced more than buyers wanted. The goods
+      are sitting in the warehouse tying up money. The natural response next period is to
+      <b>cut production</b> — which cuts employment and income.</p>
+    <div class="q">An <b>unplanned fall</b> in inventory is the mirror image: firms sold more than
+      they expected and ran their shelves down, so next period they will <b>produce more</b>.</div>
+    <p>This is the mechanism behind the sentence "output adjusts to demand" that you will meet
+      formally in Chapter 4. Unplanned inventory change is the <b>signal</b> that moves output.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="1 · The vocabulary">
+  <h2>Check yourself</h2>
+  <div class="qcard">
+    <span class="tag">Question 1</span>
+    <p>A firm's opening stock on 1 April was ₹80 lakh and closing stock on 31 March was ₹65 lakh.
+      During the year it bought new machinery for ₹120 lakh, and depreciation was ₹35 lakh.</p>
+    <p>Find (a) change in stock, (b) gross investment, (c) net investment. Comment on the sign of (a).</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <ol class="steps">
+    <li class="reveal">Change in stock = Closing − Opening = 65 − 80 = <b>− ₹15 lakh</b></li>
+    <li class="reveal">Gross investment = Fixed capital formation + Change in stock = 120 + (−15) = <b>₹105 lakh</b></li>
+    <li class="reveal">Net investment = Gross investment − Depreciation = 105 − 35 = <b>₹70 lakh</b></li>
+  </ol>
+  <div class="reveal answer">
+    <span class="tag">Answer · the comment</span>
+    <p>The change in stock is <b>negative</b>, and a negative change in stock is <b>subtracted</b>.
+      The firm sold ₹15 lakh more than it produced this year by running down last year's stock —
+      that ₹15 lakh of sales was <i>last</i> year's production, so it must not be credited to this
+      year's output.</p>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">Classic error</span>
+    <p>Students write "gross investment = 120 + 15 = 135" because they add the magnitude and ignore
+      the sign. <b>Always compute closing minus opening and carry the sign.</b></p>
+  </div>
+</section>
+
+<!-- ============================================================ DOMESTIC VS NATIONAL -->
+<section class="slide" data-section="2 · Domestic vs national">
+  <h2><span class="num">2.2</span>Domestic territory and normal residents</h2>
+  <p class="lead">"Domestic" is about <em>where</em>. "National" is about <em>whose</em>. Two
+     different questions, and every aggregate answers one of them.</p>
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Domestic (economic) territory</span> — the political frontiers of a country
+      <b>plus</b>:</p>
+    <ul class="small">
+      <li>ships and aircraft <b>owned and operated</b> by normal residents between two or more countries;</li>
+      <li>fishing vessels, oil rigs and floating platforms operated by residents in international waters;</li>
+      <li>embassies, consulates and military establishments of the country located <b>abroad</b>.</li>
+    </ul>
+    <p class="small">It <b>excludes</b> foreign embassies, consulates and international organisations
+      (UN, IMF offices) located inside the country.</p>
+  </div>
+  <div class="reveal defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Normal resident</span> — a person or institution who <b>ordinarily resides</b>
+      in a country and whose <b>centre of economic interest</b> lies there — that is, who carries on
+      the bulk of their economic transactions from that country, normally for a year or more.</p>
+    <p class="small">Citizenship is <b>irrelevant</b>. A Japanese national working in Bengaluru for
+      three years is a <b>normal resident of India</b>. An Indian citizen working in Dubai for five
+      years is <b>not</b>.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="2 · Domestic vs national">
+  <h2>Net factor income from abroad (NFIA)</h2>
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Net factor income from abroad</span> = factor income earned by <b>normal
+      residents of India from the rest of the world</b> − factor income earned by <b>non-residents
+      within India's domestic territory</b>.</p>
+  </div>
+  <div class="formula">
+    National = Domestic + NFIA
+  </div>
+  <div class="reveal grid2">
+    <div class="card">
+      <h4>Its three components</h4>
+      <ol class="small">
+        <li><b>Net compensation of employees</b> from abroad</li>
+        <li><b>Net income from property and entrepreneurship</b> from abroad (rent, interest, profit)</li>
+        <li><b>Net retained earnings</b> of resident companies abroad</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h4>Its sign</h4>
+      <p class="small">NFIA can be <b>positive, negative or zero</b>. For India it is typically
+        <b>negative</b> — foreign firms earn more profit here than Indian residents earn abroad, so
+        India's <b>national</b> income is a little <i>below</i> its <b>domestic</b> income.</p>
+    </div>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">Not part of NFIA</span>
+    <p>NFIA counts <b>factor</b> income only. It does <b>not</b> include:</p>
+    <ul class="small">
+      <li><b>Remittances</b> sent home by an Indian settled abroad — that person is not a resident;
+        the money is a <b>current transfer</b>, not factor income.</li>
+      <li><b>Exports and imports of goods</b> — that is trade, not factor income.</li>
+      <li><b>Gifts, donations, foreign aid</b> — transfers.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide" data-section="2 · Domestic vs national">
+  <h2>Check yourself · resident or not, domestic or national</h2>
+  <div class="qcard">
+    <span class="tag">Question 2</span>
+    <p>Will each of these be included in India's <b>domestic income</b>, its <b>national income</b>,
+      both, or neither?</p>
+    <ol>
+      <li>Salary of an Indian working in the Indian embassy in Tokyo.</li>
+      <li>Profit of a Korean-owned car factory operating in Chennai.</li>
+      <li>Salary of an Indian working in the Japanese embassy in Delhi.</li>
+      <li>Money sent home by an Indian who has settled permanently in Canada.</li>
+    </ol>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <table>
+      <thead><tr><th>#</th><th>Domestic</th><th>National</th><th class="lbl">Reason</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td class="hi2">Yes</td><td class="hi2">Yes</td><td class="lbl">The Indian embassy abroad <b>is</b> India's domestic territory.</td></tr>
+        <tr><td>2</td><td class="hi2">Yes</td><td>No</td><td class="lbl">Produced inside India, but the income accrues to a non-resident — so it is deducted through NFIA.</td></tr>
+        <tr><td>3</td><td>No</td><td class="hi2">Yes</td><td class="lbl">A foreign embassy is <b>not</b> India's domestic territory, but the earner is a normal resident — added through NFIA.</td></tr>
+        <tr><td>4</td><td>No</td><td>No</td><td class="lbl">A <b>transfer payment</b> from a non-resident. Not factor income at all.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">The two-question drill</span>
+    <p>For every item ask: <b>(1) Where was it produced?</b> → domestic.
+      <b>(2) Who earned it?</b> → national. Items 2 and 3 are the mirror pair that examiners love.</p>
+  </div>
+</section>
+
+<!-- ============================================================ THE AGGREGATES -->
+<section class="slide" data-section="3 · The aggregates">
+  <h2><span class="num">2.3</span>The three dials</h2>
+  <p class="lead">There are not eight aggregates to memorise. There are <em>three yes/no switches</em>,
+     and every aggregate is one setting of the three.</p>
+  <figure>
+    <svg viewBox="0 0 800 300" role="img"
+         aria-label="Three switches define every national income aggregate: domestic or national, gross or net, market price or factor cost.">
+      <rect x="20"  y="40" width="230" height="200" rx="14" class="dbox"/>
+      <rect x="285" y="40" width="230" height="200" rx="14" class="dbox"/>
+      <rect x="550" y="40" width="230" height="200" rx="14" class="dbox"/>
+
+      <text x="135" y="76" class="lab" text-anchor="middle">SWITCH 1 · WHOSE?</text>
+      <text x="135" y="118" class="lab" text-anchor="middle" fill="var(--blue-t)">DOMESTIC</text>
+      <text x="135" y="146" class="sm" text-anchor="middle">produced inside the country</text>
+      <text x="135" y="176" class="lab" text-anchor="middle" fill="var(--teal-t)">NATIONAL</text>
+      <text x="135" y="204" class="sm" text-anchor="middle">earned by residents</text>
+      <text x="135" y="228" class="sm" text-anchor="middle">difference = <tspan font-weight="700">NFIA</tspan></text>
+
+      <text x="400" y="76" class="lab" text-anchor="middle">SWITCH 2 · WEAR?</text>
+      <text x="400" y="118" class="lab" text-anchor="middle" fill="var(--blue-t)">GROSS</text>
+      <text x="400" y="146" class="sm" text-anchor="middle">before wear and tear</text>
+      <text x="400" y="176" class="lab" text-anchor="middle" fill="var(--teal-t)">NET</text>
+      <text x="400" y="204" class="sm" text-anchor="middle">after wear and tear</text>
+      <text x="400" y="228" class="sm" text-anchor="middle">difference = <tspan font-weight="700">DEPRECIATION</tspan></text>
+
+      <text x="665" y="76" class="lab" text-anchor="middle">SWITCH 3 · WHOSE PRICE?</text>
+      <text x="665" y="118" class="lab" text-anchor="middle" fill="var(--blue-t)">MARKET PRICE</text>
+      <text x="665" y="146" class="sm" text-anchor="middle">what the buyer pays</text>
+      <text x="665" y="176" class="lab" text-anchor="middle" fill="var(--teal-t)">FACTOR COST</text>
+      <text x="665" y="204" class="sm" text-anchor="middle">what the factors receive</text>
+      <text x="665" y="228" class="sm" text-anchor="middle">difference = <tspan font-weight="700">NET INDIRECT TAXES</tspan></text>
+
+      <text x="400" y="278" class="sm" text-anchor="middle">2 × 2 × 2 = eight aggregates. You only ever need to remember three differences.</text>
+    </svg>
+    <figcaption>Every aggregate name is just a reading of these three switches, left to right.</figcaption>
+  </figure>
+  <div class="reveal insight">
+    <span class="tag">Decode any name instantly</span>
+    <p><b>N</b>et <b>N</b>ational <b>P</b>roduct at <b>F</b>actor <b>C</b>ost = Net · National ·
+      Factor cost = all three switches at the right-hand setting. This one has a special name:
+      <b>National Income</b>.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="3 · The aggregates">
+  <h2>The three differences, defined</h2>
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Depreciation</span> (consumption of fixed capital) — the fall in the value
+      of fixed capital during the year due to normal wear and tear and expected obsolescence.
+      <b>Gross − Depreciation = Net.</b></p>
+  </div>
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Net indirect taxes (NIT)</span> = Indirect taxes − Subsidies.<br>
+      Indirect taxes (GST, excise, customs) are <b>added on</b> to the price the buyer pays but never
+      reach the factors of production; subsidies are paid <b>to</b> producers so the buyer pays less
+      than the factors receive.
+      <b>Market price − NIT = Factor cost.</b></p>
+  </div>
+  <div class="reveal eg">
+    <span class="tag">Example · see NIT with your own eyes</span>
+    <p>A shirt sells for <b>₹1,180</b>, of which <b>₹180</b> is GST. The producer receives ₹1,000, of
+      which the factors — the weaver, the landlord, the lender, the owner — share the whole.</p>
+    <p>Market price ₹1,180 − indirect tax ₹180 = factor cost <b>₹1,000</b>. If in addition the
+      government paid the producer a ₹50 subsidy, factor cost would be ₹1,050: the factors get more
+      than the buyer paid.</p>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">Sign discipline — this is where marks die</span>
+    <p>Going <b>from MP to FC</b>: <b>− indirect taxes, + subsidies</b> (i.e. − NIT).<br>
+       Going <b>from FC to MP</b>: <b>+ indirect taxes, − subsidies</b> (i.e. + NIT).<br>
+       Write the conversion as an explicit line every time. Never fold it silently into a total.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="3 · The aggregates">
+  <h2>The master chain — with real numbers</h2>
+  <p class="lead">We will use <em>one</em> economy for the whole chapter. Here it is, converted end
+     to end. All figures ₹ crore, at current prices.</p>
+  <figure>
+    <svg viewBox="0 0 880 270" role="img"
+         aria-label="Chain of conversions: GDP at market price 2700, plus NFIA minus 50 gives GNP at market price 2650, minus depreciation 200 gives NNP at market price 2450, minus net indirect taxes 300 gives NNP at factor cost 2150, which is national income.">
+      <defs>
+        <marker id="ch-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" class="mk-amber"/></marker>
+      </defs>
+
+      <rect x="10" y="80" width="160" height="80" rx="12" class="dbox"/>
+      <text x="90" y="112" class="lab" text-anchor="middle">GDP</text>
+      <text x="90" y="132" class="sm" text-anchor="middle">at market price</text>
+      <text x="90" y="152" class="lab" text-anchor="middle" fill="var(--blue-t)">2,700</text>
+
+      <rect x="240" y="80" width="160" height="80" rx="12" class="dbox"/>
+      <text x="320" y="112" class="lab" text-anchor="middle">GNP</text>
+      <text x="320" y="132" class="sm" text-anchor="middle">at market price</text>
+      <text x="320" y="152" class="lab" text-anchor="middle" fill="var(--blue-t)">2,650</text>
+
+      <rect x="470" y="80" width="160" height="80" rx="12" class="dbox"/>
+      <text x="550" y="112" class="lab" text-anchor="middle">NNP</text>
+      <text x="550" y="132" class="sm" text-anchor="middle">at market price</text>
+      <text x="550" y="152" class="lab" text-anchor="middle" fill="var(--blue-t)">2,450</text>
+
+      <rect x="700" y="80" width="170" height="80" rx="12" class="fill-amber"/>
+      <text x="785" y="112" class="lab" text-anchor="middle">NNP at FC</text>
+      <text x="785" y="132" class="sm" text-anchor="middle">= NATIONAL INCOME</text>
+      <text x="785" y="152" class="lab" text-anchor="middle" fill="var(--amber-t)">2,150</text>
+
+      <path d="M 174 120 L 232 120" class="curve c-amber" marker-end="url(#ch-a)"/>
+      <text x="203" y="66" class="lab" text-anchor="middle" fill="var(--amber-t)">+ NFIA</text>
+      <text x="203" y="190" class="sm" text-anchor="middle">(− 50)</text>
+
+      <path d="M 404 120 L 462 120" class="curve c-amber" marker-end="url(#ch-a)"/>
+      <text x="433" y="66" class="lab" text-anchor="middle" fill="var(--amber-t)">− Dep.</text>
+      <text x="433" y="190" class="sm" text-anchor="middle">(200)</text>
+
+      <path d="M 634 120 L 692 120" class="curve c-amber" marker-end="url(#ch-a)"/>
+      <text x="663" y="66" class="lab" text-anchor="middle" fill="var(--amber-t)">− NIT</text>
+      <text x="663" y="190" class="sm" text-anchor="middle">(300)</text>
+
+      <text x="440" y="232" class="sm" text-anchor="middle">Each arrow is reversible: travel leftwards and every sign flips.</text>
+      <text x="440" y="256" class="sm" text-anchor="middle">The three steps may be taken in any order — the destination is the same.</text>
+    </svg>
+    <figcaption>₹ crore, at current prices. 2,700 → 2,650 → 2,450 → 2,150.</figcaption>
+  </figure>
+  <div class="reveal insight">
+    <span class="tag">Learn the chain, not the eight formulas</span>
+    <p>Any aggregate can be reached from any other by walking this chain and applying the signs.
+      You will never need a formula sheet again.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="3 · The aggregates">
+  <h2>All eight aggregates from one dataset</h2>
+  <p class="lead">GDP<sub>MP</sub> = 2,700 · Depreciation = 200 · NIT = 300 · NFIA = −50 &nbsp;(₹ crore)</p>
+  <table>
+    <thead><tr><th class="lbl">Aggregate</th><th class="lbl">Built as</th><th>₹ crore</th></tr></thead>
+    <tbody>
+      <tr><td class="lbl">GDP at MP</td><td class="lbl">given</td><td class="hi">2,700</td></tr>
+      <tr><td class="lbl">GDP at FC</td><td class="lbl">2,700 − 300</td><td>2,400</td></tr>
+      <tr><td class="lbl">NDP at MP</td><td class="lbl">2,700 − 200</td><td>2,500</td></tr>
+      <tr><td class="lbl">NDP at FC</td><td class="lbl">2,700 − 200 − 300</td><td class="hi">2,200</td></tr>
+      <tr><td class="lbl">GNP at MP</td><td class="lbl">2,700 + (−50)</td><td>2,650</td></tr>
+      <tr><td class="lbl">GNP at FC</td><td class="lbl">2,650 − 300</td><td>2,350</td></tr>
+      <tr><td class="lbl">NNP at MP</td><td class="lbl">2,650 − 200</td><td>2,450</td></tr>
+      <tr><td class="lbl">NNP at FC = <b>National Income</b></td><td class="lbl">2,650 − 200 − 300</td><td class="hi2">2,150</td></tr>
+    </tbody>
+    <caption>Every row is the same three switches, set differently. Note that only the last row has a special name.</caption>
+  </table>
+  <div class="reveal warn">
+    <span class="tag">Two definitions worth exact wording</span>
+    <p><b>GDP at MP</b> — the market value of all final goods and services produced <b>within the
+      domestic territory</b> of a country <b>during a year</b>.<br>
+      <b>National Income (NNP at FC)</b> — the sum of factor incomes earned by the <b>normal
+      residents</b> of a country <b>during a year</b>.</p>
+    <p class="small">The words <i>final</i>, <i>within the domestic territory</i> and <i>during a
+      year</i> each carry a mark. Do not drop them.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="3 · The aggregates">
+  <h2>Worked numerical · walking the chain both ways</h2>
+  <div class="qcard">
+    <span class="tag">Question 3</span>
+    <p>The GDP at market price of a country in a year was <b>₹1,100 crore</b>. Net factor income from
+      abroad was <b>₹100 crore</b>. Indirect taxes − subsidies was <b>₹150 crore</b> and national
+      income was <b>₹850 crore</b>. Calculate the aggregate value of <b>depreciation</b>.</p>
+    <p class="small">(NCERT Chapter 2, Question 7)</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <ol class="steps">
+    <li class="reveal">Start at GDP<sub>MP</sub> = <b>1,100</b></li>
+    <li class="reveal">Add NFIA to go from domestic to national: GNP<sub>MP</sub> = 1,100 + 100 = <b>1,200</b></li>
+    <li class="reveal">Subtract NIT to go from market price to factor cost: GNP<sub>FC</sub> = 1,200 − 150 = <b>1,050</b></li>
+    <li class="reveal">National income is <b>NNP<sub>FC</sub></b> = GNP<sub>FC</sub> − Depreciation, so 850 = 1,050 − Depreciation</li>
+    <li class="reveal">Depreciation = 1,050 − 850 = <b>₹200 crore</b></li>
+  </ol>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>Depreciation = ₹200 crore.</b></p>
+    <p class="small">Written as one line: NNP<sub>FC</sub> = GDP<sub>MP</sub> + NFIA − NIT − Depreciation
+      ⟹ 850 = 1,100 + 100 − 150 − D ⟹ D = 200.</p>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">The exam skill</span>
+    <p>Notice you were <b>not</b> asked for national income — you were given it and asked for a step
+      inside the chain. Set up the full chain as an equation with the unknown in it, then solve.
+      This works for every "find the missing item" question.</p>
+  </div>
+</section>
+
+<!-- ============================================================ VALUE ADDED METHOD -->
+<section class="slide" data-section="4 · Value added method">
+  <h2><span class="num">2.4</span>Method 1 · Value added (product) method</h2>
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Gross value added at market price (GVA<sub>MP</sub>)</span> =
+      Value of output − Intermediate consumption
+      <button class="info" aria-controls="gva-not-sales" aria-expanded="false"
+              title="Why is it value of output and not sales?">i</button></p>
+  </div>
+  <div class="formula">
+    Value of output = Sales + Change in stock
+  </div>
+  <div class="reveal insight">
+    <span class="tag">Why the change in stock is there</span>
+    <p>A firm's <b>production</b> this year is what it sold <b>plus</b> what it made but has not yet
+      sold. Sales alone understate production when stock is rising and overstate it when stock is
+      being run down.</p>
+  </div>
+  <div class="reveal formula">
+    GDP<sub>MP</sub> = Σ GVA<sub>MP</sub> of all producing units in the domestic territory
+  </div>
+  <div class="infopanel" id="gva-not-sales">
+    <span class="tag">Why is it value of output and not sales?</span>
+    <p>Because national income measures <b>production during the year</b>, not trade during the year.
+      A firm that produced ₹100 crore of goods and sold only ₹80 crore of them still <b>produced</b>
+      ₹100 crore — the remaining ₹20 crore sits in its warehouse as an addition to inventory, and
+      is counted as the firm's own investment.</p>
+    <div class="q">A firm that sold ₹100 crore but produced only ₹90 crore, selling ₹10 crore out of
+      last year's stock, has <b>produced ₹90 crore this year</b>. Change in stock = −10, so value of
+      output = 100 − 10 = 90. Last year's production must not be credited to this year.</div>
+    <p>Using sales instead of value of output is the single most common way students lose the whole
+      value-added question. Write the line <b>"Value of output = Sales + Change in stock"</b>
+      explicitly before you subtract intermediate consumption.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="4 · Value added method">
+  <h2>Value added, drawn</h2>
+  <p class="lead">Our three firms again: farmer sells ₹1,000 of wheat (₹900 to the miller,
+     ₹100 to households); miller produces ₹1,600 of flour (₹1,400 to the baker, ₹200 to households);
+     baker produces ₹2,400 of bread, all to households.</p>
+  <figure>
+    <svg viewBox="0 0 780 450" role="img"
+         aria-label="Bar chart. Each firm's output bar is split into intermediate consumption and value added. The three value-added segments sum to GDP of 2700, far less than the 5000 sum of the three outputs.">
+      <!-- baseline -->
+      <line x1="60" y1="380" x2="740" y2="380" class="axis"/>
+      <text x="400" y="412" class="sm" text-anchor="middle">Height ∝ ₹ crore &nbsp;·&nbsp; grey = bought in from other firms, teal = value added by this firm</text>
+
+      <!-- Farmer: output 1000 = 125px, IC 0 -->
+      <rect x="90" y="255" width="90" height="125" class="fill-teal"/>
+      <text x="135" y="245" class="sm" text-anchor="middle">1,000</text>
+      <text x="135" y="322" class="lab" text-anchor="middle" fill="var(--teal-t)">1,000</text>
+      <text x="135" y="402" class="lab" text-anchor="middle">FARMER</text>
+
+      <!-- Miller: output 1600 = 200px; IC 900 = 112.5px grey (bottom), VA 700 = 87.5px -->
+      <rect x="260" y="267.5" width="90" height="112.5" fill="rgba(117,131,127,.28)" stroke="#75837f" stroke-width="2"/>
+      <rect x="260" y="180" width="90" height="87.5" class="fill-teal"/>
+      <text x="305" y="170" class="sm" text-anchor="middle">1,600</text>
+      <text x="305" y="232" class="lab" text-anchor="middle" fill="var(--teal-t)">700</text>
+      <text x="305" y="330" class="sm" text-anchor="middle">900</text>
+      <text x="305" y="402" class="lab" text-anchor="middle">MILLER</text>
+
+      <!-- Baker: output 2400 = 300px; IC 1400 = 175px, VA 1000 = 125px -->
+      <rect x="430" y="205" width="90" height="175" fill="rgba(117,131,127,.28)" stroke="#75837f" stroke-width="2"/>
+      <rect x="430" y="80" width="90" height="125" class="fill-teal"/>
+      <text x="475" y="70" class="sm" text-anchor="middle">2,400</text>
+      <text x="475" y="148" class="lab" text-anchor="middle" fill="var(--teal-t)">1,000</text>
+      <text x="475" y="300" class="sm" text-anchor="middle">1,400</text>
+      <text x="475" y="402" class="lab" text-anchor="middle">BAKER</text>
+
+      <!-- Total -->
+      <g class="reveal">
+        <rect x="620" y="42.5" width="100" height="337.5" class="fill-amber"/>
+        <line x1="620" y1="167.5" x2="720" y2="167.5" stroke="var(--bg)" stroke-width="2"/>
+        <line x1="620" y1="255" x2="720" y2="255" stroke="var(--bg)" stroke-width="2"/>
+        <text x="670" y="32" class="lab" text-anchor="middle" fill="var(--amber-t)">2,700</text>
+        <text x="670" y="112" class="sm" text-anchor="middle">1,000</text>
+        <text x="670" y="215" class="sm" text-anchor="middle">700</text>
+        <text x="670" y="322" class="sm" text-anchor="middle">1,000</text>
+        <text x="670" y="402" class="lab" text-anchor="middle">GDP</text>
+        <text x="670" y="424" class="sm" text-anchor="middle">Σ value added</text>
+      </g>
+    </svg>
+    <figcaption>Sum of the three <b>outputs</b> = ₹5,000 crore. Sum of the three <b>value added</b>
+      = ₹2,700 crore. The difference, ₹2,300 crore, is double counting.</figcaption>
+  </figure>
+</section>
+
+<section class="slide" data-section="4 · Value added method">
+  <h2>The same thing as a table</h2>
+  <table>
+    <thead>
+      <tr><th class="lbl">Firm</th><th>Value of output</th><th>Intermediate consumption</th><th>GVA at MP</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="lbl">Farmer</td><td>1,000</td><td>0</td><td class="hi2">1,000</td></tr>
+      <tr><td class="lbl">Miller</td><td>1,600</td><td>900</td><td class="hi2">700</td></tr>
+      <tr><td class="lbl">Baker</td><td>2,400</td><td>1,400</td><td class="hi2">1,000</td></tr>
+      <tr><td class="lbl"><b>Total</b></td><td>5,000</td><td>2,300</td><td class="hi">2,700</td></tr>
+    </tbody>
+    <caption>₹ crore. GDP<sub>MP</sub> = ₹2,700 crore.</caption>
+  </table>
+  <div class="reveal challenge">
+    <span class="tag">Challenge</span>
+    <p>Verify the answer by the <b>final goods</b> route instead: add up only what households
+      actually bought.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p>Households bought wheat ₹100 + flour ₹200 + bread ₹2,400 = <b>₹2,700 crore</b>. Identical.</p>
+    <p class="small">This is not a coincidence — it is Chapter 1's identity. Total value added
+      <b>must</b> equal total final expenditure, because every rupee of value added ends up embodied
+      in some final good.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="4 · Value added method">
+  <h2>Worked numerical · value added with the traps in</h2>
+  <div class="qcard">
+    <span class="tag">Question 4</span>
+    <p>Calculate <b>net value added at factor cost</b> (₹ lakh):</p>
+    <table>
+      <tbody>
+        <tr><td class="lbl">(i) Sales</td><td>800</td><td class="lbl">(v) Opening stock</td><td>60</td></tr>
+        <tr><td class="lbl">(ii) Purchase of raw material</td><td>300</td><td class="lbl">(vi) Closing stock</td><td>90</td></tr>
+        <tr><td class="lbl">(iii) Import of raw material</td><td>50</td><td class="lbl">(vii) Depreciation</td><td>70</td></tr>
+        <tr><td class="lbl">(iv) Indirect taxes</td><td>60</td><td class="lbl">(viii) Purchase of machinery</td><td>200</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <ol class="steps">
+    <li class="reveal">Change in stock = Closing − Opening = 90 − 60 = <b>+30</b></li>
+    <li class="reveal">Value of output = Sales + Change in stock = 800 + 30 = <b>830</b></li>
+    <li class="reveal">Intermediate consumption = domestic raw material 300 + <b>imported</b> raw material 50 = <b>350</b></li>
+    <li class="reveal">GVA<sub>MP</sub> = 830 − 350 = <b>480</b></li>
+    <li class="reveal">− Depreciation 70 ⟹ NVA<sub>MP</sub> = <b>410</b></li>
+    <li class="reveal">− Indirect taxes 60 ⟹ NVA<sub>FC</sub> = <b>₹350 lakh</b></li>
+  </ol>
+  <div class="reveal warn">
+    <span class="tag">The three traps in this sum</span>
+    <ul>
+      <li><b>Purchase of machinery (₹200 lakh) is NOT deducted.</b> It is a <i>capital</i> good, not
+        an intermediate good — it is not used up this year. Deducting it is the commonest error here.</li>
+      <li><b>Imported raw material IS deducted.</b> Students leave it out thinking "imports are
+        subtracted separately". Not in the value added method — any raw material used up is
+        intermediate consumption, wherever it came from.</li>
+      <li><b>Change in stock is added to sales, not to intermediate consumption.</b></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ EXPENDITURE METHOD -->
+<section class="slide" data-section="5 · Expenditure method">
+  <h2><span class="num">2.5</span>Method 2 · Expenditure method</h2>
+  <p class="lead">Measure the circle at the <em>spending</em> cut: add up all expenditure on
+     <b>final</b> goods and services produced inside the domestic territory.</p>
+  <div class="formula">
+    GDP<sub>MP</sub> = C + I + G + (X − M)
+  </div>
+  <div class="grid2">
+    <div class="reveal card">
+      <h4>C · Private final consumption expenditure</h4>
+      <p class="small">Spending by <b>households and non-profit institutions serving households</b> on
+        final consumer goods and services — durable, semi-durable, non-durable and services.</p>
+    </div>
+    <div class="reveal card">
+      <h4>G · Government final consumption expenditure</h4>
+      <p class="small">The government's spending on final goods and services for <b>collective
+        consumption</b> — largely the salaries of its employees and its purchases of supplies.
+        <b>Excludes transfer payments.</b></p>
+    </div>
+    <div class="reveal card">
+      <h4>I · Gross domestic capital formation</h4>
+      <p class="small">= <b>Gross fixed capital formation</b> (business fixed investment + residential
+        construction + public investment) <b>+ change in stock</b>.</p>
+    </div>
+    <div class="reveal card">
+      <h4>(X − M) · Net exports</h4>
+      <p class="small">Exports are produced here and bought by foreigners — <b>add</b>.
+        Imports are produced abroad but are already sitting inside C, I and G — <b>subtract</b>.</p>
+    </div>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">Why imports are subtracted — the honest reason</span>
+    <p>Not because imports are "bad" or "a leakage". Because when a household buys a Korean phone,
+      that ₹60,000 is already inside <b>C</b>, yet nothing was produced in India. Subtracting M
+      removes foreign production that the C, I and G totals wrongly swept in.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="5 · Expenditure method">
+  <h2>Worked numerical · the expenditure method</h2>
+  <p class="lead">Same economy as before. All figures ₹ crore, at current prices.</p>
+  <div class="qcard">
+    <span class="tag">Question 5</span>
+    <table>
+      <tbody>
+        <tr><td class="lbl">Private final consumption expenditure</td><td>1,800</td><td class="lbl">Exports</td><td>150</td></tr>
+        <tr><td class="lbl">Government final consumption expenditure</td><td>500</td><td class="lbl">Imports</td><td>200</td></tr>
+        <tr><td class="lbl">Gross domestic fixed capital formation</td><td>400</td><td class="lbl">Depreciation</td><td>200</td></tr>
+        <tr><td class="lbl">Change in stock</td><td>50</td><td class="lbl">Net indirect taxes</td><td>300</td></tr>
+        <tr><td class="lbl">Net factor income from abroad</td><td>(−) 50</td><td class="lbl">Old-age pensions paid by government</td><td>120</td></tr>
+      </tbody>
+    </table>
+    <p>Find (a) GDP at market price and (b) National income.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <ol class="steps">
+    <li class="reveal">C = 1,800 &nbsp;·&nbsp; G = 500</li>
+    <li class="reveal">I = Gross domestic capital formation = fixed 400 + change in stock 50 = <b>450</b></li>
+    <li class="reveal">Net exports = X − M = 150 − 200 = <b>(−) 50</b></li>
+    <li class="reveal"><b>GDP<sub>MP</sub></b> = 1,800 + 450 + 500 + (−50) = <b>₹2,700 crore</b></li>
+    <li class="reveal">+ NFIA (−50) ⟹ GNP<sub>MP</sub> = <b>2,650</b></li>
+    <li class="reveal">− Depreciation 200 ⟹ NNP<sub>MP</sub> = <b>2,450</b></li>
+    <li class="reveal">− NIT 300 ⟹ <b>NNP<sub>FC</sub> = National income = ₹2,150 crore</b></li>
+  </ol>
+  <div class="reveal warn">
+    <span class="tag">Note what was NOT used</span>
+    <p><b>Old-age pensions ₹120 crore was ignored.</b> It is a <b>transfer payment</b> — the
+      government receives no good or service in return, so no production corresponds to it.
+      Every expenditure-method question plants at least one transfer payment. Never add it to G.</p>
+  </div>
+</section>
+
+<!-- ============================================================ INCOME METHOD -->
+<section class="slide" data-section="6 · Income method">
+  <h2><span class="num">2.6</span>Method 3 · Income method</h2>
+  <p class="lead">Measure the circle at the <em>income</em> cut: add up all factor incomes paid out
+     by producing units in the domestic territory. This gives <b>NDP at factor cost</b> directly.</p>
+  <div class="formula">
+    NDP<sub>FC</sub> = Compensation of employees + Operating surplus + Mixed income
+  </div>
+  <div class="grid3">
+    <div class="reveal card">
+      <h4>1 · Compensation of employees</h4>
+      <ul class="small">
+        <li>Wages and salaries <b>in cash</b> — including bonus, dearness allowance, commission</li>
+        <li>Wages and salaries <b>in kind</b> — rent-free house, free car, free medical care</li>
+        <li>Employer's contribution to <b>social security</b> — provident fund, pension scheme</li>
+      </ul>
+    </div>
+    <div class="reveal card">
+      <h4>2 · Operating surplus</h4>
+      <p class="small">Income from property and entrepreneurship:</p>
+      <ul class="small">
+        <li><b>Rent</b> and royalty</li>
+        <li><b>Interest</b> on capital borrowed for production</li>
+        <li><b>Profit</b> = dividends + corporate tax + undistributed profit</li>
+      </ul>
+    </div>
+    <div class="reveal card">
+      <h4>3 · Mixed income of self-employed</h4>
+      <p class="small">The income of a farmer, shopkeeper, doctor or artisan who supplies <b>several
+        factors at once</b> — own labour, own land, own capital, own enterprise — so their earnings
+        cannot be split into wage, rent, interest and profit.</p>
+      <p class="small">Large and important in India.</p>
+    </div>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">Why this route lands at NDP<sub>FC</sub></span>
+    <p>Because factors receive only what is left <b>after</b> indirect taxes are handed to the
+      government and <b>after</b> depreciation is set aside. Income received by factors <i>is</i>
+      factor cost, and it <i>is</i> net.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="6 · Income method">
+  <h2>Worked numerical · the income method, same economy</h2>
+  <div class="qcard">
+    <span class="tag">Question 6</span>
+    <table>
+      <tbody>
+        <tr><td class="lbl">Compensation of employees</td><td>1,200</td><td class="lbl">Mixed income of self-employed</td><td>250</td></tr>
+        <tr><td class="lbl">Rent and royalty</td><td>200</td><td class="lbl">Depreciation</td><td>200</td></tr>
+        <tr><td class="lbl">Interest</td><td>150</td><td class="lbl">Net indirect taxes</td><td>300</td></tr>
+        <tr><td class="lbl">Dividends</td><td>150</td><td class="lbl">Net factor income from abroad</td><td>(−) 50</td></tr>
+        <tr><td class="lbl">Corporate tax</td><td>100</td><td class="lbl">Interest on national debt</td><td>80</td></tr>
+        <tr><td class="lbl">Undistributed profit</td><td>150</td><td class="lbl">Scholarships given by government</td><td>40</td></tr>
+      </tbody>
+    </table>
+    <p>Find (a) NDP at factor cost, (b) National income, (c) GDP at market price.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <ol class="steps">
+    <li class="reveal">Profit = Dividends 150 + Corporate tax 100 + Undistributed profit 150 = <b>400</b></li>
+    <li class="reveal">Operating surplus = Rent 200 + Interest 150 + Profit 400 = <b>750</b></li>
+    <li class="reveal"><b>NDP<sub>FC</sub></b> = COE 1,200 + OS 750 + Mixed income 250 = <b>₹2,200 crore</b></li>
+    <li class="reveal">+ NFIA (−50) ⟹ <b>NNP<sub>FC</sub> = National income = ₹2,150 crore</b></li>
+    <li class="reveal">Back to market price: 2,200 + NIT 300 = NDP<sub>MP</sub> = <b>2,500</b></li>
+    <li class="reveal">+ Depreciation 200 ⟹ <b>GDP<sub>MP</sub> = ₹2,700 crore</b></li>
+  </ol>
+  <div class="reveal warn">
+    <span class="tag">The two planted items</span>
+    <ul>
+      <li><b>Interest on national debt (₹80 crore) — excluded.</b> The government borrows mainly for
+        <i>consumption</i>, not production, so this interest is treated as a <b>transfer payment</b>,
+        not a factor payment.</li>
+      <li><b>Scholarships (₹40 crore) — excluded.</b> A transfer payment; no factor service rendered.</li>
+      <li>Also note: <b>corporate tax is a part of profit</b>, already inside it. Adding it a second
+        time as "a tax" double counts.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide" data-section="6 · Income method">
+  <h2>The three methods agree — and that is the teaching point</h2>
+  <table>
+    <thead><tr><th class="lbl">Method</th><th class="lbl">What is added up</th><th>Lands at</th><th>₹ crore</th><th>National income</th></tr></thead>
+    <tbody>
+      <tr><td class="lbl">Value added</td><td class="lbl">Σ (Output − Intermediate consumption)</td><td>GDP<sub>MP</sub></td><td>2,700</td><td class="hi">2,150</td></tr>
+      <tr><td class="lbl">Expenditure</td><td class="lbl">C + I + G + (X − M)</td><td>GDP<sub>MP</sub></td><td>2,700</td><td class="hi">2,150</td></tr>
+      <tr><td class="lbl">Income</td><td class="lbl">COE + Operating surplus + Mixed income</td><td>NDP<sub>FC</sub></td><td>2,200</td><td class="hi">2,150</td></tr>
+    </tbody>
+    <caption>Three completely different lists of items. One answer. ₹ crore, current prices.</caption>
+  </table>
+  <div class="reveal insight">
+    <span class="tag">Why the agreement is guaranteed</span>
+    <p>Because of Chapter 1's circle. Whatever a firm produces it sells (counting unsold goods as
+      sold to itself), and whatever it receives from selling it pays out to factors or to the
+      government as indirect tax or sets aside as depreciation. <b>Nothing leaks out of the
+      accounting.</b> The three methods are three ways of reading the same ledger.</p>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">Note the different landing points</span>
+    <p>Value added and expenditure land at <b>GDP<sub>MP</sub></b>; income lands at
+      <b>NDP<sub>FC</sub></b>. You must still walk the chain to national income. Students who "get
+      2,200" from the income method and "2,700" from the expenditure method and think one is wrong
+      have simply forgotten which switch each method sets.</p>
+  </div>
+</section>
+
+<!-- ============================================================ DOUBTFUL ITEMS -->
+<section class="slide" data-section="7 · The doubtful items">
+  <h2><span class="num">2.7</span>The item-treatment table — where the marks are</h2>
+  <p class="lead">For every doubtful item: <em>include or exclude</em>, and a <em>one-line reason</em>.
+     Learn the reasons, not the list — new items appear every year.</p>
+  <table>
+    <thead><tr><th class="lbl">Item</th><th>Treatment</th><th class="lbl">Reason</th></tr></thead>
+    <tbody>
+      <tr><td class="lbl">Sale of a second-hand car</td><td class="hi">Exclude</td><td class="lbl">No current production; it was counted in the year it was made</td></tr>
+      <tr><td class="lbl">Commission earned by the used-car dealer</td><td class="hi2">Include</td><td class="lbl">A productive <b>service</b> rendered this year</td></tr>
+      <tr><td class="lbl">Purchase of shares / debentures</td><td class="hi">Exclude</td><td class="lbl">A financial transaction — a change of ownership of paper, not production</td></tr>
+      <tr><td class="lbl">Brokerage on the share purchase</td><td class="hi2">Include</td><td class="lbl">A service rendered this year</td></tr>
+      <tr><td class="lbl">Capital gain on selling land</td><td class="hi">Exclude</td><td class="lbl">A rise in the price of an existing asset; nothing was produced</td></tr>
+      <tr><td class="lbl">Old-age pension, scholarship, unemployment allowance</td><td class="hi">Exclude</td><td class="lbl"><b>Transfer payment</b> — received without rendering any factor service</td></tr>
+      <tr><td class="lbl">Interest on national debt (public debt)</td><td class="hi">Exclude</td><td class="lbl">Government borrows for consumption, so treated as a transfer</td></tr>
+      <tr><td class="lbl">Bonus / dearness allowance paid to workers</td><td class="hi2">Include</td><td class="lbl">Part of compensation of employees</td></tr>
+      <tr><td class="lbl">Rent-free accommodation given by an employer</td><td class="hi2">Include</td><td class="lbl">Compensation of employees <b>in kind</b></td></tr>
+      <tr><td class="lbl">Imputed rent of an owner-occupied house</td><td class="hi2">Include</td><td class="lbl">A housing service is produced and consumed, so it is valued and counted</td></tr>
+      <tr><td class="lbl">Vegetables a farmer grows and eats himself</td><td class="hi2">Include</td><td class="lbl">Production for self-consumption is still production; valued at market price</td></tr>
+      <tr><td class="lbl">Services of a housewife</td><td class="hi">Exclude</td><td class="lbl">Non-market service; no reliable way to value it (a known <b>limitation</b>, not a principle)</td></tr>
+      <tr><td class="lbl">Expenditure on raw materials by a firm</td><td class="hi">Exclude</td><td class="lbl">Intermediate consumption — would be double counting</td></tr>
+      <tr><td class="lbl">Purchase of a machine by a firm</td><td class="hi2">Include</td><td class="lbl">Final good — <b>investment</b> (gross fixed capital formation)</td></tr>
+      <tr><td class="lbl">Construction of a new house</td><td class="hi2">Include</td><td class="lbl">Investment — a newly produced capital good</td></tr>
+      <tr><td class="lbl">Payment of corporate tax by a firm</td><td class="hi">Exclude separately</td><td class="lbl">Already contained within profit; adding it again double counts</td></tr>
+      <tr><td class="lbl">Purchase of a car by a household</td><td class="hi2">Include</td><td class="lbl">Final consumption expenditure (consumer durable)</td></tr>
+      <tr><td class="lbl">Entertainment tax / GST received by government</td><td class="hi2">Include in MP only</td><td class="lbl">An indirect tax — part of market price, not of factor cost</td></tr>
+    </tbody>
+    <caption>Learn the four reason-categories: <b>not current production</b>, <b>transfer payment</b>,
+      <b>financial/second-hand transaction</b>, <b>intermediate good</b>. Almost every excluded item
+      falls into one of them.</caption>
+  </table>
+</section>
+
+<section class="slide" data-section="7 · The doubtful items">
+  <h2>Check yourself · the classification drill</h2>
+  <div class="qcard">
+    <span class="tag">Question 7</span>
+    <p>State with reason whether each is included in India's <b>national income</b>:</p>
+    <ol>
+      <li>Salary received by an Indian resident working in the Russian embassy in Delhi.</li>
+      <li>Profits earned by a branch of the State Bank of India in London.</li>
+      <li>₹5 lakh won in a lottery.</li>
+      <li>Payment of fees to a lawyer by a firm.</li>
+      <li>Free uniform given by a company to its guards.</li>
+      <li>Expenditure by a government on street lighting.</li>
+    </ol>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <ol>
+      <li><b>Included.</b> The earner is a normal resident of India, so it enters national income
+        through NFIA — though it is <b>not</b> in domestic income, since a foreign embassy is not
+        India's domestic territory.</li>
+      <li><b>Included.</b> SBI is a resident institution, so its profit abroad is factor income from
+        abroad — part of NFIA. Not in domestic income.</li>
+      <li><b>Excluded.</b> A <b>windfall gain / transfer</b>. No factor service was rendered and
+        nothing was produced.</li>
+      <li><b>Excluded.</b> The firm is buying an <b>intermediate service</b> used up in its own
+        production. (Had a <i>household</i> paid the same lawyer, it would be included as final
+        consumption.)</li>
+      <li><b>Included.</b> Compensation of employees <b>in kind</b>.</li>
+      <li><b>Included.</b> Government final consumption expenditure on a service produced this year.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================================================ OTHER AGGREGATES -->
+<section class="slide" data-section="8 · Income of the household">
+  <h2><span class="num">2.8</span>From national income to what a household can spend</h2>
+  <p class="lead">National income is what the <em>country</em> earned. Very little of it reaches a
+     household's hands untouched.</p>
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Personal income</span> — the total income actually <b>received</b> by
+      households from all sources, whether earned or not.</p>
+  </div>
+  <div class="formula" style="font-size:1.05rem;text-align:left;line-height:2">
+    Personal income = National income (NNP<sub>FC</sub>)<br>
+    &nbsp;&nbsp;− Undistributed profit &nbsp;− Corporate tax &nbsp;− Net interest paid by households<br>
+    &nbsp;&nbsp;+ Transfer payments to households from government and the rest of the world
+  </div>
+  <div class="reveal defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Personal disposable income</span> — the part of personal income that a
+      household is actually free to <b>spend or save</b>.</p>
+  </div>
+  <div class="reveal formula">
+    PDI = Personal income − Personal taxes − Non-tax payments (fees, fines)
+  </div>
+  <div class="reveal insight">
+    <span class="tag">Read the formula as a story</span>
+    <p>Take what the nation earned. <b>Remove</b> the part companies kept (undistributed profit) and
+      the part the government took from companies (corporate tax). <b>Add back</b> the money the
+      government hands over for free (pensions, scholarships). Then <b>remove</b> the government's
+      cut from households (income tax). What is left is what actually reaches a bank account.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="8 · Income of the household">
+  <h2>Worked numerical · personal income and PDI</h2>
+  <div class="qcard">
+    <span class="tag">Question 8</span>
+    <p>Same economy. National income (NNP<sub>FC</sub>) = <b>2,150</b>. Also (₹ crore):
+      undistributed profit <b>150</b>, corporate tax <b>100</b>, net interest paid by households
+      <b>40</b>, current transfers from government and ROW <b>180</b>, personal income tax
+      <b>240</b>, fees and fines paid to government <b>20</b>.</p>
+    <p>Find personal income and personal disposable income.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <ol class="steps">
+    <li class="reveal">Start: National income = <b>2,150</b></li>
+    <li class="reveal">− Undistributed profit 150 → 2,000 &nbsp;<span class="small">(earned by households as shareholders but never paid out)</span></li>
+    <li class="reveal">− Corporate tax 100 → 1,900 &nbsp;<span class="small">(taken by the government before any dividend)</span></li>
+    <li class="reveal">− Net interest paid by households 40 → 1,860 &nbsp;<span class="small">(households pay this out, so it is not income received)</span></li>
+    <li class="reveal">+ Transfers received 180 → <b>Personal income = ₹2,040 crore</b></li>
+    <li class="reveal">− Personal tax 240 − fees and fines 20 → <b>PDI = ₹1,780 crore</b></li>
+  </ol>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p>Personal income = <b>₹2,040 crore</b>; Personal disposable income = <b>₹1,780 crore</b>.</p>
+  </div>
+  <div class="reveal bridge">
+    <span class="tag">Forward link · Chapter 4</span>
+    <p>PDI is the income that appears on the horizontal axis of the consumption function.
+      <b>PDI = Consumption + Saving</b>, and how a household splits it is exactly what Chapter 4
+      is about.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="8 · Income of the household">
+  <h2>Two more aggregates worth knowing</h2>
+  <div class="grid2">
+    <div class="defn">
+      <span class="tag">Definition</span>
+      <p><span class="term">Private income</span> — the total factor income from all sources plus
+        current transfers, accruing to the <b>private sector</b> (households and private firms) —
+        i.e. national income minus the part earned by government enterprises and government property,
+        plus interest on national debt and current transfers.</p>
+    </div>
+    <div class="defn">
+      <span class="tag">Definition</span>
+      <p><span class="term">National disposable income</span> — the income the <b>whole nation</b>
+        has at its disposal for consumption and saving.</p>
+      <p class="small"><b>Net</b> NDI = NNP<sub>MP</sub> + Net current transfers from the rest of the world.<br>
+        <b>Gross</b> NDI = GNP<sub>MP</sub> + Net current transfers from the rest of the world.</p>
+    </div>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">Two points examiners test</span>
+    <ul>
+      <li>National disposable income is measured <b>at market price</b>, not factor cost — because it
+        measures the <i>purchasing power</i> the nation commands, and buyers pay market prices.</li>
+      <li>It includes <b>net current transfers from abroad</b> (foreign aid, remittances, gifts) —
+        the one place where transfers legitimately enter a national aggregate, since they genuinely
+        add to what the nation can spend even though they add nothing to what it produced.</li>
+    </ul>
+  </div>
+  <div class="reveal eg">
+    <span class="tag">Example · with our numbers</span>
+    <p>NNP<sub>MP</sub> = 2,450. If net current transfers from abroad = 60, then
+      <b>Net national disposable income = 2,450 + 60 = ₹2,510 crore</b>, and
+      Gross NDI = 2,650 + 60 = ₹2,710 crore.</p>
+  </div>
+</section>
+
+<!-- ============================================================ REAL VS NOMINAL -->
+<section class="slide" data-section="9 · Real vs nominal">
+  <h2><span class="num">2.9</span>The problem with a rupee figure</h2>
+  <div class="qcard">
+    <span class="tag">The question that motivates everything here</span>
+    <p>India's GDP rose from ₹100 lakh crore to ₹110 lakh crore. Is the country producing more?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>You cannot tell.</b> GDP could have risen because more goods were produced, or because the
+      same goods were sold at higher prices, or any mixture of the two. A rupee total confuses
+      <b>quantity</b> with <b>price</b>.</p>
+  </div>
+  <div class="reveal grid2">
+    <div class="defn">
+      <span class="tag">Definition</span>
+      <p><span class="term">Nominal GDP</span> (GDP at current prices) — the value of final goods and
+        services produced in a year, valued at <b>that year's own prices</b>.</p>
+    </div>
+    <div class="defn">
+      <span class="tag">Definition</span>
+      <p><span class="term">Real GDP</span> (GDP at constant prices) — the value of final goods and
+        services produced in a year, valued at the prices of a fixed <b>base year</b>.</p>
+    </div>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">Why real GDP is the honest measure</span>
+    <p>Holding prices fixed means a rise in real GDP can <b>only</b> come from producing more goods.
+      Real GDP is a quantity index wearing a rupee costume. <b>Growth rates are always quoted in
+      real terms.</b></p>
+  </div>
+</section>
+
+<section class="slide" data-section="9 · Real vs nominal">
+  <h2>Worked numerical · real, nominal and the deflator</h2>
+  <p class="lead">A two-good economy. Base year <b>2015–16</b>.</p>
+  <table>
+    <thead>
+      <tr><th class="lbl">Good</th><th>2015–16 price</th><th>2015–16 quantity</th><th>2025–26 price</th><th>2025–26 quantity</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="lbl">Rice (quintal)</td><td>₹10</td><td>100</td><td>₹15</td><td>120</td></tr>
+      <tr><td class="lbl">Cloth (metre)</td><td>₹20</td><td>50</td><td>₹25</td><td>60</td></tr>
+    </tbody>
+    <caption>A deliberately tiny economy so every multiplication is visible.</caption>
+  </table>
+  <div class="qcard">
+    <span class="tag">Question 9</span>
+    <p>Find (a) nominal GDP of 2015–16, (b) nominal GDP of 2025–26, (c) real GDP of 2025–26,
+      (d) the GDP deflator for 2025–26, (e) real growth over the decade.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <ol class="steps">
+    <li class="reveal">Nominal GDP 2015–16 = (10 × 100) + (20 × 50) = 1,000 + 1,000 = <b>₹2,000</b></li>
+    <li class="reveal">Nominal GDP 2025–26 = (15 × 120) + (25 × 60) = 1,800 + 1,500 = <b>₹3,300</b></li>
+    <li class="reveal">Real GDP 2025–26 = <b>this year's quantities at base year prices</b> = (10 × 120) + (20 × 60) = 1,200 + 1,200 = <b>₹2,400</b></li>
+    <li class="reveal">GDP deflator = (3,300 ÷ 2,400) × 100 = <b>137.5</b></li>
+    <li class="reveal">Real growth = (2,400 − 2,000) ÷ 2,000 = <b>20%</b> &nbsp;<span class="small">(nominal growth was 65%)</span></li>
+  </ol>
+  <div class="reveal answer">
+    <span class="tag">Answer · read the two growth rates together</span>
+    <p>Output really rose by <b>20%</b>. The reported rupee figure rose by <b>65%</b>. The remaining
+      45 percentage points were <b>price rise</b> — and the deflator of 137.5 says exactly that:
+      prices are 37.5% above the base year.</p>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">The mechanical rule</span>
+    <p><b>Nominal = current quantity × current price. Real = current quantity × BASE price.</b>
+      The quantity is always the current year's. It is the <i>price</i> that gets frozen.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="9 · Real vs nominal">
+  <h2>The GDP deflator and the price indices</h2>
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">GDP deflator</span> — an index of the general price level, obtained as the
+      ratio of nominal to real GDP.</p>
+  </div>
+  <div class="formula">
+    GDP deflator =
+    <span class="frac"><span>Nominal GDP</span><span>Real GDP</span></span>
+    × 100
+  </div>
+  <div class="reveal grid3">
+    <div class="card">
+      <h4>GDP deflator</h4>
+      <p class="small">Covers <b>all</b> goods and services produced domestically. Its basket
+        <b>changes every year</b> with the composition of output. Not published as a survey — it
+        falls out of the national accounts.</p>
+    </div>
+    <div class="card">
+      <h4>Consumer Price Index (CPI)</h4>
+      <p class="small">Price of a <b>fixed basket bought by a typical household</b> — food, fuel,
+        housing, clothing. Includes <b>imported</b> consumer goods. Excludes machinery and other
+        goods households do not buy. This is the index the RBI targets.</p>
+    </div>
+    <div class="card">
+      <h4>Wholesale Price Index (WPI)</h4>
+      <p class="small">Prices of goods traded in <b>bulk at the wholesale stage</b>. Excludes
+        services entirely. In some countries called the Producer Price Index.</p>
+    </div>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">Why the three never agree</span>
+    <ul>
+      <li>The deflator covers <b>everything produced here</b>, including machines and exports, but
+        <b>excludes imports</b>.</li>
+      <li>CPI covers <b>everything a household buys</b>, including imports, but excludes capital goods.</li>
+      <li>A rise in the price of imported crude oil raises <b>CPI</b> but not the <b>deflator</b>.
+        A rise in the price of an Indian-made machine raises the <b>deflator</b> but not <b>CPI</b>.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide" data-section="9 · Real vs nominal">
+  <h2>Check yourself · the deflator trap</h2>
+  <div class="qcard">
+    <span class="tag">Question 10 · NCERT Chapter 2, Q11</span>
+    <p>The nominal GNP of an economy was <b>₹2,500 crore</b> in a particular year. The GNP of that
+      country during the same year, evaluated at the prices of the base year, was <b>₹3,000 crore</b>.
+      Calculate the GNP deflator. Has the price level risen between the base year and the year under
+      consideration?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <ol class="steps">
+    <li class="reveal">GNP deflator = (Nominal GNP ÷ Real GNP) × 100</li>
+    <li class="reveal">= (2,500 ÷ 3,000) × 100</li>
+    <li class="reveal">= <b>83.33%</b></li>
+  </ol>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p>The deflator is <b>83.33</b>, which is <b>below 100</b>. So the price level has <b>fallen</b>
+      since the base year — prices are about <b>16.67% lower</b> than in the base year. The economy
+      has experienced <b>deflation</b>.</p>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">The reasoning students miss</span>
+    <p>Real GDP <i>exceeds</i> nominal GDP. The <b>same</b> physical output is worth more at base-year
+      prices than at today's prices — which can only mean today's prices are <b>lower</b>. A deflator
+      is simply the answer to "are today's prices above or below the base year's?": above 100 means
+      above, below 100 means below.</p>
+  </div>
+</section>
+
+<!-- ============================================================ GDP AND WELFARE -->
+<section class="slide" data-section="10 · GDP and welfare">
+  <h2><span class="num">2.10</span>Is a bigger GDP a better country?</h2>
+  <p class="lead">The chapter's last idea, and the one most likely to appear as a 4- or 6-mark
+     question: <em>the limitations of GDP as an index of welfare</em>.</p>
+  <ol class="steps">
+    <li class="reveal"><b>Distribution of income.</b> GDP is a total, not a share. GDP can rise while most
+      people are worse off if the entire gain goes to a few. A rising average says nothing about
+      the spread.</li>
+    <li class="reveal"><b>Non-monetary exchanges.</b> Work done without a market transaction — a
+      housewife's labour, barter in a village, subsistence farming — is left out. Two countries with
+      identical real living standards can record very different GDP if one does more of its work
+      inside the household.</li>
+    <li class="reveal"><b>Externalities.</b> GDP counts the factory's output but not the poisoned
+      river. Negative externalities reduce welfare without reducing GDP — and cleaning them up
+      <i>raises</i> GDP a second time.</li>
+    <li class="reveal"><b>Composition of output.</b> ₹1,000 crore of hospitals and ₹1,000 crore of
+      weapons add the same amount to GDP. GDP has no opinion about what was produced.</li>
+    <li class="reveal"><b>Rate of population growth.</b> If GDP grows 5% and population grows 6%,
+      <b>per capita</b> income has fallen even though GDP rose.</li>
+    <li class="reveal"><b>Quality of life omitted.</b> Life expectancy, literacy, leisure, health and
+      safety are not in GDP at all.</li>
+  </ol>
+  <div class="reveal insight">
+    <span class="tag">The balanced conclusion — write this line</span>
+    <p>GDP is a good measure of <b>economic activity</b> and a poor but not useless proxy for
+      <b>welfare</b>. It is used because it is measurable, comparable and correlated with welfare —
+      not because it defines it.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="10 · GDP and welfare">
+  <h2>Externalities, defined</h2>
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Externalities</span> — benefits or harms that a firm or individual causes to
+      others <b>for which they are not paid and do not pay</b>. They are not reflected in market
+      prices, and therefore not in GDP.</p>
+  </div>
+  <div class="grid2">
+    <div class="reveal eg">
+      <span class="tag">Example · negative externality</span>
+      <p>An oil refinery on a river produces ₹500 crore of output — GDP rises by ₹500 crore. Its
+        effluent kills the fish that a fishing village lived on. Welfare has fallen; <b>GDP has not
+        recorded the fall</b>.</p>
+    </div>
+    <div class="reveal eg">
+      <span class="tag">Example · positive externality</span>
+      <p>A firm builds a road to its own factory. Villagers along the route use it free. Welfare has
+        risen by more than the ₹10 crore recorded in GDP — <b>GDP understates the gain</b>.</p>
+    </div>
+  </div>
+  <div class="reveal challenge">
+    <span class="tag">Challenge</span>
+    <p>A cyclone destroys a city. In the year that follows, GDP <b>rises sharply</b> because of all
+      the rebuilding. Has welfare risen? What does this reveal about GDP?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>No.</b> The rebuilding restores what already existed; the city is at best back where it
+      started, and its people lost a year of other production. GDP counts the <b>flow of new
+      production</b> but never the <b>destruction of the existing stock</b> of wealth. So a disaster
+      followed by reconstruction registers in GDP as a boom. This is a limitation of GDP as a
+      welfare measure, not a sign that disasters are good.</p>
+  </div>
+</section>
+
+<!-- ============================================================ RECAP AND EXERCISES -->
+<section class="slide" data-section="11 · Recap and exercises">
+  <h2>Recap — Chapter 2 in one screen</h2>
+  <div class="chips">
+    <span class="chip k">Final vs intermediate</span>
+    <span class="chip k">Double counting</span>
+    <span class="chip">Change in stock</span>
+    <span class="chip">Domestic territory</span>
+    <span class="chip">Normal resident</span>
+    <span class="chip k">NFIA</span>
+    <span class="chip k">Depreciation</span>
+    <span class="chip k">Net indirect taxes</span>
+    <span class="chip k">GDP<sub>MP</sub> → NNP<sub>FC</sub></span>
+    <span class="chip">Value added</span>
+    <span class="chip">C + I + G + (X − M)</span>
+    <span class="chip">COE + OS + MI</span>
+    <span class="chip">Transfer payment</span>
+    <span class="chip k">GDP deflator</span>
+    <span class="chip">CPI · WPI</span>
+    <span class="chip">Externalities</span>
+  </div>
+  <div class="grid2">
+    <div class="reveal card">
+      <h4>The three formulas to have by heart</h4>
+      <p class="small"><b>GVA<sub>MP</sub></b> = Value of output − Intermediate consumption<br>
+        <b>GDP<sub>MP</sub></b> = C + I + G + (X − M)<br>
+        <b>NDP<sub>FC</sub></b> = COE + Operating surplus + Mixed income</p>
+      <p class="small"><b>NNP<sub>FC</sub></b> = GDP<sub>MP</sub> + NFIA − Depreciation − NIT</p>
+    </div>
+    <div class="reveal card">
+      <h4>The four reasons to exclude an item</h4>
+      <ol class="small">
+        <li>It is not <b>current production</b> (second-hand, capital gain)</li>
+        <li>It is a <b>transfer payment</b> (pension, scholarship, lottery, national debt interest)</li>
+        <li>It is a <b>financial transaction</b> (shares, bonds, loans)</li>
+        <li>It is an <b>intermediate good</b> (raw material, service bought by a firm)</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-section="11 · Recap and exercises">
+  <h2>NCERT exercises · the reasoning questions</h2>
+  <div class="qcard">
+    <span class="tag">NCERT Q3</span>
+    <p>Distinguish between stock and flow. Between net investment and capital, which is a stock and
+      which is a flow? Compare net investment and capital with the flow of water into a tank.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p>A <b>stock</b> is measured at a point of time and has no time dimension; a <b>flow</b> is
+      measured over a period of time and is meaningless without one. <b>Capital is a stock</b> —
+      it is the amount of plant and machinery in existence on a given date. <b>Net investment is a
+      flow</b> — the addition to that capital during a year.</p>
+    <p>The tank: the <b>water standing in the tank</b> at 4 p.m. is the stock, corresponding to
+      capital. The <b>water flowing in through the pipe</b>, measured in litres per hour, is the
+      flow, corresponding to net investment. The flow changes the stock; the stock is the
+      accumulation of past flows.</p>
+  </div>
+  <div class="reveal qcard">
+    <span class="tag">NCERT Q4</span>
+    <p>What is the difference between planned and unplanned inventory accumulation? Write down the
+      relation between change in inventories and value added of a firm.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>Planned</b> inventory accumulation is a deliberate decision by the firm to add to stock —
+      for example, building up before a festival. <b>Unplanned</b> inventory accumulation happens
+      when sales turn out lower than expected, so goods remain unsold and stock rises without the
+      firm intending it (and unplanned <i>decumulation</i> when sales exceed expectations).</p>
+    <p>Relation: <b>Value added = Value of output − Intermediate consumption</b>, where
+      <b>Value of output = Sales + Change in inventories</b>. So a rise in inventories <b>adds</b>
+      to value added and a fall <b>subtracts</b> from it — production, not sales, is what value
+      added measures.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="11 · Recap and exercises">
+  <h2>NCERT Q6 · budget deficit and trade deficit</h2>
+  <div class="qcard">
+    <span class="tag">NCERT Chapter 2, Q6</span>
+    <p>The excess of private investment over saving of a country in a particular year was
+      <b>₹2,000 crore</b>. The amount of budget deficit was <b>(−) ₹1,500 crore</b>. What was the
+      volume of trade deficit that year?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <ol class="steps">
+    <li class="reveal">The national income identity in an open economy rearranges to:<br>
+      <span class="mono">(I − S) + (G − T) = (M − X)</span><br>
+      <span class="small">private investment gap + budget deficit = trade deficit</span></li>
+    <li class="reveal">I − S = <b>2,000</b> (given: excess of investment over saving)</li>
+    <li class="reveal">G − T = budget deficit = <b>(−) 1,500</b> &nbsp;<span class="small">(a negative deficit — the government ran a surplus)</span></li>
+    <li class="reveal">Trade deficit (M − X) = 2,000 + (−1,500) = <b>₹500 crore</b></li>
+  </ol>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>Trade deficit = ₹500 crore.</b></p>
+    <p class="small">Read it economically: the private sector wanted to invest ₹2,000 crore more than
+      it saved. The government supplied ₹1,500 crore of that by running a surplus. The remaining
+      ₹500 crore had to be borrowed from abroad — and borrowing from abroad <b>is</b> importing more
+      than you export.</p>
+  </div>
+  <div class="reveal bridge">
+    <span class="tag">Forward link · Chapters 5 and 6</span>
+    <p>This one identity ties three chapters together: the private saving–investment gap (Ch 4), the
+      budget deficit (Ch 5) and the current account deficit (Ch 6) must always sum to zero.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="11 · Recap and exercises">
+  <h2>NCERT Q10 · Raju the barber</h2>
+  <div class="qcard">
+    <span class="tag">NCERT Chapter 2, Q10</span>
+    <p>In a single day Raju, the barber, collects <b>₹500</b> from haircuts; over this day his
+      equipment depreciates in value by <b>₹50</b>. Of the remaining ₹450, Raju pays <b>₹30</b> sales
+      tax, takes home <b>₹200</b> and retains <b>₹220</b> for improvement and buying of new
+      equipment. He further pays <b>₹20</b> as income tax from his income.</p>
+    <p>Find Raju's contribution to (a) GDP (b) NNP<sub>MP</sub> (c) NNP<sub>FC</sub>
+      (d) Personal income (e) Personal disposable income.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <ol class="steps">
+    <li class="reveal"><b>GDP = ₹500.</b> The full value of the service he produced today. (He is a
+      one-man economy, so GDP = GNP here — no factor income crosses a border.)</li>
+    <li class="reveal"><b>NNP<sub>MP</sub></b> = GNP<sub>MP</sub> − Depreciation = 500 − 50 = <b>₹450</b></li>
+    <li class="reveal"><b>NNP<sub>FC</sub></b> = NNP<sub>MP</sub> − Net indirect taxes = 450 − 30 = <b>₹420</b> &nbsp;<span class="small">(sales tax is an indirect tax)</span></li>
+    <li class="reveal"><b>Personal income</b> = NNP<sub>FC</sub> − retained earnings = 420 − 220 = <b>₹200</b>
+      &nbsp;<span class="small">(the ₹220 he keeps in the business is undistributed profit — earned but not received by him as a household)</span></li>
+    <li class="reveal"><b>Personal disposable income</b> = Personal income − personal tax = 200 − 20 = <b>₹180</b></li>
+  </ol>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p>(a) ₹500 &nbsp;(b) ₹450 &nbsp;(c) ₹420 &nbsp;(d) ₹200 &nbsp;(e) ₹180</p>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">Why this little question is worth so much</span>
+    <p>Raju is <b>a firm and a household in one person</b>. The sum forces you to see that the same
+      ₹500 becomes a smaller and smaller number as you strip out wear and tear, the government's
+      indirect take, the part retained in the business, and the government's direct take. Every
+      aggregate in this chapter is one of those strips.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="11 · Recap and exercises">
+  <h2>Board-style practice · the full sum, both ways</h2>
+  <div class="qcard">
+    <span class="tag">Question 11 · 6 marks</span>
+    <p>Calculate national income by (i) the <b>income</b> method and (ii) the <b>expenditure</b>
+      method (₹ crore):</p>
+    <table>
+      <tbody>
+        <tr><td class="lbl">(i) Compensation of employees</td><td>900</td><td class="lbl">(vii) Private final consumption expenditure</td><td>1,400</td></tr>
+        <tr><td class="lbl">(ii) Rent</td><td>150</td><td class="lbl">(viii) Government final consumption expenditure</td><td>350</td></tr>
+        <tr><td class="lbl">(iii) Interest</td><td>100</td><td class="lbl">(ix) Gross domestic fixed capital formation</td><td>480</td></tr>
+        <tr><td class="lbl">(iv) Profit</td><td>250</td><td class="lbl">(x) Change in stock</td><td>(−) 20</td></tr>
+        <tr><td class="lbl">(v) Mixed income of self-employed</td><td>400</td><td class="lbl">(xi) Net exports</td><td>(−) 30</td></tr>
+        <tr><td class="lbl">(vi) Net factor income from abroad</td><td>(−) 20</td><td class="lbl">(xii) Consumption of fixed capital</td><td>180</td></tr>
+        <tr><td class="lbl">Net indirect taxes</td><td>200</td><td class="lbl">National debt interest</td><td>60</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <h3>(i) Income method</h3>
+  <ol class="steps">
+    <li class="reveal">NDP<sub>FC</sub> = COE 900 + Rent 150 + Interest 100 + Profit 250 + Mixed income 400 = <b>₹1,800 crore</b>
+      &nbsp;<span class="small">(national debt interest ₹60 crore <b>excluded</b> — a transfer payment)</span></li>
+    <li class="reveal">National income = NDP<sub>FC</sub> + NFIA = 1,800 + (−20) = <b>₹1,780 crore</b></li>
+  </ol>
+  <h3 class="reveal">(ii) Expenditure method</h3>
+  <ol class="steps">
+    <li class="reveal">Gross domestic capital formation = Fixed 480 + Change in stock (−20) = <b>460</b></li>
+    <li class="reveal">GDP<sub>MP</sub> = 1,400 + 350 + 460 + (−30) = <b>₹2,180 crore</b></li>
+    <li class="reveal">− Consumption of fixed capital 180 ⟹ NDP<sub>MP</sub> = <b>2,000</b></li>
+    <li class="reveal">− Net indirect taxes 200 ⟹ NDP<sub>FC</sub> = <b>1,800</b> ✓ <span class="small">matches the income method</span></li>
+    <li class="reveal">+ NFIA (−20) ⟹ National income = <b>₹1,780 crore</b></li>
+  </ol>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>National income = ₹1,780 crore by both methods.</b></p>
+    <p class="small">The agreement is the check. If your two answers differ, you have either made an
+      arithmetic slip or wrongly included a transfer payment / intermediate item — go back and find
+      it before moving on. Never write two different national incomes.</p>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">Where marks are lost in this exact question</span>
+    <ul>
+      <li>Adding <b>national debt interest ₹60 crore</b> to the income side. It is a transfer.</li>
+      <li>Writing gross domestic capital formation as 480 + 20 = 500, ignoring the minus sign.</li>
+      <li>Forgetting that the income method starts at <b>NDP<sub>FC</sub></b> — so depreciation and
+        NIT must <b>not</b> be subtracted again from it.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide title-slide" data-section="11 · Recap and exercises">
+  <div class="kicker">End of Chapter 2 · Next</div>
+  <h1>Chapter 3<br>Money and Banking</h1>
+  <div class="rule"></div>
+  <p class="sub">We have measured the flow. Now: what is it flowing in?</p>
+  <div class="bridge" style="max-width:44rem;text-align:left;margin-top:1.4rem">
+    <span class="tag">The question Chapter 3 answers</span>
+    <p>Every arrow in the circular flow is a <b>money</b> payment. But where does that money come
+      from, who is allowed to create it, and what happens to the whole circle if there is suddenly
+      more or less of it? Chapter 3 opens the machine that supplies the medium in which everything
+      you have measured is denominated.</p>
+  </div>
+</section>
+
+</div>
+
+<button class="nav" id="prev" aria-label="Previous slide">‹</button>
+<button class="nav" id="next" aria-label="Next slide">›</button>
+
+<script src="assets/deck.js"></script>
+</body>
+</html>

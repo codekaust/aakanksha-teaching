@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch 4 · Determination of Income and Employment</title>
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body>
+
+<div id="bar">
+  <span class="brand">CH 4 · INCOME AND EMPLOYMENT</span>
+  <span class="sect" id="sect"></span>
+  <span class="tools">
+    <button id="menuBtn">Menu · m</button>
+    <button id="fsBtn">Full screen · f</button>
+    <span id="counter">1 / 1</span>
+  </span>
+</div>
+<div id="progress"></div>
+
+<div id="menu">
+  <h3>Slides</h3>
+  <div class="mlist"></div>
+  <p class="hint">Press <b>m</b> or <b>Esc</b> to close</p>
+</div>
+
+<div id="stage">
+
+<!-- ============================================================ TITLE -->
+<section class="slide title-slide" data-section="Opening">
+  <div class="kicker">Class XII · Introductory Macroeconomics</div>
+  <h1>Chapter 4<br>Determination of Income and Employment</h1>
+  <div class="rule"></div>
+  <p class="sub">Aggregate demand and supply, the consumption and saving functions, equilibrium by
+     two routes, the investment multiplier, and the two gaps.</p>
+  <p class="small">The theoretical core of the course. Every diagram on the following slides is
+     plotted from the same economy: <span class="mono">C = 100 + 0.8Y</span>, <span class="mono">I = 100</span>.</p>
+</section>
+
+<section class="slide" data-section="Opening">
+  <h2>Where we left off</h2>
+  <div class="bridge">
+    <span class="tag">Recall · Chapters 1 to 3</span>
+    <ul>
+      <li><b>Chapter 1</b> — income flows in a circle; the flow stays constant when leakages equal
+        injections, and in a two-sector economy that means <b>S = I</b>.</li>
+      <li><b>Chapter 2</b> — <b>unplanned inventory change</b> is what makes output equal expenditure
+        every single year.</li>
+      <li><b>Chapter 3</b> — the RBI raises or lowers credit to fight inflation or a slump.</li>
+    </ul>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">Today we cash all three cheques</span>
+    <p>S = I becomes the <b>equilibrium condition</b>. Unplanned inventory change becomes the
+      <b>mechanism</b> that gets us there. And "fight inflation or a slump" becomes a precise
+      statement about a <b>measurable gap</b>.</p>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">The Keynesian assumptions — state them once, use them all chapter</span>
+    <ul>
+      <li>The <b>price level is fixed</b> — firms respond to more demand by producing more, not by
+        charging more, until full employment is reached.</li>
+      <li>Aggregate supply is <b>perfectly elastic</b> up to full employment.</li>
+      <li>It is the <b>short run</b>: the capital stock and technology are given.</li>
+      <li>A <b>two-sector</b> economy (households and firms) unless stated otherwise.</li>
+    </ul>
+    <p class="small">Under these assumptions, <b>output is determined solely by aggregate demand</b>.
+      That sentence is the whole chapter.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="Opening">
+  <h2>Today's route map</h2>
+  <div class="grid3">
+    <div class="card"><h4>1 · AD and AS</h4><p class="small">Their components; ex ante vs ex post.</p></div>
+    <div class="card"><h4>2 · The consumption function</h4><p class="small">C = C̄ + cY, drawn and tabulated.</p></div>
+    <div class="card"><h4>3 · The four propensities</h4><p class="small">APC, APS, MPC, MPS and the two identities.</p></div>
+    <div class="card"><h4>4 · The saving function</h4><p class="small">Derived from consumption, drawn beneath it.</p></div>
+    <div class="card"><h4>5 · Equilibrium, two routes</h4><p class="small">AD = AS and S = I — same answer, drawn.</p></div>
+    <div class="card"><h4>6 · The multiplier</h4><p class="small">Why ₹50 crore of investment raises income by ₹250 crore.</p></div>
+    <div class="card"><h4>7 · Full employment</h4><p class="small">And the kinds of unemployment.</p></div>
+    <div class="card"><h4>8 · The two gaps</h4><p class="small">Excess and deficient demand, measured vertically.</p></div>
+    <div class="card"><h4>9 · Corrections</h4><p class="small">Fiscal and monetary — the payoff of Chapter 3.</p></div>
+  </div>
+</section>
+
+<!-- ============================================================ AD AND AS -->
+<section class="slide" data-section="1 · Aggregate demand and supply">
+  <h2><span class="num">4.1</span>Aggregate demand and aggregate supply</h2>
+  <div class="grid2">
+    <div class="defn">
+      <span class="tag">Definition</span>
+      <p><span class="term">Aggregate demand (AD)</span> — the total <b>planned</b> expenditure on
+        final goods and services that all the sectors of an economy intend to undertake at a given
+        level of income during an accounting year.</p>
+      <p class="small"><b>AD = C + I + G + (X − M)</b><br>In a two-sector economy, <b>AD = C + I</b>.</p>
+    </div>
+    <div class="defn">
+      <span class="tag">Definition</span>
+      <p><span class="term">Aggregate supply (AS)</span> — the total value of final goods and services
+        that all the producers in an economy <b>plan to produce</b> during an accounting year.</p>
+      <p class="small">Whatever is produced is distributed as factor income, so
+        <b>AS = National income = Y</b>. This is why AS is drawn as the <b>45° line</b>.</p>
+    </div>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">Why AS is the 45° line — the step everyone skips</span>
+    <p>Producing ₹1 crore of output requires paying out exactly ₹1 crore in factor incomes.
+      So <b>AS = Y</b> identically. On a graph with income on the x-axis and value on the y-axis,
+      the relation "y equals x" is a straight line through the origin at <b>45°</b>. Aggregate
+      supply is not a behavioural curve at all — it is an accounting identity, drawn.</p>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">Also written as C + S</span>
+    <p>Households do only two things with income: spend it or save it. So
+      <b>AS = Y = C + S</b>. Keep both forms — the first gives the AD = AS route to equilibrium, the
+      second gives the S = I route.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="1 · Aggregate demand and supply">
+  <h2>Ex ante and ex post</h2>
+  <div class="grid2">
+    <div class="defn">
+      <span class="tag">Definition</span>
+      <p><span class="term">Ex ante</span> — what is <b>planned or intended</b> at the beginning of
+        the period. Ex ante consumption, ex ante investment, ex ante aggregate demand.</p>
+    </div>
+    <div class="defn">
+      <span class="tag">Definition</span>
+      <p><span class="term">Ex post</span> — what has <b>actually happened</b>, measured at the end of
+        the period. This is what national income accounting records.</p>
+    </div>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">The distinction that makes the theory possible</span>
+    <p><b>Ex post, saving always equals investment</b> — it is an accounting identity, guaranteed by
+      counting unsold goods as inventory investment. That identity is <b>always true</b> and
+      therefore explains nothing.</p>
+    <p><b>Ex ante, planned saving need not equal planned investment.</b> The economy is in
+      equilibrium only when they <i>do</i>. That is a condition — and conditions determine things.</p>
+  </div>
+  <div class="reveal eg">
+    <span class="tag">Example</span>
+    <p>Firms plan to produce and sell ₹1,000 crore. Households plan to spend only ₹900 crore.
+      <b>Ex ante</b>: AD (900) &lt; AS (1,000) — no equilibrium.<br>
+      <b>Ex post</b>: ₹100 crore of goods go unsold and are recorded as <b>unplanned inventory
+      investment</b>. Measured investment rises by ₹100 crore, and the books balance perfectly.</p>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">Say this precisely in the exam</span>
+    <p>"S = I always" (ex post, accounting identity) and "S = I only in equilibrium" (ex ante,
+      behavioural condition) are <b>both correct</b>. Marks are lost by asserting one without
+      naming which sense you mean.</p>
+  </div>
+</section>
+
+<!-- ============================================================ CONSUMPTION FUNCTION -->
+<section class="slide" data-section="2 · The consumption function">
+  <h2><span class="num">4.2</span>The consumption function</h2>
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Consumption function</span> — the functional relationship between
+      <b>consumption expenditure</b> and the <b>level of income</b>: as income rises, consumption
+      rises, but by less than the rise in income.</p>
+  </div>
+  <div class="formula">C = C̄ + cY</div>
+  <div class="grid3">
+    <div class="reveal card">
+      <h4>C̄ — autonomous consumption</h4>
+      <p class="small">The consumption that takes place <b>even at zero income</b>, financed by
+        past savings or borrowing. It is the <b>intercept</b> of the consumption line.</p>
+      <p class="small">A family with no income this month still eats.</p>
+    </div>
+    <div class="reveal card">
+      <h4>c — marginal propensity to consume</h4>
+      <p class="small">The fraction of each additional rupee of income that is consumed. It is the
+        <b>slope</b> of the consumption line. <b>0 &lt; c &lt; 1.</b></p>
+    </div>
+    <div class="reveal card">
+      <h4>cY — induced consumption</h4>
+      <p class="small">The part of consumption that <b>depends on income</b>. It is zero when income
+        is zero and rises as income rises.</p>
+    </div>
+  </div>
+  <div class="reveal eg">
+    <span class="tag">Our economy for the whole chapter</span>
+    <p class="center mono" style="font-size:1.2rem">C = 100 + 0.8Y &nbsp;&nbsp;·&nbsp;&nbsp; I = 100 &nbsp;&nbsp;(₹ crore)</p>
+    <p>Autonomous consumption ₹100 crore; MPC = 0.8, so 80 paise of every extra rupee is spent.
+      Investment is <b>autonomous</b> — it does not depend on income, so it is a horizontal line.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="2 · The consumption function">
+  <h2>The four propensities</h2>
+  <div class="grid2">
+    <div>
+      <div class="defn">
+        <span class="tag">Definition · average</span>
+        <p><span class="term">APC</span> — Average Propensity to Consume: the <b>ratio of total
+          consumption to total income</b>.</p>
+      </div>
+      <div class="formula">APC = <span class="frac"><span>C</span><span>Y</span></span></div>
+      <div class="defn">
+        <span class="tag">Definition · average</span>
+        <p><span class="term">APS</span> — Average Propensity to Save: the ratio of total saving to
+          total income.</p>
+      </div>
+      <div class="formula">APS = <span class="frac"><span>S</span><span>Y</span></span></div>
+    </div>
+    <div>
+      <div class="defn">
+        <span class="tag">Definition · marginal</span>
+        <p><span class="term">MPC</span> — Marginal Propensity to Consume: the ratio of the
+          <b>change</b> in consumption to the <b>change</b> in income.</p>
+      </div>
+      <div class="formula">MPC = <span class="frac"><span>ΔC</span><span>ΔY</span></span></div>
+      <div class="defn">
+        <span class="tag">Definition · marginal</span>
+        <p><span class="term">MPS</span> — Marginal Propensity to Save: the ratio of the change in
+          saving to the change in income.</p>
+      </div>
+      <div class="formula">MPS = <span class="frac"><span>ΔS</span><span>ΔY</span></span></div>
+    </div>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">The two identities — and their proof in one line</span>
+    <p>Since <b>Y = C + S</b>, divide throughout by Y: &nbsp;
+      <span class="mono">1 = C/Y + S/Y</span> &nbsp;⟹&nbsp; <b>APC + APS = 1</b></p>
+    <p>And since <b>ΔY = ΔC + ΔS</b>, divide throughout by ΔY: &nbsp;
+      <span class="mono">1 = ΔC/ΔY + ΔS/ΔY</span> &nbsp;⟹&nbsp; <b>MPC + MPS = 1</b></p>
+    <p class="small">Never memorise these. Derive them — it takes four seconds and it is a mark.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="2 · The consumption function">
+  <h2>The schedule — C = 100 + 0.8Y</h2>
+  <table>
+    <thead>
+      <tr><th>Income Y</th><th>Consumption C</th><th>Saving S = Y − C</th><th>APC = C/Y</th><th>APS = S/Y</th><th>MPC</th><th>MPS</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>0</td><td>100</td><td>(−) 100</td><td>∞</td><td>−∞</td><td>—</td><td>—</td></tr>
+      <tr><td>200</td><td>260</td><td>(−) 60</td><td>1.30</td><td>(−) 0.30</td><td>0.8</td><td>0.2</td></tr>
+      <tr><td>400</td><td>420</td><td>(−) 20</td><td>1.05</td><td>(−) 0.05</td><td>0.8</td><td>0.2</td></tr>
+      <tr class="hi"><td>500</td><td>500</td><td>0</td><td>1.00</td><td>0.00</td><td>0.8</td><td>0.2</td></tr>
+      <tr><td>600</td><td>580</td><td>20</td><td>0.97</td><td>0.03</td><td>0.8</td><td>0.2</td></tr>
+      <tr><td>800</td><td>740</td><td>60</td><td>0.93</td><td>0.07</td><td>0.8</td><td>0.2</td></tr>
+      <tr class="hi2"><td>1000</td><td>900</td><td>100</td><td>0.90</td><td>0.10</td><td>0.8</td><td>0.2</td></tr>
+    </tbody>
+    <caption>₹ crore. The amber row is the <b>break-even point</b>: C = Y, S = 0, APC = 1, APS = 0.
+      The green row is the equilibrium level of income we will derive shortly.</caption>
+  </table>
+  <div class="reveal insight">
+    <span class="tag">Five things this table proves</span>
+    <ol class="small">
+      <li><b>APC falls as income rises</b> — the same ₹100 crore of autonomous consumption is spread
+        over a bigger income.</li>
+      <li><b>APC can exceed 1</b> (below break-even, the family dis-saves) — but <b>MPC never can</b>.</li>
+      <li><b>APS can be negative</b> — but MPS cannot.</li>
+      <li><b>APC + APS = 1 in every row.</b> Check 1.30 + (−0.30) = 1. ✓</li>
+      <li><b>MPC is constant</b> here because the consumption function is a straight line. APC is
+        <i>not</i> constant even so.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="slide" data-section="2 · The consumption function">
+  <h2>The consumption and saving functions, drawn</h2>
+  <div class="split">
+    <figure>
+      <svg viewBox="0 0 600 690" role="img"
+           aria-label="Upper panel: the 45 degree line and the consumption function C equals 100 plus 0.8Y crossing at income 500. Lower panel: the saving function starting at minus 100 and crossing zero at income 500.">
+        <defs>
+          <marker id="cs-ax" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M0,0 L10,5 L0,10 z" class="mk-ink"/></marker>
+        </defs>
+
+        <!-- ===== UPPER PANEL : C ===== -->
+        <line x1="90" y1="430" x2="545" y2="430" class="axis" marker-end="url(#cs-ax)"/>
+        <line x1="90" y1="430" x2="90"  y2="20"  class="axis" marker-end="url(#cs-ax)"/>
+        <text x="76" y="34" class="lab" text-anchor="end">C</text>
+        <text x="30" y="230" class="sm" transform="rotate(-90 30 230)" text-anchor="middle">Consumption, ₹ crore</text>
+
+        <!-- 45 degree line -->
+        <line x1="90" y1="430" x2="510" y2="10" class="curve c-teal"/>
+        <text x="470" y="40" class="lab" fill="var(--teal-t)">45°  (C = Y)</text>
+
+        <!-- consumption function -->
+        <g class="reveal">
+          <line x1="90" y1="400" x2="510" y2="64" class="curve c-blue"/>
+          <text x="428" y="90" class="lab" fill="var(--blue-t)">C = 100 + 0.8Y</text>
+          <circle cx="90" cy="400" r="6" class="pt"/>
+          <text x="30" y="404" class="lab" fill="var(--blue-t)">100</text>
+          <text x="14" y="424" class="sm">C̄</text>
+        </g>
+
+        <!-- break-even -->
+        <g class="reveal">
+          <circle cx="240" cy="280" r="7" class="pt"/>
+          <line x1="240" y1="280" x2="240" y2="430" class="dash" stroke="var(--amber)"/>
+          <line x1="240" y1="280" x2="90"  y2="280" class="dash" stroke="var(--amber)"/>
+          <text x="250" y="268" class="lab" fill="var(--amber-t)">B — break-even</text>
+          <text x="256" y="290" class="sm">C = Y = 500, S = 0</text>
+          <text x="52" y="284" class="sm">500</text>
+        </g>
+
+        <!-- dissaving / saving regions -->
+        <g class="reveal">
+          <text x="120" y="366" class="sm" fill="var(--rose-t)">C &gt; Y</text>
+          <text x="120" y="386" class="sm" fill="var(--rose-t)">dis-saving</text>
+          <text x="360" y="176" class="sm" fill="var(--teal-t)">Y &gt; C</text>
+          <text x="360" y="196" class="sm" fill="var(--teal-t)">saving</text>
+        </g>
+
+        <!-- ===== LOWER PANEL : S ===== -->
+        <line x1="90" y1="580" x2="545" y2="580" class="axis" marker-end="url(#cs-ax)"/>
+        <line x1="90" y1="640" x2="90"  y2="500" class="axis" marker-end="url(#cs-ax)"/>
+        <text x="76" y="512" class="lab" text-anchor="end">S</text>
+        <text x="300" y="672" class="sm" text-anchor="middle">Income / Output (Y), ₹ crore</text>
+
+        <g class="reveal">
+          <line x1="90" y1="610" x2="510" y2="526" class="curve c-violet"/>
+          <text x="420" y="516" class="lab" fill="var(--violet-t)">S = −100 + 0.2Y</text>
+          <circle cx="90" cy="610" r="6" class="pt"/>
+          <text x="30" y="616" class="lab" fill="var(--violet-t)">−100</text>
+          <text x="60" y="576" class="sm">0</text>
+        </g>
+
+        <g class="reveal">
+          <circle cx="240" cy="580" r="7" class="pt"/>
+          <line x1="240" y1="280" x2="240" y2="620" class="dash" stroke="var(--amber)"/>
+          <text x="252" y="602" class="sm" fill="var(--amber-t)">S = 0 at exactly the same income</text>
+        </g>
+
+        <!-- x ticks -->
+        <line x1="240" y1="430" x2="240" y2="438" class="axis"/>
+        <text x="240" y="454" class="sm" text-anchor="middle">500</text>
+        <line x1="390" y1="430" x2="390" y2="438" class="axis"/>
+        <text x="390" y="454" class="sm" text-anchor="middle">1000</text>
+        <line x1="240" y1="580" x2="240" y2="588" class="axis"/>
+        <text x="240" y="604" class="sm" text-anchor="middle"> </text>
+        <line x1="390" y1="580" x2="390" y2="588" class="axis"/>
+        <text x="390" y="604" class="sm" text-anchor="middle">1000</text>
+      </svg>
+      <figcaption>The two panels share the income axis, so the break-even point at
+        <b>Y = 500</b> lines up vertically with <b>S = 0</b>.</figcaption>
+    </figure>
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Saving function</span> — the relationship between saving and income,
+          obtained by subtracting the consumption function from income.</p>
+      </div>
+      <div class="formula">
+        S = Y − C = Y − (C̄ + cY)<br>
+        <b>S = −C̄ + (1 − c)Y</b>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">Read the saving function off the consumption function</span>
+        <ul>
+          <li>Its <b>intercept is −C̄</b> — the mirror image. At zero income the family dis-saves
+            exactly what it consumes.</li>
+          <li>Its <b>slope is MPS = 1 − MPC</b> = 0.2 — much flatter than the consumption line.</li>
+          <li>It crosses zero at exactly the <b>break-even income</b>.</li>
+        </ul>
+      </div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Break-even point</span> — the level of income at which consumption
+          exactly equals income, so saving is zero. Here <b>Y = 500</b>: the point where the
+          consumption line cuts the 45° line.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-section="2 · The consumption function">
+  <h2>Check yourself · the propensities</h2>
+  <div class="qcard">
+    <span class="tag">Question 1</span>
+    <p>In an economy, when income rises from <b>₹400 crore to ₹500 crore</b>, consumption rises from
+      <b>₹350 crore to ₹430 crore</b>.</p>
+    <p>Find (a) MPC, (b) MPS, (c) APC at ₹500 crore, (d) APS at ₹500 crore, (e) the consumption
+      function, and (f) the break-even income.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <ol class="steps">
+    <li class="reveal">ΔY = 500 − 400 = 100 &nbsp;·&nbsp; ΔC = 430 − 350 = 80</li>
+    <li class="reveal">MPC = ΔC/ΔY = 80 ÷ 100 = <b>0.8</b></li>
+    <li class="reveal">MPS = 1 − MPC = <b>0.2</b></li>
+    <li class="reveal">APC at Y = 500 is C/Y = 430 ÷ 500 = <b>0.86</b></li>
+    <li class="reveal">APS = 1 − APC = <b>0.14</b> &nbsp;<span class="small">(check: S = 500 − 430 = 70; 70÷500 = 0.14 ✓)</span></li>
+    <li class="reveal">C = C̄ + 0.8Y. At Y = 500, C = 430 ⟹ 430 = C̄ + 400 ⟹ C̄ = <b>30</b>. So <b>C = 30 + 0.8Y</b></li>
+    <li class="reveal">Break-even: C = Y ⟹ 30 + 0.8Y = Y ⟹ 0.2Y = 30 ⟹ <b>Y = ₹150 crore</b></li>
+  </ol>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p>MPC = 0.8 · MPS = 0.2 · APC = 0.86 · APS = 0.14 · C = 30 + 0.8Y · break-even Y = ₹150 crore.</p>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">Two errors this question is built to catch</span>
+    <ul>
+      <li>Computing APC as 350/400 or as an average of the two rows. <b>APC is a ratio at one
+        level of income</b>, and the question asked for it <i>at ₹500 crore</i>.</li>
+      <li>Confusing MPC (0.8, from the changes) with APC (0.86, from the totals). They are
+        different numbers doing different jobs.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ EQUILIBRIUM -->
+<section class="slide" data-section="3 · Equilibrium income">
+  <h2><span class="num">4.3</span>Equilibrium — route 1 · AD = AS</h2>
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Equilibrium level of income</span> — the level of income and output at which
+      <b>aggregate demand equals aggregate supply</b>, so that whatever producers plan to produce is
+      exactly what all sectors plan to buy, and there is no tendency for output to change.</p>
+  </div>
+  <div class="formula">AD = AS &nbsp;&nbsp;i.e.&nbsp;&nbsp; C + I = Y</div>
+  <ol class="steps">
+    <li class="reveal">AD = C + I = (100 + 0.8Y) + 100 = <b>200 + 0.8Y</b></li>
+    <li class="reveal">Set AD = AS: &nbsp; 200 + 0.8Y = Y</li>
+    <li class="reveal">200 = Y − 0.8Y = 0.2Y</li>
+    <li class="reveal">Y = 200 ÷ 0.2 = <b>₹1,000 crore</b></li>
+  </ol>
+  <div class="reveal eg">
+    <span class="tag">Verify at Y = 1,000</span>
+    <p>C = 100 + 0.8(1000) = <b>900</b> &nbsp;·&nbsp; I = <b>100</b> &nbsp;·&nbsp;
+      AD = 900 + 100 = <b>1,000</b> = AS ✓ &nbsp;·&nbsp; S = 1000 − 900 = <b>100</b> = I ✓</p>
+  </div>
+  <div class="reveal formula">
+    Y =
+    <span class="frac"><span>Autonomous expenditure (C̄ + I)</span><span>1 − MPC</span></span>
+    &nbsp;=&nbsp;
+    <span class="frac"><span>200</span><span>0.2</span></span>
+    &nbsp;=&nbsp; 1,000
+  </div>
+</section>
+
+<section class="slide" data-section="3 · Equilibrium income">
+  <h2>Equilibrium, drawn</h2>
+  <figure>
+    <svg viewBox="0 0 600 520" role="img"
+         aria-label="The 45 degree aggregate supply line, the consumption line C equals 100 plus 0.8Y, and the aggregate demand line AD equals 200 plus 0.8Y, intersecting the 45 degree line at income 1000.">
+      <defs>
+        <marker id="eq-ax" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" class="mk-ink"/></marker>
+      </defs>
+
+      <!-- grid -->
+      <line x1="240" y1="450" x2="240" y2="30" class="grid"/>
+      <line x1="390" y1="450" x2="390" y2="30" class="grid"/>
+      <line x1="90" y1="300" x2="540" y2="300" class="grid"/>
+      <line x1="90" y1="150" x2="540" y2="150" class="grid"/>
+
+      <!-- axes -->
+      <line x1="90" y1="450" x2="560" y2="450" class="axis" marker-end="url(#eq-ax)"/>
+      <line x1="90" y1="450" x2="90"  y2="25"  class="axis" marker-end="url(#eq-ax)"/>
+      <text x="300" y="500" class="sm" text-anchor="middle">Income / Output (Y), ₹ crore</text>
+      <text x="26" y="240" class="sm" transform="rotate(-90 26 240)" text-anchor="middle">AD, AS  (₹ crore)</text>
+
+      <!-- 45 line = AS -->
+      <line x1="90" y1="450" x2="510" y2="30" class="curve c-teal"/>
+      <text x="440" y="52" class="lab" fill="var(--teal-t)">AS = Y</text>
+      <text x="446" y="72" class="sm" fill="var(--teal-t)">the 45° line</text>
+
+      <!-- C line -->
+      <g class="reveal">
+        <line x1="90" y1="420" x2="510" y2="84" class="curve c-blue" opacity=".45"/>
+        <text x="412" y="112" class="sm" fill="var(--blue-t)">C = 100 + 0.8Y</text>
+      </g>
+
+      <!-- AD line -->
+      <g class="reveal">
+        <line x1="90" y1="390" x2="510" y2="54" class="curve c-blue"/>
+        <text x="392" y="44" class="lab" fill="var(--blue-t)">AD = C + I</text>
+        <text x="404" y="64" class="sm" fill="var(--blue-t)">= 200 + 0.8Y</text>
+        <circle cx="90" cy="390" r="6" class="pt"/>
+        <text x="46" y="394" class="sm">200</text>
+      </g>
+
+      <!-- I gap -->
+      <g class="reveal">
+        <line x1="130" y1="378" x2="130" y2="408" stroke="var(--violet)" stroke-width="3"/>
+        <text x="140" y="382" class="sm" fill="var(--violet-t)">I = 100, the vertical gap</text>
+        <text x="140" y="400" class="sm" fill="var(--violet-t)">between AD and C</text>
+      </g>
+
+      <!-- equilibrium -->
+      <g class="reveal">
+        <line x1="390" y1="150" x2="390" y2="450" class="dash" stroke="var(--amber)"/>
+        <line x1="390" y1="150" x2="90"  y2="150" class="dash" stroke="var(--amber)"/>
+        <circle cx="390" cy="150" r="8" class="pt"/>
+        <text x="404" y="140" class="lab" fill="var(--amber-t)">E — equilibrium</text>
+        <text x="390" y="472" class="lab" text-anchor="middle" fill="var(--amber-t)">1000</text>
+        <text x="56" y="154" class="lab" text-anchor="middle" fill="var(--amber-t)">1000</text>
+      </g>
+
+      <!-- disequilibrium arrows -->
+      <g class="reveal">
+        <text x="180" y="250" class="sm" fill="var(--teal-t)">Left of E:</text>
+        <text x="180" y="270" class="sm" fill="var(--teal-t)">AD &gt; AS → stocks fall</text>
+        <text x="180" y="290" class="sm" fill="var(--teal-t)">→ output RISES →</text>
+        <text x="430" y="330" class="sm" fill="var(--rose-t)">Right of E:</text>
+        <text x="430" y="350" class="sm" fill="var(--rose-t)">AS &gt; AD → stocks pile up</text>
+        <text x="430" y="370" class="sm" fill="var(--rose-t)">← output FALLS</text>
+      </g>
+
+      <line x1="240" y1="450" x2="240" y2="458" class="axis"/>
+      <text x="240" y="472" class="sm" text-anchor="middle">500</text>
+    </svg>
+    <figcaption>AD is the consumption line shifted <b>up by ₹100 crore</b> — the autonomous
+      investment. Equilibrium is where AD cuts the 45° line, at <b>Y = ₹1,000 crore</b>.</figcaption>
+  </figure>
+</section>
+
+<section class="slide" data-section="3 · Equilibrium income">
+  <h2>How the economy gets to equilibrium</h2>
+  <p class="lead">The diagram shows <em>where</em> equilibrium is. This slide shows <em>how</em> the
+     economy arrives there — and the mechanism is Chapter 2's unplanned inventory.</p>
+  <div class="grid2">
+    <div class="reveal card">
+      <h4>If output is above equilibrium — say Y = 1,200</h4>
+      <ol class="small">
+        <li>AD = 200 + 0.8(1200) = <b>1,160</b>, but AS = <b>1,200</b></li>
+        <li>₹40 crore of goods go unsold → <b>unplanned rise in inventory</b></li>
+        <li>Firms see stock piling up and <b>cut production</b></li>
+        <li>Income and output fall → they keep falling until Y = 1,000</li>
+      </ol>
+    </div>
+    <div class="reveal card">
+      <h4>If output is below equilibrium — say Y = 800</h4>
+      <ol class="small">
+        <li>AD = 200 + 0.8(800) = <b>840</b>, but AS = <b>800</b></li>
+        <li>Firms sell ₹40 crore more than they produced → <b>unplanned fall in inventory</b></li>
+        <li>Shelves empty faster than expected → firms <b>raise production</b></li>
+        <li>Income and output rise → they keep rising until Y = 1,000</li>
+      </ol>
+    </div>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">Why ₹1,000 crore is stable and nothing else is</span>
+    <p>At Y = 1,000 and only there, <b>unplanned inventory change is zero</b>. Firms' expectations are
+      exactly fulfilled, so no firm has any reason to change what it produces. Every other level of
+      output generates a signal that pushes it back towards 1,000.</p>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">Note what does the adjusting</span>
+    <p>In microeconomics, disequilibrium is corrected by a change in <b>price</b>. Here — under the
+      Keynesian fixed-price assumption — it is corrected by a change in <b>quantity produced</b>.
+      That is why this model can explain unemployment, and the micro one cannot.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="3 · Equilibrium income">
+  <h2>Equilibrium — route 2 · S = I</h2>
+  <div class="split">
+    <figure>
+      <svg viewBox="0 0 560 400" role="img"
+           aria-label="Saving function S equals minus 100 plus 0.2Y rising and cutting the horizontal investment line at I equals 100 at income 1000.">
+        <defs>
+          <marker id="si-ax" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M0,0 L10,5 L0,10 z" class="mk-ink"/></marker>
+        </defs>
+        <!-- axes: S=0 at y=280, scale 0.6 px per unit ; Y scale 0.34 -->
+        <line x1="80" y1="280" x2="520" y2="280" class="axis" marker-end="url(#si-ax)"/>
+        <line x1="80" y1="350" x2="80"  y2="30"  class="axis" marker-end="url(#si-ax)"/>
+        <text x="300" y="384" class="sm" text-anchor="middle">Income (Y), ₹ crore</text>
+        <text x="26" y="180" class="sm" transform="rotate(-90 26 180)" text-anchor="middle">S, I  (₹ crore)</text>
+
+        <!-- investment line I = 100 -> y = 280 - 100*0.6 = 220 -->
+        <line x1="80" y1="220" x2="500" y2="220" class="curve c-violet"/>
+        <text x="418" y="208" class="lab" fill="var(--violet-t)">I = 100</text>
+        <text x="60" y="224" class="sm" text-anchor="end">100</text>
+
+        <!-- saving line: Y=0 -> S=-100 -> y=340 ; Y=1200 -> S=140 -> y=196 ; x = 80+0.3Y -->
+        <line x1="80" y1="340" x2="440" y2="196" class="curve c-teal"/>
+        <text x="360" y="176" class="lab" fill="var(--teal-t)">S = −100 + 0.2Y</text>
+        <text x="60" y="344" class="sm" text-anchor="end">−100</text>
+
+        <!-- break-even Y=500 -> x=230, S=0 -->
+        <circle cx="230" cy="280" r="6" class="pt"/>
+        <text x="196" y="302" class="sm">500</text>
+
+        <!-- equilibrium Y=1000 -> x=380, S=100 -> y=220 -->
+        <g class="reveal">
+          <circle cx="380" cy="220" r="8" class="pt"/>
+          <line x1="380" y1="220" x2="380" y2="280" class="dash" stroke="var(--amber)"/>
+          <text x="392" y="248" class="lab" fill="var(--amber-t)">E</text>
+          <text x="380" y="302" class="lab" text-anchor="middle" fill="var(--amber-t)">1000</text>
+        </g>
+      </svg>
+      <figcaption>The same equilibrium, found a different way. S cuts I at exactly Y = ₹1,000 crore.</figcaption>
+    </figure>
+    <div>
+      <div class="formula">S = I</div>
+      <ol class="steps">
+        <li>S = Y − C = Y − (100 + 0.8Y) = <b>−100 + 0.2Y</b></li>
+        <li class="reveal">Set S = I: &nbsp; −100 + 0.2Y = 100</li>
+        <li class="reveal">0.2Y = 200</li>
+        <li class="reveal">Y = <b>₹1,000 crore</b> — identical to route 1</li>
+      </ol>
+      <div class="reveal insight">
+        <span class="tag">Why the two routes must agree</span>
+        <p>They are the <b>same equation rearranged</b>:</p>
+        <p class="center small mono">Y = C + I &nbsp;⟺&nbsp; Y − C = I &nbsp;⟺&nbsp; S = I</p>
+        <p>Route 1 says total spending equals total output. Route 2 says the leakage equals the
+          injection — <b>Chapter 1's condition</b>, in a two-sector economy.</p>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">Read the diagram carefully</span>
+        <p class="small">The saving curve is <b>upward sloping</b> (slope = MPS = 0.2) and the
+          investment line is <b>horizontal</b>, because investment here is autonomous — it does not
+          depend on income. This is the diagram examiners ask for when they say "explain equilibrium
+          by the saving–investment approach".</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ MULTIPLIER -->
+<section class="slide" data-section="4 · The investment multiplier">
+  <h2><span class="num">4.4</span>The investment multiplier</h2>
+  <div class="qcard">
+    <span class="tag">The question</span>
+    <p>Investment rises by <b>₹50 crore</b>. By how much does equilibrium income rise?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>₹250 crore</b> — five times the initial rise. New equilibrium: Y = 250 ÷ 0.2 = <b>₹1,250
+      crore</b>. This magnification is what the multiplier measures.</p>
+  </div>
+  <div class="reveal defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Investment multiplier (k)</span> — the ratio of the total change in income
+      to the initial change in investment (or in any autonomous expenditure) that caused it.</p>
+  </div>
+  <div class="reveal formula">
+    k = <span class="frac"><span>ΔY</span><span>ΔI</span></span>
+    &nbsp;=&nbsp;
+    <span class="frac"><span>1</span><span>1 − MPC</span></span>
+    &nbsp;=&nbsp;
+    <span class="frac"><span>1</span><span>MPS</span></span>
+    &nbsp;=&nbsp;
+    <span class="frac"><span>1</span><span>0.2</span></span>
+    &nbsp;=&nbsp; 5
+  </div>
+  <div class="reveal insight">
+    <span class="tag">Why it happens at all — one sentence</span>
+    <p>Because <b>your spending is my income</b>. The ₹50 crore spent on a new factory becomes income
+      for construction workers, who spend 80% of it, which becomes income for shopkeepers, who spend
+      80% of <i>that</i>… The initial injection goes round the circular flow again and again, and
+      each circuit adds to income.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="4 · The investment multiplier">
+  <h2>The multiplier process, round by round</h2>
+  <table>
+    <thead><tr><th>Round</th><th>Increase in income ΔY</th><th>Consumed (80%)</th><th>Saved (20%)</th><th>Cumulative ΔY</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>50.00</td><td>40.00</td><td>10.00</td><td>50.00</td></tr>
+      <tr><td>2</td><td>40.00</td><td>32.00</td><td>8.00</td><td>90.00</td></tr>
+      <tr><td>3</td><td>32.00</td><td>25.60</td><td>6.40</td><td>122.00</td></tr>
+      <tr><td>4</td><td>25.60</td><td>20.48</td><td>5.12</td><td>147.60</td></tr>
+      <tr><td>5</td><td>20.48</td><td>16.38</td><td>4.10</td><td>168.08</td></tr>
+      <tr><td class="lbl">⋮</td><td class="lbl">⋮</td><td class="lbl">⋮</td><td class="lbl">⋮</td><td class="lbl">⋮</td></tr>
+      <tr><td class="lbl"><b>Total</b></td><td class="hi">250.00</td><td>200.00</td><td class="hi2">50.00</td><td class="hi">250.00</td></tr>
+    </tbody>
+    <caption>₹ crore, MPC = 0.8. Each round is 80% of the one before it.</caption>
+  </table>
+  <div class="reveal insight">
+    <span class="tag">Look at the "Saved" column total</span>
+    <p>It comes to exactly <b>₹50 crore</b> — the initial rise in investment. The process stops
+      precisely when the extra income has generated enough extra <b>saving</b> to match the extra
+      <b>investment</b>. <b>S = I is restored</b>, and that is what ends the process.</p>
+  </div>
+  <div class="reveal formula">
+    ΔY = 50 (1 + 0.8 + 0.8² + 0.8³ + …) = 50 ×
+    <span class="frac"><span>1</span><span>1 − 0.8</span></span>
+    = 50 × 5 = 250
+  </div>
+</section>
+
+<section class="slide" data-section="4 · The investment multiplier">
+  <h2>The multiplier, drawn</h2>
+  <figure>
+    <svg viewBox="0 0 620 520" role="img"
+         aria-label="The AD line shifts up by 50 from 200 plus 0.8Y to 250 plus 0.8Y, and the equilibrium moves along the 45 degree line from income 1000 to income 1250, a rise of 250.">
+      <defs>
+        <marker id="mu-ax" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" class="mk-ink"/></marker>
+        <marker id="mu-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" class="mk-rose"/></marker>
+      </defs>
+
+      <line x1="390" y1="450" x2="390" y2="30" class="grid"/>
+      <line x1="465" y1="450" x2="465" y2="30" class="grid"/>
+
+      <line x1="90" y1="450" x2="580" y2="450" class="axis" marker-end="url(#mu-ax)"/>
+      <line x1="90" y1="450" x2="90"  y2="25"  class="axis" marker-end="url(#mu-ax)"/>
+      <text x="320" y="502" class="sm" text-anchor="middle">Income / Output (Y), ₹ crore</text>
+      <text x="26" y="240" class="sm" transform="rotate(-90 26 240)" text-anchor="middle">AD, AS  (₹ crore)</text>
+
+      <!-- 45 -->
+      <line x1="90" y1="450" x2="510" y2="30" class="curve c-teal"/>
+      <text x="452" y="52" class="lab" fill="var(--teal-t)">AS = Y</text>
+
+      <!-- original AD -->
+      <line x1="90" y1="390" x2="510" y2="54" class="curve c-blue"/>
+      <text x="300" y="196" class="sm" fill="var(--blue-t)">AD = 200 + 0.8Y</text>
+      <circle cx="390" cy="150" r="8" class="pt"/>
+      <line x1="390" y1="150" x2="390" y2="450" class="dash" stroke="var(--amber)"/>
+      <text x="368" y="140" class="lab" text-anchor="end" fill="var(--amber-t)">E</text>
+      <text x="390" y="472" class="sm" text-anchor="middle">1000</text>
+
+      <!-- shifted AD -->
+      <g class="reveal">
+        <line x1="90" y1="375" x2="510" y2="39" class="curve c-violet"/>
+        <text x="286" y="150" class="sm" fill="var(--violet-t)">AD′ = 250 + 0.8Y</text>
+        <circle cx="90" cy="375" r="6" class="pt"/>
+        <text x="46" y="379" class="sm">250</text>
+        <text x="46" y="398" class="sm">200</text>
+      </g>
+
+      <!-- delta A -->
+      <g class="reveal">
+        <line x1="140" y1="359" x2="140" y2="374" stroke="var(--rose)" stroke-width="4"/>
+        <text x="150" y="356" class="lab" fill="var(--rose-t)">ΔI = 50</text>
+        <text x="150" y="374" class="sm" fill="var(--rose-t)">a small vertical shift…</text>
+      </g>
+
+      <!-- new equilibrium -->
+      <g class="reveal">
+        <circle cx="465" cy="75" r="8" class="pt"/>
+        <line x1="465" y1="75" x2="465" y2="450" class="dash" stroke="var(--violet)"/>
+        <text x="480" y="70" class="lab" fill="var(--violet-t)">E′</text>
+        <text x="465" y="472" class="sm" text-anchor="middle">1250</text>
+      </g>
+
+      <!-- delta Y -->
+      <g class="reveal">
+        <line x1="390" y1="432" x2="465" y2="432" class="curve c-rose" marker-end="url(#mu-am)"/>
+        <line x1="465" y1="432" x2="390" y2="432" class="curve c-rose" marker-end="url(#mu-am)"/>
+        <text x="428" y="418" class="lab" text-anchor="middle" fill="var(--rose-t)">ΔY = 250</text>
+        <text x="252" y="418" class="sm" text-anchor="middle" fill="var(--rose-t)">…produces a large horizontal move</text>
+      </g>
+    </svg>
+    <figcaption>The AD line shifts <b>up by 50</b>. Because the new AD line meets the 45° line
+      further along, income rises by <b>250 — five times as much</b>. The multiplier <i>is</i> this
+      geometric magnification.</figcaption>
+  </figure>
+</section>
+
+<section class="slide" data-section="4 · The investment multiplier">
+  <h2>What determines the size of the multiplier</h2>
+  <table>
+    <thead><tr><th>MPC</th><th>MPS</th><th>Multiplier k = 1/MPS</th><th class="lbl">Meaning</th></tr></thead>
+    <tbody>
+      <tr><td>0</td><td>1</td><td>1</td><td class="lbl">Every extra rupee is saved. No further rounds — no multiplier at all.</td></tr>
+      <tr><td>0.5</td><td>0.5</td><td>2</td><td class="lbl">Half leaks out each round.</td></tr>
+      <tr><td class="hi">0.8</td><td class="hi">0.2</td><td class="hi">5</td><td class="lbl">Our economy.</td></tr>
+      <tr><td>0.9</td><td>0.1</td><td>10</td><td class="lbl">Very little leaks out; the rounds continue for a long time.</td></tr>
+      <tr><td>1</td><td>0</td><td>∞</td><td class="lbl">Nothing leaks out — the theoretical maximum.</td></tr>
+    </tbody>
+    <caption>The multiplier ranges between <b>1 and ∞</b>. It can never be less than 1.</caption>
+  </table>
+  <div class="reveal insight">
+    <span class="tag">The relationships to state</span>
+    <ul>
+      <li><b>k varies directly with MPC.</b> A higher MPC means more is passed on each round, so the
+        process runs longer.</li>
+      <li><b>k varies inversely with MPS.</b> Saving is the leakage that kills the process.</li>
+      <li><b>Minimum value of k = 1</b> (when MPC = 0), because income must rise by at least the
+        initial investment itself.</li>
+    </ul>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">The multiplier works downwards too</span>
+    <p>If investment <b>falls</b> by ₹50 crore, income falls by ₹250 crore. The multiplier is
+      symmetric — which is precisely why a modest fall in investment can produce a deep recession.
+      This is the arithmetic behind the Great Depression of Chapter 1.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="4 · The investment multiplier">
+  <h2>Check yourself · the multiplier</h2>
+  <div class="qcard">
+    <span class="tag">Question 2</span>
+    <p>In an economy, an increase in investment of <b>₹300 crore</b> raises national income by
+      <b>₹1,500 crore</b>. Find (a) the multiplier, (b) MPS, (c) MPC. (d) If instead MPC had been
+      0.75, by how much would the same ₹300 crore have raised income?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <ol class="steps">
+    <li class="reveal">k = ΔY ÷ ΔI = 1,500 ÷ 300 = <b>5</b></li>
+    <li class="reveal">k = 1 ÷ MPS ⟹ MPS = 1 ÷ k = 1 ÷ 5 = <b>0.2</b></li>
+    <li class="reveal">MPC = 1 − MPS = <b>0.8</b></li>
+    <li class="reveal">If MPC = 0.75, then MPS = 0.25 and k = 1 ÷ 0.25 = <b>4</b></li>
+    <li class="reveal">ΔY = k × ΔI = 4 × 300 = <b>₹1,200 crore</b></li>
+  </ol>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p>k = 5 · MPS = 0.2 · MPC = 0.8 · and with MPC = 0.75 income would rise by only ₹1,200 crore.</p>
+  </div>
+  <div class="reveal challenge">
+    <span class="tag">Challenge</span>
+    <p>A government wants to raise national income by ₹4,000 crore. MPC = 0.75. How much must it
+      increase its own expenditure by? What assumption are you making?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p>k = 1 ÷ (1 − 0.75) = 4. So ΔG = ΔY ÷ k = 4,000 ÷ 4 = <b>₹1,000 crore</b>.</p>
+    <p class="small"><b>The assumption:</b> that the multiplier applies to government expenditure
+      exactly as it does to investment. It does — the multiplier works on <b>any autonomous
+      expenditure</b>, whoever spends it. The assumption that <i>is</i> being made is that the
+      economy has <b>spare capacity</b>: if it were already at full employment, the extra spending
+      would raise <b>prices</b>, not output.</p>
+  </div>
+</section>
+
+<!-- ============================================================ FULL EMPLOYMENT AND GAPS -->
+<section class="slide" data-section="5 · Full employment and the two gaps">
+  <h2><span class="num">4.5</span>Full employment</h2>
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Full employment</span> — a situation in which <b>all those who are able and
+      willing to work at the prevailing wage rate</b> get work. It does <b>not</b> mean zero
+      unemployment; some frictional and voluntary unemployment always remains.</p>
+  </div>
+  <div class="grid2">
+    <div class="reveal card">
+      <h4>Involuntary unemployment</h4>
+      <p class="small">People who are <b>able and willing</b> to work at the existing wage rate but
+        <b>cannot find work</b>. This is the unemployment Keynes was concerned with, and the kind
+        the government can act on.</p>
+    </div>
+    <div class="reveal card">
+      <h4>Voluntary unemployment</h4>
+      <p class="small">People who are <b>not willing</b> to work at the prevailing wage — perhaps
+        holding out for a better job. No policy failure is involved.</p>
+    </div>
+  </div>
+  <div class="reveal defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Full-employment level of income (Y<sub>F</sub>)</span> — the level of income
+      and output at which all the economy's resources, including labour, are fully employed.
+      Output <b>cannot rise above it</b> in the short run.</p>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">The whole of Keynes in one sentence</span>
+    <p>The economy's equilibrium level of income is set by aggregate demand, and there is
+      <b>nothing that forces it to coincide with the full-employment level</b>. It may settle below
+      it (leaving people involuntarily unemployed) or the demand for it may exceed what can be
+      produced (raising prices). Those two possibilities are the two gaps.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="5 · Full employment and the two gaps">
+  <h2>Excess demand and the inflationary gap</h2>
+  <div class="split">
+    <figure>
+      <svg viewBox="0 0 600 520" role="img"
+           aria-label="Aggregate demand line lies above the 45 degree line at the full employment income of 1000, and the vertical distance between them at that income is the inflationary gap of 100.">
+        <defs>
+          <marker id="in-ax" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M0,0 L10,5 L0,10 z" class="mk-ink"/></marker>
+        </defs>
+        <line x1="390" y1="450" x2="390" y2="30" class="grid"/>
+        <line x1="90" y1="450" x2="560" y2="450" class="axis" marker-end="url(#in-ax)"/>
+        <line x1="90" y1="450" x2="90"  y2="25"  class="axis" marker-end="url(#in-ax)"/>
+        <text x="320" y="502" class="sm" text-anchor="middle">Income / Output (Y), ₹ crore</text>
+        <text x="26" y="240" class="sm" transform="rotate(-90 26 240)" text-anchor="middle">AD, AS  (₹ crore)</text>
+
+        <line x1="90" y1="450" x2="510" y2="30" class="curve c-teal"/>
+        <text x="452" y="52" class="lab" fill="var(--teal-t)">AS = Y</text>
+
+        <!-- AD at full employment (reference) -->
+        <line x1="90" y1="390" x2="510" y2="54" class="curve c-blue" opacity=".4"/>
+        <text x="262" y="212" class="sm" fill="var(--blue-t)">AD at full employment</text>
+
+        <!-- excess AD -->
+        <line x1="90" y1="360" x2="510" y2="24" class="curve c-rose"/>
+        <text x="300" y="120" class="lab" fill="var(--rose-t)">AD′ — actual</text>
+
+        <!-- the gap : vertical at Yf -->
+        <rect x="386" y="120" width="8" height="30" class="band-rose"/>
+        <line x1="390" y1="120" x2="390" y2="150" stroke="var(--rose)" stroke-width="5"/>
+        <text x="404" y="128" class="lab" fill="var(--rose-t)">INFLATIONARY GAP</text>
+        <text x="404" y="148" class="sm" fill="var(--rose-t)">= 100, measured VERTICALLY at Y<tspan baseline-shift="sub" font-size="11">F</tspan></text>
+
+        <circle cx="390" cy="150" r="7" class="pt"/>
+        <line x1="390" y1="150" x2="390" y2="450" class="dash" stroke="var(--amber)"/>
+        <text x="390" y="472" class="lab" text-anchor="middle" fill="var(--amber-t)">Y<tspan baseline-shift="sub" font-size="12">F</tspan> = 1000</text>
+      </svg>
+      <figcaption>The gap is the <b>vertical</b> distance between AD and the 45° line,
+        measured at the <b>full-employment</b> income — nowhere else.</figcaption>
+    </figure>
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Excess demand</span> — a situation in which aggregate demand
+          <b>exceeds</b> aggregate supply at the full-employment level of income.</p>
+      </div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Inflationary gap</span> — the <b>amount by which</b> aggregate demand
+          exceeds the aggregate supply corresponding to full employment.</p>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">Its consequences</span>
+        <ul>
+          <li>Output <b>cannot</b> rise — the economy is already at capacity.</li>
+          <li>So the extra demand spends itself entirely on <b>raising prices</b>.</li>
+          <li>Result: <b>inflation</b>, with no gain in real output or employment.</li>
+        </ul>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">The two errors in drawing this</span>
+        <ul class="small">
+          <li>Drawing the gap <b>horizontally</b>. It is always vertical.</li>
+          <li>Measuring it at the point where AD′ cuts the 45° line. It is measured at
+            <b>Y<sub>F</sub></b>, which is a <i>different</i> income.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-section="5 · Full employment and the two gaps">
+  <h2>Deficient demand and the deflationary gap</h2>
+  <div class="split">
+    <figure>
+      <svg viewBox="0 0 600 520" role="img"
+           aria-label="Aggregate demand line lies below the 45 degree line at the full employment income of 1000, and the vertical distance between them at that income is the deflationary gap of 100. Equilibrium occurs at income 500, below full employment.">
+        <defs>
+          <marker id="de-ax" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M0,0 L10,5 L0,10 z" class="mk-ink"/></marker>
+        </defs>
+        <line x1="390" y1="450" x2="390" y2="30" class="grid"/>
+        <line x1="240" y1="450" x2="240" y2="30" class="grid"/>
+        <line x1="90" y1="450" x2="560" y2="450" class="axis" marker-end="url(#de-ax)"/>
+        <line x1="90" y1="450" x2="90"  y2="25"  class="axis" marker-end="url(#de-ax)"/>
+        <text x="320" y="502" class="sm" text-anchor="middle">Income / Output (Y), ₹ crore</text>
+        <text x="26" y="240" class="sm" transform="rotate(-90 26 240)" text-anchor="middle">AD, AS  (₹ crore)</text>
+
+        <line x1="90" y1="450" x2="510" y2="30" class="curve c-teal"/>
+        <text x="452" y="52" class="lab" fill="var(--teal-t)">AS = Y</text>
+
+        <line x1="90" y1="390" x2="510" y2="54" class="curve c-blue" opacity=".4"/>
+        <text x="286" y="188" class="sm" fill="var(--blue-t)">AD needed for full employment</text>
+
+        <!-- deficient AD -->
+        <line x1="90" y1="420" x2="510" y2="84" class="curve c-rose"/>
+        <text x="332" y="140" class="lab" fill="var(--rose-t)">AD′ — actual</text>
+
+        <!-- the gap -->
+        <line x1="390" y1="150" x2="390" y2="180" stroke="var(--rose)" stroke-width="5"/>
+        <text x="404" y="166" class="lab" fill="var(--rose-t)">DEFLATIONARY GAP</text>
+        <text x="404" y="186" class="sm" fill="var(--rose-t)">= 100, measured VERTICALLY at Y<tspan baseline-shift="sub" font-size="11">F</tspan></text>
+
+        <circle cx="390" cy="150" r="7" class="pt"/>
+        <line x1="390" y1="150" x2="390" y2="450" class="dash" stroke="var(--amber)"/>
+        <text x="390" y="472" class="lab" text-anchor="middle" fill="var(--amber-t)">Y<tspan baseline-shift="sub" font-size="12">F</tspan> = 1000</text>
+
+        <!-- actual equilibrium -->
+        <circle cx="240" cy="300" r="7" class="pt"/>
+        <line x1="240" y1="300" x2="240" y2="450" class="dash" stroke="var(--violet)"/>
+        <text x="150" y="292" class="lab" fill="var(--violet-t)">E — actual</text>
+        <text x="240" y="472" class="sm" text-anchor="middle" fill="var(--violet-t)">500</text>
+      </svg>
+      <figcaption>Equilibrium at ₹500 crore, well below full employment. The economy is stuck there.</figcaption>
+    </figure>
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Deficient demand</span> — a situation in which aggregate demand
+          <b>falls short</b> of aggregate supply at the full-employment level of income.</p>
+      </div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Deflationary gap</span> — the <b>amount by which</b> aggregate demand
+          falls short of the aggregate supply required for full employment.</p>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">Its consequences</span>
+        <ul>
+          <li>Goods pile up unsold → firms <b>cut output</b>.</li>
+          <li>Income and employment <b>fall</b>; <b>involuntary unemployment</b> appears.</li>
+          <li>Prices tend to <b>fall</b> — deflation.</li>
+          <li>The economy settles at an equilibrium <b>below full employment and stays there</b>.</li>
+        </ul>
+      </div>
+      <div class="reveal challenge">
+        <span class="tag">Challenge</span>
+        <p class="small">The deflationary gap is ₹100 crore, but equilibrium income is ₹500 crore
+          short of full employment. Why the difference?</p>
+      </div>
+      <div class="reveal answer">
+        <span class="tag">Answer</span>
+        <p class="small"><b>The multiplier.</b> A demand shortfall of ₹100 crore costs the economy
+          100 × 5 = <b>₹500 crore</b> of income. The gap is the <i>cause</i>; the income shortfall
+          is the <i>consequence</i>, magnified k times. This also tells you the cure: closing a
+          ₹100 crore gap is enough to recover the whole ₹500 crore.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-section="5 · Full employment and the two gaps">
+  <h2>Correcting the two gaps</h2>
+  <table>
+    <thead><tr><th class="lbl">Measure</th><th class="lbl">Excess demand — inflationary gap<br><span class="small">reduce AD</span></th><th class="lbl">Deficient demand — deflationary gap<br><span class="small">raise AD</span></th></tr></thead>
+    <tbody>
+      <tr><td class="lbl"><b>Fiscal · Government spending</b></td><td class="lbl"><b>Decrease</b> G on public works, defence, subsidies</td><td class="lbl"><b>Increase</b> G on roads, schools, employment programmes</td></tr>
+      <tr><td class="lbl"><b>Fiscal · Taxes</b></td><td class="lbl"><b>Raise</b> taxes → less disposable income → less C</td><td class="lbl"><b>Cut</b> taxes → more disposable income → more C</td></tr>
+      <tr><td class="lbl"><b>Fiscal · Public borrowing</b></td><td class="lbl"><b>Borrow more</b> from the public → mops up purchasing power</td><td class="lbl"><b>Borrow less</b>, or repay debt → releases purchasing power</td></tr>
+      <tr><td class="lbl"><b>Monetary · Repo / bank rate</b></td><td class="lbl"><b>Raise</b> → costlier credit → less borrowing and spending</td><td class="lbl"><b>Lower</b> → cheaper credit → more borrowing and spending</td></tr>
+      <tr><td class="lbl"><b>Monetary · CRR and SLR</b></td><td class="lbl"><b>Raise</b> → banks can lend less; multiplier falls</td><td class="lbl"><b>Lower</b> → banks can lend more; multiplier rises</td></tr>
+      <tr><td class="lbl"><b>Monetary · Open market operations</b></td><td class="lbl"><b>Sell</b> securities → drains cash from the system</td><td class="lbl"><b>Buy</b> securities → injects cash into the system</td></tr>
+      <tr><td class="lbl"><b>Monetary · Margin requirement</b></td><td class="lbl"><b>Raise</b> → less credit against the same collateral</td><td class="lbl"><b>Lower</b> → more credit against the same collateral</td></tr>
+    </tbody>
+    <caption>Everything in the middle column is "tighten"; everything in the right column is "loosen".</caption>
+  </table>
+  <div class="reveal bridge">
+    <span class="tag">This is the payoff of Chapter 3 — and the preview of Chapter 5</span>
+    <p>The monetary rows are the instruments you learned last chapter, now with a <b>reason</b>
+      attached. The fiscal rows are the government budget — the whole of <b>Chapter 5</b>.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="5 · Full employment and the two gaps">
+  <h2>Worked numerical · measuring and closing a gap</h2>
+  <div class="qcard">
+    <span class="tag">Question 3</span>
+    <p>In an economy the full-employment level of income is <b>₹2,000 crore</b>. The consumption
+      function is <b>C = 200 + 0.75Y</b> and planned investment is <b>₹150 crore</b>.</p>
+    <p>Find (a) the equilibrium level of income, (b) whether there is excess or deficient demand,
+      (c) the size of the gap, and (d) by how much the government must change its expenditure to
+      restore full employment.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <ol class="steps">
+    <li class="reveal">AD = C + I = 200 + 0.75Y + 150 = <b>350 + 0.75Y</b></li>
+    <li class="reveal">Equilibrium: Y = 350 + 0.75Y ⟹ 0.25Y = 350 ⟹ <b>Y = ₹1,400 crore</b></li>
+    <li class="reveal">Equilibrium income (1,400) is <b>below</b> full employment (2,000), so there is
+      <b>deficient demand</b>.</li>
+    <li class="reveal">AD at Y<sub>F</sub> = 350 + 0.75(2,000) = 350 + 1,500 = <b>1,850</b>;
+      AS at Y<sub>F</sub> = <b>2,000</b></li>
+    <li class="reveal"><b>Deflationary gap</b> = 2,000 − 1,850 = <b>₹150 crore</b></li>
+    <li class="reveal">Multiplier k = 1 ÷ (1 − 0.75) = <b>4</b>. Check: gap 150 × 4 = 600 = the income
+      shortfall (2,000 − 1,400) ✓</li>
+    <li class="reveal">To close it, the government must <b>increase</b> expenditure by exactly the gap:
+      <b>ΔG = ₹150 crore</b></li>
+  </ol>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p>(a) ₹1,400 crore &nbsp;(b) deficient demand &nbsp;(c) deflationary gap of ₹150 crore
+      &nbsp;(d) increase government expenditure by ₹150 crore.</p>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">The step students skip</span>
+    <p>Many answer (d) with "₹600 crore" — the income shortfall. But the government does not have to
+      supply the whole shortfall: it supplies the <b>₹150 crore gap</b> and the <b>multiplier
+      supplies the remaining ₹450 crore</b>. <b>ΔG = gap, not ΔG = income shortfall.</b></p>
+  </div>
+</section>
+
+<!-- ============================================================ PARADOX OF THRIFT -->
+<section class="slide" data-section="6 · The paradox of thrift">
+  <h2><span class="num">4.6</span>The paradox of thrift</h2>
+  <p class="lead">Chapter 1 promised we would prove this with numbers. Here it is.</p>
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Paradox of thrift</span> — if <b>all</b> the people of an economy increase
+      the proportion of their income they wish to save, the <b>total saving of the economy does not
+      increase</b> — it either remains unchanged or falls, because aggregate income falls.</p>
+  </div>
+  <div class="reveal eg">
+    <span class="tag">Worked · watch it happen</span>
+    <p>Start with our economy: <span class="mono">C = 100 + 0.8Y</span>, <span class="mono">I = 100</span>,
+      equilibrium Y = 1,000, saving S = 100.</p>
+    <p>Now every household decides to save more: MPS rises from 0.2 to 0.25, so
+      <span class="mono">C = 100 + 0.75Y</span> and <span class="mono">S = −100 + 0.25Y</span>.</p>
+    <ol class="steps">
+      <li>New equilibrium: Y = (100 + 100) ÷ 0.25 = <b>₹800 crore</b> — income has <b>fallen</b> by 200</li>
+      <li>New saving: S = −100 + 0.25(800) = <b>₹100 crore</b></li>
+      <li>Saving is <b>exactly what it was before</b>, but the economy is ₹200 crore poorer</li>
+    </ol>
+  </div>
+  <div class="reveal insight">
+    <span class="tag">Why saving could not change</span>
+    <p>In equilibrium <b>S = I</b>. Investment did not change, so <b>saving cannot change</b> —
+      no matter how hard households try. All their extra thrift could do was reduce the income out
+      of which they save. The attempt to save more succeeds only in making everyone poorer.</p>
+  </div>
+  <div class="reveal warn">
+    <span class="tag">State the limits honestly</span>
+    <p>The paradox holds <b>in a demand-constrained economy with unemployed resources</b> — the
+      Keynesian short run. At full employment, extra saving <i>does</i> finance extra investment and
+      raises future output. The paradox is an argument about a <b>slump</b>, not a claim that thrift
+      is always harmful.</p>
+  </div>
+</section>
+
+<!-- ============================================================ RECAP -->
+<section class="slide" data-section="7 · Recap and exercises">
+  <h2>Recap — Chapter 4 in one screen</h2>
+  <div class="chips">
+    <span class="chip k">AD = C + I</span>
+    <span class="chip k">AS = Y = C + S (45° line)</span>
+    <span class="chip">Ex ante · ex post</span>
+    <span class="chip k">C = C̄ + cY</span>
+    <span class="chip">APC + APS = 1</span>
+    <span class="chip k">MPC + MPS = 1</span>
+    <span class="chip">Break-even point</span>
+    <span class="chip k">AD = AS ⟺ S = I</span>
+    <span class="chip">Unplanned inventory</span>
+    <span class="chip k">k = 1/(1 − MPC) = 1/MPS</span>
+    <span class="chip">Full employment</span>
+    <span class="chip k">Inflationary gap</span>
+    <span class="chip k">Deflationary gap</span>
+    <span class="chip">Paradox of thrift</span>
+  </div>
+  <div class="grid2">
+    <div class="reveal card">
+      <h4>The four calculations to be able to do cold</h4>
+      <ol class="small">
+        <li>Equilibrium Y from a consumption function and investment, by both routes.</li>
+        <li>APC, APS, MPC, MPS from a schedule.</li>
+        <li>The multiplier, and ΔY from ΔI (and back).</li>
+        <li>The size of a gap at Y<sub>F</sub>, and the ΔG needed to close it.</li>
+      </ol>
+    </div>
+    <div class="reveal card">
+      <h4>The three diagrams to be able to draw cold</h4>
+      <ol class="small">
+        <li>The 45° line with AD, equilibrium marked and projected to both axes.</li>
+        <li>C and S functions stacked, break-even lined up.</li>
+        <li>The gaps — <b>vertical</b>, at Y<sub>F</sub>.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-section="7 · Recap and exercises">
+  <h2>NCERT exercises · 1, 2 and 3</h2>
+  <div class="qcard">
+    <span class="tag">NCERT Q1</span>
+    <p>What is marginal propensity to consume? How is it related to marginal propensity to save?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p>MPC is the ratio of the change in consumption expenditure to the change in income:
+      <b>MPC = ΔC / ΔY</b>. It measures the fraction of an additional rupee of income that is spent.</p>
+    <p>Since all income is either consumed or saved, <b>ΔY = ΔC + ΔS</b>. Dividing throughout by ΔY
+      gives <b>1 = MPC + MPS</b>, so <b>MPS = 1 − MPC</b>. The two are complements: a higher MPC
+      necessarily means a lower MPS.</p>
+  </div>
+  <div class="reveal qcard">
+    <span class="tag">NCERT Q3</span>
+    <p>What do you understand by a "parametric shift of a line"? How does a line shift when
+      (i) its slope decreases, and (ii) its intercept increases?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p>A straight line <span class="mono">y = a + bx</span> is fixed by two <b>parameters</b>: the
+      intercept <i>a</i> and the slope <i>b</i>. A <b>parametric shift</b> is the change in the
+      position of the line caused by a change in one of these parameters.</p>
+    <ul>
+      <li><b>(i) Slope decreases</b> — the line becomes <b>flatter</b>, pivoting about its intercept
+        on the vertical axis, which stays fixed. For the consumption function, a fall in MPC.</li>
+      <li><b>(ii) Intercept increases</b> — the whole line shifts <b>parallel upwards</b>; its slope
+        is unchanged. For the consumption function, a rise in autonomous consumption C̄.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide" data-section="7 · Recap and exercises">
+  <h2>NCERT Q5 · measure ex ante aggregate demand</h2>
+  <div class="qcard">
+    <span class="tag">NCERT Chapter 4, Q5</span>
+    <p>Measure the level of ex-ante aggregate demand when autonomous investment and consumption
+      expenditure (A) is <b>₹50 crore</b>, MPS is <b>0.2</b>, and the level of income (Y) is
+      <b>₹4,000 crore</b>. State whether the economy is in equilibrium or not, citing reasons.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <ol class="steps">
+    <li class="reveal">MPS = 0.2, so MPC = 1 − 0.2 = <b>0.8</b></li>
+    <li class="reveal">Ex ante AD = A + (MPC × Y) = 50 + 0.8 × 4,000</li>
+    <li class="reveal">= 50 + 3,200 = <b>₹3,250 crore</b></li>
+    <li class="reveal">Aggregate supply at this income = Y = <b>₹4,000 crore</b></li>
+    <li class="reveal">AD (3,250) &lt; AS (4,000) ⟹ the economy is <b>not in equilibrium</b></li>
+    <li class="reveal">Equilibrium income would be Y = A ÷ MPS = 50 ÷ 0.2 = <b>₹250 crore</b></li>
+  </ol>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p>Ex ante aggregate demand = <b>₹3,250 crore</b>. The economy is <b>not in equilibrium</b>,
+      because planned aggregate demand falls short of aggregate supply by <b>₹750 crore</b>.
+      Goods worth ₹750 crore will remain unsold, causing an <b>unplanned accumulation of
+      inventories</b>. Firms will therefore cut production, and income will fall — continuing
+      until it reaches the equilibrium level of ₹250 crore.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="7 · Recap and exercises">
+  <h2>Board-style practice</h2>
+  <div class="qcard">
+    <span class="tag">Question 4 · 4 marks</span>
+    <p>An economy is in equilibrium. Find <b>national income</b> given: autonomous consumption = 100,
+      MPS = 0.25, investment expenditure = 200.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <ol class="steps">
+    <li class="reveal">MPC = 1 − 0.25 = 0.75, so C = 100 + 0.75Y</li>
+    <li class="reveal">Y = C + I = 100 + 0.75Y + 200</li>
+    <li class="reveal">Y − 0.75Y = 300 ⟹ 0.25Y = 300</li>
+    <li class="reveal">Y = <b>₹1,200 crore</b></li>
+  </ol>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p>National income = <b>₹1,200 crore.</b> Check by the S = I route: S = −100 + 0.25Y = 200
+      ⟹ 0.25Y = 300 ⟹ Y = 1,200 ✓</p>
+  </div>
+
+  <div class="reveal challenge">
+    <span class="tag">Challenge · 6 marks</span>
+    <p>"An increase in the propensity to save always reduces national income." Examine this statement
+      critically, using the multiplier.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>True in the Keynesian short run with unemployed resources.</b> A rise in MPS lowers MPC,
+      which lowers the multiplier k = 1/MPS. With autonomous expenditure unchanged, equilibrium
+      income Y = A/MPS falls. And because S = I in equilibrium and investment is unchanged, total
+      saving does not even rise — the paradox of thrift.</p>
+    <p><b>But the statement is too strong.</b> It assumes investment is autonomous and that the
+      economy is demand-constrained. In an economy at full employment, or over the long run, higher
+      saving supplies the funds for higher investment, which raises the capital stock and future
+      output. So thrift is contractionary in a slump and growth-promoting at full capacity —
+      the correct answer states <b>both</b> cases.</p>
+  </div>
+</section>
+
+<section class="slide title-slide" data-section="7 · Recap and exercises">
+  <div class="kicker">End of Chapter 4 · Next</div>
+  <h1>Chapter 5<br>Government Budget and the Economy</h1>
+  <div class="rule"></div>
+  <p class="sub">We know the government can close a gap. Now: with what, exactly?</p>
+  <div class="bridge" style="max-width:44rem;text-align:left;margin-top:1.4rem">
+    <span class="tag">The question Chapter 5 answers</span>
+    <p>The correction table said "increase government expenditure" and "cut taxes" as though these
+      were free. They are not — they must be paid for, and how they are paid for changes the answer.
+      Chapter 5 opens the government's own accounts: where its money comes from, where it goes, and
+      what it means when the two do not match.</p>
+  </div>
+</section>
+
+</div>
+
+<button class="nav" id="prev" aria-label="Previous slide">‹</button>
+<button class="nav" id="next" aria-label="Next slide">›</button>
+
+<script src="assets/deck.js"></script>
+</body>
+</html>

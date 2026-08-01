@@ -1,0 +1,1639 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 4 · File Handling — Class XII Computer Science</title>
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body>
+
+<div id="bar">
+  <div class="brand">CH 4 · FILE HANDLING</div>
+  <div class="sect" id="sect"></div>
+  <div class="tools">
+    <button id="menuBtn">Menu (m)</button>
+    <button id="fsBtn">Full screen (f)</button>
+    <span id="counter"></span>
+  </div>
+</div>
+<div id="progress"></div>
+
+<div id="menu">
+  <h3>Chapter 4 — File Handling</h3>
+  <div class="mlist"></div>
+  <p class="hint">Press <kbd>m</kbd> or <kbd>Esc</kbd> to close</p>
+</div>
+
+<div id="stage">
+
+<!-- ===================== ORIENTATION ===================== -->
+
+<section class="slide title-slide" data-section="Orientation">
+  <div class="kicker">Unit 1 · Computational Thinking and Programming</div>
+  <h1>Chapter 4<br>File Handling</h1>
+  <div class="rule"></div>
+  <p class="sub">Every program you have written so far forgets everything the moment
+     it ends. This chapter makes data survive.</p>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.1</span> Where we have got to</h2>
+
+  <div class="bridge">
+    <span class="tag">Chapters 1–3</span>
+    <p>Data structures, functions, and a way to survive errors. All of it lives in
+       <b>RAM</b> — and RAM is emptied when the program exits.</p>
+  </div>
+
+  <div class="cosplit">
+    <div>
+      <div class="card">
+        <h4>The problem, concretely</h4>
+        <p>You write a marks program. It reads five students, computes the average,
+           prints a report. You run it again tomorrow — and you have to type all five
+           students in again.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <h4>What a file gives you</h4>
+        <p>A named area of <b>secondary storage</b> — a disk — that outlives the program.
+           Write once, read on every future run, share it with another program
+           entirely.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">File</span> — a named collection of related data stored on a
+       secondary storage device, which persists after the program that created it has
+       ended.</p>
+  </div>
+
+  <div class="insight">
+    <span class="tag">Why this is the chapter that uses everything</span>
+    <p>Reading a file gives you <b>strings</b> (Ch 1). Processing it needs <b>loops and
+       lists</b> (Ch 1). You will wrap it in <b>functions</b> (Ch 2). And a missing file
+       raises <code>FileNotFoundError</code>, so it all sits inside
+       <b>try/except/finally</b> (Ch 3).</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.2</span> Three kinds of file, one dataset</h2>
+
+  <div class="grid3">
+    <div class="card">
+      <h4>Text file — <code>.txt</code></h4>
+      <p>Characters, human-readable, line by line. Openable in Notepad.</p>
+<pre class="code"><span class="tag">marks.txt</span>Riya 88 CS
+Aarav 91 CS
+Kabir 76 IP</pre>
+    </div>
+    <div class="card">
+      <h4>Binary file — <code>.dat</code></h4>
+      <p>Raw bytes written by <code>pickle</code>. Not human-readable, but Python objects
+         come back exactly as they went in.</p>
+<pre class="code"><span class="tag">marks.dat — real bytes, as hex</span>8004 9558 0000 0000 0000 005d
+9428 5d94 288c 0452 6979 6194
+4b58 8c02 4353 9465 5d94 288c
+0541 6172 6176 944b 5b68 0365</pre>
+    </div>
+    <div class="card">
+      <h4>CSV file — <code>.csv</code></h4>
+      <p>Text, but with one record per line and fields separated by commas. Opens in
+         Excel.</p>
+<pre class="code"><span class="tag">marks.csv</span>Name,Marks,Stream
+Riya,88,CS
+Aarav,91,CS</pre>
+    </div>
+  </div>
+
+  <div class="insight">
+    <span class="tag">The spine of this chapter</span>
+    <p><b>The same five students, stored three ways.</b> Riya, Aarav, Kabir, Meera and
+       Dev appear in every single slide from here on. Once you stop re-reading the data,
+       you start seeing the difference between the three formats — which is the whole
+       point.</p>
+  </div>
+
+  <div class="note">
+    <span class="tag">A fourth thing you already use</span>
+    <p><code>input()</code> and <code>print()</code> are file operations too — on the
+       <b>standard input</b> and <b>standard output</b> streams. Everything below is the
+       same idea, pointed at a disk.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.3</span> How this chapter runs</h2>
+
+  <div class="grid2">
+    <div>
+      <h3>Five stops</h3>
+      <ol>
+        <li><b>Opening and closing</b> — modes, and why closing matters</li>
+        <li><b>Reading text</b> — <code>read</code>, <code>readline</code>,
+            <code>readlines</code>, and the loop</li>
+        <li><b>Writing text</b> — <code>write</code>, <code>writelines</code>,
+            <code>"w"</code> vs <code>"a"</code></li>
+        <li><b>Binary files</b> — <code>pickle</code>, and search / append / update</li>
+        <li><b>CSV files</b> — <code>csv.reader</code>, <code>csv.writer</code>,
+            <code>newline=""</code></li>
+      </ol>
+    </div>
+    <div>
+      <h3>The four operations, on all three kinds</h3>
+      <table>
+        <tr><th class="lbl">Operation</th><th>Text</th><th>Binary</th><th>CSV</th></tr>
+        <tr><td class="lbl">Create / write</td><td class="hi2">✓</td><td class="hi2">✓</td><td class="hi2">✓</td></tr>
+        <tr><td class="lbl">Read</td><td class="hi2">✓</td><td class="hi2">✓</td><td class="hi2">✓</td></tr>
+        <tr><td class="lbl">Search</td><td class="hi2">✓</td><td class="hi2">✓</td><td class="hi2">✓</td></tr>
+        <tr><td class="lbl">Append</td><td class="hi2">✓</td><td class="hi2">✓</td><td class="hi2">✓</td></tr>
+        <tr><td class="lbl">Update</td><td class="lbl">rewrite</td><td class="hi2">✓</td><td class="lbl">rewrite</td></tr>
+      </table>
+      <div class="warn">
+        <span class="tag">The exam pattern</span>
+        <p>Questions are set as <b>“write a function that …”</b> — count, search, append,
+           update. Learn the four shapes and every question is a variation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 1 · OPENING AND CLOSING ===================== -->
+
+<section class="slide" data-section="1 · Opening and closing">
+  <h2><span class="num">2.1</span> The first complete program</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">first.py</span>f = <span class="b">open</span>(<span class="s">"marks.txt"</span>, <span class="s">"r"</span>)
+data = f.read()
+f.close()
+
+<span class="b">print</span>(data)
+<span class="b">print</span>(<span class="s">"chars ="</span>, <span class="b">len</span>(data))</pre>
+      <div class="reveal ready ephemeral">The file has five lines. What prints? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>Riya 88 CS
+Aarav 91 CS
+Kabir 76 IP
+Meera 94 CS
+Dev 59 IP
+
+chars = 57</div>
+      <div class="reveal insight">
+        <span class="tag">Where the blank line comes from</span>
+        <p>The file ends with a newline after <code>Dev 59 IP</code>. <code>read()</code>
+           keeps it, and <code>print</code> adds its own — so you get one blank line.
+           <b>That blank line is a mark.</b></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal defn">
+    <span class="tag">The three steps, always</span>
+    <p><b>①</b> <code>open</code> — connect the program to the file and get a
+       <b>file object</b>.<br>
+       <b>②</b> read or write, using that object's methods.<br>
+       <b>③</b> <code>close</code> — break the connection and flush anything pending.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.2</span> The file modes</h2>
+
+  <table>
+    <tr><th>Mode</th><th class="lbl">Means</th><th class="lbl">If the file does not exist</th><th class="lbl">If it does exist</th></tr>
+    <tr><td><code>"r"</code></td><td class="lbl">read — the <b>default</b></td><td class="lbl"><code>FileNotFoundError</code></td><td class="lbl">opens at the start</td></tr>
+    <tr><td><code>"w"</code></td><td class="lbl">write</td><td class="lbl">creates it</td><td class="hi">erases everything in it</td></tr>
+    <tr><td><code>"a"</code></td><td class="lbl">append</td><td class="lbl">creates it</td><td class="hi2">opens at the <b>end</b>, keeps contents</td></tr>
+    <tr><td><code>"r+"</code></td><td class="lbl">read and write</td><td class="lbl"><code>FileNotFoundError</code></td><td class="lbl">opens at the start</td></tr>
+    <tr><td><code>"rb"</code> <code>"wb"</code> <code>"ab"</code></td><td class="lbl">the same three, in <b>binary</b></td><td class="lbl">as above</td><td class="lbl">as above</td></tr>
+    <caption><code>open(name)</code> with no mode means <code>open(name, "r")</code>.</caption>
+  </table>
+
+  <div class="warn">
+    <span class="tag">The most destructive line in the syllabus</span>
+    <p><code>f = open("marks.txt", "w")</code> — on an existing file this <b>empties it
+       instantly</b>, before you have written a single byte. If you meant to add to the
+       file, you wanted <code>"a"</code>. There is no undo.</p>
+  </div>
+
+  <div class="insight">
+    <span class="tag">How to remember which is which</span>
+    <p><b>r</b>ead · <b>w</b>rite-from-scratch · <b>a</b>ppend-to-the-end. The
+       <code>b</code> suffix only changes <b>how</b> the bytes are interpreted, never
+       <b>where</b> the file pointer starts.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.3</span> <code>"w"</code> versus <code>"a"</code>, demonstrated</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">modes.py</span>f = <span class="b">open</span>(<span class="s">"log.txt"</span>, <span class="s">"w"</span>)
+f.write(<span class="s">"first\n"</span>)
+f.close()
+
+<span class="hl">f = <span class="b">open</span>(<span class="s">"log.txt"</span>, <span class="s">"w"</span>)</span>
+f.write(<span class="s">"second\n"</span>)
+f.close()
+
+<span class="hl">f = <span class="b">open</span>(<span class="s">"log.txt"</span>, <span class="s">"a"</span>)</span>
+f.write(<span class="s">"third\n"</span>)
+f.close()
+
+<span class="k">with</span> <span class="b">open</span>(<span class="s">"log.txt"</span>) <span class="k">as</span> f:
+    <span class="b">print</span>(f.read())</pre>
+      <div class="reveal ready ephemeral">Three writes. How many lines survive? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>second
+third
+</div>
+      <div class="reveal warn">
+        <span class="tag"><code>first</code> is gone</span>
+        <p>The second <code>open(..., "w")</code> wiped the file before writing. Only the
+           <code>"a"</code> on the third open preserved what was already there.</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">The trailing blank line again</span>
+        <p><code>"third\n"</code> ends in a newline, and <code>print</code> adds another —
+           so the output really does end with an empty line. Write it in the exam.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.4</span> Why <code>close()</code> matters — and <code>with</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">the form the paper expects</span>f = <span class="b">open</span>(<span class="s">"marks.txt"</span>, <span class="s">"r"</span>)
+<span class="k">for</span> line <span class="k">in</span> f:
+    <span class="b">print</span>(line.strip())
+f.close()</pre>
+      <div class="warn">
+        <span class="tag">Three things an unclosed file costs you</span>
+        <p><b>①</b> Written data may sit in a <b>buffer</b> and never reach the disk.<br>
+           <b>②</b> The operating system limit on open files is finite.<br>
+           <b>③</b> On some systems another program cannot open it.</p>
+      </div>
+    </div>
+    <div>
+<pre class="code"><span class="tag">with — closes automatically</span><span class="k">with</span> <span class="b">open</span>(<span class="s">"marks.txt"</span>, <span class="s">"r"</span>) <span class="k">as</span> f:
+    <span class="k">for</span> line <span class="k">in</span> f:
+        <span class="b">print</span>(line.strip())
+
+<span class="b">print</span>(<span class="s">"file closed?"</span>, f.closed)</pre>
+      <div class="reveal out"><span class="tag">Output</span>Riya 88 CS
+Aarav 91 CS
+Kabir 76 IP
+Meera 94 CS
+Dev 59 IP
+file closed? True</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">with</span> — opens the file and guarantees it is closed when
+           the block ends, <b>even if an exception is raised inside</b>. No
+           <code>close()</code> is needed.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Board policy — learn both</span>
+    <p><code>with</code> is better Python and NCERT teaches it. But most marking schemes
+       are written with <code>open</code> … <code>close</code>, and some questions say
+       "close the file" explicitly. <b>Write <code>with</code> where you are free to, and
+       never forget <code>close()</code> when you are not.</b></p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.5</span> When the file is not there</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">WRONG — main.py</span><span class="ln">1</span>f = <span class="b">open</span>(<span class="s">"absent.txt"</span>, <span class="s">"r"</span>)
+<span class="ln">2</span><span class="b">print</span>(f.read())</pre>
+      <div class="reveal ready ephemeral">Chapter 3 — name the exception. 🤔</div>
+      <div class="reveal err"><span class="tag">Traceback</span>Traceback (most recent call last):
+  File "main.py", line 1, in &lt;module&gt;
+    f = open("absent.txt", "r")
+        ^^^^^^^^^^^^^^^^^^^^^^^
+<span class="etype">FileNotFoundError</span>: [Errno 2] No such file or directory: 'absent.txt'</div>
+    </div>
+    <div>
+<pre class="code"><span class="tag">GUARDED</span><span class="k">try</span>:
+    f = <span class="b">open</span>(<span class="s">"absent.txt"</span>, <span class="s">"r"</span>)
+    <span class="b">print</span>(f.read())
+<span class="k">except</span> <span class="b">FileNotFoundError</span>:
+    <span class="b">print</span>(<span class="s">"absent.txt does not exist"</span>)
+<span class="k">finally</span>:
+    <span class="b">print</span>(<span class="s">"done"</span>)</pre>
+      <div class="reveal out"><span class="tag">Output</span>absent.txt does not exist
+done</div>
+      <div class="reveal bridge">
+        <span class="tag">Back-link</span>
+        <p>Chapter 3 §3.2 promised this exact traceback. <code>"r"</code> on a missing
+           file is the single most common real exception in the syllabus — and the reason
+           <code>except FileNotFoundError</code> is worth a mark on its own.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">NCERT calls it <code>IOError</code></span>
+    <p><code>FileNotFoundError</code> is a subclass of <code>OSError</code>, which is the
+       same class the older name <code>IOError</code> refers to. Both are accepted;
+       <code>FileNotFoundError</code> is what Python actually prints, so prefer it.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.6</span> Closing safely when things go wrong</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">safeclose.py</span>f = <span class="k">None</span>
+<span class="k">try</span>:
+    f = <span class="b">open</span>(<span class="s">"marks.txt"</span>, <span class="s">"r"</span>)
+    <span class="b">print</span>(f.readline().strip())
+<span class="hl">    <span class="b">print</span>(<span class="b">int</span>(<span class="s">"abc"</span>))</span>
+<span class="k">except</span> <span class="b">ValueError</span>:
+    <span class="b">print</span>(<span class="s">"bad number in the file"</span>)
+<span class="k">finally</span>:
+    <span class="k">if</span> f <span class="k">is</span> <span class="k">not</span> <span class="k">None</span>:
+        f.close()
+    <span class="b">print</span>(<span class="s">"closed:"</span>, f.closed)</pre>
+      <div class="reveal ready ephemeral">The amber line always fails. Does the file get closed? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>Riya 88 CS
+bad number in the file
+closed: True</div>
+      <div class="reveal insight">
+        <span class="tag">This is Chapter 3 §6.2, made real</span>
+        <p><code>finally</code> ran even though the <code>try</code> block was abandoned
+           halfway. That is exactly what it is for — and file closing is the textbook
+           example the syllabus uses.</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">Or just use <code>with</code></span>
+        <p><code>with open(...)</code> does all of this for you, including the
+           <code>if f is not None</code>. Understand the long form, then prefer the short
+           one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 2 · READING TEXT ===================== -->
+
+<section class="slide" data-section="2 · Reading a text file">
+  <h2><span class="num">3.1</span> <code>read()</code> — the whole file as one string</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">wholefile.py</span>f = <span class="b">open</span>(<span class="s">"marks.txt"</span>, <span class="s">"r"</span>)
+data = f.read()
+f.close()
+
+<span class="b">print</span>(<span class="b">type</span>(data))
+<span class="b">print</span>(<span class="b">len</span>(data))
+<span class="b">print</span>(data[:<span class="n">10</span>])</pre>
+      <div class="reveal ready ephemeral">One string, or five? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>&lt;class 'str'&gt;
+57
+Riya 88 CS</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">read()</span> — returns the entire remaining contents of the
+           file as a <b>single string</b>, newlines included.<br>
+           <span class="term">read(n)</span> — returns at most <b>n characters</b>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal"><div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">read(n) — the pointer moves</span>f = <span class="b">open</span>(<span class="s">"marks.txt"</span>, <span class="s">"r"</span>)
+<span class="b">print</span>(f.read(<span class="n">4</span>))
+<span class="b">print</span>(f.read(<span class="n">3</span>))
+f.close()</pre>
+    </div>
+    <div>
+      <div class="out"><span class="tag">Output</span>Riya
+ 88</div>
+      <p class="small">The second call did <b>not</b> start again from the beginning. It
+         continued from character 4 — and picked up the space before <code>88</code>.</p>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.2</span> The file pointer</h2>
+
+  <figure>
+    <svg viewBox="0 0 860 210" role="img" aria-label="The characters of marks.txt in a row with the file pointer starting at position zero, moving to position four after read of four characters, and returning to zero after seek zero">
+      <defs>
+        <marker id="arw-ptr" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#a17a00"/>
+        </marker>
+      </defs>
+
+      <rect x="60" y="60" width="46" height="52" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <rect x="106" y="60" width="46" height="52" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <rect x="152" y="60" width="46" height="52" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <rect x="198" y="60" width="46" height="52" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <rect x="244" y="60" width="46" height="52" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <rect x="290" y="60" width="46" height="52" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <rect x="336" y="60" width="46" height="52" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <rect x="382" y="60" width="46" height="52" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <rect x="428" y="60" width="46" height="52" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <rect x="474" y="60" width="46" height="52" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <rect x="520" y="60" width="46" height="52" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+
+      <text x="83" y="94" class="lab" text-anchor="middle">R</text>
+      <text x="129" y="94" class="lab" text-anchor="middle">i</text>
+      <text x="175" y="94" class="lab" text-anchor="middle">y</text>
+      <text x="221" y="94" class="lab" text-anchor="middle">a</text>
+      <text x="267" y="94" class="lab" text-anchor="middle">␣</text>
+      <text x="313" y="94" class="lab" text-anchor="middle">8</text>
+      <text x="359" y="94" class="lab" text-anchor="middle">8</text>
+      <text x="405" y="94" class="lab" text-anchor="middle">␣</text>
+      <text x="451" y="94" class="lab" text-anchor="middle">C</text>
+      <text x="497" y="94" class="lab" text-anchor="middle">S</text>
+      <text x="543" y="94" class="lab" text-anchor="middle">\n</text>
+
+      <text x="83" y="48" text-anchor="middle" fill="#175f90">0</text>
+      <text x="129" y="48" text-anchor="middle" fill="#175f90">1</text>
+      <text x="175" y="48" text-anchor="middle" fill="#175f90">2</text>
+      <text x="221" y="48" text-anchor="middle" fill="#175f90">3</text>
+      <text x="267" y="48" text-anchor="middle" fill="#175f90">4</text>
+      <text x="313" y="48" text-anchor="middle" fill="#175f90">5</text>
+      <text x="359" y="48" text-anchor="middle" fill="#175f90">6</text>
+      <text x="405" y="48" text-anchor="middle" fill="#175f90">7</text>
+      <text x="451" y="48" text-anchor="middle" fill="#175f90">8</text>
+      <text x="497" y="48" text-anchor="middle" fill="#175f90">9</text>
+      <text x="543" y="48" text-anchor="middle" fill="#175f90">10</text>
+
+      <path class="curve c-amber" d="M60,150 L60,118" marker-end="url(#arw-ptr)"/>
+      <text x="60" y="172" text-anchor="middle" fill="#755900">at open</text>
+
+      <path class="curve c-amber" d="M244,150 L244,118" marker-end="url(#arw-ptr)"/>
+      <text x="252" y="172" text-anchor="middle" fill="#755900">after read(4)</text>
+
+      <path class="curve c-amber dash" d="M430,150 L430,118" marker-end="url(#arw-ptr)"/>
+      <text x="440" y="172" text-anchor="middle" fill="#755900">after read(3) more</text>
+
+      <text x="700" y="80" class="lab">tell() → where it is</text>
+      <text x="700" y="108" class="lab">seek(0) → send it back</text>
+    </svg>
+    <figcaption>Every read <b>advances</b> the pointer. That is why a second <code>read()</code> returns an empty string.</figcaption>
+  </figure>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">pointer.py</span>f = <span class="b">open</span>(<span class="s">"marks.txt"</span>, <span class="s">"r"</span>)
+<span class="b">print</span>(f.tell())
+<span class="b">print</span>(f.read(<span class="n">4</span>))
+<span class="b">print</span>(f.tell())
+<span class="hl">f.seek(<span class="n">0</span>)</span>
+<span class="b">print</span>(f.tell())
+<span class="b">print</span>(f.readline().strip())
+f.close()</pre>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>0
+Riya
+4
+0
+Riya 88 CS</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">tell()</span> — returns the current position of the file
+           pointer, in bytes from the start.<br>
+           <span class="term">seek(n)</span> — moves the file pointer to byte
+           <b>n</b>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.3</span> <code>readline()</code> and <code>readlines()</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">readline — one line</span>f = <span class="b">open</span>(<span class="s">"marks.txt"</span>, <span class="s">"r"</span>)
+<span class="b">print</span>(f.readline())
+<span class="b">print</span>(f.readline().strip())
+f.close()</pre>
+      <div class="reveal out"><span class="tag">Output</span>Riya 88 CS
+
+Aarav 91 CS</div>
+      <div class="reveal warn">
+        <span class="tag">The blank line, explained once and for all</span>
+        <p><code>readline()</code> <b>keeps</b> the <code>\n</code> at the end of the
+           line, and <code>print</code> adds another. The second call used
+           <code>.strip()</code> — and the blank line disappeared.</p>
+      </div>
+    </div>
+    <div>
+<pre class="code"><span class="tag">readlines — a list of lines</span>f = <span class="b">open</span>(<span class="s">"marks.txt"</span>, <span class="s">"r"</span>)
+L = f.readlines()
+f.close()
+
+<span class="b">print</span>(L)
+<span class="b">print</span>(<span class="b">len</span>(L), L[<span class="n">2</span>].strip())</pre>
+      <div class="reveal out"><span class="tag">Output</span>['Riya 88 CS\n', 'Aarav 91 CS\n', 'Kabir 76 IP\n', 'Meera 94 CS\n', 'Dev 59 IP\n']
+5 Kabir 76 IP</div>
+      <div class="reveal note">
+        <span class="tag">Copy that list exactly</span>
+        <p>Quotes round every item, and a visible <code>\n</code> inside each one. Both
+           are marked.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <table>
+      <tr><th class="lbl">Method</th><th class="lbl">Returns</th><th class="lbl">Type</th><th class="lbl">Use when</th></tr>
+      <tr><td class="lbl"><code>read()</code></td><td class="lbl">the whole file</td><td class="lbl">one <code>str</code></td><td class="lbl">you want the text as a block</td></tr>
+      <tr><td class="lbl"><code>read(n)</code></td><td class="lbl">n characters</td><td class="lbl">one <code>str</code></td><td class="lbl">you want a fixed chunk</td></tr>
+      <tr><td class="lbl"><code>readline()</code></td><td class="lbl">the next line</td><td class="lbl">one <code>str</code></td><td class="lbl">one line at a time</td></tr>
+      <tr><td class="lbl"><code>readlines()</code></td><td class="lbl">every line</td><td class="lbl"><code>list</code> of <code>str</code></td><td class="lbl">you need to index or count lines</td></tr>
+      <caption>Note the <b>s</b>: <code>readline</code> gives a string, <code>readlines</code> gives a list.</caption>
+    </table>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.4</span> The loop you will write most often</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">walk.py</span>f = <span class="b">open</span>(<span class="s">"marks.txt"</span>, <span class="s">"r"</span>)
+<span class="hl"><span class="k">for</span> line <span class="k">in</span> f:</span>
+    <span class="b">print</span>(line.strip())
+f.close()</pre>
+      <div class="reveal out"><span class="tag">Output</span>Riya 88 CS
+Aarav 91 CS
+Kabir 76 IP
+Meera 94 CS
+Dev 59 IP</div>
+    </div>
+    <div>
+      <div class="reveal insight">
+        <span class="tag">A file object is iterable</span>
+        <p><code>for line in f</code> hands you one line at a time, in order, and stops at
+           the end of the file — with <b>no</b> counter, no <code>readlines()</code>, and
+           without loading the whole file into memory.</p>
+      </div>
+      <div class="reveal defn">
+        <span class="tag">Three equivalent ways</span>
+        <p><code>for line in f:</code> — best, and memory-friendly.<br>
+           <code>for line in f.readlines():</code> — same result, whole file in RAM.<br>
+           <code>while True: line = f.readline()</code> … <code>if line == "": break</code>
+           — the long form some question papers show.</p>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">Always <code>.strip()</code></span>
+        <p>Every line except possibly the last carries a trailing <code>\n</code>.
+           Forgetting to strip it is why <code>if line == "CS"</code> mysteriously fails
+           and why your output is double-spaced.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.5</span> Counting — the standard 3-mark question</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">count.py</span>lines = <span class="n">0</span>
+words = <span class="n">0</span>
+chars = <span class="n">0</span>
+
+<span class="k">with</span> <span class="b">open</span>(<span class="s">"marks.txt"</span>, <span class="s">"r"</span>) <span class="k">as</span> f:
+    <span class="k">for</span> line <span class="k">in</span> f:
+        lines = lines + <span class="n">1</span>
+        words = words + <span class="b">len</span>(line.split())
+        chars = chars + <span class="b">len</span>(line)
+
+<span class="b">print</span>(<span class="s">"Lines:"</span>, lines)
+<span class="b">print</span>(<span class="s">"Words:"</span>, words)
+<span class="b">print</span>(<span class="s">"Chars:"</span>, chars)</pre>
+      <div class="reveal ready ephemeral">Five lines of three words each. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>Lines: 5
+Words: 15
+Chars: 57</div>
+      <div class="reveal insight">
+        <span class="tag">Why chars is 57 and not 52</span>
+        <p><code>len(line)</code> counts the <code>\n</code> too — five of them. If the
+           question says "excluding newlines", use
+           <code>len(line.strip())</code> and the answer becomes 52.
+           <b>Read which one is asked.</b></p>
+      </div>
+      <div class="reveal note">
+        <span class="tag"><code>split()</code> with no argument</span>
+        <p>It splits on <b>any</b> run of whitespace and discards empties — so it handles
+           double spaces and the trailing newline correctly. That is why it is the right
+           tool for counting words.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.6</span> Searching — the other standard question</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">search.py</span>count = <span class="n">0</span>
+
+<span class="k">with</span> <span class="b">open</span>(<span class="s">"marks.txt"</span>, <span class="s">"r"</span>) <span class="k">as</span> f:
+    <span class="k">for</span> line <span class="k">in</span> f:
+<span class="hl">        <span class="k">if</span> <span class="s">"CS"</span> <span class="k">in</span> line:</span>
+            count = count + <span class="n">1</span>
+            <span class="b">print</span>(line.strip())
+
+<span class="b">print</span>(<span class="s">"CS students:"</span>, count)</pre>
+      <div class="reveal ready ephemeral">Which of the five? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>Riya 88 CS
+Aarav 91 CS
+Meera 94 CS
+CS students: 3</div>
+      <div class="reveal insight">
+        <span class="tag">The shape of every search question</span>
+        <p><b>①</b> a counter at 0 &nbsp; <b>②</b> loop over the lines &nbsp;
+           <b>③</b> an <code>if</code> that tests the line &nbsp; <b>④</b> act and count
+           &nbsp; <b>⑤</b> report after the loop.<br>
+           Only step ③ changes between questions.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal"><div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">splitting into fields</span>total = <span class="n">0</span>
+n = <span class="n">0</span>
+
+<span class="k">with</span> <span class="b">open</span>(<span class="s">"marks.txt"</span>, <span class="s">"r"</span>) <span class="k">as</span> f:
+    <span class="k">for</span> line <span class="k">in</span> f:
+<span class="hl">        parts = line.split()</span>
+        total = total + <span class="b">int</span>(parts[<span class="n">1</span>])
+        n = n + <span class="n">1</span>
+
+<span class="b">print</span>(parts)
+<span class="b">print</span>(<span class="s">"Average ="</span>, <span class="b">round</span>(total / n, <span class="n">2</span>))</pre>
+    </div>
+    <div>
+      <div class="out"><span class="tag">Output</span>['Dev', '59', 'IP']
+Average = 81.6</div>
+      <div class="note">
+        <span class="tag">Two things to notice</span>
+        <p><code>parts</code> holds the <b>last</b> line's fields after the loop — a local
+           name outliving the loop, exactly as in Chapter 1.<br>
+           And <code>parts[1]</code> is the <b>string</b> <code>'59'</code>, so
+           <code>int()</code> is compulsory. Add strings and you get
+           <code>'8891...'</code>.</p>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- ===================== 3 · WRITING TEXT ===================== -->
+
+<section class="slide" data-section="3 · Writing a text file">
+  <h2><span class="num">4.1</span> <code>write()</code> and <code>writelines()</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">writeone.py</span>f = <span class="b">open</span>(<span class="s">"out.txt"</span>, <span class="s">"w"</span>)
+<span class="hl">f.write(<span class="s">"Hello\n"</span>)</span>
+f.write(<span class="s">"Class XII\n"</span>)
+f.close()
+
+f = <span class="b">open</span>(<span class="s">"out.txt"</span>, <span class="s">"r"</span>)
+<span class="b">print</span>(f.read())
+f.close()</pre>
+      <div class="reveal out"><span class="tag">Output</span>Hello
+Class XII
+</div>
+      <div class="reveal warn">
+        <span class="tag"><code>write</code> adds no newline</span>
+        <p>Unlike <code>print</code>, <code>write()</code> writes <b>exactly</b> what you
+           give it. Leave out the <code>\n</code> and the whole file becomes one line:
+           <code>HelloClass XII</code>.</p>
+      </div>
+    </div>
+    <div>
+<pre class="code"><span class="tag">writemany.py</span>lines = [<span class="s">"one\n"</span>, <span class="s">"two\n"</span>, <span class="s">"three\n"</span>]
+
+f = <span class="b">open</span>(<span class="s">"nums.txt"</span>, <span class="s">"w"</span>)
+<span class="hl">f.writelines(lines)</span>
+f.close()
+
+<span class="k">with</span> <span class="b">open</span>(<span class="s">"nums.txt"</span>) <span class="k">as</span> f:
+    <span class="b">print</span>(f.read())</pre>
+      <div class="reveal out"><span class="tag">Output</span>one
+two
+three
+</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">write(s)</span> — writes the string <b>s</b> to the file.<br>
+           <span class="term">writelines(L)</span> — writes every string in the list
+           <b>L</b>. It adds <b>no</b> separators either — the <code>\n</code>s must
+           already be in the strings.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Only strings</span>
+    <p><code>f.write(88)</code> raises
+       <code>TypeError: write() argument must be str, not int</code>. Convert first:
+       <code>f.write(str(88))</code>. This is the writing-side twin of needing
+       <code>int()</code> when you read.</p>
+  </div>
+</section>
+
+<!-- ===================== 4 · BINARY FILES ===================== -->
+
+<section class="slide" data-section="4 · Binary files and pickle">
+  <h2><span class="num">5.1</span> The problem with text</h2>
+
+  <div class="cosplit">
+    <div>
+      <div class="warn">
+        <span class="tag">Everything comes back as a string</span>
+        <p>You wrote <code>88</code>, an <code>int</code>. You read back
+           <code>'88'</code>, a <code>str</code>. You wrote a list of five records; you
+           read back one long string you have to <code>split()</code> apart again by
+           hand.</p>
+      </div>
+      <div class="card">
+        <h4>What we actually want</h4>
+        <p>Put a Python <b>object</b> — a dictionary, a list of lists — into a file, and
+           get the <b>same object</b> back, types intact, with no parsing.</p>
+      </div>
+    </div>
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Binary file</span> — a file that stores data as raw
+           <b>bytes</b> rather than as readable characters. It cannot be opened
+           meaningfully in a text editor.</p>
+        <p><span class="term">Pickling</span> — converting a Python object into a stream
+           of bytes for storage. <span class="term">Unpickling</span> is the reverse.</p>
+      </div>
+      <div class="note">
+        <span class="tag">Also called</span>
+        <p><b>Serialisation</b> and <b>deserialisation</b>. Both words appear in question
+           papers; they mean pickling and unpickling.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <span class="tag">The trade</span>
+    <p>You gain exact types and one-line storage of any structure. You lose
+       readability — nobody, including you, can inspect a <code>.dat</code> file without
+       a Python program.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.2</span> <code>dump()</code> and <code>load()</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">onerecord.py</span><span class="k">import</span> pickle
+
+student = {<span class="s">"name"</span>: <span class="s">"Riya"</span>,
+           <span class="s">"marks"</span>: <span class="n">88</span>,
+           <span class="s">"stream"</span>: <span class="s">"CS"</span>}
+
+<span class="hl">f = <span class="b">open</span>(<span class="s">"one.dat"</span>, <span class="s">"wb"</span>)</span>
+pickle.dump(student, f)
+f.close()
+
+<span class="hl">f = <span class="b">open</span>(<span class="s">"one.dat"</span>, <span class="s">"rb"</span>)</span>
+back = pickle.load(f)
+f.close()
+
+<span class="b">print</span>(back)
+<span class="b">print</span>(<span class="b">type</span>(back), back[<span class="s">"marks"</span>])</pre>
+      <div class="reveal ready ephemeral">What type comes back? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>{'name': 'Riya', 'marks': 88, 'stream': 'CS'}
+&lt;class 'dict'&gt; 88</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">pickle.dump(obj, f)</span> — writes <b>obj</b> to the open
+           binary file <b>f</b>. Note the order: object first, file second.<br>
+           <span class="term">pickle.load(f)</span> — reads one object back from <b>f</b>
+           and returns it.</p>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">A dictionary went in; a dictionary came out</span>
+        <p><code>back["marks"]</code> is the <b>int</b> 88 — not <code>'88'</code>. No
+           <code>split()</code>, no <code>int()</code>. That is the entire selling point
+           of pickle.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">The mode is <code>"wb"</code> / <code>"rb"</code>, always</span>
+    <p><code>import pickle</code> at the top, and never a plain <code>"w"</code> or
+       <code>"r"</code>.
+       <button class="info" aria-controls="why-binary-mode" aria-expanded="false"
+               title="Why binary and not text mode for pickle?">i</button></p>
+  </div>
+
+  <div class="infopanel" id="why-binary-mode">
+    <span class="tag">Why binary and not text mode for pickle?</span>
+    <p>Because <code>pickle</code> produces <b>bytes</b>, not characters. Text mode wraps
+       the file in an encoder that assumes every byte is part of a valid UTF-8 character —
+       and pickle's very first byte, <code>0x80</code>, is not.</p>
+    <div class="q">
+      <code>f = open("marks.dat", "r")</code><br>
+      <code>data = pickle.load(f)</code><br>
+      → <code>UnicodeDecodeError: 'utf-8' codec can't decode byte 0x80 in position 0:
+        invalid start byte</code>
+    </div>
+    <p>Text mode also silently translates newline bytes on Windows, which would corrupt
+       any pickled data containing the byte <code>0x0d</code>. <b>Both problems vanish in
+       binary mode</b>, because binary mode does no interpretation at all — it moves bytes
+       exactly as they are.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.3</span> Storing all five records at once</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">writebin.py</span><span class="k">import</span> pickle
+
+records = [[<span class="s">"Riya"</span>, <span class="n">88</span>, <span class="s">"CS"</span>],
+           [<span class="s">"Aarav"</span>, <span class="n">91</span>, <span class="s">"CS"</span>],
+           [<span class="s">"Kabir"</span>, <span class="n">76</span>, <span class="s">"IP"</span>],
+           [<span class="s">"Meera"</span>, <span class="n">94</span>, <span class="s">"CS"</span>],
+           [<span class="s">"Dev"</span>, <span class="n">59</span>, <span class="s">"IP"</span>]]
+
+<span class="k">with</span> <span class="b">open</span>(<span class="s">"marks.dat"</span>, <span class="s">"wb"</span>) <span class="k">as</span> f:
+<span class="hl">    pickle.dump(records, f)</span>
+
+<span class="k">with</span> <span class="b">open</span>(<span class="s">"marks.dat"</span>, <span class="s">"rb"</span>) <span class="k">as</span> f:
+    data = pickle.load(f)
+
+<span class="b">print</span>(data)
+<span class="b">print</span>(<span class="b">len</span>(data))</pre>
+      <div class="reveal ready ephemeral">One dump call for five records. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>[['Riya', 88, 'CS'], ['Aarav', 91, 'CS'], ['Kabir', 76, 'IP'], ['Meera', 94, 'CS'], ['Dev', 59, 'IP']]
+5</div>
+      <div class="reveal insight">
+        <span class="tag">One object, not five</span>
+        <p>The whole <b>list</b> was pickled as a single object, so a single
+           <code>load()</code> brings it all back. This is by far the easiest pattern to
+           get right, and it is what the marking scheme shows.</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">The alternative you may see</span>
+        <p>You can call <code>dump()</code> once per record and then <code>load()</code>
+           repeatedly in a <code>while True</code> loop until <code>EOFError</code> is
+           raised. It works, and it is the reason <code>EOFError</code> is in the
+           Chapter 3 table — but the single-list version is simpler and safer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.4</span> Searching a binary file</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">searchbin.py</span><span class="k">import</span> pickle
+
+<span class="k">with</span> <span class="b">open</span>(<span class="s">"marks.dat"</span>, <span class="s">"rb"</span>) <span class="k">as</span> f:
+    data = pickle.load(f)
+
+<span class="k">for</span> rec <span class="k">in</span> data:
+<span class="hl">    <span class="k">if</span> rec[<span class="n">1</span>] &gt; <span class="n">85</span>:</span>
+        <span class="b">print</span>(rec[<span class="n">0</span>], rec[<span class="n">1</span>])</pre>
+      <div class="reveal ready ephemeral">Who scored above 85? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>Riya 88
+Aarav 91
+Meera 94</div>
+      <div class="reveal insight">
+        <span class="tag">Compare with the text version</span>
+        <p>In §3.6 you had to <code>split()</code> the line and <code>int()</code> the
+           field before comparing. Here <code>rec[1]</code> is <b>already an int</b>, so
+           <code>&gt; 85</code> just works.</p>
+      </div>
+      <div class="reveal defn">
+        <span class="tag">The shape of a binary search</span>
+        <p><b>①</b> open <code>"rb"</code> &nbsp; <b>②</b> <code>load()</code> the whole
+           structure &nbsp; <b>③</b> loop over it in memory &nbsp; <b>④</b> test each
+           record.<br>
+           There is no line-by-line reading — you get the objects back and search them
+           like any list.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.5</span> Updating a binary file</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">updatebin.py</span><span class="k">import</span> pickle
+
+<span class="k">with</span> <span class="b">open</span>(<span class="s">"marks.dat"</span>, <span class="s">"rb"</span>) <span class="k">as</span> f:
+    data = pickle.load(f)
+
+<span class="k">for</span> rec <span class="k">in</span> data:
+    <span class="k">if</span> rec[<span class="n">0</span>] == <span class="s">"Kabir"</span>:
+<span class="hl">        rec[<span class="n">1</span>] = rec[<span class="n">1</span>] + <span class="n">5</span></span>
+
+<span class="k">with</span> <span class="b">open</span>(<span class="s">"marks.dat"</span>, <span class="s">"wb"</span>) <span class="k">as</span> f:
+    pickle.dump(data, f)
+
+<span class="k">with</span> <span class="b">open</span>(<span class="s">"marks.dat"</span>, <span class="s">"rb"</span>) <span class="k">as</span> f:
+    <span class="b">print</span>(pickle.load(f))</pre>
+      <div class="reveal ready ephemeral">Kabir had 76. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>[['Riya', 88, 'CS'], ['Aarav', 91, 'CS'], ['Kabir', 81, 'IP'], ['Meera', 94, 'CS'], ['Dev', 59, 'IP']]</div>
+      <div class="reveal defn">
+        <span class="tag">Update = read, change, write back</span>
+        <p><b>①</b> <code>load()</code> everything into a list.<br>
+           <b>②</b> change it <b>in memory</b> — this is Chapter 1 mutability doing the
+           work.<br>
+           <b>③</b> reopen in <code>"wb"</code> and <code>dump()</code> the whole thing
+           back.</p>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">Why <code>rec[1] = …</code> is enough</span>
+        <p><code>rec</code> is a label on a list <b>inside</b> <code>data</code> — the
+           same object, not a copy. Mutating it changes <code>data</code>. That is
+           Chapter 1 §6.6 and Chapter 2 §7.2, and it is why no re-assignment into
+           <code>data</code> is needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.6</span> Check yourself</h2>
+  <p class="lead">Two programs. <code>marks.dat</code> is a valid pickled file;
+     <code>empty.dat</code> is a zero-byte file. Name the exception each raises.</p>
+
+  <div class="cosplit">
+    <div>
+      <div class="qcard">
+        <span class="tag">Question 1a</span>
+<pre class="code"><span class="ln">1</span><span class="k">import</span> pickle
+<span class="ln">2</span>f = <span class="b">open</span>(<span class="s">"marks.dat"</span>, <span class="s">"r"</span>)
+<span class="ln">3</span>data = pickle.load(f)</pre>
+      </div>
+      <div class="reveal err"><span class="tag">Traceback</span>Traceback (most recent call last):
+  File "main.py", line 3, in &lt;module&gt;
+    data = pickle.load(f)
+           ^^^^^^^^^^^^^^
+<span class="etype">UnicodeDecodeError</span>: 'utf-8' codec can't decode byte 0x80 in position 0: invalid start byte</div>
+      <p class="small reveal">The <b>mode</b> is wrong. Text mode tried to decode
+         pickle's raw bytes as UTF-8 characters and choked on the very first one.</p>
+    </div>
+    <div>
+      <div class="qcard">
+        <span class="tag">Question 1b</span>
+<pre class="code"><span class="ln">1</span><span class="k">import</span> pickle
+<span class="ln">2</span>f = <span class="b">open</span>(<span class="s">"empty.dat"</span>, <span class="s">"rb"</span>)
+<span class="ln">3</span>data = pickle.load(f)</pre>
+      </div>
+      <div class="reveal err"><span class="tag">Traceback</span>Traceback (most recent call last):
+  File "main.py", line 3, in &lt;module&gt;
+    data = pickle.load(f)
+           ^^^^^^^^^^^^^^
+<span class="etype">EOFError</span>: Ran out of input</div>
+      <p class="small reveal">The <b>mode</b> is right this time — there is simply nothing
+         in the file to unpickle.</p>
+    </div>
+  </div>
+
+  <div class="reveal insight">
+    <span class="tag">Two different failures, same line</span>
+    <p>Both crash on <code>pickle.load(f)</code>, and the traceback looks almost
+       identical. The <b>exception name</b> is the only thing that tells you whether to
+       fix the <code>open()</code> mode or to check that the file was written at all.</p>
+  </div>
+</section>
+
+<!-- ===================== 5 · CSV FILES ===================== -->
+
+<section class="slide" data-section="5 · CSV files">
+  <h2><span class="num">6.1</span> The format that both worlds can read</h2>
+
+  <div class="cosplit">
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">CSV</span> — Comma Separated Values. A <b>text</b> file in
+           which each line is one <b>record</b> and the values within a record are
+           separated by commas.</p>
+      </div>
+      <div class="card">
+        <h4>Why it exists</h4>
+        <p>A text file is readable but unstructured. A binary file is structured but
+           unreadable. CSV is <b>both</b> — a human can open it in Notepad, and Excel,
+           Google Sheets and every database in the world can import it.</p>
+      </div>
+    </div>
+    <div>
+<pre class="code"><span class="tag">marks.csv</span>Name,Marks,Stream
+Riya,88,CS
+Aarav,91,CS
+Kabir,76,IP
+Meera,94,CS
+Dev,59,IP</pre>
+      <div class="note">
+        <span class="tag">The first line</span>
+        <p><code>Name,Marks,Stream</code> is the <b>header row</b> — field names, not
+           data. It is optional, but almost every file has one, and almost every exam
+           question requires you to skip it.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <span class="tag">You could do this with <code>split(",")</code></span>
+    <p>And for a file this simple it would work. The <code>csv</code> module exists
+       because real data contains commas <b>inside</b> fields —
+       <code>"Sharma, Riya",88,CS</code> — and quotes, and embedded newlines.
+       <code>csv.reader</code> handles all of it; <code>split(",")</code> silently gets it
+       wrong.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.2</span> Writing a CSV</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">writecsv.py</span><span class="k">import</span> csv
+
+rows = [[<span class="s">"Name"</span>, <span class="s">"Marks"</span>, <span class="s">"Stream"</span>],
+        [<span class="s">"Riya"</span>, <span class="n">88</span>, <span class="s">"CS"</span>],
+        [<span class="s">"Aarav"</span>, <span class="n">91</span>, <span class="s">"CS"</span>],
+        [<span class="s">"Kabir"</span>, <span class="n">76</span>, <span class="s">"IP"</span>],
+        [<span class="s">"Meera"</span>, <span class="n">94</span>, <span class="s">"CS"</span>],
+        [<span class="s">"Dev"</span>, <span class="n">59</span>, <span class="s">"IP"</span>]]
+
+<span class="hl">f = <span class="b">open</span>(<span class="s">"marks.csv"</span>, <span class="s">"w"</span>, newline=<span class="s">""</span>)</span>
+w = csv.writer(f)
+w.writerows(rows)
+f.close()
+
+<span class="b">print</span>(<span class="b">open</span>(<span class="s">"marks.csv"</span>).read())</pre>
+      <div class="reveal ready ephemeral">Note the ints in the list. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>Name,Marks,Stream
+Riya,88,CS
+Aarav,91,CS
+Kabir,76,IP
+Meera,94,CS
+Dev,59,IP
+</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">csv.writer(f)</span> — creates a writer object bound to the
+           open file <b>f</b>.<br>
+           <span class="term">writerow(list)</span> — writes <b>one</b> record.<br>
+           <span class="term">writerows(list of lists)</span> — writes <b>many</b>.</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">The ints became text</span>
+        <p><code>88</code> was written as the characters <code>8</code> and
+           <code>8</code>. A CSV is a text file — it has no idea what a number is. That
+           is why reading it back gives you strings.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.3</span> Reading a CSV</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">readcsv.py</span><span class="k">import</span> csv
+
+<span class="k">with</span> <span class="b">open</span>(<span class="s">"marks.csv"</span>, <span class="s">"r"</span>, newline=<span class="s">""</span>) <span class="k">as</span> f:
+    r = csv.reader(f)
+    <span class="k">for</span> row <span class="k">in</span> r:
+        <span class="b">print</span>(row)</pre>
+      <div class="reveal ready ephemeral">What type is each <code>row</code>? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>['Name', 'Marks', 'Stream']
+['Riya', '88', 'CS']
+['Aarav', '91', 'CS']
+['Kabir', '76', 'IP']
+['Meera', '94', 'CS']
+['Dev', '59', 'IP']</div>
+      <div class="reveal warn">
+        <span class="tag">Every field is a string</span>
+        <p><code>'88'</code>, with quotes — not <code>88</code>. Any arithmetic needs
+           <code>int(row[1])</code> first. This is the single most common CSV mistake, and
+           it is the same lesson as <code>input()</code> in Chapter 1 §2.8.</p>
+      </div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">csv.reader(f)</span> — returns an object you iterate over.
+           Each iteration yields one record as a <b>list of strings</b>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.4</span> Skipping the header, and filtering</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">filtercsv.py</span><span class="k">import</span> csv
+
+<span class="k">with</span> <span class="b">open</span>(<span class="s">"marks.csv"</span>, <span class="s">"r"</span>, newline=<span class="s">""</span>) <span class="k">as</span> f:
+    r = csv.reader(f)
+<span class="hl">    header = <span class="b">next</span>(r)</span>
+    <span class="b">print</span>(<span class="s">"header:"</span>, header)
+    <span class="k">for</span> row <span class="k">in</span> r:
+<span class="hl">        <span class="k">if</span> <span class="b">int</span>(row[<span class="n">1</span>]) &gt; <span class="n">85</span>:</span>
+            <span class="b">print</span>(row[<span class="n">0</span>], row[<span class="n">1</span>])</pre>
+      <div class="reveal ready ephemeral">Four lines. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>header: ['Name', 'Marks', 'Stream']
+Riya 88
+Aarav 91
+Meera 94</div>
+      <div class="reveal insight">
+        <span class="tag">Two things doing the work</span>
+        <p><code>next(r)</code> pulls <b>one</b> record off the reader and moves on, so
+           the <code>for</code> loop starts at the first real record.<br>
+           <code>int(row[1])</code> is compulsory — without it you would be comparing the
+           string <code>'88'</code> with the int <code>85</code>, which raises
+           <code>TypeError</code>.</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">The alternative</span>
+        <p><code>for row in r:</code> then <code>if row[0] == "Name": continue</code>
+           also works and is what some question papers show. <code>next()</code> is
+           cleaner and reads better.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.5</span> Appending a record — and <code>newline=""</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">appendcsv.py</span><span class="k">import</span> csv
+
+<span class="hl">f = <span class="b">open</span>(<span class="s">"marks.csv"</span>, <span class="s">"a"</span>, newline=<span class="s">""</span>)</span>
+w = csv.writer(f)
+w.writerow([<span class="s">"Ishan"</span>, <span class="n">67</span>, <span class="s">"IP"</span>])
+f.close()
+
+<span class="b">print</span>(<span class="b">open</span>(<span class="s">"marks.csv"</span>).read())</pre>
+      <div class="reveal out"><span class="tag">Output</span>Name,Marks,Stream
+Riya,88,CS
+Aarav,91,CS
+Kabir,76,IP
+Meera,94,CS
+Dev,59,IP
+Ishan,67,IP
+</div>
+    </div>
+    <div>
+      <div class="reveal defn">
+        <span class="tag">Why <code>newline=""</code></span>
+        <p>The <code>csv</code> module writes its own record terminator. In text mode
+           Python <b>also</b> translates <code>\n</code> to the platform's line ending.
+           <code>newline=""</code> switches that translation off so the two do not
+           collide.
+           <button class="info" aria-controls="csv-newline" aria-expanded="false"
+                   title="What actually happens if I leave newline='' out?">i</button></p>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">Write it every time</span>
+        <p>On every <code>open()</code> that a <code>csv.reader</code> or
+           <code>csv.writer</code> will touch — read <b>and</b> write. It is a
+           one-mark habit and it costs nothing.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="infopanel" id="csv-newline">
+    <span class="tag">What actually happens if I leave <code>newline=""</code> out?</span>
+    <p>It depends on the operating system, which is exactly why the rule is stated as
+       absolute.</p>
+    <div class="q">
+      <b>On Windows</b> — text mode turns each <code>\n</code> into <code>\r\n</code>. The
+      csv writer has already ended the record with <code>\r\n</code>, so the file gets
+      <code>\r\r\n</code> and every second line comes out <b>blank</b>. This is the
+      famous symptom.<br>
+      <b>On Linux and macOS</b> — no translation happens, so omitting it makes no
+      visible difference at all.
+    </div>
+    <p>So a student on Linux may never see the bug, ship the habit, and lose the mark —
+       or produce a broken file for a teacher on Windows. <b>The syllabus requires
+       <code>newline=""</code>, and it is correct on every platform</b>, which is the
+       whole reason to write it unconditionally rather than "when it breaks".</p>
+    <p><b>Reading</b> matters too, for a different reason: without it, a field containing
+       an embedded newline is split across two records.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.6</span> The three formats, compared</h2>
+
+  <table>
+    <tr><th class="lbl">&nbsp;</th><th>Text <code>.txt</code></th><th>Binary <code>.dat</code></th><th>CSV <code>.csv</code></th></tr>
+    <tr><td class="lbl">Human-readable</td><td class="hi2">Yes</td><td class="hi">No</td><td class="hi2">Yes</td></tr>
+    <tr><td class="lbl">Open mode</td><td><code>"r"</code> <code>"w"</code> <code>"a"</code></td><td><code>"rb"</code> <code>"wb"</code></td><td><code>"r"</code> + <code>newline=""</code></td></tr>
+    <tr><td class="lbl">Module needed</td><td>none</td><td><code>pickle</code></td><td><code>csv</code></td></tr>
+    <tr><td class="lbl">What you read back</td><td><code>str</code></td><td class="hi2">the original object</td><td><code>list</code> of <code>str</code></td></tr>
+    <tr><td class="lbl">Types preserved</td><td class="hi">No</td><td class="hi2">Yes</td><td class="hi">No</td></tr>
+    <tr><td class="lbl">Read methods</td><td><code>read</code> <code>readline</code> <code>readlines</code></td><td><code>pickle.load</code></td><td><code>csv.reader</code></td></tr>
+    <tr><td class="lbl">Write methods</td><td><code>write</code> <code>writelines</code></td><td><code>pickle.dump</code></td><td><code>writerow</code> <code>writerows</code></td></tr>
+    <tr><td class="lbl">Other software can read it</td><td class="hi2">Yes</td><td class="hi">No</td><td class="hi2">Yes — Excel</td></tr>
+    <caption>Same five students, three files. If you can fill this table from memory, the chapter is done.</caption>
+  </table>
+</section>
+
+<!-- ===================== RECAP AND EXAM PRACTICE ===================== -->
+
+<section class="slide" data-section="Recap and exam practice">
+  <h2><span class="num">7.1</span> Everything on one screen</h2>
+
+  <h3>Opening and closing</h3>
+  <div class="chips">
+    <span class="chip k">open(name, mode)</span>
+    <span class="chip k">"w" erases the file</span>
+    <span class="chip">"a" appends</span>
+    <span class="chip">"r" is the default</span>
+    <span class="chip k">with … as f closes for you</span>
+    <span class="chip">f.close() in finally</span>
+    <span class="chip">FileNotFoundError</span>
+  </div>
+
+  <h3>Text files</h3>
+  <div class="chips">
+    <span class="chip k">read() → one string</span>
+    <span class="chip">readline() → one line</span>
+    <span class="chip k">readlines() → a list</span>
+    <span class="chip k">for line in f</span>
+    <span class="chip">.strip() removes the \n</span>
+    <span class="chip">write() adds no newline</span>
+    <span class="chip">writelines() adds no separator</span>
+    <span class="chip">seek() / tell()</span>
+  </div>
+
+  <h3>Binary files</h3>
+  <div class="chips">
+    <span class="chip k">import pickle</span>
+    <span class="chip k">"wb" / "rb", never "w" / "r"</span>
+    <span class="chip k">pickle.dump(obj, f)</span>
+    <span class="chip k">pickle.load(f)</span>
+    <span class="chip">types survive</span>
+    <span class="chip">update = load, change, dump back</span>
+    <span class="chip">EOFError on an empty file</span>
+  </div>
+
+  <h3>CSV files</h3>
+  <div class="chips">
+    <span class="chip k">import csv</span>
+    <span class="chip k">newline="" on every open</span>
+    <span class="chip">csv.reader(f)</span>
+    <span class="chip">csv.writer(f)</span>
+    <span class="chip">writerow / writerows</span>
+    <span class="chip k">every field is a string</span>
+    <span class="chip">next(r) skips the header</span>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.2</span> Exam question 1 — find the output</h2>
+
+  <div class="qcard">
+    <span class="tag">3 marks</span>
+    <p><code>marks.txt</code> contains the five lines shown earlier. Write the output.</p>
+<pre class="code"><span class="k">with</span> <span class="b">open</span>(<span class="s">"marks.txt"</span>, <span class="s">"r"</span>) <span class="k">as</span> f:
+    lines = f.readlines()
+
+<span class="b">print</span>(lines[<span class="n">0</span>].strip())
+<span class="b">print</span>(lines[-<span class="n">1</span>].strip())
+<span class="b">print</span>(<span class="b">len</span>(lines))
+<span class="b">print</span>(lines[<span class="n">1</span>][:<span class="n">5</span>])</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>Riya 88 CS
+Dev 59 IP
+5
+Aarav</div>
+    <p><code>readlines()</code> gives a <b>list</b>, so all of Chapter 1's list operations
+       apply — <code>[0]</code>, <code>[-1]</code>, <code>len()</code>, and slicing the
+       string inside. <code>lines[1][:5]</code> is the first five characters of
+       <code>'Aarav 91 CS\n'</code>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.3</span> Exam question 2 — write the function</h2>
+
+  <div class="qcard">
+    <span class="tag">3 marks</span>
+    <p>Write a function <code>count_vowel_lines()</code> that reads <code>marks.txt</code>
+       and displays those lines that <b>begin with a vowel</b>, then returns how many
+       there were.</p>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="cosplit">
+      <div>
+<pre class="code"><span class="tag">vowellines.py</span><span class="k">def</span> <span class="b">count_vowel_lines</span>():
+    n = <span class="n">0</span>
+    <span class="k">with</span> <span class="b">open</span>(<span class="s">"marks.txt"</span>, <span class="s">"r"</span>) <span class="k">as</span> f:
+        <span class="k">for</span> line <span class="k">in</span> f:
+            <span class="k">if</span> line[<span class="n">0</span>] <span class="k">in</span> <span class="s">"AEIOUaeiou"</span>:
+                n = n + <span class="n">1</span>
+                <span class="b">print</span>(line.strip())
+    <span class="k">return</span> n
+
+<span class="b">print</span>(<span class="s">"Count:"</span>, <span class="b">count_vowel_lines</span>())</pre>
+      </div>
+      <div>
+        <div class="out"><span class="tag">Output</span>Aarav 91 CS
+Count: 1</div>
+        <div class="note">
+          <span class="tag">Where the three marks are</span>
+          <p><b>①</b> opening in <code>"r"</code> and closing (or using
+             <code>with</code>).<br>
+             <b>②</b> testing <code>line[0]</code> against <b>both</b> cases — a question
+             that says "a vowel" means either case unless it says otherwise.<br>
+             <b>③</b> <code>return n</code>, not <code>print(n)</code> — the question said
+             "returns".</p>
+        </div>
+        <div class="warn">
+          <span class="tag">Careful</span>
+          <p><code>line[0]</code> on an <b>empty</b> line raises
+             <code>IndexError</code>. If a file may contain blank lines, test
+             <code>if line.strip() and line[0] in …</code>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.4</span> Exam question 3 — binary file</h2>
+
+  <div class="qcard">
+    <span class="tag">3 marks</span>
+    <p><code>marks.dat</code> holds a pickled list of <code>[name, marks, stream]</code>
+       records. Write a function <code>topper()</code> that returns the record with the
+       highest marks.</p>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="cosplit">
+      <div>
+<pre class="code"><span class="tag">topper.py</span><span class="k">import</span> pickle
+
+<span class="k">def</span> <span class="b">topper</span>():
+    <span class="k">with</span> <span class="b">open</span>(<span class="s">"marks.dat"</span>, <span class="s">"rb"</span>) <span class="k">as</span> f:
+        data = pickle.load(f)
+
+    best = data[<span class="n">0</span>]
+    <span class="k">for</span> rec <span class="k">in</span> data:
+        <span class="k">if</span> rec[<span class="n">1</span>] &gt; best[<span class="n">1</span>]:
+            best = rec
+    <span class="k">return</span> best
+
+<span class="b">print</span>(<span class="b">topper</span>())</pre>
+      </div>
+      <div>
+        <div class="out"><span class="tag">Output</span>['Meera', 94, 'CS']</div>
+        <div class="note">
+          <span class="tag">Where the three marks are</span>
+          <p><b>①</b> <code>import pickle</code> and mode <code>"rb"</code>.<br>
+             <b>②</b> <code>pickle.load(f)</code> into a variable.<br>
+             <b>③</b> the max-finding loop, seeded with <code>data[0]</code> rather
+             than <code>0</code> — a record, not a number.</p>
+        </div>
+        <div class="insight">
+          <span class="tag">Note what you did not have to do</span>
+          <p>No <code>split()</code>, no <code>int()</code>. <code>rec[1]</code> came back
+             as an <code>int</code> because pickle preserved the type.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.5</span> Exam question 4 — CSV file</h2>
+
+  <div class="qcard">
+    <span class="tag">3 marks</span>
+    <p><code>marks.csv</code> has a header row and then the five records. Write a function
+       <code>stream_count()</code> that returns a dictionary giving how many students are
+       in each stream.</p>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="cosplit">
+      <div>
+<pre class="code"><span class="tag">streams.py</span><span class="k">import</span> csv
+
+<span class="k">def</span> <span class="b">stream_count</span>():
+    counts = {}
+    <span class="k">with</span> <span class="b">open</span>(<span class="s">"marks.csv"</span>, <span class="s">"r"</span>, newline=<span class="s">""</span>) <span class="k">as</span> f:
+        r = csv.reader(f)
+        <span class="b">next</span>(r)
+        <span class="k">for</span> row <span class="k">in</span> r:
+            s = row[<span class="n">2</span>]
+            counts[s] = counts.get(s, <span class="n">0</span>) + <span class="n">1</span>
+    <span class="k">return</span> counts
+
+<span class="b">print</span>(<span class="b">stream_count</span>())</pre>
+      </div>
+      <div>
+        <div class="out"><span class="tag">Output</span>{'CS': 3, 'IP': 2}</div>
+        <div class="note">
+          <span class="tag">Where the three marks are</span>
+          <p><b>①</b> <code>newline=""</code> on the open.<br>
+             <b>②</b> <code>next(r)</code> to discard the header — without it you would
+             count a phantom <code>'Stream'</code> student.<br>
+             <b>③</b> the <code>counts.get(s, 0) + 1</code> idiom from Chapter 1 §8.5.</p>
+        </div>
+        <div class="insight">
+          <span class="tag">This is the Chapter 1 frequency count</span>
+          <p>Exactly the <code>banana</code> program, pointed at a file instead of a
+             string. That is what this whole chapter is — <b>old algorithms, new source
+             of data</b>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.6</span> Exam question 5 — two-mark theory</h2>
+
+  <div class="qcard">
+    <span class="tag">2 + 2 marks</span>
+    <ol>
+      <li>Differentiate between a <b>text file</b> and a <b>binary file</b>. Give one
+          advantage of each.</li>
+      <li>What is the difference between <code>readline()</code> and
+          <code>readlines()</code>? What does each return?</li>
+    </ol>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 1</span>
+    <p>A <b>text file</b> stores data as readable characters, organised into lines
+       terminated by a newline. It is opened in modes such as <code>"r"</code> and
+       <code>"w"</code>, and everything read from it is a <b>string</b>.</p>
+    <p>A <b>binary file</b> stores data as raw bytes with no character interpretation. It
+       is opened in <code>"rb"</code> / <code>"wb"</code> and, using
+       <code>pickle</code>, returns the <b>original Python objects</b> with their types
+       intact.</p>
+    <p><b>Advantage of text:</b> it can be read and edited by a human in any editor, and
+       shared with other software. <b>Advantage of binary:</b> data types are preserved,
+       so no parsing or conversion is needed, and it is faster and more compact.</p>
+  </div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 2</span>
+    <p><code>readline()</code> reads <b>one</b> line from the current position and returns
+       it as a <b>string</b>, including its trailing newline. At end of file it returns an
+       empty string.</p>
+    <p><code>readlines()</code> reads <b>all</b> the remaining lines and returns them as a
+       <b>list of strings</b>, each still carrying its newline.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.7</span> One last challenge</h2>
+
+  <div class="challenge">
+    <span class="tag">Challenge</span>
+    <p><code>marks.txt</code> holds the five records. What is printed, and what is in the
+       file afterwards?</p>
+<pre class="code">f = <span class="b">open</span>(<span class="s">"marks.txt"</span>, <span class="s">"r"</span>)
+<span class="b">print</span>(f.readline().strip())
+<span class="b">print</span>(<span class="b">len</span>(f.readlines()))
+<span class="b">print</span>(f.read())
+<span class="b">print</span>(<span class="s">"["</span> + f.read() + <span class="s">"]"</span>)
+f.close()</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Four lines. The last two are the interesting ones. 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>Riya 88 CS
+4
+
+[]</div>
+    <p><b>Line 1</b> — <code>readline()</code> took the first record and left the pointer
+       at the start of line 2.</p>
+    <p><b>Line 2</b> — <code>readlines()</code> took the <b>remaining</b> four, so the
+       length is 4, not 5. The pointer is now at the end of the file.</p>
+    <p><b>Lines 3 and 4</b> — every further <code>read()</code> returns the <b>empty
+       string</b>, because there is nothing left. <code>print("")</code> emits a blank
+       line, and the brackets on the last line prove the string really is empty.</p>
+    <p><b>The file is unchanged.</b> It was opened <code>"r"</code>; reading never
+       modifies. To restart you would need <code>f.seek(0)</code>.</p>
+  </div>
+</section>
+
+<section class="slide title-slide">
+  <div class="kicker">End of Chapter 4</div>
+  <h1>Next: Stacks</h1>
+  <div class="rule"></div>
+  <p class="sub">You can now store and retrieve data. Chapter 5 is about the
+     <b>order</b> in which you take it back out — the last-in-first-out discipline that
+     runs undo buttons, browser back, and Python's own function calls.</p>
+
+  <div class="bridge narrow">
+    <span class="tag">Carry these three forward</span>
+    <p><b>①</b> A stack is built on a <b>list</b> — <code>append</code> and
+       <code>pop</code>, which you have used all chapter.<br>
+       <b>②</b> The <b>call stack</b> in a traceback is a real stack; Chapter 5 explains
+       why it is drawn innermost-last.<br>
+       <b>③</b> The classic stack question reads records from a file and pushes them —
+       so §5 and §6 of this chapter are the input to the next one.</p>
+  </div>
+</section>
+
+</div>
+
+<button class="nav" id="prev" aria-label="Previous slide">←</button>
+<button class="nav" id="next" aria-label="Next slide">→</button>
+
+<script src="assets/deck.js"></script>
+</body>
+</html>

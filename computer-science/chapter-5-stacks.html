@@ -1,0 +1,1071 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 5 · Stacks — Class XII Computer Science</title>
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body>
+
+<div id="bar">
+  <div class="brand">CH 5 · STACKS</div>
+  <div class="sect" id="sect"></div>
+  <div class="tools">
+    <button id="menuBtn">Menu (m)</button>
+    <button id="fsBtn">Full screen (f)</button>
+    <span id="counter"></span>
+  </div>
+</div>
+<div id="progress"></div>
+
+<div id="menu">
+  <h3>Chapter 5 — Stacks</h3>
+  <div class="mlist"></div>
+  <p class="hint">Press <kbd>m</kbd> or <kbd>Esc</kbd> to close</p>
+</div>
+
+<div id="stage">
+
+<!-- ===================== ORIENTATION ===================== -->
+
+<section class="slide title-slide" data-section="Orientation">
+  <div class="kicker">Unit 1 · Computational Thinking and Programming</div>
+  <h1>Chapter 5<br>Stacks</h1>
+  <div class="rule"></div>
+  <p class="sub">One rule — the last thing in is the first thing out.
+     From that single restriction comes the undo button, the browser back button,
+     and Python's own traceback.</p>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.1</span> Where we have got to</h2>
+
+  <div class="bridge">
+    <span class="tag">Chapters 1–4</span>
+    <p>You have a <b>list</b>, which lets you put a value anywhere and take it from
+       anywhere. Total freedom.</p>
+  </div>
+
+  <div class="cosplit">
+    <div>
+      <div class="card">
+        <h4>This chapter takes freedom away</h4>
+        <p>A stack is a list you are only allowed to touch <b>at one end</b>. You may add
+           at the top, remove from the top, and look at the top. Nothing else.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <h4>Why on earth would you want that?</h4>
+        <p>Because the restriction <b>is</b> the feature. Many real problems have exactly
+           this shape — and a structure that can only do the right thing cannot do the
+           wrong thing.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Data structure</span> — a way of organising data in memory
+       together with the operations allowed on it.<br>
+       <span class="term">Stack</span> — a linear data structure in which insertion and
+       deletion take place at <b>one end only</b>, called the <b>top</b>, so that the
+       element inserted last is the one removed first.</p>
+  </div>
+
+  <div class="insight">
+    <span class="tag">The abbreviation to write in every answer</span>
+    <p><b>LIFO — Last In, First Out.</b> Whatever the question, this phrase is worth a
+       mark, and it is the reason for every behaviour in this chapter.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.2</span> LIFO, drawn</h2>
+
+  <figure>
+    <svg viewBox="0 0 880 300" role="img" aria-label="A stack of three plates: pushing adds a plate on top, popping removes the top plate; the bottom plate cannot be reached without removing the ones above it">
+      <defs>
+        <marker id="arw-push" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#748500"/>
+        </marker>
+        <marker id="arw-pop" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#c62b28"/>
+        </marker>
+        <marker id="arw-top" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#a17a00"/>
+        </marker>
+      </defs>
+
+      <rect x="300" y="100" width="230" height="52" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <rect x="300" y="152" width="230" height="52" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <rect x="300" y="204" width="230" height="52" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+
+      <text x="415" y="134" class="lab" text-anchor="middle">30 — pushed last</text>
+      <text x="415" y="186" class="lab" text-anchor="middle">20</text>
+      <text x="415" y="238" class="lab" text-anchor="middle">10 — pushed first</text>
+
+      <path class="curve c-amber" d="M600,126 L538,126" marker-end="url(#arw-top)"/>
+      <text x="616" y="132" class="lab" fill="#755900">top</text>
+
+      <path class="curve c-teal" d="M150,40 C210,40 250,60 292,96" marker-end="url(#arw-push)"/>
+      <text x="120" y="36" class="lab" fill="#586600" text-anchor="end">push</text>
+
+      <path class="curve c-rose" d="M292,80 C240,44 200,20 130,16" marker-end="url(#arw-pop)"/>
+      <text x="120" y="12" class="lab" fill="#b02522" text-anchor="end">pop</text>
+
+      <text x="700" y="200" fill="#b02522">10 cannot be reached</text>
+      <text x="700" y="224" fill="#b02522">until 30 and 20 leave.</text>
+
+      <text x="415" y="288" text-anchor="middle">Both operations happen at the SAME end. That is the whole definition.</text>
+    </svg>
+    <figcaption>A stack of plates. You add to the top and take from the top — never from the middle.</figcaption>
+  </figure>
+
+  <div class="grid3">
+    <div class="card">
+      <h4>Undo</h4>
+      <p>Ctrl+Z reverses your <b>most recent</b> action first, then the one before it.</p>
+    </div>
+    <div class="card">
+      <h4>Browser back</h4>
+      <p>Back takes you to the page you visited <b>most recently</b>, not the first one.</p>
+    </div>
+    <div class="card">
+      <h4>The traceback</h4>
+      <p>Python's call stack. Chapter 3 §6.4 printed one — this chapter explains why it
+         is shaped like that.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 1 · THE OPERATIONS ===================== -->
+
+<section class="slide" data-section="1 · The operations">
+  <h2><span class="num">2.1</span> A stack is just a list — used carefully</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">basic.py</span>stack = []
+
+<span class="hl">stack.append(<span class="n">10</span>)</span>
+<span class="b">print</span>(stack)
+stack.append(<span class="n">20</span>)
+<span class="b">print</span>(stack)
+stack.append(<span class="n">30</span>)
+<span class="b">print</span>(stack)
+
+<span class="hl"><span class="b">print</span>(stack.pop())</span>
+<span class="b">print</span>(stack)
+<span class="b">print</span>(stack.pop())
+<span class="b">print</span>(stack)</pre>
+      <div class="reveal ready ephemeral">Seven lines. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>[10]
+[10, 20]
+[10, 20, 30]
+30
+[10, 20]
+20
+[10]</div>
+      <div class="reveal insight">
+        <span class="tag">The end of the list is the top of the stack</span>
+        <p><code>append()</code> adds at the <b>end</b>. <code>pop()</code> with no
+           argument removes from the <b>end</b>. Both are already one-end operations —
+           so a Python list <b>is</b> a stack, if you use only those two methods.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal warn">
+    <span class="tag">Why the top is the end, not the start</span>
+    <p>You could put the top at index 0 with <code>insert(0, x)</code> and
+       <code>pop(0)</code>. Do not. Those shift every other element up or down, so they
+       are slow — and the syllabus, the marking scheme and every textbook use the end.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.2</span> Tracing it, push by push</h2>
+
+  <div class="cosplit">
+    <div>
+      <table class="trace">
+        <tr><th class="lbl">Operation</th><th class="lbl">Stack after</th><th>top</th><th>Returned</th></tr>
+        <tr><td class="lbl">start</td><td class="lbl">[]</td><td>—</td><td>—</td></tr>
+        <tr><td class="lbl">append(10)</td><td class="lbl chg">[10]</td><td class="chg">10</td><td>—</td></tr>
+        <tr><td class="lbl">append(20)</td><td class="lbl chg">[10, 20]</td><td class="chg">20</td><td>—</td></tr>
+        <tr><td class="lbl">append(30)</td><td class="lbl chg">[10, 20, 30]</td><td class="chg">30</td><td>—</td></tr>
+        <tr class="now"><td class="lbl">pop()</td><td class="lbl chg">[10, 20]</td><td class="chg">20</td><td class="chg">30</td></tr>
+        <tr><td class="lbl">pop()</td><td class="lbl chg">[10]</td><td class="chg">10</td><td class="chg">20</td></tr>
+        <tr><td class="lbl">pop()</td><td class="lbl chg">[]</td><td>—</td><td class="chg">10</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="insight">
+        <span class="tag">Read the last column upwards</span>
+        <p>They went in <b>10, 20, 30</b>. They came out <b>30, 20, 10</b>.
+           <b>A stack reverses the order of whatever passes through it</b> — and that one
+           observation is half the applications in this chapter.</p>
+      </div>
+      <div class="defn">
+        <span class="tag">The five operations, named</span>
+        <table>
+          <tr><th class="lbl">Name</th><th class="lbl">Does</th><th class="lbl">In Python</th></tr>
+          <tr><td class="lbl"><b>push</b></td><td class="lbl">add at the top</td><td class="lbl"><code>st.append(x)</code></td></tr>
+          <tr><td class="lbl"><b>pop</b></td><td class="lbl">remove and return the top</td><td class="lbl"><code>st.pop()</code></td></tr>
+          <tr><td class="lbl"><b>peek</b></td><td class="lbl">look at the top, leave it</td><td class="lbl"><code>st[-1]</code></td></tr>
+          <tr><td class="lbl"><b>isEmpty</b></td><td class="lbl">is there anything?</td><td class="lbl"><code>st == []</code></td></tr>
+          <tr><td class="lbl"><b>size</b></td><td class="lbl">how many?</td><td class="lbl"><code>len(st)</code></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.3</span> <code>peek</code>, <code>isEmpty</code> and <code>size</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">inspect.py</span>stack = [<span class="n">10</span>, <span class="n">20</span>, <span class="n">30</span>]
+
+<span class="hl"><span class="b">print</span>(<span class="s">"top   :"</span>, stack[-<span class="n">1</span>])</span>
+<span class="b">print</span>(<span class="s">"size  :"</span>, <span class="b">len</span>(stack))
+<span class="b">print</span>(<span class="s">"empty?:"</span>, stack == [])
+<span class="b">print</span>(<span class="s">"stack :"</span>, stack)
+
+empty = []
+<span class="b">print</span>(<span class="s">"empty?:"</span>, empty == [])</pre>
+      <div class="reveal ready ephemeral">Line 4 is the important one. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>top   : 30
+size  : 3
+empty?: False
+stack : [10, 20, 30]
+empty?: True</div>
+      <div class="reveal insight">
+        <span class="tag"><code>peek</code> does not change the stack</span>
+        <p>Line 4 of the output still shows all three elements. <code>stack[-1]</code>
+           <b>reads</b> the top; <code>stack.pop()</code> <b>removes</b> it. Confusing the
+           two is the most common error in a written stack answer.</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">Three ways to test emptiness</span>
+        <p><code>st == []</code> · <code>len(st) == 0</code> · <code>not st</code><br>
+           All three are correct. <b>Use <code>st == []</code></b> — it is what the
+           marking scheme prints and it reads unambiguously.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.4</span> Underflow — popping an empty stack</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">WRONG — main.py</span><span class="ln">1</span>stack = []
+<span class="ln">2</span><span class="b">print</span>(stack.pop())</pre>
+      <div class="reveal ready ephemeral">Chapter 3 — name it. 🤔</div>
+      <div class="reveal err"><span class="tag">Traceback</span>Traceback (most recent call last):
+  File "main.py", line 2, in &lt;module&gt;
+    print(stack.pop())
+          ^^^^^^^^^^^
+<span class="etype">IndexError</span>: pop from empty list</div>
+    </div>
+    <div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Underflow</span> — the condition that arises when a
+           <code>pop</code> or <code>peek</code> is attempted on an <b>empty</b> stack.<br>
+           <span class="term">Overflow</span> — the condition when a <code>push</code> is
+           attempted on a <b>full</b> stack.</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">Overflow cannot happen here — say why</span>
+        <p>A Python list <b>grows on demand</b>, so a list-based stack has no fixed size
+           and never overflows in practice. Overflow matters in languages where a stack
+           is a fixed-size array. <b>Write that distinction</b> if the question asks about
+           overflow; it shows you understand the term rather than reciting it.</p>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">So the job of <code>pop</code> is to check first</span>
+        <p>Every stack function you write in this chapter begins with
+           <code>if st == []:</code>. That guard <b>is</b> the underflow handling, and it
+           is a mark on its own.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.5</span> The complete stack, as functions</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">stack.py</span><span class="k">def</span> <span class="b">push</span>(st, item):
+    st.append(item)          <span class="c"># list end == stack top</span>
+
+<span class="k">def</span> <span class="b">pop</span>(st):
+    <span class="k">if</span> st == []:
+        <span class="k">return</span> <span class="s">"Underflow"</span>
+    <span class="k">return</span> st.pop()
+
+<span class="k">def</span> <span class="b">peek</span>(st):
+    <span class="k">if</span> st == []:
+        <span class="k">return</span> <span class="s">"Underflow"</span>
+    <span class="k">return</span> st[-<span class="n">1</span>]
+
+<span class="k">def</span> <span class="b">isEmpty</span>(st):
+    <span class="k">return</span> st == []</pre>
+    </div>
+    <div>
+<pre class="code"><span class="tag">usestack.py</span><span class="k">from</span> stack <span class="k">import</span> push, pop, peek, isEmpty
+
+s = []
+<span class="b">print</span>(<span class="b">isEmpty</span>(s))
+<span class="b">push</span>(s, <span class="s">"a"</span>)
+<span class="b">push</span>(s, <span class="s">"b"</span>)
+<span class="b">push</span>(s, <span class="s">"c"</span>)
+<span class="b">print</span>(s)
+<span class="b">print</span>(<span class="b">peek</span>(s))
+<span class="b">print</span>(<span class="b">pop</span>(s))
+<span class="b">print</span>(<span class="b">pop</span>(s))
+<span class="b">print</span>(s)
+<span class="b">print</span>(<span class="b">pop</span>(s))
+<span class="hl"><span class="b">print</span>(<span class="b">pop</span>(s))</span>
+<span class="b">print</span>(<span class="b">isEmpty</span>(s))</pre>
+      <div class="reveal ready ephemeral">Nine lines — the amber one is the interesting one. 🤔</div>
+      <div class="reveal out"><span class="tag">Output</span>True
+['a', 'b', 'c']
+c
+c
+b
+['a']
+a
+Underflow
+True</div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Two files, and that is the point</span>
+    <p><code>stack.py</code> defines the stack once; <code>usestack.py</code> imports it
+       and uses it. This is the third kind of function from Chapter 2 §3.4 — a
+       <b>user-defined module</b> — and it is how the practical file expects a stack to be
+       written.</p>
+  </div>
+
+  <div class="reveal insight">
+    <span class="tag">Why <code>push</code> needs no <code>return</code></span>
+    <p><code>st.append(item)</code> <b>mutates</b> the list the caller passed in — Chapter
+       2 §7.2 exactly. The caller's <code>s</code> and the parameter <code>st</code> are
+       two labels on one object, so the change is already visible outside.</p>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Two lines to notice in the output</span>
+    <p><code>peek</code> printed <code>c</code> and <code>pop</code> then printed
+       <code>c</code> as well — because peek left it there.<br>
+       The last <code>pop</code> on an empty stack returned <code>"Underflow"</code>
+       instead of raising <code>IndexError</code>. That is the guard doing its job.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.6</span> Check yourself</h2>
+
+  <div class="qcard">
+    <span class="tag">Question 1</span>
+    <p>Predict the exact output.</p>
+<pre class="code">S = []
+<span class="k">for</span> i <span class="k">in</span> [<span class="n">3</span>, <span class="n">1</span>, <span class="n">4</span>, <span class="n">1</span>, <span class="n">5</span>]:
+    S.append(i)
+    <span class="k">if</span> <span class="b">len</span>(S) == <span class="n">3</span>:
+        S.pop()
+<span class="b">print</span>(S)
+<span class="b">print</span>(<span class="b">len</span>(S))</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Trace it. Five passes. 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <table class="trace">
+      <tr><th>i</th><th class="lbl">after append</th><th>len == 3?</th><th class="lbl">after the if</th></tr>
+      <tr><td>3</td><td class="lbl chg">[3]</td><td>No</td><td class="lbl">[3]</td></tr>
+      <tr><td>1</td><td class="lbl chg">[3, 1]</td><td>No</td><td class="lbl">[3, 1]</td></tr>
+      <tr><td>4</td><td class="lbl chg">[3, 1, 4]</td><td class="hi">Yes → pop</td><td class="lbl chg">[3, 1]</td></tr>
+      <tr><td>1</td><td class="lbl chg">[3, 1, 1]</td><td class="hi">Yes → pop</td><td class="lbl chg">[3, 1]</td></tr>
+      <tr class="now"><td>5</td><td class="lbl chg">[3, 1, 5]</td><td class="hi">Yes → pop</td><td class="lbl chg">[3, 1]</td></tr>
+    </table>
+    <div class="out"><span class="tag">Output</span>[3, 1]
+2</div>
+    <p>The stack never gets past two elements: anything that makes it three is immediately
+       popped off — and what is popped is always the item just pushed, because that is the
+       top.</p>
+  </div>
+</section>
+
+<!-- ===================== 2 · APPLICATIONS ===================== -->
+
+<section class="slide" data-section="2 · Applications">
+  <h2><span class="num">3.1</span> Worked example 1 — reversing</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">reverse.py</span>stack = []
+word = <span class="s">"PYTHON"</span>
+
+<span class="c"># push every character</span>
+<span class="k">for</span> ch <span class="k">in</span> word:
+    stack.append(ch)
+
+<span class="c"># pop them all back off</span>
+rev = <span class="s">""</span>
+<span class="k">while</span> stack != []:
+    rev = rev + stack.pop()
+
+<span class="b">print</span>(rev)</pre>
+      <div class="reveal ready ephemeral">🤔</div>
+      <div class="reveal out"><span class="tag">Output</span>NOHTYP</div>
+    </div>
+    <div>
+      <div class="reveal">
+        <table class="trace">
+          <tr><th class="lbl">Phase</th><th class="lbl">Stack</th><th class="lbl">rev</th></tr>
+          <tr><td class="lbl">after all pushes</td><td class="lbl">['P','Y','T','H','O','N']</td><td class="lbl">""</td></tr>
+          <tr><td class="lbl">pop → N</td><td class="lbl chg">['P','Y','T','H','O']</td><td class="lbl chg">"N"</td></tr>
+          <tr><td class="lbl">pop → O</td><td class="lbl chg">['P','Y','T','H']</td><td class="lbl chg">"NO"</td></tr>
+          <tr><td class="lbl">pop → H</td><td class="lbl chg">['P','Y','T']</td><td class="lbl chg">"NOH"</td></tr>
+          <tr><td class="lbl">pop → T</td><td class="lbl chg">['P','Y']</td><td class="lbl chg">"NOHT"</td></tr>
+          <tr><td class="lbl">pop → Y</td><td class="lbl chg">['P']</td><td class="lbl chg">"NOHTY"</td></tr>
+          <tr class="now"><td class="lbl">pop → P</td><td class="lbl chg">[]</td><td class="lbl chg">"NOHTYP"</td></tr>
+        </table>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">Why a stack reverses, in one line</span>
+        <p>Because the <b>first</b> thing pushed is the <b>last</b> thing popped. Reversal
+           is not a trick you apply to a stack — it is what LIFO <b>means</b>.</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">Board note</span>
+        <p><code>word[::-1]</code> from Chapter 1 does the same thing in one line. If the
+           question says <b>"using a stack"</b>, you must show the push loop and the pop
+           loop — the slice earns nothing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.2</span> Worked example 2 — balanced brackets</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">brackets.py</span><span class="k">def</span> <span class="b">balanced</span>(expr):
+    stack = []
+    <span class="k">for</span> ch <span class="k">in</span> expr:
+        <span class="k">if</span> ch == <span class="s">"("</span>:
+<span class="hl">            stack.append(ch)</span>
+        <span class="k">elif</span> ch == <span class="s">")"</span>:
+            <span class="k">if</span> stack == []:
+                <span class="k">return</span> <span class="k">False</span>
+<span class="hl">            stack.pop()</span>
+    <span class="k">return</span> stack == []
+
+<span class="b">print</span>(<span class="b">balanced</span>(<span class="s">"(a+b)*(c-d)"</span>))
+<span class="b">print</span>(<span class="b">balanced</span>(<span class="s">"((a+b)"</span>))
+<span class="b">print</span>(<span class="b">balanced</span>(<span class="s">"a+b)("</span>))</pre>
+      <div class="reveal ready ephemeral">Three answers. The third is the sneaky one. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>True
+False
+False</div>
+      <div class="reveal">
+        <table class="trace">
+          <tr><th class="lbl">Expression</th><th class="lbl">Fails because</th></tr>
+          <tr><td class="lbl">(a+b)*(c-d)</td><td class="lbl">every <code>(</code> was matched — stack ends empty</td></tr>
+          <tr><td class="lbl">((a+b)</td><td class="lbl">one <code>(</code> left on the stack at the end</td></tr>
+          <tr class="now"><td class="lbl">a+b)(</td><td class="lbl">a <code>)</code> arrived when the stack was <b>already empty</b></td></tr>
+        </table>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">Two different failures, two different checks</span>
+        <p><b>Too many closing brackets</b> is caught <b>during</b> the loop —
+           <code>if stack == []: return False</code>.<br>
+           <b>Too many opening brackets</b> is caught <b>after</b> it —
+           <code>return stack == []</code>.<br>
+           Both lines are needed; a solution with only one of them fails half the test
+           cases.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Why this needs a stack and not a counter</span>
+    <p>For one bracket type a counter works. Add <code>[</code> and <code>{</code> and it
+       does not: <code>([)]</code> has equal counts but is wrong. A stack remembers
+       <b>which</b> bracket is still open and in what order — a counter only remembers how
+       many.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.3</span> Worked example 3 — decimal to binary</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">tobinary.py</span><span class="k">def</span> <span class="b">to_binary</span>(n):
+    stack = []
+<span class="hl">    <span class="k">while</span> n &gt; <span class="n">0</span>:</span>
+        stack.append(n % <span class="n">2</span>)
+        n = n // <span class="n">2</span>
+
+    bits = <span class="s">""</span>
+    <span class="k">while</span> stack != []:
+        bits = bits + <span class="b">str</span>(stack.pop())
+    <span class="k">return</span> bits
+
+<span class="b">print</span>(<span class="b">to_binary</span>(<span class="n">13</span>))
+<span class="b">print</span>(<span class="b">to_binary</span>(<span class="n">2</span>))
+<span class="b">print</span>(<span class="b">to_binary</span>(<span class="n">100</span>))</pre>
+      <div class="reveal ready ephemeral">13 in binary? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal">
+        <table class="trace">
+          <tr><th>Pass</th><th>n</th><th>n % 2</th><th>n // 2</th><th class="lbl">Stack</th></tr>
+          <tr><td>1</td><td>13</td><td class="chg">1</td><td class="chg">6</td><td class="lbl chg">[1]</td></tr>
+          <tr><td>2</td><td>6</td><td class="chg">0</td><td class="chg">3</td><td class="lbl chg">[1, 0]</td></tr>
+          <tr><td>3</td><td>3</td><td class="chg">1</td><td class="chg">1</td><td class="lbl chg">[1, 0, 1]</td></tr>
+          <tr class="now"><td>4</td><td>1</td><td class="chg">1</td><td class="chg">0</td><td class="lbl chg">[1, 0, 1, 1]</td></tr>
+        </table>
+      </div>
+      <div class="reveal out"><span class="tag">Output</span>1101
+10
+1100100</div>
+      <div class="reveal insight">
+        <span class="tag">The stack is doing exactly one job</span>
+        <p>Division produces the bits <b>backwards</b> — 1, 0, 1, 1 — but the answer is
+           1101. The stack holds them until they can come out in the right order. This is
+           the <code>n % 10</code> / <code>n // 10</code> digit loop from Chapter 1 §4.2,
+           in base 2.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.4</span> Worked example 4 — an undo stack</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">undo.py</span>undo = []
+
+<span class="k">def</span> <span class="b">do</span>(action):
+    undo.append(action)
+    <span class="b">print</span>(<span class="s">"did   :"</span>, action)
+
+<span class="k">def</span> <span class="b">undo_last</span>():
+    <span class="k">if</span> undo == []:
+        <span class="b">print</span>(<span class="s">"nothing to undo"</span>)
+        <span class="k">return</span>
+    <span class="b">print</span>(<span class="s">"undone:"</span>, undo.pop())
+
+<span class="b">do</span>(<span class="s">"type Hello"</span>)
+<span class="b">do</span>(<span class="s">"bold"</span>)
+<span class="b">do</span>(<span class="s">"insert image"</span>)
+<span class="b">undo_last</span>()
+<span class="b">undo_last</span>()
+<span class="b">do</span>(<span class="s">"type World"</span>)
+<span class="b">undo_last</span>()
+<span class="b">undo_last</span>()
+<span class="b">undo_last</span>()</pre>
+      <div class="reveal ready ephemeral">Nine lines. Which action is undone first? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>did   : type Hello
+did   : bold
+did   : insert image
+undone: insert image
+undone: bold
+did   : type World
+undone: type World
+undone: type Hello
+nothing to undo</div>
+      <div class="reveal insight">
+        <span class="tag">Read the last four lines</span>
+        <p><code>type World</code> was done <b>after</b> <code>type Hello</code>, so it is
+           undone <b>before</b> it — even though <code>type Hello</code> was still sitting
+           on the stack the whole time. That is LIFO behaving exactly as a user expects an
+           undo button to behave.</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">And the underflow guard again</span>
+        <p>The ninth call found an empty stack and printed a message instead of raising
+           <code>IndexError</code>. Every real stack has that check.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.5</span> Worked example 5 — Python's own call stack</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">main.py</span><span class="ln">1</span><span class="k">def</span> <span class="b">outer</span>():
+<span class="ln">2</span>    <span class="k">return</span> <span class="b">middle</span>()
+<span class="ln">3</span>
+<span class="ln">4</span><span class="k">def</span> <span class="b">middle</span>():
+<span class="ln">5</span>    <span class="k">return</span> <span class="b">inner</span>()
+<span class="ln">6</span>
+<span class="ln">7</span><span class="k">def</span> <span class="b">inner</span>():
+<span class="ln">8</span>    <span class="k">return</span> <span class="n">1</span> / <span class="n">0</span>
+<span class="ln">9</span>
+<span class="ln">10</span><span class="b">print</span>(<span class="b">outer</span>())</pre>
+      <div class="reveal ready ephemeral">How many frames in the traceback? 🤔</div>
+      <div class="reveal err"><span class="tag">Traceback</span>Traceback (most recent call last):
+  File "main.py", line 10, in &lt;module&gt;
+    print(outer())
+          ^^^^^^^
+  File "main.py", line 2, in outer
+    return middle()
+           ^^^^^^^^
+  File "main.py", line 5, in middle
+    return inner()
+           ^^^^^^^
+  File "main.py", line 8, in inner
+    return 1 / 0
+           ~~^~~
+<span class="etype">ZeroDivisionError</span>: division by zero</div>
+    </div>
+    <div>
+      <figure class="reveal">
+        <svg viewBox="0 0 380 300" role="img" aria-label="The call stack with module at the bottom, then outer, then middle, then inner at the top where the exception was raised">
+          <defs>
+            <marker id="arw-frame" viewBox="0 0 10 10" refX="9" refY="5"
+                    markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#a17a00"/>
+            </marker>
+          </defs>
+          <rect x="60" y="40" width="200" height="52" fill="#fdf6e3" stroke="#c62b28" stroke-width="3"/>
+          <rect x="60" y="92" width="200" height="52" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <rect x="60" y="144" width="200" height="52" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <rect x="60" y="196" width="200" height="52" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+
+          <text x="160" y="72" class="lab" text-anchor="middle">inner()</text>
+          <text x="160" y="124" class="lab" text-anchor="middle">middle()</text>
+          <text x="160" y="176" class="lab" text-anchor="middle">outer()</text>
+          <text x="160" y="228" class="lab" text-anchor="middle">&lt;module&gt;</text>
+
+          <path class="curve c-amber" d="M330,66 L268,66" marker-end="url(#arw-frame)"/>
+          <text x="340" y="52" fill="#755900">top —</text>
+          <text x="340" y="72" fill="#755900">it broke</text>
+          <text x="340" y="92" fill="#755900">here</text>
+
+          <text x="30" y="234" text-anchor="end" fill="#175f90">bottom</text>
+          <text x="160" y="284" text-anchor="middle">pushed bottom-up, printed bottom-up</text>
+        </svg>
+        <figcaption>Each call <b>pushes</b> a frame; each return <b>pops</b> one.</figcaption>
+      </figure>
+      <div class="reveal insight">
+        <span class="tag">“most recent call last” finally makes sense</span>
+        <p>The traceback prints the stack from the <b>bottom up</b>, so the frame where
+           the error actually happened is at the <b>end</b> — nearest the exception
+           name. That is why Chapter 3 told you to read a traceback bottom-up.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.6</span> Worked example 6 — a stack from a binary file</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">fromfile.py</span><span class="k">import</span> pickle
+
+<span class="k">def</span> <span class="b">push_toppers</span>():
+    st = []
+    <span class="k">with</span> <span class="b">open</span>(<span class="s">"marks.dat"</span>, <span class="s">"rb"</span>) <span class="k">as</span> f:
+        data = pickle.load(f)
+    <span class="k">for</span> rec <span class="k">in</span> data:
+        <span class="k">if</span> rec[<span class="n">1</span>] &gt; <span class="n">85</span>:
+            st.append(rec[<span class="n">0</span>])
+    <span class="k">return</span> st
+
+s = <span class="b">push_toppers</span>()
+<span class="b">print</span>(s)
+<span class="k">while</span> s != []:
+    <span class="b">print</span>(s.pop())</pre>
+      <div class="reveal ready ephemeral">Chapter 4's five students. Who comes out first? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>['Riya', 'Aarav', 'Meera']
+Meera
+Aarav
+Riya</div>
+      <div class="reveal bridge">
+        <span class="tag">This is the exam question</span>
+        <p>“<b>Read records from a file, push the ones satisfying a condition onto a
+           stack, then display the stack.</b>” It is Chapter 4 §5.4 followed by this
+           chapter's pop loop, and it is set almost every year.</p>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">Note the order flip</span>
+        <p>The file holds Riya, Aarav, Meera in that order. Pushing preserves it; popping
+           <b>reverses</b> it. If a question wants file order, print the list — if it says
+           "display by popping", the reversal is the expected answer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.7</span> Check yourself</h2>
+
+  <div class="qcard">
+    <span class="tag">Question 2</span>
+    <p>Predict the exact output.</p>
+<pre class="code"><span class="k">def</span> <span class="b">process</span>(L):
+    st = []
+    out = []
+    <span class="k">for</span> x <span class="k">in</span> L:
+        <span class="k">if</span> x &gt; <span class="n">0</span>:
+            st.append(x)
+        <span class="k">else</span>:
+            <span class="k">if</span> st != []:
+                out.append(st.pop())
+    <span class="k">return</span> st, out
+
+<span class="b">print</span>(<span class="b">process</span>([<span class="n">5</span>, <span class="n">3</span>, -<span class="n">1</span>, <span class="n">8</span>, -<span class="n">1</span>, -<span class="n">1</span>, -<span class="n">1</span>]))</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Seven values in. Trace both lists. 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <table class="trace">
+      <tr><th>x</th><th class="lbl">action</th><th class="lbl">st</th><th class="lbl">out</th></tr>
+      <tr><td>5</td><td class="lbl">push</td><td class="lbl chg">[5]</td><td class="lbl">[]</td></tr>
+      <tr><td>3</td><td class="lbl">push</td><td class="lbl chg">[5, 3]</td><td class="lbl">[]</td></tr>
+      <tr><td>-1</td><td class="lbl">pop → 3</td><td class="lbl chg">[5]</td><td class="lbl chg">[3]</td></tr>
+      <tr><td>8</td><td class="lbl">push</td><td class="lbl chg">[5, 8]</td><td class="lbl">[3]</td></tr>
+      <tr><td>-1</td><td class="lbl">pop → 8</td><td class="lbl chg">[5]</td><td class="lbl chg">[3, 8]</td></tr>
+      <tr><td>-1</td><td class="lbl">pop → 5</td><td class="lbl chg">[]</td><td class="lbl chg">[3, 8, 5]</td></tr>
+      <tr class="now"><td>-1</td><td class="lbl"><b>st is empty — nothing happens</b></td><td class="lbl">[]</td><td class="lbl">[3, 8, 5]</td></tr>
+    </table>
+    <div class="out"><span class="tag">Output</span>([], [3, 8, 5])</div>
+    <p>The result is a <b>tuple</b> of two lists, because <code>return st, out</code>
+       packs them — Chapter 2 §5.4. And the last <code>-1</code> did nothing at all: the
+       <code>if st != []</code> guard prevented the underflow.</p>
+  </div>
+</section>
+
+<!-- ===================== RECAP AND EXAM PRACTICE ===================== -->
+
+<section class="slide" data-section="Recap and exam practice">
+  <h2><span class="num">4.1</span> Everything on one screen</h2>
+
+  <h3>The idea</h3>
+  <div class="chips">
+    <span class="chip k">LIFO — Last In, First Out</span>
+    <span class="chip k">one end only — the top</span>
+    <span class="chip">a stack reverses what passes through it</span>
+    <span class="chip">underflow — pop an empty stack</span>
+    <span class="chip">overflow — push a full one (not in Python)</span>
+  </div>
+
+  <h3>The operations, on a Python list</h3>
+  <div class="chips">
+    <span class="chip k">push → st.append(x)</span>
+    <span class="chip k">pop → st.pop()</span>
+    <span class="chip k">peek → st[-1]</span>
+    <span class="chip k">isEmpty → st == []</span>
+    <span class="chip">size → len(st)</span>
+    <span class="chip">always guard pop and peek</span>
+  </div>
+
+  <h3>The applications</h3>
+  <div class="chips">
+    <span class="chip">reverse a string or list</span>
+    <span class="chip k">check balanced brackets</span>
+    <span class="chip">decimal to binary</span>
+    <span class="chip k">undo / browser back</span>
+    <span class="chip k">the call stack in a traceback</span>
+    <span class="chip">expression conversion and evaluation</span>
+  </div>
+
+  <div class="insight">
+    <span class="tag">The two sentences worth the most marks</span>
+    <p>“<b>A stack is a linear data structure in which insertion and deletion take place
+       at one end only, called the top, so the element inserted last is deleted first —
+       LIFO.</b>”<br>
+       “<b>Underflow occurs when a pop is attempted on an empty stack; a Python
+       list-based stack cannot overflow because the list grows on demand.</b>”</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.2</span> Exam question 1 — find the output</h2>
+
+  <div class="qcard">
+    <span class="tag">3 marks</span>
+    <p>Write the output of the following code.</p>
+<pre class="code">st = []
+<span class="k">for</span> ch <span class="k">in</span> <span class="s">"STACK"</span>:
+    st.append(ch)
+
+<span class="b">print</span>(st.pop(), st.pop())
+st.append(<span class="s">"X"</span>)
+<span class="b">print</span>(st)
+<span class="b">print</span>(st[-<span class="n">1</span>], <span class="b">len</span>(st))</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>K C
+['S', 'T', 'A', 'X']
+X 4</div>
+    <p><b>The first line is where marks go.</b> Both <code>pop()</code>s run <b>before</b>
+       <code>print</code> displays anything — the left one first — so it is
+       <code>K</code> then <code>C</code>, not <code>C K</code>. After them the stack is
+       <code>['S','T','A']</code>, and pushing <code>"X"</code> makes four.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.3</span> Exam question 2 — write the functions</h2>
+
+  <div class="qcard">
+    <span class="tag">4 marks</span>
+    <p>A list <code>L</code> contains integers. Write <code>push_even(st, L)</code> to push
+       every <b>even</b> number of <code>L</code> onto stack <code>st</code>, and
+       <code>pop_all(st)</code> to display and remove every element, printing
+       <code>"Stack Empty"</code> if there is nothing to show.</p>
+  </div>
+
+  <div class="reveal ready ephemeral">Two functions. Mind the empty case. 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="cosplit">
+      <div>
+<pre class="code"><span class="tag">evens.py</span><span class="k">def</span> <span class="b">push_even</span>(st, L):
+    <span class="k">for</span> n <span class="k">in</span> L:
+        <span class="k">if</span> n % <span class="n">2</span> == <span class="n">0</span>:
+            st.append(n)
+
+<span class="k">def</span> <span class="b">pop_all</span>(st):
+    <span class="k">if</span> st == []:
+        <span class="b">print</span>(<span class="s">"Stack Empty"</span>)
+        <span class="k">return</span>
+    <span class="k">while</span> st != []:
+        <span class="b">print</span>(st.pop(), end=<span class="s">" "</span>)
+    <span class="b">print</span>()
+
+s = []
+<span class="b">push_even</span>(s, [<span class="n">12</span>, <span class="n">7</span>, <span class="n">25</span>, <span class="n">8</span>, <span class="n">31</span>, <span class="n">4</span>])
+<span class="b">print</span>(s)
+<span class="b">pop_all</span>(s)
+<span class="b">print</span>(s)
+<span class="b">pop_all</span>(s)</pre>
+      </div>
+      <div>
+        <div class="out"><span class="tag">Output</span>[12, 8, 4]
+4 8 12
+[]
+Stack Empty</div>
+        <div class="note">
+          <span class="tag">Where the four marks are</span>
+          <p><b>①</b> the <code>n % 2 == 0</code> test and <code>append</code>.<br>
+             <b>②</b> the <code>while st != []</code> pop loop.<br>
+             <b>③</b> the <b>empty check</b> printing <code>"Stack Empty"</code> — the
+             mark most often dropped.<br>
+             <b>④</b> no <code>return</code> needed on <code>push_even</code>, because
+             the list is <b>mutated</b> in place.</p>
+        </div>
+        <div class="warn">
+          <span class="tag">Note the trailing space</span>
+          <p><code>end=" "</code> puts a space after <b>every</b> value, including
+             <code>12</code>. Reproduce it in the answer.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.4</span> Exam question 3 — stack from a file</h2>
+
+  <div class="qcard">
+    <span class="tag">4 marks</span>
+    <p><code>marks.dat</code> holds a pickled list of <code>[name, marks, stream]</code>
+       records. Write a function that pushes the <b>names</b> of all students scoring more
+       than 85 onto a stack, then displays them one per line by popping. Handle the case
+       where nobody qualifies.</p>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="cosplit">
+      <div>
+<pre class="code"><span class="tag">toppers.py</span><span class="k">import</span> pickle
+
+<span class="k">def</span> <span class="b">show_toppers</span>():
+    st = []
+    <span class="k">with</span> <span class="b">open</span>(<span class="s">"marks.dat"</span>, <span class="s">"rb"</span>) <span class="k">as</span> f:
+        data = pickle.load(f)
+
+    <span class="k">for</span> rec <span class="k">in</span> data:
+        <span class="k">if</span> rec[<span class="n">1</span>] &gt; <span class="n">85</span>:
+            st.append(rec[<span class="n">0</span>])
+
+    <span class="k">if</span> st == []:
+        <span class="b">print</span>(<span class="s">"Stack Empty"</span>)
+        <span class="k">return</span>
+
+    <span class="k">while</span> st != []:
+        <span class="b">print</span>(st.pop())
+
+<span class="b">show_toppers</span>()</pre>
+      </div>
+      <div>
+        <div class="out"><span class="tag">Output</span>Meera
+Aarav
+Riya</div>
+        <div class="note">
+          <span class="tag">Where the four marks are</span>
+          <p><b>①</b> <code>import pickle</code>, mode <code>"rb"</code>,
+             <code>pickle.load</code>.<br>
+             <b>②</b> the condition <code>rec[1] &gt; 85</code> and pushing
+             <code>rec[0]</code> — the <b>name</b>, not the whole record.<br>
+             <b>③</b> the empty-stack message.<br>
+             <b>④</b> displaying by <code>pop()</code>, which is why the order is
+             reversed.</p>
+        </div>
+        <div class="insight">
+          <span class="tag">Every unit so far, in fifteen lines</span>
+          <p>A <b>list</b> and a <b>loop</b> (Ch 1), a <b>function</b> (Ch 2), a
+             <b>with</b> block (Ch 4), <b>pickle</b> (Ch 4), and a <b>stack</b>
+             (Ch 5).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.5</span> Exam question 4 — two-mark theory</h2>
+
+  <div class="qcard">
+    <span class="tag">2 + 2 marks</span>
+    <ol>
+      <li>What is a stack? Explain <b>LIFO</b> with an example.</li>
+      <li>What is meant by <b>underflow</b> and <b>overflow</b> in a stack? Which of the
+          two can occur in a Python list-based stack, and why?</li>
+    </ol>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 1</span>
+    <p>A <b>stack</b> is a linear data structure in which insertion (<b>push</b>) and
+       deletion (<b>pop</b>) are permitted at one end only, called the <b>top</b>.</p>
+    <p>Because both operations happen at the same end, the element inserted <b>last</b> is
+       the one removed <b>first</b> — <b>LIFO</b>. If 10, 20 and 30 are pushed in that
+       order, the first <code>pop()</code> returns <b>30</b>. A stack of plates behaves the
+       same way: the plate put down last is the one picked up first.</p>
+  </div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 2</span>
+    <p><b>Underflow</b> is the condition that arises when a <code>pop</code> or
+       <code>peek</code> is attempted on an <b>empty</b> stack. <b>Overflow</b> arises
+       when a <code>push</code> is attempted on a stack that is already <b>full</b>.</p>
+    <p>In Python a stack is implemented on a <b>list</b>, which grows dynamically, so
+       there is no fixed capacity and <b>overflow does not occur</b> in practice. Only
+       <b>underflow</b> can occur, and it is prevented by testing
+       <code>if st == []</code> before every pop.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.6</span> One last challenge</h2>
+
+  <div class="challenge">
+    <span class="tag">Challenge</span>
+    <p>Without running it — what does this print, and what is the general rule it
+       demonstrates?</p>
+<pre class="code">a = [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>]
+b = []
+c = []
+
+<span class="k">while</span> a != []:
+    b.append(a.pop())
+
+<span class="k">while</span> b != []:
+    c.append(b.pop())
+
+<span class="b">print</span>(a)
+<span class="b">print</span>(b)
+<span class="b">print</span>(c)</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Three lists. 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>[]
+[]
+[1, 2, 3, 4]</div>
+    <p><b>The rule:</b> a stack reverses. Pouring <code>a</code> into <code>b</code>
+       reversed it to <code>[4, 3, 2, 1]</code>; pouring <code>b</code> into
+       <code>c</code> reversed it <b>again</b>, restoring the original order.</p>
+    <p><b>Two stacks in series undo each other</b> — exactly like
+       <code>s[::-1][::-1]</code> from Chapter 1. And <code>a</code> and <code>b</code>
+       are both left empty, because <code>pop()</code> <b>removes</b> as it reads.</p>
+  </div>
+</section>
+
+<section class="slide title-slide">
+  <div class="kicker">End of Unit 1</div>
+  <h1>Next: Computer Networks</h1>
+  <div class="rule"></div>
+  <p class="sub">Unit 1 is complete. You can compute, organise, name, protect, store and
+     order data. Unit 2 leaves the single machine entirely — how two computers on
+     opposite sides of the world exchange any of it.</p>
+
+  <div class="bridge narrow">
+    <span class="tag">What Unit 1 gave you</span>
+    <p><b>Ch 1</b> data and control flow · <b>Ch 2</b> functions and scope ·
+       <b>Ch 3</b> exceptions · <b>Ch 4</b> files — text, binary, CSV ·
+       <b>Ch 5</b> the stack.<br>
+       Unit 1 also carries the <b>practical file</b>, and every program in it is built
+       from these five chapters.</p>
+  </div>
+</section>
+
+</div>
+
+<button class="nav" id="prev" aria-label="Previous slide">←</button>
+<button class="nav" id="next" aria-label="Next slide">→</button>
+
+<script src="assets/deck.js"></script>
+</body>
+</html>

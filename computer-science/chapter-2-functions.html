@@ -1,0 +1,1778 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 2 · Functions — Class XII Computer Science</title>
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body>
+
+<div id="bar">
+  <div class="brand">CH 2 · FUNCTIONS</div>
+  <div class="sect" id="sect"></div>
+  <div class="tools">
+    <button id="menuBtn">Menu (m)</button>
+    <button id="fsBtn">Full screen (f)</button>
+    <span id="counter"></span>
+  </div>
+</div>
+<div id="progress"></div>
+
+<div id="menu">
+  <h3>Chapter 2 — Functions</h3>
+  <div class="mlist"></div>
+  <p class="hint">Press <kbd>m</kbd> or <kbd>Esc</kbd> to close</p>
+</div>
+
+<div id="stage">
+
+<!-- ===================== ORIENTATION ===================== -->
+
+<section class="slide title-slide" data-section="Orientation">
+  <div class="kicker">Unit 1 · Computational Thinking and Programming</div>
+  <h1>Chapter 2<br>Functions</h1>
+  <div class="rule"></div>
+  <p class="sub">Giving a name to a block of code — so you can write it once,
+     call it anywhere, and reason about it on its own.</p>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.1</span> Where we have got to</h2>
+
+  <div class="bridge">
+    <span class="tag">Chapter 1 gave you the materials</span>
+    <p>Types, operators, loops, strings, lists, tuples, dictionaries. Everything you need
+       to <b>compute</b> something.</p>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h4>What you cannot do yet</h4>
+      <p>Every program you have written is <b>one long straight line</b> of statements.
+         If you need the same calculation twice, you write it twice. If it is wrong, you
+         fix it twice — and forget the third copy.</p>
+    </div>
+    <div class="card">
+      <h4>What this chapter adds</h4>
+      <p>A way to say “<b>this block of code has a name, takes these inputs, and gives
+         back this answer</b>”. After that, the rest of the year is functions calling
+         functions.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <span class="tag">Why this is the pivot chapter</span>
+    <p>Every remaining chapter is written as functions. File handling is a function that
+       reads and a function that writes. A stack is <code>push()</code>,
+       <code>pop()</code>, <code>peek()</code>. The database chapter is a function per
+       query. <b>This is the last chapter that is about Python itself.</b></p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.2</span> How this chapter runs</h2>
+
+  <div class="grid2">
+    <div>
+      <h3>Six stops</h3>
+      <ol>
+        <li><b>Defining and calling</b> — <code>def</code>, and the flow of control</li>
+        <li><b>Three kinds of function</b> — built-in, module, user-defined</li>
+        <li><b>Parameters and arguments</b> — positional, default, keyword</li>
+        <li><b>Returning values</b> — and the <code>print</code> vs <code>return</code>
+            distinction</li>
+        <li><b>Scope</b> — local, global, and <code>UnboundLocalError</code></li>
+        <li><b>Mutable arguments</b> — where Chapter 1 comes back to bite</li>
+      </ol>
+    </div>
+    <div>
+      <h3>The two things that carry most marks</h3>
+      <div class="warn">
+        <span class="tag">① print does not equal return</span>
+        <p>Half the lost marks in this chapter are a function that <code>print</code>s
+           where it should <code>return</code>, and the resulting
+           <code>None</code>.</p>
+      </div>
+      <div class="warn">
+        <span class="tag">② passing a list is not passing a copy</span>
+        <p>The other half. Chapter 1 §2.3 said a name is a label on an object.
+           A parameter is just another label on the <b>same</b> object.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 1 · DEFINING AND CALLING ===================== -->
+
+<section class="slide" data-section="1 · Defining and calling">
+  <h2><span class="num">2.1</span> The problem, before the solution</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">repeated.py</span>r1 = <span class="n">3</span>
+area1 = <span class="n">3.14159</span> * r1 * r1
+<span class="b">print</span>(<span class="s">"Area:"</span>, <span class="b">round</span>(area1, <span class="n">2</span>))
+
+r2 = <span class="n">7</span>
+area2 = <span class="n">3.14159</span> * r2 * r2
+<span class="b">print</span>(<span class="s">"Area:"</span>, <span class="b">round</span>(area2, <span class="n">2</span>))
+
+r3 = <span class="n">2.5</span>
+area3 = <span class="n">3.14159</span> * r3 * r3
+<span class="b">print</span>(<span class="s">"Area:"</span>, <span class="b">round</span>(area3, <span class="n">2</span>))</pre>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>Area: 28.27
+Area: 153.94
+Area: 19.63</div>
+      <div class="reveal warn">
+        <span class="tag">Three problems, not one</span>
+        <p><b>①</b> The formula is written <b>three times</b>.<br>
+           <b>②</b> If <code>3.14159</code> should be <code>math.pi</code>, there are
+           three places to change and one you will miss.<br>
+           <b>③</b> There is no name anywhere that says <b>“this computes an area”</b>.
+           A reader has to decode the arithmetic.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.2</span> The same program, with a function</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">area.py</span><span class="k">def</span> <span class="b">area</span>(r):
+    <span class="k">return</span> <span class="n">3.14159</span> * r * r
+
+<span class="b">print</span>(<span class="s">"Area:"</span>, <span class="b">round</span>(<span class="b">area</span>(<span class="n">3</span>), <span class="n">2</span>))
+<span class="b">print</span>(<span class="s">"Area:"</span>, <span class="b">round</span>(<span class="b">area</span>(<span class="n">7</span>), <span class="n">2</span>))
+<span class="b">print</span>(<span class="s">"Area:"</span>, <span class="b">round</span>(<span class="b">area</span>(<span class="n">2.5</span>), <span class="n">2</span>))</pre>
+      <div class="reveal ready ephemeral">Same three numbers? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>Area: 28.27
+Area: 153.94
+Area: 19.63</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Function</span> — a named block of statements that performs
+           a specific task, may accept input values, and may return a result. It is
+           written once and executed whenever it is <b>called</b>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal insight">
+    <span class="tag">Eleven lines became six</span>
+    <p>But the real gain is not length. The formula now exists in <b>one place</b>, and
+       the word <code>area</code> tells the reader what is happening without their having
+       to read the arithmetic at all. <b>Naming is the point of a function; reuse is a
+       side effect.</b></p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.3</span> The anatomy</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">the definition</span><span class="k">def</span> <span class="b">area</span>(r):
+    <span class="k">return</span> <span class="n">3.14159</span> * r * r</pre>
+      <table>
+        <tr><th class="lbl">Part</th><th class="lbl">In the example</th></tr>
+        <tr><td class="lbl"><code>def</code> keyword</td><td class="lbl">starts every definition</td></tr>
+        <tr><td class="lbl">function name</td><td class="lbl"><code>area</code></td></tr>
+        <tr><td class="lbl">parameter list</td><td class="lbl"><code>(r)</code> — may be empty</td></tr>
+        <tr><td class="lbl">colon</td><td class="lbl">ends the header, always</td></tr>
+        <tr><td class="lbl">body</td><td class="lbl">the <b>indented</b> block below</td></tr>
+      </table>
+    </div>
+    <div>
+<pre class="code"><span class="tag">the call</span><span class="b">area</span>(<span class="n">3</span>)</pre>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Function definition</span> — the <code>def</code> statement
+           that creates the function. Running it does <b>not</b> execute the body.<br>
+           <span class="term">Function call</span> — writing the name followed by
+           <code>( )</code>. <b>This</b> is what runs the body.</p>
+      </div>
+      <div class="warn">
+        <span class="tag">The brackets are not decoration</span>
+        <p><code>area</code> on its own is the function <b>object</b>.
+           <code>area(3)</code> is a <b>call</b>. Writing <code>print(area)</code> gives
+           you something like <code>&lt;function area at 0x7f…&gt;</code> — a classic
+           slip.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.4</span> Define before you call</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">WRONG — main.py</span><span class="ln">1</span><span class="b">greet</span>(<span class="s">"Riya"</span>)
+<span class="ln">2</span>
+<span class="ln">3</span><span class="k">def</span> <span class="b">greet</span>(name):
+<span class="ln">4</span>    <span class="b">print</span>(<span class="s">"Hello,"</span>, name)</pre>
+      <div class="reveal ready ephemeral">Which exception, and why? 🤔</div>
+      <div class="reveal err"><span class="tag">Traceback</span>Traceback (most recent call last):
+  File "main.py", line 1, in &lt;module&gt;
+    greet("Riya")
+    ^^^^^
+<span class="etype">NameError</span>: name 'greet' is not defined</div>
+    </div>
+    <div>
+      <div class="reveal insight">
+        <span class="tag">Why <code>NameError</code> and not something about functions</span>
+        <p>Because <code>def greet(...)</code> is an ordinary <b>assignment</b>: it binds
+           the name <code>greet</code> to a function object. Until line 3 has run, the
+           name does not exist — exactly like using <code>total</code> before
+           <code>total = 0</code>.</p>
+      </div>
+      <div class="reveal defn">
+        <span class="tag">The rule</span>
+        <p>A function must be <b>defined before the line that calls it executes</b>.
+           In practice: put all your <code>def</code>s at the top of the file, and the
+           code that uses them below.</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">The subtle version</span>
+        <p>A function <b>may</b> call another function defined further down, as long as
+           the <b>call</b> happens after both definitions have run. It is the moment of
+           calling that matters, not the order of the text.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.5</span> The flow of control</h2>
+
+  <figure>
+    <svg viewBox="0 0 880 320" role="img" aria-label="Flow of control: the main program calls greet twice; each call jumps into the function body and returns to the line after the call">
+      <defs>
+        <marker id="arw-call" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#1f7ab8"/>
+        </marker>
+        <marker id="arw-back" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#748500"/>
+        </marker>
+      </defs>
+
+      <text x="150" y="26" class="lab" text-anchor="middle">main program</text>
+      <text x="660" y="26" class="lab" text-anchor="middle">the function body</text>
+
+      <rect x="30" y="44" width="250" height="240" rx="10" fill="#eee8d5" stroke="#d9d0b6" stroke-width="2"/>
+      <text x="48" y="76">print("Before the call")</text>
+      <text x="48" y="120" class="lab">greet("Riya")</text>
+      <text x="48" y="164">print("After the call")</text>
+      <text x="48" y="208" class="lab">greet("Aarav")</text>
+      <text x="48" y="252">print("Done")</text>
+
+      <rect x="540" y="90" width="300" height="120" rx="10" fill="#fdf6e3" stroke="#1f7ab8" stroke-width="3"/>
+      <text x="558" y="126">def greet(name):</text>
+      <text x="558" y="158">    print("Hello,", name)</text>
+      <text x="558" y="190">    print("Welcome to Class XII")</text>
+
+      <path class="curve c-blue" d="M290,116 C400,110 450,110 534,120" marker-end="url(#arw-call)"/>
+      <path class="curve c-teal" d="M534,186 C450,196 400,180 290,164" marker-end="url(#arw-back)"/>
+      <path class="curve c-blue dash" d="M290,204 C400,220 460,215 534,200" marker-end="url(#arw-call)"/>
+      <path class="curve c-teal dash" d="M534,204 C440,250 360,250 290,248" marker-end="url(#arw-back)"/>
+
+      <text x="405" y="100" text-anchor="middle" fill="#175f90">call 1</text>
+      <text x="400" y="176" text-anchor="middle" fill="#586600">return</text>
+      <text x="410" y="238" text-anchor="middle" fill="#175f90">call 2</text>
+
+      <text x="440" y="306" text-anchor="middle">Control always comes back to the line <b>after</b> the call.</text>
+    </svg>
+    <figcaption>A call is a detour, not a jump. The body runs, then execution resumes exactly where it left off.</figcaption>
+  </figure>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">flow.py</span><span class="k">def</span> <span class="b">greet</span>(name):
+    <span class="b">print</span>(<span class="s">"Hello,"</span>, name)
+    <span class="b">print</span>(<span class="s">"Welcome to Class XII"</span>)
+
+<span class="b">print</span>(<span class="s">"Before the call"</span>)
+<span class="b">greet</span>(<span class="s">"Riya"</span>)
+<span class="b">print</span>(<span class="s">"After the call"</span>)
+<span class="b">greet</span>(<span class="s">"Aarav"</span>)
+<span class="b">print</span>(<span class="s">"Done"</span>)</pre>
+      <div class="reveal ready ephemeral">Seven lines. In what order? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>Before the call
+Hello, Riya
+Welcome to Class XII
+After the call
+Hello, Aarav
+Welcome to Class XII
+Done</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.6</span> Check yourself</h2>
+
+  <div class="qcard">
+    <span class="tag">Question 1</span>
+    <p>Predict the exact output, in order.</p>
+<pre class="code"><span class="k">def</span> <span class="b">a</span>():
+    <span class="b">print</span>(<span class="s">"in a"</span>)
+    <span class="b">b</span>()
+    <span class="b">print</span>(<span class="s">"back in a"</span>)
+
+<span class="k">def</span> <span class="b">b</span>():
+    <span class="b">print</span>(<span class="s">"in b"</span>)
+
+<span class="b">print</span>(<span class="s">"start"</span>)
+<span class="b">a</span>()
+<span class="b">print</span>(<span class="s">"end"</span>)</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>start
+in a
+in b
+back in a
+end</div>
+    <p>Note that <code>a</code> calls <code>b</code>, which is defined <b>below</b> it —
+       and that is fine, because by the time <code>a()</code> is actually called on the
+       second-to-last line, both <code>def</code> statements have already run.</p>
+  </div>
+</section>
+
+<!-- ===================== 2 · THREE KINDS OF FUNCTION ===================== -->
+
+<section class="slide" data-section="2 · Three kinds of function">
+  <h2><span class="num">3.1</span> Built-in functions</h2>
+  <p class="lead">Always available. You have used them since Chapter 1 without calling them functions.</p>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">builtins.py</span><span class="b">print</span>(<span class="b">len</span>(<span class="s">"Computer"</span>))
+<span class="b">print</span>(<span class="b">max</span>(<span class="n">4</span>, <span class="n">9</span>, <span class="n">2</span>), <span class="b">min</span>(<span class="n">4</span>, <span class="n">9</span>, <span class="n">2</span>))
+<span class="b">print</span>(<span class="b">abs</span>(-<span class="n">7</span>), <span class="b">round</span>(<span class="n">3.14159</span>, <span class="n">2</span>))
+<span class="b">print</span>(<span class="b">sum</span>([<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]), <span class="b">sorted</span>([<span class="n">3</span>, <span class="n">1</span>, <span class="n">2</span>]))
+<span class="b">print</span>(<span class="b">type</span>(<span class="n">5</span>), <span class="b">int</span>(<span class="s">"42"</span>), <span class="b">str</span>(<span class="n">42</span>))</pre>
+      <div class="reveal ready ephemeral">Five lines. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>8
+9 2
+7 3.14
+6 [1, 2, 3]
+&lt;class 'int'&gt; 42 42</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Built-in function</span> — a function that is part of the
+           Python interpreter itself. No <code>import</code> is needed and none is
+           defined by you.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Method or function?</span>
+    <p><code>len(s)</code> is a <b>function</b> — the value goes inside the brackets.
+       <code>s.upper()</code> is a <b>method</b> — it is called <b>on</b> an object with a
+       dot. The paper distinguishes them, so use the right word.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.2</span> Functions from a module</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">usemath.py</span><span class="k">import</span> math
+
+<span class="b">print</span>(math.sqrt(<span class="n">144</span>))
+<span class="b">print</span>(math.floor(<span class="n">4.7</span>), math.ceil(<span class="n">4.2</span>))
+<span class="b">print</span>(math.pow(<span class="n">2</span>, <span class="n">5</span>))
+<span class="b">print</span>(<span class="b">round</span>(math.pi, <span class="n">4</span>))
+<span class="b">print</span>(math.fabs(-<span class="n">9.5</span>))</pre>
+      <div class="reveal ready ephemeral">Watch which ones give floats. 🤔</div>
+      <div class="reveal out"><span class="tag">Output</span>12.0
+4 5
+32.0
+3.1416
+9.5</div>
+    </div>
+    <div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Module</span> — a file of ready-written functions and
+           values. <code>import</code> makes it available;
+           <code>module.function()</code> calls it.</p>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">Read the output types</span>
+        <p><code>math.sqrt(144)</code> is <code>12.0</code>, not <code>12</code> — every
+           <code>math</code> function returns a <b>float</b>. But
+           <code>math.floor</code> and <code>math.ceil</code> return <b>ints</b>. That
+           mixture is examined.</p>
+      </div>
+      <div class="reveal">
+<pre class="code"><span class="tag">the other import form</span><span class="k">from</span> math <span class="k">import</span> sqrt, pi
+
+<span class="b">print</span>(sqrt(<span class="n">81</span>))
+<span class="b">print</span>(<span class="b">round</span>(pi, <span class="n">2</span>))</pre>
+        <div class="out"><span class="tag">Output</span>9.0
+3.14</div>
+        <p class="small">With <code>from … import</code> you use the name
+           <b>without</b> the <code>math.</code> prefix.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.3</span> The <code>random</code> module</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">dice.py</span><span class="k">import</span> random
+
+<span class="b">print</span>(random.randint(<span class="n">1</span>, <span class="n">6</span>))
+<span class="b">print</span>(random.random())
+<span class="b">print</span>(random.randrange(<span class="n">10</span>, <span class="n">20</span>, <span class="n">2</span>))
+<span class="b">print</span>(random.choice([<span class="s">"red"</span>, <span class="s">"green"</span>, <span class="s">"blue"</span>]))</pre>
+      <div class="reveal ready ephemeral">What is the <em>range</em> of each line? 🤔</div>
+      <div class="reveal out"><span class="tag">Output — one possible run</span>6
+0.5991024235343656
+10
+green</div>
+    </div>
+    <div>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">Call</th><th class="lbl">Possible values</th></tr>
+          <tr><td class="lbl"><code>randint(1, 6)</code></td><td class="lbl">1, 2, 3, 4, 5, <b>6</b> — both ends included</td></tr>
+          <tr><td class="lbl"><code>random()</code></td><td class="lbl">a float, 0.0 ≤ x &lt; 1.0</td></tr>
+          <tr><td class="lbl"><code>randrange(10, 20, 2)</code></td><td class="lbl">10, 12, 14, 16, 18 — <b>never 20</b></td></tr>
+          <tr><td class="lbl"><code>choice(seq)</code></td><td class="lbl">any one item of the sequence</td></tr>
+        </table>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">The one that is asked every year</span>
+        <p><code>randint(a, b)</code> <b>includes</b> b. <code>randrange(a, b)</code>
+           <b>excludes</b> b, exactly like <code>range()</code> in Chapter 1. Questions
+           are set on precisely this difference — "which of these values can never be
+           generated?"</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">Why the green box says "one possible run"</span>
+        <p>It is the only output in this course that is not reproducible. Run it again and
+           you will get different numbers — that is the whole point of the module.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.4</span> The three kinds, side by side</h2>
+
+  <table>
+    <tr><th class="lbl">Kind</th><th class="lbl">Where it comes from</th><th>Needs import?</th><th class="lbl">Examples</th></tr>
+    <tr><td class="lbl"><b>Built-in</b></td><td class="lbl">the interpreter itself</td><td class="hi">No</td><td class="lbl"><code>len</code>, <code>print</code>, <code>max</code>, <code>int</code>, <code>sorted</code></td></tr>
+    <tr><td class="lbl"><b>Module</b></td><td class="lbl">a library file that ships with Python</td><td class="hi2">Yes</td><td class="lbl"><code>math.sqrt</code>, <code>random.randint</code></td></tr>
+    <tr><td class="lbl"><b>User-defined</b></td><td class="lbl">written by you with <code>def</code></td><td class="hi">No</td><td class="lbl"><code>area()</code>, <code>greet()</code></td></tr>
+    <caption>The syllabus names all three. The rest of this chapter is entirely the third row.</caption>
+  </table>
+
+  <div class="qcard">
+    <span class="tag">Question 2</span>
+    <p>Which of these can never be printed by
+       <code>print(random.randint(2, 8) + random.randrange(1, 4))</code>?<br>
+       <b>(a)</b> 3 &nbsp;&nbsp; <b>(b)</b> 5 &nbsp;&nbsp; <b>(c)</b> 11 &nbsp;&nbsp;
+       <b>(d)</b> 12</p>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>(d) 12.</b></p>
+    <p><code>randint(2, 8)</code> gives 2 … 8 <b>inclusive</b>, so its largest is
+       <b>8</b>. <code>randrange(1, 4)</code> gives 1, 2 or 3 — <b>never 4</b> — so its
+       largest is <b>3</b>. The maximum possible total is <code>8 + 3 = 11</code>, and the
+       minimum is <code>2 + 1 = 3</code>. So 3, 5 and 11 are all reachable; 12 is not.</p>
+  </div>
+</section>
+
+<!-- ===================== 3 · PARAMETERS AND ARGUMENTS ===================== -->
+
+<section class="slide" data-section="3 · Parameters and arguments">
+  <h2><span class="num">4.1</span> Two words that are not synonyms</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">terms.py</span><span class="k">def</span> <span class="b">interest</span>(p, r, t):
+    <span class="k">return</span> p * r * t / <span class="n">100</span>
+
+<span class="b">print</span>(<span class="b">interest</span>(<span class="n">1000</span>, <span class="n">5</span>, <span class="n">2</span>))</pre>
+      <div class="reveal out"><span class="tag">Output</span>100.0</div>
+    </div>
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Parameter</span> — a name in the function
+           <b>definition</b>: <code>p</code>, <code>r</code>, <code>t</code>. It is a
+           placeholder.<br>
+           <span class="term">Argument</span> — a value supplied in the function
+           <b>call</b>: <code>1000</code>, <code>5</code>, <code>2</code>. It is the
+           actual data.</p>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">How to keep them straight</span>
+        <p><b>P</b>arameter — in the <b>P</b>rototype (the <code>def</code> line).<br>
+           <b>A</b>rgument — in the <b>A</b>ctual call.<br>
+           Older books call them <b>formal</b> and <b>actual</b> parameters; both
+           vocabularies appear in question papers.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">What the call actually does</span>
+    <p>Calling <code>interest(1000, 5, 2)</code> performs three ordinary assignments
+       inside a fresh workspace — <code>p = 1000</code>, <code>r = 5</code>,
+       <code>t = 2</code> — and then runs the body. That is <b>all</b> a parameter is:
+       a name that gets bound at call time.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.2</span> Positional arguments — the count must match</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">too few — main.py</span><span class="ln">1</span><span class="k">def</span> <span class="b">add</span>(a, b):
+<span class="ln">2</span>    <span class="k">return</span> a + b
+<span class="ln">3</span>
+<span class="ln">4</span><span class="b">print</span>(<span class="b">add</span>(<span class="n">3</span>, <span class="n">5</span>))
+<span class="ln">5</span><span class="b">print</span>(<span class="b">add</span>(<span class="n">3</span>))</pre>
+      <div class="reveal out"><span class="tag">Output</span>8</div>
+      <div class="reveal err"><span class="tag">…then the traceback</span>Traceback (most recent call last):
+  File "main.py", line 5, in &lt;module&gt;
+    print(add(3))
+          ^^^^^^
+<span class="etype">TypeError</span>: add() missing 1 required positional argument: 'b'</div>
+    </div>
+    <div>
+<pre class="code"><span class="tag">too many — main.py</span><span class="ln">1</span><span class="k">def</span> <span class="b">add</span>(a, b):
+<span class="ln">2</span>    <span class="k">return</span> a + b
+<span class="ln">3</span>
+<span class="ln">4</span><span class="b">print</span>(<span class="b">add</span>(<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>))</pre>
+      <div class="reveal err"><span class="tag">Traceback</span>Traceback (most recent call last):
+  File "main.py", line 4, in &lt;module&gt;
+    print(add(1, 2, 3))
+          ^^^^^^^^^^^^
+<span class="etype">TypeError</span>: add() takes 2 positional arguments but 3 were given</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Positional argument</span> — matched to a parameter by its
+           <b>position</b> in the call. The first argument goes to the first parameter,
+           and so on. The counts must match exactly.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Note the exception name</span>
+    <p>It is <code>TypeError</code>, not <code>ValueError</code> or some “ArgumentError”.
+       Read both messages carefully — Python names the missing parameter for you.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.3</span> Default parameters</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">defaults.py</span><span class="k">def</span> <span class="b">interest</span>(p, r=<span class="n">5</span>, t=<span class="n">1</span>):
+    <span class="k">return</span> p * r * t / <span class="n">100</span>
+
+<span class="b">print</span>(<span class="b">interest</span>(<span class="n">1000</span>))
+<span class="b">print</span>(<span class="b">interest</span>(<span class="n">1000</span>, <span class="n">8</span>))
+<span class="b">print</span>(<span class="b">interest</span>(<span class="n">1000</span>, <span class="n">8</span>, <span class="n">3</span>))</pre>
+      <div class="reveal ready ephemeral">Three numbers. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>50.0
+80.0
+240.0</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Default parameter</span> — a parameter given a value in the
+           <code>def</code> line. If the caller omits that argument, the default is used;
+           if the caller supplies one, it <b>overrides</b> the default.</p>
+      </div>
+      <div class="reveal">
+        <table class="trace">
+          <tr><th class="lbl">Call</th><th>p</th><th>r</th><th>t</th><th>result</th></tr>
+          <tr><td class="lbl">interest(1000)</td><td>1000</td><td>5</td><td>1</td><td class="chg">50.0</td></tr>
+          <tr><td class="lbl">interest(1000, 8)</td><td>1000</td><td class="chg">8</td><td>1</td><td class="chg">80.0</td></tr>
+          <tr class="now"><td class="lbl">interest(1000, 8, 3)</td><td>1000</td><td class="chg">8</td><td class="chg">3</td><td class="chg">240.0</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Defaults fill from the right</span>
+    <p>You cannot skip <code>r</code> and supply only <code>t</code> positionally —
+       <code>interest(1000, 3)</code> sets <b>r</b> to 3, not t. To skip one you need a
+       keyword argument, which is the next slide.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.4</span> A default cannot come before a non-default</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">WRONG — main.py</span><span class="ln">1</span><span class="k">def</span> <span class="b">f</span>(a=<span class="n">1</span>, b):
+<span class="ln">2</span>    <span class="k">return</span> a + b</pre>
+      <div class="reveal ready ephemeral">Syntax error or runtime error? 🤔</div>
+      <div class="reveal err"><span class="tag">Traceback</span>  File "main.py", line 1
+    def f(a=1, b):
+               ^
+<span class="etype">SyntaxError</span>: parameter without a default follows parameter with a default</div>
+    </div>
+    <div>
+      <div class="reveal insight">
+        <span class="tag">Why Python forbids it</span>
+        <p>Ask what <code>f(7)</code> would mean. Is 7 the <code>a</code> that already has
+           a default, or the <code>b</code> that must be supplied? There is no answer —
+           so Python refuses the <b>definition</b>, not the call.</p>
+      </div>
+      <div class="reveal defn">
+        <span class="tag">The rule</span>
+        <p>In the <code>def</code> line, <b>all non-default parameters must come before
+           all default ones</b>. <code>def f(b, a=1)</code> is fine.</p>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">Note where it was caught</span>
+        <p>This is a <b>SyntaxError</b> — the file never runs, and Chapter 3 told you that
+           no <code>try…except</code> can catch it. It is caught the moment Python reads
+           the <code>def</code> line, before anything is called.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.5</span> Keyword arguments</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">keyword.py</span><span class="k">def</span> <span class="b">interest</span>(p, r=<span class="n">5</span>, t=<span class="n">1</span>):
+    <span class="k">return</span> p * r * t / <span class="n">100</span>
+
+<span class="hl"><span class="b">print</span>(<span class="b">interest</span>(<span class="n">1000</span>, t=<span class="n">3</span>))</span>
+<span class="b">print</span>(<span class="b">interest</span>(r=<span class="n">10</span>, p=<span class="n">2000</span>))
+<span class="b">print</span>(<span class="b">interest</span>(t=<span class="n">2</span>, r=<span class="n">6</span>, p=<span class="n">500</span>))</pre>
+      <div class="reveal ready ephemeral">The amber line skips a parameter. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>150.0
+200.0
+60.0</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Keyword argument</span> — an argument written as
+           <code>name=value</code> in the call. It is matched to the parameter by
+           <b>name</b>, so the <b>order does not matter</b> and parameters in the middle
+           may be skipped.</p>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">Work the amber line out</span>
+        <p><code>interest(1000, t=3)</code> → <code>p=1000</code> positionally,
+           <code>t=3</code> by name, and <code>r</code> falls back to its default
+           <code>5</code>. So <code>1000 × 5 × 3 / 100 = 150.0</code>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.6</span> Two rules for mixing them</h2>
+
+  <div class="cosplit">
+    <div>
+      <h3>Rule 1 — positional first, always</h3>
+<pre class="code"><span class="tag">WRONG — main.py</span><span class="ln">1</span><span class="k">def</span> <span class="b">interest</span>(p, r=<span class="n">5</span>, t=<span class="n">1</span>):
+<span class="ln">2</span>    <span class="k">return</span> p * r * t / <span class="n">100</span>
+<span class="ln">3</span>
+<span class="ln">4</span><span class="b">print</span>(<span class="b">interest</span>(r=<span class="n">10</span>, <span class="n">2000</span>))</pre>
+      <div class="reveal err"><span class="tag">Traceback</span>  File "main.py", line 4
+    print(interest(r=10, 2000))
+                             ^
+<span class="etype">SyntaxError</span>: positional argument follows keyword argument</div>
+      <p class="small reveal">Once you start naming, you must keep naming.</p>
+    </div>
+    <div>
+      <h3>Rule 2 — never fill a parameter twice</h3>
+<pre class="code"><span class="tag">WRONG — main.py</span><span class="ln">1</span><span class="k">def</span> <span class="b">f</span>(a, b):
+<span class="ln">2</span>    <span class="k">return</span> a - b
+<span class="ln">3</span>
+<span class="ln">4</span><span class="b">print</span>(<span class="b">f</span>(<span class="n">10</span>, a=<span class="n">3</span>))</pre>
+      <div class="reveal err"><span class="tag">Traceback</span>Traceback (most recent call last):
+  File "main.py", line 4, in &lt;module&gt;
+    print(f(10, a=3))
+          ^^^^^^^^^^
+<span class="etype">TypeError</span>: f() got multiple values for argument 'a'</div>
+      <p class="small reveal">The <code>10</code> already went to <code>a</code>
+         positionally.</p>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Notice which error is which</span>
+    <p>Rule 1 breaks the <b>grammar</b> → <code>SyntaxError</code>, caught before running.
+       Rule 2 is grammatical but impossible → <code>TypeError</code>, caught at the
+       moment of the call. That is exactly the Chapter 3 distinction, seen again.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.7</span> Check yourself</h2>
+
+  <div class="qcard">
+    <span class="tag">Question 3</span>
+    <p>Predict the exact output — four lines.</p>
+<pre class="code"><span class="k">def</span> <span class="b">calc</span>(a, b=<span class="n">2</span>, c=<span class="n">3</span>):
+    <span class="k">return</span> a * <span class="n">100</span> + b * <span class="n">10</span> + c
+
+<span class="b">print</span>(<span class="b">calc</span>(<span class="n">1</span>))
+<span class="b">print</span>(<span class="b">calc</span>(<span class="n">1</span>, <span class="n">5</span>))
+<span class="b">print</span>(<span class="b">calc</span>(<span class="n">1</span>, c=<span class="n">9</span>))
+<span class="b">print</span>(<span class="b">calc</span>(c=<span class="n">7</span>, a=<span class="n">4</span>))</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>123
+153
+129
+427</div>
+    <table class="trace">
+      <tr><th class="lbl">Call</th><th>a</th><th>b</th><th>c</th><th>result</th></tr>
+      <tr><td class="lbl">calc(1)</td><td>1</td><td>2</td><td>3</td><td class="chg">123</td></tr>
+      <tr><td class="lbl">calc(1, 5)</td><td>1</td><td class="chg">5</td><td>3</td><td class="chg">153</td></tr>
+      <tr><td class="lbl">calc(1, c=9)</td><td>1</td><td>2</td><td class="chg">9</td><td class="chg">129</td></tr>
+      <tr class="now"><td class="lbl">calc(c=7, a=4)</td><td class="chg">4</td><td>2</td><td class="chg">7</td><td class="chg">427</td></tr>
+    </table>
+    <p class="small">The digits of the answer <b>are</b> a, b, c — which is why this shape
+       of question is so popular. Read the answer and you can see which parameter got
+       which value.</p>
+  </div>
+</section>
+
+<!-- ===================== 4 · RETURNING VALUES ===================== -->
+
+<section class="slide" data-section="4 · Returning values">
+  <h2><span class="num">5.1</span> <code>return</code> — sending an answer back</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">retvsprint.py</span><span class="k">def</span> <span class="b">square</span>(n):
+<span class="hl">    <span class="k">return</span> n * n</span>
+
+<span class="k">def</span> <span class="b">shout</span>(msg):
+<span class="hl">    <span class="b">print</span>(msg.upper())</span>
+
+x = <span class="b">square</span>(<span class="n">6</span>)
+y = <span class="b">shout</span>(<span class="s">"hello"</span>)
+
+<span class="b">print</span>(x)
+<span class="b">print</span>(y)</pre>
+      <div class="reveal ready ephemeral">Three lines out. What is <code>y</code>? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>HELLO
+36
+None</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">return</span> — ends the function immediately and sends a
+           value back to the caller, where it becomes the value of the call expression.
+           A function with <b>no</b> <code>return</code> statement returns
+           <code>None</code>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal insight">
+    <span class="tag">Read the order of the output</span>
+    <p><code>HELLO</code> printed <b>first</b> — because <code>shout("hello")</code> ran
+       before either <code>print(x)</code> or <code>print(y)</code>. The function did its
+       printing during the call; it just had nothing to give back afterwards.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.2</span> <code>print</code> is not <code>return</code></h2>
+  <p class="lead">The single most expensive confusion in this chapter.</p>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">main.py</span><span class="ln">1</span><span class="k">def</span> <span class="b">show</span>(n):
+<span class="ln">2</span>    <span class="b">print</span>(<span class="s">"inside:"</span>, n * n)
+<span class="ln">3</span>
+<span class="ln">4</span><span class="k">def</span> <span class="b">give</span>(n):
+<span class="ln">5</span>    <span class="k">return</span> n * n
+<span class="ln">6</span>
+<span class="ln">7</span><span class="b">show</span>(<span class="n">5</span>)
+<span class="ln">8</span><span class="b">print</span>(<span class="b">give</span>(<span class="n">5</span>))
+<span class="ln">9</span><span class="b">print</span>(<span class="b">show</span>(<span class="n">5</span>) + <span class="n">1</span>)</pre>
+      <div class="reveal ready ephemeral">Line 9 — what goes wrong? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>inside: 25
+25
+inside: 25</div>
+      <div class="reveal err"><span class="tag">…then the traceback</span>Traceback (most recent call last):
+  File "main.py", line 9, in &lt;module&gt;
+    print(show(5) + 1)
+          ~~~~~~~~^~~
+<span class="etype">TypeError</span>: unsupported operand type(s) for +: 'NoneType' and 'int'</div>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <table>
+      <tr><th class="lbl">&nbsp;</th><th class="lbl"><code>print</code></th><th class="lbl"><code>return</code></th></tr>
+      <tr><td class="lbl">What it does</td><td class="lbl">shows text on the screen</td><td class="lbl">hands a value back to the caller</td></tr>
+      <tr><td class="lbl">Who receives it</td><td class="lbl">the human watching</td><td class="lbl">the program</td></tr>
+      <tr><td class="lbl">Can you store it?</td><td class="lbl">No — you get <code>None</code></td><td class="lbl">Yes — <code>x = f()</code></td></tr>
+      <tr><td class="lbl">Can you use it in a sum?</td><td class="lbl">No</td><td class="lbl">Yes</td></tr>
+      <tr><td class="lbl">Ends the function?</td><td class="lbl">No</td><td class="lbl"><b>Yes, immediately</b></td></tr>
+    </table>
+  </div>
+
+  <div class="reveal warn">
+    <span class="tag">The exam rule</span>
+    <p>If a question says <b>“write a function that returns…”</b>, a <code>print</code> in
+       place of <code>return</code> loses the mark even though the screen looks right.
+       Read the verb in the question.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.3</span> <code>return</code> ends the function there and then</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">grade.py</span><span class="k">def</span> <span class="b">grade</span>(m):
+    <span class="k">if</span> m &gt;= <span class="n">90</span>:
+        <span class="k">return</span> <span class="s">"A"</span>
+    <span class="k">if</span> m &gt;= <span class="n">75</span>:
+        <span class="k">return</span> <span class="s">"B"</span>
+<span class="hl">    <span class="b">print</span>(<span class="s">"this never runs for m &gt;= 75"</span>)</span>
+    <span class="k">return</span> <span class="s">"C"</span>
+
+<span class="b">print</span>(<span class="b">grade</span>(<span class="n">95</span>))
+<span class="b">print</span>(<span class="b">grade</span>(<span class="n">80</span>))
+<span class="b">print</span>(<span class="b">grade</span>(<span class="n">60</span>))</pre>
+      <div class="reveal ready ephemeral">How many times does the amber line run? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>A
+B
+this never runs for m &gt;= 75
+C</div>
+      <div class="reveal insight">
+        <span class="tag">Once — for <code>grade(60)</code> only</span>
+        <p>For 95 and 80 the function <b>left</b> at a <code>return</code>, so nothing
+           below it ran. Only 60 fell through both <code>if</code>s and reached the
+           <code>print</code>.</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">Why this pattern needs no <code>else</code></span>
+        <p>Because <code>return</code> already exits, <code>if … return</code> chains do
+           the job of <code>elif</code>. Both styles are accepted; this one is often
+           clearer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.4</span> Returning more than one value</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">stats.py</span><span class="k">def</span> <span class="b">stats</span>(L):
+<span class="hl">    <span class="k">return</span> <span class="b">min</span>(L), <span class="b">max</span>(L), <span class="b">sum</span>(L) / <span class="b">len</span>(L)</span>
+
+result = <span class="b">stats</span>([<span class="n">45</span>, <span class="n">78</span>, <span class="n">92</span>, <span class="n">61</span>])
+<span class="b">print</span>(result)
+<span class="b">print</span>(<span class="b">type</span>(result))
+
+lo, hi, avg = <span class="b">stats</span>([<span class="n">45</span>, <span class="n">78</span>, <span class="n">92</span>, <span class="n">61</span>])
+<span class="b">print</span>(lo, hi, avg)</pre>
+      <div class="reveal ready ephemeral">What type comes back? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>(45, 92, 69.0)
+&lt;class 'tuple'&gt;
+45 92 69.0</div>
+      <div class="reveal insight">
+        <span class="tag">It returns <em>one</em> value — a tuple</span>
+        <p>Chapter 1 §7.1 said the brackets are optional and the <b>comma</b> makes the
+           tuple. So <code>return a, b, c</code> packs three values into one tuple, and
+           <code>lo, hi, avg = stats(...)</code> unpacks it again.</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">Two ways to receive it</span>
+        <p>Catch it as one name and you get a tuple you can index —
+           <code>result[0]</code>. Catch it in three names and you get three separate
+           values. Same function, both legal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.5</span> Check yourself</h2>
+
+  <div class="qcard">
+    <span class="tag">Question 4</span>
+    <p>What is printed, and what is the type of <code>r</code> in each case?</p>
+<pre class="code"><span class="k">def</span> <span class="b">f</span>(n):
+    <span class="k">if</span> n &gt; <span class="n">0</span>:
+        <span class="k">return</span> <span class="s">"positive"</span>
+
+r1 = <span class="b">f</span>(<span class="n">5</span>)
+r2 = <span class="b">f</span>(-<span class="n">5</span>)
+<span class="b">print</span>(r1, <span class="b">type</span>(r1))
+<span class="b">print</span>(r2, <span class="b">type</span>(r2))</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>positive &lt;class 'str'&gt;
+None &lt;class 'NoneType'&gt;</div>
+    <p>For <code>n = -5</code> the <code>if</code> is False, so the function reaches its
+       end without executing any <code>return</code> — and <b>every function that falls
+       off the end returns <code>None</code></b>. A function is allowed to return
+       different types on different calls, and that is usually a design fault worth
+       fixing: give it an <code>else: return "not positive"</code>.</p>
+  </div>
+</section>
+
+<!-- ===================== 5 · SCOPE ===================== -->
+
+<section class="slide" data-section="5 · Scope">
+  <h2><span class="num">6.1</span> A local variable does not survive the call</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">main.py</span><span class="ln">1</span><span class="k">def</span> <span class="b">total</span>(a, b):
+<span class="ln">2</span>    s = a + b
+<span class="ln">3</span>    <span class="b">print</span>(<span class="s">"inside :"</span>, s)
+<span class="ln">4</span>    <span class="k">return</span> s
+<span class="ln">5</span>
+<span class="ln">6</span><span class="b">print</span>(<span class="b">total</span>(<span class="n">3</span>, <span class="n">4</span>))
+<span class="ln">7</span><span class="b">print</span>(<span class="s">"outside:"</span>, s)</pre>
+      <div class="reveal ready ephemeral">Line 7 — does <code>s</code> still exist? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>inside : 7
+7</div>
+      <div class="reveal err"><span class="tag">…then the traceback</span>Traceback (most recent call last):
+  File "main.py", line 7, in &lt;module&gt;
+    print("outside:", s)
+                      ^
+<span class="etype">NameError</span>: name 's' is not defined</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Local variable</span> — a name created inside a function.
+           It exists only while that call is running and is destroyed when the function
+           returns. Its <b>scope</b> is the function body.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal insight">
+    <span class="tag">This is a feature, not a limitation</span>
+    <p>It is why you can use <code>i</code> as a loop counter in fifty different functions
+       without them interfering. Each call gets a <b>fresh, private workspace</b>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.2</span> A global variable can be <em>read</em> anywhere</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">readglobal.py</span>rate = <span class="n">5</span>
+
+<span class="k">def</span> <span class="b">interest</span>(p):
+<span class="hl">    <span class="b">print</span>(<span class="s">"reading global rate:"</span>, rate)</span>
+    <span class="k">return</span> p * rate / <span class="n">100</span>
+
+<span class="b">print</span>(<span class="b">interest</span>(<span class="n">1000</span>))
+<span class="b">print</span>(<span class="s">"rate is still"</span>, rate)</pre>
+      <div class="reveal ready ephemeral">Three lines. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>reading global rate: 5
+50.0
+rate is still 5</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Global variable</span> — a name created at the top level of
+           the program, outside every function. Its scope is the <b>whole file</b>,
+           including inside functions.</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">Good practice, though</span>
+        <p>A function that reads globals is harder to reuse and harder to test, because
+           its answer depends on something invisible in its call. <b>Prefer passing the
+           value in as a parameter</b> — <code>interest(1000, 5)</code>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.3</span> …but <em>assigning</em> to it makes it local</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">WRONG — main.py</span><span class="ln">1</span>rate = <span class="n">5</span>
+<span class="ln">2</span>
+<span class="ln">3</span><span class="k">def</span> <span class="b">bump</span>():
+<span class="ln">4</span>    rate = rate + <span class="n">1</span>
+<span class="ln">5</span>    <span class="b">print</span>(rate)
+<span class="ln">6</span>
+<span class="ln">7</span><span class="b">bump</span>()</pre>
+      <div class="reveal ready ephemeral">It read <code>rate</code> fine last slide. Now? 🤔</div>
+      <div class="reveal err"><span class="tag">Traceback</span>Traceback (most recent call last):
+  File "main.py", line 7, in &lt;module&gt;
+    bump()
+  File "main.py", line 4, in bump
+    rate = rate + 1
+           ^^^^
+<span class="etype">UnboundLocalError</span>: cannot access local variable 'rate' where it is not associated with a value</div>
+    </div>
+    <div>
+      <div class="reveal insight">
+        <span class="tag">The rule that explains it</span>
+        <p>Python scans the <b>whole</b> function body before running it. If a name is
+           <b>assigned to anywhere</b> in the body, that name is <b>local for the entire
+           function</b> — including on lines above the assignment.</p>
+        <p>So on line 4 <code>rate</code> is a local variable, and the right-hand side
+           tries to read it before it has ever been given a value.</p>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">Why students find this so unfair</span>
+        <p>Reading a global works. Reading-then-assigning fails. The difference is not
+           <b>where</b> you read it but whether the name is assigned <b>anywhere</b> in
+           that function.
+           <button class="info" aria-controls="unbound-local" aria-expanded="false"
+                   title="Is UnboundLocalError just a NameError?">i</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="infopanel" id="unbound-local">
+    <span class="tag">Is <code>UnboundLocalError</code> just a <code>NameError</code>?</span>
+    <p>It <b>is</b> a subclass of <code>NameError</code> — so
+       <code>except NameError:</code> will catch it, and calling it "a kind of NameError"
+       in a written answer is correct.</p>
+    <div class="q">
+      <b>But the distinction is real.</b><br>
+      <code>NameError</code> — Python could not find the name <em>anywhere</em>.<br>
+      <code>UnboundLocalError</code> — Python knows the name is local to this function,
+      but it has not been assigned yet.
+    </div>
+    <p>Many question banks and older NCERT-aligned material simply write
+       <code>NameError</code> here, because Python 2 and early Python 3 reported it that
+       way. <b>Write <code>UnboundLocalError</code></b> if you are asked to name what
+       modern Python raises, and add "a subclass of NameError" — that answer cannot be
+       marked wrong either way.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.4</span> The <code>global</code> keyword</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">useglobal.py</span>rate = <span class="n">5</span>
+
+<span class="k">def</span> <span class="b">bump</span>():
+<span class="hl">    <span class="k">global</span> rate</span>
+    rate = rate + <span class="n">1</span>
+    <span class="b">print</span>(<span class="s">"inside :"</span>, rate)
+
+<span class="b">bump</span>()
+<span class="b">print</span>(<span class="s">"outside:"</span>, rate)</pre>
+      <div class="reveal ready ephemeral">Did the global actually change? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>inside : 6
+outside: 6</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">global</span> — a declaration inside a function stating that
+           the named variable refers to the <b>global</b> one, so assignments inside the
+           function change the global rather than creating a local.</p>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">Use it sparingly, and know why</span>
+        <p>A function that changes a global has an <b>invisible effect</b>: reading the
+           call <code>bump()</code> tells you nothing about what it altered. Prefer
+           <code>rate = bump(rate)</code> — the change is then written where anyone can
+           see it.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">The exam version</span>
+    <p>You will be asked "what is the output" for code with and without the
+       <code>global</code> line. The two answers differ on the <b>last</b> line only —
+       inside the function it looks the same either way.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.5</span> Scope drawn</h2>
+
+  <figure>
+    <svg viewBox="0 0 820 300" role="img" aria-label="Nested scope boxes: the built-in scope contains the global scope, which contains a local function scope; a name is searched local first, then global, then built-in">
+      <defs>
+        <marker id="arw-scope" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#a17a00"/>
+        </marker>
+      </defs>
+
+      <rect x="20" y="24" width="520" height="252" rx="12" fill="#fdf6e3" stroke="#6c71c4" stroke-width="3"/>
+      <text x="40" y="52" class="lab" fill="#5055a0">BUILT-IN — print, len, max, int …</text>
+
+      <rect x="52" y="72" width="456" height="188" rx="12" fill="#eee8d5" stroke="#1f7ab8" stroke-width="3"/>
+      <text x="72" y="100" class="lab" fill="#175f90">GLOBAL — rate = 5</text>
+
+      <rect x="86" y="120" width="388" height="122" rx="12" fill="#fdf6e3" stroke="#748500" stroke-width="3"/>
+      <text x="106" y="148" class="lab" fill="#586600">LOCAL — inside one call</text>
+      <text x="106" y="180">p = 1000</text>
+      <text x="106" y="208">s = a + b</text>
+      <text x="106" y="232" fill="#586600">born at the call, destroyed at the return</text>
+
+      <path class="curve c-amber" d="M600,200 L600,120" marker-end="url(#arw-scope)"/>
+      <text x="620" y="120" class="lab">① Local</text>
+      <text x="620" y="168" class="lab">② Global</text>
+      <text x="620" y="216" class="lab">③ Built-in</text>
+      <text x="620" y="250">the order Python</text>
+      <text x="620" y="270">searches for a name</text>
+    </svg>
+    <figcaption>Python looks <b>outwards</b>: local first, then global, then built-in. The first match wins.</figcaption>
+  </figure>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">shadow.py</span>x = <span class="s">"global"</span>
+
+<span class="k">def</span> <span class="b">shadow</span>():
+<span class="hl">    x = <span class="s">"local"</span></span>
+    <span class="b">print</span>(<span class="s">"in shadow:"</span>, x)
+
+<span class="b">shadow</span>()
+<span class="b">print</span>(<span class="s">"at module:"</span>, x)</pre>
+      <div class="reveal ready ephemeral">Two lines. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>in shadow: local
+at module: global</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Shadowing</span> — a local name hiding a global one of the
+           same name, for the duration of the call. The global is untouched; it simply
+           cannot be seen from inside.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.6</span> Check yourself</h2>
+
+  <div class="qcard">
+    <span class="tag">Question 5</span>
+    <p>Predict the exact output.</p>
+<pre class="code">count = <span class="n">0</span>
+
+<span class="k">def</span> <span class="b">tick</span>():
+    <span class="k">global</span> count
+    count += <span class="n">1</span>
+    <span class="k">return</span> count
+
+<span class="b">print</span>(<span class="b">tick</span>(), <span class="b">tick</span>(), <span class="b">tick</span>())
+<span class="b">print</span>(count)</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>1 2 3
+3</div>
+    <p>All three calls run <b>before</b> the first <code>print</code> shows anything —
+       Python evaluates every argument first, left to right. Each call increments the
+       <b>same</b> global, so they give 1, 2 and 3, and <code>count</code> is left at
+       3.</p>
+  </div>
+
+  <div class="reveal challenge">
+    <span class="tag">Challenge</span>
+    <p>Delete the <code>global count</code> line. What happens now?</p>
+  </div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><code>UnboundLocalError</code>, on the very first call. Without the declaration,
+       <code>count += 1</code> makes <code>count</code> local for the whole function —
+       and <code>+=</code> has to <b>read</b> it before it can write it. Nothing is
+       printed at all.</p>
+  </div>
+</section>
+
+<!-- ===================== 6 · MUTABLE ARGUMENTS ===================== -->
+
+<section class="slide" data-section="6 · Mutable arguments">
+  <h2><span class="num">7.1</span> Passing a number changes nothing outside</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">passint.py</span><span class="k">def</span> <span class="b">bump</span>(n):
+<span class="hl">    n = n + <span class="n">1</span></span>
+    <span class="b">print</span>(<span class="s">"inside :"</span>, n)
+
+x = <span class="n">10</span>
+<span class="b">bump</span>(x)
+<span class="b">print</span>(<span class="s">"outside:"</span>, x)</pre>
+      <div class="reveal ready ephemeral">Is <code>x</code> 10 or 11? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>inside : 11
+outside: 10</div>
+      <div class="reveal insight">
+        <span class="tag">Chapter 1 §2.4, word for word</span>
+        <p><code>n + 1</code> built a <b>new</b> int object and rebound the local name
+           <code>n</code> to it. The global name <code>x</code> never moved. An int is
+           immutable, so there was nothing to change in place.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.2</span> Passing a list changes everything</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">passlist.py</span><span class="k">def</span> <span class="b">add_item</span>(L):
+<span class="hl">    L.append(<span class="n">99</span>)</span>
+    <span class="b">print</span>(<span class="s">"inside :"</span>, L)
+
+marks = [<span class="n">10</span>, <span class="n">20</span>]
+<span class="b">add_item</span>(marks)
+<span class="b">print</span>(<span class="s">"outside:"</span>, marks)</pre>
+      <div class="reveal ready ephemeral">Same shape as the last slide. Same answer? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>inside : [10, 20, 99]
+outside: [10, 20, 99]</div>
+    </div>
+  </div>
+
+  <figure class="reveal">
+    <svg viewBox="0 0 780 200" role="img" aria-label="The caller's name marks and the parameter L both point by arrow to the same list object, so appending through either name is visible through the other">
+      <defs>
+        <marker id="arw-param" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#1f7ab8"/>
+        </marker>
+      </defs>
+
+      <rect x="30" y="26" width="180" height="50" rx="10" fill="#eee8d5" stroke="#1f7ab8" stroke-width="2"/>
+      <text x="120" y="57" class="lab" text-anchor="middle">marks (global)</text>
+
+      <rect x="30" y="116" width="180" height="50" rx="10" fill="#eee8d5" stroke="#748500" stroke-width="2"/>
+      <text x="120" y="147" class="lab" text-anchor="middle">L (parameter)</text>
+
+      <rect x="440" y="58" width="290" height="76" rx="10" fill="#fdf6e3" stroke="#073642" stroke-width="3"/>
+      <text x="585" y="92" class="lab" text-anchor="middle">[10, 20, 99]</text>
+      <text x="585" y="118" text-anchor="middle">ONE list object</text>
+
+      <path class="curve c-blue" d="M216,52 L432,80" marker-end="url(#arw-param)"/>
+      <path class="curve c-blue" d="M216,140 L432,112" marker-end="url(#arw-param)"/>
+
+      <text x="320" y="185" text-anchor="middle">The call bound L to the same object — it did not copy it.</text>
+    </svg>
+    <figcaption>A parameter is just another <b>label</b>. <code>append</code> changes the object both labels point at.</figcaption>
+  </figure>
+
+  <div class="reveal defn">
+    <span class="tag">The rule, stated for the exam</span>
+    <p>Arguments are passed by <b>reference to the object</b>. If the object is
+       <b>mutable</b> and the function <b>mutates</b> it, the caller sees the change.
+       If the object is immutable, or the function only <b>rebinds</b> its parameter, the
+       caller sees nothing.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.3</span> Rebinding vs mutating — the deciding difference</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">rebind — no effect outside</span><span class="k">def</span> <span class="b">rebind</span>(L):
+<span class="hl">    L = [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]</span>
+    <span class="b">print</span>(<span class="s">"inside :"</span>, L)
+
+a = [<span class="n">10</span>, <span class="n">20</span>]
+<span class="b">rebind</span>(a)
+<span class="b">print</span>(<span class="s">"outside:"</span>, a)</pre>
+      <div class="reveal out"><span class="tag">Output</span>inside : [1, 2, 3]
+outside: [10, 20]</div>
+      <p class="small reveal"><code>=</code> pointed the <b>local label</b> at a new list.
+         The caller's list was never touched.</p>
+    </div>
+    <div>
+<pre class="code"><span class="tag">mutate — visible outside</span><span class="k">def</span> <span class="b">mutate</span>(L):
+<span class="hl">    L[<span class="n">0</span>] = <span class="n">99</span></span>
+    <span class="b">print</span>(<span class="s">"inside :"</span>, L)
+
+b = [<span class="n">10</span>, <span class="n">20</span>]
+<span class="b">mutate</span>(b)
+<span class="b">print</span>(<span class="s">"outside:"</span>, b)</pre>
+      <div class="reveal out"><span class="tag">Output</span>inside : [99, 20]
+outside: [99, 20]</div>
+      <p class="small reveal"><code>L[0] = 99</code> reached <b>into</b> the object and
+         changed it.</p>
+    </div>
+  </div>
+
+  <div class="reveal insight">
+    <span class="tag">The test to apply</span>
+    <p>Look at what is immediately left of the <code>=</code>.<br>
+       <b>A bare name</b> (<code>L = …</code>) → <b>rebinding</b>, invisible outside.<br>
+       <b>Anything with brackets or a dot</b> (<code>L[0] = …</code>,
+       <code>L.append(…)</code>) → <b>mutating</b>, visible outside.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.4</span> The mutable default argument</h2>
+  <p class="lead">The most surprising output in the whole syllabus.</p>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">surprise.py</span><span class="k">def</span> <span class="b">collect</span>(item, box=[]):
+    box.append(item)
+    <span class="k">return</span> box
+
+<span class="b">print</span>(<span class="b">collect</span>(<span class="s">"a"</span>))
+<span class="b">print</span>(<span class="b">collect</span>(<span class="s">"b"</span>))
+<span class="b">print</span>(<span class="b">collect</span>(<span class="s">"c"</span>))</pre>
+      <div class="reveal ready ephemeral">Three fresh boxes… or not? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>['a']
+['a', 'b']
+['a', 'b', 'c']</div>
+      <div class="reveal warn">
+        <span class="tag">Why the box is not empty the second time</span>
+        <p>The default value <code>[]</code> is evaluated <b>once</b>, when the
+           <code>def</code> line runs — <b>not</b> on every call. So all three calls share
+           the <b>same</b> list object, and each <code>append</code> adds to it.
+           <button class="info" aria-controls="mutable-default-arg" aria-expanded="false"
+                   title="When exactly is a default evaluated?">i</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal">
+<pre class="code"><span class="tag">FIXED</span><span class="k">def</span> <span class="b">collect</span>(item, box=<span class="k">None</span>):
+<span class="hl">    <span class="k">if</span> box <span class="k">is</span> <span class="k">None</span>:</span>
+        box = []
+    box.append(item)
+    <span class="k">return</span> box
+
+<span class="b">print</span>(<span class="b">collect</span>(<span class="s">"a"</span>))
+<span class="b">print</span>(<span class="b">collect</span>(<span class="s">"b"</span>))</pre>
+    <div class="out"><span class="tag">Output</span>['a']
+['b']</div>
+  </div>
+
+  <div class="infopanel" id="mutable-default-arg">
+    <span class="tag">When exactly is a default evaluated?</span>
+    <p><b>Once</b>, at the moment the <code>def</code> statement executes — which is when
+       Python first reads the file, not when the function is called. The resulting object
+       is stored with the function and reused for every call that omits that argument.</p>
+    <div class="q">
+      <code>def f(x=[]):</code> → one list, shared by all calls, and it
+      <b>remembers</b>.<br>
+      <code>def f(x=0):</code> → one int, shared by all calls, but an int is
+      <b>immutable</b>, so no call can change it and nothing surprising happens.
+    </div>
+    <p>That is why the trap needs a <b>mutable</b> default to appear at all. The safe rule
+       is absolute: <b>never use a list, dictionary or set as a default value</b>. Use
+       <code>None</code> and build the real default inside the body.</p>
+    <p><b>Note:</b> <code>box is None</code>, not <code>box == None</code> —
+       Chapter 1 §2.4 said <code>is</code> is reserved for exactly this.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.5</span> Check yourself</h2>
+
+  <div class="qcard">
+    <span class="tag">Question 6</span>
+    <p>Predict the exact output — four lines.</p>
+<pre class="code">n = <span class="n">5</span>
+
+<span class="k">def</span> <span class="b">change</span>(n):
+    n = n * <span class="n">2</span>
+    <span class="k">return</span> n
+
+<span class="b">print</span>(<span class="b">change</span>(n))
+<span class="b">print</span>(n)
+
+L = [<span class="n">1</span>, <span class="n">2</span>]
+
+<span class="k">def</span> <span class="b">grow</span>(L):
+    L.append(<span class="n">3</span>)
+    <span class="k">return</span> L
+
+<span class="b">print</span>(<span class="b">grow</span>(L))
+<span class="b">print</span>(L)</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>10
+5
+[1, 2, 3]
+[1, 2, 3]</div>
+    <p><b>Line 2 is 5, line 4 is changed.</b> Both functions were given a global, both
+       returned something, both used the same parameter name as the global. The only
+       difference is that <code>change</code> <b>rebound</b> an immutable int, while
+       <code>grow</code> <b>mutated</b> a list. That single distinction is the answer to
+       every question of this shape.</p>
+  </div>
+</section>
+
+<!-- ===================== RECAP AND EXAM PRACTICE ===================== -->
+
+<section class="slide" data-section="Recap and exam practice">
+  <h2><span class="num">8.1</span> Everything on one screen</h2>
+
+  <h3>Defining and calling</h3>
+  <div class="chips">
+    <span class="chip k">def name(params):</span>
+    <span class="chip">the body is indented</span>
+    <span class="chip k">define before the call runs</span>
+    <span class="chip">control returns to the line after the call</span>
+    <span class="chip">built-in · module · user-defined</span>
+  </div>
+
+  <h3>Parameters and arguments</h3>
+  <div class="chips">
+    <span class="chip k">parameter = in the def</span>
+    <span class="chip k">argument = in the call</span>
+    <span class="chip">positional — count must match</span>
+    <span class="chip k">defaults go last</span>
+    <span class="chip">keyword — order free</span>
+    <span class="chip">positional before keyword</span>
+  </div>
+
+  <h3>Returning</h3>
+  <div class="chips">
+    <span class="chip k">return sends a value back</span>
+    <span class="chip k">no return → None</span>
+    <span class="chip">return exits immediately</span>
+    <span class="chip">return a, b → a tuple</span>
+    <span class="chip k">print ≠ return</span>
+  </div>
+
+  <h3>Scope and arguments</h3>
+  <div class="chips">
+    <span class="chip k">local dies at the return</span>
+    <span class="chip">a global can be read</span>
+    <span class="chip k">assigning makes it local → UnboundLocalError</span>
+    <span class="chip">global keyword to write it</span>
+    <span class="chip k">LEGB: local → global → built-in</span>
+    <span class="chip k">rebind vs mutate</span>
+    <span class="chip">never default to []</span>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">8.2</span> Exam question 1 — find the output</h2>
+
+  <div class="qcard">
+    <span class="tag">3 marks</span>
+    <p>Write the output of the following code.</p>
+<pre class="code"><span class="k">def</span> <span class="b">process</span>(L, n=<span class="n">2</span>):
+    out = []
+    <span class="k">for</span> item <span class="k">in</span> L:
+        <span class="k">if</span> item % n == <span class="n">0</span>:
+            out.append(item)
+        <span class="k">else</span>:
+            out.append(item * n)
+    <span class="k">return</span> out
+
+nums = [<span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>]
+<span class="b">print</span>(<span class="b">process</span>(nums))
+<span class="b">print</span>(<span class="b">process</span>(nums, <span class="n">3</span>))
+<span class="b">print</span>(nums)</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>[6, 4, 10, 6]
+[3, 12, 15, 6]
+[3, 4, 5, 6]</div>
+    <table class="trace">
+      <tr><th>item</th><th>n = 2</th><th>result</th><th>n = 3</th><th>result</th></tr>
+      <tr><td>3</td><td>3 % 2 ≠ 0</td><td class="chg">6</td><td>3 % 3 = 0</td><td class="chg">3</td></tr>
+      <tr><td>4</td><td>4 % 2 = 0</td><td class="chg">4</td><td>4 % 3 ≠ 0</td><td class="chg">12</td></tr>
+      <tr><td>5</td><td>5 % 2 ≠ 0</td><td class="chg">10</td><td>5 % 3 ≠ 0</td><td class="chg">15</td></tr>
+      <tr class="now"><td>6</td><td>6 % 2 = 0</td><td class="chg">6</td><td>6 % 3 = 0</td><td class="chg">6</td></tr>
+    </table>
+    <p><b>The third line is the mark most often lost.</b> <code>nums</code> is unchanged,
+       because the function built a <b>new</b> list called <code>out</code> and never
+       mutated <code>L</code>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">8.3</span> Exam question 2 — find the output</h2>
+
+  <div class="qcard">
+    <span class="tag">3 marks</span>
+    <p>Write the output. Note the <code>global</code> statement carefully.</p>
+<pre class="code">total = <span class="n">100</span>
+
+<span class="k">def</span> <span class="b">spend</span>(amount):
+    <span class="k">global</span> total
+    total = total - amount
+    <span class="k">return</span> total
+
+<span class="k">def</span> <span class="b">peek</span>(amount):
+    total = total_of(amount)
+    <span class="k">return</span> total
+
+<span class="k">def</span> <span class="b">total_of</span>(a):
+    <span class="k">return</span> a * <span class="n">2</span>
+
+<span class="b">print</span>(<span class="b">spend</span>(<span class="n">30</span>))
+<span class="b">print</span>(<span class="b">peek</span>(<span class="n">5</span>))
+<span class="b">print</span>(total)</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>70
+10
+70</div>
+    <p><b>Line 1</b> — <code>spend</code> declared <code>global total</code>, so it really
+       changed the global from 100 to 70.</p>
+    <p><b>Line 2</b> — inside <code>peek</code>, <code>total</code> is a <b>local</b>
+       variable, because it is assigned there and there is no <code>global</code>
+       declaration. It is set to <code>total_of(5)</code> = 10 and returned.</p>
+    <p><b>Line 3</b> — the global is still 70. <code>peek</code>'s local
+       <code>total</code> died when the function returned and never touched it.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">8.4</span> Exam question 3 — write the function</h2>
+
+  <div class="qcard">
+    <span class="tag">3 marks</span>
+    <p>Write a function <code>marks_report(L)</code> that takes a list of marks and
+       <b>returns</b> a tuple containing the highest mark, the lowest mark and the average,
+       rounded to two decimal places. The original list must not be modified.
+       Then call it for <code>[45, 78, 92, 61, 88]</code> and print the three values on
+       separate lines.</p>
+  </div>
+
+  <div class="reveal ready ephemeral">Note the word "returns". 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="cosplit">
+      <div>
+<pre class="code"><span class="tag">report.py</span><span class="k">def</span> <span class="b">marks_report</span>(L):
+    high = <span class="b">max</span>(L)
+    low = <span class="b">min</span>(L)
+    avg = <span class="b">round</span>(<span class="b">sum</span>(L) / <span class="b">len</span>(L), <span class="n">2</span>)
+    <span class="k">return</span> high, low, avg
+
+marks = [<span class="n">45</span>, <span class="n">78</span>, <span class="n">92</span>, <span class="n">61</span>, <span class="n">88</span>]
+h, l, a = <span class="b">marks_report</span>(marks)
+
+<span class="b">print</span>(<span class="s">"Highest:"</span>, h)
+<span class="b">print</span>(<span class="s">"Lowest :"</span>, l)
+<span class="b">print</span>(<span class="s">"Average:"</span>, a)
+<span class="b">print</span>(<span class="s">"List   :"</span>, marks)</pre>
+      </div>
+      <div>
+        <div class="out"><span class="tag">Output</span>Highest: 92
+Lowest : 45
+Average: 72.8
+List   : [45, 78, 92, 61, 88]</div>
+        <div class="note">
+          <span class="tag">Where the three marks are</span>
+          <p><b>①</b> <code>return</code>, not <code>print</code>, inside the
+             function.<br>
+             <b>②</b> returning <b>three</b> values, i.e. a tuple, and unpacking it at the
+             call.<br>
+             <b>③</b> not sorting or mutating <code>L</code> — <code>max</code>,
+             <code>min</code> and <code>sum</code> only read it, so the last line proves
+             the list survived.</p>
+        </div>
+        <div class="warn">
+          <span class="tag">Careful</span>
+          <p><code>round(72.8, 2)</code> prints as <code>72.8</code>, not
+             <code>72.80</code> — Python does not pad a float with trailing zeros.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">8.5</span> Exam question 4 — two-mark theory</h2>
+
+  <div class="qcard">
+    <span class="tag">2 + 2 marks</span>
+    <ol>
+      <li>Differentiate between a <b>parameter</b> and an <b>argument</b>, with an example.</li>
+      <li>What is the difference between a <b>local</b> and a <b>global</b> variable?
+          When is the <code>global</code> keyword needed?</li>
+    </ol>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 1</span>
+    <p>A <b>parameter</b> is the variable named in the function <b>definition</b>; it acts
+       as a placeholder for the value the function will receive. An <b>argument</b> is the
+       actual value supplied in the function <b>call</b>, which is bound to the parameter
+       when the call is made.</p>
+    <p>In <code>def area(r):</code> … <code>area(3)</code>, the name <code>r</code> is the
+       parameter and the value <code>3</code> is the argument.</p>
+  </div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 2</span>
+    <p>A <b>local</b> variable is created inside a function; it exists only while that call
+       is executing and cannot be accessed from outside. A <b>global</b> variable is
+       created at the top level of the program; it can be <b>read</b> anywhere in the file,
+       including inside functions.</p>
+    <p>The <code>global</code> keyword is needed when a function must <b>assign</b> to a
+       global variable. Without it, any assignment inside the function creates a new local
+       variable instead, and reading the name before that assignment raises
+       <code>UnboundLocalError</code>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">8.6</span> One last challenge</h2>
+
+  <div class="challenge">
+    <span class="tag">Challenge</span>
+    <p>Predict the exact output. Every idea in this chapter is in here.</p>
+<pre class="code">data = [<span class="n">1</span>, <span class="n">2</span>]
+size = <span class="n">0</span>
+
+<span class="k">def</span> <span class="b">work</span>(L, extra=[], label=<span class="s">"run"</span>):
+    <span class="k">global</span> size
+    L.append(<span class="n">9</span>)
+    extra.append(label)
+    size = size + <span class="b">len</span>(L)
+    <span class="k">return</span> L, extra
+
+<span class="b">print</span>(<span class="b">work</span>(data))
+<span class="b">print</span>(<span class="b">work</span>(data, label=<span class="s">"again"</span>))
+<span class="b">print</span>(data, size)</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Three lines. Take your time. 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>([1, 2, 9], ['run'])
+([1, 2, 9, 9], ['run', 'again'])
+[1, 2, 9, 9] 7</div>
+    <table>
+      <tr><th class="lbl">What to notice</th><th class="lbl">Why</th></tr>
+      <tr><td class="lbl"><code>data</code> grew twice</td><td class="lbl">the list was <b>mutated</b> through the parameter — §7.2</td></tr>
+      <tr><td class="lbl"><code>extra</code> remembered <code>'run'</code></td><td class="lbl">the mutable default is one shared list — §7.4</td></tr>
+      <tr><td class="lbl">the result is bracketed</td><td class="lbl"><code>return L, extra</code> returns a <b>tuple</b> — §5.4</td></tr>
+      <tr><td class="lbl"><code>size</code> is 7</td><td class="lbl">0 + 3 on the first call, then + 4 on the second — §6.4</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="slide title-slide">
+  <div class="kicker">End of Chapter 2</div>
+  <h1>Next: Exception Handling</h1>
+  <div class="rule"></div>
+  <p class="sub">You have met four new tracebacks in this chapter alone —
+     <code>NameError</code>, <code>TypeError</code>, <code>SyntaxError</code>,
+     <code>UnboundLocalError</code>. Chapter 3 stops them ending the program.</p>
+
+  <div class="bridge narrow">
+    <span class="tag">Carry these three forward</span>
+    <p><b>①</b> A function that crashes returns <b>nothing</b> — the caller never gets its
+       answer, so the crash has to be handled somewhere.<br>
+       <b>②</b> The <b>call stack</b> — a function calling a function — is what a
+       traceback prints, innermost frame last.<br>
+       <b>③</b> <code>raise</code> and <code>assert</code> in Chapter 3 both live inside
+       functions, and both use the <code>return</code>-style “leave immediately”
+       behaviour you have just learned.</p>
+  </div>
+</section>
+
+</div>
+
+<button class="nav" id="prev" aria-label="Previous slide">←</button>
+<button class="nav" id="next" aria-label="Next slide">→</button>
+
+<script src="assets/deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,1044 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 10 · Python with MySQL — Class XII Computer Science</title>
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body>
+
+<div id="bar">
+  <div class="brand">CH 10 · PYTHON WITH MySQL</div>
+  <div class="sect" id="sect"></div>
+  <div class="tools">
+    <button id="menuBtn">Menu (m)</button>
+    <button id="fsBtn">Full screen (f)</button>
+    <span id="counter"></span>
+  </div>
+</div>
+<div id="progress"></div>
+
+<div id="menu">
+  <h3>Chapter 10 — Python with MySQL</h3>
+  <div class="mlist"></div>
+  <p class="hint">Press <kbd>m</kbd> or <kbd>Esc</kbd> to close</p>
+</div>
+
+<div id="stage">
+
+<!-- ===================== ORIENTATION ===================== -->
+
+<section class="slide title-slide" data-section="Orientation">
+  <div class="kicker">Unit 3 · Database Management</div>
+  <h1>Chapter 10<br>Python with MySQL</h1>
+  <div class="rule"></div>
+  <p class="sub">The last chapter of the course, and the one that joins the other nine —
+     SQL queries written inside a Python program, returning tuples you already know how
+     to handle.</p>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.1</span> Where we have got to</h2>
+
+  <div class="cosplit">
+    <div>
+      <div class="bridge">
+        <span class="tag">Chapter 9</span>
+        <p>You can write any query the syllabus asks for. But you typed it at a MySQL
+           prompt, read the answer with your eyes, and that was the end of it.</p>
+      </div>
+      <div class="card">
+        <h4>What a program can do that a prompt cannot</h4>
+        <ul>
+          <li>Ask a query <b>whose values come from the user</b></li>
+          <li><b>Loop</b> over the answer and compute with it</li>
+          <li>Write the result to a <b>file</b> or a <b>CSV</b></li>
+          <li>Run the same query <b>every night, automatically</b></li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="insight">
+        <span class="tag">Every chapter of this course, in one program</span>
+        <p><b>Ch 1</b> — a row comes back as a <b>tuple</b>; many rows as a <b>list</b> of
+           tuples.<br>
+           <b>Ch 2</b> — you wrap each query in a <b>function</b>.<br>
+           <b>Ch 3</b> — a database that is down raises an <b>exception</b>.<br>
+           <b>Ch 4</b> — you write the results to a <b>CSV</b>.<br>
+           <b>Ch 7</b> — you connect to a <b>host</b> over the network.<br>
+           <b>Ch 9</b> — the string you send <b>is</b> SQL.</p>
+      </div>
+      <div class="note">
+        <span class="tag">About the outputs in this deck</span>
+        <p>Every program was run against the <b>same STUDENT and STREAM tables</b> from
+           Chapters 8 and 9, through the same DB-API interface that
+           <code>mysql.connector</code> provides. The tuples shown are the real ones.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.2</span> The five steps, every single time</h2>
+
+  <figure>
+    <svg viewBox="0 0 900 230" role="img" aria-label="Five steps: connect to the database, create a cursor, execute a query, fetch the results, and close the connection">
+      <defs>
+        <marker id="arw-step" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#1f7ab8"/>
+        </marker>
+      </defs>
+
+      <rect x="14" y="70" width="146" height="76" rx="10" fill="#fdf6e3" stroke="#1f7ab8" stroke-width="3"/>
+      <text x="87" y="100" class="lab" text-anchor="middle">① connect</text>
+      <text x="87" y="126" text-anchor="middle">open the link</text>
+
+      <rect x="196" y="70" width="146" height="76" rx="10" fill="#fdf6e3" stroke="#1f7ab8" stroke-width="3"/>
+      <text x="269" y="100" class="lab" text-anchor="middle">② cursor</text>
+      <text x="269" y="126" text-anchor="middle">get a handle</text>
+
+      <rect x="378" y="70" width="146" height="76" rx="10" fill="#fdf6e3" stroke="#a17a00" stroke-width="3"/>
+      <text x="451" y="100" class="lab" text-anchor="middle">③ execute</text>
+      <text x="451" y="126" text-anchor="middle">send the SQL</text>
+
+      <rect x="560" y="70" width="146" height="76" rx="10" fill="#fdf6e3" stroke="#748500" stroke-width="3"/>
+      <text x="633" y="100" class="lab" text-anchor="middle">④ fetch</text>
+      <text x="633" y="126" text-anchor="middle">read the rows</text>
+
+      <rect x="742" y="70" width="146" height="76" rx="10" fill="#fdf6e3" stroke="#c62b28" stroke-width="3"/>
+      <text x="815" y="100" class="lab" text-anchor="middle">⑤ close</text>
+      <text x="815" y="126" text-anchor="middle">release it</text>
+
+      <path class="curve c-blue" d="M164,108 L190,108" marker-end="url(#arw-step)"/>
+      <path class="curve c-blue" d="M346,108 L372,108" marker-end="url(#arw-step)"/>
+      <path class="curve c-blue" d="M528,108 L554,108" marker-end="url(#arw-step)"/>
+      <path class="curve c-blue" d="M710,108 L736,108" marker-end="url(#arw-step)"/>
+
+      <text x="451" y="42" class="lab" text-anchor="middle">Every program in this chapter is these five steps.</text>
+      <text x="451" y="190" text-anchor="middle" fill="#b02522">For INSERT, UPDATE and DELETE, one more step sits between ③ and ⑤:</text>
+      <text x="451" y="214" class="lab" text-anchor="middle" fill="#b02522">con.commit()</text>
+    </svg>
+    <figcaption>Connect · cursor · execute · fetch · close. Memorise the order — it is a 2-mark question on its own.</figcaption>
+  </figure>
+
+  <div class="warn">
+    <span class="tag">Before any of it works</span>
+    <p>The connector must be installed once, from the command line — <b>not</b> from inside
+       Python:</p>
+    <p><code>pip install mysql-connector-python</code></p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.3</span> The connection, written once</h2>
+  <p class="lead">Four connection arguments repeated on every slide would bury the
+     lesson. So we do what Chapter 2 §3.4 called a <b>user-defined module</b>.</p>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">db.py — save this once</span><span class="k">import</span> mysql.connector
+
+<span class="k">def</span> <span class="b">connect</span>():
+    <span class="k">return</span> mysql.connector.connect(
+            host=<span class="s">"localhost"</span>,
+            user=<span class="s">"root"</span>,
+            password=<span class="s">"school123"</span>,
+            database=<span class="s">"school"</span>)</pre>
+      <div class="note">
+        <span class="tag">Why this is worth doing</span>
+        <p>The password now lives in <b>one file</b>. Change the server, the user or the
+           database and every program in the project follows — the Chapter 2 §2.1
+           argument for functions, applied to configuration.</p>
+      </div>
+    </div>
+    <div>
+<pre class="code"><span class="tag">every program from here starts like this</span><span class="k">from</span> db <span class="k">import</span> connect
+
+con = <span class="b">connect</span>()
+cur = con.cursor()
+
+<span class="c"># ... the work ...</span>
+
+con.close()</pre>
+      <div class="warn">
+        <span class="tag">In the exam, write it out in full</span>
+        <p>A question that says "write a program to connect to the database" wants to see
+           <code>mysql.connector.connect(host=…, user=…, password=…, database=…)</code>
+           <b>on the page</b>. Use <code>db.py</code> in your project and in the practical
+           file; write the full call in the written paper.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 1 · CONNECTING ===================== -->
+
+<section class="slide" data-section="1 · Connecting and reading">
+  <h2><span class="num">2.1</span> The first complete program</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">first.py</span><span class="k">import</span> mysql.connector
+
+con = mysql.connector.connect(
+        host=<span class="s">"localhost"</span>,
+        user=<span class="s">"root"</span>,
+        password=<span class="s">"school123"</span>,
+        database=<span class="s">"school"</span>)
+
+cur = con.cursor()
+cur.execute(<span class="s">"SELECT RollNo, Name, SCode, Marks, City FROM STUDENT"</span>)
+
+row = cur.fetchone()
+<span class="b">print</span>(row)
+<span class="b">print</span>(<span class="b">type</span>(row))
+<span class="b">print</span>(row[<span class="n">1</span>], row[<span class="n">3</span>])
+
+con.close()</pre>
+      <div class="reveal ready ephemeral">What shape does one row come back in? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>(101, 'Riya', 'S01', 88, 'Delhi')
+&lt;class 'tuple'&gt;
+Riya 88</div>
+      <div class="reveal insight">
+        <span class="tag">A row is a <b>tuple</b> — Chapter 1 §7</span>
+        <p>Ordered, indexable, and <b>immutable</b>. <code>row[1]</code> is the Name,
+           <code>row[3]</code> the Marks. The columns come back in the order you named
+           them in the <code>SELECT</code>, which is why naming them beats
+           <code>SELECT *</code>.</p>
+      </div>
+      <div class="reveal defn">
+        <span class="tag">The four connection arguments</span>
+        <table>
+          <tr><td class="lbl"><code>host</code></td><td class="lbl">where the server is — <code>"localhost"</code> is this machine</td></tr>
+          <tr><td class="lbl"><code>user</code></td><td class="lbl">the MySQL username</td></tr>
+          <tr><td class="lbl"><code>password</code></td><td class="lbl">that user's password</td></tr>
+          <tr><td class="lbl"><code>database</code></td><td class="lbl">which database on that server</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Two things worth knowing</span>
+    <p><b>①</b> <code>host="localhost"</code> is the Chapter 7 idea — the server could
+       equally be an IP address on another machine, and nothing else in the program would
+       change.<br>
+       <b>②</b> A <code>DECIMAL</code> column such as <code>Fee</code> comes back as a
+       <code>Decimal</code> object, not an <code>int</code> — which is why this program
+       lists its columns instead of using <code>SELECT *</code>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.2</span> What <code>connect</code> and <code>cursor</code> are for</h2>
+
+  <div class="cosplit">
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Connection object</span> — represents the open session
+           between your Python program and the MySQL server. It is created by
+           <code>connect()</code> and is what you <code>commit()</code> and
+           <code>close()</code>.</p>
+      </div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Cursor object</span> — a handle used to <b>execute</b>
+           statements over a connection and to <b>step through</b> the rows they return.
+           It is created by <code>con.cursor()</code>.</p>
+      </div>
+      <div class="insight">
+        <span class="tag">The analogy</span>
+        <p>The <b>connection</b> is the phone call to the database. The <b>cursor</b> is
+           your finger moving down the list of results it reads back to you.</p>
+      </div>
+    </div>
+    <div>
+<div class="note">
+        <span class="tag"><code>con.is_connected()</code></span>
+        <p>Returns <code>True</code> while the session is open and <code>False</code>
+           after <code>con.close()</code>. It is useful as a check before running a query
+           in a long-lived program.</p>
+      </div>
+      <div class="warn">
+        <span class="tag">Why <code>close()</code> matters</span>
+        <p>A MySQL server allows a limited number of simultaneous connections. A program
+           that opens one every time and never closes it will eventually be refused —
+           exactly like the unclosed files of Chapter 4 §2.4.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.3</span> <code>fetchall()</code> — all the rows at once</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">toppers.py</span><span class="k">import</span> mysql.connector
+
+con = mysql.connector.connect(
+        host=<span class="s">"localhost"</span>, user=<span class="s">"root"</span>,
+        password=<span class="s">"school123"</span>, database=<span class="s">"school"</span>)
+cur = con.cursor()
+
+cur.execute(<span class="s">"SELECT Name, Marks FROM STUDENT WHERE Marks &gt; 85"</span>)
+<span class="hl">data = cur.fetchall()</span>
+
+<span class="b">print</span>(data)
+<span class="b">print</span>(<span class="b">len</span>(data))
+
+<span class="k">for</span> rec <span class="k">in</span> data:
+    <span class="b">print</span>(rec[<span class="n">0</span>], rec[<span class="n">1</span>])
+
+con.close()</pre>
+      <div class="reveal ready ephemeral">Chapter 9 said 3 rows. What does Python show? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>[('Riya', 88), ('Aarav', 91), ('Meera', 94)]
+3
+Riya 88
+Aarav 91
+Meera 94</div>
+      <div class="reveal insight">
+        <span class="tag">A list of tuples</span>
+        <p><code>fetchall()</code> returns a <b>list</b>, and each item is a <b>tuple</b> —
+           one per row. So <code>data[0]</code> is a row and <code>data[0][1]</code> is a
+           value. Every list operation from Chapter 1 works on it:
+           <code>len</code>, slicing, <code>for</code>, <code>sorted</code>.</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">Unpack it for readable code</span>
+        <p><code>for name, marks in data:</code> unpacks each tuple straight into two
+           names — the tuple unpacking of Chapter 2 §5.4, and much clearer than
+           <code>rec[0]</code> and <code>rec[1]</code>.</p>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">When not to use it</span>
+        <p><code>fetchall()</code> loads <b>every</b> row into memory. For seven students
+           that is nothing; for a million rows it is a problem, and that is what
+           <code>fetchmany()</code> exists for.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.4</span> <code>fetchone</code>, <code>fetchmany</code>, <code>fetchall</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">fetching.py</span><span class="k">from</span> db <span class="k">import</span> connect
+
+con = <span class="b">connect</span>()
+cur = con.cursor()
+cur.execute(<span class="s">"SELECT Name, City FROM STUDENT"</span>)
+
+<span class="b">print</span>(cur.fetchone())
+<span class="b">print</span>(cur.fetchmany(<span class="n">3</span>))
+<span class="b">print</span>(cur.fetchone())
+<span class="b">print</span>(<span class="b">len</span>(cur.fetchall()))
+<span class="b">print</span>(cur.fetchall())</pre>
+      <div class="reveal ready ephemeral">Seven students in total. Track the cursor. 🤔</div>
+      <div class="reveal out"><span class="tag">Output</span>('Riya', 'Delhi')
+[('Aarav', 'Mumbai'), ('Kabir', 'Delhi'), ('Meera', 'Pune')]
+('Dev', 'Mumbai')
+2
+[]</div>
+    </div>
+    <div>
+      <div class="reveal">
+        <table class="trace">
+          <tr><th class="lbl">Call</th><th class="lbl">Returns</th><th>Rows taken</th><th>Left</th></tr>
+          <tr><td class="lbl">fetchone()</td><td class="lbl">Riya</td><td class="chg">1</td><td>6</td></tr>
+          <tr><td class="lbl">fetchmany(3)</td><td class="lbl">Aarav, Kabir, Meera</td><td class="chg">3</td><td>3</td></tr>
+          <tr><td class="lbl">fetchone()</td><td class="lbl">Dev</td><td class="chg">1</td><td>2</td></tr>
+          <tr class="now"><td class="lbl">fetchall()</td><td class="lbl">Ishan, Nisha</td><td class="chg">2</td><td>0</td></tr>
+          <tr><td class="lbl">fetchall()</td><td class="lbl">nothing left</td><td>0</td><td>0</td></tr>
+        </table>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">The cursor moves forward and never goes back</span>
+        <p>This is exactly the <b>file pointer</b> of Chapter 4 §3.2. Each fetch consumes
+           rows; the next fetch continues from there. The final
+           <code>fetchall()</code> returns <code>[]</code> because nothing remains — just
+           as a second <code>read()</code> on a file gives <code>""</code>.</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">What each returns when empty</span>
+        <p><code>fetchone()</code> → <b><code>None</code></b><br>
+           <code>fetchmany(n)</code> → <b><code>[]</code></b><br>
+           <code>fetchall()</code> → <b><code>[]</code></b><br>
+           So <code>if row is None:</code> is how you test that a search found nothing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.5</span> <code>rowcount</code>, and when a search finds nothing</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">notfound.py</span><span class="k">from</span> db <span class="k">import</span> connect
+
+con = <span class="b">connect</span>()
+cur = con.cursor()
+cur.execute(<span class="s">"SELECT Name FROM STUDENT WHERE Marks &gt; 90"</span>)
+
+<span class="b">print</span>(cur.fetchone())
+<span class="b">print</span>(cur.fetchone())
+<span class="hl"><span class="b">print</span>(cur.fetchone())</span></pre>
+      <div class="reveal ready ephemeral">Only two students beat 90. What is the third call? 🤔</div>
+      <div class="reveal out"><span class="tag">Output</span>('Aarav',)
+('Meera',)
+None</div>
+      <div class="reveal warn">
+        <span class="tag">Read the first two lines carefully</span>
+        <p><code>('Aarav',)</code> — with a <b>trailing comma</b>. It is a
+           <b>one-element tuple</b>, because the SELECT asked for one column. Chapter 1
+           §7.1 warned you about exactly this notation. To get the string itself, write
+           <code>row[0]</code>.</p>
+      </div>
+    </div>
+    <div>
+      <div class="defn">
+        <span class="tag"><code>cursor.rowcount</code></span>
+        <p>The number of rows <b>affected</b> by the last statement.</p>
+        <p>For <code>INSERT</code>, <code>UPDATE</code> and <code>DELETE</code> it is the
+           number of rows changed — reliable and immediate.</p>
+        <p>For a <code>SELECT</code> it is the number of rows retrieved <b>once they have
+           been fetched</b>; before that it may be <code>-1</code>.</p>
+      </div>
+      <div class="insight">
+        <span class="tag">So for counting a SELECT, use <code>len()</code></span>
+        <p><code>len(cur.fetchall())</code> is always correct and always clear.
+           Keep <code>rowcount</code> for the DML statements in §3, where it is exactly
+           what you want.</p>
+      </div>
+      <div class="eg">
+        <span class="tag">The standard "was anything found?" pattern</span>
+<pre class="code"><span class="k">from</span> db <span class="k">import</span> connect
+con = <span class="b">connect</span>(); cur = con.cursor()
+
+cur.execute(<span class="s">"SELECT Name FROM STUDENT WHERE RollNo = 999"</span>)
+row = cur.fetchone()
+<span class="k">if</span> row <span class="k">is</span> <span class="k">None</span>:
+    <span class="b">print</span>(<span class="s">"No such student"</span>)
+<span class="k">else</span>:
+    <span class="b">print</span>(row[<span class="n">0</span>])</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 2 · CHANGING DATA ===================== -->
+
+<section class="slide" data-section="2 · Changing the data">
+  <h2><span class="num">3.1</span> INSERT, UPDATE, DELETE — and <code>commit()</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">change.py</span><span class="k">from</span> db <span class="k">import</span> connect
+
+con = <span class="b">connect</span>()
+cur = con.cursor()
+
+cur.execute(<span class="s">"INSERT INTO STUDENT VALUES "</span>
+            <span class="s">"(108,'Tara','S03',82,'Delhi',4000)"</span>)
+<span class="b">print</span>(<span class="s">"rows inserted:"</span>, cur.rowcount)
+<span class="hl">con.commit()</span>
+
+cur.execute(<span class="s">"UPDATE STUDENT SET Fee = Fee + 500 "</span>
+            <span class="s">"WHERE SCode = 'S02'"</span>)
+<span class="b">print</span>(<span class="s">"rows updated :"</span>, cur.rowcount)
+<span class="hl">con.commit()</span>
+
+cur.execute(<span class="s">"DELETE FROM STUDENT WHERE Marks &lt; 60"</span>)
+<span class="b">print</span>(<span class="s">"rows deleted :"</span>, cur.rowcount)
+<span class="hl">con.commit()</span>
+
+cur.execute(<span class="s">"SELECT COUNT(*) FROM STUDENT"</span>)
+<span class="b">print</span>(<span class="s">"rows now     :"</span>, cur.fetchone()[<span class="n">0</span>])</pre>
+      <div class="reveal ready ephemeral">Four numbers. Start from 7 students. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>rows inserted: 1
+rows updated : 3
+rows deleted : 1
+rows now     : 7</div>
+      <div class="reveal insight">
+        <span class="tag">Trace the count</span>
+        <p>7 students, <b>+1</b> for Tara = 8, then <b>−1</b> for Dev (59 marks) = <b>7</b>.
+           Nisha survived the delete because <code>NULL &lt; 60</code> is not true —
+           Chapter 9 §3.3.</p>
+        <p><code>rowcount</code> was <b>3</b> for the update because three students are in
+           S02: Kabir, Dev and Nisha.</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag"><code>fetchone()[0]</code></span>
+        <p><code>fetchone()</code> gives the tuple <code>(7,)</code>; the
+           <code>[0]</code> pulls the number out of it. This is the standard way to read a
+           single aggregate value.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.2</span> What happens without <code>commit()</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">forgot.py — no commit anywhere</span>con = mysql.connector.connect(...)
+cur = con.cursor()
+cur.execute(<span class="s">"INSERT INTO STUDENT VALUES "</span>
+            <span class="s">"(110,'Zoya','S03',85,'Delhi',4000)"</span>)
+<span class="b">print</span>(<span class="s">"inserted, not committed"</span>)
+con.close()
+
+<span class="c"># a fresh connection, later</span>
+con = mysql.connector.connect(...)
+cur = con.cursor()
+cur.execute(<span class="s">"SELECT COUNT(*) FROM STUDENT"</span>)
+<span class="b">print</span>(<span class="s">"rows in the table:"</span>, cur.fetchone()[<span class="n">0</span>])
+con.close()</pre>
+      <div class="reveal ready ephemeral">Is Zoya in the table? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>inserted, not committed
+rows in the table: 7</div>
+      <div class="reveal warn">
+        <span class="tag">Zoya was never saved</span>
+        <p>Still 7, not 8. The <code>INSERT</code> ran, reported success, and was then
+           <b>discarded</b> when the connection closed without a commit. <b>No error, no
+           warning.</b></p>
+      </div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Transaction</span> — a group of statements treated as one
+           unit. <code>commit()</code> makes them permanent;
+           <code>rollback()</code> undoes them all.</p>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">Why a database behaves this way</span>
+        <p>So that a half-finished job can be abandoned cleanly. Transferring money is two
+           updates — take from one account, add to the other. If the second fails, you
+           want <b>neither</b> to have happened. <code>commit()</code> is you saying
+           "both parts worked; make it real".</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">The exam rule</span>
+        <p><b><code>SELECT</code> never needs a commit. <code>INSERT</code>,
+           <code>UPDATE</code> and <code>DELETE</code> always do.</b> A missing
+           <code>con.commit()</code> is the most commonly deducted mark in this
+           chapter.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 3 · PARAMETERISED QUERIES ===================== -->
+
+<section class="slide" data-section="3 · Parameterised queries">
+  <h2><span class="num">4.1</span> Queries built from user input</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">the tempting, wrong way</span><span class="k">from</span> db <span class="k">import</span> connect
+con = <span class="b">connect</span>(); cur = con.cursor()
+
+city = <span class="b">input</span>(<span class="s">"City: "</span>)
+
+q = <span class="s">"SELECT Name, Marks FROM STUDENT "</span> \
+    <span class="s">"WHERE City = '"</span> + city + <span class="s">"'"</span>
+cur.execute(q)
+<span class="b">print</span>(cur.fetchall())</pre>
+      <div class="note">
+        <span class="tag">It does work — for well-behaved input</span>
+        <p>Type <code>Delhi</code> and you get the three Delhi students. Which is exactly
+           why the problem goes unnoticed.</p>
+      </div>
+<pre class="code"><span class="tag">the right way — a placeholder</span><span class="k">from</span> db <span class="k">import</span> connect
+con = <span class="b">connect</span>(); cur = con.cursor()
+
+city = <span class="b">input</span>(<span class="s">"City: "</span>)
+
+<span class="hl">cur.execute(<span class="s">"SELECT Name, Marks FROM STUDENT "</span></span>
+<span class="hl">            <span class="s">"WHERE City = %s"</span>, (city,))</span>
+<span class="b">print</span>(cur.fetchall())</pre>
+      <div class="reveal out"><span class="tag">Output — user types Delhi</span>City: Delhi
+[('Riya', 88), ('Kabir', 76), ('Ishan', 67)]</div>
+    </div>
+    <div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Parameterised query</span> — a query in which values are
+           replaced by <b>placeholders</b>, with the actual values passed separately as a
+           <b>tuple</b>. The connector inserts them safely, quoting and escaping as
+           needed.</p>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">Three details that are marked</span>
+        <p><b>①</b> The placeholder in <code>mysql.connector</code> is <code>%s</code> —
+           for <b>every</b> type, including numbers. Never <code>%d</code>.<br>
+           <b>②</b> There are <b>no quotes</b> around <code>%s</code>, even for text. The
+           connector adds them.<br>
+           <b>③</b> The values go in a <b>tuple</b>. One value needs the trailing comma:
+           <code>(city,)</code> — Chapter 1 §7.1 again.</p>
+      </div>
+      <div class="reveal">
+<pre class="code"><span class="tag">inserting the same way</span><span class="k">from</span> db <span class="k">import</span> connect
+con = <span class="b">connect</span>(); cur = con.cursor()
+
+rec = (<span class="n">109</span>, <span class="s">"Omar"</span>, <span class="s">"S01"</span>, <span class="n">73</span>, <span class="s">"Pune"</span>, <span class="n">4500</span>)
+
+cur.execute(<span class="s">"INSERT INTO STUDENT VALUES "</span>
+            <span class="s">"(%s,%s,%s,%s,%s,%s)"</span>, rec)
+con.commit()
+<span class="b">print</span>(<span class="s">"inserted:"</span>, cur.rowcount)</pre>
+        <div class="out"><span class="tag">Output</span>inserted: 1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.2</span> Why it matters — SQL injection</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">the attack</span><span class="k">from</span> db <span class="k">import</span> connect
+con = <span class="b">connect</span>(); cur = con.cursor()
+
+name = <span class="b">input</span>(<span class="s">"Name: "</span>)
+
+q = <span class="s">"SELECT Name, Marks FROM STUDENT "</span> \
+    <span class="s">"WHERE Name = '"</span> + name + <span class="s">"'"</span>
+<span class="b">print</span>(q)
+cur.execute(q)
+<span class="b">print</span>(<span class="b">len</span>(cur.fetchall()), <span class="s">"rows returned"</span>)</pre>
+      <div class="reveal ready ephemeral">The user types: <code>Riya' OR '1'='1</code> 🤔</div>
+      <div class="reveal out"><span class="tag">Output</span>Name: Riya' OR '1'='1
+SELECT Name, Marks FROM STUDENT WHERE Name = 'Riya' OR '1'='1'
+7 rows returned</div>
+    </div>
+    <div>
+      <div class="reveal warn">
+        <span class="tag">Read the query that was actually sent</span>
+        <p>The user's quote <b>closed</b> the string early, and everything after it became
+           <b>part of the SQL</b>. <code>'1'='1'</code> is always true, so the
+           <code>WHERE</code> matched <b>every row</b> — all seven students, not one.</p>
+        <p>The same trick with <code>'; DROP TABLE STUDENT; --</code> does rather more
+           damage.</p>
+      </div>
+      <div class="reveal">
+<pre class="code"><span class="tag">the same input, parameterised</span><span class="k">from</span> db <span class="k">import</span> connect
+con = <span class="b">connect</span>(); cur = con.cursor()
+
+cur.execute(<span class="s">"SELECT Name, Marks FROM STUDENT "</span>
+            <span class="s">"WHERE Name = %s"</span>, (name,))
+<span class="b">print</span>(<span class="b">len</span>(cur.fetchall()), <span class="s">"rows returned"</span>)</pre>
+        <div class="out"><span class="tag">Output</span>0 rows returned</div>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">Zero — and that is correct</span>
+        <p>The whole input was treated as <b>one name to look for</b>. No student is called
+           <code>Riya' OR '1'='1</code>, so nothing matched. The value never became code.</p>
+      </div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">SQL injection</span> — an attack in which input supplied by a
+           user is interpreted as part of an SQL statement, letting the attacker read,
+           alter or destroy data. It is prevented by using <b>parameterised queries</b>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 4 · PUTTING IT TOGETHER ===================== -->
+
+<section class="slide" data-section="4 · Putting it together">
+  <h2><span class="num">5.1</span> A complete, well-written program</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">toppers.py</span><span class="k">import</span> mysql.connector
+
+<span class="k">def</span> <span class="b">show_toppers</span>(limit):
+    con = mysql.connector.connect(
+            host=<span class="s">"localhost"</span>, user=<span class="s">"root"</span>,
+            password=<span class="s">"school123"</span>, database=<span class="s">"school"</span>)
+    cur = con.cursor()
+    cur.execute(<span class="s">"SELECT Name, Marks FROM STUDENT "</span>
+                <span class="s">"WHERE Marks &gt; %s ORDER BY Marks DESC"</span>,
+                (limit,))
+    rows = cur.fetchall()
+    con.close()
+    <span class="k">return</span> rows
+
+data = <span class="b">show_toppers</span>(<span class="n">70</span>)
+<span class="b">print</span>(data)
+<span class="b">print</span>(<span class="s">"count:"</span>, <span class="b">len</span>(data))
+
+<span class="k">for</span> name, marks <span class="k">in</span> data:
+    <span class="b">print</span>(name, <span class="s">"-&gt;"</span>, marks)</pre>
+      <div class="reveal ready ephemeral">Who scores above 70, and in what order? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>[('Meera', 94), ('Aarav', 91), ('Riya', 88), ('Kabir', 76)]
+count: 4
+Meera -&gt; 94
+Aarav -&gt; 91
+Riya -&gt; 88
+Kabir -&gt; 76</div>
+      <div class="reveal insight">
+        <span class="tag">Five good decisions in fifteen lines</span>
+        <p><b>①</b> the query lives in a <b>function</b> that can be reused — Ch 2<br>
+           <b>②</b> the value is <b>parameterised</b>, not concatenated — §4.1<br>
+           <b>③</b> the function <b>returns</b> the data rather than printing it, so the
+           caller decides what to do — Ch 2 §5.2<br>
+           <b>④</b> <code>ORDER BY</code> is done by the <b>database</b>, not by Python —
+           Ch 9<br>
+           <b>⑤</b> the connection is <b>closed</b> before returning</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">Nisha is absent from the result</span>
+        <p>Her Marks is NULL, and <code>NULL &gt; 70</code> is not true. The Chapter 9 NULL
+           rule reaches all the way into the Python output.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.2</span> Guarding it — Chapter 3, used for real</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">safe.py</span><span class="k">import</span> mysql.connector
+
+con = <span class="k">None</span>
+<span class="k">try</span>:
+    con = mysql.connector.connect(
+            host=<span class="s">"localhost"</span>, user=<span class="s">"root"</span>,
+            password=<span class="s">"school123"</span>, database=<span class="s">"school"</span>)
+    cur = con.cursor()
+    cur.execute(<span class="s">"SELECT Name FROM STUDENT WHERE City = %s"</span>,
+                (<span class="s">"Delhi"</span>,))
+    <span class="k">for</span> row <span class="k">in</span> cur.fetchall():
+        <span class="b">print</span>(row[<span class="n">0</span>])
+
+<span class="k">except</span> mysql.connector.Error <span class="k">as</span> e:
+    <span class="b">print</span>(<span class="s">"Database error:"</span>, e)
+
+<span class="k">finally</span>:
+    <span class="k">if</span> con <span class="k">is</span> <span class="k">not</span> <span class="k">None</span>:
+        con.close()
+    <span class="b">print</span>(<span class="s">"connection closed"</span>)</pre>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output — when all is well</span>Riya
+Kabir
+Ishan
+connection closed</div>
+      <div class="reveal bridge">
+        <span class="tag">This is Chapter 3 §6.2 and Chapter 4 §2.6</span>
+        <p>The <b>risky</b> statement is in <code>try</code>; the <b>cleanup</b> is in
+           <code>finally</code>, so the connection is closed whether the query succeeded,
+           failed, or the server was never reachable at all.</p>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">What can actually go wrong here</span>
+        <p>The server may be down, the password wrong, the database absent, or the SQL
+           itself invalid. Every one of them raises
+           <code>mysql.connector.Error</code> — and without the handler the program dies
+           with a traceback in front of the user.</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">Why <code>con = None</code> first</span>
+        <p>If <code>connect()</code> is what failed, the name <code>con</code> would never
+           have been bound, and <code>finally</code> would raise
+           <code>NameError</code> while trying to close it. Setting it to
+           <code>None</code> first makes the <code>if</code> test possible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RECAP AND EXAM ===================== -->
+
+<section class="slide" data-section="Recap and exam practice">
+  <h2><span class="num">6.1</span> Everything on one screen</h2>
+
+  <h3>The five steps</h3>
+  <div class="chips">
+    <span class="chip k">import mysql.connector</span>
+    <span class="chip k">connect(host, user, password, database)</span>
+    <span class="chip k">con.cursor()</span>
+    <span class="chip k">cur.execute(sql)</span>
+    <span class="chip k">fetch</span>
+    <span class="chip k">con.close()</span>
+  </div>
+
+  <h3>Fetching</h3>
+  <div class="chips">
+    <span class="chip k">fetchone() → one tuple, or None</span>
+    <span class="chip k">fetchmany(n) → a list of n tuples</span>
+    <span class="chip k">fetchall() → a list of all remaining</span>
+    <span class="chip">the cursor only moves forward</span>
+    <span class="chip">('Aarav',) — one column is still a tuple</span>
+    <span class="chip">len(fetchall()) to count</span>
+  </div>
+
+  <h3>Changing data</h3>
+  <div class="chips">
+    <span class="chip k">con.commit() after INSERT / UPDATE / DELETE</span>
+    <span class="chip">no commit = silently discarded</span>
+    <span class="chip k">cur.rowcount = rows affected</span>
+    <span class="chip">rollback() undoes</span>
+  </div>
+
+  <h3>Safety</h3>
+  <div class="chips">
+    <span class="chip k">%s placeholders, never string joining</span>
+    <span class="chip k">values passed as a tuple — (city,)</span>
+    <span class="chip k">SQL injection</span>
+    <span class="chip">try / except mysql.connector.Error / finally</span>
+  </div>
+
+  <div class="insight">
+    <span class="tag">The three sentences worth the most marks</span>
+    <p>“<b>A cursor is an object used to execute SQL statements and to traverse the rows
+       returned by them.</b>”<br>
+       “<b><code>fetchone()</code> returns a single record as a tuple, or
+       <code>None</code>; <code>fetchall()</code> returns all remaining records as a list
+       of tuples.</b>”<br>
+       “<b><code>commit()</code> must be called after INSERT, UPDATE or DELETE, otherwise
+       the changes are not saved to the database.</b>”</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.2</span> Exam question 1 — complete the program</h2>
+
+  <div class="qcard">
+    <span class="tag">4 marks</span>
+    <p>Fill in the four blanks so the program displays the name and marks of every
+       student of stream <code>S01</code>.</p>
+<pre class="code"><span class="k">import</span> mysql.connector
+
+con = mysql.connector.____(host=<span class="s">"localhost"</span>, user=<span class="s">"root"</span>,
+        password=<span class="s">"school123"</span>, database=<span class="s">"school"</span>)   <span class="c"># (i)</span>
+
+cur = con.____()                                        <span class="c"># (ii)</span>
+
+cur.execute(<span class="s">"SELECT Name, Marks FROM STUDENT WHERE SCode = 'S01'"</span>)
+
+data = cur.____()                                       <span class="c"># (iii)</span>
+
+<span class="k">for</span> rec <span class="k">in</span> data:
+    <span class="b">print</span>(rec[<span class="n">0</span>], rec[<span class="n">1</span>])
+
+con.____()                                              <span class="c"># (iv)</span></pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>(i)</b> <code>connect</code> &nbsp;·&nbsp; <b>(ii)</b> <code>cursor</code>
+       &nbsp;·&nbsp; <b>(iii)</b> <code>fetchall</code> &nbsp;·&nbsp;
+       <b>(iv)</b> <code>close</code></p>
+    <div class="out"><span class="tag">Output</span>Riya 88
+Aarav 91
+Meera 94</div>
+    <p class="small"><code>fetchone</code> would also be legal Python at (iii), but the
+       <code>for</code> loop below expects a <b>list</b> of records — so
+       <code>fetchall</code> is the only answer that makes the program work.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.3</span> Exam question 2 — write the program</h2>
+
+  <div class="qcard">
+    <span class="tag">4 marks</span>
+    <p>Write a function <code>add_student()</code> that reads a roll number, name, stream
+       code, marks and city from the user and inserts the record into the
+       <code>STUDENT</code> table, then displays how many rows were added. Use a
+       parameterised query.</p>
+  </div>
+
+  <div class="reveal ready ephemeral">Two things must appear or you lose marks. 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="cosplit">
+      <div>
+<pre class="code"><span class="tag">add.py</span><span class="k">import</span> mysql.connector
+
+<span class="k">def</span> <span class="b">add_student</span>():
+    con = mysql.connector.connect(
+            host=<span class="s">"localhost"</span>, user=<span class="s">"root"</span>,
+            password=<span class="s">"school123"</span>, database=<span class="s">"school"</span>)
+    cur = con.cursor()
+
+    r = <span class="b">int</span>(<span class="b">input</span>(<span class="s">"Roll no: "</span>))
+    n = <span class="b">input</span>(<span class="s">"Name   : "</span>)
+    s = <span class="b">input</span>(<span class="s">"Stream : "</span>)
+    m = <span class="b">int</span>(<span class="b">input</span>(<span class="s">"Marks  : "</span>))
+    c = <span class="b">input</span>(<span class="s">"City   : "</span>)
+
+    cur.execute(<span class="s">"INSERT INTO STUDENT "</span>
+                <span class="s">"(RollNo, Name, SCode, Marks, City) "</span>
+                <span class="s">"VALUES (%s, %s, %s, %s, %s)"</span>,
+                (r, n, s, m, c))
+<span class="hl">    con.commit()</span>
+    <span class="b">print</span>(<span class="s">"Rows added:"</span>, cur.rowcount)
+    con.close()
+
+<span class="b">add_student</span>()</pre>
+      </div>
+      <div>
+        <div class="out"><span class="tag">Output</span>Roll no: 111
+Name   : Zoya
+Stream : S03
+Marks  : 85
+City   : Delhi
+Rows added: 1</div>
+        <div class="note">
+          <span class="tag">Where the four marks are</span>
+          <p><b>①</b> <code>connect</code> and <code>cursor</code> correctly.<br>
+             <b>②</b> <b><code>%s</code> placeholders</b> with the values in a
+             <b>tuple</b> — not string concatenation.<br>
+             <b>③</b> <b><code>con.commit()</code></b> — the most commonly missed mark in
+             the whole chapter.<br>
+             <b>④</b> <code>cur.rowcount</code> and <code>con.close()</code>.</p>
+        </div>
+        <div class="warn">
+          <span class="tag">Also note</span>
+          <p><code>int()</code> around the roll number and marks — <code>input()</code>
+             returns a string, exactly as Chapter 1 §2.8 said. Fee is omitted, so its
+             <code>DEFAULT</code> from Chapter 9 §2.1 supplies it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.4</span> Exam question 3 — theory</h2>
+
+  <div class="qcard">
+    <span class="tag">2 + 2 + 2 marks</span>
+    <ol>
+      <li>What is a <b>cursor</b>? Name any two of its methods.</li>
+      <li>Differentiate between <code>fetchone()</code> and <code>fetchall()</code>.</li>
+      <li>Why is <code>commit()</code> needed? What happens if it is omitted?</li>
+    </ol>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 1</span>
+    <p>A <b>cursor</b> is an object created from a database connection that is used to
+       <b>execute SQL statements</b> and to <b>traverse the records</b> returned by a
+       query. It keeps track of the current position in the result set.</p>
+    <p>Methods: <code>execute()</code>, <code>fetchone()</code>, <code>fetchall()</code>,
+       <code>fetchmany()</code>; and the attribute <code>rowcount</code>.</p>
+  </div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 2</span>
+    <p><code>fetchone()</code> returns the <b>next single record</b> as a <b>tuple</b>, and
+       returns <code>None</code> when no rows remain.</p>
+    <p><code>fetchall()</code> returns <b>all the remaining records</b> as a <b>list of
+       tuples</b>, and returns an empty list <code>[]</code> if none remain.</p>
+  </div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 3</span>
+    <p><code>commit()</code> makes permanent the changes made by <code>INSERT</code>,
+       <code>UPDATE</code> and <code>DELETE</code> statements. Until it is called those
+       changes exist only inside the current <b>transaction</b>.</p>
+    <p>If it is omitted, the changes are <b>discarded</b> when the connection closes — the
+       database is left unaltered, and <b>no error message is produced</b>, which is what
+       makes the mistake so hard to find.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.5</span> One last challenge</h2>
+
+  <div class="challenge">
+    <span class="tag">Challenge</span>
+    <p>This program is meant to print the names of Delhi students and then their count.
+       Find <b>three</b> faults and predict what it actually prints.</p>
+<pre class="code"><span class="ln">1</span><span class="k">import</span> mysql.connector
+<span class="ln">2</span>con = mysql.connector.connect(host=<span class="s">"localhost"</span>, user=<span class="s">"root"</span>,
+<span class="ln">3</span>        password=<span class="s">"school123"</span>, database=<span class="s">"school"</span>)
+<span class="ln">4</span>cur = con.cursor()
+<span class="ln">5</span>city = <span class="s">"Delhi"</span>
+<span class="ln">6</span>cur.execute(<span class="s">"SELECT Name FROM STUDENT WHERE City = "</span> + city)
+<span class="ln">7</span><span class="k">for</span> row <span class="k">in</span> cur.fetchall():
+<span class="ln">8</span>    <span class="b">print</span>(row)
+<span class="ln">9</span><span class="b">print</span>(<span class="s">"Count:"</span>, <span class="b">len</span>(cur.fetchall()))</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Three faults. Take your time. 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <table>
+      <tr><th>Line</th><th class="lbl">Fault</th><th class="lbl">Fix</th></tr>
+      <tr><td>6</td><td class="lbl">the value is <b>concatenated</b>, and with no quotes — MySQL reads <code>Delhi</code> as a column name and raises an error</td><td class="lbl">use <code>WHERE City = %s</code> with <code>(city,)</code></td></tr>
+      <tr><td>8</td><td class="lbl">prints the whole <b>tuple</b>, so the output is <code>('Riya',)</code>, not <code>Riya</code></td><td class="lbl"><code>print(row[0])</code></td></tr>
+      <tr class="now"><td>9</td><td class="lbl">the <b>second</b> <code>fetchall()</code> returns <code>[]</code> — line 7 already consumed every row</td><td class="lbl">store <code>rows = cur.fetchall()</code> once, then use it twice</td></tr>
+    </table>
+    <p><b>If line 6 is corrected but 8 and 9 are not, it prints:</b></p>
+    <div class="out"><span class="tag">Output</span>('Riya',)
+('Kabir',)
+('Ishan',)
+Count: 0</div>
+    <p><code>Count: 0</code> is the interesting one — three students were found, and the
+       count still says zero, because the cursor had already been exhausted. That is the
+       Chapter 4 file-pointer lesson arriving in the very last program of the course.</p>
+  </div>
+</section>
+
+<section class="slide title-slide">
+  <div class="kicker">End of the course</div>
+  <h1>Ten chapters,<br>one program</h1>
+  <div class="rule"></div>
+  <p class="sub">The last program in this deck reads a <b>tuple</b> from a
+     <b>database</b> over a <b>network</b>, inside a <b>function</b>, guarded by
+     <b>exception handling</b> — and could write the result to a <b>CSV</b> or push it
+     onto a <b>stack</b>.</p>
+
+  <div class="bridge narrow">
+    <span class="tag">What to revise, in order of marks</span>
+    <p><b>①</b> <b>Predict the output</b> — Chapters 1–5. The cheapest marks in the paper
+       and the ones most often lost.<br>
+       <b>②</b> <b>Write the SQL</b> — Chapter 9. Six one-mark queries appear every
+       year.<br>
+       <b>③</b> <b>Draw and justify</b> — Chapters 6–7. The case study is five marks and
+       the reason is always the mark.<br>
+       <b>④</b> <b>Write the program</b> — Chapters 2, 4, 5 and 10, which is also the
+       whole practical file.</p>
+  </div>
+</section>
+
+</div>
+
+<button class="nav" id="prev" aria-label="Previous slide">←</button>
+<button class="nav" id="next" aria-label="Next slide">→</button>
+
+<script src="assets/deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,1439 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 9 · SQL — Class XII Computer Science</title>
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body>
+
+<div id="bar">
+  <div class="brand">CH 9 · SQL</div>
+  <div class="sect" id="sect"></div>
+  <div class="tools">
+    <button id="menuBtn">Menu (m)</button>
+    <button id="fsBtn">Full screen (f)</button>
+    <span id="counter"></span>
+  </div>
+</div>
+<div id="progress"></div>
+
+<div id="menu">
+  <h3>Chapter 9 — SQL</h3>
+  <div class="mlist"></div>
+  <p class="hint">Press <kbd>m</kbd> or <kbd>Esc</kbd> to close</p>
+</div>
+
+<div id="stage">
+
+<!-- ===================== ORIENTATION ===================== -->
+
+<section class="slide title-slide" data-section="Orientation">
+  <div class="kicker">Unit 3 · Database Management</div>
+  <h1>Chapter 9<br>SQL</h1>
+  <div class="rule"></div>
+  <p class="sub">One language for creating tables, changing them, and asking them
+     questions. Every query in this deck was run against the two tables from
+     Chapter 8.</p>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.1</span> The two tables, once more</h2>
+  <p class="lead">Learn these ten rows now. <b>Every</b> query in this chapter runs
+     against them, so you can spend your attention on the query instead of the data.</p>
+
+  <div class="cosplit">
+    <div>
+      <h3>STUDENT</h3>
+      <table>
+        <tr><th class="lbl">RollNo <span class="small">(PK)</span></th><th class="lbl">Name</th><th class="lbl">SCode <span class="small">(FK)</span></th><th>Marks</th><th class="lbl">City</th><th>Fee</th></tr>
+        <tr><td class="lbl">101</td><td class="lbl">Riya</td><td class="lbl">S01</td><td>88</td><td class="lbl">Delhi</td><td>4500</td></tr>
+        <tr><td class="lbl">102</td><td class="lbl">Aarav</td><td class="lbl">S01</td><td>91</td><td class="lbl">Mumbai</td><td>4500</td></tr>
+        <tr><td class="lbl">103</td><td class="lbl">Kabir</td><td class="lbl">S02</td><td>76</td><td class="lbl">Delhi</td><td>3800</td></tr>
+        <tr><td class="lbl">104</td><td class="lbl">Meera</td><td class="lbl">S01</td><td>94</td><td class="lbl">Pune</td><td>4500</td></tr>
+        <tr><td class="lbl">105</td><td class="lbl">Dev</td><td class="lbl">S02</td><td>59</td><td class="lbl">Mumbai</td><td>3800</td></tr>
+        <tr><td class="lbl">106</td><td class="lbl">Ishan</td><td class="lbl">S03</td><td>67</td><td class="lbl">Delhi</td><td>4000</td></tr>
+        <tr><td class="lbl">107</td><td class="lbl">Nisha</td><td class="lbl">S02</td><td class="hi">NULL</td><td class="lbl">Pune</td><td>3800</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>STREAM</h3>
+      <table>
+        <tr><th class="lbl">SCode <span class="small">(PK)</span></th><th class="lbl">SName</th><th class="lbl">HOD</th></tr>
+        <tr><td class="lbl">S01</td><td class="lbl">Computer Science</td><td class="lbl">Sharma</td></tr>
+        <tr><td class="lbl">S02</td><td class="lbl">Informatics</td><td class="lbl">Iyer</td></tr>
+        <tr><td class="lbl">S03</td><td class="lbl">Physics</td><td class="lbl">Rao</td></tr>
+      </table>
+
+      <div class="warn">
+        <span class="tag">Four facts to memorise about this data</span>
+        <p><b>①</b> 7 students, 3 streams.<br>
+           <b>②</b> Nisha's Marks is <b>NULL</b>.<br>
+           <b>③</b> Delhi has 3 students; Mumbai and Pune have 2 each.<br>
+           <b>④</b> S01 has 3 students, S02 has 3, S03 has 1.</p>
+      </div>
+
+      <div class="insight">
+        <span class="tag">How every slide from here is built</span>
+        <p><b>The query</b> in a blue frame → you predict → <b>the result set</b> in a
+           table. The result is always revealed last. Say the row count out loud before
+           you look; it is the fastest way to catch a wrong answer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.2</span> What SQL is, and its two halves</h2>
+
+  <div class="cosplit">
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">SQL — Structured Query Language</span> — the standard
+           language for creating, modifying and querying data in a relational database.
+           It is <b>declarative</b>: you state <b>what</b> you want, not how to find it.</p>
+      </div>
+      <div class="insight">
+        <span class="tag">Declarative — why it matters</span>
+        <p>In Python you write the loop that scans the records. In SQL you write
+           <code>WHERE Marks &gt; 85</code> and the DBMS decides how to find them. That is
+           why one line of SQL can replace fifteen lines of Chapter 4 file handling.</p>
+      </div>
+    </div>
+    <div>
+      <table>
+        <tr><th class="lbl">Sublanguage</th><th class="lbl">Stands for</th><th class="lbl">Deals with</th><th class="lbl">Commands</th></tr>
+        <tr><td class="lbl"><b>DDL</b></td><td class="lbl">Data Definition Language</td><td class="lbl">the <b>structure</b> of the database</td><td class="lbl"><code>CREATE</code> <code>ALTER</code> <code>DROP</code></td></tr>
+        <tr><td class="lbl"><b>DML</b></td><td class="lbl">Data Manipulation Language</td><td class="lbl">the <b>data inside</b> the structure</td><td class="lbl"><code>SELECT</code> <code>INSERT</code> <code>UPDATE</code> <code>DELETE</code></td></tr>
+      </table>
+      <div class="note">
+        <span class="tag">The distinction the paper asks for</span>
+        <p><b>DDL changes the shape of the table; DML changes what is in it.</b><br>
+           <code>DROP TABLE STUDENT</code> is DDL — the table stops existing.<br>
+           <code>DELETE FROM STUDENT</code> is DML — the table remains, empty.</p>
+      </div>
+      <div class="warn">
+        <span class="tag">Conventions used in this chapter</span>
+        <p>SQL <b>keywords in capitals</b>, table and column names as they were created,
+           and <b>every statement ends in a semicolon</b>. SQL itself is not
+           case-sensitive for keywords, but the marking scheme is written this way and
+           it reads far better.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 1 · DDL ===================== -->
+
+<section class="slide" data-section="1 · DDL — creating the structure">
+  <h2><span class="num">2.1</span> <code>CREATE TABLE</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">create the parent table first</span><span class="k">CREATE</span> <span class="k">TABLE</span> STREAM (
+    SCode <span class="b">CHAR</span>(<span class="n">3</span>) <span class="k">PRIMARY KEY</span>,
+    SName <span class="b">VARCHAR</span>(<span class="n">20</span>) <span class="k">NOT NULL</span>,
+    HOD   <span class="b">VARCHAR</span>(<span class="n">20</span>)
+);</pre>
+<pre class="code"><span class="tag">then the child table</span><span class="k">CREATE</span> <span class="k">TABLE</span> STUDENT (
+    RollNo <span class="b">INT</span> <span class="k">PRIMARY KEY</span>,
+    Name   <span class="b">VARCHAR</span>(<span class="n">20</span>) <span class="k">NOT NULL</span>,
+    SCode  <span class="b">CHAR</span>(<span class="n">3</span>),
+    Marks  <span class="b">INT</span>,
+    City   <span class="b">VARCHAR</span>(<span class="n">15</span>),
+    Fee    <span class="b">DECIMAL</span>(<span class="n">8</span>,<span class="n">2</span>) <span class="k">DEFAULT</span> <span class="n">4000</span>,
+    <span class="k">FOREIGN KEY</span> (SCode) <span class="k">REFERENCES</span> STREAM(SCode)
+);</pre>
+    </div>
+    <div>
+      <div class="warn">
+        <span class="tag">Order matters</span>
+        <p>STREAM must exist <b>before</b> STUDENT, because STUDENT's foreign key
+           references it. Creating them the other way round fails.</p>
+      </div>
+      <table>
+        <tr><th class="lbl">Data type</th><th class="lbl">Holds</th><th class="lbl">Example</th></tr>
+        <tr><td class="lbl"><code>INT</code></td><td class="lbl">whole numbers</td><td class="lbl">101, 88</td></tr>
+        <tr><td class="lbl"><code>DECIMAL(p,d)</code></td><td class="lbl">p digits, d after the point</td><td class="lbl"><code>DECIMAL(8,2)</code> → 4500.00</td></tr>
+        <tr><td class="lbl"><code>CHAR(n)</code></td><td class="lbl"><b>fixed</b>-length text</td><td class="lbl"><code>CHAR(3)</code> → 'S01'</td></tr>
+        <tr><td class="lbl"><code>VARCHAR(n)</code></td><td class="lbl"><b>variable</b>-length text, up to n</td><td class="lbl"><code>VARCHAR(20)</code> → 'Riya'</td></tr>
+        <tr><td class="lbl"><code>DATE</code></td><td class="lbl">a date, as YYYY-MM-DD</td><td class="lbl">'2008-04-17'</td></tr>
+      </table>
+      <div class="insight">
+        <span class="tag"><code>CHAR</code> vs <code>VARCHAR</code></span>
+        <p><code>CHAR(3)</code> always occupies 3 characters, padding with spaces if
+           needed — right for codes like <code>S01</code> that are always the same
+           length.<br>
+           <code>VARCHAR(20)</code> occupies only what it uses — right for names, which
+           vary. <b>Choosing correctly is a mark.</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.2</span> Constraints — rules the DBMS enforces</h2>
+
+  <div class="cosplit">
+    <div>
+      <table>
+        <tr><th class="lbl">Constraint</th><th class="lbl">Guarantees</th></tr>
+        <tr><td class="lbl"><code>PRIMARY KEY</code></td><td class="lbl">unique <b>and</b> never NULL; one per table</td></tr>
+        <tr><td class="lbl"><code>NOT NULL</code></td><td class="lbl">a value must always be supplied</td></tr>
+        <tr><td class="lbl"><code>UNIQUE</code></td><td class="lbl">no two rows share this value (NULL allowed)</td></tr>
+        <tr><td class="lbl"><code>DEFAULT v</code></td><td class="lbl">v is used when no value is given</td></tr>
+        <tr><td class="lbl"><code>CHECK (cond)</code></td><td class="lbl">only values satisfying cond are accepted</td></tr>
+        <tr><td class="lbl"><code>FOREIGN KEY</code></td><td class="lbl">the value must exist in the referenced table</td></tr>
+      </table>
+      <div class="insight">
+        <span class="tag"><code>PRIMARY KEY</code> vs <code>UNIQUE</code></span>
+        <p>Both forbid duplicates. But <code>UNIQUE</code> <b>allows a NULL</b> and a
+           table may have many <code>UNIQUE</code> columns; <code>PRIMARY KEY</code>
+           forbids NULL and there is exactly <b>one</b>. That is the Chapter 8 candidate /
+           alternate key distinction, written in SQL.</p>
+      </div>
+    </div>
+    <div>
+<pre class="code"><span class="tag">all six, in one table</span><span class="k">CREATE</span> <span class="k">TABLE</span> STUDENT (
+    RollNo  <span class="b">INT</span> <span class="k">PRIMARY KEY</span>,
+    Aadhaar <span class="b">CHAR</span>(<span class="n">12</span>) <span class="k">UNIQUE</span>,
+    Name    <span class="b">VARCHAR</span>(<span class="n">20</span>) <span class="k">NOT NULL</span>,
+    Marks   <span class="b">INT</span> <span class="k">CHECK</span> (Marks <span class="o">&gt;=</span> <span class="n">0</span> <span class="k">AND</span> Marks <span class="o">&lt;=</span> <span class="n">100</span>),
+    City    <span class="b">VARCHAR</span>(<span class="n">15</span>) <span class="k">DEFAULT</span> <span class="s">'Delhi'</span>,
+    SCode   <span class="b">CHAR</span>(<span class="n">3</span>),
+    <span class="k">FOREIGN KEY</span> (SCode) <span class="k">REFERENCES</span> STREAM(SCode)
+);</pre>
+      <div class="eg">
+        <span class="tag">What each one now blocks</span>
+        <p><code>Marks = 950</code> → refused by <b>CHECK</b>.<br>
+           two students with <code>RollNo 101</code> → refused by <b>PRIMARY KEY</b>.<br>
+           a student with no name → refused by <b>NOT NULL</b>.<br>
+           <code>SCode = 'S09'</code> → refused by <b>FOREIGN KEY</b>.<br>
+           no city supplied → quietly stored as <code>'Delhi'</code> by <b>DEFAULT</b>.</p>
+      </div>
+      <div class="note">
+        <span class="tag">This is the answer to "why a database?"</span>
+        <p>Not one line of checking code was written. The rules live <b>with the data</b>,
+           so every program that touches the table obeys them — including a careless one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.3</span> <code>ALTER TABLE</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">add a column</span><span class="k">ALTER TABLE</span> STUDENT
+<span class="k">ADD</span> Phone <span class="b">VARCHAR</span>(<span class="n">10</span>);</pre>
+<pre class="code"><span class="tag">change a column's type</span><span class="k">ALTER TABLE</span> STUDENT
+<span class="k">MODIFY</span> City <span class="b">VARCHAR</span>(<span class="n">25</span>);</pre>
+<pre class="code"><span class="tag">remove a column</span><span class="k">ALTER TABLE</span> STUDENT
+<span class="k">DROP</span> Phone;</pre>
+<pre class="code"><span class="tag">add a constraint later</span><span class="k">ALTER TABLE</span> STUDENT
+<span class="k">ADD</span> <span class="k">PRIMARY KEY</span> (RollNo);</pre>
+    </div>
+    <div>
+      <p>After <code>ADD Phone</code>, the existing rows gain the column with a
+         <b>NULL</b> in it:</p>
+      <table>
+        <tr><th class="lbl">RollNo</th><th class="lbl">Name</th><th>Marks</th><th class="lbl">Phone</th></tr>
+        <tr><td class="lbl">101</td><td class="lbl">Riya</td><td>88</td><td class="lbl hi">NULL</td></tr>
+        <tr><td class="lbl">102</td><td class="lbl">Aarav</td><td>91</td><td class="lbl hi">NULL</td></tr>
+        <tr><td class="lbl">103</td><td class="lbl">Kabir</td><td>76</td><td class="lbl hi">NULL</td></tr>
+        <tr><td class="lbl">…</td><td class="lbl">…</td><td>…</td><td class="lbl hi">NULL</td></tr>
+        <caption>Degree rises from 6 to 7; cardinality is unchanged at 7.</caption>
+      </table>
+      <div class="warn">
+        <span class="tag">ALTER changes structure, not data</span>
+        <p><code>ALTER</code> is <b>DDL</b>. It never changes the value in an existing
+           cell — that is what <code>UPDATE</code> is for. The one thing it does to data is
+           <b>destroy</b> it, when you drop a column.</p>
+      </div>
+      <div class="note">
+        <span class="tag">A note on <code>MODIFY</code></span>
+        <p><code>MODIFY</code> is MySQL's keyword and the one the syllabus uses. Some other
+           systems write <code>ALTER COLUMN</code>. Use <code>MODIFY</code> in the
+           exam.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.4</span> <code>DROP</code> vs <code>DELETE</code> vs <code>TRUNCATE</code></h2>
+
+  <div class="grid3">
+    <div>
+<pre class="code"><span class="tag">DDL — removes the table</span><span class="k">DROP TABLE</span> STUDENT;</pre>
+      <div class="warn">
+        <span class="tag">DROP</span>
+        <p>The table, its structure, its data and its constraints all <b>cease to
+           exist</b>. <code>SELECT * FROM STUDENT</code> afterwards is an error — there is
+           no such table.</p>
+      </div>
+    </div>
+    <div>
+<pre class="code"><span class="tag">DML — removes rows</span><span class="k">DELETE</span> <span class="k">FROM</span> STUDENT
+<span class="k">WHERE</span> Marks <span class="o">&lt;</span> <span class="n">60</span>;
+
+<span class="c">-- or every row:</span>
+<span class="k">DELETE</span> <span class="k">FROM</span> STUDENT;</pre>
+      <div class="eg">
+        <span class="tag">DELETE</span>
+        <p>Removes the rows that match. The <b>table still exists</b>, with its structure
+           intact — <code>SELECT * FROM STUDENT</code> returns an empty result, not an
+           error.</p>
+      </div>
+    </div>
+    <div>
+<pre class="code"><span class="tag">DDL — empties the table</span><span class="k">TRUNCATE TABLE</span> STUDENT;</pre>
+      <div class="note">
+        <span class="tag">TRUNCATE</span>
+        <p>Removes <b>all</b> rows at once and cannot take a <code>WHERE</code>. Faster
+           than <code>DELETE</code> for a full clear-out, and the structure survives.</p>
+      </div>
+    </div>
+  </div>
+
+  <table>
+    <tr><th class="lbl">&nbsp;</th><th>DROP</th><th>DELETE</th><th>TRUNCATE</th></tr>
+    <tr><td class="lbl">Type</td><td>DDL</td><td class="hi2">DML</td><td>DDL</td></tr>
+    <tr><td class="lbl">Removes</td><td class="hi">the whole table</td><td>selected rows</td><td>all rows</td></tr>
+    <tr><td class="lbl">Structure survives?</td><td class="hi">No</td><td class="hi2">Yes</td><td class="hi2">Yes</td></tr>
+    <tr><td class="lbl">Can use <code>WHERE</code>?</td><td class="hi">No</td><td class="hi2">Yes</td><td class="hi">No</td></tr>
+    <caption>"Differentiate between DROP and DELETE" is a routine 2-mark question. The middle row is the answer.</caption>
+  </table>
+</section>
+
+<!-- ===================== 2 · DML: INSERT, UPDATE, DELETE ===================== -->
+
+<section class="slide" data-section="2 · DML — changing the data">
+  <h2><span class="num">3.1</span> <code>INSERT INTO</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">all columns, in order</span><span class="k">INSERT INTO</span> STUDENT
+<span class="k">VALUES</span> (<span class="n">108</span>, <span class="s">'Tara'</span>, <span class="s">'S03'</span>, <span class="n">82</span>, <span class="s">'Delhi'</span>, <span class="n">4000</span>);</pre>
+<pre class="code"><span class="tag">named columns — safer</span><span class="k">INSERT INTO</span> STUDENT (RollNo, Name, SCode, City)
+<span class="k">VALUES</span> (<span class="n">109</span>, <span class="s">'Omar'</span>, <span class="s">'S01'</span>, <span class="s">'Pune'</span>);</pre>
+      <div class="reveal ready ephemeral">What are Omar's Marks and Fee? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal">
+        <p><b>Result after both inserts</b> — the last two rows:</p>
+        <table>
+          <tr><th class="lbl">RollNo</th><th class="lbl">Name</th><th class="lbl">SCode</th><th>Marks</th><th class="lbl">City</th><th>Fee</th></tr>
+          <tr><td class="lbl">107</td><td class="lbl">Nisha</td><td class="lbl">S02</td><td>NULL</td><td class="lbl">Pune</td><td>3800</td></tr>
+          <tr><td class="lbl hi2">108</td><td class="lbl hi2">Tara</td><td class="lbl hi2">S03</td><td class="hi2">82</td><td class="lbl hi2">Delhi</td><td class="hi2">4000</td></tr>
+          <tr><td class="lbl hi2">109</td><td class="lbl hi2">Omar</td><td class="lbl hi2">S01</td><td class="hi">NULL</td><td class="lbl hi2">Pune</td><td class="hi">4000</td></tr>
+        </table>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">The two unspecified columns</span>
+        <p><b>Marks</b> becomes <b>NULL</b> — no value was given and there is no default.<br>
+           <b>Fee</b> becomes <b>4000</b> — the <code>DEFAULT</code> declared in §2.1
+           supplied it.</p>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">Three rules for INSERT</span>
+        <p><b>①</b> Text and dates go in <b>single quotes</b>; numbers do not.<br>
+           <b>②</b> Without a column list, you must supply <b>every</b> value in
+           <b>the created order</b>.<br>
+           <b>③</b> Write <code>NULL</code> without quotes —
+           <code>'NULL'</code> stores the four-letter word.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.2</span> <code>UPDATE</code> — before and after</h2>
+
+  <div class="cosplit">
+    <div>
+      <h3>Before</h3>
+      <table>
+        <tr><th class="lbl">RollNo</th><th class="lbl">Name</th><th class="lbl">SCode</th><th>Marks</th><th>Fee</th></tr>
+        <tr><td class="lbl">103</td><td class="lbl">Kabir</td><td class="lbl">S02</td><td>76</td><td>3800</td></tr>
+        <tr><td class="lbl">105</td><td class="lbl">Dev</td><td class="lbl">S02</td><td>59</td><td>3800</td></tr>
+        <tr><td class="lbl">107</td><td class="lbl">Nisha</td><td class="lbl">S02</td><td class="hi">NULL</td><td>3800</td></tr>
+        <caption>the three S02 rows</caption>
+      </table>
+<pre class="code"><span class="tag">query 1 — one row</span><span class="k">UPDATE</span> STUDENT
+<span class="k">SET</span> Marks <span class="o">=</span> <span class="n">70</span>
+<span class="k">WHERE</span> Name <span class="o">=</span> <span class="s">'Nisha'</span>;</pre>
+<pre class="code"><span class="tag">query 2 — many rows, computed</span><span class="k">UPDATE</span> STUDENT
+<span class="k">SET</span> Fee <span class="o">=</span> Fee <span class="o">+</span> <span class="n">500</span>
+<span class="k">WHERE</span> SCode <span class="o">=</span> <span class="s">'S02'</span>;</pre>
+      <div class="reveal ready ephemeral">How many rows does each change? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal">
+        <h3>After</h3>
+        <table>
+          <tr><th class="lbl">RollNo</th><th class="lbl">Name</th><th class="lbl">SCode</th><th>Marks</th><th>Fee</th></tr>
+          <tr><td class="lbl">103</td><td class="lbl">Kabir</td><td class="lbl">S02</td><td>76</td><td class="hi2">4300</td></tr>
+          <tr><td class="lbl">105</td><td class="lbl">Dev</td><td class="lbl">S02</td><td>59</td><td class="hi2">4300</td></tr>
+          <tr><td class="lbl">107</td><td class="lbl">Nisha</td><td class="lbl">S02</td><td class="hi2">70</td><td class="hi2">4300</td></tr>
+        </table>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">Query 2 is the one worth studying</span>
+        <p><code>SET Fee = Fee + 500</code> uses the column's <b>own current value</b>, and
+           it does so <b>per row</b>. Three rows matched, so three different original
+           values were each raised by 500.</p>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">The most dangerous omission in SQL</span>
+        <p><code>UPDATE STUDENT SET Fee = 5000;</code> — with <b>no <code>WHERE</code></b>
+           — changes <b>every row in the table</b>. There is no undo.
+           <b>Write the <code>WHERE</code> clause first</b>, then go back and write the
+           <code>SET</code>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.3</span> <code>DELETE</code> — before and after</h2>
+
+  <div class="cosplit">
+    <div>
+      <h3>Before — all 7 rows</h3>
+      <table>
+        <tr><th class="lbl">RollNo</th><th class="lbl">Name</th><th>Marks</th></tr>
+        <tr><td class="lbl">101</td><td class="lbl">Riya</td><td>88</td></tr>
+        <tr><td class="lbl">102</td><td class="lbl">Aarav</td><td>91</td></tr>
+        <tr><td class="lbl">103</td><td class="lbl">Kabir</td><td>76</td></tr>
+        <tr><td class="lbl">104</td><td class="lbl">Meera</td><td>94</td></tr>
+        <tr><td class="lbl">105</td><td class="lbl">Dev</td><td class="hi">59</td></tr>
+        <tr><td class="lbl">106</td><td class="lbl">Ishan</td><td>67</td></tr>
+        <tr><td class="lbl">107</td><td class="lbl">Nisha</td><td class="hi">NULL</td></tr>
+      </table>
+<pre class="code"><span class="tag">query</span><span class="k">DELETE</span> <span class="k">FROM</span> STUDENT
+<span class="k">WHERE</span> Marks <span class="o">&lt;</span> <span class="n">60</span>;</pre>
+      <div class="reveal ready ephemeral">How many rows go? Careful — think about NULL. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal">
+        <h3>After — 6 rows</h3>
+        <table>
+          <tr><th class="lbl">RollNo</th><th class="lbl">Name</th><th>Marks</th></tr>
+          <tr><td class="lbl">101</td><td class="lbl">Riya</td><td>88</td></tr>
+          <tr><td class="lbl">102</td><td class="lbl">Aarav</td><td>91</td></tr>
+          <tr><td class="lbl">103</td><td class="lbl">Kabir</td><td>76</td></tr>
+          <tr><td class="lbl">104</td><td class="lbl">Meera</td><td>94</td></tr>
+          <tr><td class="lbl">106</td><td class="lbl">Ishan</td><td>67</td></tr>
+          <tr><td class="lbl hi2">107</td><td class="lbl hi2">Nisha</td><td class="hi2">NULL</td></tr>
+        </table>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">Only <b>one</b> row was deleted — and Nisha survived</span>
+        <p><code>NULL &lt; 60</code> is <b>not true</b>. It is not false either — it is
+           <b>unknown</b>, and <code>WHERE</code> keeps only rows where the condition is
+           definitely <b>true</b>. So Nisha's row was never selected for deletion.</p>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">Remember this for §4.6</span>
+        <p>NULL fails <b>every</b> ordinary comparison — <code>&lt;</code>,
+           <code>&gt;</code>, <code>=</code>, even <code>= NULL</code>. That is why SQL has
+           a separate <code>IS NULL</code> operator, and it is examined every year.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 3 · SELECT ===================== -->
+
+<section class="slide" data-section="3 · SELECT — asking questions">
+  <h2><span class="num">4.1</span> The shape of every <code>SELECT</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">the full skeleton — in this order</span><span class="k">SELECT</span>   columns
+<span class="k">FROM</span>     tables
+<span class="k">WHERE</span>    row condition
+<span class="k">GROUP BY</span> column
+<span class="k">HAVING</span>   group condition
+<span class="k">ORDER BY</span> column [<span class="k">ASC</span>|<span class="k">DESC</span>];</pre>
+      <div class="warn">
+        <span class="tag">The order of the clauses is fixed</span>
+        <p>You may omit any of them, but you may not reorder them.
+           <code>ORDER BY</code> before <code>WHERE</code> is a syntax error.</p>
+      </div>
+    </div>
+    <div>
+<pre class="code"><span class="tag">query 1 — everything</span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> STREAM;</pre>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">SCode</th><th class="lbl">SName</th><th class="lbl">HOD</th></tr>
+          <tr><td class="lbl">S01</td><td class="lbl">Computer Science</td><td class="lbl">Sharma</td></tr>
+          <tr><td class="lbl">S02</td><td class="lbl">Informatics</td><td class="lbl">Iyer</td></tr>
+          <tr><td class="lbl">S03</td><td class="lbl">Physics</td><td class="lbl">Rao</td></tr>
+          <caption>3 rows</caption>
+        </table>
+      </div>
+<pre class="code"><span class="tag">query 2 — chosen columns</span><span class="k">SELECT</span> Name, Marks <span class="k">FROM</span> STUDENT;</pre>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">Name</th><th>Marks</th></tr>
+          <tr><td class="lbl">Riya</td><td>88</td></tr>
+          <tr><td class="lbl">Aarav</td><td>91</td></tr>
+          <tr><td class="lbl">Kabir</td><td>76</td></tr>
+          <tr><td class="lbl">Meera</td><td>94</td></tr>
+          <tr><td class="lbl">Dev</td><td>59</td></tr>
+          <tr><td class="lbl">Ishan</td><td>67</td></tr>
+          <tr><td class="lbl">Nisha</td><td>NULL</td></tr>
+          <caption>7 rows — selecting columns never removes rows</caption>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.2</span> <code>DISTINCT</code> and <code>WHERE</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">query 1</span><span class="k">SELECT</span> City <span class="k">FROM</span> STUDENT;</pre>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">City</th></tr>
+          <tr><td class="lbl">Delhi</td></tr><tr><td class="lbl">Mumbai</td></tr>
+          <tr><td class="lbl">Delhi</td></tr><tr><td class="lbl">Pune</td></tr>
+          <tr><td class="lbl">Mumbai</td></tr><tr><td class="lbl">Delhi</td></tr>
+          <tr><td class="lbl">Pune</td></tr>
+          <caption>7 rows, with repeats</caption>
+        </table>
+      </div>
+<pre class="code"><span class="tag">query 2</span><span class="k">SELECT</span> <span class="k">DISTINCT</span> City <span class="k">FROM</span> STUDENT;</pre>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">City</th></tr>
+          <tr><td class="lbl hi2">Delhi</td></tr>
+          <tr><td class="lbl hi2">Mumbai</td></tr>
+          <tr><td class="lbl hi2">Pune</td></tr>
+          <caption>3 rows</caption>
+        </table>
+      </div>
+    </div>
+    <div>
+<pre class="code"><span class="tag">query 3</span><span class="k">SELECT</span> Name, Marks <span class="k">FROM</span> STUDENT
+<span class="k">WHERE</span> Marks <span class="o">&gt;</span> <span class="n">85</span>;</pre>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">Name</th><th>Marks</th></tr>
+          <tr><td class="lbl">Riya</td><td>88</td></tr>
+          <tr><td class="lbl">Aarav</td><td>91</td></tr>
+          <tr><td class="lbl">Meera</td><td>94</td></tr>
+          <caption>3 rows</caption>
+        </table>
+      </div>
+<pre class="code"><span class="tag">query 4 — two conditions</span><span class="k">SELECT</span> Name, City <span class="k">FROM</span> STUDENT
+<span class="k">WHERE</span> City <span class="o">=</span> <span class="s">'Delhi'</span> <span class="k">AND</span> Marks <span class="o">&gt;</span> <span class="n">70</span>;</pre>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">Name</th><th class="lbl">City</th></tr>
+          <tr><td class="lbl">Riya</td><td class="lbl">Delhi</td></tr>
+          <tr><td class="lbl">Kabir</td><td class="lbl">Delhi</td></tr>
+          <caption>2 rows — Ishan is in Delhi but scored 67</caption>
+        </table>
+      </div>
+      <div class="reveal insight">
+        <span class="tag"><code>SELECT</code> picks columns, <code>WHERE</code> picks rows</span>
+        <p>Two independent choices. Queries 1–2 change the <b>columns</b>; queries 3–4
+           change the <b>rows</b>. Every SELECT is some combination of the two.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.3</span> <code>BETWEEN</code> and <code>IN</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">query 1</span><span class="k">SELECT</span> Name, Marks <span class="k">FROM</span> STUDENT
+<span class="k">WHERE</span> Marks <span class="k">BETWEEN</span> <span class="n">60</span> <span class="k">AND</span> <span class="n">90</span>;</pre>
+      <div class="reveal ready ephemeral">Is 90 included? Is Nisha? 🤔</div>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">Name</th><th>Marks</th></tr>
+          <tr><td class="lbl">Riya</td><td>88</td></tr>
+          <tr><td class="lbl">Kabir</td><td>76</td></tr>
+          <tr><td class="lbl">Ishan</td><td>67</td></tr>
+          <caption>3 rows</caption>
+        </table>
+      </div>
+      <div class="reveal note">
+        <span class="tag">Both ends are included</span>
+        <p><code>BETWEEN 60 AND 90</code> means <code>Marks &gt;= 60 AND Marks &lt;= 90</code>.
+           A student scoring exactly 60 or exactly 90 <b>would</b> appear. Nisha does not,
+           because NULL fails the comparison.</p>
+      </div>
+    </div>
+    <div>
+<pre class="code"><span class="tag">query 2</span><span class="k">SELECT</span> Name, City <span class="k">FROM</span> STUDENT
+<span class="k">WHERE</span> City <span class="k">IN</span> (<span class="s">'Delhi'</span>, <span class="s">'Pune'</span>);</pre>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">Name</th><th class="lbl">City</th></tr>
+          <tr><td class="lbl">Riya</td><td class="lbl">Delhi</td></tr>
+          <tr><td class="lbl">Kabir</td><td class="lbl">Delhi</td></tr>
+          <tr><td class="lbl">Meera</td><td class="lbl">Pune</td></tr>
+          <tr><td class="lbl">Ishan</td><td class="lbl">Delhi</td></tr>
+          <tr><td class="lbl">Nisha</td><td class="lbl">Pune</td></tr>
+          <caption>5 rows</caption>
+        </table>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">Both are shorthand</span>
+        <p><code>IN ('Delhi','Pune')</code> is
+           <code>City = 'Delhi' OR City = 'Pune'</code>.<br>
+           <code>BETWEEN 60 AND 90</code> is
+           <code>Marks &gt;= 60 AND Marks &lt;= 90</code>.<br>
+           Both forms are accepted in the exam, but the shorthand is shorter to write and
+           harder to get wrong.</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">Negating them</span>
+        <p><code>NOT BETWEEN</code> and <code>NOT IN</code> both work, and both also
+           <b>exclude</b> NULL rows — for the same reason as above.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.4</span> <code>LIKE</code> — pattern matching</h2>
+
+  <div class="cosplit">
+    <div>
+      <div class="defn">
+        <span class="tag">The two wildcards</span>
+        <p><code>%</code> — matches <b>any number</b> of characters, including none.<br>
+           <code>_</code> — matches <b>exactly one</b> character.</p>
+      </div>
+      <table>
+        <tr><th class="lbl">Pattern</th><th class="lbl">Means</th></tr>
+        <tr><td class="lbl"><code>'A%'</code></td><td class="lbl">starts with A</td></tr>
+        <tr><td class="lbl"><code>'%a'</code></td><td class="lbl">ends with a</td></tr>
+        <tr><td class="lbl"><code>'%ee%'</code></td><td class="lbl">contains ee anywhere</td></tr>
+        <tr><td class="lbl"><code>'_i%'</code></td><td class="lbl">second letter is i</td></tr>
+        <tr><td class="lbl"><code>'____'</code></td><td class="lbl">exactly four characters</td></tr>
+      </table>
+    </div>
+    <div>
+<pre class="code"><span class="tag">query 1</span><span class="k">SELECT</span> Name <span class="k">FROM</span> STUDENT <span class="k">WHERE</span> Name <span class="k">LIKE</span> <span class="s">'A%'</span>;</pre>
+      <div class="reveal">
+        <table><tr><th class="lbl">Name</th></tr><tr><td class="lbl">Aarav</td></tr>
+          <caption>1 row</caption></table>
+      </div>
+<pre class="code"><span class="tag">query 2</span><span class="k">SELECT</span> Name <span class="k">FROM</span> STUDENT <span class="k">WHERE</span> Name <span class="k">LIKE</span> <span class="s">'%a'</span>;</pre>
+      <div class="reveal">
+        <table><tr><th class="lbl">Name</th></tr>
+          <tr><td class="lbl">Riya</td></tr><tr><td class="lbl">Meera</td></tr><tr><td class="lbl">Nisha</td></tr>
+          <caption>3 rows</caption></table>
+      </div>
+<pre class="code"><span class="tag">query 3</span><span class="k">SELECT</span> Name <span class="k">FROM</span> STUDENT <span class="k">WHERE</span> Name <span class="k">LIKE</span> <span class="s">'_i%'</span>;</pre>
+      <div class="reveal ready ephemeral">Second letter is i — who? 🤔</div>
+      <div class="reveal">
+        <table><tr><th class="lbl">Name</th></tr>
+          <tr><td class="lbl">Riya</td></tr><tr><td class="lbl">Nisha</td></tr>
+          <caption>2 rows — R<b>i</b>ya and N<b>i</b>sha</caption></table>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">The mistake to avoid</span>
+        <p><code>WHERE Name = 'A%'</code> uses <code>=</code>, which looks for a name that
+           literally is the two characters <code>A%</code> — and matches nothing. Patterns
+           need <code>LIKE</code>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.5</span> <code>IS NULL</code> — the operator NULL forces</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">WRONG</span><span class="k">SELECT</span> Name <span class="k">FROM</span> STUDENT
+<span class="k">WHERE</span> Marks <span class="o">=</span> <span class="k">NULL</span>;</pre>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">Name</th></tr>
+          <caption>0 rows — and no error is reported</caption>
+        </table>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">Why it silently fails</span>
+        <p><code>NULL</code> means "unknown". Asking whether an unknown value <b>equals</b>
+           another unknown value gives <b>unknown</b>, never true. So no row qualifies —
+           and because it is not a syntax error, nothing warns you.</p>
+      </div>
+    </div>
+    <div>
+<pre class="code"><span class="tag">RIGHT</span><span class="k">SELECT</span> Name, Marks <span class="k">FROM</span> STUDENT
+<span class="k">WHERE</span> Marks <span class="k">IS NULL</span>;</pre>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">Name</th><th>Marks</th></tr>
+          <tr><td class="lbl">Nisha</td><td>NULL</td></tr>
+          <caption>1 row</caption>
+        </table>
+      </div>
+<pre class="code"><span class="tag">and the opposite</span><span class="k">SELECT</span> Name <span class="k">FROM</span> STUDENT
+<span class="k">WHERE</span> Marks <span class="k">IS NOT NULL</span>;</pre>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">Name</th></tr>
+          <tr><td class="lbl">Riya</td></tr><tr><td class="lbl">Aarav</td></tr>
+          <tr><td class="lbl">Kabir</td></tr><tr><td class="lbl">Meera</td></tr>
+          <tr><td class="lbl">Dev</td></tr><tr><td class="lbl">Ishan</td></tr>
+          <caption>6 rows — everyone except Nisha</caption>
+        </table>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">The rule in one line</span>
+        <p><b>NULL is tested with <code>IS</code>, never with <code>=</code>.</b> Six rows
+           plus one row equals the seven in the table — a good arithmetic check that you
+           have not lost anybody.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.6</span> <code>ORDER BY</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">query 1 — ascending is the default</span><span class="k">SELECT</span> Name, Marks <span class="k">FROM</span> STUDENT
+<span class="k">ORDER BY</span> Marks;</pre>
+      <div class="reveal ready ephemeral">Where does Nisha's NULL go? 🤔</div>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">Name</th><th>Marks</th></tr>
+          <tr><td class="lbl hi">Nisha</td><td class="hi">NULL</td></tr>
+          <tr><td class="lbl">Dev</td><td>59</td></tr>
+          <tr><td class="lbl">Ishan</td><td>67</td></tr>
+          <tr><td class="lbl">Kabir</td><td>76</td></tr>
+          <tr><td class="lbl">Riya</td><td>88</td></tr>
+          <tr><td class="lbl">Aarav</td><td>91</td></tr>
+          <tr><td class="lbl">Meera</td><td>94</td></tr>
+          <caption>NULL sorts <b>first</b> in ascending order</caption>
+        </table>
+      </div>
+    </div>
+    <div>
+<pre class="code"><span class="tag">query 2 — descending</span><span class="k">SELECT</span> Name, Marks <span class="k">FROM</span> STUDENT
+<span class="k">ORDER BY</span> Marks <span class="k">DESC</span>;</pre>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">Name</th><th>Marks</th></tr>
+          <tr><td class="lbl">Meera</td><td>94</td></tr>
+          <tr><td class="lbl">Aarav</td><td>91</td></tr>
+          <tr><td class="lbl">Riya</td><td>88</td></tr>
+          <tr><td class="lbl">Kabir</td><td>76</td></tr>
+          <tr><td class="lbl">Ishan</td><td>67</td></tr>
+          <tr><td class="lbl">Dev</td><td>59</td></tr>
+          <tr><td class="lbl hi">Nisha</td><td class="hi">NULL</td></tr>
+          <caption>NULL now sorts <b>last</b></caption>
+        </table>
+      </div>
+<pre class="code"><span class="tag">query 3 — two levels</span><span class="k">SELECT</span> Name, City, Marks <span class="k">FROM</span> STUDENT
+<span class="k">ORDER BY</span> City, Marks <span class="k">DESC</span>;</pre>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">Name</th><th class="lbl">City</th><th>Marks</th></tr>
+          <tr><td class="lbl">Riya</td><td class="lbl">Delhi</td><td>88</td></tr>
+          <tr><td class="lbl">Kabir</td><td class="lbl">Delhi</td><td>76</td></tr>
+          <tr><td class="lbl">Ishan</td><td class="lbl">Delhi</td><td>67</td></tr>
+          <tr><td class="lbl">Aarav</td><td class="lbl">Mumbai</td><td>91</td></tr>
+          <tr><td class="lbl">Dev</td><td class="lbl">Mumbai</td><td>59</td></tr>
+          <tr><td class="lbl">Meera</td><td class="lbl">Pune</td><td>94</td></tr>
+          <tr><td class="lbl">Nisha</td><td class="lbl">Pune</td><td>NULL</td></tr>
+          <caption>City A→Z, and <b>within</b> each city, Marks high→low</caption>
+        </table>
+      </div>
+      <div class="reveal note">
+        <span class="tag">The <code>DESC</code> applies to Marks only</span>
+        <p>Each column takes its own direction. To reverse both you must write
+           <code>ORDER BY City DESC, Marks DESC</code>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 4 · AGGREGATES ===================== -->
+
+<section class="slide" data-section="4 · Aggregate functions">
+  <h2><span class="num">5.1</span> Five functions that collapse many rows into one</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">query 1</span><span class="k">SELECT</span> <span class="b">SUM</span>(Marks), <span class="b">MAX</span>(Marks), <span class="b">MIN</span>(Marks)
+<span class="k">FROM</span> STUDENT;</pre>
+      <div class="reveal ready ephemeral">Seven rows in — how many out? 🤔</div>
+      <div class="reveal">
+        <table>
+          <tr><th>SUM(Marks)</th><th>MAX(Marks)</th><th>MIN(Marks)</th></tr>
+          <tr><td>475</td><td>94</td><td>59</td></tr>
+          <caption><b>1 row.</b> That is what "aggregate" means.</caption>
+        </table>
+      </div>
+<pre class="code"><span class="tag">query 2</span><span class="k">SELECT</span> <span class="b">ROUND</span>(<span class="b">AVG</span>(Marks), <span class="n">2</span>) <span class="k">FROM</span> STUDENT;</pre>
+      <div class="reveal">
+        <table>
+          <tr><th>ROUND(AVG(Marks), 2)</th></tr>
+          <tr><td>79.17</td></tr>
+          <caption>475 ÷ <b>6</b>, not ÷ 7</caption>
+        </table>
+      </div>
+    </div>
+    <div>
+      <table>
+        <tr><th class="lbl">Function</th><th class="lbl">Returns</th><th class="lbl">Ignores NULL?</th></tr>
+        <tr><td class="lbl"><code>COUNT(*)</code></td><td class="lbl">number of rows</td><td class="hi">No</td></tr>
+        <tr><td class="lbl"><code>COUNT(col)</code></td><td class="lbl">number of non-NULL values</td><td class="hi2">Yes</td></tr>
+        <tr><td class="lbl"><code>SUM(col)</code></td><td class="lbl">total</td><td class="hi2">Yes</td></tr>
+        <tr><td class="lbl"><code>AVG(col)</code></td><td class="lbl">average</td><td class="hi2">Yes</td></tr>
+        <tr><td class="lbl"><code>MAX(col)</code></td><td class="lbl">largest</td><td class="hi2">Yes</td></tr>
+        <tr><td class="lbl"><code>MIN(col)</code></td><td class="lbl">smallest</td><td class="hi2">Yes</td></tr>
+        <caption>Only <code>COUNT(*)</code> counts a NULL row. Everything else skips it.</caption>
+      </table>
+      <div class="reveal warn">
+        <span class="tag">Why the average is 79.17 and not 67.86</span>
+        <p><code>AVG</code> ignores Nisha's NULL <b>entirely</b> — it does not treat it as
+           zero. So the sum 475 is divided by the <b>6 rows that have a value</b>, not by
+           7. Dividing by 7 would give 67.86, which is the wrong answer and the one most
+           students write.</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">Why <code>ROUND</code></span>
+        <p>The raw <code>AVG(Marks)</code> is 79.166666… and different systems display a
+           different number of decimal places. <code>ROUND(AVG(Marks), 2)</code> gives a
+           single definite answer, and it is what an exam answer should show.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.2</span> <code>COUNT(*)</code> vs <code>COUNT(column)</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">query 1</span><span class="k">SELECT</span> <span class="b">COUNT</span>(<span class="o">*</span>) <span class="k">FROM</span> STUDENT;</pre>
+      <div class="reveal">
+        <table><tr><th>COUNT(*)</th></tr><tr><td class="hi2">7</td></tr>
+          <caption>every row</caption></table>
+      </div>
+<pre class="code"><span class="tag">query 2</span><span class="k">SELECT</span> <span class="b">COUNT</span>(Marks) <span class="k">FROM</span> STUDENT;</pre>
+      <div class="reveal">
+        <table><tr><th>COUNT(Marks)</th></tr><tr><td class="hi">6</td></tr>
+          <caption>Nisha's NULL is not counted</caption></table>
+      </div>
+<pre class="code"><span class="tag">query 3</span><span class="k">SELECT</span> <span class="b">COUNT</span>(<span class="k">DISTINCT</span> City) <span class="k">FROM</span> STUDENT;</pre>
+      <div class="reveal">
+        <table><tr><th>COUNT(DISTINCT City)</th></tr><tr><td>3</td></tr>
+          <caption>Delhi, Mumbai, Pune</caption></table>
+      </div>
+    </div>
+    <div>
+      <div class="reveal insight">
+        <span class="tag">Three answers from one table — 7, 6 and 3</span>
+        <p><code>COUNT(*)</code> asks <b>"how many rows?"</b><br>
+           <code>COUNT(Marks)</code> asks <b>"how many students have a mark?"</b><br>
+           <code>COUNT(DISTINCT City)</code> asks <b>"how many different cities?"</b><br>
+           Three genuinely different questions — and examiners set them side by side
+           precisely to see whether you know which is which.</p>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">The exam habit that saves you</span>
+        <p>Whenever you see <code>COUNT</code>, look for a NULL in the column. If there is
+           one, <code>COUNT(*)</code> and <code>COUNT(col)</code> will differ, and that
+           difference is almost certainly what the question is testing.</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">Aggregates cannot be mixed with plain columns</span>
+        <p><code>SELECT Name, MAX(Marks) FROM STUDENT;</code> is meaningless — there are
+           seven names but only one maximum. To pair them you need
+           <code>GROUP BY</code>, which is next.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 5 · GROUP BY ===================== -->
+
+<section class="slide" data-section="5 · GROUP BY and HAVING">
+  <h2><span class="num">6.1</span> <code>GROUP BY</code> — one answer per group</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">query 1</span><span class="k">SELECT</span> City, <span class="b">COUNT</span>(<span class="o">*</span>)
+<span class="k">FROM</span> STUDENT
+<span class="k">GROUP BY</span> City;</pre>
+      <div class="reveal ready ephemeral">How many rows come back? 🤔</div>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">City</th><th>COUNT(*)</th></tr>
+          <tr><td class="lbl">Delhi</td><td>3</td></tr>
+          <tr><td class="lbl">Mumbai</td><td>2</td></tr>
+          <tr><td class="lbl">Pune</td><td>2</td></tr>
+          <caption><b>3 rows</b> — one per distinct City</caption>
+        </table>
+      </div>
+<pre class="code"><span class="tag">query 2</span><span class="k">SELECT</span> SCode, <span class="b">COUNT</span>(<span class="o">*</span>), <span class="b">ROUND</span>(<span class="b">AVG</span>(Marks),<span class="n">2</span>)
+<span class="k">FROM</span> STUDENT
+<span class="k">GROUP BY</span> SCode;</pre>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">SCode</th><th>COUNT(*)</th><th>ROUND(AVG(Marks),2)</th></tr>
+          <tr><td class="lbl">S01</td><td>3</td><td>91.0</td></tr>
+          <tr><td class="lbl">S02</td><td class="hi">3</td><td class="hi">67.5</td></tr>
+          <tr><td class="lbl">S03</td><td>1</td><td>67.0</td></tr>
+          <caption>3 rows</caption>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div class="reveal warn">
+        <span class="tag">Read the S02 row carefully</span>
+        <p><code>COUNT(*)</code> is <b>3</b> — Kabir, Dev and Nisha.<br>
+           But the average is <b>67.5</b>, which is (76 + 59) ÷ <b>2</b>.</p>
+        <p>Within one group, <code>COUNT(*)</code> counts three rows while
+           <code>AVG</code> uses only the two that have a value. <b>Both are correct, and
+           they disagree — that is exactly the point.</b></p>
+      </div>
+      <div class="reveal defn">
+        <span class="tag">The rule you must not break</span>
+        <p>Every column in the <code>SELECT</code> list must either appear in the
+           <code>GROUP BY</code> clause or be inside an <b>aggregate function</b>.</p>
+        <p><code>SELECT City, Name, COUNT(*) … GROUP BY City</code> is invalid — the Delhi
+           group holds three different names, so there is no single Name to show.</p>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">What GROUP BY really does</span>
+        <p>It <b>sorts the rows into piles</b>, one pile per distinct value, then runs the
+           aggregate on each pile separately and returns one row per pile. Picture the
+           piles and the output is obvious.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.2</span> <code>HAVING</code> — filtering the groups</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">query 1</span><span class="k">SELECT</span> City, <span class="b">COUNT</span>(<span class="o">*</span>)
+<span class="k">FROM</span> STUDENT
+<span class="k">GROUP BY</span> City
+<span class="k">HAVING</span> <span class="b">COUNT</span>(<span class="o">*</span>) <span class="o">&gt;</span> <span class="n">2</span>;</pre>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">City</th><th>COUNT(*)</th></tr>
+          <tr><td class="lbl">Delhi</td><td>3</td></tr>
+          <caption>1 row — Mumbai and Pune have only 2 each</caption>
+        </table>
+      </div>
+<pre class="code"><span class="tag">query 2</span><span class="k">SELECT</span> SCode, <span class="b">MAX</span>(Marks)
+<span class="k">FROM</span> STUDENT
+<span class="k">GROUP BY</span> SCode
+<span class="k">HAVING</span> <span class="b">MAX</span>(Marks) <span class="o">&gt;</span> <span class="n">80</span>;</pre>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">SCode</th><th>MAX(Marks)</th></tr>
+          <tr><td class="lbl">S01</td><td>94</td></tr>
+          <caption>1 row — S02 tops out at 76, S03 at 67</caption>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div class="defn">
+        <span class="tag">The distinction, stated exactly</span>
+        <p><span class="term">WHERE</span> filters <b>individual rows</b>, <b>before</b>
+           they are grouped. It <b>cannot</b> contain an aggregate function.<br>
+           <span class="term">HAVING</span> filters <b>whole groups</b>, <b>after</b> the
+           grouping and aggregation have happened. It normally <b>does</b> contain an
+           aggregate.</p>
+      </div>
+      <div class="reveal">
+<pre class="code"><span class="tag">both together — and the order is fixed</span><span class="k">SELECT</span> City, <span class="b">COUNT</span>(<span class="o">*</span>)
+<span class="k">FROM</span> STUDENT
+<span class="k">WHERE</span> Marks <span class="o">&gt;</span> <span class="n">60</span>
+<span class="k">GROUP BY</span> City;</pre>
+        <table>
+          <tr><th class="lbl">City</th><th>COUNT(*)</th></tr>
+          <tr><td class="lbl">Delhi</td><td>3</td></tr>
+          <tr><td class="lbl">Mumbai</td><td class="hi">1</td></tr>
+          <tr><td class="lbl">Pune</td><td class="hi">1</td></tr>
+          <caption>Dev (59) and Nisha (NULL) were removed <b>before</b> grouping</caption>
+        </table>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">Trace the order of operations</span>
+        <p><b>①</b> <code>WHERE</code> throws out Dev and Nisha → 5 rows survive.<br>
+           <b>②</b> <code>GROUP BY</code> piles those 5 by city → Delhi 3, Mumbai 1,
+           Pune 1.<br>
+           <b>③</b> the aggregate runs on each pile.<br>
+           A <code>HAVING</code>, if present, would filter <b>after</b> step ③.</p>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">The error to remember</span>
+        <p><code>WHERE COUNT(*) &gt; 2</code> is <b>invalid</b>. At the moment
+           <code>WHERE</code> runs, no group exists yet, so there is nothing to count.
+           Conditions on aggregates always go in <code>HAVING</code>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 6 · JOINS ===================== -->
+
+<section class="slide" data-section="6 · Joins">
+  <h2><span class="num">7.1</span> Cartesian product — every row with every row</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">query — two tables, no condition</span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> STUDENT, STREAM;</pre>
+      <div class="reveal ready ephemeral">7 rows and 3 rows. How many come back? 🤔</div>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">RollNo</th><th class="lbl">Name</th><th class="lbl">SCode</th><th class="lbl">SCode</th><th class="lbl">SName</th></tr>
+          <tr><td class="lbl">101</td><td class="lbl">Riya</td><td class="lbl">S01</td><td class="lbl hi2">S01</td><td class="lbl">Computer Science</td></tr>
+          <tr><td class="lbl">101</td><td class="lbl">Riya</td><td class="lbl">S01</td><td class="lbl hi">S02</td><td class="lbl">Informatics</td></tr>
+          <tr><td class="lbl">101</td><td class="lbl">Riya</td><td class="lbl">S01</td><td class="lbl hi">S03</td><td class="lbl">Physics</td></tr>
+          <tr><td class="lbl">102</td><td class="lbl">Aarav</td><td class="lbl">S01</td><td class="lbl hi2">S01</td><td class="lbl">Computer Science</td></tr>
+          <tr><td class="lbl">102</td><td class="lbl">Aarav</td><td class="lbl">S01</td><td class="lbl hi">S02</td><td class="lbl">Informatics</td></tr>
+          <tr><td class="lbl">…</td><td class="lbl">…</td><td class="lbl">…</td><td class="lbl">…</td><td class="lbl">…</td></tr>
+          <caption><b>21 rows</b> = 7 × 3 &nbsp;·&nbsp; <b>9 columns</b> = 6 + 3</caption>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Cartesian product (cross join)</span> — combines <b>every</b>
+           tuple of the first relation with <b>every</b> tuple of the second.</p>
+        <div class="formula">
+          rows = m × n &nbsp;·&nbsp; degree = p + q
+        </div>
+        <p>Here: <b>7 × 3 = 21 rows</b>, and <b>6 + 3 = 9 columns</b>.</p>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">Almost every row is nonsense</span>
+        <p>Riya is paired with Informatics and with Physics — she is in neither. Only the
+           green rows, where the two <code>SCode</code> values <b>match</b>, are true.</p>
+        <p>Of the 21 rows, exactly <b>7</b> are meaningful. Adding the matching condition
+           is what turns a Cartesian product into a <b>join</b>.</p>
+      </div>
+      <div class="reveal note">
+        <span class="tag">The exam question</span>
+        <p>"If table A has 5 rows and 3 columns and table B has 4 rows and 2 columns, what
+           is the degree and cardinality of A × B?" →
+           <b>cardinality 20, degree 5</b>. Rows multiply; columns add.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.2</span> Equi-join — keeping only the matching rows</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">query 1 — the join condition</span><span class="k">SELECT</span> Name, SName
+<span class="k">FROM</span> STUDENT, STREAM
+<span class="k">WHERE</span> STUDENT.SCode <span class="o">=</span> STREAM.SCode;</pre>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">Name</th><th class="lbl">SName</th></tr>
+          <tr><td class="lbl">Riya</td><td class="lbl">Computer Science</td></tr>
+          <tr><td class="lbl">Aarav</td><td class="lbl">Computer Science</td></tr>
+          <tr><td class="lbl">Kabir</td><td class="lbl">Informatics</td></tr>
+          <tr><td class="lbl">Meera</td><td class="lbl">Computer Science</td></tr>
+          <tr><td class="lbl">Dev</td><td class="lbl">Informatics</td></tr>
+          <tr><td class="lbl">Ishan</td><td class="lbl">Physics</td></tr>
+          <tr><td class="lbl">Nisha</td><td class="lbl">Informatics</td></tr>
+          <caption><b>7 rows</b> — down from 21</caption>
+        </table>
+      </div>
+<pre class="code"><span class="tag">query 2 — join plus a filter</span><span class="k">SELECT</span> Name, Marks, SName, HOD
+<span class="k">FROM</span> STUDENT, STREAM
+<span class="k">WHERE</span> STUDENT.SCode <span class="o">=</span> STREAM.SCode
+  <span class="k">AND</span> Marks <span class="o">&gt;</span> <span class="n">80</span>;</pre>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">Name</th><th>Marks</th><th class="lbl">SName</th><th class="lbl">HOD</th></tr>
+          <tr><td class="lbl">Riya</td><td>88</td><td class="lbl">Computer Science</td><td class="lbl">Sharma</td></tr>
+          <tr><td class="lbl">Aarav</td><td>91</td><td class="lbl">Computer Science</td><td class="lbl">Sharma</td></tr>
+          <tr><td class="lbl">Meera</td><td>94</td><td class="lbl">Computer Science</td><td class="lbl">Sharma</td></tr>
+          <caption>3 rows</caption>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Equi-join</span> — a join in which tuples are combined only
+           where the values of two specified columns are <b>equal</b>. The matching
+           column appears <b>twice</b> in the result of <code>SELECT *</code>.</p>
+      </div>
+      <div class="insight">
+        <span class="tag">Why the table name is written in front</span>
+        <p><code>SCode</code> exists in <b>both</b> tables, so writing it alone is
+           ambiguous and the DBMS rejects the query. <code>STUDENT.SCode</code> says
+           exactly which one you mean.</p>
+      </div>
+      <div class="reveal">
+<pre class="code"><span class="tag">the same query, with aliases</span><span class="k">SELECT</span> S.Name, T.SName
+<span class="k">FROM</span> STUDENT S, STREAM T
+<span class="k">WHERE</span> S.SCode <span class="o">=</span> T.SCode
+  <span class="k">AND</span> T.HOD <span class="o">=</span> <span class="s">'Iyer'</span>;</pre>
+        <table>
+          <tr><th class="lbl">Name</th><th class="lbl">SName</th></tr>
+          <tr><td class="lbl">Kabir</td><td class="lbl">Informatics</td></tr>
+          <tr><td class="lbl">Dev</td><td class="lbl">Informatics</td></tr>
+          <tr><td class="lbl">Nisha</td><td class="lbl">Informatics</td></tr>
+          <caption>3 rows</caption>
+        </table>
+      </div>
+      <div class="reveal note">
+        <span class="tag">Aliases</span>
+        <p><code>FROM STUDENT S</code> renames the table to <code>S</code> for the rest of
+           the query. It is shorter and it is what real SQL looks like — and it is fully
+           accepted in the exam.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.3</span> Natural join</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">query</span><span class="k">SELECT</span> Name, SName
+<span class="k">FROM</span> STUDENT <span class="k">NATURAL JOIN</span> STREAM;</pre>
+      <div class="reveal">
+        <table>
+          <tr><th class="lbl">Name</th><th class="lbl">SName</th></tr>
+          <tr><td class="lbl">Riya</td><td class="lbl">Computer Science</td></tr>
+          <tr><td class="lbl">Aarav</td><td class="lbl">Computer Science</td></tr>
+          <tr><td class="lbl">Kabir</td><td class="lbl">Informatics</td></tr>
+          <tr><td class="lbl">Meera</td><td class="lbl">Computer Science</td></tr>
+          <tr><td class="lbl">Dev</td><td class="lbl">Informatics</td></tr>
+          <tr><td class="lbl">Ishan</td><td class="lbl">Physics</td></tr>
+          <tr><td class="lbl">Nisha</td><td class="lbl">Informatics</td></tr>
+          <caption>7 rows — identical to the equi-join</caption>
+        </table>
+      </div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Natural join</span> — a join that automatically matches on
+           <b>all columns having the same name</b> in both relations, and shows the common
+           column <b>only once</b>.</p>
+      </div>
+    </div>
+    <div>
+      <table>
+        <tr><th class="lbl">&nbsp;</th><th>Cartesian product</th><th>Equi-join</th><th>Natural join</th></tr>
+        <tr><td class="lbl">Written as</td><td class="lbl"><code>FROM A, B</code></td><td class="lbl"><code>FROM A, B WHERE A.c = B.c</code></td><td class="lbl"><code>FROM A NATURAL JOIN B</code></td></tr>
+        <tr><td class="lbl">Condition</td><td class="hi">none</td><td class="lbl">you write it</td><td class="lbl">automatic, on same-named columns</td></tr>
+        <tr><td class="lbl">Rows here</td><td class="hi">21</td><td class="hi2">7</td><td class="hi2">7</td></tr>
+        <tr><td class="lbl">Common column appears</td><td>twice</td><td>twice</td><td class="hi2">once</td></tr>
+      </table>
+      <div class="insight">
+        <span class="tag">The relationship between the three</span>
+        <p><b>Equi-join = Cartesian product + a matching condition.</b><br>
+           <b>Natural join = equi-join, with the condition inferred and the duplicate
+           column removed.</b><br>
+           All three produce the same 7 rows here — they differ in how much you write and
+           what the columns look like.</p>
+      </div>
+      <div class="warn">
+        <span class="tag">Why natural join can bite</span>
+        <p>It matches on <b>every</b> identically-named column. If both tables happened to
+           have a <code>Name</code> column too, it would silently require those to match as
+           well and you would get far fewer rows. <b>The explicit equi-join is safer</b>,
+           and it is the form most marking schemes show.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RECAP AND EXAM ===================== -->
+
+<section class="slide" data-section="Recap and exam practice">
+  <h2><span class="num">8.1</span> Everything on one screen</h2>
+
+  <h3>DDL — the structure</h3>
+  <div class="chips">
+    <span class="chip k">CREATE TABLE</span>
+    <span class="chip">ALTER TABLE ADD / MODIFY / DROP</span>
+    <span class="chip k">DROP TABLE — the table is gone</span>
+    <span class="chip">PRIMARY KEY · FOREIGN KEY · NOT NULL · UNIQUE · DEFAULT · CHECK</span>
+  </div>
+
+  <h3>DML — the data</h3>
+  <div class="chips">
+    <span class="chip k">INSERT INTO … VALUES</span>
+    <span class="chip k">UPDATE … SET … WHERE</span>
+    <span class="chip k">DELETE FROM … WHERE</span>
+    <span class="chip">no WHERE = every row</span>
+  </div>
+
+  <h3>SELECT</h3>
+  <div class="chips">
+    <span class="chip">DISTINCT</span>
+    <span class="chip k">BETWEEN — both ends included</span>
+    <span class="chip k">IN (list)</span>
+    <span class="chip k">LIKE — % many, _ one</span>
+    <span class="chip k">IS NULL, never = NULL</span>
+    <span class="chip">ORDER BY … ASC / DESC</span>
+  </div>
+
+  <h3>Aggregates, groups and joins</h3>
+  <div class="chips">
+    <span class="chip k">COUNT(*) counts rows; COUNT(col) skips NULL</span>
+    <span class="chip k">SUM AVG MAX MIN all ignore NULL</span>
+    <span class="chip k">GROUP BY — one row per group</span>
+    <span class="chip k">WHERE before grouping, HAVING after</span>
+    <span class="chip">Cartesian = m × n rows</span>
+    <span class="chip k">equi-join = product + matching condition</span>
+    <span class="chip">natural join — common column once</span>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">8.2</span> Exam question 1 — write the queries</h2>
+
+  <div class="qcard">
+    <span class="tag">6 marks — one each</span>
+    <p>Using STUDENT and STREAM, write SQL for:</p>
+    <ol>
+      <li>Display the names of students whose city is Delhi or Pune.</li>
+      <li>Display all names beginning with the letter M.</li>
+      <li>Display the names of students who have not been given any marks.</li>
+      <li>Increase the fee of all Informatics (S02) students by 10%.</li>
+      <li>Display each city with the number of students in it.</li>
+      <li>Display the name of each student along with the name of their stream.</li>
+    </ol>
+  </div>
+
+  <div class="reveal ready ephemeral">Write all six before you look. 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="cosplit">
+      <div>
+<pre class="code"><span class="tag">1</span><span class="k">SELECT</span> Name <span class="k">FROM</span> STUDENT
+<span class="k">WHERE</span> City <span class="k">IN</span> (<span class="s">'Delhi'</span>, <span class="s">'Pune'</span>);</pre>
+<pre class="code"><span class="tag">2</span><span class="k">SELECT</span> Name <span class="k">FROM</span> STUDENT
+<span class="k">WHERE</span> Name <span class="k">LIKE</span> <span class="s">'M%'</span>;</pre>
+<pre class="code"><span class="tag">3</span><span class="k">SELECT</span> Name <span class="k">FROM</span> STUDENT
+<span class="k">WHERE</span> Marks <span class="k">IS NULL</span>;</pre>
+      </div>
+      <div>
+<pre class="code"><span class="tag">4</span><span class="k">UPDATE</span> STUDENT
+<span class="k">SET</span> Fee <span class="o">=</span> Fee <span class="o">*</span> <span class="n">1.1</span>
+<span class="k">WHERE</span> SCode <span class="o">=</span> <span class="s">'S02'</span>;</pre>
+<pre class="code"><span class="tag">5</span><span class="k">SELECT</span> City, <span class="b">COUNT</span>(<span class="o">*</span>)
+<span class="k">FROM</span> STUDENT
+<span class="k">GROUP BY</span> City;</pre>
+<pre class="code"><span class="tag">6</span><span class="k">SELECT</span> Name, SName
+<span class="k">FROM</span> STUDENT, STREAM
+<span class="k">WHERE</span> STUDENT.SCode <span class="o">=</span> STREAM.SCode;</pre>
+      </div>
+    </div>
+    <div class="warn">
+      <span class="tag">Where marks are lost</span>
+      <p><b>3.</b> <code>WHERE Marks = NULL</code> returns nothing — it must be
+         <code>IS NULL</code>.<br>
+         <b>4.</b> Forgetting the <code>WHERE</code> raises everyone's fee.<br>
+         <b>6.</b> Forgetting the join condition gives 21 nonsense rows.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">8.3</span> Exam question 2 — predict the output</h2>
+
+  <div class="qcard">
+    <span class="tag">4 marks</span>
+    <p>Give the output of each query on the STUDENT table.</p>
+<pre class="code"><span class="ln">1</span><span class="k">SELECT</span> <span class="b">COUNT</span>(<span class="o">*</span>), <span class="b">COUNT</span>(Marks) <span class="k">FROM</span> STUDENT;
+<span class="ln">2</span><span class="k">SELECT</span> <span class="b">MAX</span>(Marks) <span class="o">-</span> <span class="b">MIN</span>(Marks) <span class="k">FROM</span> STUDENT;
+<span class="ln">3</span><span class="k">SELECT</span> City, <span class="b">COUNT</span>(<span class="o">*</span>) <span class="k">FROM</span> STUDENT
+  <span class="k">GROUP BY</span> City <span class="k">HAVING</span> <span class="b">COUNT</span>(<span class="o">*</span>) <span class="o">&gt;</span> <span class="n">2</span>;
+<span class="ln">4</span><span class="k">SELECT</span> Name <span class="k">FROM</span> STUDENT <span class="k">WHERE</span> Name <span class="k">LIKE</span> <span class="s">'_i%'</span>;</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="cosplit">
+      <div>
+        <table>
+          <tr><th>COUNT(*)</th><th>COUNT(Marks)</th></tr>
+          <tr><td>7</td><td>6</td></tr>
+          <caption>query 1 — the NULL is the difference</caption>
+        </table>
+        <table>
+          <tr><th>MAX(Marks) - MIN(Marks)</th></tr>
+          <tr><td>35</td></tr>
+          <caption>query 2 — 94 − 59</caption>
+        </table>
+      </div>
+      <div>
+        <table>
+          <tr><th class="lbl">City</th><th>COUNT(*)</th></tr>
+          <tr><td class="lbl">Delhi</td><td>3</td></tr>
+          <caption>query 3 — only Delhi has more than 2</caption>
+        </table>
+        <table>
+          <tr><th class="lbl">Name</th></tr>
+          <tr><td class="lbl">Riya</td></tr>
+          <tr><td class="lbl">Nisha</td></tr>
+          <caption>query 4 — second letter is i</caption>
+        </table>
+      </div>
+    </div>
+    <p><b>Query 2 is worth a comment.</b> <code>MAX</code> and <code>MIN</code> both ignore
+       the NULL, so the range is computed from the six real marks. It is 35, not
+       "unknown".</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">8.4</span> Exam question 3 — theory</h2>
+
+  <div class="qcard">
+    <span class="tag">2 + 2 + 2 marks</span>
+    <ol>
+      <li>Differentiate between <b>DDL</b> and <b>DML</b>, with two commands of each.</li>
+      <li>Differentiate between <b>WHERE</b> and <b>HAVING</b>.</li>
+      <li>Differentiate between <b>DELETE</b> and <b>DROP</b>.</li>
+    </ol>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 1</span>
+    <p><b>DDL (Data Definition Language)</b> defines and modifies the <b>structure</b> of
+       database objects. Commands: <code>CREATE</code>, <code>ALTER</code>,
+       <code>DROP</code>.</p>
+    <p><b>DML (Data Manipulation Language)</b> works with the <b>data stored inside</b>
+       those structures. Commands: <code>SELECT</code>, <code>INSERT</code>,
+       <code>UPDATE</code>, <code>DELETE</code>.</p>
+  </div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 2</span>
+    <p><b>WHERE</b> filters <b>individual rows before grouping</b>, and cannot contain an
+       aggregate function.</p>
+    <p><b>HAVING</b> filters <b>groups after grouping and aggregation</b>, and normally
+       does contain an aggregate function.</p>
+    <p>So <code>WHERE Marks &gt; 60</code> is valid but <code>WHERE COUNT(*) &gt; 2</code>
+       is not; the latter must be written as <code>HAVING COUNT(*) &gt; 2</code>.</p>
+  </div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 3</span>
+    <p><b>DELETE</b> is a DML command that removes <b>rows</b> from a table. It can take a
+       <code>WHERE</code> clause, and the table's structure remains, so records can be
+       inserted again afterwards.</p>
+    <p><b>DROP</b> is a DDL command that removes the <b>entire table</b> — structure, data
+       and constraints. The table no longer exists, and referring to it afterwards is an
+       error.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">8.5</span> One last challenge</h2>
+
+  <div class="challenge">
+    <span class="tag">Challenge</span>
+    <p>Predict the output of both, and explain why they differ.</p>
+<pre class="code"><span class="tag">A</span><span class="k">SELECT</span> SCode, <span class="b">COUNT</span>(<span class="o">*</span>), <span class="b">COUNT</span>(Marks), <span class="b">SUM</span>(Marks)
+<span class="k">FROM</span> STUDENT
+<span class="k">GROUP BY</span> SCode;</pre>
+<pre class="code"><span class="tag">B</span><span class="k">SELECT</span> SCode, <span class="b">COUNT</span>(<span class="o">*</span>), <span class="b">COUNT</span>(Marks), <span class="b">SUM</span>(Marks)
+<span class="k">FROM</span> STUDENT
+<span class="k">WHERE</span> Marks <span class="k">IS NOT NULL</span>
+<span class="k">GROUP BY</span> SCode;</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">One row differs. Which, and why? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="cosplit">
+      <div>
+        <table>
+          <tr><th class="lbl">SCode</th><th>COUNT(*)</th><th>COUNT(Marks)</th><th>SUM(Marks)</th></tr>
+          <tr><td class="lbl">S01</td><td>3</td><td>3</td><td>273</td></tr>
+          <tr><td class="lbl">S02</td><td class="hi">3</td><td class="hi">2</td><td>135</td></tr>
+          <tr><td class="lbl">S03</td><td>1</td><td>1</td><td>67</td></tr>
+          <caption>Query A</caption>
+        </table>
+      </div>
+      <div>
+        <table>
+          <tr><th class="lbl">SCode</th><th>COUNT(*)</th><th>COUNT(Marks)</th><th>SUM(Marks)</th></tr>
+          <tr><td class="lbl">S01</td><td>3</td><td>3</td><td>273</td></tr>
+          <tr><td class="lbl">S02</td><td class="hi2">2</td><td class="hi2">2</td><td>135</td></tr>
+          <tr><td class="lbl">S03</td><td>1</td><td>1</td><td>67</td></tr>
+          <caption>Query B</caption>
+        </table>
+      </div>
+    </div>
+    <p><b>Only the S02 <code>COUNT(*)</code> changes — 3 becomes 2.</b></p>
+    <p>In A, Nisha's row is present in the S02 group. <code>COUNT(*)</code> counts it;
+       <code>COUNT(Marks)</code> and <code>SUM</code> ignore it. In B the
+       <code>WHERE</code> removed her row <b>before</b> grouping, so even
+       <code>COUNT(*)</code> no longer sees her.</p>
+    <p><b>The sums are identical in both</b> — because <code>SUM</code> was already
+       ignoring the NULL. That is the whole lesson of this chapter's NULL thread, in one
+       comparison.</p>
+  </div>
+</section>
+
+<section class="slide title-slide">
+  <div class="kicker">End of Chapter 9</div>
+  <h1>Next: Python with MySQL</h1>
+  <div class="rule"></div>
+  <p class="sub">You can now ask a database anything. Chapter 10 puts these queries
+     inside a Python program — so the answers come back as tuples you can loop over,
+     write to a file, or push onto a stack.</p>
+
+  <div class="bridge narrow">
+    <span class="tag">Carry these three forward</span>
+    <p><b>①</b> A row comes back to Python as a <b>tuple</b> — Chapter 1 §7, used for
+       real.<br>
+       <b>②</b> Any <code>INSERT</code>, <code>UPDATE</code> or <code>DELETE</code> must be
+       followed by <code>commit()</code>, or the change is silently discarded.<br>
+       <b>③</b> Never paste user input into a query string — Chapter 10 shows what goes
+       wrong and how parameterised queries fix it.</p>
+  </div>
+</section>
+
+</div>
+
+<button class="nav" id="prev" aria-label="Previous slide">←</button>
+<button class="nav" id="next" aria-label="Next slide">→</button>
+
+<script src="assets/deck.js"></script>
+</body>
+</html>

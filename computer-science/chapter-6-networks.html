@@ -1,0 +1,1305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 6 · Networks, Devices and Topologies — Class XII Computer Science</title>
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body>
+
+<div id="bar">
+  <div class="brand">CH 6 · NETWORKS &amp; TOPOLOGIES</div>
+  <div class="sect" id="sect"></div>
+  <div class="tools">
+    <button id="menuBtn">Menu (m)</button>
+    <button id="fsBtn">Full screen (f)</button>
+    <span id="counter"></span>
+  </div>
+</div>
+<div id="progress"></div>
+
+<div id="menu">
+  <h3>Chapter 6 — Networks, Devices and Topologies</h3>
+  <div class="mlist"></div>
+  <p class="hint">Press <kbd>m</kbd> or <kbd>Esc</kbd> to close</p>
+</div>
+
+<div id="stage">
+
+<!-- ===================== ORIENTATION ===================== -->
+
+<section class="slide title-slide" data-section="Orientation">
+  <div class="kicker">Unit 2 · Computer Networks</div>
+  <h1>Chapter 6<br>Networks, Devices<br>and Topologies</h1>
+  <div class="rule"></div>
+  <p class="sub">Unit 1 was one machine talking to itself. Unit 2 is two machines,
+     a thousand kilometres apart, agreeing on how to talk.</p>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.1</span> Where we have got to</h2>
+
+  <div class="bridge">
+    <span class="tag">Unit 1</span>
+    <p>Data in memory, then data on a disk. Every byte stayed inside one computer.</p>
+  </div>
+
+  <div class="cosplit">
+    <div>
+      <div class="card">
+        <h4>The new question</h4>
+        <p>Chapter 4 wrote <code>marks.csv</code>. How does that file get from the school
+           office to the board's server 800 km away — reliably, in seconds, over cables
+           and air owned by dozens of different companies?</p>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <h4>The answer takes two chapters</h4>
+        <p><b>Chapter 6</b> — the <b>hardware</b>: what is connected, how it is wired, and
+           which box sits where.<br>
+           <b>Chapter 7</b> — the <b>rules</b>: the protocols the two ends agree on.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Computer network</span> — a collection of two or more
+       independent computing devices connected through a transmission medium, so that they
+       can exchange data and share resources.</p>
+  </div>
+
+  <div class="warn">
+    <span class="tag">How this unit is examined</span>
+    <p>Almost entirely by <b>drawing and naming</b>. "Draw the star topology." "Name the
+       device." "Suggest a suitable topology and justify." <b>A word list scores nothing;
+       a labelled diagram scores full marks.</b> Every diagram in this deck is one you
+       should be able to reproduce.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.2</span> How this chapter runs</h2>
+
+  <div class="grid2">
+    <div>
+      <h3>Five stops</h3>
+      <ol>
+        <li><b>Evolution</b> — ARPANET to the Internet, and why it matters</li>
+        <li><b>Types of network</b> — PAN, LAN, MAN, WAN</li>
+        <li><b>Network devices</b> — NIC, modem, repeater, hub, switch, router, gateway</li>
+        <li><b>Topologies</b> — bus, star, tree, mesh</li>
+        <li><b>Transmission media</b> — guided and unguided</li>
+      </ol>
+    </div>
+    <div>
+      <h3>The four things a network needs</h3>
+      <table>
+        <tr><th class="lbl">Component</th><th class="lbl">In this chapter</th></tr>
+        <tr><td class="lbl"><b>Nodes</b> — the devices</td><td class="lbl">§2, §3</td></tr>
+        <tr><td class="lbl"><b>Medium</b> — what carries the signal</td><td class="lbl">§6</td></tr>
+        <tr><td class="lbl"><b>Layout</b> — how they are joined</td><td class="lbl">§5</td></tr>
+        <tr><td class="lbl"><b>Protocol</b> — the agreed rules</td><td class="lbl">Chapter 7</td></tr>
+      </table>
+      <div class="insight">
+        <span class="tag">Advantages of a network — the 4-mark list</span>
+        <p><b>Resource sharing</b> (one printer, many users) · <b>File sharing</b> ·
+           <b>Communication</b> (email, chat, VoIP) · <b>Centralised data and backup</b> ·
+           <b>Cost saving</b> · <b>Reliability</b> — a copy exists elsewhere.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 1 · EVOLUTION ===================== -->
+
+<section class="slide" data-section="1 · Evolution of networking">
+  <h2><span class="num">2.1</span> How the Internet actually happened</h2>
+
+  <figure>
+    <svg viewBox="0 0 900 260" role="img" aria-label="Timeline of networking: ARPANET in 1969, TCP slash IP in 1982, NSFNET in 1986, the World Wide Web in 1990, and the commercial Internet from 1995">
+      <defs>
+        <marker id="arw-time" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#75837f"/>
+        </marker>
+      </defs>
+
+      <line class="axis" x1="40" y1="150" x2="860" y2="150" marker-end="url(#arw-time)"/>
+
+      <circle class="pt" cx="110" cy="150" r="9"/>
+      <text x="110" y="128" class="lab" text-anchor="middle">1969</text>
+      <text x="110" y="182" text-anchor="middle">ARPANET</text>
+      <text x="110" y="202" text-anchor="middle">4 universities,</text>
+      <text x="110" y="220" text-anchor="middle">USA</text>
+
+      <circle class="pt" cx="300" cy="150" r="9"/>
+      <text x="300" y="128" class="lab" text-anchor="middle">1982</text>
+      <text x="300" y="182" text-anchor="middle">TCP/IP adopted</text>
+      <text x="300" y="202" text-anchor="middle">one common</text>
+      <text x="300" y="220" text-anchor="middle">language</text>
+
+      <circle class="pt" cx="480" cy="150" r="9"/>
+      <text x="480" y="128" class="lab" text-anchor="middle">1986</text>
+      <text x="480" y="182" text-anchor="middle">NSFNET</text>
+      <text x="480" y="202" text-anchor="middle">backbone links</text>
+      <text x="480" y="220" text-anchor="middle">many networks</text>
+
+      <circle class="pt" cx="650" cy="150" r="9"/>
+      <text x="650" y="128" class="lab" text-anchor="middle">1990</text>
+      <text x="650" y="182" text-anchor="middle">World Wide Web</text>
+      <text x="650" y="202" text-anchor="middle">Tim Berners-Lee,</text>
+      <text x="650" y="220" text-anchor="middle">CERN</text>
+
+      <circle class="pt" cx="810" cy="150" r="9"/>
+      <text x="810" y="128" class="lab" text-anchor="middle">1995</text>
+      <text x="810" y="182" text-anchor="middle">commercial</text>
+      <text x="810" y="202" text-anchor="middle">Internet</text>
+
+      <text x="450" y="42" class="lab" text-anchor="middle">A research project for four computers became a network of billions</text>
+      <text x="450" y="66" text-anchor="middle">— because every step added a way for different networks to interconnect.</text>
+    </svg>
+    <figcaption>ARPANET → NSFNET → Internet. The Web arrives <b>last</b>, and runs <b>on top of</b> the Internet.</figcaption>
+  </figure>
+
+  <div class="warn">
+    <span class="tag">The distinction the paper tests</span>
+    <p>The <b>Internet</b> is the global <b>network of networks</b> — the wires, routers
+       and addresses. The <b>World Wide Web</b> is one <b>service</b> that runs on it, made
+       of linked pages served over HTTP.</p>
+    <p>Email, FTP and VoIP also run on the Internet and are <b>not</b> part of the Web.
+       <b>The Internet is the road; the Web is one kind of traffic on it.</b></p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.2</span> The vocabulary to get right</h2>
+
+  <div class="grid2">
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">ARPANET</span> — Advanced Research Projects Agency Network,
+           1969. The first packet-switched network, funded by the US Department of Defense,
+           connecting four university computers. The ancestor of the Internet.</p>
+      </div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">NSFNET</span> — National Science Foundation Network, 1986. A
+           high-speed <b>backbone</b> that linked regional networks together and opened the
+           network beyond defence research.</p>
+      </div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Internet</span> — the worldwide interconnection of networks
+           using the <b>TCP/IP</b> protocol suite.</p>
+      </div>
+    </div>
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">World Wide Web (WWW)</span> — a collection of interlinked
+           hypertext documents accessed over the Internet using <b>HTTP</b>, proposed by
+           <b>Tim Berners-Lee</b> in 1989–90 at CERN.</p>
+      </div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Interspace</span> — a client/server software environment that
+           allows users to communicate using <b>multiple media</b> — text, video, audio —
+           in a dynamic three-dimensional environment, in real time.</p>
+      </div>
+      <div class="note">
+        <span class="tag">Interspace is a one-mark definition</span>
+        <p>It appears in the syllabus and almost nowhere else in life. Learn the wording
+           above; you will not need to reason about it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 2 · TYPES OF NETWORK ===================== -->
+
+<section class="slide" data-section="2 · Types of network">
+  <h2><span class="num">3.1</span> Four sizes, drawn to scale</h2>
+
+  <figure>
+    <svg viewBox="0 0 900 250" role="img" aria-label="Four nested regions showing PAN within a few metres, LAN within a building, MAN within a city, and WAN across countries">
+      <rect x="20" y="30" width="860" height="180" rx="14" fill="#fdf6e3" stroke="#c62b28" stroke-width="3"/>
+      <text x="40" y="58" class="lab" fill="#b02522">WAN — country to worldwide</text>
+
+      <rect x="50" y="72" width="620" height="122" rx="14" fill="#eee8d5" stroke="#a17a00" stroke-width="3"/>
+      <text x="70" y="100" class="lab" fill="#755900">MAN — a city, up to ~50 km</text>
+
+      <rect x="82" y="112" width="380" height="66" rx="14" fill="#fdf6e3" stroke="#1f7ab8" stroke-width="3"/>
+      <text x="102" y="138" class="lab" fill="#175f90">LAN — a room, building or campus</text>
+
+      <rect x="112" y="146" width="180" height="24" rx="10" fill="#eee8d5" stroke="#748500" stroke-width="3"/>
+      <text x="202" y="164" class="lab" fill="#586600" text-anchor="middle">PAN — ~10 m</text>
+
+      <text x="770" y="120" class="lab">Each one</text>
+      <text x="770" y="142" class="lab">contains</text>
+      <text x="770" y="164" class="lab">the smaller.</text>
+
+      <text x="450" y="238" text-anchor="middle">The only thing that changes is geographical spread — and everything else follows from it.</text>
+    </svg>
+    <figcaption>PAN ⊂ LAN ⊂ MAN ⊂ WAN. A WAN is built by joining LANs and MANs together.</figcaption>
+  </figure>
+
+  <table>
+    <tr><th class="lbl">Type</th><th class="lbl">Full form</th><th>Spread</th><th class="lbl">Owned by</th><th class="lbl">Example</th></tr>
+    <tr><td class="lbl"><b>PAN</b></td><td class="lbl">Personal Area Network</td><td>up to ~10 m</td><td class="lbl">one person</td><td class="lbl">phone + earbuds over Bluetooth</td></tr>
+    <tr><td class="lbl"><b>LAN</b></td><td class="lbl">Local Area Network</td><td>up to ~1 km</td><td class="lbl">one organisation</td><td class="lbl">a school computer lab</td></tr>
+    <tr><td class="lbl"><b>MAN</b></td><td class="lbl">Metropolitan Area Network</td><td>up to ~50 km</td><td class="lbl">shared / a provider</td><td class="lbl">all branches of a bank in a city; cable TV</td></tr>
+    <tr><td class="lbl"><b>WAN</b></td><td class="lbl">Wide Area Network</td><td>unlimited</td><td class="lbl">many organisations</td><td class="lbl">the Internet</td></tr>
+    <caption>The distances are indicative, not exact. What matters is the <b>order of magnitude</b>.</caption>
+  </table>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.2</span> Why size changes everything else</h2>
+
+  <table>
+    <tr><th class="lbl">&nbsp;</th><th>LAN</th><th>MAN</th><th>WAN</th></tr>
+    <tr><td class="lbl">Data transfer speed</td><td class="hi2">Very high</td><td>Moderate</td><td class="hi">Lower</td></tr>
+    <tr><td class="lbl">Error rate</td><td class="hi2">Lowest</td><td>Moderate</td><td class="hi">Highest</td></tr>
+    <tr><td class="lbl">Cost to set up</td><td class="hi2">Low</td><td>High</td><td class="hi">Very high</td></tr>
+    <tr><td class="lbl">Ownership</td><td class="lbl">private</td><td class="lbl">private or public</td><td class="lbl">usually public</td></tr>
+    <tr><td class="lbl">Typical medium</td><td class="lbl">twisted pair, Wi-Fi</td><td class="lbl">optical fibre</td><td class="lbl">fibre, satellite, leased lines</td></tr>
+    <tr><td class="lbl">Maintained by</td><td class="lbl">the owner</td><td class="lbl">a provider</td><td class="lbl">many providers</td></tr>
+  </table>
+
+  <div class="insight">
+    <span class="tag">The reason, in one sentence</span>
+    <p><b>Signals weaken and take time over distance.</b> A LAN's cables are short, so the
+       signal is strong, fast and rarely corrupted. A WAN's path crosses continents, so
+       it is slower, more error-prone, and needs equipment at every hop — which is exactly
+       why it costs more.</p>
+  </div>
+
+  <div class="qcard">
+    <span class="tag">Question 1</span>
+    <p>Classify each: <b>(a)</b> two laptops sharing files over Bluetooth in one room ·
+       <b>(b)</b> the computers of one college campus with three buildings ·
+       <b>(c)</b> the branches of a bank across Delhi · <b>(d)</b> a company with offices
+       in Mumbai, London and Tokyo.</p>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>(a)</b> PAN &nbsp;·&nbsp; <b>(b)</b> LAN — a campus network is still a LAN
+       &nbsp;·&nbsp; <b>(c)</b> MAN — one city &nbsp;·&nbsp; <b>(d)</b> WAN.</p>
+    <p><b>(b) is the one people get wrong.</b> Several buildings on <b>one campus</b>,
+       owned by one organisation, is a LAN — sometimes called a CAN, Campus Area Network.
+       It becomes a MAN only when it spreads across a city on someone else's
+       infrastructure.</p>
+  </div>
+</section>
+
+<!-- ===================== 3 · NETWORK DEVICES ===================== -->
+
+<section class="slide" data-section="3 · Network devices">
+  <h2><span class="num">4.1</span> Where each device sits</h2>
+
+  <figure>
+    <svg viewBox="0 0 900 250" role="img" aria-label="A network path from a computer through its NIC to a switch, then a router, then a modem, out to the Internet">
+      <defs>
+        <marker id="arw-path" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#1f7ab8"/>
+        </marker>
+      </defs>
+
+      <rect x="20" y="90" width="118" height="66" rx="8" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <text x="79" y="120" class="lab" text-anchor="middle">Computer</text>
+      <text x="79" y="142" text-anchor="middle">+ NIC</text>
+
+      <rect x="212" y="90" width="118" height="66" rx="8" fill="#fdf6e3" stroke="#1f7ab8" stroke-width="3"/>
+      <text x="271" y="120" class="lab" text-anchor="middle">Switch</text>
+      <text x="271" y="142" text-anchor="middle">joins the LAN</text>
+
+      <rect x="404" y="90" width="118" height="66" rx="8" fill="#fdf6e3" stroke="#6c71c4" stroke-width="3"/>
+      <text x="463" y="120" class="lab" text-anchor="middle">Router</text>
+      <text x="463" y="142" text-anchor="middle">picks the path</text>
+
+      <rect x="596" y="90" width="118" height="66" rx="8" fill="#fdf6e3" stroke="#a17a00" stroke-width="3"/>
+      <text x="655" y="120" class="lab" text-anchor="middle">Modem</text>
+      <text x="655" y="142" text-anchor="middle">digital ⇄ analog</text>
+
+      <circle cx="835" cy="123" r="46" fill="#eee8d5" stroke="#c62b28" stroke-width="3"/>
+      <text x="835" y="130" class="lab" text-anchor="middle">Internet</text>
+
+      <path class="curve c-blue" d="M142,123 L206,123" marker-end="url(#arw-path)"/>
+      <path class="curve c-blue" d="M334,123 L398,123" marker-end="url(#arw-path)"/>
+      <path class="curve c-blue" d="M526,123 L590,123" marker-end="url(#arw-path)"/>
+      <path class="curve c-blue" d="M718,123 L786,123" marker-end="url(#arw-path)"/>
+
+      <text x="271" y="52" text-anchor="middle" fill="#175f90">inside the LAN</text>
+      <text x="560" y="52" text-anchor="middle" fill="#b02522">the edge — LAN meets the world</text>
+
+      <text x="450" y="222" text-anchor="middle">A repeater would sit on any one of these links, if the cable were too long.</text>
+    </svg>
+    <figcaption>Learn the <b>order</b>, not just the names. Questions ask "which device goes here?"</figcaption>
+  </figure>
+
+  <div class="insight">
+    <span class="tag">The one-line answer for each</span>
+    <p><b>NIC</b> — lets a computer join a network at all. <b>Repeater</b> — makes a weak
+       signal strong again. <b>Hub</b> — joins devices, shouts to everyone.
+       <b>Switch</b> — joins devices, speaks to one. <b>Router</b> — joins <b>networks</b>
+       and chooses the route. <b>Gateway</b> — joins networks that speak
+       <b>different protocols</b>. <b>Modem</b> — converts digital to analog and back.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.2</span> NIC, repeater and modem</h2>
+
+  <div class="grid3">
+    <div>
+      <div class="defn">
+        <span class="tag">NIC</span>
+        <p><span class="term">Network Interface Card</span> — the hardware that physically
+           connects a computer to a network. Every NIC carries a permanent, globally
+           unique <b>MAC address</b> burnt into it by the manufacturer.</p>
+      </div>
+      <div class="note">
+        <span class="tag">MAC address</span>
+        <p>48 bits, written as six hex pairs —
+           <code>00:1B:44:11:3A:B7</code>. It identifies the <b>device</b>; an IP address
+           identifies its <b>position on the network</b>. Also called the physical or
+           Ethernet address.</p>
+      </div>
+    </div>
+    <div>
+      <div class="defn">
+        <span class="tag">Repeater</span>
+        <p><span class="term">Repeater</span> — a device that receives a weakened
+           (<b>attenuated</b>) signal, regenerates it to its original strength, and
+           retransmits it, so the network can span a longer distance.</p>
+      </div>
+      <figure>
+        <svg viewBox="0 0 300 130" role="img" aria-label="A strong signal weakening along a cable, then a repeater restoring it to full strength">
+          <path class="curve c-teal" d="M10,60 q10,-28 20,0 q10,28 20,0 q10,-24 20,0 q10,24 20,0 q10,-18 20,0 q10,18 20,0"/>
+          <rect x="132" y="36" width="46" height="48" rx="8" fill="#fdf6e3" stroke="#6c71c4" stroke-width="3"/>
+          <text x="155" y="66" class="lab" text-anchor="middle">R</text>
+          <path class="curve c-teal" d="M182,60 q10,-28 20,0 q10,28 20,0 q10,-28 20,0 q10,28 20,0 q10,-28 20,0 q10,28 20,0"/>
+          <text x="70" y="112" text-anchor="middle">weakening</text>
+          <text x="240" y="112" text-anchor="middle">restored</text>
+        </svg>
+      </figure>
+    </div>
+    <div>
+      <div class="defn">
+        <span class="tag">Modem</span>
+        <p><span class="term">Modem</span> — <b>Modulator–Demodulator</b>. It converts the
+           computer's <b>digital</b> signal into an <b>analog</b> signal for transmission
+           over a telephone or cable line, and converts incoming analog signals back to
+           digital.</p>
+      </div>
+      <figure>
+        <svg viewBox="0 0 300 130" role="img" aria-label="A square digital waveform converted by a modem into a smooth analog wave">
+          <path class="curve c-blue" d="M10,80 L30,80 L30,40 L55,40 L55,80 L80,80 L80,40 L105,40 L105,80 L125,80"/>
+          <rect x="130" y="36" width="46" height="48" rx="8" fill="#fdf6e3" stroke="#a17a00" stroke-width="3"/>
+          <text x="153" y="66" class="lab" text-anchor="middle">M</text>
+          <path class="curve c-rose" d="M182,60 q14,-30 28,0 q14,30 28,0 q14,-30 28,0"/>
+          <text x="68" y="112" text-anchor="middle">digital</text>
+          <text x="238" y="112" text-anchor="middle">analog</text>
+        </svg>
+      </figure>
+    </div>
+  </div>
+
+  <div class="warn">
+    <span class="tag">Why a modem is needed at all</span>
+    <p>Telephone lines were built to carry the <b>analog</b> waveform of a human voice. A
+       computer produces <b>digital</b> square pulses, which such a line cannot carry
+       faithfully. The modem translates in both directions — which is why there is one at
+       <b>each</b> end.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.3</span> Hub versus switch — the drawn difference</h2>
+
+  <div class="cosplit">
+    <div>
+      <h3>Hub — broadcasts to everyone</h3>
+      <figure>
+        <svg viewBox="0 0 360 260" role="img" aria-label="A hub receiving data from computer A and sending copies to computers B, C and D, all of which receive it">
+          <defs>
+            <marker id="arw-hub" viewBox="0 0 10 10" refX="9" refY="5"
+                    markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#c62b28"/>
+            </marker>
+            <marker id="arw-hub-in" viewBox="0 0 10 10" refX="9" refY="5"
+                    markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#1f7ab8"/>
+            </marker>
+          </defs>
+          <circle cx="180" cy="130" r="42" fill="#fdf6e3" stroke="#c62b28" stroke-width="3"/>
+          <text x="180" y="137" class="lab" text-anchor="middle">HUB</text>
+
+          <rect x="20" y="20" width="70" height="46" rx="8" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <text x="55" y="49" class="lab" text-anchor="middle">A</text>
+          <rect x="270" y="20" width="70" height="46" rx="8" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <text x="305" y="49" class="lab" text-anchor="middle">B</text>
+          <rect x="20" y="194" width="70" height="46" rx="8" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <text x="55" y="223" class="lab" text-anchor="middle">C</text>
+          <rect x="270" y="194" width="70" height="46" rx="8" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <text x="305" y="223" class="lab" text-anchor="middle">D</text>
+
+          <path class="curve c-blue" d="M84,66 L150,108" marker-end="url(#arw-hub-in)"/>
+          <path class="curve c-rose" d="M212,108 L272,66" marker-end="url(#arw-hub)"/>
+          <path class="curve c-rose" d="M150,158 L88,196" marker-end="url(#arw-hub)"/>
+          <path class="curve c-rose" d="M212,158 L272,196" marker-end="url(#arw-hub)"/>
+
+          <text x="180" y="256" text-anchor="middle" fill="#b02522">B, C and D all receive it</text>
+        </svg>
+      </figure>
+      <p class="small">A hub has no idea who is who. It copies whatever arrives to
+        <b>every other port</b>. C and D must inspect the data and discard it.</p>
+    </div>
+    <div>
+      <h3>Switch — sends only to the target</h3>
+      <figure>
+        <svg viewBox="0 0 360 260" role="img" aria-label="A switch receiving data from computer A and forwarding it only to computer B, leaving C and D untouched">
+          <defs>
+            <marker id="arw-sw" viewBox="0 0 10 10" refX="9" refY="5"
+                    markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#748500"/>
+            </marker>
+            <marker id="arw-sw-in" viewBox="0 0 10 10" refX="9" refY="5"
+                    markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#1f7ab8"/>
+            </marker>
+          </defs>
+          <circle cx="180" cy="130" r="42" fill="#fdf6e3" stroke="#748500" stroke-width="3"/>
+          <text x="180" y="137" class="lab" text-anchor="middle">SWITCH</text>
+
+          <rect x="20" y="20" width="70" height="46" rx="8" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <text x="55" y="49" class="lab" text-anchor="middle">A</text>
+          <rect x="270" y="20" width="70" height="46" rx="8" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <text x="305" y="49" class="lab" text-anchor="middle">B</text>
+          <rect x="20" y="194" width="70" height="46" rx="8" fill="#eee8d5" stroke="#d9d0b6" stroke-width="2"/>
+          <text x="55" y="223" class="lab" text-anchor="middle">C</text>
+          <rect x="270" y="194" width="70" height="46" rx="8" fill="#eee8d5" stroke="#d9d0b6" stroke-width="2"/>
+          <text x="305" y="223" class="lab" text-anchor="middle">D</text>
+
+          <path class="curve c-blue" d="M84,66 L150,108" marker-end="url(#arw-sw-in)"/>
+          <path class="curve c-teal" d="M212,108 L272,66" marker-end="url(#arw-sw)"/>
+          <line class="grid" x1="150" y1="158" x2="88" y2="196"/>
+          <line class="grid" x1="212" y1="158" x2="272" y2="196"/>
+
+          <text x="180" y="256" text-anchor="middle" fill="#586600">only B receives it</text>
+        </svg>
+      </figure>
+      <p class="small">A switch keeps a table of which <b>MAC address</b> is on which port,
+        so it forwards to <b>one</b> port only.</p>
+    </div>
+  </div>
+
+  <table>
+    <tr><th class="lbl">&nbsp;</th><th>Hub</th><th>Switch</th></tr>
+    <tr><td class="lbl">Sends data to</td><td class="hi">every port</td><td class="hi2">only the destination port</td></tr>
+    <tr><td class="lbl">Uses addresses?</td><td class="hi">No</td><td class="hi2">Yes — MAC addresses</td></tr>
+    <tr><td class="lbl">Bandwidth</td><td class="hi">shared by all</td><td class="hi2">full, per port</td></tr>
+    <tr><td class="lbl">Collisions</td><td class="hi">frequent</td><td class="hi2">avoided</td></tr>
+    <tr><td class="lbl">Security</td><td class="hi">poor — all can see the data</td><td class="hi2">better</td></tr>
+    <tr><td class="lbl">Cost</td><td class="hi2">cheaper</td><td>more expensive</td></tr>
+    <caption>"Suggest a device to connect the computers in a lab" → <b>switch</b>, and say why: it avoids collisions and wasted bandwidth.</caption>
+  </table>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.4</span> Router and gateway</h2>
+
+  <div class="cosplit">
+    <div>
+      <div class="defn">
+        <span class="tag">Router</span>
+        <p><span class="term">Router</span> — a device that connects <b>two or more
+           networks</b> and determines the best path along which to forward a data packet
+           towards its destination, using the <b>IP address</b> in the packet.</p>
+      </div>
+      <div class="defn">
+        <span class="tag">Gateway</span>
+        <p><span class="term">Gateway</span> — a device that connects two networks that use
+           <b>different protocols or architectures</b>, translating between them so that
+           they can communicate. It is the <b>entry and exit point</b> of a network.</p>
+      </div>
+    </div>
+    <div>
+      <figure>
+        <svg viewBox="0 0 420 250" role="img" aria-label="Two local networks joined by a router, with a gateway connecting a different kind of network that uses another protocol">
+          <defs>
+            <marker id="arw-rt" viewBox="0 0 10 10" refX="9" refY="5"
+                    markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#6c71c4"/>
+            </marker>
+          </defs>
+          <circle cx="60" cy="70" r="40" fill="#eee8d5" stroke="#1f7ab8" stroke-width="3"/>
+          <text x="60" y="76" class="lab" text-anchor="middle">LAN 1</text>
+
+          <circle cx="360" cy="70" r="40" fill="#eee8d5" stroke="#1f7ab8" stroke-width="3"/>
+          <text x="360" y="76" class="lab" text-anchor="middle">LAN 2</text>
+
+          <rect x="166" y="44" width="88" height="52" rx="8" fill="#fdf6e3" stroke="#6c71c4" stroke-width="3"/>
+          <text x="210" y="76" class="lab" text-anchor="middle">ROUTER</text>
+
+          <path class="curve c-violet" d="M102,70 L160,70" marker-end="url(#arw-rt)"/>
+          <path class="curve c-violet" d="M260,70 L316,70" marker-end="url(#arw-rt)"/>
+          <text x="210" y="26" text-anchor="middle">same protocol — TCP/IP both sides</text>
+
+          <circle cx="60" cy="190" r="40" fill="#eee8d5" stroke="#1f7ab8" stroke-width="3"/>
+          <text x="60" y="196" class="lab" text-anchor="middle">TCP/IP</text>
+
+          <circle cx="360" cy="190" r="40" fill="#eee8d5" stroke="#c62b28" stroke-width="3"/>
+          <text x="360" y="196" class="lab" text-anchor="middle">other</text>
+
+          <rect x="160" y="164" width="100" height="52" rx="8" fill="#fdf6e3" stroke="#c62b28" stroke-width="3"/>
+          <text x="210" y="196" class="lab" text-anchor="middle">GATEWAY</text>
+
+          <path class="curve c-rose" d="M102,190 L154,190" marker-end="url(#arw-rt)"/>
+          <path class="curve c-rose" d="M266,190 L316,190" marker-end="url(#arw-rt)"/>
+          <text x="210" y="242" text-anchor="middle">different protocols — it translates</text>
+        </svg>
+      </figure>
+    </div>
+  </div>
+
+  <div class="insight">
+    <span class="tag">Router vs gateway, in one sentence</span>
+    <p>A <b>router</b> joins networks that already speak the <b>same</b> language and just
+       need directions. A <b>gateway</b> joins networks that speak <b>different</b>
+       languages and need a translator. Every gateway does routing; not every router is a
+       gateway.</p>
+  </div>
+
+  <div class="note">
+    <span class="tag">The box in your home</span>
+    <p>What people call "the router" at home is usually a modem, router, switch and
+       wireless access point in one case. In the exam, name the <b>function</b> being
+       asked about, not the box.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.5</span> The device table, and a worked question</h2>
+
+  <table>
+    <tr><th class="lbl">Device</th><th class="lbl">Job</th><th class="lbl">Works using</th><th class="lbl">Connects</th></tr>
+    <tr><td class="lbl"><b>NIC</b></td><td class="lbl">attaches a computer to a network</td><td class="lbl">MAC address</td><td class="lbl">one computer → the medium</td></tr>
+    <tr><td class="lbl"><b>Repeater</b></td><td class="lbl">regenerates a weakened signal</td><td class="lbl">nothing — pure signal</td><td class="lbl">two lengths of cable</td></tr>
+    <tr><td class="lbl"><b>Hub</b></td><td class="lbl">joins devices, broadcasts</td><td class="lbl">nothing — no addresses</td><td class="lbl">devices in one LAN</td></tr>
+    <tr><td class="lbl"><b>Switch</b></td><td class="lbl">joins devices, forwards precisely</td><td class="lbl">MAC address</td><td class="lbl">devices in one LAN</td></tr>
+    <tr><td class="lbl"><b>Router</b></td><td class="lbl">chooses the path between networks</td><td class="lbl">IP address</td><td class="lbl">network ↔ network</td></tr>
+    <tr><td class="lbl"><b>Gateway</b></td><td class="lbl">translates between protocols</td><td class="lbl">protocol conversion</td><td class="lbl">dissimilar networks</td></tr>
+    <tr><td class="lbl"><b>Modem</b></td><td class="lbl">digital ⇄ analog conversion</td><td class="lbl">modulation</td><td class="lbl">computer ↔ phone/cable line</td></tr>
+  </table>
+
+  <div class="qcard">
+    <span class="tag">Question 2</span>
+    <p>Name the device for each: <b>(a)</b> the lab's 30 computers must be connected so
+       that data reaches only the intended machine · <b>(b)</b> a cable run of 150 m has a
+       signal too weak at the far end · <b>(c)</b> the school LAN must be connected to the
+       Internet · <b>(d)</b> a computer has no way to connect to a network at all.</p>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>(a) Switch</b> — "only the intended machine" rules out a hub.<br>
+       <b>(b) Repeater</b> — the problem is signal strength over distance, nothing else.<br>
+       <b>(c) Router</b> — it joins two different networks and picks the path. (A modem is
+       also needed if the link is over a telephone or cable line.)<br>
+       <b>(d) NIC</b> — without it the machine cannot join any network.</p>
+    <p class="small"><b>Technique:</b> the question always contains the keyword. "only the
+       intended" → switch · "weak / long distance" → repeater · "two networks" → router ·
+       "different protocols" → gateway.</p>
+  </div>
+</section>
+
+<!-- ===================== 4 · TOPOLOGIES ===================== -->
+
+<section class="slide" data-section="4 · Network topologies">
+  <h2><span class="num">5.1</span> What a topology is</h2>
+
+  <div class="cosplit">
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Network topology</span> — the arrangement or layout in which
+           the nodes of a network are physically or logically connected to one another.</p>
+      </div>
+      <div class="insight">
+        <span class="tag">Judge every topology on four things</span>
+        <ol>
+          <li><b>Cable required</b> — how much wire must be bought and laid</li>
+          <li><b>Cost</b> — cable plus devices</li>
+          <li><b>Fault tolerance</b> — what happens when one link or node fails</li>
+          <li><b>Ease of adding a node</b> — is the network disturbed?</li>
+        </ol>
+        <p>Every advantage and disadvantage in this section is one of these four. Learn the
+           four questions and you can derive the answers.</p>
+      </div>
+    </div>
+    <div>
+      <div class="warn">
+        <span class="tag">How this is examined</span>
+        <p>Three ways, and you need all three:</p>
+        <p><b>①</b> <b>Draw</b> it — a labelled diagram, four to six nodes.<br>
+           <b>②</b> <b>Two advantages and two disadvantages.</b><br>
+           <b>③</b> <b>Choose</b> one for a described situation and <b>justify</b> the
+           choice.</p>
+      </div>
+      <div class="note">
+        <span class="tag">Drawing tip</span>
+        <p>Always label the nodes and the central device. An unlabelled sketch of circles
+           and lines is worth nothing, and the labels take four seconds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.2</span> Bus topology</h2>
+
+  <div class="cosplit">
+    <div>
+      <figure>
+        <svg viewBox="0 0 460 250" role="img" aria-label="Bus topology: one horizontal backbone cable with terminators at both ends and four computers dropping down from it">
+          <line x1="30" y1="120" x2="430" y2="120" stroke="#073642" stroke-width="6" stroke-linecap="round"/>
+          <rect x="14" y="104" width="18" height="32" rx="4" fill="#c62b28"/>
+          <rect x="428" y="104" width="18" height="32" rx="4" fill="#c62b28"/>
+          <text x="23" y="158" text-anchor="middle" fill="#b02522">T</text>
+          <text x="437" y="158" text-anchor="middle" fill="#b02522">T</text>
+
+          <line x1="90" y1="120" x2="90" y2="62" stroke="#073642" stroke-width="3"/>
+          <line x1="190" y1="120" x2="190" y2="62" stroke="#073642" stroke-width="3"/>
+          <line x1="280" y1="120" x2="280" y2="178" stroke="#073642" stroke-width="3"/>
+          <line x1="380" y1="120" x2="380" y2="178" stroke="#073642" stroke-width="3"/>
+
+          <rect x="56" y="20" width="68" height="42" rx="8" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <text x="90" y="47" class="lab" text-anchor="middle">A</text>
+          <rect x="156" y="20" width="68" height="42" rx="8" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <text x="190" y="47" class="lab" text-anchor="middle">B</text>
+          <rect x="246" y="178" width="68" height="42" rx="8" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <text x="280" y="205" class="lab" text-anchor="middle">C</text>
+          <rect x="346" y="178" width="68" height="42" rx="8" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <text x="380" y="205" class="lab" text-anchor="middle">D</text>
+
+          <text x="230" y="240" text-anchor="middle">one backbone cable · T = terminator</text>
+        </svg>
+        <figcaption>Every node taps into <b>one shared cable</b>. Terminators at both ends absorb the signal.</figcaption>
+      </figure>
+    </div>
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Bus topology</span> — all nodes are connected to a single
+           common <b>backbone</b> cable through drop lines. A signal placed on the bus
+           travels to every node; only the addressed node accepts it.</p>
+      </div>
+      <div class="reveal eg">
+        <span class="tag">Advantages</span>
+        <p><b>①</b> Uses the <b>least cable</b> of any topology, so it is the cheapest.<br>
+           <b>②</b> Easy to install for a small network laid out in a line.<br>
+           <b>③</b> Failure of <b>one node</b> does not affect the others.</p>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">Disadvantages</span>
+        <p><b>①</b> If the <b>backbone breaks, the whole network fails</b> — a single
+           point of failure.<br>
+           <b>②</b> A fault is hard to locate — you must test the whole cable.<br>
+           <b>③</b> All nodes share the bandwidth, and <b>collisions</b> rise sharply as
+           nodes are added.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.3</span> Star topology</h2>
+
+  <div class="cosplit">
+    <div>
+      <figure>
+        <svg viewBox="0 0 460 250" role="img" aria-label="Star topology: five computers each connected by its own cable to a central switch">
+          <circle cx="230" cy="125" r="42" fill="#fdf6e3" stroke="#748500" stroke-width="3"/>
+          <text x="230" y="132" class="lab" text-anchor="middle">SWITCH</text>
+
+          <rect x="20" y="20" width="66" height="42" rx="8" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <text x="53" y="47" class="lab" text-anchor="middle">A</text>
+          <rect x="374" y="20" width="66" height="42" rx="8" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <text x="407" y="47" class="lab" text-anchor="middle">B</text>
+          <rect x="20" y="188" width="66" height="42" rx="8" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <text x="53" y="215" class="lab" text-anchor="middle">C</text>
+          <rect x="374" y="188" width="66" height="42" rx="8" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <text x="407" y="215" class="lab" text-anchor="middle">D</text>
+          <rect x="197" y="204" width="66" height="42" rx="8" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <text x="230" y="231" class="lab" text-anchor="middle">E</text>
+
+          <line x1="86" y1="58" x2="198" y2="102" stroke="#073642" stroke-width="3"/>
+          <line x1="374" y1="58" x2="262" y2="102" stroke="#073642" stroke-width="3"/>
+          <line x1="86" y1="196" x2="198" y2="150" stroke="#073642" stroke-width="3"/>
+          <line x1="374" y1="196" x2="262" y2="150" stroke="#073642" stroke-width="3"/>
+          <line x1="230" y1="204" x2="230" y2="167" stroke="#073642" stroke-width="3"/>
+        </svg>
+        <figcaption>Every node has its <b>own dedicated cable</b> to a central hub or switch.</figcaption>
+      </figure>
+    </div>
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Star topology</span> — every node is connected by a separate
+           point-to-point link to a <b>central device</b> (a hub or switch). All
+           communication passes through that centre.</p>
+      </div>
+      <div class="reveal eg">
+        <span class="tag">Advantages</span>
+        <p><b>①</b> Failure of <b>one node or one cable</b> affects only that node.<br>
+           <b>②</b> Faults are <b>easy to locate</b> — the problem is on one link.<br>
+           <b>③</b> Adding or removing a node <b>does not disturb</b> the rest.<br>
+           <b>④</b> With a switch, no collisions and full bandwidth per node.</p>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">Disadvantages</span>
+        <p><b>①</b> If the <b>central device fails, the whole network fails</b>.<br>
+           <b>②</b> Needs <b>more cable</b> than a bus — one run per node.<br>
+           <b>③</b> Cost of the central hub or switch.</p>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">The default answer</span>
+        <p>If a question asks which topology to use inside a building or lab and gives no
+           special constraint, <b>star</b> is the expected answer — and "easy fault
+           isolation, one node's failure does not affect others" is the justification.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.4</span> Tree topology</h2>
+
+  <div class="cosplit">
+    <div>
+      <figure>
+        <svg viewBox="0 0 480 260" role="img" aria-label="Tree topology: a root switch connected to two secondary switches, each of which has two computers connected to it">
+          <rect x="192" y="16" width="96" height="42" rx="8" fill="#fdf6e3" stroke="#c62b28" stroke-width="3"/>
+          <text x="240" y="43" class="lab" text-anchor="middle">ROOT</text>
+
+          <rect x="66" y="106" width="90" height="42" rx="8" fill="#fdf6e3" stroke="#748500" stroke-width="3"/>
+          <text x="111" y="133" class="lab" text-anchor="middle">SW 1</text>
+          <rect x="324" y="106" width="90" height="42" rx="8" fill="#fdf6e3" stroke="#748500" stroke-width="3"/>
+          <text x="369" y="133" class="lab" text-anchor="middle">SW 2</text>
+
+          <rect x="20" y="196" width="62" height="40" rx="8" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <text x="51" y="222" class="lab" text-anchor="middle">A</text>
+          <rect x="112" y="196" width="62" height="40" rx="8" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <text x="143" y="222" class="lab" text-anchor="middle">B</text>
+          <rect x="288" y="196" width="62" height="40" rx="8" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <text x="319" y="222" class="lab" text-anchor="middle">C</text>
+          <rect x="380" y="196" width="62" height="40" rx="8" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <text x="411" y="222" class="lab" text-anchor="middle">D</text>
+
+          <line x1="216" y1="58" x2="120" y2="104" stroke="#073642" stroke-width="3"/>
+          <line x1="264" y1="58" x2="360" y2="104" stroke="#073642" stroke-width="3"/>
+          <line x1="94" y1="148" x2="56" y2="194" stroke="#073642" stroke-width="3"/>
+          <line x1="128" y1="148" x2="140" y2="194" stroke="#073642" stroke-width="3"/>
+          <line x1="352" y1="148" x2="322" y2="194" stroke="#073642" stroke-width="3"/>
+          <line x1="386" y1="148" x2="408" y2="194" stroke="#073642" stroke-width="3"/>
+
+          <text x="240" y="254" text-anchor="middle">stars, joined to a backbone — a hierarchy</text>
+        </svg>
+        <figcaption>Several <b>star</b> networks connected to a central backbone. Also called a hierarchical topology.</figcaption>
+      </figure>
+    </div>
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Tree topology</span> — a hierarchical arrangement combining
+           the features of <b>bus and star</b>: groups of star-configured nodes are
+           connected to a linear backbone, forming levels like the branches of a tree.</p>
+      </div>
+      <div class="reveal eg">
+        <span class="tag">Advantages</span>
+        <p><b>①</b> Scales well — new branches are added without redesigning the
+           network.<br>
+           <b>②</b> A fault in one branch <b>does not affect</b> the others.<br>
+           <b>③</b> Natural fit where the organisation itself is hierarchical.</p>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">Disadvantages</span>
+        <p><b>①</b> If the <b>root or the backbone fails</b>, the whole network fails.<br>
+           <b>②</b> Uses a lot of cable and is harder to configure.<br>
+           <b>③</b> More devices needed, so higher cost.</p>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">The situation that calls for it</span>
+        <p>A campus or a multi-storey building: one switch per floor or per block, all
+           joined back to a central one. That is exactly the shape of the case-study
+           question in §7.5.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.5</span> Mesh topology</h2>
+
+  <div class="cosplit">
+    <div>
+      <figure>
+        <svg viewBox="0 0 440 260" role="img" aria-label="Mesh topology: five nodes with every node directly connected to every other node, ten links in total">
+          <line x1="220" y1="42" x2="60" y2="122" stroke="#073642" stroke-width="2.5"/>
+          <line x1="220" y1="42" x2="380" y2="122" stroke="#073642" stroke-width="2.5"/>
+          <line x1="220" y1="42" x2="120" y2="220" stroke="#073642" stroke-width="2.5"/>
+          <line x1="220" y1="42" x2="320" y2="220" stroke="#073642" stroke-width="2.5"/>
+          <line x1="60" y1="122" x2="380" y2="122" stroke="#073642" stroke-width="2.5"/>
+          <line x1="60" y1="122" x2="120" y2="220" stroke="#073642" stroke-width="2.5"/>
+          <line x1="60" y1="122" x2="320" y2="220" stroke="#073642" stroke-width="2.5"/>
+          <line x1="380" y1="122" x2="120" y2="220" stroke="#073642" stroke-width="2.5"/>
+          <line x1="380" y1="122" x2="320" y2="220" stroke="#073642" stroke-width="2.5"/>
+          <line x1="120" y1="220" x2="320" y2="220" stroke="#073642" stroke-width="2.5"/>
+
+          <circle cx="220" cy="42" r="26" fill="#eee8d5" stroke="#1f7ab8" stroke-width="3"/>
+          <text x="220" y="49" class="lab" text-anchor="middle">A</text>
+          <circle cx="60" cy="122" r="26" fill="#eee8d5" stroke="#1f7ab8" stroke-width="3"/>
+          <text x="60" y="129" class="lab" text-anchor="middle">B</text>
+          <circle cx="380" cy="122" r="26" fill="#eee8d5" stroke="#1f7ab8" stroke-width="3"/>
+          <text x="380" y="129" class="lab" text-anchor="middle">C</text>
+          <circle cx="120" cy="220" r="26" fill="#eee8d5" stroke="#1f7ab8" stroke-width="3"/>
+          <text x="120" y="227" class="lab" text-anchor="middle">D</text>
+          <circle cx="320" cy="220" r="26" fill="#eee8d5" stroke="#1f7ab8" stroke-width="3"/>
+          <text x="320" y="227" class="lab" text-anchor="middle">E</text>
+
+          <text x="220" y="254" text-anchor="middle">5 nodes → 10 links</text>
+        </svg>
+        <figcaption>Every node is connected to <b>every other node</b> directly.</figcaption>
+      </figure>
+    </div>
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Mesh topology</span> — every node has a dedicated
+           point-to-point link to every other node. For <b>n</b> nodes the number of links
+           is <b>n(n − 1) / 2</b>, and each node needs <b>n − 1</b> ports.</p>
+      </div>
+      <div class="formula">
+        links = <span class="frac"><span>n(n − 1)</span><span>2</span></span>
+        &nbsp;→&nbsp; for n = 5: <b>5 × 4 / 2 = 10</b>
+      </div>
+      <div class="reveal eg">
+        <span class="tag">Advantages</span>
+        <p><b>①</b> <b>Most reliable</b> — if one link fails, data takes another route.<br>
+           <b>②</b> No traffic congestion; each link carries only its own pair's data.<br>
+           <b>③</b> Best security and privacy — data does not pass through other nodes.</p>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">Disadvantages</span>
+        <p><b>①</b> <b>Enormous cabling</b> — the count grows roughly as n².<br>
+           <b>②</b> Highest cost of all topologies.<br>
+           <b>③</b> Very difficult to install and reconfigure.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal qcard">
+    <span class="tag">Quick calculation</span>
+    <p>How many cables does a full mesh of <b>8</b> nodes need? And how many ports on
+       each node?</p>
+  </div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>8 × 7 / 2 = 28 cables</b>, and <b>7 ports</b> on every node. Adding a ninth node
+       would need 8 more cables and a new port on all eight existing nodes — which is
+       exactly why mesh is never used for an office LAN.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.6</span> The four topologies, compared</h2>
+
+  <table>
+    <tr><th class="lbl">&nbsp;</th><th>Bus</th><th>Star</th><th>Tree</th><th>Mesh</th></tr>
+    <tr><td class="lbl">Cable needed</td><td class="hi2">Least</td><td>Moderate</td><td>High</td><td class="hi">Most</td></tr>
+    <tr><td class="lbl">Cost</td><td class="hi2">Lowest</td><td>Moderate</td><td>High</td><td class="hi">Highest</td></tr>
+    <tr><td class="lbl">One node fails</td><td class="hi2">others fine</td><td class="hi2">others fine</td><td class="hi2">others fine</td><td class="hi2">others fine</td></tr>
+    <tr><td class="lbl">Single point of failure</td><td class="hi">the backbone</td><td class="hi">the central device</td><td class="hi">the root</td><td class="hi2">none</td></tr>
+    <tr><td class="lbl">Fault detection</td><td class="hi">Difficult</td><td class="hi2">Easy</td><td>Moderate</td><td class="hi2">Easy</td></tr>
+    <tr><td class="lbl">Adding a node</td><td>Easy</td><td class="hi2">Easy, no disturbance</td><td class="hi2">Easy</td><td class="hi">Very difficult</td></tr>
+    <tr><td class="lbl">Reliability</td><td class="hi">Low</td><td>Moderate</td><td>Moderate</td><td class="hi2">Highest</td></tr>
+    <tr><td class="lbl">Best used for</td><td class="lbl">small, cheap, linear</td><td class="lbl">a lab or office</td><td class="lbl">a campus or multi-floor site</td><td class="lbl">critical backbones</td></tr>
+    <caption>Read the two "single point of failure" and "cost" rows together — they are the trade-off the whole section is about.</caption>
+  </table>
+
+  <div class="insight">
+    <span class="tag">The trade-off, in one sentence</span>
+    <p><b>Reliability costs cable.</b> Bus is cheapest and most fragile; mesh is most
+       reliable and most expensive; star and tree sit in between, which is why almost
+       every real network is one of those two.</p>
+  </div>
+</section>
+
+<!-- ===================== 5 · TRANSMISSION MEDIA ===================== -->
+
+<section class="slide" data-section="5 · Transmission media">
+  <h2><span class="num">6.1</span> Guided and unguided</h2>
+
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Transmission medium</span> — the physical path along which a
+       signal travels from sender to receiver.<br>
+       <span class="term">Guided (wired)</span> — the signal is confined within a solid
+       medium: twisted pair, coaxial cable, optical fibre.<br>
+       <span class="term">Unguided (wireless)</span> — the signal travels through air or
+       space: radio waves, microwaves, infrared, satellite.</p>
+  </div>
+
+  <div class="grid3">
+    <div>
+      <figure>
+        <svg viewBox="0 0 260 150" role="img" aria-label="Twisted pair cable: two insulated copper wires twisted around each other inside a sheath">
+          <rect x="14" y="46" width="232" height="58" rx="26" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <path class="curve c-blue" d="M30,75 q16,-22 32,0 q16,22 32,0 q16,-22 32,0 q16,22 32,0 q16,-22 32,0 q16,22 32,0"/>
+          <path class="curve c-rose" d="M30,75 q16,22 32,0 q16,-22 32,0 q16,22 32,0 q16,-22 32,0 q16,22 32,0 q16,-22 32,0"/>
+          <text x="130" y="130" class="lab" text-anchor="middle">Twisted pair</text>
+          <text x="130" y="28" text-anchor="middle">two copper wires, twisted</text>
+        </svg>
+      </figure>
+      <p class="small"><b>Cheapest, easiest to install</b>, used for almost every LAN
+        (the RJ-45 Ethernet cable). Twisting cancels interference. Lowest bandwidth and
+        shortest range of the three — about <b>100 m</b> per run.</p>
+    </div>
+    <div>
+      <figure>
+        <svg viewBox="0 0 260 150" role="img" aria-label="Coaxial cable in cross-section: a central copper conductor, insulation, a braided metal shield, and an outer jacket">
+          <circle cx="130" cy="72" r="52" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <circle cx="130" cy="72" r="38" fill="#fdf6e3" stroke="#6c71c4" stroke-width="3"/>
+          <circle cx="130" cy="72" r="22" fill="#eee8d5" stroke="#a17a00" stroke-width="3"/>
+          <circle cx="130" cy="72" r="8" fill="#c62b28"/>
+          <text x="130" y="140" class="lab" text-anchor="middle">Coaxial</text>
+          <text x="238" y="40" text-anchor="end">jacket</text>
+          <text x="238" y="62" text-anchor="end">shield</text>
+          <text x="238" y="112" text-anchor="end">core</text>
+        </svg>
+      </figure>
+      <p class="small">A core conductor inside a braided <b>shield</b>. Better bandwidth
+        and far <b>less interference</b> than twisted pair; carries a signal further.
+        Thicker, costlier, harder to install. Used for cable TV and older LANs.</p>
+    </div>
+    <div>
+      <figure>
+        <svg viewBox="0 0 260 150" role="img" aria-label="Optical fibre: a light ray bouncing along a glass core by total internal reflection inside cladding">
+          <rect x="14" y="50" width="232" height="50" rx="8" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <rect x="14" y="62" width="232" height="26" fill="#fdf6e3" stroke="#1f7ab8" stroke-width="2"/>
+          <path class="curve c-amber" d="M20,86 L62,64 L104,86 L146,64 L188,86 L230,64"/>
+          <text x="130" y="130" class="lab" text-anchor="middle">Optical fibre</text>
+          <text x="130" y="34" text-anchor="middle">light, reflected along a glass core</text>
+        </svg>
+      </figure>
+      <p class="small">Carries <b>light</b>, not electricity. <b>Highest bandwidth</b>,
+        longest distance, <b>immune to electrical interference</b>, and the most secure —
+        it cannot be tapped without detection. Most expensive; needs skilled installation.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.2</span> Unguided media</h2>
+
+  <table>
+    <tr><th class="lbl">Medium</th><th class="lbl">How it travels</th><th class="lbl">Range</th><th class="lbl">Used for</th><th class="lbl">Limitation</th></tr>
+    <tr><td class="lbl"><b>Radio waves</b></td><td class="lbl">omni-directional; passes through walls</td><td class="lbl">long</td><td class="lbl">Wi-Fi, FM radio, cordless phones</td><td class="lbl">insecure — anyone in range receives it</td></tr>
+    <tr><td class="lbl"><b>Microwaves</b></td><td class="lbl">line of sight, tower to tower</td><td class="lbl">up to ~50 km per hop</td><td class="lbl">mobile networks, long-distance links</td><td class="lbl">needs unobstructed line of sight; rain fade</td></tr>
+    <tr><td class="lbl"><b>Infrared</b></td><td class="lbl">very short range, line of sight</td><td class="lbl">a few metres</td><td class="lbl">TV remotes, some device pairing</td><td class="lbl">cannot pass through walls</td></tr>
+    <tr><td class="lbl"><b>Satellite</b></td><td class="lbl">up to a satellite and back down</td><td class="lbl">global</td><td class="lbl">remote areas, TV broadcast, GPS</td><td class="lbl">very costly; noticeable delay</td></tr>
+  </table>
+
+  <div class="cosplit">
+    <div>
+      <figure>
+        <svg viewBox="0 0 440 190" role="img" aria-label="A satellite link: an earth station transmits up to a satellite, which relays the signal down to a distant earth station">
+          <defs>
+            <marker id="arw-sat" viewBox="0 0 10 10" refX="9" refY="5"
+                    markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#238b84"/>
+            </marker>
+          </defs>
+          <rect x="180" y="14" width="80" height="34" rx="8" fill="#fdf6e3" stroke="#238b84" stroke-width="3"/>
+          <text x="220" y="37" class="lab" text-anchor="middle">satellite</text>
+
+          <path class="curve c-cyan" d="M70,132 L176,52" marker-end="url(#arw-sat)"/>
+          <path class="curve c-cyan" d="M264,52 L370,132" marker-end="url(#arw-sat)"/>
+
+          <path d="M40,132 L100,132 L86,150 L54,150 z" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <path d="M340,132 L400,132 L386,150 L354,150 z" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+          <text x="70" y="176" class="lab" text-anchor="middle">earth station</text>
+          <text x="370" y="176" class="lab" text-anchor="middle">earth station</text>
+
+          <text x="130" y="76" fill="#196b65">uplink</text>
+          <text x="308" y="76" fill="#196b65">downlink</text>
+        </svg>
+        <figcaption>Uplink and downlink. The signal travels roughly 72,000 km — hence the delay.</figcaption>
+      </figure>
+    </div>
+    <div>
+      <div class="insight">
+        <span class="tag">Choosing a medium — the three deciding questions</span>
+        <ol>
+          <li><b>How far?</b> Under 100 m → twisted pair. Kilometres → optical fibre.
+              Across a country or to a remote site → satellite.</li>
+          <li><b>How much interference?</b> Near heavy machinery or high-voltage cables →
+              <b>optical fibre</b>, because it is immune to it.</li>
+          <li><b>Can you dig?</b> If a road, a river or a heritage building is in the way,
+              wired is impossible → <b>microwave or radio link</b>.</li>
+        </ol>
+      </div>
+      <div class="warn">
+        <span class="tag">The exam answer that earns the mark</span>
+        <p>Never write just "optical fibre". Write <b>"optical fibre, because the distance
+           exceeds 100 m and it offers the highest bandwidth with no electromagnetic
+           interference"</b>. The justification is where the mark is.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RECAP AND EXAM PRACTICE ===================== -->
+
+<section class="slide" data-section="Recap and exam practice">
+  <h2><span class="num">7.1</span> Everything on one screen</h2>
+
+  <h3>Evolution</h3>
+  <div class="chips">
+    <span class="chip k">ARPANET 1969</span>
+    <span class="chip">NSFNET 1986</span>
+    <span class="chip k">Internet = network of networks</span>
+    <span class="chip k">WWW = a service on it, Berners-Lee</span>
+    <span class="chip">Interspace</span>
+  </div>
+
+  <h3>Types</h3>
+  <div class="chips">
+    <span class="chip k">PAN ~10 m</span>
+    <span class="chip k">LAN — building or campus</span>
+    <span class="chip k">MAN — a city, ~50 km</span>
+    <span class="chip k">WAN — the Internet</span>
+    <span class="chip">bigger → slower, costlier, more errors</span>
+  </div>
+
+  <h3>Devices</h3>
+  <div class="chips">
+    <span class="chip k">NIC — MAC address</span>
+    <span class="chip">Repeater — regenerates the signal</span>
+    <span class="chip k">Hub — broadcasts</span>
+    <span class="chip k">Switch — sends to one</span>
+    <span class="chip k">Router — path between networks, IP</span>
+    <span class="chip k">Gateway — different protocols</span>
+    <span class="chip">Modem — digital ⇄ analog</span>
+  </div>
+
+  <h3>Topologies and media</h3>
+  <div class="chips">
+    <span class="chip k">Bus — least cable, backbone fails = all fail</span>
+    <span class="chip k">Star — easy faults, centre fails = all fail</span>
+    <span class="chip k">Tree — stars on a backbone</span>
+    <span class="chip k">Mesh — n(n−1)/2 links, most reliable</span>
+    <span class="chip">twisted pair · coaxial · optical fibre</span>
+    <span class="chip">radio · microwave · infrared · satellite</span>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.2</span> Exam question 1 — name and justify</h2>
+
+  <div class="qcard">
+    <span class="tag">4 marks</span>
+    <ol>
+      <li>Differentiate between a <b>hub</b> and a <b>switch</b>.</li>
+      <li>Differentiate between a <b>router</b> and a <b>gateway</b>.</li>
+    </ol>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 1</span>
+    <p>A <b>hub</b> is a non-intelligent device: it <b>broadcasts</b> incoming data to
+       every connected port, so all nodes share the bandwidth, collisions are common and
+       any node can see all traffic.</p>
+    <p>A <b>switch</b> is intelligent: it maintains a table of <b>MAC addresses</b> and
+       forwards data <b>only to the destination port</b>. This gives full bandwidth per
+       port, avoids collisions and is more secure.</p>
+  </div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 2</span>
+    <p>A <b>router</b> connects two or more networks that use the <b>same protocol</b> and
+       selects the best path for a packet using its <b>IP address</b>.</p>
+    <p>A <b>gateway</b> connects two networks that use <b>different protocols or
+       architectures</b> and performs the necessary <b>protocol translation</b>. It acts as
+       the entry and exit point of a network.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.3</span> Exam question 2 — the case study</h2>
+
+  <div class="qcard">
+    <span class="tag">5 marks — the standard networking question</span>
+    <p><b>Sunrise Public School</b> is setting up its campus network in Pune, with four
+       blocks and one branch office in Nagpur.</p>
+  </div>
+
+  <figure>
+    <svg viewBox="0 0 760 280" role="img" aria-label="Campus map showing four blocks — Admin, Academic, Library and Hostel — with the distances between them, and a separate Nagpur branch office">
+      <rect x="60" y="40" width="150" height="66" rx="10" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <text x="135" y="72" class="lab" text-anchor="middle">ADMIN</text>
+      <text x="135" y="94" text-anchor="middle">150 computers</text>
+
+      <rect x="420" y="40" width="150" height="66" rx="10" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <text x="495" y="72" class="lab" text-anchor="middle">ACADEMIC</text>
+      <text x="495" y="94" text-anchor="middle">80 computers</text>
+
+      <rect x="60" y="180" width="150" height="66" rx="10" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <text x="135" y="212" class="lab" text-anchor="middle">LIBRARY</text>
+      <text x="135" y="234" text-anchor="middle">25 computers</text>
+
+      <rect x="420" y="180" width="150" height="66" rx="10" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <text x="495" y="212" class="lab" text-anchor="middle">HOSTEL</text>
+      <text x="495" y="234" text-anchor="middle">12 computers</text>
+
+      <line class="axis" x1="212" y1="73" x2="418" y2="73"/>
+      <text x="315" y="62" text-anchor="middle" fill="#175f90">60 m</text>
+
+      <line class="axis" x1="135" y1="108" x2="135" y2="178"/>
+      <text x="152" y="148" fill="#175f90">45 m</text>
+
+      <line class="axis" x1="495" y1="108" x2="495" y2="178"/>
+      <text x="512" y="148" fill="#175f90">120 m</text>
+
+      <line class="axis" x1="212" y1="213" x2="418" y2="213"/>
+      <text x="315" y="204" text-anchor="middle" fill="#175f90">75 m</text>
+
+      <rect x="620" y="110" width="130" height="66" rx="10" fill="#fdf6e3" stroke="#c62b28" stroke-width="3"/>
+      <text x="685" y="142" class="lab" text-anchor="middle">NAGPUR</text>
+      <text x="685" y="164" text-anchor="middle">branch office</text>
+      <line class="axis dash" x1="574" y1="143" x2="616" y2="143"/>
+      <text x="595" y="196" text-anchor="middle" fill="#b02522">700 km</text>
+    </svg>
+    <figcaption>Distances between blocks, and the number of computers in each.</figcaption>
+  </figure>
+
+  <div class="qcard">
+    <p><b>(i)</b> Suggest the most suitable place to install the <b>server</b>, with
+       reason.<br>
+       <b>(ii)</b> Suggest a suitable <b>cable layout</b> for connecting the blocks.<br>
+       <b>(iii)</b> Where should a <b>switch/hub</b> be placed, and why?<br>
+       <b>(iv)</b> Which device is needed to connect the campus to the <b>Nagpur</b>
+       office?<br>
+       <b>(v)</b> Which <b>medium</b> would you use between Academic and Hostel, and why?</p>
+  </div>
+
+  <div class="reveal ready ephemeral">Answer all five before you look. 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>(i) Admin block.</b> It has the <b>largest number of computers</b> (150), so
+       placing the server there minimises total network traffic across the blocks and gives
+       the most users the fastest access.</p>
+    <p><b>(ii) Star topology</b>, with all three other blocks cabled back to the Admin
+       block. It gives easy fault isolation — a break in one cable affects only that block
+       — and the distances are all short enough for a single run.</p>
+    <p><b>(iii) A switch in every block.</b> Each block has multiple computers that must be
+       interconnected, and a switch forwards data only to the intended machine, avoiding
+       collisions and wasted bandwidth.</p>
+    <p><b>(iv) A router</b>, since the two sites are separate networks and the packets must
+       be routed between them. A <b>modem</b> is also required at each end if the link uses
+       a telephone or cable line.</p>
+    <p><b>(v) Optical fibre.</b> The distance is <b>120 m</b>, beyond the ~100 m limit of
+       twisted pair, and fibre offers the highest bandwidth with no electromagnetic
+       interference.</p>
+  </div>
+
+  <div class="reveal insight">
+    <span class="tag">How to answer any case study</span>
+    <p><b>Server</b> → the block with the <b>most computers</b>.<br>
+       <b>Layout</b> → <b>star</b>, centred on the server block, unless told otherwise.<br>
+       <b>Switch</b> → in <b>every</b> block, because each has several computers.<br>
+       <b>Remote site</b> → <b>router</b> (plus a modem if over a phone/cable line).<br>
+       <b>Medium</b> → check the <b>distance</b>: under 100 m twisted pair, over 100 m
+       optical fibre, and wireless where cabling is impossible.<br>
+       <b>Always give the reason</b> — the reason is the mark.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.4</span> Exam question 3 — draw and compare</h2>
+
+  <div class="qcard">
+    <span class="tag">3 + 2 marks</span>
+    <ol>
+      <li>Draw the <b>bus</b> and <b>star</b> topologies for four nodes, labelling all
+          parts. State one advantage of each.</li>
+      <li>A network of <b>6</b> nodes is to be built as a full mesh. How many cables are
+          needed, and how many ports on each node?</li>
+    </ol>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 1</span>
+    <p><b>Bus</b> — one backbone cable with terminators at both ends and four nodes
+       connected by drop lines. <b>Advantage:</b> it uses the least cable, so it is the
+       cheapest to install.</p>
+    <p><b>Star</b> — four nodes each connected by its own cable to a central switch.
+       <b>Advantage:</b> failure of one node or cable does not affect the others, and
+       faults are easy to locate.</p>
+    <p class="small">Marks are for the <b>labels</b>: "backbone", "terminator", "switch",
+       and the node names.</p>
+  </div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 2</span>
+    <div class="formula">
+      <span class="frac"><span>n(n − 1)</span><span>2</span></span>
+      = <span class="frac"><span>6 × 5</span><span>2</span></span> = <b>15 cables</b>
+    </div>
+    <p>Each node connects to every other node, so each needs <b>n − 1 = 5 ports</b>.</p>
+  </div>
+</section>
+
+<section class="slide title-slide">
+  <div class="kicker">End of Chapter 6</div>
+  <h1>Next: Applications<br>and Protocols</h1>
+  <div class="rule"></div>
+  <p class="sub">You now know what is connected and how. Chapter 7 is the other half:
+     the <b>rules</b> the two ends agree on — HTTP, FTP, TCP/IP, SMTP, POP3 — and how a
+     name like <code>ncert.nic.in</code> becomes a machine you can actually reach.</p>
+
+  <div class="bridge narrow">
+    <span class="tag">Carry these three forward</span>
+    <p><b>①</b> A <b>router</b> uses the <b>IP address</b> — Chapter 7 explains what one
+       actually looks like.<br>
+       <b>②</b> A <b>switch</b> uses the <b>MAC address</b>; keep the two apart, because
+       the paper tests exactly that confusion.<br>
+       <b>③</b> The <b>Internet</b> is the network, the <b>Web</b> is a service on it —
+       and Chapter 7 is about the services.</p>
+  </div>
+</section>
+
+</div>
+
+<button class="nav" id="prev" aria-label="Previous slide">←</button>
+<button class="nav" id="next" aria-label="Next slide">→</button>
+
+<script src="assets/deck.js"></script>
+</body>
+</html>

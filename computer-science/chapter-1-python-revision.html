@@ -1,0 +1,2586 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 1 · Python Revision — Class XII Computer Science</title>
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body>
+
+<div id="bar">
+  <div class="brand">CH 1 · PYTHON REVISION</div>
+  <div class="sect" id="sect"></div>
+  <div class="tools">
+    <button id="menuBtn">Menu (m)</button>
+    <button id="fsBtn">Full screen (f)</button>
+    <span id="counter"></span>
+  </div>
+</div>
+<div id="progress"></div>
+
+<div id="menu">
+  <h3>Chapter 1 — Python Revision</h3>
+  <div class="mlist"></div>
+  <p class="hint">Press <kbd>m</kbd> or <kbd>Esc</kbd> to close</p>
+</div>
+
+<div id="stage">
+
+<!-- ===================== ORIENTATION ===================== -->
+
+<section class="slide title-slide" data-section="Orientation">
+  <div class="kicker">Unit 1 · Computational Thinking and Programming</div>
+  <h1>Chapter 1<br>Python, Revised</h1>
+  <div class="rule"></div>
+  <p class="sub">Everything from Class XI that Class XII will stand on —
+     types, operators, control flow, strings, lists, tuples, dictionaries.
+     Taught in programs, not paragraphs.</p>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.1</span> Why we start here</h2>
+  <p class="lead">Class XII does not teach you Python. It teaches you what to
+     <em>do</em> with Python.</p>
+
+  <div class="grid2">
+    <div class="card">
+      <h4>What is coming this year</h4>
+      <ul>
+        <li>Functions and scope</li>
+        <li>Exception handling</li>
+        <li>File handling — text, binary, CSV</li>
+        <li>Stacks</li>
+        <li>Python with MySQL</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>What every one of them assumes</h4>
+      <ul>
+        <li>You can read a loop and say what it prints</li>
+        <li>You know a list changes and a string does not</li>
+        <li>You can slice</li>
+        <li>You can build and walk a dictionary</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight">
+    <span class="tag">The point</span>
+    <p>There is not one new idea in this chapter. But a student who is shaky here
+       will be shaky in <b>every remaining chapter</b> — because file handling is
+       loops over strings, and a database result is a list of tuples.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.2</span> How this chapter runs</h2>
+
+  <div class="grid2">
+    <div>
+      <h3>Seven stops</h3>
+      <ol>
+        <li><b>Names, objects and types</b> — what a variable really is</li>
+        <li><b>Operators</b> — and the ones that trip people up</li>
+        <li><b>Control flow</b> — <code>if</code>, <code>while</code>, <code>for</code></li>
+        <li><b>Strings</b> — indexing, slicing, immutability</li>
+        <li><b>Lists</b> — the workhorse</li>
+        <li><b>Tuples</b> — the frozen list</li>
+        <li><b>Dictionaries</b> — lookup by name</li>
+      </ol>
+    </div>
+    <div>
+      <h3>The rhythm of every slide</h3>
+      <ol class="steps">
+        <li>A <b>short, complete, runnable program</b> — blue frame</li>
+        <li>You <b>predict</b> what it prints</li>
+        <li>The <b>real output</b> — green frame</li>
+      </ol>
+      <div class="note">
+        <span class="tag">Colour code — learn it now</span>
+        <p><b>Blue frame</b> = what you wrote.
+           <b>Green frame</b> = what the computer printed.
+           <b>Red frame</b> = what went wrong.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.3</span> The single most valuable habit</h2>
+  <p class="lead">Before the output appears — say it out loud.</p>
+
+  <div class="eg">
+    <span class="tag">Why it matters</span>
+    <p>“Predict the output” is not a classroom game. Open any CBSE paper:
+       <b>Find the output of the following code</b> is worth 2–3 marks, every year,
+       in every section. It is the cheapest mark in the paper, and the one most
+       often lost.</p>
+  </div>
+
+  <div class="warn">
+    <span class="tag">What loses the mark</span>
+    <p>Usually not the logic — the <b>formatting</b>. A missing space, a missing quote
+       inside a list, <code>3</code> written where Python prints <code>3.0</code>.
+       Python's output is exact, and so is the marking.</p>
+  </div>
+
+  <div class="insight">
+    <span class="tag">So</span>
+    <p>Every green box in this deck is <b>real output from a real run</b> —
+       spacing, quotes and all. Copy it exactly as you see it.</p>
+  </div>
+</section>
+
+<!-- ===================== 1 · NAMES, OBJECTS, TYPES ===================== -->
+
+<section class="slide" data-section="1 · Names, objects and types">
+  <h2><span class="num">2.1</span> Start with a program</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">types.py</span>marks  = <span class="n">87</span>
+name   = <span class="s">"Aarav"</span>
+pct    = <span class="n">87.5</span>
+passed = <span class="k">True</span>
+
+<span class="b">print</span>(marks,  <span class="b">type</span>(marks))
+<span class="b">print</span>(name,   <span class="b">type</span>(name))
+<span class="b">print</span>(pct,    <span class="b">type</span>(pct))
+<span class="b">print</span>(passed, <span class="b">type</span>(passed))</pre>
+      <div class="reveal ready ephemeral">Four lines. What exactly? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>87 &lt;class 'int'&gt;
+Aarav &lt;class 'str'&gt;
+87.5 &lt;class 'float'&gt;
+True &lt;class 'bool'&gt;</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Data type</span> — the classification of a value that
+           decides what may be stored in it and which operations are allowed on it.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Read the output carefully</span>
+    <p>Python did not print <code>int</code>. It printed <code>&lt;class 'int'&gt;</code>.
+       In an exam, write it the way Python writes it.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.2</span> The core types, on one screen</h2>
+
+  <table>
+    <tr><th class="lbl">Type</th><th>Literal</th><th>Mutable?</th><th>Ordered?</th><th class="lbl">Used for</th></tr>
+    <tr><td class="lbl"><code>int</code></td><td>87</td><td>—</td><td>—</td><td class="lbl">whole numbers, counters</td></tr>
+    <tr><td class="lbl"><code>float</code></td><td>87.5</td><td>—</td><td>—</td><td class="lbl">averages, percentages</td></tr>
+    <tr><td class="lbl"><code>bool</code></td><td>True / False</td><td>—</td><td>—</td><td class="lbl">conditions</td></tr>
+    <tr><td class="lbl"><code>str</code></td><td>"Aarav"</td><td class="hi">No</td><td class="hi2">Yes</td><td class="lbl">text</td></tr>
+    <tr><td class="lbl"><code>list</code></td><td>[1, 2, 3]</td><td class="hi2">Yes</td><td class="hi2">Yes</td><td class="lbl">a changing collection</td></tr>
+    <tr><td class="lbl"><code>tuple</code></td><td>(1, 2, 3)</td><td class="hi">No</td><td class="hi2">Yes</td><td class="lbl">a fixed record</td></tr>
+    <tr><td class="lbl"><code>dict</code></td><td>{"a": 1}</td><td class="hi2">Yes</td><td class="hi2">Yes</td><td class="lbl">lookup by key</td></tr>
+    <caption>The <b>Mutable?</b> column is the whole chapter. Almost every surprising output follows from it.</caption>
+  </table>
+
+  <div class="warn">
+    <span class="tag">Careful</span>
+    <p><code>bool</code> is a <b>subtype of int</b>. <code>True</code> behaves as
+       <code>1</code> and <code>False</code> as <code>0</code> in arithmetic — which is
+       why <code>True + True</code> gives <code>2</code> instead of an error.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.3</span> A variable is a label, not a box</h2>
+  <p class="lead">This one idea explains half the “surprising output” questions in the paper.</p>
+
+  <figure>
+    <svg viewBox="0 0 700 225" role="img" aria-label="Two names x and y each with an arrow pointing to a single integer object 10 held in memory">
+      <defs>
+        <marker id="arw-label" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#1f7ab8"/>
+        </marker>
+      </defs>
+
+      <text x="95" y="28" class="lab" text-anchor="middle">NAMES</text>
+      <text x="500" y="28" class="lab" text-anchor="middle">OBJECTS IN MEMORY</text>
+
+      <rect x="40" y="55" width="110" height="52" rx="10" fill="#eee8d5" stroke="#d9d0b6" stroke-width="2"/>
+      <text x="95" y="88" class="lab" text-anchor="middle">x</text>
+
+      <rect x="40" y="140" width="110" height="52" rx="10" fill="#eee8d5" stroke="#d9d0b6" stroke-width="2"/>
+      <text x="95" y="173" class="lab" text-anchor="middle">y</text>
+
+      <rect x="420" y="88" width="170" height="72" rx="10" fill="#fdf6e3" stroke="#1f7ab8" stroke-width="3"/>
+      <text x="505" y="118" class="lab" text-anchor="middle">10</text>
+      <text x="505" y="143" text-anchor="middle">one int object</text>
+
+      <path class="curve c-blue" d="M155,81 L412,112" marker-end="url(#arw-label)"/>
+      <path class="curve c-blue" d="M155,166 L412,140" marker-end="url(#arw-label)"/>
+
+      <text x="285" y="212" text-anchor="middle">x = 10    then    y = x</text>
+    </svg>
+    <figcaption>Assignment binds a <b>name</b> to an <b>object</b>. It does not copy the object.</figcaption>
+  </figure>
+
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Variable</span> — a name bound to an object in memory.
+       <code>=</code> performs <b>binding</b>, not copying: after <code>y = x</code>,
+       both names refer to <b>the same object</b>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.4</span> Proving it — <code>is</code> and <code>id()</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">labels.py</span>x = <span class="n">10</span>
+<span class="b">print</span>(<span class="b">id</span>(x) == <span class="b">id</span>(<span class="n">10</span>))
+
+y = x
+<span class="b">print</span>(x <span class="k">is</span> y)
+
+<span class="hl">x = x + <span class="n">1</span></span>
+<span class="b">print</span>(x, y)
+<span class="b">print</span>(x <span class="k">is</span> y)</pre>
+      <div class="reveal ready ephemeral">What do the last two lines print? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>True
+True
+11 10
+False</div>
+      <div class="reveal insight">
+        <span class="tag">What happened on the amber line</span>
+        <p><code>x + 1</code> built a <b>brand-new</b> int object <code>11</code> and
+           re-pointed the name <code>x</code> at it. <code>y</code> never moved —
+           it is still on <code>10</code>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Vocabulary</span>
+    <p><code>id(obj)</code> returns the object's identity — its address in memory.
+       <code>a is b</code> asks <b>“the same object?”</b>;
+       <code>a == b</code> asks <b>“the same value?”</b>
+       <button class="info" aria-controls="is-vs-eq" aria-expanded="false"
+               title="When do is and == disagree?">i</button></p>
+  </div>
+
+  <div class="infopanel" id="is-vs-eq">
+    <span class="tag">When do <code>is</code> and <code>==</code> disagree?</span>
+    <p>Whenever two <b>separate</b> objects happen to hold equal values.</p>
+    <div class="q">
+      <code>p = [1, 2]</code> · <code>q = [1, 2]</code><br>
+      <code>p == q</code> → <b>True</b> — the contents match<br>
+      <code>p is q</code> → <b>False</b> — they are two different list objects
+    </div>
+    <p>With small integers and short strings Python often reuses one cached object, which
+       is why <code>id(x) == id(10)</code> printed <code>True</code> above.
+       <b>Do not rely on that</b> — it is an internal optimisation, not a language rule,
+       and it stops at 256. In an answer, always compare <b>values</b> with
+       <code>==</code>; reserve <code>is</code> for <code>x is None</code>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.5</span> Immutable vs mutable — same shape, two outcomes</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">immutable — str</span>s = <span class="s">"hello"</span>
+t = s
+s = s.upper()
+<span class="b">print</span>(s, t)</pre>
+      <div class="reveal out"><span class="tag">Output</span>HELLO hello</div>
+      <p class="small reveal"><code>.upper()</code> cannot change the string —
+         it <b>returns a new one</b>. <code>t</code> is untouched.</p>
+    </div>
+    <div>
+<pre class="code"><span class="tag">mutable — list</span>a = [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]
+b = a
+a.append(<span class="n">4</span>)
+<span class="b">print</span>(a, b)
+<span class="b">print</span>(a <span class="k">is</span> b)</pre>
+      <div class="reveal out"><span class="tag">Output</span>[1, 2, 3, 4] [1, 2, 3, 4]
+True</div>
+      <p class="small reveal"><code>.append()</code> changed <b>the object itself</b>.
+         Both names see it, because there is only one object.</p>
+    </div>
+  </div>
+
+  <div class="reveal defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Mutable</span> — an object whose contents can be changed in place
+       after it is created: <code>list</code>, <code>dict</code>, <code>set</code>.<br>
+       <span class="term">Immutable</span> — an object that cannot be changed after creation;
+       any “change” produces a new object: <code>int</code>, <code>float</code>,
+       <code>bool</code>, <code>str</code>, <code>tuple</code>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.6</span> Check yourself</h2>
+
+  <div class="qcard">
+    <span class="tag">Question 1</span>
+    <p>Predict the exact output.</p>
+<pre class="code">x = <span class="n">5</span>
+y = x
+x = x + <span class="n">5</span>
+<span class="b">print</span>(x, y)
+
+L1 = [<span class="n">1</span>, <span class="n">2</span>]
+L2 = L1
+L1.append(<span class="n">3</span>)
+<span class="b">print</span>(L1, L2)</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>10 5
+[1, 2, 3] [1, 2, 3]</div>
+    <p><b>Why the two halves differ:</b> <code>x + 5</code> <b>rebinds</b> <code>x</code>
+       to a new int, so <code>y</code> keeps the old one. <code>L1.append(3)</code>
+       <b>mutates</b> the one list that both <code>L1</code> and <code>L2</code> point at,
+       so both appear to change.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.7</span> Type conversion</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">convert.py</span><span class="b">print</span>(<span class="b">int</span>(<span class="s">"25"</span>) + <span class="n">5</span>)
+<span class="b">print</span>(<span class="b">float</span>(<span class="s">"3.5"</span>) * <span class="n">2</span>)
+<span class="hl"><span class="b">print</span>(<span class="b">str</span>(<span class="n">25</span>) + <span class="s">"5"</span>)</span>
+<span class="hl"><span class="b">print</span>(<span class="b">int</span>(<span class="n">9.99</span>))</span>
+<span class="b">print</span>(<span class="b">int</span>(<span class="k">True</span>), <span class="b">float</span>(<span class="n">7</span>))</pre>
+      <div class="reveal ready ephemeral">The two amber lines — careful. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>30
+7.0
+255
+9
+1 7.0</div>
+      <div class="reveal warn">
+        <span class="tag">The two traps</span>
+        <p><code>str(25) + "5"</code> is <b>concatenation</b>, not addition →
+           <code>"255"</code>.</p>
+        <p><code>int(9.99)</code> is <b>9</b>, not 10. <code>int()</code>
+           <b>truncates</b> towards zero; it does not round. Use
+           <code>round(9.99)</code> if you want 10.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.8</span> <code>input()</code> always returns a string</h2>
+  <p class="lead">The most common runtime bug in a Class XII answer sheet.</p>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">WRONG</span>n = <span class="b">input</span>(<span class="s">"Enter a number: "</span>)
+<span class="b">print</span>(n * <span class="n">2</span>)</pre>
+      <div class="reveal out"><span class="tag">Output — user types 5</span>Enter a number: 5
+55</div>
+      <p class="small reveal">Not <code>10</code>. <code>n</code> is the string
+         <code>"5"</code>, and <code>"5" * 2</code> <b>repeats</b> it.</p>
+    </div>
+    <div>
+<pre class="code"><span class="tag">FIXED</span>age = <span class="b">input</span>(<span class="s">"Enter your age: "</span>)
+<span class="b">print</span>(age, <span class="b">type</span>(age))
+<span class="hl">age = <span class="b">int</span>(age)</span>
+<span class="b">print</span>(<span class="s">"Next year:"</span>, age + <span class="n">1</span>)</pre>
+      <div class="reveal out"><span class="tag">Output — user types 17</span>Enter your age: 17
+17 &lt;class 'str'&gt;
+Next year: 18</div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Board style</span>
+    <p>Written as one line it is
+       <code>age = int(input("Enter your age: "))</code> — that is the form the marking
+       scheme prints, and it is what you should write. But you must be able to explain
+       <b>why</b> the <code>int()</code> is there.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.9</span> …and what happens when it cannot convert</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">main.py</span><span class="ln">1</span>s = <span class="s">"abc"</span>
+<span class="ln">2</span>n = <span class="b">int</span>(s)
+<span class="ln">3</span><span class="b">print</span>(n)</pre>
+      <div class="reveal ready ephemeral">Which exception? Name it exactly. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal err"><span class="tag">Traceback</span>Traceback (most recent call last):
+  File "main.py", line 2, in &lt;module&gt;
+    n = int(s)
+        ^^^^^^
+<span class="etype">ValueError</span>: invalid literal for int() with base 10: 'abc'</div>
+      <div class="reveal bridge">
+        <span class="tag">Forward link</span>
+        <p>This exact traceback is where <b>Chapter 3 — Exception Handling</b> begins.
+           <code>int(input())</code> is the classic thing to wrap in
+           <code>try</code> / <code>except ValueError</code>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal insight">
+    <span class="tag">Read a traceback bottom-up</span>
+    <p>The <b>last line</b> names the exception and explains it. The lines above show
+       <b>which line of your file</b> raised it. The paper asks you to name the
+       exception — <code>ValueError</code> — so learn to find it instantly.</p>
+  </div>
+</section>
+
+<!-- ===================== 2 · OPERATORS ===================== -->
+
+<section class="slide" data-section="2 · Operators and expressions">
+  <h2><span class="num">3.1</span> The seven arithmetic operators</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">arith.py</span>a = <span class="n">17</span>
+b = <span class="n">5</span>
+<span class="b">print</span>(a + b)
+<span class="b">print</span>(a - b)
+<span class="b">print</span>(a * b)
+<span class="hl"><span class="b">print</span>(a / b)</span>
+<span class="b">print</span>(a // b)
+<span class="b">print</span>(a % b)
+<span class="b">print</span>(a ** <span class="n">2</span>)</pre>
+      <div class="reveal ready ephemeral">All seven. Write them down first. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>22
+12
+85
+3.4
+3
+2
+289</div>
+      <div class="reveal warn">
+        <span class="tag">The line everyone gets wrong</span>
+        <p><code>17 / 5</code> prints <code>3.4</code> — <b>a float</b>.
+           In Python 3, <code>/</code> <b>always</b> yields a float, even when the division
+           is exact: <code>10 / 5</code> is <code>2.0</code>, not <code>2</code>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.2</span> <code>/</code> vs <code>//</code> vs <code>%</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">divide.py</span><span class="b">print</span>(<span class="n">7</span> / <span class="n">2</span>,   <span class="n">7</span> // <span class="n">2</span>,  <span class="n">7</span> % <span class="n">2</span>)
+<span class="hl"><span class="b">print</span>(-<span class="n">7</span> / <span class="n">2</span>,  -<span class="n">7</span> // <span class="n">2</span>, -<span class="n">7</span> % <span class="n">2</span>)</span>
+<span class="b">print</span>(<span class="n">7.0</span> // <span class="n">2</span>, <span class="n">7</span> % <span class="n">2.0</span>)
+<span class="b">print</span>(<span class="b">divmod</span>(<span class="n">17</span>, <span class="n">5</span>))</pre>
+      <div class="reveal ready ephemeral">The amber line is the hard one. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>3.5 3 1
+-3.5 -4 1
+3.0 1.0
+(3, 2)</div>
+      <div class="reveal insight">
+        <span class="tag">Why <code>-7 // 2</code> is <code>-4</code></span>
+        <p><code>//</code> is <b>floor</b> division — it moves to the next <b>lower</b>
+           whole number, not towards zero. <code>-3.5</code> floors to <code>-4</code>.
+           <button class="info" aria-controls="floor-div" aria-expanded="false"
+                   title="Why floor and not truncate?">i</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Also notice</span>
+    <p>If <b>either</b> operand is a float, the result is a float —
+       <code>7.0 // 2</code> gives <code>3.0</code>, not <code>3</code>.
+       And <code>divmod(a, b)</code> returns the pair
+       <code>(a // b, a % b)</code> as a <b>tuple</b>, which is why it printed with
+       brackets.</p>
+  </div>
+
+  <div class="infopanel" id="floor-div">
+    <span class="tag">Why floor and not truncate?</span>
+    <p>Because Python guarantees this identity for every pair of integers:</p>
+    <div class="q"><code>(a // b) * b + (a % b) == a</code></div>
+    <p>Check it with <code>a = -7, b = 2</code>: <code>(-4) × 2 + 1 = -8 + 1 = -7</code> ✓.
+       If <code>//</code> truncated to <code>-3</code> instead, then <code>%</code> would
+       have to give <code>-1</code> to keep the identity, and the remainder would go
+       negative.</p>
+    <p>Keeping <code>%</code> non-negative for a positive divisor is what makes
+       <code>n % 2 == 0</code>, cyclic indexing and digit extraction behave for negative
+       numbers too. <b>Rule to remember:</b> the sign of <code>%</code> follows the
+       <b>divisor</b> — so <code>-7 % 2</code> is <code>1</code>, but
+       <code>7 % -2</code> is <code>-1</code>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.3</span> Precedence — and two famous traps</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">precedence.py</span><span class="b">print</span>(<span class="n">2</span> + <span class="n">3</span> * <span class="n">4</span>)
+<span class="b">print</span>((<span class="n">2</span> + <span class="n">3</span>) * <span class="n">4</span>)
+<span class="hl"><span class="b">print</span>(<span class="n">2</span> ** <span class="n">3</span> ** <span class="n">2</span>)</span>
+<span class="hl"><span class="b">print</span>(-<span class="n">3</span> ** <span class="n">2</span>)</span>
+<span class="b">print</span>(<span class="n">10</span> - <span class="n">4</span> - <span class="n">3</span>)
+<span class="b">print</span>(<span class="n">100</span> / <span class="n">10</span> / <span class="n">2</span>)</pre>
+      <div class="reveal ready ephemeral">The two amber lines — think before you speak. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>14
+20
+512
+-9
+3
+5.0</div>
+      <div class="reveal warn">
+        <span class="tag">Both traps explained</span>
+        <p><code>2 ** 3 ** 2</code> is <b>right</b>-associative:
+           <code>2 ** (3 ** 2)</code> = <code>2 ** 9</code> = <code>512</code>,
+           not <code>8 ** 2</code> = 64.</p>
+        <p><code>-3 ** 2</code> — <code>**</code> binds tighter than the unary minus,
+           so it is <code>-(3 ** 2)</code> = <code>-9</code>, not <code>9</code>.
+           <button class="info" aria-controls="pow-unary" aria-expanded="false"
+                   title="How do I never get this wrong?">i</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Everything else runs left to right</span>
+    <p><code>10 - 4 - 3</code> is <code>(10 - 4) - 3</code> = 3.
+       <code>100 / 10 / 2</code> is <code>(100 / 10) / 2</code> = <code>5.0</code> —
+       a float, because <code>/</code> was used.</p>
+  </div>
+
+  <div class="infopanel" id="pow-unary">
+    <span class="tag">How do I never get this wrong?</span>
+    <p>Memorise the order top-to-bottom. Higher in the list binds tighter:</p>
+    <div class="q">
+      <code>()</code> → <code>**</code> → unary <code>-x</code> →
+      <code>* / // %</code> → <code>+ -</code> →
+      <code>&lt; &lt;= &gt; &gt;= == !=</code> →
+      <code>not</code> → <code>and</code> → <code>or</code>
+    </div>
+    <p><code>**</code> sits <b>above</b> the unary minus, and that is the entire reason
+       <code>-3 ** 2</code> is <code>-9</code>. But <code>(-3) ** 2</code> is
+       <code>9</code>, and <code>2 ** -1</code> is <code>0.5</code> — there the minus is
+       on the <b>right</b> of <code>**</code>, where nothing competes with it.</p>
+    <p><b>In the exam:</b> if you are unsure, insert the brackets yourself and write the
+       bracketed form as your working. It costs nothing and it earns the mark.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.4</span> Relational and logical operators</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">logic.py</span>x = <span class="n">12</span>
+y = <span class="n">5</span>
+<span class="b">print</span>(x &gt; y, x == y, x != y)
+<span class="b">print</span>(x &gt; y <span class="k">and</span> y &gt; <span class="n">10</span>)
+<span class="b">print</span>(x &gt; y <span class="k">or</span> y &gt; <span class="n">10</span>)
+<span class="b">print</span>(<span class="k">not</span> (x &gt; y))
+<span class="hl"><span class="b">print</span>(<span class="n">5</span> &lt; x &lt; <span class="n">20</span>)</span></pre>
+      <div class="reveal ready ephemeral">Five lines of True/False. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>True False True
+False
+True
+False
+True</div>
+      <div class="reveal insight">
+        <span class="tag">Chained comparison</span>
+        <p><code>5 &lt; x &lt; 20</code> is legal Python and means
+           <code>5 &lt; x and x &lt; 20</code>. Most other languages do not allow it —
+           and it reads exactly like the mathematics.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal warn">
+    <span class="tag">The classic slip</span>
+    <p><code>=</code> assigns; <code>==</code> compares.
+       Writing <code>if x = 5:</code> is a <b>SyntaxError</b>, not a logic bug —
+       Python refuses to run the program at all.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.5</span> Membership and identity</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">membership.py</span>nums = [<span class="n">10</span>, <span class="n">20</span>, <span class="n">30</span>]
+<span class="b">print</span>(<span class="n">20</span> <span class="k">in</span> nums)
+<span class="b">print</span>(<span class="n">25</span> <span class="k">in</span> nums)
+<span class="b">print</span>(<span class="s">"ell"</span> <span class="k">in</span> <span class="s">"hello"</span>)
+
+p = [<span class="n">1</span>, <span class="n">2</span>]
+q = [<span class="n">1</span>, <span class="n">2</span>]
+<span class="hl"><span class="b">print</span>(p == q)</span>
+<span class="hl"><span class="b">print</span>(p <span class="k">is</span> q)</span></pre>
+      <div class="reveal ready ephemeral">The last two lines. Same, or different? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>True
+False
+True
+True
+False</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Membership operators</span> — <code>in</code> and
+           <code>not in</code>; test whether a value occurs inside a sequence.<br>
+           <span class="term">Identity operators</span> — <code>is</code> and
+           <code>is not</code>; test whether two names refer to <b>the same object</b>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Note</span>
+    <p>For strings, <code>in</code> looks for a <b>substring</b>, not just a single
+       character — which is why <code>"ell" in "hello"</code> is <code>True</code>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.6</span> Augmented assignment</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">augmented.py</span>total = <span class="n">100</span>
+total += <span class="n">20</span>
+<span class="b">print</span>(total)
+total -= <span class="n">5</span>
+<span class="b">print</span>(total)
+total *= <span class="n">2</span>
+<span class="b">print</span>(total)
+<span class="hl">total //= <span class="n">7</span></span>
+<span class="b">print</span>(total)
+total **= <span class="n">2</span>
+<span class="b">print</span>(total)</pre>
+      <div class="reveal ready ephemeral">Track it in your head. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>120
+115
+230
+32
+1024</div>
+      <div class="reveal">
+        <table class="trace">
+          <tr><th class="lbl">Statement</th><th>total</th></tr>
+          <tr><td class="lbl">start</td><td>100</td></tr>
+          <tr><td class="lbl">total += 20</td><td class="chg">120</td></tr>
+          <tr><td class="lbl">total -= 5</td><td class="chg">115</td></tr>
+          <tr><td class="lbl">total *= 2</td><td class="chg">230</td></tr>
+          <tr class="now"><td class="lbl">total //= 7</td><td class="chg">32</td></tr>
+          <tr><td class="lbl">total **= 2</td><td class="chg">1024</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Watch the amber line</span>
+    <p><code>230 // 7</code> is <code>32</code> — remainder 6, discarded.
+       Had it been <code>/=</code>, <code>total</code> would have become
+       <code>32.857142857142854</code> and everything after it would be a float.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.7</span> Check yourself</h2>
+
+  <div class="qcard">
+    <span class="tag">Question 2</span>
+    <p>Predict the exact output — three lines.</p>
+<pre class="code"><span class="b">print</span>(<span class="n">15</span> // <span class="n">4</span>, <span class="n">15</span> % <span class="n">4</span>, <span class="n">15</span> / <span class="n">4</span>)
+<span class="b">print</span>(<span class="n">2</span> ** <span class="n">3</span> ** <span class="n">2</span>)
+<span class="b">print</span>(<span class="n">10</span> &gt; <span class="n">5</span> <span class="k">and</span> <span class="n">5</span> &gt; <span class="n">10</span> <span class="k">or</span> <span class="n">3</span> &lt; <span class="n">4</span>)</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>3 3 3.75
+512
+True</div>
+    <p><b>Line 3, worked out:</b> <code>and</code> binds tighter than <code>or</code>,
+       so it reads <code>(True and False) or True</code> → <code>False or True</code> →
+       <code>True</code>.</p>
+  </div>
+</section>
+
+<!-- ===================== 3 · CONTROL FLOW ===================== -->
+
+<section class="slide" data-section="3 · Control flow">
+  <h2><span class="num">4.1</span> <code>if</code> / <code>elif</code> / <code>else</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">grade.py</span>marks = <span class="n">72</span>
+
+<span class="k">if</span> marks &gt;= <span class="n">90</span>:
+    grade = <span class="s">"A"</span>
+<span class="k">elif</span> marks &gt;= <span class="n">75</span>:
+    grade = <span class="s">"B"</span>
+<span class="hl"><span class="k">elif</span> marks &gt;= <span class="n">60</span>:</span>
+    grade = <span class="s">"C"</span>
+<span class="k">else</span>:
+    grade = <span class="s">"D"</span>
+
+<span class="b">print</span>(<span class="s">"Grade:"</span>, grade)</pre>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>Grade: C</div>
+      <div class="reveal insight">
+        <span class="tag">Why the order matters</span>
+        <p>Python tests the branches <b>top to bottom and stops at the first True</b>.
+           72 fails <code>&gt;= 90</code>, fails <code>&gt;= 75</code>, passes
+           <code>&gt;= 60</code> — and the <code>else</code> is never reached.</p>
+      </div>
+      <div class="reveal warn">
+        <span class="tag">Common mistake</span>
+        <p>Writing four separate <code>if</code> statements instead of
+           <code>elif</code>. Then <b>every</b> true test runs, and a student who scored
+           95 ends up with <code>grade = "D"</code>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Indentation is syntax</span>
+    <p>Python has no braces. The <b>indent</b> is what puts a statement inside the
+       <code>if</code>. Four spaces, consistently. A stray indent is an
+       <code>IndentationError</code>, and the program does not run at all.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.2</span> <code>while</code> — and how to dry-run one</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">digitsum.py</span>n = <span class="n">4823</span>
+total = <span class="n">0</span>
+
+<span class="k">while</span> n &gt; <span class="n">0</span>:
+    d = n % <span class="n">10</span>
+    total = total + d
+    n = n // <span class="n">10</span>
+
+<span class="b">print</span>(<span class="s">"Digit sum ="</span>, total)</pre>
+      <div class="reveal ready ephemeral">Trace it before you look. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal">
+        <table class="trace">
+          <tr><th>Pass</th><th>n at test</th><th>d</th><th>total</th><th>n after</th></tr>
+          <tr><td>1</td><td>4823</td><td class="chg">3</td><td class="chg">3</td><td class="chg">482</td></tr>
+          <tr><td>2</td><td>482</td><td class="chg">2</td><td class="chg">5</td><td class="chg">48</td></tr>
+          <tr><td>3</td><td>48</td><td class="chg">8</td><td class="chg">13</td><td class="chg">4</td></tr>
+          <tr class="now"><td>4</td><td>4</td><td class="chg">4</td><td class="chg">17</td><td class="chg">0</td></tr>
+          <tr><td>—</td><td>0</td><td class="lbl" colspan="3">0 &gt; 0 is False → the loop ends</td></tr>
+        </table>
+      </div>
+      <div class="reveal out"><span class="tag">Output</span>Digit sum = 17</div>
+    </div>
+  </div>
+
+  <div class="reveal insight">
+    <span class="tag">The pattern to memorise</span>
+    <p><code>n % 10</code> peels off the <b>last digit</b>;
+       <code>n // 10</code> <b>removes</b> it. Together they walk a number from right to
+       left. This appears every single year — digit sum, reverse a number, count digits,
+       palindrome number.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.3</span> <code>for</code> and <code>range()</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">ranges.py</span><span class="k">for</span> i <span class="k">in</span> <span class="b">range</span>(<span class="n">5</span>):
+    <span class="b">print</span>(i, end=<span class="s">" "</span>)
+<span class="b">print</span>()
+
+<span class="k">for</span> i <span class="k">in</span> <span class="b">range</span>(<span class="n">2</span>, <span class="n">9</span>, <span class="n">3</span>):
+    <span class="b">print</span>(i, end=<span class="s">" "</span>)
+<span class="b">print</span>()
+
+<span class="k">for</span> i <span class="k">in</span> <span class="b">range</span>(<span class="n">10</span>, <span class="n">0</span>, -<span class="n">3</span>):
+    <span class="b">print</span>(i, end=<span class="s">" "</span>)
+<span class="b">print</span>()
+
+<span class="b">print</span>(<span class="b">list</span>(<span class="b">range</span>(<span class="n">5</span>, <span class="n">5</span>)))</pre>
+      <div class="reveal ready ephemeral">Four lines of output. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>0 1 2 3 4 
+2 5 8 
+10 7 4 1 
+[]</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">range(start, stop, step)</span> — generates integers from
+           <b>start</b> (default 0), advancing by <b>step</b> (default 1), and
+           <b>stopping before</b> stop. <b>stop is never included.</b></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Four things to notice</span>
+    <p><b>①</b> <code>range(2, 9, 3)</code> stops at 8 — the next value, 11, is past 9.<br>
+       <b>②</b> A negative step counts <b>down</b> and still excludes the stop, so
+       <code>range(10, 0, -3)</code> never reaches 0.<br>
+       <b>③</b> <code>range(5, 5)</code> is <b>empty</b> — the loop body never runs.<br>
+       <b>④</b> <code>end=" "</code> replaces <code>print</code>'s automatic newline,
+       which is why each of the first three lines carries a <b>trailing space</b>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.4</span> <code>break</code> and <code>continue</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">jumps.py</span><span class="k">for</span> n <span class="k">in</span> <span class="b">range</span>(<span class="n">1</span>, <span class="n">8</span>):
+<span class="hl">    <span class="k">if</span> n == <span class="n">3</span>:</span>
+        <span class="k">continue</span>
+<span class="hl">    <span class="k">if</span> n == <span class="n">6</span>:</span>
+        <span class="k">break</span>
+    <span class="b">print</span>(n, end=<span class="s">" "</span>)
+<span class="b">print</span>()
+<span class="b">print</span>(<span class="s">"loop over"</span>)</pre>
+      <div class="reveal ready ephemeral">Which numbers get printed? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal">
+        <table class="trace">
+          <tr><th>n</th><th>n == 3?</th><th>n == 6?</th><th>printed</th></tr>
+          <tr><td>1</td><td>No</td><td>No</td><td class="chg">1</td></tr>
+          <tr><td>2</td><td>No</td><td>No</td><td class="chg">2</td></tr>
+          <tr><td>3</td><td class="hi">Yes → continue</td><td>—</td><td>—</td></tr>
+          <tr><td>4</td><td>No</td><td>No</td><td class="chg">4</td></tr>
+          <tr><td>5</td><td>No</td><td>No</td><td class="chg">5</td></tr>
+          <tr class="now"><td>6</td><td>No</td><td class="hi">Yes → break</td><td>—</td></tr>
+          <tr><td>7</td><td class="lbl" colspan="3">never reached</td></tr>
+        </table>
+      </div>
+      <div class="reveal out"><span class="tag">Output</span>1 2 4 5 
+loop over</div>
+    </div>
+  </div>
+
+  <div class="reveal defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">continue</span> — abandon the <b>current</b> iteration and go
+       straight to the next one.<br>
+       <span class="term">break</span> — abandon the <b>whole loop</b> immediately;
+       execution resumes at the first statement after the loop.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.5</span> Nested loops</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">pattern.py</span><span class="k">for</span> i <span class="k">in</span> <span class="b">range</span>(<span class="n">1</span>, <span class="n">5</span>):
+    <span class="k">for</span> j <span class="k">in</span> <span class="b">range</span>(<span class="n">1</span>, i + <span class="n">1</span>):
+        <span class="b">print</span>(j, end=<span class="s">""</span>)
+<span class="hl">    <span class="b">print</span>()</span></pre>
+      <div class="reveal ready ephemeral">Four lines. What are they? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal">
+        <table class="trace">
+          <tr><th>i</th><th>inner range</th><th>line printed</th></tr>
+          <tr><td>1</td><td>1</td><td class="chg">1</td></tr>
+          <tr><td>2</td><td>1, 2</td><td class="chg">12</td></tr>
+          <tr><td>3</td><td>1, 2, 3</td><td class="chg">123</td></tr>
+          <tr class="now"><td>4</td><td>1, 2, 3, 4</td><td class="chg">1234</td></tr>
+        </table>
+      </div>
+      <div class="reveal out"><span class="tag">Output</span>1
+12
+123
+1234</div>
+    </div>
+  </div>
+
+  <div class="reveal insight">
+    <span class="tag">Where the newline comes from</span>
+    <p>The bare <code>print()</code> on the amber line is indented under the
+       <b>outer</b> loop, so it runs once per row. Move it one level further in and you
+       get <code>1</code>, <code>1</code>, <code>2</code>, <code>1</code>, <code>2</code>,
+       <code>3</code>… on separate lines instead.
+       <b>Indentation is the answer to “why is the output shaped like that”.</b></p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.6</span> Check yourself</h2>
+
+  <div class="qcard">
+    <span class="tag">Question 3</span>
+    <p>How many times does this loop run, and what is the output?</p>
+<pre class="code">i = <span class="n">1</span>
+<span class="k">while</span> i &lt; <span class="n">20</span>:
+    <span class="b">print</span>(i, end=<span class="s">" "</span>)
+    i = i * <span class="n">3</span>
+<span class="b">print</span>()</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>Three</b> iterations.</p>
+    <table class="trace">
+      <tr><th>Pass</th><th>i at test</th><th>i &lt; 20?</th><th>printed</th><th>i after</th></tr>
+      <tr><td>1</td><td>1</td><td>True</td><td class="chg">1</td><td class="chg">3</td></tr>
+      <tr><td>2</td><td>3</td><td>True</td><td class="chg">3</td><td class="chg">9</td></tr>
+      <tr class="now"><td>3</td><td>9</td><td>True</td><td class="chg">9</td><td class="chg">27</td></tr>
+      <tr><td>4</td><td>27</td><td>False</td><td class="lbl" colspan="2">loop ends</td></tr>
+    </table>
+    <div class="out"><span class="tag">Output</span>1 3 9 </div>
+  </div>
+
+  <div class="reveal warn">
+    <span class="tag">The mark you lose</span>
+    <p>27 is <b>never printed</b>. The test happens <b>before</b> the body, so the value
+       that fails the test never reaches <code>print</code>.</p>
+  </div>
+</section>
+
+<!-- ===================== 4 · STRINGS ===================== -->
+
+<section class="slide" data-section="4 · Strings">
+  <h2><span class="num">5.1</span> A string is an ordered sequence of characters</h2>
+
+  <figure>
+    <svg viewBox="0 0 760 190" role="img" aria-label="The string COMPUTER drawn as eight boxes, with positive indices 0 to 7 above and negative indices minus 8 to minus 1 below">
+      <text x="380" y="24" class="lab" text-anchor="middle">s = "COMPUTER"</text>
+
+      <rect x="120" y="60" width="60" height="56" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <rect x="180" y="60" width="60" height="56" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <rect x="240" y="60" width="60" height="56" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <rect x="300" y="60" width="60" height="56" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <rect x="360" y="60" width="60" height="56" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <rect x="420" y="60" width="60" height="56" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <rect x="480" y="60" width="60" height="56" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+      <rect x="540" y="60" width="60" height="56" fill="#eee8d5" stroke="#073642" stroke-width="2"/>
+
+      <text x="150" y="98" class="lab" text-anchor="middle">C</text>
+      <text x="210" y="98" class="lab" text-anchor="middle">O</text>
+      <text x="270" y="98" class="lab" text-anchor="middle">M</text>
+      <text x="330" y="98" class="lab" text-anchor="middle">P</text>
+      <text x="390" y="98" class="lab" text-anchor="middle">U</text>
+      <text x="450" y="98" class="lab" text-anchor="middle">T</text>
+      <text x="510" y="98" class="lab" text-anchor="middle">E</text>
+      <text x="570" y="98" class="lab" text-anchor="middle">R</text>
+
+      <text x="112" y="52" text-anchor="end" fill="#175f90">index</text>
+      <text x="150" y="52" text-anchor="middle" fill="#175f90">0</text>
+      <text x="210" y="52" text-anchor="middle" fill="#175f90">1</text>
+      <text x="270" y="52" text-anchor="middle" fill="#175f90">2</text>
+      <text x="330" y="52" text-anchor="middle" fill="#175f90">3</text>
+      <text x="390" y="52" text-anchor="middle" fill="#175f90">4</text>
+      <text x="450" y="52" text-anchor="middle" fill="#175f90">5</text>
+      <text x="510" y="52" text-anchor="middle" fill="#175f90">6</text>
+      <text x="570" y="52" text-anchor="middle" fill="#175f90">7</text>
+
+      <text x="112" y="140" text-anchor="end" fill="#b02522">from the end</text>
+      <text x="150" y="140" text-anchor="middle" fill="#b02522">-8</text>
+      <text x="210" y="140" text-anchor="middle" fill="#b02522">-7</text>
+      <text x="270" y="140" text-anchor="middle" fill="#b02522">-6</text>
+      <text x="330" y="140" text-anchor="middle" fill="#b02522">-5</text>
+      <text x="390" y="140" text-anchor="middle" fill="#b02522">-4</text>
+      <text x="450" y="140" text-anchor="middle" fill="#b02522">-3</text>
+      <text x="510" y="140" text-anchor="middle" fill="#b02522">-2</text>
+      <text x="570" y="140" text-anchor="middle" fill="#b02522">-1</text>
+
+      <text x="380" y="176" text-anchor="middle">len(s) = 8, so the last valid index is 7 — never 8</text>
+    </svg>
+    <figcaption>Every character has <b>two</b> addresses. Both are legal, and the paper uses both.</figcaption>
+  </figure>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">index.py</span>s = <span class="s">"COMPUTER"</span>
+<span class="b">print</span>(<span class="b">len</span>(s))
+<span class="b">print</span>(s[<span class="n">0</span>], s[<span class="n">3</span>], s[<span class="n">7</span>])
+<span class="b">print</span>(s[-<span class="n">1</span>], s[-<span class="n">8</span>])
+<span class="b">print</span>(s[<span class="n">0</span>] + s[-<span class="n">1</span>])</pre>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>8
+C P R
+R C
+CR</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.2</span> Slicing — <code>s[start : stop : step]</code></h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">slice.py</span>s = <span class="s">"COMPUTER"</span>
+<span class="b">print</span>(s[<span class="n">0</span>:<span class="n">4</span>])
+<span class="b">print</span>(s[<span class="n">4</span>:])
+<span class="b">print</span>(s[:<span class="n">3</span>])
+<span class="b">print</span>(s[:])
+<span class="b">print</span>(s[<span class="n">1</span>:<span class="n">7</span>:<span class="n">2</span>])
+<span class="hl"><span class="b">print</span>(s[::-<span class="n">1</span>])</span>
+<span class="b">print</span>(s[-<span class="n">4</span>:-<span class="n">1</span>])
+<span class="hl"><span class="b">print</span>(s[<span class="n">6</span>:<span class="n">2</span>])</span></pre>
+      <div class="reveal ready ephemeral">Eight lines — the last one is a trick. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>COMP
+UTER
+COM
+COMPUTER
+OPT
+RETUPMOC
+UTE
+</div>
+      <div class="reveal insight">
+        <span class="tag">The two amber lines</span>
+        <p><code>s[::-1]</code> — the standard <b>reverse a string</b> idiom. Learn it;
+           it is asked directly.</p>
+        <p><code>s[6:2]</code> — start is after stop with a positive step, so the slice is
+           <b>empty</b>. <code>print("")</code> still emits its newline, which is the blank
+           final line in the output.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal warn">
+    <span class="tag">Slicing never raises IndexError</span>
+    <p><code>s[30]</code> on an 8-character string crashes with
+       <code>IndexError</code>. <code>s[0:30]</code> does not — it simply gives you what
+       exists. This asymmetry is examined.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.3</span> Strings are immutable</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">WRONG — main.py</span><span class="ln">1</span>s = <span class="s">"COMPUTER"</span>
+<span class="ln">2</span>s[<span class="n">0</span>] = <span class="s">"X"</span></pre>
+      <div class="reveal ready ephemeral">Name the exception exactly. 🤔</div>
+      <div class="reveal err"><span class="tag">Traceback</span>Traceback (most recent call last):
+  File "main.py", line 2, in &lt;module&gt;
+    s[0] = "X"
+    ~^^^
+<span class="etype">TypeError</span>: 'str' object does not support item assignment</div>
+    </div>
+    <div>
+<pre class="code"><span class="tag">FIXED</span>s = <span class="s">"COMPUTER"</span>
+s = <span class="s">"X"</span> + s[<span class="n">1</span>:]
+<span class="b">print</span>(s)</pre>
+      <div class="reveal out"><span class="tag">Output</span>XOMPUTER</div>
+      <div class="reveal defn">
+        <span class="tag">The rule</span>
+        <p>You cannot edit a string <b>in place</b>. You build a <b>new</b> string —
+           usually by <b>slicing around</b> the part you want to change and joining with
+           <code>+</code> — and rebind the name to it.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Note the exception name</span>
+    <p>It is <code>TypeError</code>, not <code>ValueError</code> — the <b>type</b>
+       <code>str</code> is what refuses. You will meet the identical message shape for
+       tuples in §7.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.4</span> Two ways to traverse a string</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">traverse.py</span>word = <span class="s">"Python"</span>
+
+<span class="c"># by character</span>
+<span class="k">for</span> ch <span class="k">in</span> word:
+    <span class="b">print</span>(ch, end=<span class="s">"-"</span>)
+<span class="b">print</span>()
+
+<span class="c"># by index</span>
+<span class="k">for</span> i <span class="k">in</span> <span class="b">range</span>(<span class="b">len</span>(word)):
+    <span class="b">print</span>(i, word[i])</pre>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>P-y-t-h-o-n-
+0 P
+1 y
+2 t
+3 h
+4 o
+5 n</div>
+      <div class="reveal insight">
+        <span class="tag">Which one to use</span>
+        <p>Use <code>for ch in word</code> when you only need the <b>character</b>.
+           Use <code>range(len(word))</code> when you also need the <b>position</b> —
+           for example, to compare a character with its neighbour.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Notice the trailing hyphen</span>
+    <p><code>end="-"</code> puts a hyphen after <b>every</b> character, including the
+       last, so the line reads <code>P-y-t-h-o-n-</code>. Getting that final hyphen right
+       in your answer is worth the mark.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.5</span> String methods you must know</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">methods.py</span>s = <span class="s">"  Computer Science  "</span>
+<span class="b">print</span>(s.strip())
+<span class="b">print</span>(s.upper())
+<span class="b">print</span>(s.strip().lower())
+<span class="hl"><span class="b">print</span>(s.count(<span class="s">"c"</span>))</span>
+<span class="b">print</span>(s.find(<span class="s">"Science"</span>))
+<span class="b">print</span>(s.replace(<span class="s">"Science"</span>, <span class="s">"Sc"</span>))
+<span class="b">print</span>(s.strip().split())
+<span class="b">print</span>(<span class="s">"-"</span>.join([<span class="s">"a"</span>, <span class="s">"b"</span>, <span class="s">"c"</span>]))</pre>
+      <div class="reveal ready ephemeral">Watch the spaces and the case. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>Computer Science
+  COMPUTER SCIENCE  
+computer science
+2
+11
+  Computer Sc  
+['Computer', 'Science']
+a-b-c</div>
+      <div class="reveal warn">
+        <span class="tag">Three places marks are lost</span>
+        <p><b>①</b> <code>s.count("c")</code> is <b>2</b>, not 3 — it is
+           <b>case-sensitive</b>, and the capital <code>C</code> of “Computer” does not
+           count.</p>
+        <p><b>②</b> The leading and trailing spaces are still there on lines 2 and 6.
+           <b>No string method changes <code>s</code> itself</b> — each returns a new string.</p>
+        <p><b>③</b> <code>split()</code> returns a <b>list</b>, printed with quotes:
+           <code>['Computer', 'Science']</code>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.6</span> Testing what a string contains</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">tests.py</span>s = <span class="s">"Comp123"</span>
+<span class="hl"><span class="b">print</span>(s.isalpha(), s.isdigit(), s.isalnum())</span>
+<span class="b">print</span>(<span class="s">"comp"</span>.isalpha(), <span class="s">"123"</span>.isdigit())
+<span class="b">print</span>(<span class="s">"A"</span>.isupper(), <span class="s">"a"</span>.islower())
+<span class="b">print</span>(<span class="s">"hello world"</span>.title())</pre>
+      <div class="reveal ready ephemeral">The amber line surprises people. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>False False True
+True True
+True True
+Hello World</div>
+      <div class="reveal insight">
+        <span class="tag">Why the first line is False False True</span>
+        <p>These methods test <b>every</b> character. <code>"Comp123"</code> contains
+           digits, so it is not all-alphabetic; it contains letters, so it is not
+           all-digits; but it is entirely letters-or-digits, so <code>isalnum()</code>
+           is <code>True</code>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal eg">
+    <span class="tag">Where you will use this</span>
+    <p>Counting vowels, consonants, digits and spaces in a sentence is a standard 3-mark
+       program. It is <code>isalpha()</code> + <code>isdigit()</code> + a membership test,
+       and nothing more. You will write it at the end of this chapter.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.7</span> A complete string program</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">vowels.py</span>txt = <span class="s">"SUCCESS"</span>
+vowels = <span class="n">0</span>
+
+<span class="k">for</span> ch <span class="k">in</span> txt:
+    <span class="k">if</span> ch <span class="k">in</span> <span class="s">"AEIOU"</span>:
+        vowels = vowels + <span class="n">1</span>
+
+<span class="b">print</span>(<span class="s">"Vowels ="</span>, vowels)
+<span class="b">print</span>(<span class="s">"Others ="</span>, <span class="b">len</span>(txt) - vowels)</pre>
+      <div class="reveal ready ephemeral">SUCCESS — how many vowels? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal">
+        <table class="trace">
+          <tr><th>ch</th><th>in "AEIOU"?</th><th>vowels</th></tr>
+          <tr><td>S</td><td>No</td><td>0</td></tr>
+          <tr><td>U</td><td class="hi">Yes</td><td class="chg">1</td></tr>
+          <tr><td>C</td><td>No</td><td>1</td></tr>
+          <tr><td>C</td><td>No</td><td>1</td></tr>
+          <tr class="now"><td>E</td><td class="hi">Yes</td><td class="chg">2</td></tr>
+          <tr><td>S</td><td>No</td><td>2</td></tr>
+          <tr><td>S</td><td>No</td><td>2</td></tr>
+        </table>
+      </div>
+      <div class="reveal out"><span class="tag">Output</span>Vowels = 2
+Others = 5</div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Why <code>ch in "AEIOU"</code> and not five <code>or</code>s</span>
+    <p><code>if ch=="A" or ch=="E" or …</code> is accepted, but the membership form is
+       shorter, harder to get wrong, and reads as English. If the text may be lowercase,
+       test <code>ch.upper() in "AEIOU"</code>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.8</span> Check yourself</h2>
+
+  <div class="qcard">
+    <span class="tag">Question 4</span>
+    <p>Predict all four lines.</p>
+<pre class="code">s = <span class="s">"PYTHON2024"</span>
+<span class="b">print</span>(s[<span class="n">2</span>:<span class="n">6</span>])
+<span class="b">print</span>(s[::<span class="n">3</span>])
+<span class="b">print</span>(s[-<span class="n">4</span>:])
+<span class="b">print</span>(s[::-<span class="n">2</span>])</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>THON
+PH24
+2024
+40NHY</div>
+    <table>
+      <tr><th class="lbl">Slice</th><th class="lbl">How to read it</th></tr>
+      <tr><td class="lbl"><code>s[2:6]</code></td><td class="lbl">indices 2, 3, 4, 5 → T H O N</td></tr>
+      <tr><td class="lbl"><code>s[::3]</code></td><td class="lbl">whole string, every 3rd → indices 0, 3, 6, 9 → P H 2 4</td></tr>
+      <tr><td class="lbl"><code>s[-4:]</code></td><td class="lbl">last four characters → 2 0 2 4</td></tr>
+      <tr><td class="lbl"><code>s[::-2]</code></td><td class="lbl">from the end, every 2nd → indices 9, 7, 5, 3, 1 → 4 0 N H Y</td></tr>
+    </table>
+  </div>
+
+  <div class="reveal challenge">
+    <span class="tag">Challenge</span>
+    <p>Without running it — what does <code>s[::-1][::-1]</code> give, for
+       <b>any</b> string <code>s</code>? Say why in one sentence.</p>
+  </div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><code>s</code> itself. Reversing a reversal restores the original order — and note
+       that <code>s</code> was never modified, because each slice <b>returns a new
+       string</b>.</p>
+  </div>
+</section>
+
+<!-- ===================== 5 · LISTS ===================== -->
+
+<section class="slide" data-section="5 · Lists">
+  <h2><span class="num">6.1</span> The list — Python's workhorse</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">list1.py</span>marks = [<span class="n">45</span>, <span class="n">78</span>, <span class="n">92</span>, <span class="n">61</span>, <span class="n">88</span>]
+<span class="b">print</span>(marks)
+<span class="b">print</span>(<span class="b">len</span>(marks))
+<span class="b">print</span>(marks[<span class="n">0</span>], marks[-<span class="n">1</span>])
+<span class="b">print</span>(marks[<span class="n">1</span>:<span class="n">4</span>])
+<span class="b">print</span>(marks[::-<span class="n">1</span>])
+<span class="b">print</span>(marks + [<span class="n">100</span>])
+<span class="b">print</span>([<span class="n">0</span>] * <span class="n">3</span>)</pre>
+      <div class="reveal ready ephemeral">Seven lines. Mind the brackets. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>[45, 78, 92, 61, 88]
+5
+45 88
+[78, 92, 61]
+[88, 61, 92, 78, 45]
+[45, 78, 92, 61, 88, 100]
+[0, 0, 0]</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">List</span> — an <b>ordered</b>, <b>mutable</b> collection
+           of values, written in square brackets, indexed from 0, and allowed to hold
+           items of different types.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal insight">
+    <span class="tag">Everything you learnt about strings still applies</span>
+    <p>Indexing, negative indexing, slicing, <code>+</code>, <code>*</code>,
+       <code>in</code>, <code>len()</code> — <b>identical</b> on lists. They are both
+       sequences. Only one thing differs: a list can be changed.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.2</span> …and unlike a string, it can be changed</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">mutate.py</span>marks = [<span class="n">45</span>, <span class="n">78</span>, <span class="n">92</span>, <span class="n">61</span>, <span class="n">88</span>]
+<span class="hl">marks[<span class="n">0</span>] = <span class="n">50</span></span>
+<span class="b">print</span>(marks)
+
+<span class="hl">marks[<span class="n">1</span>:<span class="n">3</span>] = [<span class="n">80</span>, <span class="n">95</span>]</span>
+<span class="b">print</span>(marks)
+
+<span class="k">del</span> marks[<span class="n">4</span>]
+<span class="b">print</span>(marks)</pre>
+      <div class="reveal ready ephemeral">Three lists. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>[50, 78, 92, 61, 88]
+[50, 80, 95, 61, 88]
+[50, 80, 95, 61]</div>
+      <div class="reveal warn">
+        <span class="tag">Compare with §5.3</span>
+        <p><code>s[0] = "X"</code> on a string raised
+           <code>TypeError</code>. <code>marks[0] = 50</code> on a list simply works.
+           <b>That single difference is what “mutable” means.</b></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Slice assignment does not have to match in length</span>
+    <p><code>L[1:4] = [9]</code> replaces <b>three</b> items with <b>one</b>, and the
+       list gets shorter.
+       <button class="info" aria-controls="slice-assign" aria-expanded="false"
+               title="What exactly does slice assignment do?">i</button></p>
+  </div>
+
+  <div class="infopanel" id="slice-assign">
+    <span class="tag">What exactly does slice assignment do?</span>
+    <p>It <b>removes</b> the slice and <b>splices in</b> whatever is on the right —
+       so the list's length changes by (items in, items out).</p>
+    <div class="q">
+      <code>L = [1, 2, 3, 4, 5]</code><br>
+      <code>L[1:4] = [9]</code> → <code>[1, 9, 5]</code> — 3 out, 1 in, length 5 → 3<br>
+      <code>L[1:2] = [7, 8]</code> → <code>[1, 7, 8, 5]</code> — 1 out, 2 in, length 3 → 4
+    </div>
+    <p>The right-hand side must be <b>iterable</b>. <code>L[1:4] = 9</code> is a
+       <code>TypeError</code> — but <code>L[1:4] = "ab"</code> quietly splices in
+       <code>'a'</code> and <code>'b'</code> as two separate items, because a string is
+       iterable. That is the trap.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.3</span> The list methods that are examined</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">methods.py</span>L = [<span class="n">10</span>, <span class="n">20</span>, <span class="n">30</span>]
+L.append(<span class="n">40</span>)
+<span class="b">print</span>(L)
+L.insert(<span class="n">1</span>, <span class="n">15</span>)
+<span class="b">print</span>(L)
+L.extend([<span class="n">50</span>, <span class="n">60</span>])
+<span class="b">print</span>(L)
+<span class="hl"><span class="b">print</span>(L.pop())</span>
+<span class="hl"><span class="b">print</span>(L.pop(<span class="n">0</span>))</span>
+<span class="b">print</span>(L)
+L.remove(<span class="n">30</span>)
+<span class="b">print</span>(L)</pre>
+      <div class="reveal ready ephemeral">Seven lines. Track the list. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>[10, 20, 30, 40]
+[10, 15, 20, 30, 40]
+[10, 15, 20, 30, 40, 50, 60]
+60
+10
+[15, 20, 30, 40, 50]
+[15, 20, 40, 50]</div>
+      <div class="reveal insight">
+        <span class="tag"><code>pop</code> returns; <code>remove</code> does not</span>
+        <p><code>L.pop()</code> <b>removes and returns</b> the last item — which is why
+           <code>60</code> and <code>10</code> got printed.
+           <code>L.remove(30)</code> removes <b>by value</b> and returns
+           <code>None</code>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal warn">
+    <span class="tag">Two traps</span>
+    <p><code>L.remove(30)</code> takes a <b>value</b>; <code>L.pop(0)</code> takes an
+       <b>index</b>. Confusing them is a guaranteed lost mark.</p>
+    <p>Writing <code>L = L.append(40)</code> sets <code>L</code> to <b>None</b> —
+       <code>append</code> changes the list in place and returns nothing.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.4</span> <code>append</code> vs <code>extend</code> — the classic</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">appext.py</span>A = [<span class="n">1</span>, <span class="n">2</span>]
+B = [<span class="n">1</span>, <span class="n">2</span>]
+
+<span class="hl">A.append([<span class="n">3</span>, <span class="n">4</span>])</span>
+<span class="hl">B.extend([<span class="n">3</span>, <span class="n">4</span>])</span>
+
+<span class="b">print</span>(A)
+<span class="b">print</span>(B)
+<span class="b">print</span>(<span class="b">len</span>(A), <span class="b">len</span>(B))</pre>
+      <div class="reveal ready ephemeral">Same argument, two methods. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>[1, 2, [3, 4]]
+[1, 2, 3, 4]
+3 4</div>
+      <div class="reveal defn">
+        <span class="tag">The distinction, in one line each</span>
+        <p><span class="term">append(x)</span> — adds <b>x itself</b> as <b>one</b> new
+           item, whatever x is.<br>
+           <span class="term">extend(seq)</span> — adds <b>each item of seq</b>
+           separately.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal insight">
+    <span class="tag">Read the lengths</span>
+    <p><code>len(A)</code> is <b>3</b>, not 4 — its third item is a whole list.
+       <code>A[2]</code> is <code>[3, 4]</code> and <code>A[2][0]</code> is
+       <code>3</code>. That nesting is exactly how you will hold a table of records
+       later in the year.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.5</span> Sorting and searching</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">sorting.py</span>L = [<span class="n">5</span>, <span class="n">2</span>, <span class="n">9</span>, <span class="n">1</span>]
+L.sort()
+<span class="b">print</span>(L)
+L.sort(reverse=<span class="k">True</span>)
+<span class="b">print</span>(L)
+L.reverse()
+<span class="b">print</span>(L)
+<span class="hl"><span class="b">print</span>(<span class="b">sorted</span>([<span class="n">3</span>, <span class="n">1</span>, <span class="n">2</span>]))</span>
+<span class="b">print</span>(L.index(<span class="n">9</span>), L.count(<span class="n">5</span>))</pre>
+      <div class="reveal ready ephemeral">Five lines. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>[1, 2, 5, 9]
+[9, 5, 2, 1]
+[1, 2, 5, 9]
+[1, 2, 3]
+3 1</div>
+      <div class="reveal warn">
+        <span class="tag"><code>L.sort()</code> vs <code>sorted(L)</code></span>
+        <p><code>L.sort()</code> <b>changes L</b> and returns <code>None</code>.<br>
+           <code>sorted(L)</code> <b>leaves L alone</b> and returns a new sorted list.<br>
+           So <code>print(L.sort())</code> prints <code>None</code> — a favourite
+           one-mark trap.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">The last line</span>
+    <p>After the reverse, <code>L</code> is <code>[1, 2, 5, 9]</code>, so
+       <code>L.index(9)</code> is <b>3</b> — the <b>position</b> of 9 — and
+       <code>L.count(5)</code> is <b>1</b> — how many <b>times</b> 5 occurs. Two very
+       different questions.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.6</span> Aliasing vs copying — draw it</h2>
+
+  <figure>
+    <svg viewBox="0 0 720 260" role="img" aria-label="Names a and b both point to one list object holding 1 2 3 4, while name c points to a separate list object holding 1 2 3">
+      <defs>
+        <marker id="arw-alias" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#1f7ab8"/>
+        </marker>
+        <marker id="arw-alias2" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#748500"/>
+        </marker>
+      </defs>
+
+      <rect x="30" y="40" width="92" height="46" rx="10" fill="#eee8d5" stroke="#d9d0b6" stroke-width="2"/>
+      <text x="76" y="70" class="lab" text-anchor="middle">a</text>
+      <rect x="30" y="102" width="92" height="46" rx="10" fill="#eee8d5" stroke="#d9d0b6" stroke-width="2"/>
+      <text x="76" y="132" class="lab" text-anchor="middle">b</text>
+      <rect x="30" y="188" width="92" height="46" rx="10" fill="#eee8d5" stroke="#d9d0b6" stroke-width="2"/>
+      <text x="76" y="218" class="lab" text-anchor="middle">c</text>
+
+      <rect x="380" y="38" width="290" height="72" rx="10" fill="#fdf6e3" stroke="#1f7ab8" stroke-width="3"/>
+      <text x="525" y="70" class="lab" text-anchor="middle">[1, 2, 3, 4]</text>
+      <text x="525" y="94" text-anchor="middle">one list object — b = a</text>
+
+      <rect x="380" y="176" width="290" height="72" rx="10" fill="#fdf6e3" stroke="#748500" stroke-width="3"/>
+      <text x="525" y="208" class="lab" text-anchor="middle">[1, 2, 3]</text>
+      <text x="525" y="232" text-anchor="middle">a second object — c = a[:]</text>
+
+      <path class="curve c-blue" d="M126,60 L372,64" marker-end="url(#arw-alias)"/>
+      <path class="curve c-blue" d="M126,124 L372,84" marker-end="url(#arw-alias)"/>
+      <path class="curve c-teal" d="M126,211 L372,208" marker-end="url(#arw-alias2)"/>
+
+      <text x="250" y="160" text-anchor="middle">a.append(4) changes the object</text>
+      <text x="250" y="180" text-anchor="middle">at the top — so b changes too</text>
+    </svg>
+    <figcaption><code>b = a</code> makes an <b>alias</b>. <code>c = a[:]</code> makes a <b>copy</b>.</figcaption>
+  </figure>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">alias.py</span>a = [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]
+<span class="hl">b = a</span>
+<span class="hl">c = a[:]</span>
+
+a.append(<span class="n">4</span>)
+
+<span class="b">print</span>(<span class="s">"a ="</span>, a)
+<span class="b">print</span>(<span class="s">"b ="</span>, b)
+<span class="b">print</span>(<span class="s">"c ="</span>, c)
+<span class="b">print</span>(a <span class="k">is</span> b, a <span class="k">is</span> c)</pre>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>a = [1, 2, 3, 4]
+b = [1, 2, 3, 4]
+c = [1, 2, 3]
+True False</div>
+      <div class="reveal insight">
+        <span class="tag">The rule</span>
+        <p><code>=</code> never copies a list. To get an independent list write
+           <code>a[:]</code>, <code>list(a)</code> or <code>a.copy()</code>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.7</span> Reading a whole list</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">stats.py</span>marks = [<span class="n">45</span>, <span class="n">78</span>, <span class="n">92</span>, <span class="n">61</span>, <span class="n">88</span>]
+
+total = <span class="n">0</span>
+<span class="k">for</span> m <span class="k">in</span> marks:
+    total = total + m
+
+<span class="b">print</span>(<span class="s">"Total   ="</span>, total)
+<span class="b">print</span>(<span class="s">"Average ="</span>, total / <span class="b">len</span>(marks))
+<span class="b">print</span>(<span class="s">"Highest ="</span>, <span class="b">max</span>(marks))
+<span class="b">print</span>(<span class="s">"Lowest  ="</span>, <span class="b">min</span>(marks))
+<span class="b">print</span>(<span class="s">"Sum     ="</span>, <span class="b">sum</span>(marks))</pre>
+      <div class="reveal ready ephemeral">Five lines — one of them is a float. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>Total   = 364
+Average = 72.8
+Highest = 92
+Lowest  = 45
+Sum     = 364</div>
+      <div class="reveal note">
+        <span class="tag">Two ways, same answer</span>
+        <p>The loop and <code>sum(marks)</code> both give 364. <b>Write the loop</b>
+           when the question says “without using built-in functions” — read the question
+           carefully, because it often does.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.8</span> Building a new list from an old one</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">build.py</span>nums = [<span class="n">12</span>, <span class="n">7</span>, <span class="n">25</span>, <span class="n">8</span>, <span class="n">31</span>, <span class="n">4</span>]
+
+evens = []
+<span class="k">for</span> n <span class="k">in</span> nums:
+    <span class="k">if</span> n % <span class="n">2</span> == <span class="n">0</span>:
+        evens.append(n)
+<span class="b">print</span>(evens)
+
+squares = [n * n <span class="k">for</span> n <span class="k">in</span> nums <span class="k">if</span> n % <span class="n">2</span> != <span class="n">0</span>]
+<span class="b">print</span>(squares)</pre>
+      <div class="reveal ready ephemeral">Two lists. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>[12, 8, 4]
+[49, 625, 961]</div>
+      <div class="reveal insight">
+        <span class="tag">The three-step pattern</span>
+        <p><b>①</b> start with an empty list &nbsp;<b>②</b> loop over the source
+           &nbsp;<b>③</b> <code>append</code> the ones that qualify.<br>
+           You will use this shape in every remaining chapter — filtering records read
+           from a file, from a CSV, from a database.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Good Python, but write the loop in the exam</span>
+    <p>The <b>list comprehension</b> on the last line is correct and elegant, and 7, 25
+       and 31 are the odd ones — 49, 625, 961. But unless the question asks for it, write
+       the explicit loop: it is what the marking scheme shows, and it earns method marks
+       even if the final answer slips.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">6.9</span> Check yourself</h2>
+
+  <div class="qcard">
+    <span class="tag">Question 5</span>
+    <p>Predict the exact output — three lines.</p>
+<pre class="code">L = [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>]
+<span class="b">print</span>(L[<span class="n">1</span>:<span class="n">4</span>])
+L[<span class="n">1</span>:<span class="n">4</span>] = [<span class="n">9</span>]
+<span class="b">print</span>(L)
+<span class="b">print</span>(L * <span class="n">2</span>)</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>[2, 3, 4]
+[1, 9, 5]
+[1, 9, 5, 1, 9, 5]</div>
+    <p>Line 2 removed the three items <code>2, 3, 4</code> and spliced <code>9</code> in
+       their place, so the list shrank from 5 items to 3. <code>L * 2</code> then
+       <b>repeats</b> the whole list — it does not double the numbers.</p>
+  </div>
+</section>
+
+<!-- ===================== 6 · TUPLES ===================== -->
+
+<section class="slide" data-section="6 · Tuples">
+  <h2><span class="num">7.1</span> A tuple is a list that cannot change</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">tuple1.py</span>t = (<span class="n">10</span>, <span class="n">20</span>, <span class="n">30</span>, <span class="n">40</span>)
+<span class="b">print</span>(t, <span class="b">type</span>(t))
+<span class="b">print</span>(t[<span class="n">0</span>], t[-<span class="n">1</span>])
+<span class="b">print</span>(t[<span class="n">1</span>:<span class="n">3</span>])
+<span class="b">print</span>(<span class="b">len</span>(t), <span class="b">max</span>(t), <span class="b">sum</span>(t))
+
+<span class="hl">single = (<span class="n">5</span>)</span>
+<span class="hl">real   = (<span class="n">5</span>,)</span>
+<span class="b">print</span>(<span class="b">type</span>(single), <span class="b">type</span>(real))</pre>
+      <div class="reveal ready ephemeral">The last line is the whole point. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>(10, 20, 30, 40) &lt;class 'tuple'&gt;
+10 40
+(20, 30)
+4 40 100
+&lt;class 'int'&gt; &lt;class 'tuple'&gt;</div>
+      <div class="reveal warn">
+        <span class="tag">The one-element tuple</span>
+        <p><code>(5)</code> is just <b>5 in brackets</b> — an <code>int</code>.
+           What makes a tuple is the <b>comma</b>, not the brackets. So a single-element
+           tuple must be written <code>(5,)</code>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">The brackets are optional</span>
+    <p><code>t = 10, 20, 30</code> is a perfectly good tuple. This is why a function can
+       appear to “return several values” — it is really returning one tuple.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.2</span> Immutable — and one subtlety</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">WRONG — main.py</span><span class="ln">1</span>t = (<span class="n">10</span>, <span class="n">20</span>, <span class="n">30</span>)
+<span class="ln">2</span>t[<span class="n">0</span>] = <span class="n">99</span></pre>
+      <div class="reveal err"><span class="tag">Traceback</span>Traceback (most recent call last):
+  File "main.py", line 2, in &lt;module&gt;
+    t[0] = 99
+    ~^^^
+<span class="etype">TypeError</span>: 'tuple' object does not support item assignment</div>
+      <p class="small reveal">Word for word the string error from §5.3, with
+         <code>tuple</code> in place of <code>str</code>.</p>
+    </div>
+    <div>
+<pre class="code"><span class="tag">but look at this</span>t = (<span class="n">10</span>, [<span class="n">20</span>, <span class="n">30</span>], <span class="n">40</span>)
+<span class="hl">t[<span class="n">1</span>].append(<span class="n">35</span>)</span>
+<span class="b">print</span>(t)</pre>
+      <div class="reveal ready ephemeral">Error, or does it work? 🤔</div>
+      <div class="reveal out"><span class="tag">Output</span>(10, [20, 30, 35], 40)</div>
+      <div class="reveal insight">
+        <span class="tag">Why this is allowed</span>
+        <p>The tuple still holds <b>exactly the same three objects</b> — nothing in the
+           tuple was reassigned. What changed is the <b>list inside it</b>, and that list
+           is mutable.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal defn">
+    <span class="tag">Say it precisely</span>
+    <p>A tuple's <b>bindings</b> are frozen, not its contents. <code>t[1] = [...]</code>
+       is forbidden; <code>t[1].append(...)</code> is not.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.3</span> Packing, unpacking and the one-line swap</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">unpack.py</span>point = (<span class="n">3</span>, <span class="n">7</span>)
+<span class="hl">x, y = point</span>
+<span class="b">print</span>(x, y)
+
+a, b = <span class="n">1</span>, <span class="n">2</span>
+<span class="hl">a, b = b, a</span>
+<span class="b">print</span>(a, b)
+
+first, *rest = (<span class="n">10</span>, <span class="n">20</span>, <span class="n">30</span>, <span class="n">40</span>)
+<span class="b">print</span>(first, rest)</pre>
+      <div class="reveal ready ephemeral">Three lines. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>3 7
+2 1
+10 [20, 30, 40]</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Packing</span> — several values collected into one tuple
+           (<code>t = 1, 2</code>).<br>
+           <span class="term">Unpacking</span> — one tuple spread across several names
+           (<code>x, y = t</code>). The counts must match, or you get a
+           <code>ValueError</code>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal insight">
+    <span class="tag">Why <code>a, b = b, a</code> works</span>
+    <p>The right-hand side is evaluated <b>first</b>, into the tuple <code>(2, 1)</code>.
+       Only then is it unpacked into <code>a</code> and <code>b</code>. No temporary
+       variable is needed — this is the swap the paper expects.</p>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Note the last line</span>
+    <p><code>*rest</code> collects the remainder as a <b>list</b>, not a tuple —
+       which is why it printed <code>[20, 30, 40]</code>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.4</span> Tuple methods, and list ⇄ tuple</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">tconv.py</span>t = (<span class="n">5</span>, <span class="n">3</span>, <span class="n">5</span>, <span class="n">8</span>, <span class="n">5</span>)
+<span class="b">print</span>(t.count(<span class="n">5</span>))
+<span class="b">print</span>(t.index(<span class="n">8</span>))
+<span class="hl"><span class="b">print</span>(<span class="b">sorted</span>(t))</span>
+<span class="b">print</span>(<span class="b">tuple</span>([<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>]))
+<span class="b">print</span>(<span class="b">list</span>(t))</pre>
+      <div class="reveal ready ephemeral">Watch the bracket shapes. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>3
+3
+[3, 5, 5, 5, 8]
+(1, 2, 3)
+[5, 3, 5, 8, 5]</div>
+      <div class="reveal warn">
+        <span class="tag">Read the brackets, not the numbers</span>
+        <p><code>sorted(t)</code> returns a <b>list</b> — square brackets — even though
+           it was given a tuple. A tuple has no <code>.sort()</code> at all; there is
+           nothing to sort in place.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <table>
+      <tr><th class="lbl">&nbsp;</th><th>list</th><th>tuple</th></tr>
+      <tr><td class="lbl">Written with</td><td>[ ]</td><td>( )</td></tr>
+      <tr><td class="lbl">Mutable</td><td class="hi2">Yes</td><td class="hi">No</td></tr>
+      <tr><td class="lbl">append / insert / remove / sort</td><td class="hi2">Yes</td><td class="hi">No</td></tr>
+      <tr><td class="lbl">count, index, len, max, min, sum</td><td class="hi2">Yes</td><td class="hi2">Yes</td></tr>
+      <tr><td class="lbl">Indexing and slicing</td><td class="hi2">Yes</td><td class="hi2">Yes</td></tr>
+      <tr><td class="lbl">Usable as a dictionary key</td><td class="hi">No</td><td class="hi2">Yes</td></tr>
+      <tr><td class="lbl">Use it for</td><td class="lbl">data that grows or changes</td><td class="lbl">a fixed record — a row, a point</td></tr>
+      <caption>The last row is the exam answer to “why would you use a tuple instead of a list?”</caption>
+    </table>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">7.5</span> Check yourself</h2>
+
+  <div class="qcard">
+    <span class="tag">Question 6</span>
+    <p>Predict the exact output — four lines.</p>
+<pre class="code">T = (<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>)
+<span class="b">print</span>(T[<span class="n">1</span>:<span class="n">4</span>])
+<span class="b">print</span>(T + (<span class="n">6</span>,))
+<span class="b">print</span>(T * <span class="n">2</span>)
+<span class="b">print</span>(<span class="n">3</span> <span class="k">in</span> T)</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>(2, 3, 4)
+(1, 2, 3, 4, 5, 6)
+(1, 2, 3, 4, 5, 1, 2, 3, 4, 5)
+True</div>
+    <p>Note that <code>+</code> and <code>*</code> both worked on an “immutable” tuple.
+       They did not change <code>T</code> — each <b>built a new tuple</b>.
+       <code>T</code> is still <code>(1, 2, 3, 4, 5)</code>.</p>
+  </div>
+
+  <div class="reveal challenge">
+    <span class="tag">Challenge</span>
+    <p>Why would <code>T + 6</code> fail, when <code>T + (6,)</code> works?</p>
+  </div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><code>+</code> on a tuple means <b>concatenate two tuples</b>, and <code>6</code>
+       is not a tuple. The error is
+       <code>TypeError: can only concatenate tuple (not "int") to tuple</code>. The
+       trailing comma in <code>(6,)</code> is what makes it a one-element tuple — the
+       same point as §7.1.</p>
+  </div>
+</section>
+
+<!-- ===================== 7 · DICTIONARIES ===================== -->
+
+<section class="slide" data-section="7 · Dictionaries">
+  <h2><span class="num">8.1</span> When a number is the wrong address</h2>
+  <p class="lead">A list finds things by <b>position</b>. A dictionary finds them by <b>name</b>.</p>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">dict1.py</span>student = {<span class="s">"name"</span>: <span class="s">"Riya"</span>,
+           <span class="s">"cls"</span>: <span class="n">12</span>,
+           <span class="s">"marks"</span>: <span class="n">88</span>}
+<span class="b">print</span>(student)
+<span class="b">print</span>(student[<span class="s">"name"</span>])
+<span class="b">print</span>(<span class="b">len</span>(student))
+
+<span class="hl">student[<span class="s">"marks"</span>] = <span class="n">91</span></span>
+<span class="hl">student[<span class="s">"stream"</span>] = <span class="s">"Science"</span></span>
+<span class="b">print</span>(student)</pre>
+      <div class="reveal ready ephemeral">The two amber lines look identical. They are not. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>{'name': 'Riya', 'cls': 12, 'marks': 88}
+Riya
+3
+{'name': 'Riya', 'cls': 12, 'marks': 91, 'stream': 'Science'}</div>
+      <div class="reveal defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Dictionary</span> — a mutable collection of
+           <b>key : value</b> pairs, written in curly braces, in which a value is looked
+           up by its <b>key</b> rather than by a position.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal insight">
+    <span class="tag">One syntax, two jobs</span>
+    <p><code>d[k] = v</code> <b>updates</b> if the key exists and <b>inserts</b> if it
+       does not. There is no separate “add” method — which is why
+       <code>"marks"</code> was overwritten while <code>"stream"</code> was appended.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">8.2</span> Asking for a key that isn't there</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">WRONG — main.py</span><span class="ln">1</span>student = {<span class="s">"name"</span>: <span class="s">"Riya"</span>, <span class="s">"cls"</span>: <span class="n">12</span>}
+<span class="ln">2</span><span class="b">print</span>(student[<span class="s">"marks"</span>])</pre>
+      <div class="reveal ready ephemeral">Name the exception. 🤔</div>
+      <div class="reveal err"><span class="tag">Traceback</span>Traceback (most recent call last):
+  File "main.py", line 2, in &lt;module&gt;
+    print(student["marks"])
+          ~~~~~~~^^^^^^^^^
+<span class="etype">KeyError</span>: 'marks'</div>
+    </div>
+    <div>
+<pre class="code"><span class="tag">SAFE</span>student = {<span class="s">"name"</span>: <span class="s">"Riya"</span>, <span class="s">"cls"</span>: <span class="n">12</span>}
+<span class="b">print</span>(student.get(<span class="s">"marks"</span>))
+<span class="b">print</span>(student.get(<span class="s">"marks"</span>, <span class="n">0</span>))
+<span class="b">print</span>(<span class="s">"cls"</span> <span class="k">in</span> student)
+<span class="b">print</span>(<span class="s">"marks"</span> <span class="k">in</span> student)</pre>
+      <div class="reveal out"><span class="tag">Output</span>None
+0
+True
+False</div>
+      <div class="reveal insight">
+        <span class="tag"><code>get</code> never raises</span>
+        <p><code>d.get(k)</code> returns <code>None</code> for a missing key;
+           <code>d.get(k, default)</code> returns your default instead.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag"><code>in</code> tests keys, not values</span>
+    <p><code>"cls" in student</code> is <code>True</code>, but <code>12 in student</code>
+       is <code>False</code> — 12 is a value. To search values, write
+       <code>12 in student.values()</code>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">8.3</span> Dictionary methods</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">dmethods.py</span>d = {<span class="s">"a"</span>: <span class="n">1</span>, <span class="s">"b"</span>: <span class="n">2</span>, <span class="s">"c"</span>: <span class="n">3</span>}
+<span class="b">print</span>(d.keys())
+<span class="b">print</span>(d.values())
+<span class="b">print</span>(d.items())
+<span class="hl"><span class="b">print</span>(d.pop(<span class="s">"b"</span>))</span>
+<span class="b">print</span>(d)
+d.update({<span class="s">"c"</span>: <span class="n">30</span>, <span class="s">"z"</span>: <span class="n">26</span>})
+<span class="b">print</span>(d)</pre>
+      <div class="reveal ready ephemeral">The first three lines print something unusual. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>dict_keys(['a', 'b', 'c'])
+dict_values([1, 2, 3])
+dict_items([('a', 1), ('b', 2), ('c', 3)])
+2
+{'a': 1, 'c': 3}
+{'a': 1, 'c': 30, 'z': 26}</div>
+      <div class="reveal warn">
+        <span class="tag">Write it exactly</span>
+        <p>These are <b>not</b> lists. Python prints
+           <code>dict_keys([...])</code>, and the marking scheme expects that wrapper.
+           If you want a real list, write <code>list(d.keys())</code>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal note">
+    <span class="tag">Two more things in that output</span>
+    <p><code>d.items()</code> gives a sequence of <b>(key, value) tuples</b> — tuples
+       again, exactly as in §7.<br>
+       <code>d.update()</code> <b>overwrote</b> the existing <code>"c"</code> and
+       <b>added</b> the new <code>"z"</code> — the same rule as <code>d[k] = v</code>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">8.4</span> Walking a dictionary</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">walk.py</span>d = {<span class="s">"Maths"</span>: <span class="n">95</span>,
+     <span class="s">"Physics"</span>: <span class="n">78</span>,
+     <span class="s">"CS"</span>: <span class="n">99</span>}
+
+<span class="hl"><span class="k">for</span> k <span class="k">in</span> d:</span>
+    <span class="b">print</span>(k, <span class="s">"-&gt;"</span>, d[k])
+
+<span class="hl"><span class="k">for</span> k, v <span class="k">in</span> d.items():</span>
+    <span class="b">print</span>(k, v)
+
+<span class="b">print</span>(<span class="b">sum</span>(d.values()) / <span class="b">len</span>(d))</pre>
+      <div class="reveal ready ephemeral">Seven lines of output. 🤔</div>
+    </div>
+    <div>
+      <div class="reveal out"><span class="tag">Output</span>Maths -&gt; 95
+Physics -&gt; 78
+CS -&gt; 99
+Maths 95
+Physics 78
+CS 99
+90.66666666666667</div>
+      <div class="reveal insight">
+        <span class="tag">A bare <code>for k in d</code> loops over the KEYS</span>
+        <p>Not the values, and not the pairs. If you want both, use
+           <code>d.items()</code> and unpack into two names — the tuple unpacking from
+           §7.3, used for real.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal warn">
+    <span class="tag">Copy that last number exactly</span>
+    <p><code>272 / 3</code> prints <code>90.66666666666667</code> — not
+       <code>90.67</code>. Python shows full float precision unless you ask it not to
+       with <code>round()</code> or a format specifier.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">8.5</span> The program you will be asked to write</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">freq.py</span>text = <span class="s">"banana"</span>
+freq = {}
+
+<span class="k">for</span> ch <span class="k">in</span> text:
+<span class="hl">    <span class="k">if</span> ch <span class="k">in</span> freq:</span>
+        freq[ch] = freq[ch] + <span class="n">1</span>
+    <span class="k">else</span>:
+        freq[ch] = <span class="n">1</span>
+
+<span class="b">print</span>(freq)</pre>
+      <div class="reveal ready ephemeral">What is the dictionary, and in what order? 🤔</div>
+    </div>
+    <div>
+      <div class="reveal">
+        <table class="trace">
+          <tr><th>ch</th><th>already a key?</th><th>freq after</th></tr>
+          <tr><td>b</td><td>No</td><td class="chg">{'b': 1}</td></tr>
+          <tr><td>a</td><td>No</td><td class="chg">{'b': 1, 'a': 1}</td></tr>
+          <tr><td>n</td><td>No</td><td class="chg">{'b': 1, 'a': 1, 'n': 1}</td></tr>
+          <tr><td>a</td><td class="hi">Yes</td><td class="chg">{'b': 1, 'a': 2, 'n': 1}</td></tr>
+          <tr><td>n</td><td class="hi">Yes</td><td class="chg">{'b': 1, 'a': 2, 'n': 2}</td></tr>
+          <tr class="now"><td>a</td><td class="hi">Yes</td><td class="chg">{'b': 1, 'a': 3, 'n': 2}</td></tr>
+        </table>
+      </div>
+      <div class="reveal out"><span class="tag">Output</span>{'b': 1, 'a': 3, 'n': 2}</div>
+    </div>
+  </div>
+
+  <div class="reveal insight">
+    <span class="tag">Why the order is b, a, n</span>
+    <p>A dictionary keeps keys in <b>insertion order</b> — the order in which each key
+       was <b>first</b> added. <code>'a'</code> was seen three times but inserted once,
+       so it stays in second place.
+       <button class="info" aria-controls="dict-order" aria-expanded="false"
+               title="Is a dictionary ordered or unordered?">i</button></p>
+  </div>
+
+  <div class="infopanel" id="dict-order">
+    <span class="tag">Is a dictionary ordered or unordered?</span>
+    <p>Both answers appear in circulation, so be precise about which one you mean.</p>
+    <div class="q">
+      <b>Unordered</b> in the sense that matters: you cannot write <code>d[0]</code>
+      to get "the first pair". There is no positional index.<br>
+      <b>Ordered</b> in the sense that printing or looping gives you <b>insertion
+      order</b>, guaranteed since Python 3.7.
+    </div>
+    <p>Older NCERT material and many question banks were written for Python 3.5 and call
+       dictionaries "unordered", because back then the print order really was
+       unpredictable. <b>Every current Python prints insertion order</b>, and that is what
+       you should write when asked to predict output.</p>
+    <p>If a question explicitly asks "are dictionaries ordered?", the safe full-mark
+       answer is: <em>a dictionary is an unindexed collection — items are accessed by key,
+       not position — although since Python 3.7 it preserves insertion order.</em></p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">8.6</span> What may be a key</h2>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">WRONG — main.py</span><span class="ln">1</span>d = {}
+<span class="ln">2</span>d[[<span class="n">1</span>, <span class="n">2</span>]] = <span class="s">"list key"</span></pre>
+      <div class="reveal ready ephemeral">Will Python accept a list as a key? 🤔</div>
+      <div class="reveal err"><span class="tag">Traceback</span>Traceback (most recent call last):
+  File "main.py", line 2, in &lt;module&gt;
+    d[[1, 2]] = "list key"
+    ~^^^^^^^^
+<span class="etype">TypeError</span>: unhashable type: 'list'</div>
+    </div>
+    <div>
+      <div class="reveal defn">
+        <span class="tag">The rule</span>
+        <p>A key must be <b>immutable</b> — <code>int</code>, <code>float</code>,
+           <code>str</code> or <code>tuple</code>. A <b>value</b> may be anything at all,
+           including a list or another dictionary.</p>
+      </div>
+      <div class="reveal insight">
+        <span class="tag">Why the restriction exists</span>
+        <p>Python locates a value from a key's <b>hash</b>. If the key could change after
+           insertion, its hash would change and the value would become unreachable —
+           so mutable objects are refused outright.</p>
+      </div>
+      <div class="reveal eg">
+        <span class="tag">So this is fine</span>
+<pre class="code">seats = {(<span class="n">1</span>, <span class="s">"A"</span>): <span class="s">"Riya"</span>,
+         (<span class="n">1</span>, <span class="s">"B"</span>): <span class="s">"Aarav"</span>}</pre>
+        <p class="small">A <b>tuple</b> key — immutable, so allowed. This is the standard
+           way to key a grid or a seat map.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">8.7</span> Check yourself</h2>
+
+  <div class="qcard">
+    <span class="tag">Question 7</span>
+    <p>Predict the exact output — three lines.</p>
+<pre class="code">d = {<span class="n">1</span>: <span class="s">"one"</span>, <span class="n">2</span>: <span class="s">"two"</span>}
+d[<span class="n">3</span>] = <span class="s">"three"</span>
+d[<span class="n">1</span>] = <span class="s">"ONE"</span>
+<span class="b">print</span>(d)
+<span class="b">print</span>(<span class="b">list</span>(d.keys()))
+<span class="b">print</span>(<span class="b">len</span>(d))</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>{1: 'ONE', 2: 'two', 3: 'three'}
+[1, 2, 3]
+3</div>
+    <p><code>d[3]</code> <b>added</b> a pair; <code>d[1]</code> <b>replaced</b> a value.
+       So the length is 3, not 4. And key <code>1</code> keeps its <b>original
+       position</b> — updating a value does not re-insert the key.</p>
+  </div>
+</section>
+
+<!-- ===================== RECAP AND EXAM PRACTICE ===================== -->
+
+<section class="slide" data-section="Recap and exam practice">
+  <h2><span class="num">9.1</span> Which structure, when?</h2>
+
+  <table>
+    <tr><th class="lbl">You need to…</th><th class="lbl">Use</th><th class="lbl">Because</th></tr>
+    <tr><td class="lbl">hold text</td><td class="lbl"><code>str</code></td><td class="lbl">it is characters, in order, and never edited in place</td></tr>
+    <tr><td class="lbl">collect marks and keep adding to them</td><td class="lbl"><code>list</code></td><td class="lbl">ordered and mutable</td></tr>
+    <tr><td class="lbl">hold one fixed record — (name, class, marks)</td><td class="lbl"><code>tuple</code></td><td class="lbl">the shape must not change</td></tr>
+    <tr><td class="lbl">look something up by a name or an ID</td><td class="lbl"><code>dict</code></td><td class="lbl">access by key, not by position</td></tr>
+    <tr><td class="lbl">count how often each item occurs</td><td class="lbl"><code>dict</code></td><td class="lbl">item → count is exactly key → value</td></tr>
+    <tr><td class="lbl">use a pair as a lookup key</td><td class="lbl"><code>tuple</code></td><td class="lbl">a list is unhashable; a tuple is not</td></tr>
+  </table>
+
+  <div class="insight">
+    <span class="tag">One question answers most of these</span>
+    <p>“<b>Does this thing need to change after I build it?</b>”
+       Yes → list or dictionary. No → string or tuple.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">9.2</span> The four errors you have now met</h2>
+
+  <table>
+    <tr><th class="lbl">Exception</th><th class="lbl">Raised by</th><th class="lbl">Message you must be able to quote</th></tr>
+    <tr><td class="lbl"><code>ValueError</code></td><td class="lbl"><code>int("abc")</code></td><td class="lbl">invalid literal for int() with base 10: 'abc'</td></tr>
+    <tr><td class="lbl"><code>TypeError</code></td><td class="lbl"><code>s[0] = "X"</code></td><td class="lbl">'str' object does not support item assignment</td></tr>
+    <tr><td class="lbl"><code>TypeError</code></td><td class="lbl"><code>t[0] = 99</code></td><td class="lbl">'tuple' object does not support item assignment</td></tr>
+    <tr><td class="lbl"><code>KeyError</code></td><td class="lbl"><code>d["missing"]</code></td><td class="lbl">'missing'</td></tr>
+    <tr><td class="lbl"><code>TypeError</code></td><td class="lbl"><code>d[[1, 2]] = x</code></td><td class="lbl">unhashable type: 'list'</td></tr>
+    <caption>Naming the exception is a one-mark question, and it is asked almost every year.</caption>
+  </table>
+
+  <div class="bridge">
+    <span class="tag">Forward link</span>
+    <p>In <b>Chapter 3</b> you will stop these from crashing the program:
+       <code>try</code> / <code>except ValueError</code>,
+       <code>except KeyError</code>, and the rest. You cannot handle an exception you
+       cannot name — which is why they were shown here first.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">9.3</span> Everything on one screen</h2>
+
+  <h3>Names and objects</h3>
+  <div class="chips">
+    <span class="chip k">object</span>
+    <span class="chip k">binding, not copying</span>
+    <span class="chip k">mutable / immutable</span>
+    <span class="chip">id()</span>
+    <span class="chip">is vs ==</span>
+    <span class="chip k">aliasing</span>
+    <span class="chip">a[:] copies</span>
+  </div>
+
+  <h3>Operators</h3>
+  <div class="chips">
+    <span class="chip">/ gives a float</span>
+    <span class="chip k">// floors</span>
+    <span class="chip">% follows the divisor's sign</span>
+    <span class="chip k">** is right-associative</span>
+    <span class="chip">-3 ** 2 = -9</span>
+    <span class="chip">in, not in</span>
+  </div>
+
+  <h3>Control flow</h3>
+  <div class="chips">
+    <span class="chip">if / elif / else</span>
+    <span class="chip k">indentation is syntax</span>
+    <span class="chip k">range excludes stop</span>
+    <span class="chip">break exits the loop</span>
+    <span class="chip">continue skips one pass</span>
+    <span class="chip k">dry-run table</span>
+  </div>
+
+  <h3>Collections</h3>
+  <div class="chips">
+    <span class="chip k">s[start:stop:step]</span>
+    <span class="chip">s[::-1] reverses</span>
+    <span class="chip k">append vs extend</span>
+    <span class="chip">pop returns, remove does not</span>
+    <span class="chip">sort() vs sorted()</span>
+    <span class="chip k">(5,) is the tuple</span>
+    <span class="chip">d.get() never raises</span>
+    <span class="chip k">keys must be immutable</span>
+    <span class="chip">d.items() gives tuples</span>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">9.4</span> Exam question 1 — find the output</h2>
+
+  <div class="qcard">
+    <span class="tag">3 marks</span>
+    <p>Write the output of the following code.</p>
+<pre class="code">S = <span class="s">"Board2026"</span>
+D = {}
+<span class="k">for</span> ch <span class="k">in</span> S:
+    <span class="k">if</span> ch.isdigit():
+        D[<span class="s">"digits"</span>] = D.get(<span class="s">"digits"</span>, <span class="n">0</span>) + <span class="n">1</span>
+    <span class="k">elif</span> ch.isupper():
+        D[<span class="s">"upper"</span>] = D.get(<span class="s">"upper"</span>, <span class="n">0</span>) + <span class="n">1</span>
+    <span class="k">else</span>:
+        D[<span class="s">"lower"</span>] = D.get(<span class="s">"lower"</span>, <span class="n">0</span>) + <span class="n">1</span>
+<span class="b">print</span>(D)
+<span class="b">print</span>(S[::-<span class="n">1</span>][:<span class="n">4</span>])
+<span class="b">print</span>(<span class="b">len</span>(S), S.count(<span class="s">"o"</span>))</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>{'upper': 1, 'lower': 4, 'digits': 4}
+6202
+9 1</div>
+    <p><b>Order of the keys:</b> <code>'B'</code> is met first, so <code>'upper'</code>
+       is inserted first, then <code>'lower'</code> for <code>o a r d</code>, then
+       <code>'digits'</code>. Insertion order, not alphabetical.</p>
+    <p><b>Second line:</b> <code>S[::-1]</code> is <code>"6202draoB"</code>, and
+       <code>[:4]</code> takes its first four characters.</p>
+    <p><b>Third line:</b> <code>count("o")</code> is <b>1</b> — case-sensitive, and
+       "2026" contains no letter o.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">9.5</span> Exam question 2 — remove the errors</h2>
+
+  <div class="qcard">
+    <span class="tag">2 marks</span>
+    <p>Rewrite the following code after removing the errors, underlining each correction.</p>
+<pre class="code"><span class="ln">1</span>L = [<span class="n">10</span>, <span class="n">25</span>, <span class="n">30</span>, <span class="n">41</span>]
+<span class="ln">2</span><span class="k">for</span> i <span class="k">in</span> <span class="b">Range</span>(<span class="b">len</span>(L)):
+<span class="ln">3</span>    <span class="k">if</span> L[i] % <span class="n">2</span> = <span class="n">0</span>:
+<span class="ln">4</span>        <span class="b">print</span>(L[i], <span class="s">"even"</span>)
+<span class="ln">5</span>    <span class="k">else</span>
+<span class="ln">6</span>        <span class="b">print</span>(L[i], <span class="s">"odd"</span>)</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Three errors. Find all three. 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <table>
+      <tr><th>Line</th><th class="lbl">Error</th><th class="lbl">Correction</th></tr>
+      <tr><td>2</td><td class="lbl"><code>Range</code> — Python is case-sensitive</td><td class="lbl"><code>range</code></td></tr>
+      <tr><td>3</td><td class="lbl"><code>=</code> assigns; a condition needs a comparison</td><td class="lbl"><code>==</code></td></tr>
+      <tr><td>5</td><td class="lbl">missing colon after <code>else</code></td><td class="lbl"><code>else:</code></td></tr>
+    </table>
+<pre class="code"><span class="tag">Corrected</span>L = [<span class="n">10</span>, <span class="n">25</span>, <span class="n">30</span>, <span class="n">41</span>]
+<span class="k">for</span> i <span class="k">in</span> <span class="b">range</span>(<span class="b">len</span>(L)):
+    <span class="k">if</span> L[i] % <span class="n">2</span> == <span class="n">0</span>:
+        <span class="b">print</span>(L[i], <span class="s">"even"</span>)
+    <span class="k">else</span>:
+        <span class="b">print</span>(L[i], <span class="s">"odd"</span>)</pre>
+    <div class="out"><span class="tag">Output</span>10 even
+25 odd
+30 even
+41 odd</div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">9.6</span> Exam question 3 — write the program</h2>
+
+  <div class="qcard">
+    <span class="tag">3 marks</span>
+    <p>Write a program that counts the vowels, consonants, digits and other characters
+       in the string <code>"Computer Science 2024"</code>.</p>
+  </div>
+
+  <div class="reveal ready ephemeral">Write it fully before you look. 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="cosplit">
+      <div>
+<pre class="code"><span class="tag">count.py</span>s = <span class="s">"Computer Science 2024"</span>
+v = c = d = o = <span class="n">0</span>
+
+<span class="k">for</span> ch <span class="k">in</span> s:
+    <span class="k">if</span> ch.isdigit():
+        d = d + <span class="n">1</span>
+    <span class="k">elif</span> ch.isalpha():
+        <span class="k">if</span> ch.lower() <span class="k">in</span> <span class="s">"aeiou"</span>:
+            v = v + <span class="n">1</span>
+        <span class="k">else</span>:
+            c = c + <span class="n">1</span>
+    <span class="k">else</span>:
+        o = o + <span class="n">1</span>
+
+<span class="b">print</span>(<span class="s">"Vowels:"</span>, v, <span class="s">"Consonants:"</span>, c)
+<span class="b">print</span>(<span class="s">"Digits:"</span>, d, <span class="s">"Others:"</span>, o)</pre>
+      </div>
+      <div>
+        <div class="out"><span class="tag">Output</span>Vowels: 6 Consonants: 9
+Digits: 4 Others: 2</div>
+        <div class="note">
+          <span class="tag">Where the marks are</span>
+          <p><b>①</b> testing <code>isdigit()</code> <b>before</b> <code>isalpha()</code>
+             so digits are never counted as consonants.<br>
+             <b>②</b> <code>ch.lower()</code>, so a capital <code>C</code> and
+             <code>S</code> are handled.<br>
+             <b>③</b> the final <code>else</code> catching the two spaces — most answers
+             forget them.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">9.7</span> Exam question 4 — write the program</h2>
+
+  <div class="qcard">
+    <span class="tag">3 marks</span>
+    <p>Given <code>L = [12, 45, 7, 45, 30, 3]</code>, print the largest and the
+       <b>second largest</b> value. Note that 45 occurs twice.</p>
+  </div>
+
+  <div class="reveal ready ephemeral">The duplicate is the whole difficulty. 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="cosplit">
+      <div>
+<pre class="code"><span class="tag">second.py</span>L = [<span class="n">12</span>, <span class="n">45</span>, <span class="n">7</span>, <span class="n">45</span>, <span class="n">30</span>, <span class="n">3</span>]
+
+big = <span class="b">max</span>(L)
+second = -<span class="n">1</span>
+
+<span class="k">for</span> n <span class="k">in</span> L:
+<span class="hl">    <span class="k">if</span> n != big <span class="k">and</span> n &gt; second:</span>
+        second = n
+
+<span class="b">print</span>(<span class="s">"Largest        ="</span>, big)
+<span class="b">print</span>(<span class="s">"Second largest ="</span>, second)</pre>
+      </div>
+      <div>
+        <div class="out"><span class="tag">Output</span>Largest        = 45
+Second largest = 30</div>
+        <div class="warn">
+          <span class="tag">The wrong answer that looks right</span>
+          <p><code>L.sort()</code> then <code>L[-2]</code> gives <b>45</b>, because the
+             sorted list is <code>[3, 7, 12, 30, 45, 45]</code>. It answers “second last
+             item”, not “second largest value”. The <code>n != big</code> test on the
+             amber line is what fixes it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">9.8</span> Exam question 5 — write the program</h2>
+
+  <div class="qcard">
+    <span class="tag">3 marks</span>
+    <p>From <code>words = ["sun", "planet", "moon", "galaxy"]</code>, build a dictionary
+       mapping each word to its length, then print the longest word.</p>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="cosplit">
+      <div>
+<pre class="code"><span class="tag">wordlen.py</span>words = [<span class="s">"sun"</span>, <span class="s">"planet"</span>,
+         <span class="s">"moon"</span>, <span class="s">"galaxy"</span>]
+
+sizes = {}
+<span class="k">for</span> w <span class="k">in</span> words:
+    sizes[w] = <span class="b">len</span>(w)
+<span class="b">print</span>(sizes)
+
+longest = <span class="s">""</span>
+<span class="k">for</span> w <span class="k">in</span> sizes:
+    <span class="k">if</span> sizes[w] &gt; <span class="b">len</span>(longest):
+        longest = w
+<span class="b">print</span>(<span class="s">"Longest:"</span>, longest)</pre>
+      </div>
+      <div>
+        <div class="out"><span class="tag">Output</span>{'sun': 3, 'planet': 6, 'moon': 4, 'galaxy': 6}
+Longest: planet</div>
+        <div class="insight">
+          <span class="tag">Why <code>planet</code> and not <code>galaxy</code></span>
+          <p>Both have 6 letters. The test is <b>strictly greater</b>, so the first
+             6-letter word met keeps the title. Ties go to whoever arrived first —
+             say so in your answer and you have shown you understand the loop.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">9.9</span> One last challenge</h2>
+
+  <div class="challenge">
+    <span class="tag">Challenge</span>
+    <p>Predict the exact output. Every line uses something from this chapter.</p>
+<pre class="code">T = (<span class="s">"Riya"</span>, <span class="n">12</span>, <span class="n">88</span>)
+L = <span class="b">list</span>(T)
+L[<span class="n">2</span>] = L[<span class="n">2</span>] + <span class="n">5</span>
+T2 = <span class="b">tuple</span>(L)
+<span class="b">print</span>(T)
+<span class="b">print</span>(T2)
+<span class="b">print</span>(T <span class="k">is</span> T2, T == T2)</pre>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <div class="out"><span class="tag">Output</span>('Riya', 12, 88)
+('Riya', 12, 93)
+False False</div>
+    <p><b>Line 1</b> — <code>T</code> is unchanged. You never edited the tuple; you
+       converted it to a list, edited <b>that</b>, and built a second tuple. This
+       list ⇄ tuple round trip is the standard way to "modify" a tuple, and it is a
+       favourite exam question.</p>
+    <p><b>Line 3</b> — <code>is</code> is <code>False</code> because they are two separate
+       objects, and <code>==</code> is <code>False</code> because 88 ≠ 93. Had you written
+       <code>T2 = tuple(list(T))</code> with no edit, <code>is</code> would still be
+       <code>False</code> but <code>==</code> would be <code>True</code>.</p>
+  </div>
+</section>
+
+<section class="slide title-slide">
+  <div class="kicker">End of Chapter 1</div>
+  <h1>Next: Functions</h1>
+  <div class="rule"></div>
+  <p class="sub">You have been writing straight-line programs. Chapter 2 lets you
+     <b>name</b> a block of code, hand it arguments and get a value back — and the very
+     first thing it will test is whether you really understood mutable arguments.</p>
+
+  <div class="bridge narrow">
+    <span class="tag">Carry these three forward</span>
+    <p><b>①</b> A name is a label on an object — so passing a list into a function passes
+       the <b>same list</b>.<br>
+       <b>②</b> <code>None</code> is what a function returns when you do not
+       <code>return</code> anything — you have already seen it from
+       <code>list.sort()</code>.<br>
+       <b>③</b> Predict the output before you run it. Every single time.</p>
+  </div>
+</section>
+
+</div>
+
+<button class="nav" id="prev" aria-label="Previous slide">←</button>
+<button class="nav" id="next" aria-label="Next slide">→</button>
+
+<script src="assets/deck.js"></script>
+</body>
+</html>

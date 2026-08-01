@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 8 · Relational Database Concepts — Class XII Computer Science</title>
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body>
+
+<div id="bar">
+  <div class="brand">CH 8 · DATABASE CONCEPTS</div>
+  <div class="sect" id="sect"></div>
+  <div class="tools">
+    <button id="menuBtn">Menu (m)</button>
+    <button id="fsBtn">Full screen (f)</button>
+    <span id="counter"></span>
+  </div>
+</div>
+<div id="progress"></div>
+
+<div id="menu">
+  <h3>Chapter 8 — Relational Database Concepts</h3>
+  <div class="mlist"></div>
+  <p class="hint">Press <kbd>m</kbd> or <kbd>Esc</kbd> to close</p>
+</div>
+
+<div id="stage">
+
+<!-- ===================== ORIENTATION ===================== -->
+
+<section class="slide title-slide" data-section="Orientation">
+  <div class="kicker">Unit 3 · Database Management</div>
+  <h1>Chapter 8<br>Relational Database<br>Concepts</h1>
+  <div class="rule"></div>
+  <p class="sub">Chapter 4 stored data in a file. This unit stores it in a way that
+     can be questioned, checked and shared — and that starts with getting the
+     vocabulary exactly right.</p>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.1</span> Where we have got to</h2>
+
+  <div class="bridge">
+    <span class="tag">Chapter 4</span>
+    <p>You stored the five students in <code>marks.csv</code> and read them back with
+       <code>csv.reader</code>. It worked.</p>
+  </div>
+
+  <div class="cosplit">
+    <div>
+<pre class="code"><span class="tag">marks.csv — the Chapter 4 version</span>Name,Marks,Stream,HOD
+Riya,88,Computer Science,Sharma
+Aarav,91,Computer Science,Sharma
+Kabir,76,Informatics,Iyer
+Meera,94,Computer Science,Sharma
+Dev,59,Informatics,Iyer</pre>
+    </div>
+    <div>
+      <div class="warn">
+        <span class="tag">Three problems, and they are all fatal at scale</span>
+        <p><b>① Redundancy.</b> "Computer Science, Sharma" is written three times. Ten
+           thousand students means ten thousand copies.</p>
+        <p><b>② Inconsistency.</b> When Sharma is replaced, you must find and change
+           <b>every</b> row. Miss one and the file now says two different things.</p>
+        <p><b>③ No rules.</b> Nothing stops you typing <code>Marks = 950</code>, or two
+           students with the same roll number, or a stream that does not exist.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <span class="tag">What a database adds</span>
+    <p>Store each fact <b>once</b>, enforce <b>rules</b> about what is allowed, and let
+       many programs and people <b>ask questions</b> of the same data at the same time
+       without corrupting it.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.2</span> The vocabulary of a DBMS</h2>
+
+  <div class="cosplit">
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Database</span> — an organised collection of related data
+           stored in a way that allows it to be accessed, managed and updated
+           efficiently.</p>
+      </div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">DBMS — Database Management System</span> — software that
+           allows users to define, create, store, retrieve and manage the data in a
+           database, and that controls access to it.</p>
+      </div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">RDBMS — Relational DBMS</span> — a DBMS in which data is
+           organised as a set of <b>tables (relations)</b>, and relationships between
+           tables are expressed by <b>common columns</b>. MySQL, Oracle and PostgreSQL
+           are RDBMSs.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <h4>Advantages of a DBMS — the standard 3-mark list</h4>
+        <ul>
+          <li><b>Controls redundancy</b> — each fact is stored once</li>
+          <li><b>Ensures consistency</b> — change it in one place</li>
+          <li><b>Data integrity</b> — rules are enforced by the system, not by hope</li>
+          <li><b>Data security</b> — different users get different privileges</li>
+          <li><b>Data sharing</b> — many users, concurrently and safely</li>
+          <li><b>Backup and recovery</b> — built in</li>
+          <li><b>Data independence</b> — programs need not change when storage does</li>
+        </ul>
+      </div>
+      <div class="note">
+        <span class="tag">Edgar F. Codd</span>
+        <p>The relational model was proposed by <b>E. F. Codd</b> at IBM in <b>1970</b>.
+           Its whole idea is that data should be stored in simple tables and queried
+           mathematically, not navigated by following pointers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">1.3</span> The database we will use all unit</h2>
+  <p class="lead">Two tables, ten rows. They appear on <b>every remaining slide of this
+     unit</b> — Chapter 8, Chapter 9 and Chapter 10.</p>
+
+  <div class="cosplit">
+    <div>
+      <h3>Table: STUDENT</h3>
+      <table>
+        <tr><th class="lbl">RollNo <span class="small">(PK)</span></th><th class="lbl">Name</th><th class="lbl">SCode <span class="small">(FK)</span></th><th>Marks</th><th class="lbl">City</th><th>Fee</th></tr>
+        <tr><td class="lbl hi">101</td><td class="lbl">Riya</td><td class="lbl">S01</td><td>88</td><td class="lbl">Delhi</td><td>4500</td></tr>
+        <tr><td class="lbl hi">102</td><td class="lbl">Aarav</td><td class="lbl">S01</td><td>91</td><td class="lbl">Mumbai</td><td>4500</td></tr>
+        <tr><td class="lbl hi">103</td><td class="lbl">Kabir</td><td class="lbl">S02</td><td>76</td><td class="lbl">Delhi</td><td>3800</td></tr>
+        <tr><td class="lbl hi">104</td><td class="lbl">Meera</td><td class="lbl">S01</td><td>94</td><td class="lbl">Pune</td><td>4500</td></tr>
+        <tr><td class="lbl hi">105</td><td class="lbl">Dev</td><td class="lbl">S02</td><td>59</td><td class="lbl">Mumbai</td><td>3800</td></tr>
+        <tr><td class="lbl hi">106</td><td class="lbl">Ishan</td><td class="lbl">S03</td><td>67</td><td class="lbl">Delhi</td><td>4000</td></tr>
+        <tr><td class="lbl hi">107</td><td class="lbl">Nisha</td><td class="lbl">S02</td><td>NULL</td><td class="lbl">Pune</td><td>3800</td></tr>
+        <caption>Nisha's Marks is <b>NULL</b> — she was absent. That single cell teaches half of §9.</caption>
+      </table>
+    </div>
+    <div>
+      <h3>Table: STREAM</h3>
+      <table>
+        <tr><th class="lbl">SCode <span class="small">(PK)</span></th><th class="lbl">SName</th><th class="lbl">HOD</th></tr>
+        <tr><td class="lbl hi">S01</td><td class="lbl">Computer Science</td><td class="lbl">Sharma</td></tr>
+        <tr><td class="lbl hi">S02</td><td class="lbl">Informatics</td><td class="lbl">Iyer</td></tr>
+        <tr><td class="lbl hi">S03</td><td class="lbl">Physics</td><td class="lbl">Rao</td></tr>
+      </table>
+
+      <div class="insight">
+        <span class="tag">Look at what just happened</span>
+        <p>"Computer Science, Sharma" now appears <b>once</b>, in STREAM. STUDENT holds
+           only the short code <code>S01</code>. Replace Sharma and you change
+           <b>one cell</b>.</p>
+        <p>That is the entire relational idea: <b>store each fact once, and refer to it
+           by a key</b>.</p>
+      </div>
+
+      <div class="note">
+        <span class="tag">Same five students</span>
+        <p>Riya, Aarav, Kabir, Meera and Dev have been with us since Chapter 4. Nisha and
+           Ishan join here so that we have a NULL and a third stream to work with.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 1 · THE RELATIONAL MODEL ===================== -->
+
+<section class="slide" data-section="1 · The relational model">
+  <h2><span class="num">2.1</span> Every word for one table</h2>
+
+  <figure>
+    <svg viewBox="0 0 880 300" role="img" aria-label="A relation drawn as a table with a header row of attributes and rows of tuples, with degree labelled as the number of columns and cardinality as the number of rows">
+      <rect x="180" y="60" width="560" height="34" fill="#e4dcc4" stroke="#073642" stroke-width="2"/>
+      <rect x="180" y="94" width="560" height="30" fill="#eee8d5" stroke="#073642" stroke-width="1.5"/>
+      <rect x="180" y="124" width="560" height="30" fill="#eee8d5" stroke="#073642" stroke-width="1.5"/>
+      <rect x="180" y="154" width="560" height="30" fill="#fdf6e3" stroke="#a17a00" stroke-width="3"/>
+      <rect x="180" y="184" width="560" height="30" fill="#eee8d5" stroke="#073642" stroke-width="1.5"/>
+
+      <line x1="320" y1="60" x2="320" y2="214" stroke="#073642" stroke-width="1.5"/>
+      <line x1="460" y1="60" x2="460" y2="214" stroke="#073642" stroke-width="1.5"/>
+      <line x1="600" y1="60" x2="600" y2="214" stroke="#a17a00" stroke-width="3"/>
+
+      <text x="250" y="83" class="lab" text-anchor="middle">RollNo</text>
+      <text x="390" y="83" class="lab" text-anchor="middle">Name</text>
+      <text x="530" y="83" class="lab" text-anchor="middle">SCode</text>
+      <text x="670" y="83" class="lab" text-anchor="middle">Marks</text>
+
+      <text x="250" y="115" text-anchor="middle">101</text>
+      <text x="390" y="115" text-anchor="middle">Riya</text>
+      <text x="530" y="115" text-anchor="middle">S01</text>
+      <text x="670" y="115" text-anchor="middle">88</text>
+
+      <text x="250" y="145" text-anchor="middle">102</text>
+      <text x="390" y="145" text-anchor="middle">Aarav</text>
+      <text x="530" y="145" text-anchor="middle">S01</text>
+      <text x="670" y="145" text-anchor="middle">91</text>
+
+      <text x="250" y="175" text-anchor="middle">103</text>
+      <text x="390" y="175" text-anchor="middle">Kabir</text>
+      <text x="530" y="175" text-anchor="middle">S02</text>
+      <text x="670" y="175" text-anchor="middle">76</text>
+
+      <text x="250" y="205" text-anchor="middle">104</text>
+      <text x="390" y="205" text-anchor="middle">Meera</text>
+      <text x="530" y="205" text-anchor="middle">S01</text>
+      <text x="670" y="205" text-anchor="middle">94</text>
+
+      <text x="170" y="40" class="lab" text-anchor="end" fill="#175f90">the whole table</text>
+      <text x="170" y="60" text-anchor="end" fill="#175f90">= RELATION</text>
+
+      <text x="170" y="176" class="lab" text-anchor="end" fill="#755900">one row</text>
+      <text x="170" y="196" text-anchor="end" fill="#755900">= TUPLE / record</text>
+
+      <text x="670" y="252" class="lab" text-anchor="middle" fill="#586600">one column = ATTRIBUTE / field</text>
+      <text x="670" y="274" text-anchor="middle" fill="#586600">its set of permitted values = DOMAIN</text>
+
+      <text x="86" y="112" class="lab" text-anchor="middle" fill="#b02522">4 rows</text>
+      <text x="86" y="134" text-anchor="middle" fill="#b02522">CARDINALITY</text>
+      <text x="86" y="230" class="lab" text-anchor="middle" fill="#5055a0">4 columns</text>
+      <text x="86" y="252" text-anchor="middle" fill="#5055a0">DEGREE</text>
+    </svg>
+    <figcaption>Five terms, one picture. Every question in this chapter uses these words.</figcaption>
+  </figure>
+
+  <div class="defn">
+    <span class="tag">The five definitions</span>
+    <p><span class="term">Relation</span> — a table of data, with rows and columns.<br>
+       <span class="term">Tuple</span> — a single <b>row</b> of a relation; one record.<br>
+       <span class="term">Attribute</span> — a single <b>column</b> of a relation; one field.<br>
+       <span class="term">Domain</span> — the <b>set of permitted values</b> for an
+       attribute.<br>
+       <span class="term">Degree</span> — the number of <b>attributes (columns)</b>.
+       <span class="term">Cardinality</span> — the number of <b>tuples (rows)</b>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.2</span> Degree and cardinality — worked</h2>
+
+  <div class="cosplit">
+    <div>
+      <h3>STUDENT</h3>
+      <table>
+        <tr><th class="lbl">RollNo</th><th class="lbl">Name</th><th class="lbl">SCode</th><th>Marks</th><th class="lbl">City</th><th>Fee</th></tr>
+        <tr><td class="lbl">101</td><td class="lbl">Riya</td><td class="lbl">S01</td><td>88</td><td class="lbl">Delhi</td><td>4500</td></tr>
+        <tr><td class="lbl">102</td><td class="lbl">Aarav</td><td class="lbl">S01</td><td>91</td><td class="lbl">Mumbai</td><td>4500</td></tr>
+        <tr><td class="lbl">103</td><td class="lbl">Kabir</td><td class="lbl">S02</td><td>76</td><td class="lbl">Delhi</td><td>3800</td></tr>
+        <tr><td class="lbl">104</td><td class="lbl">Meera</td><td class="lbl">S01</td><td>94</td><td class="lbl">Pune</td><td>4500</td></tr>
+        <tr><td class="lbl">105</td><td class="lbl">Dev</td><td class="lbl">S02</td><td>59</td><td class="lbl">Mumbai</td><td>3800</td></tr>
+        <tr><td class="lbl">106</td><td class="lbl">Ishan</td><td class="lbl">S03</td><td>67</td><td class="lbl">Delhi</td><td>4000</td></tr>
+        <tr><td class="lbl">107</td><td class="lbl">Nisha</td><td class="lbl">S02</td><td>NULL</td><td class="lbl">Pune</td><td>3800</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qcard">
+        <span class="tag">Question 1</span>
+        <p>State the <b>degree</b> and <b>cardinality</b> of STUDENT, and of STREAM.
+           Then: what happens to each if we <b>insert one student</b>? And if we
+           <b>add a Phone column</b>?</p>
+      </div>
+
+      <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+      <div class="reveal answer">
+        <span class="tag">Answer</span>
+        <table>
+          <tr><th class="lbl">&nbsp;</th><th>Degree</th><th>Cardinality</th></tr>
+          <tr><td class="lbl">STUDENT</td><td class="hi2">6</td><td class="hi2">7</td></tr>
+          <tr><td class="lbl">STREAM</td><td class="hi2">3</td><td class="hi2">3</td></tr>
+        </table>
+        <p><b>Insert one student</b> → cardinality becomes <b>8</b>; the degree is
+           <b>unchanged</b> at 6.</p>
+        <p><b>Add a Phone column</b> → degree becomes <b>7</b>; the cardinality is
+           <b>unchanged</b> at 7.</p>
+      </div>
+
+      <div class="reveal warn">
+        <span class="tag">Two things that never change the count</span>
+        <p><b>①</b> A <b>NULL</b> still counts. Nisha's row is a tuple, so the cardinality
+           is 7, not 6.<br>
+           <b>②</b> <b>Duplicate values</b> in a column change nothing — three students
+           live in Delhi, and cardinality is still 7.</p>
+      </div>
+
+      <div class="reveal insight">
+        <span class="tag">How to never mix them up</span>
+        <p><b>D</b>egree = <b>D</b>own the top row, counting <b>columns</b>.<br>
+           <b>Cardinality</b> = the <b>count</b> of records.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.3</span> Domain — the values a column is allowed</h2>
+
+  <div class="cosplit">
+    <div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Domain</span> — the set of all permissible <b>atomic
+           values</b> that an attribute may take.</p>
+      </div>
+      <table>
+        <tr><th class="lbl">Attribute</th><th class="lbl">Domain</th></tr>
+        <tr><td class="lbl">RollNo</td><td class="lbl">positive integers, 101–999</td></tr>
+        <tr><td class="lbl">Name</td><td class="lbl">character strings up to 20 characters</td></tr>
+        <tr><td class="lbl">SCode</td><td class="lbl">S01, S02, S03 — those in STREAM</td></tr>
+        <tr><td class="lbl">Marks</td><td class="lbl">integers 0–100, <b>or NULL</b></td></tr>
+        <tr><td class="lbl">City</td><td class="lbl">character strings up to 15 characters</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="insight">
+        <span class="tag">Why the domain matters</span>
+        <p>It is what lets the DBMS <b>refuse bad data</b>. A CSV file would happily accept
+           <code>Marks = 950</code>; a database with the domain declared will not. That is
+           the "data integrity" advantage from §1.2, made concrete.</p>
+      </div>
+      <div class="defn">
+        <span class="tag">NULL — the value that is not a value</span>
+        <p><span class="term">NULL</span> represents a value that is <b>missing, unknown or
+           not applicable</b>. It is <b>not</b> zero, and <b>not</b> an empty string.</p>
+      </div>
+      <div class="warn">
+        <span class="tag">Three consequences you will meet in Chapter 9</span>
+        <p><b>①</b> <code>Marks = NULL</code> is never true — you must write
+           <code>Marks IS NULL</code>.<br>
+           <b>②</b> <code>COUNT(Marks)</code> gives <b>6</b>, but <code>COUNT(*)</code>
+           gives <b>7</b>.<br>
+           <b>③</b> <code>AVG(Marks)</code> ignores the NULL row entirely — it divides by
+           6, not 7.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.4</span> The properties of a relation</h2>
+
+  <div class="grid2">
+    <div>
+      <div class="card">
+        <h4>① Every cell holds one atomic value</h4>
+        <p>No cell may contain a list. A student with two phone numbers needs two rows or
+           a second table — not <code>"9811, 9822"</code> in one cell.</p>
+      </div>
+      <div class="card">
+        <h4>② All values in a column come from one domain</h4>
+        <p>The Marks column cannot hold <code>88</code> in one row and
+           <code>"absent"</code> in another. That is what NULL is for.</p>
+      </div>
+      <div class="card">
+        <h4>③ Every attribute name is unique within the table</h4>
+        <p>You cannot have two columns both called <code>Name</code>. Across
+           <b>different</b> tables the same name is fine — both STUDENT and STREAM have
+           <code>SCode</code>, and that is exactly how they are joined.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <h4>④ Every tuple is distinct</h4>
+        <p>No two rows may be completely identical. This is why every relation needs a
+           <b>primary key</b> — §3.</p>
+      </div>
+      <div class="card">
+        <h4>⑤ The order of tuples does not matter</h4>
+        <p>A relation is a <b>set</b> of rows. Riya's row being first carries no meaning,
+           and a query may return them in any order unless you write
+           <code>ORDER BY</code>.</p>
+      </div>
+      <div class="card">
+        <h4>⑥ The order of attributes does not matter</h4>
+        <p>You refer to a column by <b>name</b>, never by position.
+           <code>SELECT Name, Marks</code> works regardless of how they are stored.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <span class="tag">Properties ⑤ and ⑥ are why SQL looks the way it does</span>
+    <p>Because order is meaningless, you must <b>name</b> what you want and <b>state</b>
+       how to sort it. There is no "give me the third row" in SQL — and that is
+       deliberate.</p>
+  </div>
+</section>
+
+<!-- ===================== 2 · KEYS ===================== -->
+
+<section class="slide" data-section="2 · Keys">
+  <h2><span class="num">3.1</span> The problem a key solves</h2>
+
+  <div class="cosplit">
+    <div>
+      <div class="qcard">
+        <span class="tag">Think about it</span>
+        <p>"Update Riya's marks to 92."</p>
+        <p>Which row do you change? What if two students are called Riya? What if three
+           live in Delhi and score 88?</p>
+      </div>
+      <div class="defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Key</span> — an attribute, or a set of attributes, whose
+           values <b>uniquely identify</b> each tuple in a relation.</p>
+      </div>
+    </div>
+    <div>
+      <div class="insight">
+        <span class="tag">The test for any candidate</span>
+        <p>Ask: <b>"could two different rows ever share this value?"</b></p>
+        <p><code>Name</code> — yes, two students could both be Riya. <b>Not a key.</b><br>
+           <code>City</code> — obviously yes. <b>Not a key.</b><br>
+           <code>Marks</code> — yes, and one is even NULL. <b>Not a key.</b><br>
+           <code>RollNo</code> — no, the school issues each one once. <b>A key.</b></p>
+      </div>
+      <div class="warn">
+        <span class="tag">Judge the design, not the sample data</span>
+        <p>In our seven rows every <code>Name</code> happens to be unique. That does
+           <b>not</b> make Name a key — the question is whether a duplicate is
+           <b>possible</b>, not whether one is present today. This is the single most
+           common error in this chapter.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.2</span> Candidate, primary and alternate</h2>
+
+  <div class="cosplit">
+    <div>
+      <div class="defn">
+        <span class="tag">Candidate key</span>
+        <p><span class="term">Candidate key</span> — any attribute or minimal set of
+           attributes that can <b>uniquely identify</b> every tuple. A relation may have
+           several.</p>
+      </div>
+      <div class="defn">
+        <span class="tag">Primary key</span>
+        <p><span class="term">Primary key</span> — the <b>one</b> candidate key chosen by
+           the designer to identify tuples. It can never be <b>NULL</b> and never
+           <b>duplicated</b>.</p>
+      </div>
+      <div class="defn">
+        <span class="tag">Alternate key</span>
+        <p><span class="term">Alternate key</span> — a candidate key that was <b>not</b>
+           chosen as the primary key.</p>
+      </div>
+      <div class="formula">
+        alternate keys = candidate keys − primary key
+      </div>
+    </div>
+    <div>
+      <h3>Worked example</h3>
+      <p>Suppose STUDENT also had an <code>AadhaarNo</code> column, which is also unique
+         to each person.</p>
+      <table>
+        <tr><th class="lbl">Attribute</th><th>Unique?</th><th class="lbl">So it is…</th></tr>
+        <tr><td class="lbl">RollNo</td><td class="hi2">Yes</td><td class="lbl">candidate key → chosen as <b>PRIMARY KEY</b></td></tr>
+        <tr><td class="lbl">AadhaarNo</td><td class="hi2">Yes</td><td class="lbl">candidate key → <b>ALTERNATE KEY</b></td></tr>
+        <tr><td class="lbl">Name</td><td class="hi">No</td><td class="lbl">not a key</td></tr>
+        <tr><td class="lbl">SCode</td><td class="hi">No</td><td class="lbl">not a key — it is a foreign key</td></tr>
+        <tr><td class="lbl">Marks</td><td class="hi">No</td><td class="lbl">not a key — and it can be NULL</td></tr>
+      </table>
+      <div class="insight">
+        <span class="tag">Why RollNo and not AadhaarNo?</span>
+        <p>Both would work. A designer picks the one that is <b>shorter, stable, always
+           known and controlled by the organisation</b>. The school issues roll numbers, so
+           it can guarantee them; it cannot guarantee anyone has an Aadhaar number.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <span class="tag">Composite key</span>
+    <p>A <span class="term">composite key</span> is a primary key made of <b>two or more
+       attributes together</b>, used when no single column is unique. In a
+       <code>MARKS(RollNo, Subject, Score)</code> table neither RollNo nor Subject alone is
+       unique — but the pair <b>(RollNo, Subject)</b> is.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.3</span> Foreign key — the link between tables</h2>
+
+  <figure>
+    <svg viewBox="0 0 880 300" role="img" aria-label="The SCode column of the STUDENT table linked by arrows to the matching SCode primary key values in the STREAM table">
+      <defs>
+        <marker id="arw-fk" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#6c71c4"/>
+        </marker>
+      </defs>
+
+      <text x="160" y="30" class="lab" text-anchor="middle">STUDENT</text>
+      <rect x="30" y="44" width="260" height="32" fill="#e4dcc4" stroke="#073642" stroke-width="2"/>
+      <text x="80" y="66" class="lab" text-anchor="middle">RollNo</text>
+      <text x="160" y="66" class="lab" text-anchor="middle">Name</text>
+      <text x="248" y="66" class="lab" text-anchor="middle">SCode</text>
+      <line x1="122" y1="44" x2="122" y2="244" stroke="#073642" stroke-width="1.5"/>
+      <line x1="206" y1="44" x2="206" y2="244" stroke="#6c71c4" stroke-width="3"/>
+
+      <rect x="30" y="76" width="260" height="28" fill="#eee8d5" stroke="#073642" stroke-width="1.5"/>
+      <text x="80" y="96" text-anchor="middle">101</text><text x="160" y="96" text-anchor="middle">Riya</text><text x="248" y="96" class="lab" text-anchor="middle" fill="#5055a0">S01</text>
+      <rect x="30" y="104" width="260" height="28" fill="#eee8d5" stroke="#073642" stroke-width="1.5"/>
+      <text x="80" y="124" text-anchor="middle">102</text><text x="160" y="124" text-anchor="middle">Aarav</text><text x="248" y="124" class="lab" text-anchor="middle" fill="#5055a0">S01</text>
+      <rect x="30" y="132" width="260" height="28" fill="#eee8d5" stroke="#073642" stroke-width="1.5"/>
+      <text x="80" y="152" text-anchor="middle">103</text><text x="160" y="152" text-anchor="middle">Kabir</text><text x="248" y="152" class="lab" text-anchor="middle" fill="#5055a0">S02</text>
+      <rect x="30" y="160" width="260" height="28" fill="#eee8d5" stroke="#073642" stroke-width="1.5"/>
+      <text x="80" y="180" text-anchor="middle">104</text><text x="160" y="180" text-anchor="middle">Meera</text><text x="248" y="180" class="lab" text-anchor="middle" fill="#5055a0">S01</text>
+      <rect x="30" y="188" width="260" height="28" fill="#eee8d5" stroke="#073642" stroke-width="1.5"/>
+      <text x="80" y="208" text-anchor="middle">105</text><text x="160" y="208" text-anchor="middle">Dev</text><text x="248" y="208" class="lab" text-anchor="middle" fill="#5055a0">S02</text>
+      <rect x="30" y="216" width="260" height="28" fill="#eee8d5" stroke="#073642" stroke-width="1.5"/>
+      <text x="80" y="236" text-anchor="middle">106</text><text x="160" y="236" text-anchor="middle">Ishan</text><text x="248" y="236" class="lab" text-anchor="middle" fill="#5055a0">S03</text>
+
+      <text x="248" y="268" class="lab" text-anchor="middle" fill="#5055a0">FOREIGN KEY</text>
+
+      <text x="700" y="30" class="lab" text-anchor="middle">STREAM</text>
+      <rect x="560" y="44" width="290" height="32" fill="#e4dcc4" stroke="#073642" stroke-width="2"/>
+      <text x="600" y="66" class="lab" text-anchor="middle">SCode</text>
+      <text x="720" y="66" class="lab" text-anchor="middle">SName</text>
+      <text x="815" y="66" class="lab" text-anchor="middle">HOD</text>
+      <line x1="644" y1="44" x2="644" y2="160" stroke="#c62b28" stroke-width="3"/>
+      <line x1="780" y1="44" x2="780" y2="160" stroke="#073642" stroke-width="1.5"/>
+
+      <rect x="560" y="76" width="290" height="28" fill="#fdf6e3" stroke="#073642" stroke-width="1.5"/>
+      <text x="600" y="96" class="lab" text-anchor="middle" fill="#b02522">S01</text><text x="712" y="96" text-anchor="middle">Comp Sci</text><text x="815" y="96" text-anchor="middle">Sharma</text>
+      <rect x="560" y="104" width="290" height="28" fill="#fdf6e3" stroke="#073642" stroke-width="1.5"/>
+      <text x="600" y="124" class="lab" text-anchor="middle" fill="#b02522">S02</text><text x="712" y="124" text-anchor="middle">Informatics</text><text x="815" y="124" text-anchor="middle">Iyer</text>
+      <rect x="560" y="132" width="290" height="28" fill="#fdf6e3" stroke="#073642" stroke-width="1.5"/>
+      <text x="600" y="152" class="lab" text-anchor="middle" fill="#b02522">S03</text><text x="712" y="152" text-anchor="middle">Physics</text><text x="815" y="152" text-anchor="middle">Rao</text>
+
+      <text x="600" y="186" class="lab" text-anchor="middle" fill="#b02522">PRIMARY KEY</text>
+
+      <path class="curve c-violet" d="M292,92 C420,86 470,88 556,90" marker-end="url(#arw-fk)"/>
+      <path class="curve c-violet" d="M292,152 C420,146 470,120 556,118" marker-end="url(#arw-fk)"/>
+      <path class="curve c-violet" d="M292,236 C430,232 470,170 556,146" marker-end="url(#arw-fk)"/>
+
+      <text x="430" y="284" class="lab" text-anchor="middle">Every SCode in STUDENT must exist in STREAM. That rule is referential integrity.</text>
+    </svg>
+    <figcaption>A foreign key in one table points at the primary key of another.</figcaption>
+  </figure>
+
+  <div class="defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Foreign key</span> — an attribute in one relation whose values
+       must match the values of the <b>primary key</b> of another relation. It is what
+       establishes a <b>relationship</b> between two tables.<br>
+       <span class="term">Referential integrity</span> — the rule that a foreign key value
+       must either match an existing primary key value, or be NULL.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.4</span> What referential integrity actually prevents</h2>
+
+  <div class="cosplit">
+    <div>
+      <div class="warn">
+        <span class="tag">Rejected — an orphan record</span>
+        <p><code>INSERT INTO STUDENT VALUES (108, 'Tara', 'S09', 82, 'Delhi', 4000);</code></p>
+        <p><b>Refused.</b> There is no <code>S09</code> in STREAM, so this student would
+           belong to a stream that does not exist.</p>
+      </div>
+      <div class="warn">
+        <span class="tag">Rejected — a dangling reference</span>
+        <p><code>DELETE FROM STREAM WHERE SCode = 'S01';</code></p>
+        <p><b>Refused.</b> Riya, Aarav and Meera all point at S01. Deleting it would leave
+           three students referring to nothing.</p>
+      </div>
+    </div>
+    <div>
+      <div class="eg">
+        <span class="tag">Allowed</span>
+        <p><code>INSERT INTO STUDENT VALUES (108,'Tara','S03',82,'Delhi',4000);</code> —
+           S03 exists.</p>
+        <p><code>DELETE FROM STREAM WHERE SCode = 'S03';</code> — <b>only if</b> no student
+           references S03.</p>
+        <p><code>UPDATE STUDENT SET SCode = 'S02' WHERE RollNo = 101;</code> — S02 exists,
+           so Riya may move stream.</p>
+      </div>
+      <div class="insight">
+        <span class="tag">Who enforces this?</span>
+        <p><b>The DBMS, automatically</b>, once you declare the foreign key. You do not
+           write a single line of checking code — which is precisely the advantage a
+           database has over the CSV file in §1.1.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <span class="tag">A foreign key may be NULL, a primary key may not</span>
+    <p>If a new student has not yet chosen a stream, <code>SCode</code> may be NULL —
+       "no relationship yet" is a legitimate state. But <code>RollNo</code> can never be
+       NULL, because then the row could not be identified at all.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">3.5</span> All the keys, on one screen</h2>
+
+  <table>
+    <tr><th class="lbl">Key</th><th class="lbl">Definition</th><th class="lbl">NULL allowed?</th><th class="lbl">In our database</th></tr>
+    <tr><td class="lbl"><b>Candidate</b></td><td class="lbl">any attribute set that can uniquely identify a tuple</td><td class="lbl">no</td><td class="lbl">RollNo (and AadhaarNo, if it existed)</td></tr>
+    <tr><td class="lbl"><b>Primary</b></td><td class="lbl">the candidate key chosen to identify tuples</td><td class="hi">Never</td><td class="lbl">STUDENT.RollNo · STREAM.SCode</td></tr>
+    <tr><td class="lbl"><b>Alternate</b></td><td class="lbl">a candidate key not chosen as primary</td><td class="lbl">no</td><td class="lbl">AadhaarNo, if it existed</td></tr>
+    <tr><td class="lbl"><b>Composite</b></td><td class="lbl">a primary key made of two or more attributes</td><td class="hi">Never</td><td class="lbl">(RollNo, Subject) in a marks table</td></tr>
+    <tr><td class="lbl"><b>Foreign</b></td><td class="lbl">matches the primary key of another relation</td><td class="hi2">Yes</td><td class="lbl">STUDENT.SCode → STREAM.SCode</td></tr>
+    <caption>Only the foreign key may be NULL. That single row answers a common one-mark question.</caption>
+  </table>
+
+  <div class="qcard">
+    <span class="tag">Question 2</span>
+    <p>In a table <code>LIBRARY(BookID, ISBN, Title, Author, MemberID)</code> —
+       <code>BookID</code> and <code>ISBN</code> are both unique, and
+       <code>MemberID</code> refers to the <code>MEMBER</code> table's primary key.
+       Identify each kind of key.</p>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>Candidate keys:</b> <code>BookID</code> and <code>ISBN</code> — both uniquely
+       identify a book.</p>
+    <p><b>Primary key:</b> <code>BookID</code> — chosen by the library, short and under
+       its own control.</p>
+    <p><b>Alternate key:</b> <code>ISBN</code> — a candidate key that was not chosen.</p>
+    <p><b>Foreign key:</b> <code>MemberID</code> — it refers to the primary key of MEMBER.
+       It may be <b>NULL</b>, which is exactly how the table records a book that is
+       currently on the shelf.</p>
+    <p><b>Not keys:</b> <code>Title</code> and <code>Author</code> — two books can share
+       either.</p>
+  </div>
+</section>
+
+<!-- ===================== RECAP AND EXAM ===================== -->
+
+<section class="slide" data-section="Recap and exam practice">
+  <h2><span class="num">4.1</span> Everything on one screen</h2>
+
+  <h3>The model</h3>
+  <div class="chips">
+    <span class="chip k">relation = table</span>
+    <span class="chip k">tuple = row = record</span>
+    <span class="chip k">attribute = column = field</span>
+    <span class="chip k">domain = allowed values</span>
+    <span class="chip k">degree = number of columns</span>
+    <span class="chip k">cardinality = number of rows</span>
+    <span class="chip">NULL ≠ 0 and ≠ ""</span>
+  </div>
+
+  <h3>Properties of a relation</h3>
+  <div class="chips">
+    <span class="chip">atomic values only</span>
+    <span class="chip">one domain per column</span>
+    <span class="chip">unique attribute names</span>
+    <span class="chip k">no duplicate tuples</span>
+    <span class="chip">row order is meaningless</span>
+    <span class="chip">column order is meaningless</span>
+  </div>
+
+  <h3>Keys</h3>
+  <div class="chips">
+    <span class="chip k">candidate — could identify</span>
+    <span class="chip k">primary — chosen, never NULL</span>
+    <span class="chip k">alternate — candidate not chosen</span>
+    <span class="chip">composite — two columns together</span>
+    <span class="chip k">foreign — points at another PK, may be NULL</span>
+    <span class="chip k">referential integrity</span>
+  </div>
+
+  <div class="insight">
+    <span class="tag">The three sentences worth the most marks</span>
+    <p>“<b>Degree is the number of attributes and cardinality is the number of tuples in a
+       relation.</b>”<br>
+       “<b>A primary key uniquely identifies each tuple and can neither be NULL nor
+       duplicated.</b>”<br>
+       “<b>A foreign key is an attribute whose values must match the primary key of another
+       relation; this rule is called referential integrity.</b>”</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.2</span> Exam question 1 — read the table</h2>
+
+  <div class="qcard">
+    <span class="tag">4 marks</span>
+    <p>Consider the table <code>HOSPITAL</code>.</p>
+    <table>
+      <tr><th class="lbl">PatID</th><th class="lbl">Name</th><th class="lbl">Dept</th><th>Age</th><th class="lbl">Doctor</th></tr>
+      <tr><td class="lbl">P01</td><td class="lbl">Anil</td><td class="lbl">Cardiology</td><td>54</td><td class="lbl">Nair</td></tr>
+      <tr><td class="lbl">P02</td><td class="lbl">Sara</td><td class="lbl">Ortho</td><td>31</td><td class="lbl">Bose</td></tr>
+      <tr><td class="lbl">P03</td><td class="lbl">Anil</td><td class="lbl">Ortho</td><td>47</td><td class="lbl">Bose</td></tr>
+      <tr><td class="lbl">P04</td><td class="lbl">Zoya</td><td class="lbl">Cardiology</td><td>NULL</td><td class="lbl">Nair</td></tr>
+    </table>
+    <ol>
+      <li>State the degree and cardinality.</li>
+      <li>Identify the primary key and justify your choice.</li>
+      <li>Can <code>Name</code> be a primary key? Give a reason from the data.</li>
+      <li>What is the cardinality after inserting two rows and deleting one?</li>
+    </ol>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>1.</b> Degree = <b>5</b> (PatID, Name, Dept, Age, Doctor).
+       Cardinality = <b>4</b>. The NULL in Zoya's Age does <b>not</b> reduce the count —
+       the tuple exists.</p>
+    <p><b>2.</b> <b>PatID</b>. Its values — P01 to P04 — are unique and never NULL, so it
+       identifies each patient uniquely.</p>
+    <p><b>3.</b> <b>No.</b> <code>Anil</code> appears in both P01 and P03, so Name is not
+       unique. Here the data itself proves it, which is the strongest form of
+       justification.</p>
+    <p><b>4.</b> <b>5.</b> Cardinality changes with rows: 4 + 2 − 1 = 5. The degree is
+       still 5, because no column was added or removed.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">4.3</span> Exam question 2 — theory</h2>
+
+  <div class="qcard">
+    <span class="tag">2 + 2 + 1 marks</span>
+    <ol>
+      <li>Differentiate between a <b>candidate key</b> and an <b>alternate key</b>, with an
+          example.</li>
+      <li>What is a <b>foreign key</b>? How does it enforce <b>referential integrity</b>?</li>
+      <li>Can a primary key be NULL? Can a foreign key?</li>
+    </ol>
+  </div>
+
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 1</span>
+    <p>A <b>candidate key</b> is any attribute or minimal set of attributes capable of
+       uniquely identifying every tuple of a relation. A relation may have several.</p>
+    <p>An <b>alternate key</b> is a candidate key that was <b>not selected</b> as the
+       primary key.</p>
+    <p>In <code>STUDENT(RollNo, AadhaarNo, Name, …)</code> both RollNo and AadhaarNo are
+       candidate keys. If RollNo is chosen as the primary key, then AadhaarNo is the
+       alternate key.</p>
+  </div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 2</span>
+    <p>A <b>foreign key</b> is an attribute in one relation whose values must match the
+       values of the <b>primary key</b> of another relation. It creates the relationship
+       between the two tables.</p>
+    <p>It enforces <b>referential integrity</b> by ensuring that every foreign key value
+       actually exists in the referenced table. The DBMS therefore <b>refuses</b> an insert
+       that names a non-existent parent row, and <b>refuses</b> a delete of a parent row
+       that children still refer to. This prevents orphan and dangling records.</p>
+  </div>
+
+  <div class="reveal answer">
+    <span class="tag">Answer 3</span>
+    <p>A <b>primary key can never be NULL</b> — a tuple with no identifying value could not
+       be distinguished from another.</p>
+    <p>A <b>foreign key may be NULL</b>, which simply means the tuple is not currently
+       related to any row in the other table.</p>
+  </div>
+</section>
+
+<section class="slide title-slide">
+  <div class="kicker">End of Chapter 8</div>
+  <h1>Next: SQL</h1>
+  <div class="rule"></div>
+  <p class="sub">You now have the vocabulary and the two tables. Chapter 9 is the
+     language for asking them questions — and every single query will be run against
+     the STUDENT and STREAM tables you have just met.</p>
+
+  <div class="bridge narrow">
+    <span class="tag">Carry these three forward</span>
+    <p><b>①</b> <b>NULL</b> in Nisha's Marks — it changes <code>WHERE</code>,
+       <code>COUNT</code> and <code>AVG</code>, and each one is examined.<br>
+       <b>②</b> <b>SCode</b> is the foreign key — it is the column every
+       <code>JOIN</code> in Chapter 9 uses.<br>
+       <b>③</b> Row order is <b>meaningless</b>, so any question about ordering must be
+       answered with <code>ORDER BY</code>.</p>
+  </div>
+</section>
+
+</div>
+
+<button class="nav" id="prev" aria-label="Previous slide">←</button>
+<button class="nav" id="next" aria-label="Next slide">→</button>
+
+<script src="assets/deck.js"></script>
+</body>
+</html>
