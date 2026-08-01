@@ -1,0 +1,129 @@
+/* ============================================================
+   Class XII Teaching Decks — Course index
+   Landing page stylesheet · Solarized Light
+   Tokens mirror assets/deck.css in each subject folder.
+   ============================================================ */
+
+:root {
+  /* Solarized base tones */
+  --bg:        #fdf6e3;  /* base3  — page */
+  --panel:     #eee8d5;  /* base2  — cards, boxes */
+  --line:      #d9d0b6;  /* borders */
+  --ink:       #52666d;  /* base01 — body text */
+  --ink-strong:#073642;  /* base02 — headings, emphasis */
+  --ink-dim:   #556a71;  /* base00 — secondary text */
+  --ink-faint: #5b6966;  /* base1  — captions */
+
+  /* Solarized accents — one per subject */
+  --amber:  #a17a00;
+  --teal:   #748500;
+  --blue:   #1f7ab8;
+
+  --amber-t:  #755900;
+  --teal-t:   #586600;
+  --blue-t:   #175f90;
+
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(17px, 1.1vw, 20px);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  color: var(--ink-strong);
+  font-size: 2.4rem;
+  line-height: 1.15;
+  margin: 0 0 .4rem;
+}
+
+/* ---------- Layout ---------- */
+.home { max-width: 900px; margin: 0 auto; padding: 3rem 2rem 4rem; }
+.home h1 { text-align: center; }
+.home .sub {
+  text-align: center;
+  color: var(--ink-dim);
+  font-size: 1.15rem;
+  margin: 0 0 2.5rem;
+}
+
+/* ---------- Subject cards ---------- */
+.courses { display: grid; gap: 1rem; }
+
+.courses a {
+  display: block;
+  padding: 1.25rem 1.5rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent, var(--blue));
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.courses a:hover,
+.courses a:focus-visible {
+  transform: translateX(3px);
+  box-shadow: 0 3px 14px rgba(7, 54, 66, .13);
+}
+
+.courses .cn {
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--accent-t, var(--blue-t));
+}
+
+.courses .ct {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink-strong);
+  margin: .2rem 0 .35rem;
+}
+
+.courses .cd { color: var(--ink-dim); font-size: .95rem; margin: 0; }
+.courses .cmeta { color: var(--ink-faint); font-size: .82rem; margin: .5rem 0 0; }
+
+/* Per-subject accent */
+.courses a.micro { --accent: var(--blue);  --accent-t: var(--blue-t); }
+.courses a.macro { --accent: var(--teal);  --accent-t: var(--teal-t); }
+.courses a.cs    { --accent: var(--amber); --accent-t: var(--amber-t); }
+
+/* ---------- Note box ---------- */
+.box {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.4rem;
+  margin-top: 2.5rem;
+}
+
+.box .tag {
+  display: inline-block;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-bottom: .5rem;
+}
+
+.box ul { margin: 0; padding-left: 1.2rem; }
+.box li { margin: .35rem 0; }
+.box b { color: var(--ink-strong); }
+
+@media (max-width: 600px) {
+  .home { padding: 2rem 1.1rem 3rem; }
+  h1 { font-size: 1.9rem; }
+}

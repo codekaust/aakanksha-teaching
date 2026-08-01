@@ -1,0 +1,48 @@
+# Class XII Teaching Decks
+
+Classroom presentation decks (plain HTML, no build step) for Class XII Economics and
+Computer Science.
+
+| Subject | Folder | Chapters |
+| --- | --- | --- |
+| Introductory Microeconomics | [`economics/`](economics/) | 5 |
+| Introductory Macroeconomics | [`macro-economics/`](macro-economics/) | 6 |
+| Computer Science (CBSE 083) | [`computer-science/`](computer-science/) | 10 |
+
+## Published site
+
+The site is served by GitHub Pages from the `main` branch, repository root:
+
+<https://codekaust.github.io/aakanksha-teaching/>
+
+Every path in the decks is relative, so the site works both at the domain root and under a
+project subpath. Nothing needs rebuilding — pushing to `main` publishes.
+
+## Running a deck locally
+
+Each subject folder has a `start_class.sh` that serves that folder over plain HTTP:
+
+```bash
+cd economics && ./start_class.sh        # port 8111
+cd macro-economics && ./start_class.sh  # port 8112
+cd computer-science && ./start_class.sh # port 8113
+```
+
+To preview the whole site exactly as GitHub Pages serves it, serve the repository root
+instead:
+
+```bash
+python3 -m http.server 8000
+```
+
+## In class
+
+`→` / `Space` next · `←` back · `m` slide menu · `f` fullscreen · `Home` / `End` first / last.
+Questions reveal in three steps (question → "ready?" → answer). The `ⓘ` buttons are
+click-only so they never interfere with arrow-key stepping.
+
+## Authoring
+
+Per-subject `CLAUDE.md` and `DESIGN.md` files define the teaching approach and the visual
+system. All styling belongs in that subject's `assets/deck.css` — never inline styles into a
+chapter file. `assets/home.css` at the root styles only the landing page.
