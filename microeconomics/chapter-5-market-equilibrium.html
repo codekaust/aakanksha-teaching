@@ -149,6 +149,7 @@
   <h2>The market, drawn<button class="info" data-term="market-equilibrium"></button><button class="info" data-term="demand-curve"></button><button class="info" data-term="supply-curve"></button></h2>
   <p>Wheat: <code>q<sub>D</sub> = 200 − p</code> &nbsp;and&nbsp; <code>q<sub>S</sub> = 120 + p</code>
   (firms supply nothing below ₹10).</p>
+  <div class="figrow">
   <figure>
     <svg viewBox="0 0 520 400" role="img" aria-label="Market equilibrium for wheat with excess demand below the equilibrium price and excess supply above it">
       <line class="axis" x1="60" y1="340" x2="60" y2="30"/>
@@ -178,7 +179,7 @@
       <circle cx="298" cy="284" r="6" fill="#c62b28" stroke="#fdf6e3" stroke-width="2"/>
       <circle cx="366" cy="284" r="6" fill="#c62b28" stroke="#fdf6e3" stroke-width="2"/>
       <text x="52" y="289" text-anchor="end" style="fill:#b02522">20</text>
-      <text x="332" y="306" text-anchor="middle" style="fill:#b02522">EXCESS DEMAND = 40</text>
+      <text x="332" y="265" text-anchor="middle" style="fill:#b02522">EXCESS DEMAND = 40</text>
       <text x="120" y="306" style="fill:#b02522">qS = 140, qD = 180</text>
 
       <!-- excess supply at p = 60 -->
@@ -187,7 +188,7 @@
       <circle cx="298" cy="172" r="6" fill="#6c71c4" stroke="#fdf6e3" stroke-width="2"/>
       <circle cx="366" cy="172" r="6" fill="#6c71c4" stroke="#fdf6e3" stroke-width="2"/>
       <text x="52" y="177" text-anchor="end" style="fill:#5055a0">60</text>
-      <text x="332" y="152" text-anchor="middle" style="fill:#5055a0">EXCESS SUPPLY = 40</text>
+      <text x="332" y="128" text-anchor="middle" style="fill:#5055a0">EXCESS SUPPLY = 40</text>
       <text x="120" y="152" style="fill:#5055a0">qD = 140, qS = 180</text>
 
       <circle cx="281" cy="312" r="5" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
@@ -196,6 +197,19 @@
     <figcaption>Every number checks: at ₹20, 180 − 140 = <b>40 excess demand</b>; at ₹60,
     180 − 140 = <b>40 excess supply</b>; at ₹40 the two are equal at <b>160</b>.</figcaption>
   </figure>
+  <aside class="readfig">
+    <span class="tag">How to read this graph</span>
+    <ol>
+      <li>Pick a <b>price</b> (a height), then read <b>across to each curve</b> to get quantity
+      demanded and quantity supplied at that price.</li>
+      <li>Where <b>D is to the right of S</b>, buyers want more than sellers offer — that gap is
+      <b>excess demand</b>, and price is pushed <b>up</b>.</li>
+      <li>Where <b>S is to the right of D</b>, the gap is <b>excess supply</b> and price is pushed
+      <b>down</b>.</li>
+      <li>The <b>one price where the gap vanishes</b> — the crossing point — is equilibrium.</li>
+    </ol>
+  </aside>
+  </div>
 </section>
 
 <section class="slide">
@@ -380,6 +394,10 @@
     </svg>
     <figcaption>With supply unchanged, equilibrium <b>price and quantity move in the same
     direction</b> as the demand shift.</figcaption>
+    <figcaption><b>How to read it —</b> only <b>one</b> curve moves; the other stays put and acts
+    as the <b>track</b> the new equilibrium slides along. So slide the crossing point <b>up the
+    supply curve</b> (demand right: p ↑, q ↑) or <b>down it</b> (demand left: p ↓, q ↓) — both move
+    the <b>same way</b>.</figcaption>
   </figure>
   <div class="insight box">
     <span class="tag">The rule for a demand shift</span>
@@ -453,6 +471,9 @@
     </svg>
     <figcaption>With demand unchanged, equilibrium <b>price and quantity move in opposite
     directions</b>.</figcaption>
+    <figcaption><b>How to read it —</b> this time the <b>demand curve is the track</b>, and it
+    slopes <b>down</b> — which is exactly why p and q now move in <b>opposite</b> directions.
+    Supply left: slide up the demand curve (p ↑, q ↓). Supply right: slide down it (p ↓, q ↑).</figcaption>
   </figure>
   <div class="insight box">
     <span class="tag">The rule for a supply shift — note it is the mirror image</span>
@@ -580,6 +601,10 @@
     </svg>
     <figcaption>These are the two special cases where the ambiguous variable happens to come out
     <b>exactly unchanged</b>. Shift the curves by different amounts and it would move either way.</figcaption>
+    <figcaption><b>How to read it —</b> when both curves move, take them <b>one at a time</b>:
+    write down what each shift alone does to p and q. Where the two answers <b>agree</b> the result
+    is certain; where they <b>disagree</b> it depends on which shift is bigger — which is why the
+    diagram, not intuition, has to settle it.</figcaption>
   </figure>
 </section>
 
@@ -815,6 +840,7 @@
 
 <section class="slide">
   <h2>A demand shift under free entry — the surprising result<button class="info" data-term="free-entry"></button><button class="info" data-term="break-even"></button><button class="info" data-term="lrac"></button></h2>
+  <div class="figrow compact">
   <figure>
     <svg viewBox="0 0 520 380" role="img" aria-label="With free entry a demand shift changes quantity and the number of firms but leaves price unchanged at minimum average cost">
       <line class="axis" x1="60" y1="320" x2="60" y2="30"/>
@@ -850,6 +876,18 @@
       <text x="120" y="110" style="fill:#5b6966">the price does not</text>
     </svg>
   </figure>
+  <aside class="readfig">
+    <span class="tag">How to read this graph</span>
+    <ol>
+      <li>The <b>supply "curve" is horizontal</b> at minimum LRAC — that flat line is the whole
+      point of free entry.</li>
+      <li>Shift demand and the crossing point slides <b>along that flat line</b>, so read only the
+      <b>quantity</b> change: the <b>price never moves</b> from p₀.</li>
+      <li>The extra output comes from a <b>different number of firms</b> (n₂ &lt; n₀ &lt; n₁), each
+      still producing at minimum LRAC and earning <b>zero</b> abnormal profit.</li>
+    </ol>
+  </aside>
+  </div>
   <div class="box insight">
     <span class="tag">What happens when demand rises</span>
     <p>At p₀ there is now <b>excess demand</b> → price tends to rise → this creates the
