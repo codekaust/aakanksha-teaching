@@ -276,6 +276,30 @@ An **ⓘ** next to a phrase, opening a panel that explains why it is worded that
 - Panels auto-collapse when you leave the slide.
 - `.infopanel .q` is a quiet left-ruled block for contrasting cases.
 
+### Glossary recall button
+
+The same ⓘ, but used for a **term the student has already been taught and may have
+forgotten** — NFIA four slides after it was defined, MPC in the middle of the multiplier.
+The panel is **generated**, so the definition is written once and never drifts:
+
+```html
+<h2>The multiplier process, round by round<button class="info" data-term="multiplier"></button><button class="info" data-term="apc-mpc"></button></h2>
+```
+
+- The term table is `GLOSSARY` at the top of `assets/deck.js`. **Add new terms there, never in
+  a chapter file** — that is the whole point.
+- Each entry has `term` (the heading), `def` (the exam-ready definition, HTML allowed) and an
+  optional `q` (rendered as the quiet `.q` block — the caveat or the thing students confuse it
+  with, e.g. "APC can exceed 1; MPC cannot").
+- `deck.js` fills in `aria-controls`, `aria-expanded`, `title`, `aria-label` and the "i" glyph,
+  and appends the panel to the **end of the slide** automatically. An unknown `data-term`
+  removes the button rather than showing a dead one.
+- **Rule of thumb:** put one on every slide where a term is *used* but not *defined on that
+  slide*, in the heading or the first line that uses it. Do not put one on the slide that
+  defines the term.
+- This is distinct from the hand-written `.infopanel` above, which answers "why is this slide
+  worded this way?". Both may appear on the same slide.
+
 ### Other components
 
 - **`.formula`** — centred, `--panel-2`, bordered. `.frac` renders a true stacked fraction
