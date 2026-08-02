@@ -42,6 +42,25 @@ Behaviour is already wired in `assets/deck.js`: click-only (never on the arrow k
 never interferes with the question → ready → answer stepping), panels auto-collapse when you
 leave the slide, and Space/Enter on a focused button toggles it instead of advancing.
 
+### The glossary recall button
+
+A student meeting "MRS" twenty slides after it was defined does not remember it. So **every
+slide that uses a technical term it does not itself define carries a small ⓘ next to that
+term**, which opens the definition in place:
+
+```html
+<h2>The condition for consumer's equilibrium<button class="info" data-term="equilibrium"></button></h2>
+<div class="formula">MRS<button class="info" data-term="mrs"></button> = p₁/p₂<button class="info" data-term="price-ratio"></button></div>
+```
+
+The definitions live in the `GLOSSARY` table at the top of `assets/deck.js` — **write each one
+once, there, and never repeat it in a chapter file.** `deck.js` builds the panel, wires the
+ARIA attributes and appends it to the end of the slide. Definitions must be exam-ready wording;
+use the optional `q` field for the caveat or the confusion the term usually attracts.
+
+Do not add one on the slide that introduces the term. Do add one wherever it is *reused* —
+including inside questions and challenge answers. See `DESIGN.md` §5 for the full contract.
+
 Use a stable, descriptive `id` (`oc-textbook`, `mrs-vs-price-ratio`) so panels can be linked to
 later. Write the panel to answer the question **honestly** — if my objection was partly right,
 say so and explain the distinction, rather than defending the original wording.
