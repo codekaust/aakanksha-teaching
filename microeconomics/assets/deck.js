@@ -72,6 +72,11 @@
       def: '<b>Microeconomics</b> studies <b>individual</b> units — a consumer, a firm, a single market — and how price is determined there. <b>Macroeconomics</b> studies the economy <b>as a whole</b> — national income, the general price level, unemployment.'
     },
     /* ---- Chapter 2 ---- */
+    'notation': {
+      term: 'The two-good notation',
+      def: 'Throughout the consumer chapter, good 1 is <b>bananas</b> and good 2 is <b>mangoes</b>. So <b>x₁</b> = quantity of bananas, <b>x₂</b> = quantity of mangoes, <b>p₁</b> = <b>price of one banana</b>, <b>p₂</b> = <b>price of one mango</b>, and <b>M</b> = the consumer\'s income. A bundle is written (x₁, x₂).',
+      q: 'The subscript is the <b>good</b>, never a time period or a stage. p₁′ and p₁″ are simply <b>lower values of the same price p₁</b> — the price of bananas after it falls once, and again.'
+    },
     'utility': {
       term: 'Utility',
       def: 'The want-satisfying power of a good — the satisfaction a consumer gets from consuming it. It is subjective: the same good gives different utility to different people, and to the same person at different times.'

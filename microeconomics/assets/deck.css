@@ -302,6 +302,29 @@ caption { caption-side: bottom; font-size: .82em; color: var(--ink-faint); paddi
 figure { margin: .8rem 0; text-align: center; }
 figure svg { max-width: 100%; height: auto; }
 figcaption { font-size: .84em; color: var(--ink-faint); margin-top: .45rem; }
+
+/* Diagram + "how to read it" panel side by side. The graph keeps the room's
+   attention; the panel tells a student what to actually look at. Collapses to
+   one column on a narrow screen so the graph never gets squeezed. */
+.figrow { display: grid; grid-template-columns: 1.35fr .65fr; gap: 1.4rem; align-items: center; }
+.figrow > figure { margin: .2rem 0; min-width: 0; }
+/* Tall two-panel diagrams would otherwise push the slide into a scrollbar. */
+.figrow > figure svg { max-height: 66vh; }
+/* …and smaller still when a table or box follows the row on the same slide. */
+.figrow.compact > figure svg { max-height: 44vh; }
+.readfig {
+  border: 1px solid var(--line); border-left: 4px solid var(--blue);
+  background: var(--panel); border-radius: 6px; padding: .7rem .9rem;
+  text-align: left; font-size: .92em;
+}
+.readfig .tag {
+  display: block; font-size: .72em; letter-spacing: .06em; text-transform: uppercase;
+  font-weight: 800; color: var(--blue-t); margin-bottom: .35rem;
+}
+.readfig ol, .readfig ul { margin: 0; padding-left: 1.1rem; }
+.readfig li { margin: .3rem 0; line-height: 1.45; }
+.readfig p { margin: .3rem 0; line-height: 1.45; }
+@media (max-width: 1000px) { .figrow { grid-template-columns: 1fr; } }
 .axis  { stroke: #75837f; stroke-width: 2; }
 .grid  { stroke: #e4dcc4; stroke-width: 1; }
 .curve { fill: none; stroke-width: 3; stroke-linecap: round; }

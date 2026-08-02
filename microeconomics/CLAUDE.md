@@ -94,6 +94,10 @@ Rules for every deck:
   violet, loss/excess/warning regions = rose/red, cross-chapter links = cyan.
 - Keep diagrams legible from the back of a classroom: thick strokes, large labels,
   strong contrast against the light background.
+- **Every graph must say how to read itself.** Drawing the curve is not enough — a student
+  seeing it for the first time needs to be told which axis is which, which line to follow and
+  what the marked point means. Put those 3–4 instructions in a `.readfig` panel beside the
+  graph (or in the `figcaption` for wide multi-panel figures). See `DESIGN.md` §6.
 
 ## Palette
 

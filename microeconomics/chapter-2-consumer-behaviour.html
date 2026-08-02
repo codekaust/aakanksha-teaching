@@ -230,6 +230,7 @@
 
 <section class="slide">
   <h2>TU and MU — plotted from Table 2.1<button class="info" data-term="total-utility"></button><button class="info" data-term="marginal-utility"></button></h2>
+  <div class="figrow">
   <figure>
     <svg viewBox="0 0 540 580" role="img" aria-label="Total utility and marginal utility curves plotted from Table 2.1">
       <!-- ===== TU panel ===== -->
@@ -312,6 +313,19 @@
     <figcaption>Both curves plotted from the exact values in Table 2.1. Note the dashed line:
     TU reaches its maximum <b>precisely</b> where MU cuts zero.</figcaption>
   </figure>
+  <aside class="readfig">
+    <span class="tag">How to read this graph</span>
+    <ol>
+      <li><b>Same x-axis for both panels</b> — units consumed, 1 to 6. Always read the two
+      curves <b>vertically together</b>, one unit at a time.</li>
+      <li><b>Top (TU):</b> the curve keeps rising but flattens — each extra unit adds less.</li>
+      <li><b>Bottom (MU):</b> the height of MU <i>is</i> the steepness of TU above it. MU
+      falling = TU flattening.</li>
+      <li>At the <b>5th unit</b> MU cuts zero and TU is at its peak (24). After that MU is
+      negative and TU actually falls.</li>
+    </ol>
+  </aside>
+  </div>
 </section>
 
 <section class="slide">
@@ -591,6 +605,7 @@
 
 <section class="slide">
   <h2>Table 2.2, drawn<button class="info" data-term="ic"></button></h2>
+  <div class="figrow">
   <figure>
     <svg viewBox="0 0 520 400" role="img" aria-label="Indifference curve plotted from Table 2.2">
       <g class="grid">
@@ -651,6 +666,18 @@
     <figcaption>Each step gains exactly <b>one</b> banana, but the mangoes given up shrink
     from 3 to 2 to 1. That shrinking is what makes the curve <b>convex to the origin</b>.</figcaption>
   </figure>
+  <aside class="readfig">
+    <span class="tag">How to read this graph</span>
+    <ol>
+      <li>Every point on the curve — A, B, C, D — is a bundle the consumer likes
+      <b>equally</b>. Height = mangoes, distance right = bananas.</li>
+      <li>Read the green steps left to right: <b>+1 banana</b> each time, but
+      <b>−3, −2, −1</b> mangoes given up.</li>
+      <li>The shrinking sacrifice is why the curve gets <b>flatter</b> as you move right —
+      that flattening is exactly what "<b>convex to the origin</b>" looks like.</li>
+    </ol>
+  </aside>
+  </div>
 </section>
 
 <section class="slide">
@@ -1572,6 +1599,7 @@
 
 <section class="slide">
   <h2>Step 2 — the optimum is the point of tangency<button class="info" data-term="ic"></button><button class="info" data-term="budget-line"></button></h2>
+  <div class="figrow compact">
   <figure>
     <svg viewBox="0 0 560 400" role="img" aria-label="Consumer's optimum at the tangency of the budget line and an indifference curve">
       <line class="axis" x1="70" y1="330" x2="70" y2="30"/>
@@ -1612,6 +1640,20 @@
     </svg>
     <figcaption>At <b>E</b> the budget line just touches IC₂ — the highest curve the budget can reach.</figcaption>
   </figure>
+  <aside class="readfig">
+    <span class="tag">How to read this graph</span>
+    <ol>
+      <li>The <b>blue line</b> is what she can afford; the <b>curves</b> are what she wants.
+      Higher curve = more satisfaction, so she wants to reach the outermost one she can pay for.</li>
+      <li><b>IC₃ is unaffordable</b> — it lies entirely beyond the budget line.
+      <b>F and G on IC₁ are affordable but wasteful</b> — she can do better.</li>
+      <li><b>E</b> is the only point that is both on the budget line and on the highest
+      reachable curve — the line just <b>touches</b> IC₂ there.</li>
+      <li>Drop the dashed lines from E to read the answer: she buys <b>x₁* bananas and
+      x₂* mangoes</b>.</li>
+    </ol>
+  </aside>
+  </div>
   <div class="grid3">
     <div class="card"><h4 style="color:#5055a0">IC₃ — above</h4>
       <p>Higher satisfaction, but it lies <b>entirely above</b> the budget line.
@@ -1775,6 +1817,7 @@
 
 <section class="slide">
   <h2>Deriving the demand curve<button class="info" data-term="demand-curve"></button> from the indifference map<button class="info" data-term="ic-map"></button><button class="info" data-term="equilibrium"></button></h2>
+  <div class="figrow">
   <figure>
     <svg viewBox="0 0 540 640" role="img" aria-label="Two-panel derivation of the demand curve from indifference curves and budget lines">
       <!-- ===== TOP PANEL ===== -->
@@ -1782,6 +1825,7 @@
       <line class="axis" x1="60" y1="300" x2="500" y2="300"/>
       <text class="lab" x="20" y="165" text-anchor="middle" transform="rotate(-90 20 165)">MANGOES</text>
       <text x="52" y="318" text-anchor="end">O</text>
+      <text class="lab" x="430" y="326" text-anchor="middle">BANANAS (x₁)</text>
 
       <!-- three budget lines from common vertical intercept (60,70) -->
       <line class="curve c-blue" x1="60" y1="70" x2="200" y2="300" opacity="0.9"/>
@@ -1812,7 +1856,7 @@
       <!-- ===== BOTTOM PANEL ===== -->
       <line class="axis" x1="60" y1="560" x2="60" y2="350"/>
       <line class="axis" x1="60" y1="560" x2="500" y2="560"/>
-      <text class="lab" x="20" y="455" text-anchor="middle" transform="rotate(-90 20 455)">PRICE of bananas</text>
+      <text class="lab" x="20" y="455" text-anchor="middle" transform="rotate(-90 20 455)">PRICE of bananas (p₁)</text>
       <text class="lab" x="280" y="612" text-anchor="middle">BANANAS (x₁)</text>
       <text x="52" y="578" text-anchor="end">O</text>
 
@@ -1846,6 +1890,19 @@
     <b>Bottom:</b> plotting each price against its chosen quantity gives C′, D′, E′ — the
     <b>demand curve</b>.</figcaption>
   </figure>
+  <aside class="readfig">
+    <span class="tag">How to read this graph<button class="info" data-term="notation"></button></span>
+    <ol>
+      <li><b>p₁ = price of a banana, p₂ = price of a mango, M = income.</b> Only <b>p₁</b>
+      changes here: p₁ → p₁′ → p₁″, each lower than the last.</li>
+      <li>Because M and p₂ are fixed, the vertical intercept <b>M/p₂ never moves</b> — the
+      budget line only <b>pivots</b> outward.</li>
+      <li>Each pivot gives a new tangency <b>C → D → E</b>: more bananas bought each time.</li>
+      <li>Drop each tangency straight down and read it against its own price: <b>C′, D′, E′</b>.
+      Joining them <i>is</i> the demand curve.</li>
+    </ol>
+  </aside>
+  </div>
 </section>
 
 <section class="slide">
@@ -1979,6 +2036,108 @@
 </section>
 
 <section class="slide">
+  <h2>Normal vs inferior, drawn<button class="info" data-term="normal-good"></button><button class="info" data-term="inferior-good"></button><button class="info" data-term="movement-vs-shift"></button></h2>
+  <figure>
+    <svg viewBox="0 0 940 360" role="img" aria-label="Income rise shifts the demand curve right for a normal good and left for an inferior good">
+      <defs>
+        <marker id="arNI" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+          <path d="M0,0 L9,3.5 L0,7 z" fill="#755900"/>
+        </marker>
+      </defs>
+
+      <!-- ===== (a) NORMAL GOOD ===== -->
+      <line class="axis" x1="60" y1="300" x2="60" y2="40"/>
+      <line class="axis" x1="60" y1="300" x2="470" y2="300"/>
+      <text class="lab" x="16" y="170" text-anchor="middle" transform="rotate(-90 16 170)">PRICE</text>
+      <text class="lab" x="250" y="352" text-anchor="middle">QUANTITY</text>
+      <text class="lab" x="250" y="26" text-anchor="middle" style="fill:#755900">(a) NORMAL good · income rises</text>
+      <text x="52" y="318" text-anchor="end">O</text>
+
+      <line class="curve c-blue" x1="140" y1="60" x2="400" y2="290"/>
+      <text class="lab" x="404" y="286" style="fill:#175f90">D</text>
+      <line class="curve c-violet" x1="200" y1="60" x2="460" y2="290"/>
+      <text class="lab" x="464" y="286" style="fill:#5055a0">D₁</text>
+
+      <line class="dash" stroke="#a17a00" x1="60" y1="170" x2="324" y2="170"/>
+      <text x="52" y="175" text-anchor="end" style="fill:#755900">p</text>
+      <circle class="pt" cx="264" cy="170" r="7"/>
+      <circle class="pt" cx="324" cy="170" r="7"/>
+      <line class="dash" stroke="#a17a00" x1="264" y1="170" x2="264" y2="300"/>
+      <line class="dash" stroke="#a17a00" x1="324" y1="170" x2="324" y2="300"/>
+      <text x="264" y="320" text-anchor="middle" style="fill:#755900">q</text>
+      <text x="326" y="320" text-anchor="middle" style="fill:#755900">q₁</text>
+      <line x1="276" y1="146" x2="316" y2="146" stroke="#755900" stroke-width="2.5" marker-end="url(#arNI)"/>
+      <text x="286" y="136" style="fill:#586600">more</text>
+
+      <!-- ===== (b) INFERIOR GOOD ===== -->
+      <line class="axis" x1="520" y1="300" x2="520" y2="40"/>
+      <line class="axis" x1="520" y1="300" x2="900" y2="300"/>
+      <text class="lab" x="476" y="170" text-anchor="middle" transform="rotate(-90 476 170)">PRICE</text>
+      <text class="lab" x="710" y="352" text-anchor="middle">QUANTITY</text>
+      <text class="lab" x="710" y="26" text-anchor="middle" style="fill:#755900">(b) INFERIOR good · income rises</text>
+      <text x="512" y="318" text-anchor="end">O</text>
+
+      <line class="curve c-blue" x1="600" y1="60" x2="860" y2="290"/>
+      <text class="lab" x="864" y="286" style="fill:#175f90">D</text>
+      <line class="curve c-rose" x1="540" y1="60" x2="800" y2="290"/>
+      <text class="lab" x="804" y="286" style="fill:#b02522">D₂</text>
+
+      <line class="dash" stroke="#a17a00" x1="520" y1="170" x2="724" y2="170"/>
+      <text x="512" y="175" text-anchor="end" style="fill:#755900">p</text>
+      <circle class="pt" cx="724" cy="170" r="7"/>
+      <circle class="pt" cx="664" cy="170" r="7"/>
+      <line class="dash" stroke="#a17a00" x1="724" y1="170" x2="724" y2="300"/>
+      <line class="dash" stroke="#a17a00" x1="664" y1="170" x2="664" y2="300"/>
+      <text x="726" y="320" text-anchor="middle" style="fill:#755900">q</text>
+      <text x="662" y="320" text-anchor="middle" style="fill:#755900">q₂</text>
+      <line x1="712" y1="146" x2="676" y2="146" stroke="#755900" stroke-width="2.5" marker-end="url(#arNI)"/>
+      <text x="682" y="136" style="fill:#b02522">less</text>
+    </svg>
+    <figcaption><b>How to read it —</b> the <b>price never changes</b>: stay on the dashed line at
+    height p and read <i>sideways</i>. Income rising pushes the whole curve <b>right</b> for a
+    normal good (q → q₁, more bought at the same price) and <b>left</b> for an inferior good
+    (q → q₂, less bought at the same price). Both are <b>shifts</b>, never movements along
+    the curve.</figcaption>
+  </figure>
+</section>
+
+<section class="slide">
+  <h2>Why one good can be normal <i>and</i> inferior<button class="info" data-term="inferior-good"></button></h2>
+  <div class="figrow">
+    <figure>
+      <svg viewBox="0 0 480 360" role="img" aria-label="Quantity of coarse cereal against income: rising at low income, falling after a crossover point">
+        <line class="axis" x1="70" y1="300" x2="70" y2="30"/>
+        <line class="axis" x1="70" y1="300" x2="450" y2="300"/>
+        <text class="lab" x="260" y="346" text-anchor="middle">INCOME (M)</text>
+        <text class="lab" x="22" y="165" text-anchor="middle" transform="rotate(-90 22 165)">COARSE CEREAL BOUGHT</text>
+        <text x="62" y="318" text-anchor="end">O</text>
+
+        <path class="curve c-teal" d="M90,250 C130,180 180,120 230,100"/>
+        <path class="curve c-rose" d="M230,100 C280,112 330,160 400,230"/>
+        <circle cx="230" cy="100" r="8" fill="#a17a00" stroke="#fdf6e3" stroke-width="2.5"/>
+        <line class="dash" stroke="#a17a00" x1="230" y1="100" x2="230" y2="300"/>
+        <text class="lab" x="240" y="90" style="fill:#755900">crossover</text>
+        <text x="230" y="320" text-anchor="middle" style="fill:#755900">M*</text>
+        <text class="lab" x="104" y="200" style="fill:#586600">NORMAL here</text>
+        <text class="lab" x="316" y="150" style="fill:#b02522">INFERIOR here</text>
+      </svg>
+    </figure>
+    <aside class="readfig">
+      <span class="tag">How to read this graph</span>
+      <ol>
+        <li>Price is held fixed. Moving <b>right</b> means the consumer is getting
+        <b>richer</b>; height is how much coarse cereal she buys.</li>
+        <li><b>Left of M*</b> the curve <b>rises</b> with income — over that stretch the good
+        behaves as <b>normal</b>.</li>
+        <li><b>Right of M*</b> it <b>falls</b> — she can now afford better cereals, so the same
+        good is now <b>inferior</b>.</li>
+        <li>So "inferior" describes a <b>stretch of income</b>, not the good itself.</li>
+      </ol>
+    </aside>
+  </div>
+</section>
+
+<section class="slide">
   <h2>The Giffen good — the exception that proves the rule<button class="info" data-term="inferior-good"></button><button class="info" data-term="law-of-demand"></button></h2>
   <div class="box eg">
     <span class="tag">The mechanism</span>
@@ -2058,10 +2217,10 @@
 
       <circle class="pt" cx="158" cy="110" r="7"/>
       <circle class="pt" cx="298" cy="230" r="7"/>
-      <text x="62" y="115" text-anchor="end">p₁</text>
-      <text x="62" y="235" text-anchor="end">p₂</text>
-      <text x="158" y="330" text-anchor="middle">q₁</text>
-      <text x="298" y="330" text-anchor="middle">q₂</text>
+      <text x="62" y="115" text-anchor="end">p</text>
+      <text x="62" y="235" text-anchor="end">p′</text>
+      <text x="158" y="330" text-anchor="middle">q</text>
+      <text x="298" y="330" text-anchor="middle">q′</text>
 
       <defs>
         <marker id="ar5" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
@@ -2096,6 +2255,9 @@
       <text x="734" y="205" style="fill:#586600">more</text>
       <text x="640" y="130" style="fill:#5b6966">same price, different quantity</text>
     </svg>
+    <figcaption><b>How to read it —</b> in (a) the curve <b>never moves</b>: only the point on it
+    slides from (q, p) to (q′, p′). In (b) the price line stays at the <b>same height</b> and the
+    whole curve moves sideways — read across at that one price to see quantity change.</figcaption>
   </figure>
   <div class="grid2">
     <div class="card"><h4>Movement along the curve</h4>
@@ -2282,8 +2444,10 @@
 
       <line class="dash" stroke="#75837f" x1="660" y1="140" x2="705" y2="140"/>
     </svg>
-    <figcaption>Notice the <b>kink</b> at p = 10 — the price above which consumer 1 drops out
-    of the market entirely.</figcaption>
+    <figcaption><b>How to read it —</b> fix one price, read <i>across</i> all three panels at that
+    same height, and <b>add the two quantities</b>: that sum is the point on D. Adding is always
+    <b>sideways (quantities)</b>, never upwards. Above p = 10 consumer 1 buys nothing, so the
+    market curve is just d₂ — which is why D has a <b>kink</b> exactly at p = 10.</figcaption>
   </figure>
   <div class="box eg">
     <span class="tag">The market demand function, in three pieces</span>
@@ -2505,8 +2669,11 @@
       <rect x="670" y="82" width="42" height="208" fill="rgba(181,137,0,0.18)" stroke="#a17a00" stroke-dasharray="4 4"/>
       <rect x="670" y="232" width="182" height="58" fill="rgba(181,137,0,0.18)" stroke="#a17a00" stroke-dasharray="4 4"/>
     </svg>
-    <figcaption>In panel (c) the two shaded rectangles have <b>equal area</b> — price × quantity
-    is constant, so total expenditure never changes.</figcaption>
+    <figcaption><b>How to read it —</b> change the price and see how far the quantity moves.
+    In (a) the <b>vertical</b> curve means quantity never moves at all (e = 0); in (b) the
+    <b>horizontal</b> curve means the tiniest price rise sends quantity to zero (e = ∞). In (c)
+    the two shaded rectangles have <b>equal area</b> — price × quantity is constant, so total
+    expenditure never changes (e = 1).</figcaption>
   </figure>
   <div class="grid3">
     <div class="card"><h4 style="color:#b02522">Vertical curve</h4>
@@ -2546,6 +2713,7 @@
 
 <section class="slide">
   <h2>Elasticity at every point on a linear demand curve<button class="info" data-term="ped"></button></h2>
+  <div class="figrow compact">
   <figure>
     <svg viewBox="0 0 540 400" role="img" aria-label="Elasticity values at different points along a linear demand curve">
       <line class="axis" x1="60" y1="330" x2="60" y2="30"/>
@@ -2585,6 +2753,17 @@
       <text x="120" y="318" style="fill:#5b6966">but elasticity falls from ∞ to 0</text>
     </svg>
   </figure>
+  <aside class="readfig">
+    <span class="tag">How to read this graph</span>
+    <ol>
+      <li>The line is <b>straight</b>, so its <b>slope is the same everywhere</b>. Elasticity
+      is <i>not</i> the slope — do not read steepness as elasticity.</li>
+      <li>Walk <b>down</b> the line and elasticity falls steadily: <b>∞ → &gt;1 → 1 → &lt;1 → 0</b>.</li>
+      <li>The <b>midpoint</b> is the dividing line: everything above it is elastic, everything
+      below it is inelastic, and at it e = 1 exactly.</li>
+    </ol>
+  </aside>
+  </div>
   <table>
     <thead><tr><th>Position on the curve</th><th>p / q</th><th>Elasticity</th></tr></thead>
     <tbody>

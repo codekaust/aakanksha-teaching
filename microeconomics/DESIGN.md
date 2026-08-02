@@ -362,6 +362,46 @@ Requirements: label **both axes** with variable *and* unit; plot from the worked
 give every `<svg>` an `aria-label`; keep `<marker>` ids **unique across the whole page**
 (duplicate ids break arrowheads).
 
+### "How to read this graph" — `.figrow` + `.readfig`
+
+A projected graph is silent. A student who has never read one does not know *where to look
+first*, and the teacher cannot repeat the instructions for every row of the class. So **every
+standalone graph carries a short reading guide** — never a restatement of the theory, always
+the mechanical instructions for extracting information from the picture.
+
+```html
+<div class="figrow">           <!-- add .compact if a table or cards follow on the slide -->
+  <figure>
+    <svg viewBox="…" role="img" aria-label="…">…</svg>
+    <figcaption>…the one-line takeaway…</figcaption>
+  </figure>
+  <aside class="readfig">
+    <span class="tag">How to read this graph</span>
+    <ol>
+      <li>What the axes are, and which symbol means what.</li>
+      <li>Which line to follow, and in which direction.</li>
+      <li>What the marked point or intersection tells you.</li>
+    </ol>
+  </aside>
+</div>
+```
+
+Rules:
+
+- **Three or four items, one clause each.** It is read at a glance from the back of a room,
+  not studied.
+- **Instructions, not theory.** "Stay on the dashed line and read sideways" belongs here;
+  "an inferior good has a negative income effect" belongs in a `.box defn`.
+- **Name every symbol that appears in the drawing** — p₁, M, q′ — because the graph may be
+  twenty slides after the notation was introduced. Attach a `data-term` ⓘ to the tag when a
+  glossary entry covers it.
+- **Panel on the right, graph on the left.** `.figrow` is a 1.35 / 0.65 grid that collapses to
+  one column below 1000px, so the graph is never squeezed.
+- **Wide multi-panel diagrams (900+ viewBox units) do not take a side panel** — they would be
+  crushed. Put the reading guide in the `<figcaption>`, opened with **`How to read it —`**.
+- `.figrow > figure svg` is capped at `66vh` (`44vh` under `.compact`) so a tall two-panel
+  diagram never pushes the slide into a scrollbar.
+
 ---
 
 ## 7. Interaction
