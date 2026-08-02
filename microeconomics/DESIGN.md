@@ -312,6 +312,18 @@ The panel is **generated**, so the definition is written once and never drifts:
 - This is distinct from the hand-written `.infopanel` above, which answers "why is this slide
   worded this way?". Both may appear on the same slide.
 
+**Size and placement.** The button is sized in **rem, never em**, so it is the same small disc
+in an `h2`, a `th` and a `.small` caption — it still scales with the projector because rem is
+tied to the fluid root size. It is raised half its own em above the baseline so it rides at the
+**top right of the word, like a ™ mark**, instead of shouldering the line apart. Never use
+`vertical-align: super`: that lifts by the *parent's* font size and reintroduces the very
+inconsistency this fixes.
+
+**Do not stack more than about three on one heading.** A row of identical discs reads as
+decoration and tells the student nothing about which is which. When a slide needs more, attach
+each badge to the term itself in the body — the column headers of the table, the `.tag` of each
+box — which is where the student is looking anyway.
+
 ### Other components
 
 - **`.formula`** — centred, `--panel-2`, bordered. `.frac` renders a true stacked fraction

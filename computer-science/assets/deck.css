@@ -322,17 +322,23 @@ svg text.lab { fill: var(--ink-strong); font-weight: 700; font-size: 16px; }
 svg .pt { fill: var(--amber); stroke: var(--bg); stroke-width: 2; }
 
 /* ---------- Information button ---------- */
+/* Sized in rem, never em: the button is the same small disc whether it sits in
+   an h2, a table cell or a .small caption. Sized from the root, so it still
+   scales with the projector. Raised like a trademark mark so it rides above
+   the top-right of the word instead of shouldering the line apart. */
 .info {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 1.5em; height: 1.5em; margin-left: .4em; padding: 0;
-  border-radius: 50%; border: 1.5px solid var(--blue);
+  width: .95rem; height: .95rem; margin: 0 .08em 0 .18em; padding: 0;
+  border-radius: 50%; border: 1px solid var(--blue);
   background: rgba(38,139,210,.12); color: var(--blue-t);
   font-family: Georgia, "Times New Roman", serif;
-  font-style: italic; font-weight: 700; font-size: .8em; line-height: 1;
-  cursor: pointer; vertical-align: middle;
+  font-style: italic; font-weight: 700; font-size: .68rem; line-height: 1;
+  cursor: pointer;
+  /* Raised in the button's OWN em, not the parent's — `vertical-align: super`
+     would scale the lift with the heading and reintroduce the inconsistency. */
+  vertical-align: baseline; position: relative; top: -.3em;
   transition: background .15s ease, color .15s ease;
-}
-.info:hover,
+}.info:hover,
 .info[aria-expanded="true"] { background: var(--blue); color: var(--bg); }
 .info:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
 

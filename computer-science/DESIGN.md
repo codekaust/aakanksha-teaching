@@ -317,6 +317,11 @@ An **ⓘ** next to a phrase, opening a panel that explains why it is worded that
 - Use a stable, descriptive `id` (`why-binary-mode`, `mutable-default-arg`).
 - **Click-only.** Never bound to the arrow keys.
 - Panels auto-collapse when you leave the slide.
+- **Sized in rem, never em**, so it is the same small disc in an `h2`, a `th` and a `.small`
+  caption; it still scales with the projector because rem follows the fluid root size. It is
+  raised half its own em above the baseline so it sits at the **top right of the word, like a
+  ™ mark**. Never `vertical-align: super` — that lifts by the *parent's* font size, so the
+  button would balloon in a heading and shrink in a caption.
 
 ### Other shared components
 
