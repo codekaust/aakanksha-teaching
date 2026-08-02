@@ -5,7 +5,7 @@ Computer Science.
 
 | Subject | Folder | Chapters |
 | --- | --- | --- |
-| Introductory Microeconomics | [`economics/`](economics/) | 5 |
+| Introductory Microeconomics | [`microeconomics/`](microeconomics/) | 5 |
 | Introductory Macroeconomics | [`macro-economics/`](macro-economics/) | 6 |
 | Computer Science (CBSE 083) | [`computer-science/`](computer-science/) | 10 |
 

@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 5 — Market Equilibrium | Class XII Microeconomics</title>
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body>
+
+<div id="bar">
+  <span class="brand">CH 5 · MARKET EQUILIBRIUM</span>
+  <span class="sect" id="sect"></span>
+  <span class="tools">
+    <span id="counter">1 / 1</span>
+    <button id="menuBtn" title="Slide menu (m)">☰ Menu</button>
+    <button id="fsBtn" title="Fullscreen (f)">⛶</button>
+    <button onclick="location.href='index.html'" title="Course home">⌂</button>
+  </span>
+</div>
+<div id="progress" style="width:0"></div>
+
+<div id="menu">
+  <h3>Chapter 5 — Market Equilibrium</h3>
+  <p class="hint">Click any slide to jump · press <b>m</b> or <b>Esc</b> to close</p>
+  <div class="mlist"></div>
+</div>
+
+<div id="stage">
+
+<!-- ================= OPENING ================= -->
+<section class="slide title-slide" data-section="Opening">
+  <div class="kicker">Introductory Microeconomics · Class XII</div>
+  <h1>Chapter 5<br>Market Equilibrium</h1>
+  <div class="rule"></div>
+  <p class="sub">Everyone in this book takes the price as <b>given</b> — consumers in Chapter 2,
+  firms in Chapter 4. So <b>who sets it?</b> The answer is nobody. It emerges.</p>
+</section>
+
+<section class="slide">
+  <h2>Both blades, at last</h2>
+  <div class="split">
+    <div>
+      <div class="box bridge">
+        <span class="tag">What each chapter handed us</span>
+        <p><b>Chapter 2</b> — the <b>market demand curve</b>: how much all consumers together will
+        buy at each price, each taking price as given.</p>
+        <p><b>Chapter 4</b> — the <b>market supply curve</b>: how much all firms together will
+        sell at each price, each taking price as given (built on the cost curves of
+        <b>Chapter 3</b>).</p>
+      </div>
+      <div class="box insight">
+        <span class="tag">The question that has been waiting since Chapter 2</span>
+        <p>If <b>every</b> consumer and <b>every</b> firm treats the price as something handed to
+        them, where does it come from?</p>
+        <p><b>Nobody chooses it.</b> It is the one price at which the plans of all of them
+        happen to fit together — and this chapter finds it.</p>
+      </div>
+    </div>
+    <figure>
+      <svg viewBox="0 0 420 320" role="img" aria-label="Market demand from Chapter 2 and market supply from Chapter 4 combine to determine price and quantity">
+        <defs>
+          <marker id="c5a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+            <path d="M0,0 L10,4 L0,8 z" fill="#a17a00"/>
+          </marker>
+        </defs>
+        <rect x="14" y="30" width="150" height="76" rx="12" fill="#eee8d5" stroke="#1f7ab8" stroke-width="2"/>
+        <text class="lab" x="89" y="58" text-anchor="middle">CHAPTER 2</text>
+        <text x="89" y="80" text-anchor="middle">market demand</text>
+        <text x="89" y="97" text-anchor="middle" style="fill:#175f90">consumers</text>
+
+        <rect x="14" y="180" width="150" height="76" rx="12" fill="#eee8d5" stroke="#748500" stroke-width="2"/>
+        <text class="lab" x="89" y="208" text-anchor="middle">CHAPTERS 3–4</text>
+        <text x="89" y="230" text-anchor="middle">market supply</text>
+        <text x="89" y="247" text-anchor="middle" style="fill:#586600">firms</text>
+
+        <path d="M169,68 L210,68 L210,130" fill="none" class="axis" stroke="#a17a00"/>
+        <path d="M169,218 L210,218 L210,156" fill="none" class="axis" stroke="#a17a00"/>
+        <line x1="210" y1="143" x2="252" y2="143" class="axis" stroke="#a17a00" marker-end="url(#c5a)"/>
+
+        <rect x="260" y="103" width="150" height="80" rx="12" fill="#e4dcc4" stroke="#a17a00" stroke-width="2.5"/>
+        <text class="lab" x="335" y="133" text-anchor="middle">EQUILIBRIUM</text>
+        <text class="lab" x="335" y="158" text-anchor="middle" style="fill:#755900">p* and q*</text>
+
+        <text x="210" y="292" text-anchor="middle" style="fill:#5b6966">no one decides p* — it is where the two plans agree</text>
+      </svg>
+    </figure>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Route map</h2>
+  <div class="grid2">
+    <div class="card"><h4>Part A · Equilibrium</h4>
+      <p>What equilibrium means, and what excess demand and excess supply are.</p></div>
+    <div class="card"><h4>Part B · A fixed number of firms</h4>
+      <p>How p* and q* are found, and how the market corrects itself when it is out of
+      equilibrium.</p></div>
+    <div class="card"><h4>Part C · Shifts</h4>
+      <p>What happens when demand shifts, when supply shifts, and when both shift together.</p></div>
+    <div class="card"><h4>Part D · The labour market</h4>
+      <p>The same tools, applied to wages instead of goods.</p></div>
+    <div class="card"><h4>Part E · Free entry and exit</h4>
+      <p>Why, in the long run, price is driven all the way down to minimum average cost.</p></div>
+    <div class="card"><h4>Part F · Applications</h4>
+      <p>Price ceilings and price floors — what happens when government fixes a price.</p></div>
+  </div>
+  <div class="box note">
+    <span class="tag">One market, all chapter</span>
+    <p>Almost every diagram below uses the <b>same</b> wheat market — <code>qD = 200 − p</code>
+    and <code>qS = 120 + p</code>. Equilibrium, shortage, surplus, price ceiling and price floor
+    are all read off <b>one</b> set of numbers you can check yourself.</p>
+  </div>
+</section>
+
+<!-- ================= PART A ================= -->
+<section class="slide" data-section="5.1 Equilibrium, Excess Demand, Excess Supply">
+  <h2><span class="num">5.1</span>What equilibrium means</h2>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p>An <span class="term">equilibrium</span> is a situation where the <b>plans of all consumers
+    and firms in the market match</b> and the market clears. The aggregate quantity all firms wish
+    to sell equals the quantity all consumers wish to buy.</p>
+  </div>
+  <div class="formula">q<sub>D</sub>(p*) = q<sub>S</sub>(p*)</div>
+  <div class="grid2">
+    <div class="card"><h4>Equilibrium price</h4><p>The price <b>p*</b> at which equilibrium is
+      reached.</p></div>
+    <div class="card"><h4>Equilibrium quantity</h4><p>The quantity <b>q*</b> bought and sold at
+      that price.</p></div>
+  </div>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Excess demand</span> exists when, at a price, market <b>demand exceeds
+    market supply</b>.<br>
+    <span class="term">Excess supply</span> exists when, at a price, market <b>supply is greater
+    than market demand</b>.</p>
+  </div>
+  <div class="insight box">
+    <span class="tag">A second, equivalent definition</span>
+    <p>Equilibrium in a perfectly competitive market can be defined as a
+    <b>zero excess demand – zero excess supply</b> situation. Whenever supply and demand are
+    unequal, the market is <b>not</b> in equilibrium and <b>there will be a tendency for the price
+    to change</b>.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="5.1.1 Market Equilibrium: Fixed Number of Firms">
+  <h2>The market, drawn<button class="info" data-term="market-equilibrium"></button><button class="info" data-term="demand-curve"></button><button class="info" data-term="supply-curve"></button></h2>
+  <p>Wheat: <code>q<sub>D</sub> = 200 − p</code> &nbsp;and&nbsp; <code>q<sub>S</sub> = 120 + p</code>
+  (firms supply nothing below ₹10).</p>
+  <figure>
+    <svg viewBox="0 0 520 400" role="img" aria-label="Market equilibrium for wheat with excess demand below the equilibrium price and excess supply above it">
+      <line class="axis" x1="60" y1="340" x2="60" y2="30"/>
+      <line class="axis" x1="60" y1="340" x2="490" y2="340"/>
+      <text class="lab" x="270" y="386" text-anchor="middle">QUANTITY of wheat (kg)</text>
+      <text class="lab" x="20" y="190" text-anchor="middle" transform="rotate(-90 20 190)">PRICE (₹ per kg)</text>
+      <text x="52" y="345" text-anchor="end">0</text>
+
+      <!-- demand: (230,60) p=100,q=100  ->  (400,340) p=0,q=200 -->
+      <line class="curve c-blue" x1="230" y1="60" x2="400" y2="340"/>
+      <text class="lab" x="220" y="52" style="fill:#175f90">DD</text>
+      <!-- supply: (281,312) p=10,q=130 -> (434,60) p=100,q=220 -->
+      <line class="curve c-teal" x1="281" y1="312" x2="434" y2="60"/>
+      <text class="lab" x="440" y="54" style="fill:#586600">SS</text>
+
+      <!-- equilibrium -->
+      <circle cx="332" cy="228" r="9" fill="#a17a00" stroke="#fdf6e3" stroke-width="2.5"/>
+      <line class="dash" stroke="#a17a00" x1="60" y1="228" x2="332" y2="228"/>
+      <line class="dash" stroke="#a17a00" x1="332" y1="228" x2="332" y2="340"/>
+      <text x="52" y="233" text-anchor="end" style="fill:#755900">40</text>
+      <text x="332" y="362" text-anchor="middle" style="fill:#755900">160</text>
+      <text class="lab" x="344" y="220" style="fill:#755900">E  (p* = ₹40, q* = 160)</text>
+
+      <!-- excess demand at p = 20 -->
+      <line class="dash" stroke="#b02522" x1="60" y1="284" x2="366" y2="284"/>
+      <line x1="298" y1="284" x2="366" y2="284" stroke="#c62b28" stroke-width="7" opacity="0.5"/>
+      <circle cx="298" cy="284" r="6" fill="#c62b28" stroke="#fdf6e3" stroke-width="2"/>
+      <circle cx="366" cy="284" r="6" fill="#c62b28" stroke="#fdf6e3" stroke-width="2"/>
+      <text x="52" y="289" text-anchor="end" style="fill:#b02522">20</text>
+      <text x="332" y="306" text-anchor="middle" style="fill:#b02522">EXCESS DEMAND = 40</text>
+      <text x="120" y="306" style="fill:#b02522">qS = 140, qD = 180</text>
+
+      <!-- excess supply at p = 60 -->
+      <line class="dash" stroke="#5055a0" x1="60" y1="172" x2="366" y2="172"/>
+      <line x1="298" y1="172" x2="366" y2="172" stroke="#6c71c4" stroke-width="7" opacity="0.5"/>
+      <circle cx="298" cy="172" r="6" fill="#6c71c4" stroke="#fdf6e3" stroke-width="2"/>
+      <circle cx="366" cy="172" r="6" fill="#6c71c4" stroke="#fdf6e3" stroke-width="2"/>
+      <text x="52" y="177" text-anchor="end" style="fill:#5055a0">60</text>
+      <text x="332" y="152" text-anchor="middle" style="fill:#5055a0">EXCESS SUPPLY = 40</text>
+      <text x="120" y="152" style="fill:#5055a0">qD = 140, qS = 180</text>
+
+      <circle cx="281" cy="312" r="5" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+      <text x="180" y="330" style="fill:#586600">below ₹10, firms supply nothing</text>
+    </svg>
+    <figcaption>Every number checks: at ₹20, 180 − 140 = <b>40 excess demand</b>; at ₹60,
+    180 − 140 = <b>40 excess supply</b>; at ₹40 the two are equal at <b>160</b>.</figcaption>
+  </figure>
+</section>
+
+<section class="slide">
+  <h2>Solving for equilibrium — Example 5.1<button class="info" data-term="market-equilibrium"></button></h2>
+  <div class="split">
+    <div>
+      <div class="box eg">
+        <span class="tag">Step 1 — set demand equal to supply</span>
+        <p><code>q<sub>D</sub>(p*) = q<sub>S</sub>(p*)</code><br>
+        <code>200 − p* = 120 + p*</code><br>
+        <code>2p* = 80</code><br>
+        <code><b>p* = ₹40</b></code></p>
+      </div>
+      <div class="box eg">
+        <span class="tag">Step 2 — substitute back</span>
+        <p><code>q* = 200 − 40 = <b>160 kg</b></code><br>
+        or <code>q* = 120 + 40 = <b>160 kg</b></code> ✓</p>
+        <p class="small">Always substitute into <b>both</b> equations — if they disagree, you have
+        made an arithmetic slip.</p>
+      </div>
+    </div>
+    <div>
+      <div class="box defn">
+        <span class="tag">Excess demand and excess supply as functions</span>
+        <p><b>ED(p)</b> = q<sub>D</sub> − q<sub>S</sub> = (200 − p) − (120 + p) =
+        <b>80 − 2p</b></p>
+        <p><b>ES(p)</b> = q<sub>S</sub> − q<sub>D</sub> = (120 + p) − (200 − p) =
+        <b>2p − 80</b></p>
+      </div>
+      <div class="box insight">
+        <span class="tag">What these expressions tell you at a glance</span>
+        <p><b>ED &gt; 0</b> whenever <code>80 − 2p &gt; 0</code>, i.e. whenever <b>p &lt; 40</b>.<br>
+        <b>ES &gt; 0</b> whenever <code>2p − 80 &gt; 0</code>, i.e. whenever <b>p &gt; 40</b>.</p>
+        <p>So <b>every</b> price below p* has excess demand and <b>every</b> price above it has
+        excess supply. The equilibrium price is the unique price where both are zero.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>How the market corrects itself<button class="info" data-term="excess-demand"></button><button class="info" data-term="excess-supply"></button><button class="info" data-term="market-equilibrium"></button></h2>
+  <div class="grid2">
+    <div class="box warn">
+      <span class="tag">If price is below p* — say ₹20</span>
+      <p>Demand 180, supply 140 → <b>excess demand of 40</b>.</p>
+      <p>Some consumers are <b>unable to obtain the good at all</b>, or get too little. They are
+      <b>willing to pay more than ₹20</b>, and bid the price up.</p>
+      <p>As price rises: quantity demanded <b>falls</b> (movement along DD) and quantity supplied
+      <b>rises</b> (movement along SS). The gap closes.</p>
+      <p class="small">The market moves <b>up</b> to ₹40.</p>
+    </div>
+    <div class="box warn">
+      <span class="tag">If price is above p* — say ₹60</span>
+      <p>Supply 180, demand 140 → <b>excess supply of 40</b>.</p>
+      <p>Some firms are <b>unable to sell the quantity they want</b>, so they <b>lower their
+      price</b>.</p>
+      <p>As price falls: quantity demanded <b>rises</b> and quantity supplied <b>falls</b>.
+      The gap closes.</p>
+      <p class="small">The market moves <b>down</b> to ₹40.</p>
+    </div>
+  </div>
+  <div class="box bridge">
+    <span class="tag">The Invisible Hand — Chapter 1, made precise</span>
+    <p>Since <b>Adam Smith (1723–1790)</b> it has been maintained that in a perfectly competitive
+    market an <b>"Invisible Hand"</b> changes price whenever there is an imbalance: it
+    <b>raises</b> price when there is excess demand and <b>lowers</b> it when there is excess
+    supply. We assume throughout that this process actually reaches equilibrium.</p>
+    <p class="small">In Chapter 1 you met this as "prices send signals that coordinate millions of
+    strangers". This slide is that claim with the mechanism written out.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Challenge</h2>
+  <div class="challenge">
+    <span class="tag">Challenge — section 5.1</span>
+    <p>A student writes: <i>"At a price of ₹20 there is excess demand of 40 kg. This means the
+    market is short of 40 kg of wheat, so the government should arrange to produce 40 kg more.
+    Then the shortage will disappear at a price of ₹20."</i></p>
+    <p>(a) Is 40 kg the amount by which output must rise for the market to clear at ₹20?<br>
+    (b) What actually happens to the shortage as price rises to ₹40, and how much does each
+    side move?<br>
+    (c) What does this tell you about the difference between a <b>quantity</b> adjustment and a
+    <b>price</b> adjustment?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>(a) No — and this is the trap.</b> If output were forced up to 180 kg while the price
+    stayed at ₹20, the market would "clear" only in the sense that everyone who wants wheat at
+    ₹20 gets it. But <b>firms do not want to supply 180 kg at ₹20</b> — their supply curve says
+    they will offer only 140. Producing 180 would require compelling or subsidising them; it is
+    not an equilibrium, because the plans of firms are being overridden rather than matched.</p>
+    <p><b>(b) The gap closes from <u>both</u> sides at once</b> — this is the key observation.</p>
+    <table>
+      <thead><tr><th>Price</th><th>q<sub>D</sub></th><th>q<sub>S</sub></th><th>Excess demand</th></tr></thead>
+      <tbody>
+        <tr><td>₹20</td><td>180</td><td>140</td><td>40</td></tr>
+        <tr><td>₹30</td><td>170</td><td>150</td><td>20</td></tr>
+        <tr><td class="hi">₹40</td><td class="hi">160</td><td class="hi">160</td><td class="hi">0</td></tr>
+      </tbody>
+    </table>
+    <p>Quantity supplied rises by <b>20</b> (140 → 160) and quantity demanded falls by <b>20</b>
+    (180 → 160). <b>Neither side moves by 40.</b> The 40 kg gap is eliminated by a 20 kg rise in
+    supply <i>plus</i> a 20 kg fall in demand.</p>
+    <div class="q">
+      <p><b>The student assumed only the supply side responds.</b> But a price change moves
+      <b>both</b> curves' quantities — that is exactly what "movement along the curve" means, and
+      it happens on <i>both</i> curves simultaneously.</p>
+    </div>
+    <p><b>(c)</b> A <b>quantity</b> adjustment tries to force one side to meet the other at an
+    unchanged price. A <b>price</b> adjustment makes <b>both</b> sides move toward each other
+    voluntarily. That is why the market mechanism needs no one to compute the 40, and why it
+    settles at 160 rather than 180.</p>
+    <p class="small"><b>Looking ahead:</b> a government that <i>does</i> hold the price at ₹20 —
+    a <b>price ceiling</b> — gets exactly the student's problem: a permanent shortage of 40 kg
+    that has to be rationed somehow. That is Part F of this chapter.</p>
+  </div>
+</section>
+
+<!-- ================= PART C : SHIFTS ================= -->
+<section class="slide" data-section="5.1.1 Shifts in Demand and Supply">
+  <h2>When the demand curve shifts<button class="info" data-term="movement-vs-shift"></button><button class="info" data-term="market-equilibrium"></button></h2>
+  <figure>
+    <svg viewBox="0 0 940 380" role="img" aria-label="A rightward shift in demand raises both equilibrium price and quantity; a leftward shift lowers both">
+      <!-- panel (a) rightward -->
+      <line class="axis" x1="60" y1="320" x2="60" y2="30"/>
+      <line class="axis" x1="60" y1="320" x2="420" y2="320"/>
+      <text class="lab" x="240" y="362" text-anchor="middle">QUANTITY</text>
+      <text class="lab" x="20" y="175" text-anchor="middle" transform="rotate(-90 20 175)">PRICE</text>
+      <text class="lab" x="240" y="22" text-anchor="middle" style="fill:#755900">(a) demand shifts RIGHT</text>
+
+      <line class="curve c-teal" x1="110" y1="300" x2="390" y2="60"/>
+      <line class="curve c-blue" x1="130" y1="50"  x2="330" y2="320"/>
+      <line class="curve c-violet" x1="210" y1="50" x2="410" y2="320"/>
+      <text class="lab" x="322" y="336" style="fill:#175f90">DD₀</text>
+      <text class="lab" x="404" y="336" style="fill:#5055a0">DD₂</text>
+      <text class="lab" x="394" y="54" style="fill:#586600">SS₀</text>
+
+      <circle cx="235.5" cy="192.4" r="8" fill="#a17a00" stroke="#fdf6e3" stroke-width="2.5"/>
+      <circle cx="284.4" cy="150.5" r="8" fill="#6c71c4" stroke="#fdf6e3" stroke-width="2.5"/>
+      <line class="dash" stroke="#a17a00" x1="60" y1="192.4" x2="235.5" y2="192.4"/>
+      <line class="dash" stroke="#a17a00" x1="235.5" y1="192.4" x2="235.5" y2="320"/>
+      <line class="dash" stroke="#5055a0" x1="60" y1="150.5" x2="284.4" y2="150.5"/>
+      <line class="dash" stroke="#5055a0" x1="284.4" y1="150.5" x2="284.4" y2="320"/>
+      <text class="lab" x="216" y="186" style="fill:#755900">E</text>
+      <text class="lab" x="294" y="144" style="fill:#5055a0">G</text>
+      <text x="52" y="197" text-anchor="end">p₀</text>
+      <text x="52" y="155" text-anchor="end" style="fill:#5055a0">p₂</text>
+      <text x="235.5" y="340" text-anchor="middle">q₀</text>
+      <text x="288" y="340" text-anchor="middle" style="fill:#5055a0">q₂</text>
+      <text x="120" y="90" style="fill:#5055a0">price ↑ &nbsp; quantity ↑</text>
+
+      <!-- panel (b) leftward -->
+      <line class="axis" x1="530" y1="320" x2="530" y2="30"/>
+      <line class="axis" x1="530" y1="320" x2="890" y2="320"/>
+      <text class="lab" x="710" y="362" text-anchor="middle">QUANTITY</text>
+      <text class="lab" x="490" y="175" text-anchor="middle" transform="rotate(-90 490 175)">PRICE</text>
+      <text class="lab" x="710" y="22" text-anchor="middle" style="fill:#755900">(b) demand shifts LEFT</text>
+
+      <line class="curve c-teal" x1="580" y1="300" x2="860" y2="60"/>
+      <line class="curve c-blue" x1="600" y1="50"  x2="800" y2="320"/>
+      <line class="curve c-violet" x1="520" y1="50" x2="720" y2="320"/>
+      <text class="lab" x="792" y="336" style="fill:#175f90">DD₀</text>
+      <text class="lab" x="714" y="336" style="fill:#5055a0">DD₁</text>
+      <text class="lab" x="864" y="54" style="fill:#586600">SS₀</text>
+
+      <circle cx="705.5" cy="192.4" r="8" fill="#a17a00" stroke="#fdf6e3" stroke-width="2.5"/>
+      <circle cx="656.6" cy="234.4" r="8" fill="#6c71c4" stroke="#fdf6e3" stroke-width="2.5"/>
+      <line class="dash" stroke="#a17a00" x1="530" y1="192.4" x2="705.5" y2="192.4"/>
+      <line class="dash" stroke="#a17a00" x1="705.5" y1="192.4" x2="705.5" y2="320"/>
+      <line class="dash" stroke="#5055a0" x1="530" y1="234.4" x2="656.6" y2="234.4"/>
+      <line class="dash" stroke="#5055a0" x1="656.6" y1="234.4" x2="656.6" y2="320"/>
+      <text class="lab" x="716" y="186" style="fill:#755900">E</text>
+      <text class="lab" x="626" y="228" style="fill:#5055a0">F</text>
+      <text x="522" y="197" text-anchor="end">p₀</text>
+      <text x="522" y="239" text-anchor="end" style="fill:#5055a0">p₁</text>
+      <text x="708" y="340" text-anchor="middle">q₀</text>
+      <text x="652" y="340" text-anchor="middle" style="fill:#5055a0">q₁</text>
+      <text x="590" y="90" style="fill:#5055a0">price ↓ &nbsp; quantity ↓</text>
+    </svg>
+    <figcaption>With supply unchanged, equilibrium <b>price and quantity move in the same
+    direction</b> as the demand shift.</figcaption>
+  </figure>
+  <div class="insight box">
+    <span class="tag">The rule for a demand shift</span>
+    <p><b>Demand shifts right</b> → at p₀ there is now <b>excess demand</b> → price is bid up →
+    new equilibrium at <b>higher price and higher quantity</b>.</p>
+    <p><b>Demand shifts left</b> → at p₀ there is now <b>excess supply</b> → price is bid down →
+    new equilibrium at <b>lower price and lower quantity</b>.</p>
+    <p class="center"><b>Price and quantity always move together.</b></p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>When the supply curve shifts<button class="info" data-term="supply-curve"></button><button class="info" data-term="market-equilibrium"></button></h2>
+  <figure>
+    <svg viewBox="0 0 940 380" role="img" aria-label="A leftward shift in supply raises price and lowers quantity; a rightward shift lowers price and raises quantity">
+      <!-- panel (a) leftward supply -->
+      <line class="axis" x1="60" y1="320" x2="60" y2="30"/>
+      <line class="axis" x1="60" y1="320" x2="420" y2="320"/>
+      <text class="lab" x="240" y="362" text-anchor="middle">QUANTITY</text>
+      <text class="lab" x="20" y="175" text-anchor="middle" transform="rotate(-90 20 175)">PRICE</text>
+      <text class="lab" x="240" y="22" text-anchor="middle" style="fill:#755900">(a) supply shifts LEFT</text>
+
+      <line class="curve c-blue" x1="130" y1="50" x2="390" y2="320"/>
+      <line class="curve c-teal" x1="110" y1="300" x2="390" y2="60"/>
+      <line class="curve c-violet" x1="50" y1="300" x2="330" y2="60"/>
+      <text class="lab" x="384" y="336" style="fill:#175f90">DD₀</text>
+      <text class="lab" x="394" y="54" style="fill:#586600">SS₀</text>
+      <text class="lab" x="334" y="54" style="fill:#5055a0">SS₂</text>
+
+      <circle cx="253" cy="178" r="8" fill="#a17a00" stroke="#fdf6e3" stroke-width="2.5"/>
+      <circle cx="225.7" cy="149.4" r="8" fill="#6c71c4" stroke="#fdf6e3" stroke-width="2.5"/>
+      <line class="dash" stroke="#a17a00" x1="60" y1="178" x2="253" y2="178"/>
+      <line class="dash" stroke="#a17a00" x1="253" y1="178" x2="253" y2="320"/>
+      <line class="dash" stroke="#5055a0" x1="60" y1="149.4" x2="225.7" y2="149.4"/>
+      <line class="dash" stroke="#5055a0" x1="225.7" y1="149.4" x2="225.7" y2="320"/>
+      <text class="lab" x="263" y="172" style="fill:#755900">E</text>
+      <text class="lab" x="196" y="143" style="fill:#5055a0">G</text>
+      <text x="52" y="183" text-anchor="end">p₀</text>
+      <text x="52" y="154" text-anchor="end" style="fill:#5055a0">p₂</text>
+      <text x="257" y="340" text-anchor="middle">q₀</text>
+      <text x="220" y="340" text-anchor="middle" style="fill:#5055a0">q₂</text>
+      <text x="240" y="90" style="fill:#5055a0">price ↑ &nbsp; quantity ↓</text>
+
+      <!-- panel (b) rightward supply -->
+      <line class="axis" x1="530" y1="320" x2="530" y2="30"/>
+      <line class="axis" x1="530" y1="320" x2="890" y2="320"/>
+      <text class="lab" x="710" y="362" text-anchor="middle">QUANTITY</text>
+      <text class="lab" x="490" y="175" text-anchor="middle" transform="rotate(-90 490 175)">PRICE</text>
+      <text class="lab" x="710" y="22" text-anchor="middle" style="fill:#755900">(b) supply shifts RIGHT</text>
+
+      <line class="curve c-blue" x1="600" y1="50" x2="860" y2="320"/>
+      <line class="curve c-teal" x1="580" y1="300" x2="860" y2="60"/>
+      <line class="curve c-violet" x1="640" y1="300" x2="890" y2="86"/>
+      <text class="lab" x="854" y="336" style="fill:#175f90">DD₀</text>
+      <text class="lab" x="864" y="54" style="fill:#586600">SS₀</text>
+      <text class="lab" x="866" y="76" style="fill:#5055a0">SS₁</text>
+
+      <circle cx="723" cy="178" r="8" fill="#a17a00" stroke="#fdf6e3" stroke-width="2.5"/>
+      <circle cx="750" cy="205.8" r="8" fill="#6c71c4" stroke="#fdf6e3" stroke-width="2.5"/>
+      <line class="dash" stroke="#a17a00" x1="530" y1="178" x2="723" y2="178"/>
+      <line class="dash" stroke="#a17a00" x1="723" y1="178" x2="723" y2="320"/>
+      <line class="dash" stroke="#5055a0" x1="530" y1="205.8" x2="750" y2="205.8"/>
+      <line class="dash" stroke="#5055a0" x1="750" y1="205.8" x2="750" y2="320"/>
+      <text class="lab" x="700" y="172" style="fill:#755900">E</text>
+      <text class="lab" x="760" y="200" style="fill:#5055a0">F</text>
+      <text x="522" y="183" text-anchor="end">p₀</text>
+      <text x="522" y="211" text-anchor="end" style="fill:#5055a0">p₁</text>
+      <text x="719" y="340" text-anchor="middle">q₀</text>
+      <text x="756" y="340" text-anchor="middle" style="fill:#5055a0">q₁</text>
+      <text x="590" y="110" style="fill:#5055a0">price ↓ &nbsp; quantity ↑</text>
+    </svg>
+    <figcaption>With demand unchanged, equilibrium <b>price and quantity move in opposite
+    directions</b>.</figcaption>
+  </figure>
+  <div class="insight box">
+    <span class="tag">The rule for a supply shift — note it is the mirror image</span>
+    <p><b>Supply shifts left</b> (e.g. input prices rise, a unit tax) → <b>price ↑, quantity ↓</b><br>
+    <b>Supply shifts right</b> (e.g. better technology, more firms) → <b>price ↓, quantity ↑</b></p>
+    <p class="center"><b>Demand shift → same direction. Supply shift → opposite directions.</b></p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>What causes each curve to shift — the checklist<button class="info" data-term="demand-curve"></button><button class="info" data-term="supply-curve"></button></h2>
+  <div class="grid2">
+    <div class="box defn">
+      <span class="tag">Demand shifts (from Chapter 2)</span>
+      <ul>
+        <li><b>Income</b> — up for a normal good shifts DD right; for an inferior good, left</li>
+        <li><b>Price of a substitute</b> — up shifts DD right</li>
+        <li><b>Price of a complement</b> — up shifts DD left</li>
+        <li><b>Tastes and preferences</b> — favourable change shifts DD right</li>
+        <li><b>Number of consumers</b> — more consumers shift DD right</li>
+      </ul>
+    </div>
+    <div class="box defn">
+      <span class="tag">Supply shifts (from Chapter 4)</span>
+      <ul>
+        <li><b>Technological progress</b> — lowers MC, shifts SS right</li>
+        <li><b>Input prices</b> — a rise raises MC, shifts SS left</li>
+        <li><b>Unit tax</b> — raises MC by ₹t, shifts SS left</li>
+        <li><b>Number of firms</b> — more firms shift SS right</li>
+      </ul>
+    </div>
+  </div>
+  <div class="box warn">
+    <span class="tag">The test you already know</span>
+    <p>Did the <b>price of this good itself</b> change? If <b>yes</b> → movement along the curve.
+    If <b>no</b> → the curve shifts. Nothing that shifts a curve is ever the good's own price.</p>
+  </div>
+  <div class="box eg">
+    <span class="tag">Worked example — an increase in consumers' income</span>
+    <p>Clothes are a <b>normal</b> good, so demand rises at each price → <b>DD shifts right</b>.
+    Income does <b>not</b> affect firms' costs, so <b>SS is unchanged</b>.</p>
+    <p>Result: <b>price of clothes rises and quantity rises</b> — panel (a) of the demand-shift
+    diagram.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>When both curves shift at once<button class="info" data-term="market-equilibrium"></button></h2>
+  <table>
+    <caption>Table 5.1 — Impact of simultaneous shifts on equilibrium</caption>
+    <thead>
+      <tr><th>Shift in demand</th><th>Shift in supply</th><th>Quantity</th><th>Price</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Leftward</td><td>Leftward</td><td class="hi">Decreases</td><td>May rise, fall or stay unchanged</td></tr>
+      <tr><td>Rightward</td><td>Rightward</td><td class="hi">Increases</td><td>May rise, fall or stay unchanged</td></tr>
+      <tr><td>Leftward</td><td>Rightward</td><td>May rise, fall or stay unchanged</td><td class="hi">Decreases</td></tr>
+      <tr><td>Rightward</td><td>Leftward</td><td>May rise, fall or stay unchanged</td><td class="hi">Increases</td></tr>
+    </tbody>
+  </table>
+  <div class="insight box">
+    <span class="tag">The pattern — worth memorising as a rule, not four rows</span>
+    <p><b>Same direction</b> (both right, or both left) → <b>quantity</b> is unambiguous,
+    <b>price</b> depends on the relative <b>magnitudes</b> of the shifts.</p>
+    <p><b>Opposite directions</b> → <b>price</b> is unambiguous, <b>quantity</b> depends on the
+    magnitudes.</p>
+  </div>
+  <div class="box eg">
+    <span class="tag">Why one of them is always ambiguous</span>
+    <p>Take both curves shifting <b>right</b>. A rightward demand shift pushes price <b>up</b>;
+    a rightward supply shift pushes price <b>down</b>. The two pressures <b>oppose</b>, so the net
+    effect depends on which shift is larger.</p>
+    <p>But <i>both</i> shifts push quantity <b>up</b>. They reinforce, so quantity certainly rises.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Two simultaneous-shift cases, drawn<button class="info" data-term="market-equilibrium"></button></h2>
+  <figure>
+    <svg viewBox="0 0 940 380" role="img" aria-label="Both curves shifting right leaves price unchanged and raises quantity; supply right with demand left leaves quantity unchanged and lowers price">
+      <!-- (a) both right -->
+      <line class="axis" x1="60" y1="320" x2="60" y2="30"/>
+      <line class="axis" x1="60" y1="320" x2="420" y2="320"/>
+      <text class="lab" x="240" y="362" text-anchor="middle">QUANTITY</text>
+      <text class="lab" x="20" y="175" text-anchor="middle" transform="rotate(-90 20 175)">PRICE</text>
+      <text class="lab" x="240" y="22" text-anchor="middle" style="fill:#755900">(a) both shift RIGHT — price unchanged</text>
+
+      <line class="curve c-blue"   x1="110" y1="50"  x2="310" y2="320"/>
+      <line class="curve c-violet" x1="190" y1="50"  x2="390" y2="320"/>
+      <line class="curve c-teal"   x1="100" y1="300" x2="330" y2="103"/>
+      <line class="curve c-cyan"   x1="180" y1="300" x2="410" y2="103"/>
+
+      <line class="dash" stroke="#a17a00" x1="60" y1="197.7" x2="380" y2="197.7"/>
+      <circle cx="219.4" cy="197.7" r="8" fill="#a17a00" stroke="#fdf6e3" stroke-width="2.5"/>
+      <circle cx="299.4" cy="197.7" r="8" fill="#6c71c4" stroke="#fdf6e3" stroke-width="2.5"/>
+      <line class="dash" stroke="#93a1a1" x1="219.4" y1="197.7" x2="219.4" y2="320"/>
+      <line class="dash" stroke="#93a1a1" x1="299.4" y1="197.7" x2="299.4" y2="320"/>
+      <text x="52" y="203" text-anchor="end" style="fill:#755900">p₀</text>
+      <text x="219" y="340" text-anchor="middle">q₀</text>
+      <text x="302" y="340" text-anchor="middle" style="fill:#5055a0">q₁</text>
+      <text x="248" y="178" style="fill:#755900">same price</text>
+      <text x="120" y="290" style="fill:#5055a0">quantity ↑</text>
+
+      <!-- (b) supply right, demand left -->
+      <line class="axis" x1="530" y1="320" x2="530" y2="30"/>
+      <line class="axis" x1="530" y1="320" x2="890" y2="320"/>
+      <text class="lab" x="710" y="362" text-anchor="middle">QUANTITY</text>
+      <text class="lab" x="490" y="175" text-anchor="middle" transform="rotate(-90 490 175)">PRICE</text>
+      <text class="lab" x="710" y="22" text-anchor="middle" style="fill:#755900">(b) supply RIGHT, demand LEFT — quantity unchanged</text>
+
+      <line class="curve c-blue"   x1="640" y1="50"  x2="840" y2="320"/>
+      <line class="curve c-violet" x1="593.4" y1="50" x2="793.4" y2="320"/>
+      <line class="curve c-teal"   x1="600" y1="300" x2="830" y2="103"/>
+      <line class="curve c-cyan"   x1="673.6" y1="300" x2="890" y2="114.6"/>
+
+      <line class="dash" stroke="#a17a00" x1="737.8" y1="182" x2="737.8" y2="320"/>
+      <circle cx="737.8" cy="182" r="8" fill="#a17a00" stroke="#fdf6e3" stroke-width="2.5"/>
+      <circle cx="737.8" cy="245" r="8" fill="#6c71c4" stroke="#fdf6e3" stroke-width="2.5"/>
+      <line class="dash" stroke="#93a1a1" x1="530" y1="182" x2="737.8" y2="182"/>
+      <line class="dash" stroke="#93a1a1" x1="530" y1="245" x2="737.8" y2="245"/>
+      <text x="522" y="187" text-anchor="end">p₀</text>
+      <text x="522" y="250" text-anchor="end" style="fill:#5055a0">p₁</text>
+      <text x="737.8" y="340" text-anchor="middle" style="fill:#755900">q₀ unchanged</text>
+      <text x="752" y="218" style="fill:#5055a0">price ↓</text>
+    </svg>
+    <figcaption>These are the two special cases where the ambiguous variable happens to come out
+    <b>exactly unchanged</b>. Shift the curves by different amounts and it would move either way.</figcaption>
+  </figure>
+</section>
+
+<section class="slide">
+  <h2>Challenge</h2>
+  <div class="challenge">
+    <span class="tag">Challenge — simultaneous shifts</span>
+    <p>Newspapers report: <i>"Onion prices have risen sharply this year, and less onion was sold
+    than last year."</i></p>
+    <p>(a) Using shifts alone, deduce what must have happened in the onion market. Is the answer
+    unique?<br>
+    (b) Suppose instead prices rose and quantity sold <b>also</b> rose. What would you conclude?<br>
+    (c) A student says: <i>"Price rose, so demand must have risen."</i> Why is that reasoning
+    unreliable?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>(a) Supply must have shifted left.</b> Price ↑ with quantity ↓ means the two moved in
+    <b>opposite</b> directions — the signature of a <b>supply</b> shift.</p>
+    <p><b>Is it unique? No.</b> Two other combinations in Table 5.1 can also produce price ↑ with
+    quantity ↓:</p>
+    <div class="q">
+      <p><b>Supply left + demand right</b> (row 4) — price certainly rises; quantity falls if the
+      supply contraction outweighs the demand expansion.</p>
+      <p><b>Supply left + demand left</b> (row 1) — quantity certainly falls; price rises if
+      supply's upward pull outweighs demand's downward pull.</p>
+    </div>
+    <p>So the <b>only</b> thing we can assert with certainty is that <b>supply shifted left</b>.
+    Demand may have shifted right, shifted left, or not moved at all — the observation cannot
+    distinguish these.</p>
+    <p class="small">Plausible cause: unseasonal rain destroying the crop — a leftward supply shift.</p>
+    <p><b>(b) Price ↑ with quantity ↑ means the two moved in the <u>same</u> direction — the
+    signature of a <b>demand</b> shift, rightward.</b> Again a small opposing supply shift cannot
+    be ruled out, but demand must have expanded and dominated.</p>
+    <p><b>(c) Because a price rise alone is consistent with two completely different causes.</b></p>
+    <div class="q">
+      <p>Demand shifts <b>right</b> → price ↑, quantity <b>↑</b><br>
+      Supply shifts <b>left</b> → price ↑, quantity <b>↓</b></p>
+      <p>Both raise price. <b>Only the quantity tells you which happened.</b></p>
+    </div>
+    <p><b>The general method:</b> the price alone is never enough. You need <b>both</b> the price
+    change and the quantity change to identify which curve moved:</p>
+    <p><b>Same direction</b> → <b>demand</b> shifted. &nbsp;<b>Opposite directions</b> →
+    <b>supply</b> shifted.</p>
+    <p class="small">This is one of the most useful things in the whole chapter, and it is exactly
+    why economists always want the quantity data alongside the price data.</p>
+  </div>
+</section>
+
+<!-- ================= PART D : LABOUR MARKET ================= -->
+<section class="slide" data-section="Wage Determination">
+  <h2>The same tools, applied to wages<button class="info" data-term="market-equilibrium"></button><button class="info" data-term="excess-supply"></button></h2>
+  <div class="split">
+    <figure>
+      <svg viewBox="0 0 440 340" role="img" aria-label="Wage determination: downward-sloping demand for labour meets upward-sloping supply of labour">
+        <line class="axis" x1="70" y1="290" x2="70" y2="30"/>
+        <line class="axis" x1="70" y1="290" x2="410" y2="290"/>
+        <text class="lab" x="240" y="330" text-anchor="middle">LABOUR (hours)</text>
+        <text class="lab" x="24" y="160" text-anchor="middle" transform="rotate(-90 24 160)">WAGE RATE</text>
+        <text x="62" y="295" text-anchor="end">O</text>
+
+        <line class="curve c-teal" x1="100" y1="270" x2="380" y2="50"/>
+        <line class="curve c-blue" x1="100" y1="60"  x2="380" y2="270"/>
+        <text class="lab" x="386" y="44" style="fill:#586600">S<tspan font-size="11">L</tspan></text>
+        <text class="lab" x="386" y="276" style="fill:#175f90">D<tspan font-size="11">L</tspan></text>
+
+        <circle cx="235" cy="164" r="9" fill="#a17a00" stroke="#fdf6e3" stroke-width="2.5"/>
+        <line class="dash" stroke="#a17a00" x1="70" y1="164" x2="235" y2="164"/>
+        <line class="dash" stroke="#a17a00" x1="235" y1="164" x2="235" y2="290"/>
+        <text x="62" y="169" text-anchor="end" style="fill:#755900">w*</text>
+        <text x="235" y="312" text-anchor="middle" style="fill:#755900">l*</text>
+      </svg>
+      <figcaption>The wage is determined where the labour that households wish to supply equals
+      the labour firms wish to hire.</figcaption>
+    </figure>
+    <div>
+      <div class="box warn">
+        <span class="tag">The one structural difference from a goods market</span>
+        <p>In the market for <b>goods</b>: households <b>demand</b>, firms <b>supply</b>.</p>
+        <p>In the market for <b>labour</b>: <b>households supply</b> and <b>firms demand</b> —
+        the roles are <b>reversed</b>.</p>
+        <p class="small">Note also that "labour" means <b>hours of work</b>, not the number of
+        labourers.</p>
+      </div>
+      <div class="box defn">
+        <span class="tag">Why the demand for labour slopes downward</span>
+        <p>A firm hires up to the point where the extra cost of the last unit of labour equals the
+        extra benefit from it:</p>
+        <div class="formula" style="font-size:1.05rem">w = MRP<sub>L</sub> = MR × MP<sub>L</sub></div>
+        <p>For a perfectly competitive firm MR = price, so MRP<sub>L</sub> equals the
+        <b>value of marginal product</b>, VMP<sub>L</sub>.</p>
+        <p>If the wage <b>rises</b>, MP<sub>L</sub> must rise to keep the equality. By the
+        <b>law of diminishing marginal product</b> (Chapter 3), a higher MP<sub>L</sub> means
+        <b>less</b> labour employed. Hence a <b>downward-sloping</b> demand curve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Why the labour supply curve bends backward — for an individual</h2>
+  <div class="box defn">
+    <span class="tag">The household's trade-off</span>
+    <p>A household's supply decision is essentially a <b>choice between income and leisure</b>.
+    People enjoy leisure and find work irksome, but they value the income work brings.</p>
+  </div>
+  <div class="grid2">
+    <div class="box eg">
+      <span class="tag">Effect 1 — leisure becomes costlier</span>
+      <p>A higher wage raises the <b>opportunity cost of leisure</b> — every hour off now costs
+      more forgone income. So the individual wants <b>less leisure</b> and works <b>longer</b>.</p>
+      <p class="small">Pushes labour supply <b>up</b>.</p>
+    </div>
+    <div class="box eg">
+      <span class="tag">Effect 2 — purchasing power rises</span>
+      <p>A higher wage also makes the individual <b>richer</b>, so she wants to spend more on
+      leisure activities — and therefore work <b>less</b>.</p>
+      <p class="small">Pushes labour supply <b>down</b>.</p>
+    </div>
+  </div>
+  <div class="insight box">
+    <span class="tag">Which wins, and why the market curve still slopes up</span>
+    <p>At <b>low</b> wages the first effect dominates → more labour supplied.<br>
+    At <b>high</b> wages the second dominates → less labour supplied.<br>
+    So an <b>individual's</b> supply curve <b>bends backward</b>.</p>
+    <p>But the <b>market</b> supply curve of labour is still <b>upward sloping</b>: although some
+    individuals work less at higher wages, <b>many more individuals are attracted into the
+    market</b>, and that outweighs the reduction.</p>
+  </div>
+  <div class="box bridge">
+    <span class="tag">Two Chapter 2 ideas, reappearing</span>
+    <p>Effect 1 is a <b>substitution effect</b>; Effect 2 is an <b>income effect</b>. Here they
+    work in <b>opposite</b> directions — the same substitution-versus-income-effect logic that also
+    explains the Giffen good, though the two cases are not identical: a Giffen good is a
+    demand-side case needing a strongly inferior good with a large budget share, whereas this is a
+    wage–leisure trade-off.</p>
+  </div>
+</section>
+
+<!-- ================= PART E : FREE ENTRY AND EXIT ================= -->
+<section class="slide" data-section="5.1.2 Free Entry and Exit">
+  <h2><span class="num">5.1.2</span>What changes when firms can enter and leave</h2>
+  <div class="insight box">
+    <span class="tag">The assumption we now drop</span>
+    <p>So far the <b>number of firms was fixed</b>. Now we allow <b>free entry and exit</b> —
+    one of the four defining features of perfect competition from Chapter 4 — and assume all
+    firms are identical.</p>
+  </div>
+  <div class="box defn">
+    <span class="tag">The central result</span>
+    <p>With free entry and exit, in equilibrium <b>no firm earns super-normal profit or incurs a
+    loss</b>. The equilibrium price will be <b>equal to the minimum average cost</b> of the firms.</p>
+  </div>
+  <div class="formula">p = min AC</div>
+  <div class="grid2">
+    <div class="box eg">
+      <span class="tag">If price is above min AC</span>
+      <p>Firms earn <b>super-normal profit</b> → this <b>attracts new firms</b> → market supply
+      shifts <b>right</b> → price <b>falls</b> → super-normal profit is <b>wiped out</b>.</p>
+      <p class="small">Entry stops when profit is back to normal.</p>
+    </div>
+    <div class="box warn">
+      <span class="tag">If price is below min AC</span>
+      <p>Firms earn <b>less than normal profit</b> → some firms <b>exit</b> → market supply shifts
+      <b>left</b> → price <b>rises</b> → profits return to the normal level.</p>
+      <p class="small">Exit stops when profit is back to normal.</p>
+    </div>
+  </div>
+  <div class="box bridge">
+    <span class="tag">This is Chapter 4's break-even point, at the level of the market</span>
+    <p>Min AC was the firm's <b>break-even point</b> — the price at which it earns exactly
+    <b>normal profit</b>. Free entry and exit forces the <i>whole market</i> to that price.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Equilibrium with free entry — Example 5.2<button class="info" data-term="free-entry"></button><button class="info" data-term="break-even"></button><button class="info" data-term="market-equilibrium"></button></h2>
+  <div class="split">
+    <figure>
+      <svg viewBox="0 0 490 380" role="img" aria-label="With free entry and exit the price line lies at minimum average cost and quantity is read off the demand curve">
+        <line class="axis" x1="60" y1="320" x2="60" y2="30"/>
+        <line class="axis" x1="60" y1="320" x2="460" y2="320"/>
+        <text class="lab" x="255" y="362" text-anchor="middle">QUANTITY (kg)</text>
+        <text class="lab" x="20" y="175" text-anchor="middle" transform="rotate(-90 20 175)">PRICE (₹)</text>
+        <text x="52" y="325" text-anchor="end">0</text>
+
+        <line class="curve c-blue" x1="263" y1="50" x2="350" y2="320"/>
+        <text class="lab" x="356" y="336" style="fill:#175f90">DD₀</text>
+
+        <line class="curve c-teal" x1="60" y1="230" x2="440" y2="230"/>
+        <text class="lab" x="180" y="222" style="fill:#586600">p₀ = min AC = ₹20</text>
+
+        <circle cx="321" cy="230" r="9" fill="#a17a00" stroke="#fdf6e3" stroke-width="2.5"/>
+        <line class="dash" stroke="#a17a00" x1="321" y1="230" x2="321" y2="320"/>
+        <text x="52" y="235" text-anchor="end" style="fill:#755900">20</text>
+        <text x="321" y="342" text-anchor="middle" style="fill:#755900">q₀ = 180</text>
+        <text class="lab" x="332" y="222" style="fill:#755900">E</text>
+
+        <text x="90" y="90" style="fill:#5b6966">price is pinned by cost,</text>
+        <text x="90" y="110" style="fill:#5b6966">not by demand</text>
+      </svg>
+    </figure>
+    <div>
+      <div class="box eg">
+        <span class="tag">The data</span>
+        <p><code>q<sub>D</sub> = 200 − p</code><br>
+        Single firm: <code>q<sub>f</sub><sup>S</sup> = 10 + p</code> for p ≥ 20<br>
+        (the firm produces nothing below ₹20, so <b>min AC = ₹20</b>)</p>
+      </div>
+      <div class="box insight">
+        <span class="tag">Solving, in four steps</span>
+        <ol class="steps">
+          <li><b>Price</b> is set by cost, not demand:
+          <code>p₀ = min AC = <b>₹20</b></code></li>
+          <li><b>Market quantity</b> comes from the demand curve at that price:
+          <code>q₀ = 200 − 20 = <b>180 kg</b></code></li>
+          <li><b>Each firm's output</b> from its own supply curve:
+          <code>q<sub>f</sub> = 10 + 20 = <b>30 kg</b></code></li>
+          <li><b>Number of firms</b>:
+          <code>n₀ = q₀ / q<sub>f</sub> = 180/30 = <b>6</b></code></li>
+        </ol>
+      </div>
+      <div class="box warn">
+        <span class="tag">Notice the reversal</span>
+        <p>With a fixed number of firms, <b>demand helped determine the price</b>. With free entry
+        and exit, <b>cost alone determines the price</b>, and demand determines only the
+        <b>quantity</b> and the <b>number of firms</b>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>A demand shift under free entry — the surprising result<button class="info" data-term="free-entry"></button><button class="info" data-term="break-even"></button><button class="info" data-term="lrac"></button></h2>
+  <figure>
+    <svg viewBox="0 0 520 380" role="img" aria-label="With free entry a demand shift changes quantity and the number of firms but leaves price unchanged at minimum average cost">
+      <line class="axis" x1="60" y1="320" x2="60" y2="30"/>
+      <line class="axis" x1="60" y1="320" x2="490" y2="320"/>
+      <text class="lab" x="270" y="362" text-anchor="middle">QUANTITY</text>
+      <text class="lab" x="20" y="175" text-anchor="middle" transform="rotate(-90 20 175)">PRICE</text>
+      <text x="52" y="325" text-anchor="end">0</text>
+
+      <line class="curve c-violet" x1="190.5" y1="50" x2="277.5" y2="320" opacity="0.85"/>
+      <line class="curve c-blue"   x1="263"   y1="50" x2="350"   y2="320"/>
+      <line class="curve c-cyan"   x1="335.5" y1="50" x2="422.5" y2="320" opacity="0.85"/>
+
+      <line class="curve c-teal" x1="60" y1="230" x2="465" y2="230"/>
+      <text class="lab" x="90" y="222" style="fill:#586600">p₀ = min AC — unchanged throughout</text>
+
+      <circle cx="248.5" cy="230" r="8" fill="#6c71c4" stroke="#fdf6e3" stroke-width="2.5"/>
+      <circle cx="321"   cy="230" r="8" fill="#a17a00" stroke="#fdf6e3" stroke-width="2.5"/>
+      <circle cx="393.5" cy="230" r="8" fill="#238b84" stroke="#fdf6e3" stroke-width="2.5"/>
+
+      <line class="dash" stroke="#93a1a1" x1="248.5" y1="230" x2="248.5" y2="320"/>
+      <line class="dash" stroke="#93a1a1" x1="321"   y1="230" x2="321"   y2="320"/>
+      <line class="dash" stroke="#93a1a1" x1="393.5" y1="230" x2="393.5" y2="320"/>
+      <text x="248.5" y="342" text-anchor="middle" style="fill:#5055a0">q₂</text>
+      <text x="321"   y="342" text-anchor="middle" style="fill:#755900">q₀</text>
+      <text x="393.5" y="342" text-anchor="middle" style="fill:#196b65">q₁</text>
+      <text x="52" y="235" text-anchor="end" style="fill:#755900">p₀</text>
+
+      <text class="lab" x="270" y="336" style="fill:#175f90">DD₀</text>
+      <text class="lab" x="196" y="336" style="fill:#5055a0">DD₂</text>
+      <text class="lab" x="344" y="336" style="fill:#196b65">DD₁</text>
+
+      <text x="120" y="90" style="fill:#5b6966">n₂ &lt; n₀ &lt; n₁ — the number of firms adjusts,</text>
+      <text x="120" y="110" style="fill:#5b6966">the price does not</text>
+    </svg>
+  </figure>
+  <div class="box insight">
+    <span class="tag">What happens when demand rises</span>
+    <p>At p₀ there is now <b>excess demand</b> → price tends to rise → this creates the
+    <b>possibility of super-normal profit</b> → <b>new firms enter</b> → their extra supply
+    <b>wipes out the profit</b> and pushes price <b>back to p₀</b>.</p>
+    <p><b>The final result:</b> a <b>higher quantity</b> supplied at the <b>same price</b>, by a
+    <b>larger number of firms</b>.</p>
+  </div>
+  <div class="box warn">
+    <span class="tag">The comparison the exam asks for</span>
+    <p>Compared with a <b>fixed</b> number of firms, a demand shift under <b>free entry and
+    exit</b> has:</p>
+    <p><b>a larger effect on quantity</b> and <b>no effect at all on price</b>.</p>
+    <p class="small">With a fixed number of firms the rising supply curve resists the expansion,
+    so part of the demand increase is absorbed by a higher price. With free entry, new firms
+    supply whatever is needed at p₀, so the whole adjustment falls on quantity.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Challenge</h2>
+  <div class="challenge">
+    <span class="tag">Challenge — section 5.1.2</span>
+    <p>Under free entry and exit, the equilibrium price equals minimum average cost regardless of
+    how strong demand is.</p>
+    <p>A student objects: <i>"That cannot be right. If everyone suddenly wants far more of a good,
+    surely producers can charge more for it. The law of demand says higher demand means a higher
+    price."</i></p>
+    <p>(a) Is the price permanently unchanged, or unchanged only eventually?<br>
+    (b) Where exactly does the student's reasoning break down?<br>
+    (c) Under what condition would the long-run price actually rise?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>(a) Unchanged only eventually — the student is right about the short run.</b></p>
+    <div class="q">
+      <p><b>Immediately:</b> demand rises, the existing firms cannot expand instantly, so there is
+      excess demand and <b>the price does rise</b>. Firms earn super-normal profit.</p>
+      <p><b>Then:</b> that profit is a <b>signal</b>. New firms enter, market supply shifts right,
+      and the price is pushed <b>back down</b> — coming to rest again at min AC.</p>
+    </div>
+    <p>So the price rise is <b>real but temporary</b>. The diagram shows only the <b>before</b> and
+    <b>after</b>, not the journey between them.</p>
+    <p><b>(b) The student has confused a movement along a curve with a long-run equilibrium.</b></p>
+    <p>"Higher demand means higher price" is a statement about a market with a <b>given supply
+    curve</b>. But free entry means the supply side is <b>not fixed</b> — the number of firms is
+    itself a variable. Once supply can expand without limit at min AC, the long-run market supply
+    curve is effectively <b>horizontal at min AC</b>, and a horizontal supply curve pins the
+    price no matter where demand sits.</p>
+    <p class="small">Note this does not contradict the law of demand at all. Consumers still buy
+    less when price is higher — that is why the demand curve slopes down in every diagram here.
+    What has changed is the <i>supply</i> side.</p>
+    <p><b>(c) The long-run price would rise if min AC itself rose.</b></p>
+    <p>Since price is pinned to minimum average cost, the only way to move it permanently is to
+    move <b>costs</b>. That happens if:</p>
+    <p><b>input prices rise</b> as the industry expands (more firms bidding for the same land,
+    labour or raw material), or <b>technology worsens</b>, or a <b>unit tax</b> is imposed —
+    each raises min AC and therefore the long-run price.</p>
+    <p class="small"><b>The deep point:</b> in the long run under perfect competition, <b>price is
+    governed by cost, not by demand</b>. Demand determines <i>how much</i> is produced and
+    <i>how many firms</i> produce it — but not what it sells for.</p>
+  </div>
+</section>
+
+<!-- ================= PART F : APPLICATIONS ================= -->
+<section class="slide" data-section="5.2 Applications: Price Ceiling and Price Floor">
+  <h2><span class="num">5.2.1</span>Price ceiling<button class="info" data-term="price-ceiling"></button><button class="info" data-term="excess-demand"></button></h2>
+  <div class="split">
+    <figure>
+      <svg viewBox="0 0 500 380" role="img" aria-label="A price ceiling set below equilibrium creates a shortage: quantity demanded exceeds quantity supplied">
+        <line class="axis" x1="60" y1="340" x2="60" y2="30"/>
+        <line class="axis" x1="60" y1="340" x2="470" y2="340"/>
+        <text class="lab" x="265" y="382" text-anchor="middle">QUANTITY of wheat (kg)</text>
+        <text class="lab" x="20" y="190" text-anchor="middle" transform="rotate(-90 20 190)">PRICE (₹)</text>
+        <text x="52" y="345" text-anchor="end">0</text>
+
+        <line class="curve c-blue" x1="230" y1="60" x2="400" y2="340"/>
+        <line class="curve c-teal" x1="281" y1="312" x2="434" y2="60"/>
+        <text class="lab" x="220" y="52" style="fill:#175f90">DD</text>
+        <text class="lab" x="440" y="54" style="fill:#586600">SS</text>
+
+        <circle cx="332" cy="228" r="8" fill="#a17a00" stroke="#fdf6e3" stroke-width="2.5"/>
+        <line class="dash" stroke="#a17a00" x1="60" y1="228" x2="332" y2="228"/>
+        <text x="52" y="233" text-anchor="end" style="fill:#755900">p* = 40</text>
+
+        <!-- ceiling -->
+        <line class="curve c-rose" x1="60" y1="284" x2="420" y2="284"/>
+        <text x="52" y="289" text-anchor="end" style="fill:#b02522">p𝑐 = 20</text>
+        <text class="lab" x="330" y="276" style="fill:#b02522">PRICE CEILING</text>
+
+        <line x1="298" y1="284" x2="366" y2="284" stroke="#c62b28" stroke-width="8" opacity="0.5"/>
+        <circle cx="298" cy="284" r="6" fill="#c62b28" stroke="#fdf6e3" stroke-width="2"/>
+        <circle cx="366" cy="284" r="6" fill="#c62b28" stroke="#fdf6e3" stroke-width="2"/>
+        <line class="dash" stroke="#b02522" x1="298" y1="284" x2="298" y2="340"/>
+        <line class="dash" stroke="#b02522" x1="366" y1="284" x2="366" y2="340"/>
+        <text x="298" y="360" text-anchor="middle" style="fill:#b02522">q′𝑐 = 140</text>
+        <text x="372" y="360" text-anchor="middle" style="fill:#b02522">q𝑐 = 180</text>
+        <text x="332" y="310" text-anchor="middle" style="fill:#b02522">SHORTAGE = 40</text>
+      </svg>
+    </figure>
+    <div>
+      <div class="box defn">
+        <span class="tag">Definition</span>
+        <p>A <span class="term">price ceiling</span> is a <b>government-imposed upper limit</b> on
+        the price of a good or service.</p>
+      </div>
+      <div class="box eg">
+        <span class="tag">When and why it is used</span>
+        <p>Generally imposed on <b>necessities</b> — wheat, rice, kerosene, sugar — and set
+        <b>below</b> the market-determined price, because at the market price some section of the
+        population cannot afford the good.</p>
+      </div>
+      <div class="box warn">
+        <span class="tag">The unintended consequence</span>
+        <p>At ₹20 consumers demand <b>180 kg</b> but firms supply only <b>140 kg</b> —
+        an <b>excess demand of 40 kg</b>.</p>
+        <p>So although the government's intention was to <b>help consumers</b>, it could end up
+        <b>creating a shortage</b>.</p>
+      </div>
+      <div class="box insight">
+        <span class="tag">How the shortage gets managed</span>
+        <p>Price can no longer ration the good, so something else must. Typically
+        <b>rationing</b>: <b>ration coupons</b> cap how much any individual may buy, and the good
+        is sold through <b>ration shops</b> (fair price shops).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The costs of rationing<button class="info" data-term="price-ceiling"></button><button class="info" data-term="excess-demand"></button></h2>
+  <div class="grid2">
+    <div class="box warn">
+      <span class="tag">(a) Queues</span>
+      <p>Each consumer has to <b>stand in long queues</b> to buy the good from ration shops.
+      The price is lower, but the good now costs <b>time</b> as well as money.</p>
+    </div>
+    <div class="box warn">
+      <span class="tag">(b) Black markets</span>
+      <p>Not all consumers are satisfied by the quantity they get from the fair price shop.
+      Some are <b>willing to pay a higher price</b> for more — and that may result in the
+      <b>creation of a black market</b>.</p>
+    </div>
+  </div>
+  <div class="insight box">
+    <span class="tag">The general principle</span>
+    <p>A price is a <b>rationing device</b>. When a good is scarce, <i>something</i> must decide
+    who gets it. Fix the price below equilibrium and you do not abolish that job — you
+    <b>hand it to queues, coupons and illegal trade instead</b>.</p>
+  </div>
+  <div class="bridge box">
+    <span class="tag">Chapter 1, returning</span>
+    <p>Scarcity does not disappear because a price is capped. It <b>reappears in non-price form</b>
+    — exactly the conclusion reached in the Chapter 1 challenge on free healthcare.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">5.2.2</span>Price floor<button class="info" data-term="price-floor"></button><button class="info" data-term="excess-supply"></button></h2>
+  <div class="split">
+    <figure>
+      <svg viewBox="0 0 500 380" role="img" aria-label="A price floor set above equilibrium creates a surplus: quantity supplied exceeds quantity demanded">
+        <line class="axis" x1="60" y1="340" x2="60" y2="30"/>
+        <line class="axis" x1="60" y1="340" x2="470" y2="340"/>
+        <text class="lab" x="265" y="382" text-anchor="middle">QUANTITY (kg)</text>
+        <text class="lab" x="20" y="190" text-anchor="middle" transform="rotate(-90 20 190)">PRICE (₹)</text>
+        <text x="52" y="345" text-anchor="end">0</text>
+
+        <line class="curve c-blue" x1="230" y1="60" x2="400" y2="340"/>
+        <line class="curve c-teal" x1="281" y1="312" x2="434" y2="60"/>
+        <text class="lab" x="220" y="52" style="fill:#175f90">DD</text>
+        <text class="lab" x="440" y="54" style="fill:#586600">SS</text>
+
+        <circle cx="332" cy="228" r="8" fill="#a17a00" stroke="#fdf6e3" stroke-width="2.5"/>
+        <line class="dash" stroke="#a17a00" x1="60" y1="228" x2="332" y2="228"/>
+        <text x="52" y="233" text-anchor="end" style="fill:#755900">p* = 40</text>
+
+        <!-- floor -->
+        <line class="curve c-rose" x1="60" y1="172" x2="420" y2="172"/>
+        <text x="52" y="177" text-anchor="end" style="fill:#b02522">p𝑓 = 60</text>
+        <text class="lab" x="330" y="164" style="fill:#b02522">PRICE FLOOR</text>
+
+        <line x1="298" y1="172" x2="366" y2="172" stroke="#c62b28" stroke-width="8" opacity="0.5"/>
+        <circle cx="298" cy="172" r="6" fill="#c62b28" stroke="#fdf6e3" stroke-width="2"/>
+        <circle cx="366" cy="172" r="6" fill="#c62b28" stroke="#fdf6e3" stroke-width="2"/>
+        <line class="dash" stroke="#b02522" x1="298" y1="172" x2="298" y2="340"/>
+        <line class="dash" stroke="#b02522" x1="366" y1="172" x2="366" y2="340"/>
+        <text x="294" y="360" text-anchor="middle" style="fill:#b02522">q𝑓 = 140</text>
+        <text x="370" y="360" text-anchor="middle" style="fill:#b02522">q′𝑓 = 180</text>
+        <text x="332" y="150" text-anchor="middle" style="fill:#b02522">SURPLUS = 40</text>
+      </svg>
+    </figure>
+    <div>
+      <div class="box defn">
+        <span class="tag">Definition</span>
+        <p>A <span class="term">price floor</span> is a <b>government-imposed lower limit</b> on
+        the price that may be charged for a particular good or service.</p>
+      </div>
+      <div class="box eg">
+        <span class="tag">The two standard examples</span>
+        <p><b>Agricultural price support</b> — a lower limit on the purchase price of some
+        agricultural goods, normally set <b>above</b> the market-determined price.</p>
+        <p><b>Minimum wage legislation</b> — ensures the wage rate does not fall below a
+        particular level, again set <b>above</b> the equilibrium wage.</p>
+      </div>
+      <div class="box warn">
+        <span class="tag">The consequence</span>
+        <p>At ₹60 firms wish to supply <b>180 kg</b> but consumers demand only <b>140 kg</b> —
+        an <b>excess supply of 40 kg</b>.</p>
+        <p>In the case of agricultural support, to <b>prevent the price falling</b> because of
+        this excess supply, the <b>government must buy the surplus</b> at the predetermined price.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Ceiling and floor, side by side<button class="info" data-term="price-ceiling"></button><button class="info" data-term="price-floor"></button></h2>
+  <table>
+    <thead>
+      <tr><th class="lbl">Basis</th><th>Price ceiling</th><th>Price floor</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="lbl">What it is</td><td>Government-imposed <b>maximum</b> price</td><td>Government-imposed <b>minimum</b> price</td></tr>
+      <tr><td class="lbl">Set relative to p*</td><td><b>Below</b> equilibrium</td><td><b>Above</b> equilibrium</td></tr>
+      <tr><td class="lbl">Result</td><td><b>Excess demand</b> — a shortage</td><td><b>Excess supply</b> — a surplus</td></tr>
+      <tr><td class="lbl">Intended to help</td><td><b>Consumers</b></td><td><b>Producers / workers</b></td></tr>
+      <tr><td class="lbl">Typical examples</td><td>Wheat, rice, kerosene, sugar; rent control</td><td>Agricultural price support; minimum wage</td></tr>
+      <tr><td class="lbl">Government's follow-up</td><td>Rationing through fair price shops</td><td>Buying up the surplus</td></tr>
+      <tr><td class="lbl">Side effects</td><td>Queues, black markets</td><td>Unsold stocks, storage costs</td></tr>
+    </tbody>
+  </table>
+  <div class="warn box">
+    <span class="tag">A binding control must be on the "wrong" side of p*</span>
+    <p>A ceiling set <b>above</b> p*, or a floor set <b>below</b> p*, has <b>no effect at all</b> —
+    the market simply settles at p* as usual, because the constraint never bites.</p>
+    <p>So a price control only does something when it <b>prevents the market from reaching
+    equilibrium</b> — which is precisely why it creates a shortage or a surplus.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Challenge</h2>
+  <div class="challenge">
+    <span class="tag">Challenge — section 5.2</span>
+    <p>Rents in a city are too high for ordinary people, so the government imposes
+    <b>rent control</b> — a ceiling well below the market rent.</p>
+    <p>(a) Show the immediate effect on the market for rented apartments.<br>
+    (b) The policy aims to help those seeking apartments. Identify precisely <b>who gains and
+    who loses</b>.<br>
+    (c) What happens over a <b>longer</b> period, once landlords can adjust the quantity of
+    housing offered? Why is the long-run effect worse than the short-run one?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>(a)</b> The controlled rent lies <b>below equilibrium</b>, so quantity demanded exceeds
+    quantity supplied: an <b>excess demand for apartments</b> — a housing <b>shortage</b>. More
+    families want flats at the controlled rent than there are flats being offered.</p>
+    <p><b>(b) The outcome splits the intended beneficiaries in two.</b></p>
+    <div class="q">
+      <p><b>Gainers:</b> tenants who <b>already have</b> an apartment, or who manage to get one.
+      They pay a genuinely lower rent. This is a real benefit and should not be dismissed.</p>
+      <p><b>Losers:</b> the people <b>still looking</b>. Because there are now fewer flats
+      available than before, many who would have found housing at the market rent now find
+      <b>none at all</b>. They are the very people the policy was meant to help.</p>
+      <p><b>Also losers:</b> landlords, whose rental income falls.</p>
+    </div>
+    <p>Since price can no longer ration, allocation falls to <b>queues, waiting lists, personal
+    connections</b> — and, as with any ceiling, <b>black market</b> payments such as unofficial
+    "deposits" demanded on the side.</p>
+    <p><b>(c) In the long run the shortage gets substantially worse</b>, because supply is far
+    more <b>elastic</b> over a longer period.</p>
+    <p><b>Short run:</b> the stock of buildings is essentially <b>fixed</b> — supply is nearly
+    vertical, so the quantity offered falls only a little.</p>
+    <p><b>Long run:</b> landlords can convert flats to other uses, sell them, or simply let them
+    deteriorate, and <b>developers stop building new rental housing</b> because the return no
+    longer justifies it. The supply curve becomes much flatter, so the same controlled rent now
+    produces a <b>much larger</b> shortage.</p>
+    <p class="small"><b>The general lesson:</b> the harm from a binding price control grows over
+    time, because both sides get more responsive to price the longer they have to adjust. This is
+    the elasticity point from Chapter 2 — <b>demand and supply are more elastic in the long
+    run</b> — applied to policy.</p>
+    <p class="small"><b>Keep positive and normative separate.</b> Everything above is
+    <b>positive</b> analysis of what rent control <i>does</i>. Whether it is a good policy also
+    depends on how you weigh a gain to sitting tenants against a loss to those shut out — and that
+    is a <b>value judgement</b>.</p>
+  </div>
+</section>
+
+<!-- ================= WRAP ================= -->
+<section class="slide" data-section="Recap and Exercises">
+  <h2>The whole book in one diagram</h2>
+  <figure>
+    <svg viewBox="0 0 940 280" role="img" aria-label="How all five chapters fit together, from scarcity through consumer and firm behaviour to market equilibrium">
+      <defs>
+        <marker id="c5f" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+          <path d="M0,0 L10,4 L0,8 z" fill="#a17a00"/>
+        </marker>
+      </defs>
+      <rect x="10" y="100" width="150" height="76" rx="12" fill="#eee8d5" stroke="#c62b28" stroke-width="2"/>
+      <text class="lab" x="85" y="128" text-anchor="middle">CHAPTER 1</text>
+      <text x="85" y="150" text-anchor="middle">scarcity → choice</text>
+      <text x="85" y="167" text-anchor="middle">3 central problems</text>
+
+      <line x1="165" y1="138" x2="200" y2="138" class="axis" stroke="#a17a00" marker-end="url(#c5f)"/>
+
+      <rect x="208" y="40" width="150" height="76" rx="12" fill="#eee8d5" stroke="#1f7ab8" stroke-width="2"/>
+      <text class="lab" x="283" y="68" text-anchor="middle">CHAPTER 2</text>
+      <text x="283" y="90" text-anchor="middle">the consumer</text>
+      <text x="283" y="107" text-anchor="middle" style="fill:#175f90">→ DEMAND</text>
+
+      <rect x="208" y="160" width="150" height="76" rx="12" fill="#eee8d5" stroke="#748500" stroke-width="2"/>
+      <text class="lab" x="283" y="188" text-anchor="middle">CHAPTERS 3–4</text>
+      <text x="283" y="210" text-anchor="middle">the firm</text>
+      <text x="283" y="227" text-anchor="middle" style="fill:#586600">→ SUPPLY</text>
+
+      <path d="M363,78 L400,78 L400,125" fill="none" class="axis" stroke="#a17a00"/>
+      <path d="M363,198 L400,198 L400,151" fill="none" class="axis" stroke="#a17a00"/>
+      <line x1="400" y1="138" x2="440" y2="138" class="axis" stroke="#a17a00" marker-end="url(#c5f)"/>
+
+      <rect x="448" y="100" width="160" height="76" rx="12" fill="#e4dcc4" stroke="#a17a00" stroke-width="2.5"/>
+      <text class="lab" x="528" y="128" text-anchor="middle">CHAPTER 5</text>
+      <text class="lab" x="528" y="152" text-anchor="middle" style="fill:#755900">p* and q*</text>
+
+      <line x1="613" y1="138" x2="650" y2="138" class="axis" stroke="#a17a00" marker-end="url(#c5f)"/>
+
+      <rect x="658" y="88" width="270" height="100" rx="12" fill="#eee8d5" stroke="#6c71c4" stroke-width="2"/>
+      <text class="lab" x="793" y="114" text-anchor="middle">the three problems, answered</text>
+      <text x="793" y="138" text-anchor="middle"><tspan style="fill:#5055a0">WHAT</tspan> → q*  ·  <tspan style="fill:#5055a0">HOW</tspan> → least-cost</text>
+      <text x="793" y="160" text-anchor="middle"><tspan style="fill:#5055a0">FOR WHOM</tspan> → price &amp; wages</text>
+
+      <text x="470" y="266" text-anchor="middle" style="fill:#5b6966">Chapter 1 asked the questions. Chapters 2–5 built the machinery. The loop is closed.</text>
+    </svg>
+  </figure>
+</section>
+
+<section class="slide">
+  <h2>Key concepts — recap</h2>
+  <div class="chips">
+    <span class="chip k">Equilibrium</span><span class="chip k">Equilibrium price</span>
+    <span class="chip k">Equilibrium quantity</span>
+    <span class="chip k">Excess demand</span><span class="chip k">Excess supply</span>
+    <span class="chip">Invisible Hand</span>
+    <span class="chip">Demand shift</span><span class="chip">Supply shift</span>
+    <span class="chip">Simultaneous shifts</span>
+    <span class="chip k">Free entry and exit</span><span class="chip">p = min AC</span>
+    <span class="chip">Equilibrium number of firms</span>
+    <span class="chip k">Marginal revenue product of labour</span>
+    <span class="chip">Value of marginal product</span>
+    <span class="chip">Backward-bending labour supply</span>
+    <span class="chip k">Price ceiling</span><span class="chip k">Price floor</span>
+    <span class="chip">Rationing</span><span class="chip">Black market</span>
+  </div>
+  <div class="grid2">
+    <div class="box insight">
+      <span class="tag">The results to never forget</span>
+      <ol>
+        <li>Equilibrium: <b>q<sub>D</sub>(p*) = q<sub>S</sub>(p*)</b>; below p* there is excess
+        demand, above it excess supply</li>
+        <li><b>Demand shift → p and q move together. Supply shift → they move oppositely.</b></li>
+        <li>Both curves shift the <b>same</b> way → quantity certain, price ambiguous.
+        <b>Opposite</b> ways → price certain, quantity ambiguous.</li>
+        <li>Free entry and exit ⇒ <b>p = min AC</b>; demand then fixes only q and the number of firms</li>
+        <li><b>Ceiling below p* → shortage. Floor above p* → surplus.</b></li>
+      </ol>
+    </div>
+    <div class="box warn">
+      <span class="tag">The traps</span>
+      <ol>
+        <li>A price rise alone does <b>not</b> tell you which curve moved — you need the quantity too.</li>
+        <li>A ceiling <b>above</b> p* (or floor <b>below</b> p*) does nothing at all.</li>
+        <li>Under free entry, demand does <b>not</b> determine the long-run price.</li>
+        <li>In the labour market, <b>households supply and firms demand</b> — the roles reverse.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>NCERT Exercises 22 and 23</h2>
+  <div class="qcard">
+    <span class="tag">Exercises 22 &amp; 23</span>
+    <p><b>22.</b> <code>q<sub>D</sub> = 700 − p</code>, <code>q<sub>S</sub> = 500 + 3p</code> for
+    p ≥ 15 (and 0 below). Why is market supply zero below ₹15? Find p* and q*.</p>
+    <p><b>23.</b> Same demand curve, but now with <b>free entry and exit</b> and identical firms,
+    each with <code>q<sub>f</sub><sup>S</sup> = 8 + 3p</code> for p ≥ 20.
+    (a) What is the significance of p = 20? (b) Find the equilibrium price. (c) Find the
+    equilibrium quantity and number of firms.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>22.</b> Supply is zero below ₹15 because <b>₹15 is the minimum average variable cost</b>
+    of the firms. Below it, price does not cover even the avoidable costs of production, so every
+    firm shuts down (Chapter 4, Condition 3).</p>
+    <p><code>700 − p = 500 + 3p → 200 = 4p → <b>p* = ₹50</b></code><br>
+    <code>q* = 700 − 50 = <b>650</b></code> &nbsp;·&nbsp; check: <code>500 + 3(50) = 650</code> ✓</p>
+    <p><b>23. (a)</b> ₹20 is the <b>minimum average cost</b> of a firm. Below it a firm cannot
+    cover its full costs and would exit in the long run — so it is the firm's
+    <b>break-even/shut-down point</b>.</p>
+    <p><b>(b)</b> With free entry and exit, the equilibrium price is driven to minimum average
+    cost: <b>p₀ = ₹20</b>. Any higher and super-normal profit attracts entry until price falls
+    back; any lower and firms exit until it rises back.</p>
+    <p><b>(c)</b> <code>q₀ = 700 − 20 = <b>680</b></code><br>
+    Each firm: <code>q<sub>f</sub> = 8 + 3(20) = <b>68</b></code><br>
+    Number of firms: <code>n₀ = 680 / 68 = <b>10</b></code></p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>NCERT Exercise 24</h2>
+  <div class="qcard">
+    <span class="tag">Exercise 24 — the salt market</span>
+    <p><code>q<sub>D</sub> = 1000 − p</code> &nbsp;and&nbsp; <code>q<sub>S</sub> = 700 + 2p</code></p>
+    <p><b>(a)</b> Find the equilibrium price and quantity.<br>
+    <b>(b)</b> An input price rise changes supply to <code>q<sub>S</sub> = 400 + 2p</code>.
+    How do p* and q* change? Does this conform to your expectation?<br>
+    <b>(c)</b> Instead, the government imposes a tax of <b>₹3 per unit</b> of salt sold. How does
+    this affect equilibrium?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>(a)</b> <code>1000 − p = 700 + 2p → 300 = 3p → <b>p* = ₹100</b></code>,
+    <code>q* = 1000 − 100 = <b>900</b></code> ✓ (check: 700 + 200 = 900)</p>
+    <p><b>(b)</b> <code>1000 − p = 400 + 2p → 600 = 3p → <b>p* = ₹200</b></code>,
+    <code>q* = 1000 − 200 = <b>800</b></code></p>
+    <p><b>Price rises (100 → 200) and quantity falls (900 → 800).</b> This <b>does</b> conform to
+    expectation: a rise in input prices raises marginal cost, shifting <b>supply leftward</b>, and
+    a leftward supply shift always moves price and quantity in <b>opposite</b> directions.</p>
+    <p><b>(c)</b> With a unit tax of ₹3 the seller keeps only <code>(p − 3)</code> per unit, so
+    supply becomes:</p>
+    <p class="center"><code>q<sub>S</sub> = 700 + 2(p − 3) = <b>694 + 2p</b></code></p>
+    <p><code>1000 − p = 694 + 2p → 306 = 3p → <b>p* = ₹102</b></code>,
+    <code>q* = 1000 − 102 = <b>898</b></code></p>
+    <div class="q">
+      <p><b>Who actually bears the ₹3 tax?</b> The buyer's price rose from ₹100 to ₹102, so
+      buyers bear <b>₹2</b>. Sellers now receive <code>102 − 3 = ₹99</code> instead of ₹100, so
+      they bear <b>₹1</b>.</p>
+      <p>The tax is <b>shared</b>, and the split is decided by the relative slopes of the two
+      curves — not by who legally pays it.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>NCERT Exercises 9–13</h2>
+  <div class="qcard">
+    <span class="tag">Exercises 9, 10, 11, 12 &amp; 13</span>
+    <p><b>9.</b> How are p* and q* affected when consumers' income (a) increases? (b) decreases?<br>
+    <b>10.</b> How does an increase in the price of shoes affect the market for socks?<br>
+    <b>11.</b> How does a change in the price of coffee affect the equilibrium price of tea?<br>
+    <b>12.</b> How do p* and q* change when the price of an input rises?<br>
+    <b>13.</b> If the price of a substitute Y of good X increases, what happens in the market for X?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>9.</b> For a <b>normal</b> good: (a) income up → demand shifts <b>right</b> → <b>p* and
+    q* both rise</b>. (b) income down → demand shifts <b>left</b> → <b>both fall</b>.
+    <span class="small">(For an <b>inferior</b> good the directions reverse.)</span></p>
+    <p><b>10.</b> Shoes and socks are <b>complements</b>. A rise in the price of shoes
+    <b>reduces</b> the demand for socks → demand for socks shifts <b>left</b> → the
+    <b>price of socks falls and fewer pairs are bought and sold</b>.</p>
+    <p><b>11.</b> Tea and coffee are <b>substitutes</b>. If the price of coffee <b>rises</b>,
+    consumers switch to tea → demand for tea shifts <b>right</b> → the <b>equilibrium price of
+    tea rises and the quantity rises</b>. (If coffee's price falls, both fall.)</p>
+    <p><b>12.</b> A rise in an input price raises marginal cost → <b>supply shifts left</b> →
+    <b>price rises and quantity falls</b>.</p>
+    <p><b>13.</b> Y is a substitute for X, so a rise in the price of Y shifts the demand for X
+    <b>rightward</b> → <b>price of X rises and quantity of X rises</b>.</p>
+    <p class="small"><b>Notice the pattern across all five.</b> Questions 9, 10, 11 and 13 are
+    <b>demand</b> shifts, so p and q always move <b>together</b>. Question 12 is a <b>supply</b>
+    shift, so they move <b>oppositely</b>. Identify which curve moves and the answer follows
+    immediately.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>NCERT Exercises 14, 21 and 25</h2>
+  <div class="qcard">
+    <span class="tag">Exercises 14, 21 &amp; 25</span>
+    <p><b>14 &amp; 21.</b> Compare the effect of a shift in the demand curve when the number of
+    firms is <b>fixed</b> with the case where <b>entry and exit</b> are permitted.<br>
+    <b>25.</b> If the market rent for apartments is too high and the government imposes rent
+    control, what impact will it have on the market for apartments?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>14 &amp; 21.</b></p>
+    <table>
+      <thead><tr><th class="lbl">Demand shifts right</th><th>Fixed number of firms</th><th>Free entry and exit</th></tr></thead>
+      <tbody>
+        <tr><td class="lbl">Equilibrium price</td><td><b>Rises</b></td><td><b>Unchanged</b> (stays at min AC)</td></tr>
+        <tr><td class="lbl">Equilibrium quantity</td><td>Rises <b>a little</b></td><td>Rises <b>a lot</b></td></tr>
+        <tr><td class="lbl">Number of firms</td><td>Unchanged</td><td><b>Increases</b></td></tr>
+      </tbody>
+    </table>
+    <p><b>Why:</b> with a fixed number of firms the <b>upward-sloping</b> market supply curve
+    resists the expansion, so part of the increased demand is absorbed by a <b>higher price</b>
+    and only part by higher quantity.</p>
+    <p>With free entry, any tendency for price to rise creates super-normal profit, which
+    <b>attracts new firms</b> until price is pushed back to min AC. The long-run market supply is
+    effectively <b>horizontal</b>, so the <b>entire</b> adjustment falls on quantity.</p>
+    <p class="center"><b>A demand shift has a larger effect on price and smaller effect on quantity
+    when firms are fixed; the reverse when entry and exit are free.</b></p>
+    <p><b>25.</b> Rent control is a <b>price ceiling</b> set below the equilibrium rent. It
+    produces <b>excess demand</b> for apartments — a <b>shortage</b>. Tenants who secure a flat
+    pay less, but many seekers find none. Since price can no longer ration, allocation falls to
+    <b>waiting lists, queues and connections</b>, and a <b>black market</b> in unofficial side
+    payments is likely. Over time landlords withdraw property and new rental construction dries
+    up, so the <b>shortage worsens</b>.</p>
+  </div>
+</section>
+
+<section class="slide title-slide">
+  <div class="kicker">End of Chapter 5 · End of the book</div>
+  <h1>The loop is closed</h1>
+  <div class="rule"></div>
+  <p class="sub">Chapter 1 asked three questions: <b>what</b> to produce, <b>how</b>, and
+  <b>for whom</b>. It could not answer them — it had no machinery. Four chapters later, you have
+  built the machinery and the answers have appeared almost as a by-product.</p>
+  <div class="box insight" style="max-width:46rem;margin:1.4rem auto;text-align:left">
+    <span class="tag">Where each answer came from</span>
+    <p><b>What to produce?</b> → the equilibrium quantity <b>q*</b>, set where demand meets supply.<br>
+    <b>How to produce?</b> → the <b>least-cost input combination</b>, from the cost function of
+    Chapter 3.<br>
+    <b>For whom?</b> → whoever has the <b>purchasing power</b> — determined by price, and by the
+    <b>wage rate</b> set in the labour market.</p>
+  </div>
+  <p class="small">And the single idea underneath all of it: <b>scarcity forces choice, and every
+  choice has an opportunity cost.</b></p>
+  <p style="margin-top:1.6rem"><a href="index.html" style="color:#755900;font-weight:700">← Back to course home</a></p>
+</section>
+
+</div>
+
+<button class="nav" id="prev" title="Previous (←)">‹</button>
+<button class="nav" id="next" title="Next (→)">›</button>
+<script src="assets/deck.js"></script>
+</body>
+</html>

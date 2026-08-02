@@ -4,7 +4,7 @@ Three independent courses of classroom presentation decks. Plain static HTML —
 step, no bundler, no dependencies**. What is in the repo is exactly what is served.
 
 ```
-economics/         Introductory Microeconomics · 5 chapters · local port 8111
+microeconomics/    Introductory Microeconomics · 5 chapters · local port 8111
 macro-economics/   Introductory Macroeconomics · 6 chapters · local port 8112
 computer-science/  Computer Science, CBSE 083  · 10 chapters · local port 8113
 index.html         Landing page linking to the three courses
@@ -56,3 +56,11 @@ the repository root instead:
 ```bash
 python3 -m http.server 8000
 ```
+
+## `economics/` is a set of redirect stubs
+
+The Microeconomics folder was renamed `economics/` → `microeconomics/`. Because students hold
+live links to the old path, `economics/` still exists containing **six one-line redirect
+files** — one per chapter plus `index.html` — which `location.replace()` to the new path,
+preserving the `#slide` hash. They are not decks. Never add content there, and never edit them
+to "fix" a chapter: edit the real file under `microeconomics/`.

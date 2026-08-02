@@ -14,7 +14,7 @@ cd "$DIR"
 if [ -t 1 ] && lsof -i :"$PORT" >/dev/null 2>&1; then
   echo "Port $PORT is already in use. Stop the existing server first:"
   echo "  lsof -ti :$PORT | xargs kill"
-  echo "Or, if it is running under pm2:  pm2 stop economics-deck"
+  echo "Or, if it is running under pm2:  pm2 stop economics-deck (the pm2 process name is unchanged)"
   exit 1
 fi
 

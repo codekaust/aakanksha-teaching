@@ -1,0 +1,3057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 2 — Theory of Consumer Behaviour | Class XII Microeconomics</title>
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body>
+
+<div id="bar">
+  <span class="brand">CH 2 · CONSUMER BEHAVIOUR</span>
+  <span class="sect" id="sect"></span>
+  <span class="tools">
+    <span id="counter">1 / 1</span>
+    <button id="menuBtn" title="Slide menu (m)">☰ Menu</button>
+    <button id="fsBtn" title="Fullscreen (f)">⛶</button>
+    <button onclick="location.href='index.html'" title="Course home">⌂</button>
+  </span>
+</div>
+<div id="progress" style="width:0"></div>
+
+<div id="menu">
+  <h3>Chapter 2 — Theory of Consumer Behaviour</h3>
+  <p class="hint">Click any slide to jump · press <b>m</b> or <b>Esc</b> to close</p>
+  <div class="mlist"></div>
+</div>
+
+<div id="stage">
+
+<!-- ================= OPENING ================= -->
+<section class="slide title-slide" data-section="Opening">
+  <div class="kicker">Introductory Microeconomics · Class XII</div>
+  <h1>Chapter 2<br>Theory of Consumer Behaviour</h1>
+  <div class="rule"></div>
+  <p class="sub">One person. A fixed income. Two goods. Out of this single decision we will
+  construct the <b>demand curve</b> — one of the two blades of the scissors that determines
+  every price you have ever paid.</p>
+</section>
+
+<section class="slide">
+  <h2>The question this chapter answers</h2>
+  <div class="qcard">
+    <span class="tag">The consumer's problem</span>
+    <p>You walk into a shop with a fixed amount of money. Many combinations of goods are
+    affordable. <b>Which one will you actually buy — and why that one?</b></p>
+  </div>
+  <p>Economists call this the <b>problem of choice</b>. The answer depends on exactly two things:</p>
+  <div class="grid2">
+    <div class="card"><h4>What you <i>want</i></h4>
+      <p>Your <b>tastes and preferences</b> — your likes and dislikes.</p>
+      <p class="small">Handled by: utility, indifference curves</p></div>
+    <div class="card"><h4>What you <i>can afford</i></h4>
+      <p>Your <b>income</b> and the <b>prices</b> of the goods.</p>
+      <p class="small">Handled by: budget set, budget line</p></div>
+  </div>
+  <div class="insight box">
+    <span class="tag">The whole chapter in one line</span>
+    <p><b>Best affordable bundle = the meeting point of what you want and what you can afford.</b>
+    Everything else is machinery for locating that point precisely.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Route map</h2>
+  <div class="grid2">
+    <div class="card"><h4>Part A · Cardinal utility</h4>
+      <p>Utility, Total Utility, Marginal Utility, the Law of Diminishing Marginal Utility —
+      and a first derivation of the demand curve.</p></div>
+    <div class="card"><h4>Part B · Ordinal utility</h4>
+      <p>Preferences, indifference curves, MRS, the indifference map.</p></div>
+    <div class="card"><h4>Part C · The budget</h4>
+      <p>Budget set, budget line, and how it moves when income or price changes.</p></div>
+    <div class="card"><h4>Part D · Optimal choice</h4>
+      <p>Putting the two halves together: the tangency condition.</p></div>
+    <div class="card"><h4>Part E · Demand</h4>
+      <p>Demand curve, law of demand, normal/inferior, substitutes/complements,
+      shifts vs movements, market demand.</p></div>
+    <div class="card"><h4>Part F · Elasticity</h4>
+      <p>Measuring responsiveness, elasticity along a linear demand curve, and expenditure.</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Notation we will use throughout</h2>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p>A <span class="term">consumption bundle</span> (or simply a <b>bundle</b>) is any
+    combination of quantities of the goods under consideration.</p>
+  </div>
+  <p>To keep every idea drawable on a flat page, we assume just <b>two goods</b>:
+  <b>bananas</b> and <b>mangoes</b>.</p>
+  <div class="grid2">
+    <div class="card">
+      <h4>The symbols</h4>
+      <ul>
+        <li><code>x<sub>1</sub></code> = quantity of <b>bananas</b></li>
+        <li><code>x<sub>2</sub></code> = quantity of <b>mangoes</b></li>
+        <li><code>(x<sub>1</sub>, x<sub>2</sub>)</code> = a bundle</li>
+        <li><code>p<sub>1</sub>, p<sub>2</sub></code> = their prices</li>
+        <li><code>M</code> = the consumer's income</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Reading a bundle</h4>
+      <p><code>(5, 10)</code> = 5 bananas and 10 mangoes.<br>
+      <code>(10, 5)</code> = 10 bananas and 5 mangoes.</p>
+      <p class="small"><b>Order matters.</b> These are different bundles. Both quantities may
+      be positive or zero.</p>
+    </div>
+  </div>
+  <div class="bridge box">
+    <span class="tag">Why only two goods?</span>
+    <p>Not because real consumers buy two things — but because two goods fit on a
+    two-dimensional diagram. Every conclusion we reach generalises to many goods; we simply
+    could not <i>draw</i> it. The same trick is used in <b>Chapter 3</b>, where the firm uses
+    exactly two inputs, L and K.</p>
+  </div>
+</section>
+
+<!-- ================= PART A: UTILITY ================= -->
+<section class="slide" data-section="2.1 Utility">
+  <h2><span class="num">2.1</span>Utility</h2>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Utility</span> of a commodity is its <b>want-satisfying capacity</b>.
+    The stronger the desire for a commodity, the greater the utility derived from it.</p>
+  </div>
+  <div class="warn box">
+    <span class="tag">Utility is <u>not</u> usefulness — a very common error</span>
+    <p>Utility is a <b>subjective</b>, ethically neutral idea. A cigarette has utility for a
+    smoker even though it is harmful. Utility measures <i>how much a person wants something</i>,
+    not whether they <i>should</i> want it.</p>
+  </div>
+  <div class="eg box">
+    <span class="tag">Utility is subjective — it varies with…</span>
+    <ul>
+      <li><b>Person:</b> a chocolate gives high utility to someone fond of chocolate, low to someone who dislikes it.</li>
+      <li><b>Place:</b> a room heater in Ladakh vs in Chennai.</li>
+      <li><b>Time:</b> that same heater in winter vs in summer.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Two ways to handle utility</h2>
+  <div class="grid2">
+    <div class="card"><h4>Cardinal utility analysis</h4>
+      <p>Assumes utility <b>can be measured in numbers</b>, in imaginary units called
+      <b>utils</b>. "This shirt gives me 50 utils."</p>
+      <p class="small">Tools: Total Utility, Marginal Utility, Law of DMU.</p>
+      <p class="small">Associated with <b>Alfred Marshall</b>.</p>
+    </div>
+    <div class="card"><h4>Ordinal utility analysis</h4>
+      <p>Assumes utility <b>can only be ranked</b>, not measured. "I prefer this bundle to that
+      one" — but by how much, we never say.</p>
+      <p class="small">Tools: preferences, indifference curves, MRS.</p>
+      <p class="small">Associated with <b>Hicks and Allen</b>.</p>
+    </div>
+  </div>
+  <div class="insight box">
+    <span class="tag">Which is right?</span>
+    <p>The ordinal approach is more realistic — nobody genuinely says "that mango gave me 14.7
+    utils." But the cardinal approach is easier to learn and gives the same core conclusion.
+    <b>We study both, and they agree: the demand curve slopes downward.</b></p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.1.1</span>Total Utility and Marginal Utility</h2>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Total Utility (TU)</span> is the <b>total satisfaction</b> derived
+    from consuming a given quantity of a commodity. <code>TU<sub>n</sub></code> is the total
+    utility from consuming <i>n</i> units.</p>
+  </div>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Marginal Utility (MU)</span> is the <b>change in total utility</b>
+    resulting from the consumption of <b>one additional unit</b> of a commodity.</p>
+  </div>
+  <div class="formula">
+    MU<sub>n</sub> &nbsp;=&nbsp; TU<sub>n</sub> − TU<sub>n−1</sub>
+  </div>
+  <div class="formula">
+    TU<sub>n</sub> &nbsp;=&nbsp; MU<sub>1</sub> + MU<sub>2</sub> + … + MU<sub>n</sub>
+    &nbsp;=&nbsp; ΣMU
+  </div>
+  <div class="eg box">
+    <span class="tag">Example</span>
+    <p>4 bananas give 28 utils; 5 bananas give 30 utils.<br>
+    So MU of the 5th banana = TU<sub>5</sub> − TU<sub>4</sub> = 30 − 28 = <b>2 utils</b>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The schedule — read it carefully<button class="info" data-term="total-utility"></button><button class="info" data-term="marginal-utility"></button></h2>
+  <div class="split">
+    <div>
+      <table>
+        <caption>Table 2.1 — Utility from successive units</caption>
+        <thead><tr><th>Units consumed</th><th>Total Utility (TU)</th><th>Marginal Utility (MU)</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>12</td><td>12</td></tr>
+          <tr><td>2</td><td>18</td><td>6</td></tr>
+          <tr><td>3</td><td>22</td><td>4</td></tr>
+          <tr><td>4</td><td>24</td><td>2</td></tr>
+          <tr><td class="hi">5</td><td class="hi">24</td><td class="hi">0</td></tr>
+          <tr><td>6</td><td>22</td><td>−2</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="box eg">
+        <span class="tag">Verify the two formulas</span>
+        <p><b>MU₃ = TU₃ − TU₂ = 22 − 18 = 4</b> ✓</p>
+        <p><b>TU₄ = MU₁+MU₂+MU₃+MU₄ = 12+6+4+2 = 24</b> ✓</p>
+      </div>
+      <div class="box insight">
+        <span class="tag">Three things to notice</span>
+        <ol>
+          <li>MU keeps <b>falling</b>: 12 → 6 → 4 → 2 → 0 → −2</li>
+          <li>TU keeps <b>rising, but more and more slowly</b> — it rises <i>at a diminishing rate</i></li>
+          <li>At the 5th unit, <b>MU = 0 and TU is at its maximum (24)</b></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>TU and MU — plotted from Table 2.1<button class="info" data-term="total-utility"></button><button class="info" data-term="marginal-utility"></button></h2>
+  <figure>
+    <svg viewBox="0 0 540 580" role="img" aria-label="Total utility and marginal utility curves plotted from Table 2.1">
+      <!-- ===== TU panel ===== -->
+      <g class="grid">
+        <line x1="60" y1="78"  x2="470" y2="78"/>
+        <line x1="60" y1="126" x2="470" y2="126"/>
+        <line x1="60" y1="174" x2="470" y2="174"/>
+        <line x1="60" y1="222" x2="470" y2="222"/>
+      </g>
+      <line class="axis" x1="60" y1="270" x2="60" y2="50"/>
+      <line class="axis" x1="60" y1="270" x2="480" y2="270"/>
+      <text x="50" y="275" text-anchor="end">0</text>
+      <text x="50" y="227" text-anchor="end">6</text>
+      <text x="50" y="179" text-anchor="end">12</text>
+      <text x="50" y="131" text-anchor="end">18</text>
+      <text x="50" y="83"  text-anchor="end">24</text>
+      <text class="lab" x="18" y="160" text-anchor="middle" transform="rotate(-90 18 160)">TOTAL UTILITY</text>
+      <text class="lab" x="250" y="42" text-anchor="middle" style="fill:#755900">TU rises at a diminishing rate, peaks, then falls</text>
+
+      <!-- TU curve: (0,0)(1,12)(2,18)(3,22)(4,24)(5,24)(6,22) -->
+      <path class="curve c-amber"
+            d="M60,270 C82,242 100,200 122,174
+                       C142,150 165,132 184,126
+                       C205,119 228,104 246,94
+                       C266,83 290,78 308,78
+                       C330,78 350,78 370,78
+                       C392,78 414,80 432,90"/>
+      <circle class="pt" cx="122" cy="174" r="5"/>
+      <circle class="pt" cx="184" cy="126" r="5"/>
+      <circle class="pt" cx="246" cy="94"  r="5"/>
+      <circle class="pt" cx="308" cy="78"  r="5"/>
+      <circle class="pt" cx="370" cy="78"  r="5"/>
+      <circle class="pt" cx="432" cy="90"  r="5"/>
+      <text class="lab" x="446" y="112" style="fill:#755900">TU</text>
+
+      <!-- max marker -->
+      <line class="dash" stroke="#748500" x1="370" y1="78" x2="370" y2="450"/>
+      <text x="292" y="66" style="fill:#586600">TU maximum, where MU = 0</text>
+
+      <!-- ===== MU panel ===== -->
+      <g class="grid">
+        <line x1="60" y1="340" x2="470" y2="340"/>
+        <line x1="60" y1="384" x2="470" y2="384"/>
+      </g>
+      <line class="axis" x1="60" y1="500" x2="60" y2="300"/>
+      <!-- MU zero line -->
+      <line class="axis" x1="60" y1="450" x2="480" y2="450"/>
+      <text x="50" y="455" text-anchor="end">0</text>
+      <text x="50" y="389" text-anchor="end">6</text>
+      <text x="50" y="345" text-anchor="end">12</text>
+      <text x="50" y="500" text-anchor="end">−4</text>
+      <text class="lab" x="18" y="400" text-anchor="middle" transform="rotate(-90 18 400)">MARGINAL UTILITY</text>
+
+      <!-- MU curve: (1,12)(2,6)(3,4)(4,2)(5,0)(6,-2)  y = 450 - MU*9.17 -->
+      <path class="curve c-teal"
+            d="M122,340 C142,380 165,398 184,395
+                       C205,392 228,378 246,413
+                       C266,432 290,432 308,432
+                       C330,432 352,450 370,450
+                       C392,450 414,462 432,468"/>
+      <circle cx="122" cy="340" r="5" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+      <circle cx="184" cy="395" r="5" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+      <circle cx="246" cy="413" r="5" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+      <circle cx="308" cy="432" r="5" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+      <circle cx="370" cy="450" r="5" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+      <circle cx="432" cy="468" r="5" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+      <text class="lab" x="448" y="484" style="fill:#586600">MU</text>
+      <text x="378" y="443" style="fill:#586600">MU = 0</text>
+      <text x="400" y="490" style="fill:#b02522">MU negative</text>
+
+      <!-- x ticks -->
+      <text x="122" y="522" text-anchor="middle">1</text>
+      <text x="184" y="522" text-anchor="middle">2</text>
+      <text x="246" y="522" text-anchor="middle">3</text>
+      <text x="308" y="522" text-anchor="middle">4</text>
+      <text x="370" y="522" text-anchor="middle">5</text>
+      <text x="432" y="522" text-anchor="middle">6</text>
+      <text class="lab" x="265" y="552" text-anchor="middle">UNITS CONSUMED</text>
+    </svg>
+    <figcaption>Both curves plotted from the exact values in Table 2.1. Note the dashed line:
+    TU reaches its maximum <b>precisely</b> where MU cuts zero.</figcaption>
+  </figure>
+</section>
+
+<section class="slide">
+  <h2>The TU–MU relationship — learn this pattern once<button class="info" data-term="total-utility"></button><button class="info" data-term="marginal-utility"></button></h2>
+  <table>
+    <thead><tr><th class="lbl">Phase</th><th>Marginal Utility</th><th>Total Utility</th><th>In Table 2.1</th></tr></thead>
+    <tbody>
+      <tr><td class="lbl">1</td><td>MU is <b>positive</b> but falling</td><td>TU <b>rises</b>, at a diminishing rate</td><td>Units 1–4</td></tr>
+      <tr><td class="lbl">2</td><td>MU = <b>0</b></td><td>TU is at its <b>maximum</b> (point of satiation)</td><td>Unit 5</td></tr>
+      <tr><td class="lbl">3</td><td>MU is <b>negative</b></td><td>TU <b>falls</b></td><td>Unit 6</td></tr>
+    </tbody>
+  </table>
+  <div class="insight box">
+    <span class="tag">This is a general pattern, not a fact about bananas</span>
+    <p>The relationship between a <b>total</b> and its <b>marginal</b> is always this:</p>
+    <p class="center"><b>Marginal &gt; 0 → Total rises &nbsp;·&nbsp; Marginal = 0 → Total is at its peak
+    &nbsp;·&nbsp; Marginal &lt; 0 → Total falls</b></p>
+  </div>
+  <div class="bridge box">
+    <span class="tag">Looking ahead — this returns three times</span>
+    <p>You will meet the identical logic with <b>Marginal Product</b> and Total Product
+    (Ch 3), with <b>Marginal Cost</b> and Total Cost (Ch 3), and with <b>Marginal Revenue</b>
+    and Total Revenue (Ch 4). <b>Master it here and you get three chapters at a discount.</b></p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The Law of Diminishing Marginal Utility</h2>
+  <div class="box defn">
+    <span class="tag">Definition — learn word for word</span>
+    <p>The <span class="term">Law of Diminishing Marginal Utility</span> states that as a
+    consumer consumes <b>more and more units of a commodity</b>, the <b>marginal utility
+    derived from each successive unit goes on declining</b>, while the consumption of other
+    commodities is kept constant.</p>
+  </div>
+  <div class="eg box">
+    <span class="tag">The intuition</span>
+    <p>You are thirsty. The <b>1st</b> glass of water is bliss. The <b>2nd</b> is nice. The
+    <b>3rd</b> is fine. The <b>5th</b> adds nothing. The <b>6th</b> makes you uncomfortable —
+    <b>negative</b> marginal utility.</p>
+    <p>Why? Because <b>having obtained some of the commodity, the desire for still more of it
+    becomes weaker.</b></p>
+  </div>
+  <div class="warn box">
+    <span class="tag">Assumptions — often asked directly</span>
+    <ol>
+      <li>The units consumed must be <b>homogeneous</b> (identical in size and quality).</li>
+      <li>Consumption must be <b>continuous</b>, with no long gap between units.</li>
+      <li>Consumption of <b>other commodities remains unchanged</b>.</li>
+      <li>Tastes, preferences and income remain <b>unchanged</b>.</li>
+      <li>The units must be of a <b>reasonable size</b> — not spoonfuls of water.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Check your understanding</h2>
+  <div class="qcard">
+    <span class="tag">Question 1</span>
+    <p>Complete the schedule:<button class="info" data-term="total-utility"></button><button class="info" data-term="marginal-utility"></button></p>
+    <table>
+      <thead><tr><th>Units</th><th>TU</th><th>MU</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>20</td><td>?</td></tr>
+        <tr><td>2</td><td>?</td><td>14</td></tr>
+        <tr><td>3</td><td>42</td><td>?</td></tr>
+        <tr><td>4</td><td>?</td><td>4</td></tr>
+        <tr><td>5</td><td>46</td><td>?</td></tr>
+      </tbody>
+    </table>
+    <p>At which unit does the consumer reach the point of satiation?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <table>
+      <thead><tr><th>Units</th><th>TU</th><th>MU</th><th>Working</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>20</td><td class="hi2">20</td><td>MU₁ = TU₁ − 0</td></tr>
+        <tr><td>2</td><td class="hi2">34</td><td>14</td><td>TU₂ = 20 + 14</td></tr>
+        <tr><td>3</td><td>42</td><td class="hi2">8</td><td>42 − 34</td></tr>
+        <tr><td>4</td><td class="hi2">46</td><td>4</td><td>42 + 4</td></tr>
+        <tr><td>5</td><td>46</td><td class="hi2">0</td><td>46 − 46</td></tr>
+      </tbody>
+    </table>
+    <p><b>Satiation at the 5th unit</b>, where MU = 0 and TU is maximum (46). Note MU falls
+    throughout — 20, 14, 8, 4, 0 — exactly as the Law of DMU predicts.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Challenge</h2>
+  <div class="challenge">
+    <span class="tag">Challenge — section 2.1</span>
+    <p>A consumer's total utility from bananas is <b>rising</b>, and her marginal utility is
+    <b>positive but falling</b>.</p>
+    <p>A student concludes: <i>"Since she still gets positive utility from every extra banana,
+    a rational consumer should keep buying bananas until MU reaches zero — that is where total
+    satisfaction is greatest."</i></p>
+    <p>(a) Is it true that TU is greatest where MU = 0?<br>
+    (b) Is the student's advice correct? What has been left out?<br>
+    (c) State the condition that actually determines how many bananas she buys.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>(a) Yes — that part is correct.</b> TU is maximum exactly where MU = 0. In Table 2.1
+    that is the 5th unit, where TU peaks at 24.</p>
+    <p><b>(b) The advice is wrong. What has been left out is the price.</b></p>
+    <div class="q">
+      <p>Bananas are <b>not free</b>. Every banana bought uses up money that could have bought
+      something else.</p>
+    </div>
+    <p>Consuming up to MU = 0 would be right only if bananas cost <b>nothing</b>. Since they have
+    a price, each banana carries an <b>opportunity cost</b> — the satisfaction forgone from the
+    mangoes that money could have bought. The student is maximising <b>satisfaction from one
+    good</b> while ignoring the <b>budget constraint</b> and the other good entirely.</p>
+    <p><b>(c) The condition is the tangency condition:</b></p>
+    <div class="formula" style="font-size:1.15rem">MRS<button class="info" data-term="mrs"></button> = p₁ / p₂<button class="info" data-term="price-ratio"></button></div>
+    <p>She stops where the rate at which she is <b>willing</b> to trade mangoes for bananas equals
+    the rate at which the market <b>lets</b> her. At that point MU of bananas is still
+    <b>strictly positive</b> — she would happily eat more, but not at that price.</p>
+    <p class="small"><b>The general error is important beyond this question:</b> maximising the
+    satisfaction from a <i>single</i> good is not the same as maximising <i>overall</i>
+    satisfaction. The consumer's problem is a problem of <b>allocation across goods under a
+    constraint</b> — which is exactly why Chapter 2 needs both an indifference map <i>and</i> a
+    budget line, not just one of them.</p>
+    <p class="small">Note the structural echo of <b>Chapter 1</b>: a free good would be consumed
+    to satiation; an economic good never is, precisely because it is scarce and carries an
+    opportunity cost.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Deriving the demand curve<button class="info" data-term="demand-curve"></button> from diminishing MU<button class="info" data-term="marginal-utility"></button></h2>
+  <p class="lead">The Law of DMU<button class="info" data-term="dmu"></button> already contains the Law of Demand<button class="info" data-term="law-of-demand"></button>. Here is the argument.</p>
+  <div class="split">
+    <figure>
+      <svg viewBox="0 0 460 380" role="img" aria-label="Individual demand curve derived from diminishing marginal utility">
+        <line class="axis" x1="70" y1="320" x2="70" y2="35"/>
+        <line class="axis" x1="70" y1="320" x2="430" y2="320"/>
+        <text class="lab" x="250" y="366" text-anchor="middle">QUANTITY of x (units)</text>
+        <text class="lab" x="22" y="180" text-anchor="middle" transform="rotate(-90 22 180)">PRICE (₹ per unit)</text>
+        <text x="62" y="338" text-anchor="end">O</text>
+
+        <!-- demand curve -->
+        <path class="curve c-blue" d="M105,58 C160,110 230,180 300,240 C340,274 375,296 400,308"/>
+        <text class="lab" x="404" y="296" style="fill:#175f90">D</text>
+
+        <!-- p=40 q=5 -->
+        <line class="dash" stroke="#a17a00" x1="70" y1="152" x2="212" y2="152"/>
+        <line class="dash" stroke="#a17a00" x1="212" y1="152" x2="212" y2="320"/>
+        <circle class="pt" cx="212" cy="152" r="6"/>
+        <text x="62" y="157" text-anchor="end" style="fill:#755900">40</text>
+        <text x="212" y="340" text-anchor="middle" style="fill:#755900">5</text>
+
+        <!-- p=32 q=6 -->
+        <line class="dash" stroke="#748500" x1="70" y1="196" x2="252" y2="196"/>
+        <line class="dash" stroke="#748500" x1="252" y1="196" x2="252" y2="320"/>
+        <circle cx="252" cy="196" r="6" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+        <text x="62" y="201" text-anchor="end" style="fill:#586600">32</text>
+        <text x="256" y="340" text-anchor="middle" style="fill:#586600">6</text>
+      </svg>
+      <figcaption>At ₹40 she buys 5 units. Only when price falls to ₹32 does the 6th unit
+      become worth buying.</figcaption>
+    </figure>
+    <div>
+      <div class="box eg">
+        <span class="tag">The argument, step by step</span>
+        <ol class="steps">
+          <li>By the Law of DMU, the <b>6th</b> unit gives <b>less</b> satisfaction than the 5th.</li>
+          <li>A consumer will not pay more for a unit than it is worth to her.</li>
+          <li>So she is <b>not willing to pay ₹40</b> for the 6th unit — she paid ₹40 for the 5th,
+          which was worth more.</li>
+          <li>She will buy the 6th unit <b>only if the price falls</b>.</li>
+          <li>Therefore: <b>lower price → larger quantity demanded.</b> The demand curve slopes
+          <b>downward</b>.</li>
+        </ol>
+      </div>
+      <div class="box defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Demand</span> for a commodity is the quantity that a consumer is
+        <b>willing to buy and able to afford</b>, at a given price, in a given period of time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PART B: ORDINAL ================= -->
+<section class="slide" data-section="2.1.2 Ordinal Utility">
+  <h2><span class="num">2.1.2</span>The problem with cardinal utility<button class="info" data-term="cardinal-utility"></button></h2>
+  <div class="warn box">
+    <span class="tag">The objection</span>
+    <p>Cardinal utility analysis is easy to teach — but its central assumption is <b>false</b>.
+    <b>In real life nobody expresses satisfaction in numbers.</b> You have never said "this
+    mango gave me 17 utils." Utility has no natural unit, and no two people's "utils" could
+    be compared anyway.</p>
+  </div>
+  <div class="insight box">
+    <span class="tag">The rescue</span>
+    <p>But there <i>is</i> something you can honestly do: <b>rank</b> bundles.</p>
+    <p class="center">"I prefer A to B" &nbsp;·&nbsp; "I prefer B to A" &nbsp;·&nbsp;
+    "I am <b>indifferent</b> between A and B"</p>
+    <p>That is all the ordinal approach ever asks of a consumer — an <b>ordering</b>, never a
+    measurement. And remarkably, it is <b>enough</b> to derive the entire theory.</p>
+  </div>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Ordinal utility analysis</span> assumes that a consumer can only
+    <b>rank</b> consumption bundles in order of preference, not measure the utility from them
+    in numbers.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Monotonic preferences</h2>
+  <div class="box defn">
+    <span class="tag">Definition — quoted often in exams</span>
+    <p>A consumer's preferences are <span class="term">monotonic</span> if and only if, between
+    any two bundles, the consumer <b>prefers the bundle which has more of at least one of the
+    goods and no less of the other good</b> as compared to the other bundle.</p>
+  </div>
+  <div class="eg box">
+    <span class="tag">Reading it in plain language</span>
+    <p><b>"More is better."</b> If bundle A gives you more of something and no less of anything
+    else, you must prefer A.</p>
+    <p>Compare <code>(10, 8)</code> and <code>(8, 6)</code>: the first has <b>more of both</b>.
+    A consumer with monotonic preferences <b>must strictly prefer (10, 8)</b> — she cannot be
+    indifferent.</p>
+    <p>Compare <code>(6, 6)</code> and <code>(5, 6)</code>: same mangoes, one more banana.
+    <b>(6, 6) must be preferred.</b></p>
+  </div>
+  <div class="insight box">
+    <span class="tag">Why this assumption matters</span>
+    <p>Monotonicity is what forces the indifference curve to slope <b>downward</b>, and what
+    forces the consumer's optimum to lie <b>on</b> the budget line rather than inside it.
+    It does a great deal of quiet work later in this chapter.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The indifference curve</h2>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p>An <span class="term">indifference curve</span> is the locus of all points representing
+    those bundles among which the consumer is <b>indifferent</b> — every bundle on it yields
+    the <b>same level of satisfaction</b>.</p>
+  </div>
+  <div class="split">
+    <div>
+      <table>
+        <caption>Table 2.2 — All four bundles are equally satisfying</caption>
+        <thead><tr><th>Combination</th><th>Bananas</th><th>Mangoes</th></tr></thead>
+        <tbody>
+          <tr><td>A</td><td>1</td><td>15</td></tr>
+          <tr><td>B</td><td>2</td><td>12</td></tr>
+          <tr><td>C</td><td>3</td><td>10</td></tr>
+          <tr><td>D</td><td>4</td><td>9</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="box eg">
+        <span class="tag">What the table is saying</span>
+        <p>This consumer is <b>equally happy</b> with 1 banana + 15 mangoes as she is with
+        4 bananas + 9 mangoes. She has no reason to prefer any one of A, B, C, D.</p>
+      </div>
+      <div class="box warn">
+        <span class="tag">Notice the sacrifice</span>
+        <p>To gain each extra banana she gives up mangoes — but only
+        <b>3, then 2, then 1</b>. The sacrifice is <b>shrinking</b>. That is the key
+        observation, and it has a name.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Table 2.2, drawn<button class="info" data-term="ic"></button></h2>
+  <figure>
+    <svg viewBox="0 0 520 400" role="img" aria-label="Indifference curve plotted from Table 2.2">
+      <g class="grid">
+        <line x1="60" y1="70"  x2="470" y2="70"/>
+        <line x1="60" y1="124" x2="470" y2="124"/>
+        <line x1="60" y1="160" x2="470" y2="160"/>
+        <line x1="60" y1="178" x2="470" y2="178"/>
+        <line x1="140" y1="40" x2="140" y2="340"/>
+        <line x1="220" y1="40" x2="220" y2="340"/>
+        <line x1="300" y1="40" x2="300" y2="340"/>
+        <line x1="380" y1="40" x2="380" y2="340"/>
+      </g>
+      <line class="axis" x1="60" y1="340" x2="60" y2="35"/>
+      <line class="axis" x1="60" y1="340" x2="490" y2="340"/>
+      <text x="60" y="360" text-anchor="middle">O</text>
+      <text x="140" y="360" text-anchor="middle">1</text>
+      <text x="220" y="360" text-anchor="middle">2</text>
+      <text x="300" y="360" text-anchor="middle">3</text>
+      <text x="380" y="360" text-anchor="middle">4</text>
+      <text x="50" y="75"  text-anchor="end">15</text>
+      <text x="50" y="129" text-anchor="end">12</text>
+      <text x="50" y="165" text-anchor="end">10</text>
+      <text x="50" y="183" text-anchor="end">9</text>
+      <text class="lab" x="275" y="388" text-anchor="middle">BANANAS (x₁)</text>
+      <text class="lab" x="20" y="190" text-anchor="middle" transform="rotate(-90 20 190)">MANGOES (x₂)</text>
+
+      <!-- IC through A(140,70) B(220,124) C(300,160) D(380,178) -->
+      <path class="curve c-violet"
+            d="M115,42 C125,55 133,63 140,70
+                       C153.3,79 193.3,109 220,124
+                       C246.7,139 273.3,151 300,160
+                       C326.7,169 366.7,175 380,178
+                       C400,182 425,187 448,191"/>
+      <text class="lab" x="452" y="205" style="fill:#5055a0">IC</text>
+
+      <!-- step drops showing shrinking sacrifice -->
+      <g stroke-width="2.5" fill="none" stroke="#748500">
+        <path d="M140,70 L220,70 L220,124"/>
+        <path d="M220,124 L300,124 L300,160"/>
+        <path d="M300,160 L380,160 L380,178"/>
+      </g>
+      <text x="228" y="100" style="fill:#586600">−3</text>
+      <text x="308" y="146" style="fill:#586600">−2</text>
+      <text x="388" y="172" style="fill:#586600">−1</text>
+      <text x="176" y="62" style="fill:#586600">+1</text>
+      <text x="256" y="116" style="fill:#586600">+1</text>
+      <text x="336" y="152" style="fill:#586600">+1</text>
+
+      <circle class="pt" cx="140" cy="70"  r="6"/>
+      <circle class="pt" cx="220" cy="124" r="6"/>
+      <circle class="pt" cx="300" cy="160" r="6"/>
+      <circle class="pt" cx="380" cy="178" r="6"/>
+      <text class="lab" x="118" y="88">A</text>
+      <text class="lab" x="200" y="142">B</text>
+      <text class="lab" x="282" y="178">C</text>
+      <text class="lab" x="362" y="196">D</text>
+    </svg>
+    <figcaption>Each step gains exactly <b>one</b> banana, but the mangoes given up shrink
+    from 3 to 2 to 1. That shrinking is what makes the curve <b>convex to the origin</b>.</figcaption>
+  </figure>
+</section>
+
+<section class="slide">
+  <h2>Marginal Rate of Substitution (MRS)</h2>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Marginal Rate of Substitution (MRS)</span> is the rate at which a
+    consumer is <b>willing to sacrifice units of one good to obtain one additional unit of the
+    other</b>, so that her total satisfaction remains unchanged.</p>
+  </div>
+  <div class="formula">
+    MRS = <span class="frac"><span>Units of mangoes sacrificed</span><span>Units of bananas gained</span></span>
+    = &nbsp;| Δx₂ / Δx₁ |
+  </div>
+  <table>
+    <thead><tr><th>Combination</th><th>Bananas (x₁)</th><th>Mangoes (x₂)</th><th>Δx₂</th><th>Δx₁</th><th>MRS</th></tr></thead>
+    <tbody>
+      <tr><td>A</td><td>1</td><td>15</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>B</td><td>2</td><td>12</td><td>−3</td><td>+1</td><td class="hi">3 : 1</td></tr>
+      <tr><td>C</td><td>3</td><td>10</td><td>−2</td><td>+1</td><td class="hi">2 : 1</td></tr>
+      <tr><td>D</td><td>4</td><td>9</td><td>−1</td><td>+1</td><td class="hi">1 : 1</td></tr>
+    </tbody>
+  </table>
+  <div class="insight box">
+    <span class="tag">MRS <i>is</i> the slope</span>
+    <p>MRS is the <b>absolute value of the slope of the indifference curve<button class="info" data-term="ic"></button></b> at a point.
+    Since the curve slopes downward, Δx₂/Δx₁ is negative; we take the magnitude and drop the
+    minus sign. So MRS = 3 means "willing to give up 3 mangoes for 1 banana."</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The Law of Diminishing MRS<button class="info" data-term="mrs"></button></h2>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p>The <span class="term">Law of Diminishing Marginal Rate of Substitution</span> states
+    that as the consumer acquires <b>more and more of one good</b>, she is willing to give up
+    <b>smaller and smaller amounts</b> of the other good for each additional unit.</p>
+  </div>
+  <div class="eg box">
+    <span class="tag">Why MRS falls — the reason is just DMU twice over</span>
+    <ol class="steps">
+      <li>As the number of <b>bananas rises</b>, the MU of each additional banana <b>falls</b>
+      (Law of DMU). Bananas become less precious.</li>
+      <li>As the number of <b>mangoes falls</b>, the MU of the remaining mangoes <b>rises</b>
+      (Law of DMU, running backwards). Mangoes become more precious.</li>
+      <li>So she is willing to give up <b>fewer and fewer</b> increasingly-precious mangoes for
+      each less-and-less-precious banana. <b>MRS falls.</b></li>
+    </ol>
+  </div>
+  <div class="insight box">
+    <span class="tag">Consequence for the diagram</span>
+    <p>Diminishing MRS ⇒ the indifference curve gets <b>flatter</b> as we move right ⇒ it is
+    <b>convex to the origin</b>. This is the normal shape of an indifference curve.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The exception: perfect substitutes<button class="info" data-term="mrs"></button><button class="info" data-term="dmrs"></button></h2>
+  <div class="split">
+    <figure>
+      <svg viewBox="0 0 460 380" role="img" aria-label="Indifference curve for perfect substitutes is a straight line">
+        <line class="axis" x1="70" y1="320" x2="70" y2="35"/>
+        <line class="axis" x1="70" y1="320" x2="430" y2="320"/>
+        <text class="lab" x="250" y="366" text-anchor="middle">₹5 NOTES (x₁)</text>
+        <text class="lab" x="22" y="180" text-anchor="middle" transform="rotate(-90 22 180)">₹5 COINS (x₂)</text>
+        <text x="62" y="338" text-anchor="end">O</text>
+        <text x="130" y="340" text-anchor="middle">1</text>
+        <text x="200" y="340" text-anchor="middle">2</text>
+        <text x="270" y="340" text-anchor="middle">3</text>
+        <text x="340" y="340" text-anchor="middle">4</text>
+        <text x="62" y="88"  text-anchor="end">8</text>
+        <text x="62" y="128" text-anchor="end">7</text>
+        <text x="62" y="168" text-anchor="end">6</text>
+        <text x="62" y="208" text-anchor="end">5</text>
+
+        <!-- straight line IC -->
+        <line class="curve c-violet" x1="90" y1="68" x2="400" y2="245"/>
+
+        <g stroke-width="2.5" fill="none" stroke="#748500">
+          <path d="M130,88 L200,88 L200,128"/>
+          <path d="M200,128 L270,128 L270,168"/>
+          <path d="M270,168 L340,168 L340,208"/>
+        </g>
+        <text x="208" y="112" style="fill:#586600">−1</text>
+        <text x="278" y="152" style="fill:#586600">−1</text>
+        <text x="348" y="192" style="fill:#586600">−1</text>
+
+        <circle class="pt" cx="130" cy="88"  r="6"/>
+        <circle class="pt" cx="200" cy="128" r="6"/>
+        <circle class="pt" cx="270" cy="168" r="6"/>
+        <circle class="pt" cx="340" cy="208" r="6"/>
+        <text class="lab" x="112" y="80">A</text>
+        <text class="lab" x="182" y="120">B</text>
+        <text class="lab" x="252" y="160">C</text>
+        <text class="lab" x="322" y="200">D</text>
+        <text class="lab" x="404" y="262" style="fill:#5055a0">IC</text>
+      </svg>
+      <figcaption>MRS is constant at 1:1, so the curve is a <b>straight line</b>.</figcaption>
+    </figure>
+    <div>
+      <div class="box defn">
+        <span class="tag">Definition</span>
+        <p><span class="term">Perfect substitutes</span> are goods that can be used in place of
+        each other and provide <b>exactly the same</b> level of utility to the consumer.</p>
+      </div>
+      <table>
+        <thead><tr><th>Comb.</th><th>₹5 notes</th><th>₹5 coins</th><th>MRS</th></tr></thead>
+        <tbody>
+          <tr><td>A</td><td>1</td><td>8</td><td>—</td></tr>
+          <tr><td>B</td><td>2</td><td>7</td><td>1 : 1</td></tr>
+          <tr><td>C</td><td>3</td><td>6</td><td>1 : 1</td></tr>
+          <tr><td>D</td><td>4</td><td>5</td><td>1 : 1</td></tr>
+        </tbody>
+      </table>
+      <div class="box eg">
+        <span class="tag">Why constant here</span>
+        <p>A ₹5 coin and a ₹5 note are <b>identical in value</b>. The consumer will always trade
+        exactly one for one, no matter how many she already holds. <b>MRS does not diminish</b>,
+        so the IC does not bend.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The indifference map</h2>
+  <div class="split">
+    <figure>
+      <svg viewBox="0 0 460 380" role="img" aria-label="An indifference map showing three indifference curves">
+        <line class="axis" x1="70" y1="320" x2="70" y2="35"/>
+        <line class="axis" x1="70" y1="320" x2="430" y2="320"/>
+        <text class="lab" x="250" y="366" text-anchor="middle">BANANAS (x₁)</text>
+        <text class="lab" x="22" y="180" text-anchor="middle" transform="rotate(-90 22 180)">MANGOES (x₂)</text>
+        <text x="62" y="338" text-anchor="end">O</text>
+
+        <path class="curve c-blue"   d="M92,150 C130,196 172,232 214,252 C258,272 310,286 372,296"/>
+        <path class="curve c-violet" d="M104,96  C146,146 194,188 240,212 C288,236 342,252 404,264"/>
+        <path class="curve c-teal"   d="M120,54  C166,106 220,152 270,180 C320,206 368,222 420,232"/>
+
+        <text class="lab" x="378" y="312" style="fill:#175f90">IC₁</text>
+        <text class="lab" x="410" y="282" style="fill:#5055a0">IC₂</text>
+        <text class="lab" x="424" y="250" style="fill:#586600">IC₃</text>
+
+        <defs>
+          <marker id="up" markerWidth="10" markerHeight="8" refX="5" refY="1" orient="auto">
+            <path d="M0,8 L5,0 L10,8 z" fill="#a17a00"/>
+          </marker>
+        </defs>
+        <line x1="330" y1="290" x2="290" y2="180" class="axis" stroke="#a17a00" marker-end="url(#up)"/>
+        <text x="336" y="238" style="fill:#755900">higher</text>
+        <text x="336" y="256" style="fill:#755900">utility</text>
+      </svg>
+    </figure>
+    <div>
+      <div class="box defn">
+        <span class="tag">Definition</span>
+        <p>An <span class="term">indifference map</span> is a <b>family of indifference curves</b>
+        representing a consumer's preferences over all possible bundles. Each curve corresponds
+        to a different level of satisfaction.</p>
+      </div>
+      <div class="box insight">
+        <span class="tag">The ranking rule</span>
+        <p>Because preferences are <b>monotonic</b>, a curve lying <b>farther from the origin
+        gives higher satisfaction</b>.</p>
+        <p class="center"><b>IC₃ ≻ IC₂ ≻ IC₁</b></p>
+      </div>
+      <div class="box warn">
+        <span class="tag">A crucial limitation</span>
+        <p>The map tells us the <b>order</b> — IC₃ is better than IC₂ — but <b>never by how much</b>.
+        That is precisely what "ordinal" means. There is no number attached to any curve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Feature 1 — An indifference curve<button class="info" data-term="ic"></button> slopes downward<button class="info" data-term="monotonic"></button></h2>
+  <div class="split">
+    <figure>
+      <svg viewBox="0 0 460 340" role="img" aria-label="Indifference curve slopes downward: gain in bananas offset by loss of mangoes">
+        <line class="axis" x1="70" y1="290" x2="70" y2="30"/>
+        <line class="axis" x1="70" y1="290" x2="430" y2="290"/>
+        <text class="lab" x="250" y="330" text-anchor="middle">BANANAS (x₁)</text>
+        <text class="lab" x="22" y="160" text-anchor="middle" transform="rotate(-90 22 160)">MANGOES (x₂)</text>
+
+        <path class="curve c-violet" d="M100,60 C150,130 210,182 270,214 C320,240 372,256 420,266"/>
+
+        <line class="dash" stroke="#75837f" x1="70" y1="130" x2="152" y2="130"/>
+        <line class="dash" stroke="#75837f" x1="152" y1="130" x2="152" y2="290"/>
+        <line class="dash" stroke="#75837f" x1="70" y1="214" x2="270" y2="214"/>
+        <line class="dash" stroke="#75837f" x1="270" y1="214" x2="270" y2="290"/>
+
+        <circle class="pt" cx="152" cy="130" r="6"/>
+        <circle class="pt" cx="270" cy="214" r="6"/>
+        <text class="lab" x="132" y="122">P</text>
+        <text class="lab" x="282" y="208">Q</text>
+
+        <path d="M152,300 L270,300" class="axis" stroke="#748500"/>
+        <text x="211" y="318" text-anchor="middle" style="fill:#586600">Δx₁ &gt; 0</text>
+        <path d="M56,130 L56,214" class="axis" stroke="#c62b28"/>
+        <text x="30" y="176" text-anchor="middle" style="fill:#b02522">Δx₂</text>
+        <text x="30" y="192" text-anchor="middle" style="fill:#b02522">&lt; 0</text>
+      </svg>
+    </figure>
+    <div>
+      <div class="box defn">
+        <span class="tag">The statement</span>
+        <p>An IC slopes downward from left to right: <b>if Δx₁ &gt; 0 then Δx₂ &lt; 0</b>.</p>
+      </div>
+      <div class="box eg">
+        <span class="tag">The proof</span>
+        <p>Suppose the consumer gains a banana <b>without giving up any mangoes</b>. Then she
+        has <b>more of one good and no less of the other</b>.</p>
+        <p>By <b>monotonicity</b>, she must now be <b>better off</b> — so she has moved to a
+        <b>higher</b> indifference curve, not stayed on the same one.</p>
+        <p>Therefore, to <b>remain on the same IC</b>, every gain in bananas <b>must</b> be
+        compensated by a loss of mangoes. Hence the curve slopes downward. ∎</p>
+      </div>
+      <div class="box warn">
+        <span class="tag">Corollary</span>
+        <p>An IC can never be horizontal, vertical, or upward-sloping — each of those would
+        violate monotonicity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Feature 2 — A higher IC<button class="info" data-term="ic"></button> gives greater satisfaction<button class="info" data-term="monotonic"></button></h2>
+  <div class="split">
+    <figure>
+      <svg viewBox="0 0 460 340" role="img" aria-label="Higher indifference curves represent higher utility">
+        <line class="axis" x1="70" y1="290" x2="70" y2="30"/>
+        <line class="axis" x1="70" y1="290" x2="430" y2="290"/>
+        <text class="lab" x="250" y="330" text-anchor="middle">BANANAS (x₁)</text>
+        <text class="lab" x="22" y="160" text-anchor="middle" transform="rotate(-90 22 160)">MANGOES (x₂)</text>
+
+        <path class="curve c-blue"   d="M92,120 C130,166 172,200 214,220 C258,240 310,254 372,262"/>
+        <path class="curve c-violet" d="M104,80  C146,128 194,166 240,188 C288,210 342,226 404,234"/>
+        <path class="curve c-teal"   d="M120,44  C166,94  220,138 270,162 C320,186 368,200 420,208"/>
+
+        <!-- same mangoes (y=150), more bananas -->
+        <line class="dash" stroke="#a17a00" x1="70" y1="150" x2="420" y2="150"/>
+        <text x="76" y="142" style="fill:#755900">same 10 mangoes throughout</text>
+
+        <circle class="pt" cx="150" cy="150" r="6"/>
+        <circle class="pt" cx="200" cy="150" r="6"/>
+        <circle class="pt" cx="252" cy="150" r="6"/>
+        <text class="lab" x="140" y="176">A</text>
+        <text class="lab" x="192" y="176">B</text>
+        <text class="lab" x="246" y="176">C</text>
+        <text class="lab" x="378" y="278" style="fill:#175f90">IC₁</text>
+        <text class="lab" x="410" y="252" style="fill:#5055a0">IC₂</text>
+        <text class="lab" x="424" y="226" style="fill:#586600">IC₃</text>
+      </svg>
+    </figure>
+    <div>
+      <table>
+        <thead><tr><th>Comb.</th><th>Bananas</th><th>Mangoes</th></tr></thead>
+        <tbody>
+          <tr><td>A</td><td>1</td><td>10</td></tr>
+          <tr><td>B</td><td>2</td><td>10</td></tr>
+          <tr><td>C</td><td>3</td><td>10</td></tr>
+        </tbody>
+      </table>
+      <div class="box eg">
+        <span class="tag">The proof</span>
+        <p>A, B and C all contain the <b>same 10 mangoes</b>, but B has <b>more bananas than A</b>,
+        and C has <b>more bananas than B</b>.</p>
+        <p>By <b>monotonicity</b>, C ≻ B ≻ A. Since they lie on different curves,
+        <b>the curve farther from the origin represents higher satisfaction.</b> ∎</p>
+      </div>
+      <div class="box insight">
+        <span class="tag">Why this matters later</span>
+        <p>This is what turns the consumer's problem into a clean instruction:
+        <b>climb to the highest indifference curve your budget allows.</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Feature 3 — Two indifference curves<button class="info" data-term="ic"></button> can never intersect</h2>
+  <div class="split">
+    <figure>
+      <svg viewBox="0 0 460 340" role="img" aria-label="Proof by contradiction that two indifference curves cannot intersect">
+        <line class="axis" x1="70" y1="290" x2="70" y2="30"/>
+        <line class="axis" x1="70" y1="290" x2="430" y2="290"/>
+        <text class="lab" x="250" y="330" text-anchor="middle">BANANAS</text>
+        <text class="lab" x="22" y="160" text-anchor="middle" transform="rotate(-90 22 160)">MANGOES</text>
+
+        <!-- IC1 passes A and B ; IC2 passes A and C -->
+        <path class="curve c-violet" d="M110,70 C121,81.7 142.7,121 176,140 C209.3,159 269.3,173.2 310,184 C350.7,194.8 401.7,201.5 420,205"/>
+        <path class="curve c-blue"   d="M120,60 C129.3,73.3 144.3,110 176,140 C207.7,170 269.3,215.8 310,240 C350.7,264.2 401.7,277.5 420,285"/>
+
+        <line class="dash" stroke="#75837f" x1="310" y1="184" x2="310" y2="290"/>
+        <line class="dash" stroke="#75837f" x1="70" y1="184" x2="310" y2="184"/>
+        <line class="dash" stroke="#75837f" x1="70" y1="240" x2="310" y2="240"/>
+
+        <circle cx="176" cy="140" r="7" fill="#a17a00" stroke="#fdf6e3" stroke-width="2"/>
+        <circle cx="310" cy="184" r="7" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+        <circle cx="310" cy="240" r="7" fill="#c62b28" stroke="#fdf6e3" stroke-width="2"/>
+
+        <text class="lab" x="128" y="126">A (7,10)</text>
+        <text class="lab" x="322" y="178" style="fill:#586600">B (9,7)</text>
+        <text class="lab" x="322" y="248" style="fill:#b02522">C (9,5)</text>
+        <text class="lab" x="424" y="200" style="fill:#5055a0">IC₁</text>
+        <text class="lab" x="424" y="280" style="fill:#175f90">IC₂</text>
+      </svg>
+      <figcaption>Assume they intersect at A — and watch the contradiction appear.</figcaption>
+    </figure>
+    <div>
+      <div class="box eg">
+        <span class="tag">Proof by contradiction</span>
+        <ol class="steps">
+          <li>Suppose IC₁ and IC₂ <b>do</b> intersect, at point <b>A (7, 10)</b>.</li>
+          <li>A and <b>B (9, 7)</b> both lie on IC₁ &nbsp;⇒&nbsp; utility(A) = utility(B).</li>
+          <li>A and <b>C (9, 5)</b> both lie on IC₂ &nbsp;⇒&nbsp; utility(A) = utility(C).</li>
+          <li>Therefore <b>utility(B) = utility(C)</b>.</li>
+          <li>But B is (9, 7) and C is (9, 5): <b>same bananas, more mangoes in B</b>. By
+          monotonicity <b>B must be strictly preferred to C</b>.</li>
+          <li>"B = C" and "B ≻ C" cannot both hold. <b>Contradiction.</b></li>
+        </ol>
+        <p>Hence our assumption was false: <b>two indifference curves can never intersect.</b> ∎</p>
+      </div>
+      <div class="box insight">
+        <span class="tag">In one sentence</span>
+        <p>Intersection would mean the consumer is simultaneously <b>indifferent</b> between two
+        bundles and <b>prefers</b> one to the other. That is incoherent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Feature 4 — An IC<button class="info" data-term="ic"></button> is convex to the origin<button class="info" data-term="dmrs"></button></h2>
+  <div class="grid2">
+    <div class="box defn">
+      <span class="tag">The statement</span>
+      <p>An indifference curve is normally <b>convex to the origin</b> — it is steep at the left
+      and gets flatter as we move right.</p>
+    </div>
+    <div class="box insight">
+      <span class="tag">The reason</span>
+      <p>Because of the <b>Law of Diminishing MRS</b>. Since MRS falls (3 → 2 → 1), the slope
+      of the curve falls too, and a curve whose slope keeps flattening is convex to the origin.</p>
+    </div>
+  </div>
+  <h3>All four features together</h3>
+  <table>
+    <thead><tr><th class="lbl">Feature</th><th>Rests on</th></tr></thead>
+    <tbody>
+      <tr><td class="lbl">1. Slopes downward left to right</td><td>Monotonic preferences</td></tr>
+      <tr><td class="lbl">2. Higher IC = higher satisfaction</td><td>Monotonic preferences</td></tr>
+      <tr><td class="lbl">3. Two ICs never intersect</td><td>Monotonic preferences (proof by contradiction)</td></tr>
+      <tr><td class="lbl">4. Convex to the origin</td><td>Law of Diminishing MRS</td></tr>
+    </tbody>
+  </table>
+  <div class="warn box">
+    <span class="tag">Exam tip</span>
+    <p>Notice that <b>three of the four features come from a single assumption</b> —
+    monotonicity. If a question asks "why does an IC slope downward", the answer is never
+    "because of diminishing MRS". Diminishing MRS explains the <b>curvature</b>, monotonicity
+    explains the <b>direction</b>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Check your understanding</h2>
+  <div class="qcard">
+    <span class="tag">Question 2</span>
+    <ol>
+      <li>If a consumer has monotonic preferences<button class="info" data-term="monotonic"></button>, can she be indifferent between the bundles
+      <b>(10, 8)</b> and <b>(8, 6)</b>?</li>
+      <li>Your friend is indifferent between <b>(5, 6)</b> and <b>(6, 6)</b>. Are your friend's
+      preferences monotonic?</li>
+      <li>Rank <b>(10, 10)</b>, <b>(10, 9)</b> and <b>(9, 9)</b> for a consumer with monotonic
+      preferences.</li>
+    </ol>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>1. No.</b> Bundle (10, 8) has <b>more of both</b> goods than (8, 6). Monotonicity
+    requires her to <b>strictly prefer</b> (10, 8). She cannot be indifferent.</p>
+    <p><b>2. No — they are not monotonic.</b> The bundles (5, 6) and (6, 6) have the <b>same
+    quantity of good 2</b>, but (6, 6) has <b>one more unit of good 1</b>. Monotonicity would
+    require (6, 6) to be strictly preferred. Since your friend is indifferent, monotonicity
+    is violated.</p>
+    <p><b>3.</b> <code>(10, 10) ≻ (10, 9) ≻ (9, 9)</code></p>
+    <p class="small">(10,10) beats (10,9): same good 1, more good 2. (10,9) beats (9,9): same
+    good 2, more good 1. And (10,10) beats (9,9) on both counts.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Challenge</h2>
+  <div class="challenge">
+    <span class="tag">Challenge — section 2.1.2</span>
+    <p>A student draws an indifference map<button class="info" data-term="ic-map"></button><button class="info" data-term="dmrs"></button> in which the curves are <b>concave to the origin</b>
+    instead of convex, and insists this is legitimate because "the curves still slope downward
+    and still never intersect".</p>
+    <p>(a) Which of the four features of an indifference curve does a concave curve violate,
+    and which does it satisfy?<br>
+    (b) What would MRS be doing along such a curve?<br>
+    (c) Show that if a consumer really had concave indifference curves, the tangency point would
+    give her the <b>worst</b> affordable bundle rather than the best.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>(a)</b> A concave curve <b>satisfies</b> features 1, 2 and 3 — it can still slope
+    downward, higher curves can still mean higher utility, and two such curves still need not
+    intersect. All three of those come from <b>monotonicity</b>, which concavity does not touch.</p>
+    <p>It <b>violates feature 4</b>, convexity — and therefore violates the
+    <b>Law of Diminishing MRS</b>, which is the assumption feature 4 rests on.</p>
+    <p><b>(b) MRS would be <i>increasing</i>.</b> As the consumer acquired more bananas, she would
+    be willing to give up <b>more and more</b> mangoes for each additional banana — the opposite
+    of diminishing MRS.</p>
+    <p class="small">Economically that is very odd: it says the more bananas she has, the more
+    desperate she becomes for another one, and the less she values the mangoes she still holds.</p>
+    <p><b>(c) The tangency would be a minimum, not a maximum.</b></p>
+    <div class="q">
+      <p>With a <b>convex</b> curve, the indifference curve lies <b>above</b> the budget line on
+      both sides of the tangency — so every other affordable bundle is on a <b>lower</b> curve.
+      The tangency is the <b>best</b>.</p>
+      <p>With a <b>concave</b> curve, the indifference curve lies <b>below</b> the budget line on
+      both sides — so moving away from the tangency in <b>either</b> direction reaches a
+      <b>higher</b> curve. The tangency is the <b>worst</b>.</p>
+    </div>
+    <p>Such a consumer would push all the way to a <b>corner</b> — spending her entire income on
+    <b>bananas alone</b> or <b>mangoes alone</b>, never a mixture. Concave preferences describe
+    someone who wants <b>extremes</b>, not balance.</p>
+    <p><b>Why this matters:</b> convexity is not decoration. It is precisely the assumption that
+    makes the tangency condition <b>identify a maximum</b>, and it is why real consumers buy
+    <b>mixtures</b> of goods rather than everything of one. This is the same logic you will meet
+    in <b>Chapter 4</b>, where P = MC identifies a profit maximum only if <b>MC is rising</b> —
+    a condition on <i>curvature</i>, not on the tangency itself.</p>
+  </div>
+</section>
+
+<!-- ================= PART C: BUDGET ================= -->
+<section class="slide" data-section="2.2 The Consumer's Budget">
+  <h2><span class="num">2.2</span>Switching to the other half of the problem</h2>
+  <div class="insight box">
+    <span class="tag">Where we are</span>
+    <p>So far, everything has been about <b>what the consumer wants</b> — utility, preferences,
+    indifference curves. Not once have we mentioned <b>money</b>.</p>
+    <p>Wanting is free. <b>Buying is not.</b> We now build the second half: what she can
+    <b>afford</b>.</p>
+  </div>
+  <p>Two things, and only two, determine affordability:</p>
+  <div class="grid2">
+    <div class="card"><h4>Her income, <code>M</code></h4><p>A fixed amount of money to spend.</p></div>
+    <div class="card"><h4>The prices, <code>p₁</code> and <code>p₂</code></h4>
+      <p>Given by the market — the consumer <b>cannot influence them</b>.</p></div>
+  </div>
+  <div class="bridge box">
+    <span class="tag">Note the assumption you just accepted</span>
+    <p>The consumer takes prices as <b>given</b>. She is a <b>price taker</b>. In
+    <b>Chapter 4</b> this same assumption is applied to the <i>firm</i>, and given a name:
+    <b>perfect competition</b>. It has been quietly present since this slide.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The budget constraint and the budget set</h2>
+  <p>To buy <code>x₁</code> bananas she spends <code>p₁x₁</code>. To buy <code>x₂</code>
+  mangoes she spends <code>p₂x₂</code>. Total spending must not exceed income:</p>
+  <div class="formula">
+    p₁x₁ + p₂x₂ &nbsp;≤&nbsp; M &nbsp;&nbsp;&nbsp;&nbsp;<span class="small">…(2.1)</span>
+  </div>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p>Inequality (2.1) is the consumer's <span class="term">budget constraint</span>.</p>
+  </div>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p>The <span class="term">budget set</span> is the collection of <b>all bundles that the
+    consumer can buy</b> with her income at the prevailing market prices — that is, every
+    bundle satisfying the budget constraint.</p>
+  </div>
+  <div class="warn box">
+    <span class="tag">Read the "≤" carefully</span>
+    <p>The budget set includes bundles costing <b>less than</b> M as well as bundles costing
+    <b>exactly</b> M. It is everything she <i>can</i> afford, including options that leave
+    money unspent.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Example 2.1 — the budget set, drawn<button class="info" data-term="budget-set"></button></h2>
+  <p>Income <b>M = ₹20</b>. Both goods priced at <b>₹5</b>, available only in whole units.</p>
+  <div class="split">
+    <figure>
+      <svg viewBox="0 0 470 400" role="img" aria-label="Budget set for M equals 20 with both prices 5, showing all affordable integer bundles">
+        <line class="axis" x1="70" y1="330" x2="70" y2="35"/>
+        <line class="axis" x1="70" y1="330" x2="440" y2="330"/>
+        <text class="lab" x="250" y="376" text-anchor="middle">BANANAS (x₁)</text>
+        <text class="lab" x="22" y="185" text-anchor="middle" transform="rotate(-90 22 185)">MANGOES (x₂)</text>
+        <text x="62" y="348" text-anchor="end">O</text>
+        <text x="155" y="350" text-anchor="middle">1</text>
+        <text x="240" y="350" text-anchor="middle">2</text>
+        <text x="325" y="350" text-anchor="middle">3</text>
+        <text x="410" y="350" text-anchor="middle">4</text>
+        <text x="62" y="270" text-anchor="end">1</text>
+        <text x="62" y="205" text-anchor="end">2</text>
+        <text x="62" y="140" text-anchor="end">3</text>
+        <text x="62" y="75"  text-anchor="end">4</text>
+
+        <!-- shaded budget set -->
+        <polygon points="70,330 70,70 410,330" fill="rgba(38,139,210,0.13)"/>
+
+        <!-- budget line -->
+        <line class="curve c-blue" x1="70" y1="70" x2="410" y2="330"/>
+
+        <!-- interior affordable bundles (cost < 20) -->
+        <g fill="#75837f">
+          <circle cx="70"  cy="330" r="5"/><circle cx="70"  cy="265" r="5"/>
+          <circle cx="70"  cy="200" r="5"/><circle cx="70"  cy="135" r="5"/>
+          <circle cx="155" cy="330" r="5"/><circle cx="155" cy="265" r="5"/>
+          <circle cx="155" cy="200" r="5"/>
+          <circle cx="240" cy="330" r="5"/><circle cx="240" cy="265" r="5"/>
+          <circle cx="325" cy="330" r="5"/>
+        </g>
+        <!-- bundles costing exactly 20 -->
+        <g fill="#a17a00" stroke="#fdf6e3" stroke-width="2">
+          <circle cx="70"  cy="70"  r="7"/>
+          <circle cx="155" cy="135" r="7"/>
+          <circle cx="240" cy="200" r="7"/>
+          <circle cx="325" cy="265" r="7"/>
+          <circle cx="410" cy="330" r="7"/>
+        </g>
+        <text class="lab" x="82"  y="62"  style="fill:#755900">(0,4)</text>
+        <text class="lab" x="167" y="127" style="fill:#755900">(1,3)</text>
+        <text class="lab" x="252" y="192" style="fill:#755900">(2,2)</text>
+        <text class="lab" x="337" y="257" style="fill:#755900">(3,1)</text>
+        <text class="lab" x="392" y="316" text-anchor="end" style="fill:#755900">(4,0)</text>
+        <text x="140" y="290" style="fill:#175f90">budget set</text>
+
+        <!-- unaffordable -->
+        <circle cx="325" cy="135" r="6" fill="none" stroke="#c62b28" stroke-width="2.5"/>
+        <text x="336" y="128" style="fill:#b02522">(3,3) ✗ costs ₹30</text>
+      </svg>
+    </figure>
+    <div>
+      <div class="box eg">
+        <span class="tag">The 15 affordable bundles</span>
+        <p class="small">(0,0) (0,1) (0,2) (0,3) (0,4) (1,0) (1,1) (1,2) (1,3) (2,0) (2,1) (2,2)
+        (3,0) (3,1) (4,0)</p>
+      </div>
+      <div class="box insight">
+        <span class="tag">Two kinds of point</span>
+        <p><b>Amber (on the line):</b> (0,4), (1,3), (2,2), (3,1), (4,0) — these cost
+        <b>exactly ₹20</b>. Her entire income is spent.</p>
+        <p><b>Grey (below the line):</b> cost <b>less than ₹20</b>. Affordable, but money is
+        left over.</p>
+      </div>
+      <div class="box warn">
+        <span class="tag">Outside the set</span>
+        <p>(3,3) costs ₹30 and (4,5) costs ₹45. <b>Not affordable</b> — they lie above the line
+        and are simply not available to her.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The budget line</h2>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p>The <span class="term">budget line</span> consists of all bundles which cost
+    <b>exactly equal</b> to the consumer's income — the boundary of the budget set.</p>
+  </div>
+  <div class="formula">
+    p₁x₁ + p₂x₂ &nbsp;=&nbsp; M &nbsp;&nbsp;&nbsp;&nbsp;<span class="small">…(2.2)</span>
+  </div>
+  <p>Rearranged into the familiar <code>y = c + mx</code> form of a straight line:</p>
+  <div class="formula">
+    x₂ &nbsp;=&nbsp;
+    <span class="frac"><span>M</span><span>p₂</span></span>
+    &nbsp;−&nbsp;
+    <span class="frac"><span>p₁</span><span>p₂</span></span>
+    x₁ &nbsp;&nbsp;&nbsp;&nbsp;<span class="small">…(2.3)</span>
+  </div>
+  <div class="grid3">
+    <div class="card"><h4>Vertical intercept</h4><p><code>M / p₂</code></p>
+      <p class="small">Bundle bought if she spends her <b>entire</b> income on mangoes.</p></div>
+    <div class="card"><h4>Horizontal intercept</h4><p><code>M / p₁</code></p>
+      <p class="small">Bundle bought if she spends her <b>entire</b> income on bananas.</p></div>
+    <div class="card"><h4>Slope</h4><p><code>− p₁ / p₂</code></p>
+      <p class="small">The <b>price ratio</b>. Negative, so the line slopes downward.</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Deriving the slope — and what it means<button class="info" data-term="budget-line"></button><button class="info" data-term="price-ratio"></button></h2>
+  <div class="split">
+    <div>
+      <div class="box eg">
+        <span class="tag">Algebraic derivation</span>
+        <p>Take two points on the budget line, <code>(x₁, x₂)</code> and
+        <code>(x₁+Δx₁, x₂+Δx₂)</code>. Both cost exactly M:</p>
+        <p class="center"><code>p₁x₁ + p₂x₂ = M</code> &nbsp;…(2.4)<br>
+        <code>p₁(x₁+Δx₁) + p₂(x₂+Δx₂) = M</code> &nbsp;…(2.5)</p>
+        <p>Subtract (2.4) from (2.5):</p>
+        <p class="center"><code>p₁Δx₁ + p₂Δx₂ = 0</code> &nbsp;…(2.6)</p>
+        <p>Rearranging:</p>
+        <div class="formula" style="font-size:1.15rem">
+          <span class="frac"><span>Δx₂</span><span>Δx₁</span></span> = −
+          <span class="frac"><span>p₁</span><span>p₂</span></span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="box insight">
+        <span class="tag">What the slope <i>means</i> — this is the important part</span>
+        <p>Suppose she is spending everything and wants <b>one more banana</b>. It costs
+        <code>p₁</code>. She must cut mango spending by <code>p₁</code>. With <code>p₁</code>
+        she could have bought <code>p₁/p₂</code> mangoes.</p>
+        <p>So she must give up <b><code>p₁/p₂</code> mangoes</b> to gain one banana.</p>
+      </div>
+      <div class="box defn">
+        <span class="tag">In words</span>
+        <p>The absolute value of the slope of the budget line is the rate at which the consumer
+        <b>is <u>able</u> to substitute</b> bananas for mangoes <b>in the market</b>.</p>
+      </div>
+      <div class="box warn">
+        <span class="tag">Set this next to MRS</span>
+        <p><b>MRS</b> = the rate at which she is <b>willing</b> to substitute (her preferences).<br>
+        <b>p₁/p₂</b> = the rate at which she is <b>able</b> to substitute (the market).</p>
+        <p>Two rates. The whole of the next section is about what happens when they differ.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Change in income — a parallel shift<button class="info" data-term="budget-line"></button></h2>
+  <div class="split">
+    <figure>
+      <svg viewBox="0 0 470 400" role="img" aria-label="Budget line shifts parallel outward when income rises and inward when income falls">
+        <line class="axis" x1="70" y1="330" x2="70" y2="35"/>
+        <line class="axis" x1="70" y1="330" x2="440" y2="330"/>
+        <text class="lab" x="250" y="376" text-anchor="middle">BANANAS (x₁)</text>
+        <text class="lab" x="22" y="185" text-anchor="middle" transform="rotate(-90 22 185)">MANGOES (x₂)</text>
+        <text x="62" y="348" text-anchor="end">O</text>
+
+        <line class="curve c-rose"  x1="70" y1="190" x2="250" y2="330"/>
+        <line class="curve c-blue"  x1="70" y1="120" x2="340" y2="330"/>
+        <line class="curve c-teal"  x1="70" y1="50"  x2="430" y2="330"/>
+
+        <text class="lab" x="148" y="238" style="fill:#b02522">M′ &lt; M</text>
+        <text class="lab" x="250" y="244" style="fill:#175f90">M</text>
+        <text class="lab" x="352" y="250" style="fill:#586600">M′ &gt; M</text>
+
+        <text x="88" y="196" style="fill:#b02522">M′/p₂</text>
+        <text x="88" y="126" style="fill:#175f90">M/p₂</text>
+        <text x="88" y="56"  style="fill:#586600">M′/p₂</text>
+      </svg>
+      <figcaption>All three lines are <b>parallel</b> — the slope −p₁/p₂ never changes.</figcaption>
+    </figure>
+    <div>
+      <p>Income changes from <b>M</b> to <b>M′</b>; prices unchanged. The new line is</p>
+      <div class="formula" style="font-size:1.05rem">
+        x₂ = <span class="frac"><span>M′</span><span>p₂</span></span> −
+        <span class="frac"><span>p₁</span><span>p₂</span></span> x₁
+      </div>
+      <div class="box insight">
+        <span class="tag">The key observation</span>
+        <p>Only <code>M</code> changed. The slope <code>−p₁/p₂</code> contains <b>no M</b> —
+        so the slope is <b>unaffected</b>. Only the intercepts move.</p>
+      </div>
+      <div class="grid2">
+        <div class="card"><h4 style="color:#586600">Income rises</h4>
+          <p><b>Both</b> intercepts rise → <b>parallel outward shift</b>. More of both goods
+          becomes affordable.</p></div>
+        <div class="card"><h4 style="color:#b02522">Income falls</h4>
+          <p><b>Both</b> intercepts fall → <b>parallel inward shift</b>. The budget set shrinks.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Change in the price of one good — a pivot<button class="info" data-term="budget-line"></button><button class="info" data-term="price-ratio"></button></h2>
+  <div class="split">
+    <figure>
+      <svg viewBox="0 0 470 400" role="img" aria-label="Budget line pivots around the vertical intercept when the price of bananas changes">
+        <line class="axis" x1="70" y1="330" x2="70" y2="35"/>
+        <line class="axis" x1="70" y1="330" x2="440" y2="330"/>
+        <text class="lab" x="250" y="376" text-anchor="middle">BANANAS (x₁)</text>
+        <text class="lab" x="22" y="185" text-anchor="middle" transform="rotate(-90 22 185)">MANGOES (x₂)</text>
+        <text x="62" y="348" text-anchor="end">O</text>
+
+        <!-- common vertical intercept -->
+        <line class="curve c-rose" x1="70" y1="80" x2="215" y2="330"/>
+        <line class="curve c-blue" x1="70" y1="80" x2="320" y2="330"/>
+        <line class="curve c-teal" x1="70" y1="80" x2="435" y2="330"/>
+
+        <circle cx="70" cy="80" r="7" fill="#a17a00" stroke="#fdf6e3" stroke-width="2"/>
+        <text x="86" y="72" style="fill:#755900">M/p₂ — unchanged</text>
+
+        <text class="lab" x="150" y="240" style="fill:#b02522">p₁′ &gt; p₁</text>
+        <text class="lab" x="258" y="228" style="fill:#175f90">p₁</text>
+        <text class="lab" x="372" y="222" style="fill:#586600">p₁′ &lt; p₁</text>
+
+        <text x="215" y="350" text-anchor="middle" style="fill:#b02522">M/p₁′</text>
+        <text x="320" y="350" text-anchor="middle" style="fill:#175f90">M/p₁</text>
+        <text x="430" y="350" text-anchor="middle" style="fill:#586600">M/p₁′</text>
+      </svg>
+      <figcaption>The line <b>pivots</b> around the unchanged vertical intercept.</figcaption>
+    </figure>
+    <div>
+      <p>Price of bananas changes from <b>p₁</b> to <b>p₁′</b>; <code>p₂</code> and
+      <code>M</code> unchanged:</p>
+      <div class="formula" style="font-size:1.05rem">
+        x₂ = <span class="frac"><span>M</span><span>p₂</span></span> −
+        <span class="frac"><span>p₁′</span><span>p₂</span></span> x₁
+      </div>
+      <div class="box insight">
+        <span class="tag">What changes, what doesn't</span>
+        <p><b>Unchanged:</b> the vertical intercept <code>M/p₂</code> — if she buys only mangoes,
+        the price of bananas is irrelevant to her.</p>
+        <p><b>Changed:</b> the slope, and the horizontal intercept <code>M/p₁′</code>.</p>
+      </div>
+      <div class="grid2">
+        <div class="card"><h4 style="color:#b02522">p₁ rises</h4>
+          <p>Line becomes <b>steeper</b>; pivots <b>inward</b>. Fewer bananas affordable.</p></div>
+        <div class="card"><h4 style="color:#586600">p₁ falls</h4>
+          <p>Line becomes <b>flatter</b>; pivots <b>outward</b>. More bananas affordable.</p></div>
+      </div>
+      <p class="small">A change in <code>p₂</code> works the same way, pivoting around the
+      <b>horizontal</b> intercept instead.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Check your understanding</h2>
+  <div class="qcard">
+    <span class="tag">Question 3 — NCERT Ex. 4–7</span>
+    <p>A consumer's income is <b>₹20</b>. Prices are <b>p₁ = ₹4</b> and <b>p₂ = ₹5</b>.</p>
+    <ol>
+      <li>Write the equation of the budget line.<button class="info" data-term="budget-line"></button></li>
+      <li>How much of good 1 if she spends everything on it? Good 2?</li>
+      <li>What is the slope?</li>
+      <li>How does the line change if income rises to <b>₹40</b>?</li>
+      <li>How does it change if <b>p₂ falls by ₹1</b> (income and p₁ unchanged)?</li>
+      <li>What happens to the budget set if <b>both prices and income double</b>?</li>
+    </ol>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>1.</b> <code>4x₁ + 5x₂ = 20</code></p>
+    <p><b>2.</b> Good 1: <code>M/p₁ = 20/4 = <b>5 units</b></code>. Good 2: <code>M/p₂ = 20/5 = <b>4 units</b></code>.</p>
+    <p><b>3.</b> Slope <code>= −p₁/p₂ = −4/5 = <b>−0.8</b></code>.</p>
+    <p><b>4.</b> New line <code>4x₁ + 5x₂ = 40</code>. Intercepts become <b>10</b> and <b>8</b>
+    — both doubled. Slope still −4/5, so there is a <b>parallel outward shift</b>.</p>
+    <p><b>5.</b> p₂ = 4, so <code>4x₁ + 4x₂ = 20</code>. The good-1 intercept stays at
+    <b>5</b>; the good-2 intercept rises from 4 to <b>5</b>. Slope changes from −4/5 to
+    <b>−1</b>. The line <b>pivots outward around the horizontal intercept</b> and becomes steeper.</p>
+    <p><b>6. No change at all.</b> The new constraint is <code>8x₁ + 10x₂ ≤ 40</code>. Divide
+    throughout by 2: <code>4x₁ + 5x₂ ≤ 20</code> — <b>identical</b> to the original. What matters
+    is <b>real</b> income (income relative to prices), not the numbers themselves.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Check your understanding</h2>
+  <div class="qcard">
+    <span class="tag">Question 4 — NCERT Ex. 8 &amp; 9</span>
+    <p><b>(a)</b> A consumer can just afford <b>6 units of good 1</b> and <b>8 units of good 2</b>
+    when she spends her entire income. Prices are <b>₹6</b> and <b>₹8</b>. What is her income?</p>
+    <p><b>(b)</b><button class="info" data-term="budget-set"></button> Two goods are each priced at <b>₹10</b>; income is <b>₹40</b>; goods come only
+    in whole units. List all available bundles, and identify those costing exactly ₹40.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>(a)</b> The bundle (6, 8) costs exactly her income:</p>
+    <p class="center"><code>M = p₁x₁ + p₂x₂ = (6 × 6) + (8 × 8) = 36 + 64 = <b>₹100</b></code></p>
+    <p><b>(b)</b> The constraint is <code>10x₁ + 10x₂ ≤ 40</code>, i.e. <code>x₁ + x₂ ≤ 4</code>.</p>
+    <p><b>All 15 available bundles:</b><br>
+    (0,0) (0,1) (0,2) (0,3) (0,4)<br>
+    (1,0) (1,1) (1,2) (1,3)<br>
+    (2,0) (2,1) (2,2)<br>
+    (3,0) (3,1)<br>
+    (4,0)</p>
+    <p><b>Costing exactly ₹40</b> (those with <code>x₁ + x₂ = 4</code>, lying <i>on</i> the
+    budget line): <b>(0,4), (1,3), (2,2), (3,1), (4,0)</b>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Challenge</h2>
+  <div class="challenge">
+    <span class="tag">Challenge — section 2.2</span>
+    <p>A consumer has income <b>M</b> and faces prices <b>p₁</b> and <b>p₂</b>.<button class="info" data-term="budget-line"></button><button class="info" data-term="price-ratio"></button></p>
+    <p>Inflation now raises <b>both prices by 20%</b>, and her employer raises her
+    <b>income by 20%</b> as well.</p>
+    <p>(a) What happens to her budget line? Prove it algebraically.<br>
+    (b) What happens to her optimal bundle?<br>
+    (c) Now suppose instead that both prices rise 20% but her income rises only 10%. Describe the
+    change in the budget line <b>precisely</b> — is it a shift, a pivot, or something else?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>(a) Nothing changes at all.</b> The new constraint is:</p>
+    <p class="center"><code>1.2p₁·x₁ + 1.2p₂·x₂ ≤ 1.2M</code></p>
+    <p>Divide throughout by 1.2:</p>
+    <p class="center"><code>p₁x₁ + p₂x₂ ≤ M</code></p>
+    <p><b>Identical to the original.</b> Both intercepts (M/p₁ and M/p₂) are unchanged, because
+    the 1.2 cancels in each. The slope −p₁/p₂ is unchanged for the same reason.</p>
+    <p><b>(b) Her optimal bundle is exactly the same.</b> The budget set has not moved and her
+    preferences have not changed, so the same tangency point is still the best affordable bundle.</p>
+    <div class="q">
+      <p><b>The consumer's choice depends on <u>real</u> income, not money income.</b> What matters
+      is income <i>relative to</i> prices. Scaling everything by the same factor leaves every real
+      magnitude untouched.</p>
+    </div>
+    <p class="small">This is why a pay rise that merely matches inflation makes nobody better off —
+    a result you can now <b>prove</b> rather than merely assert.</p>
+    <p><b>(c) A parallel inward shift.</b></p>
+    <p>New constraint: <code>1.2p₁·x₁ + 1.2p₂·x₂ ≤ 1.1M</code>. Divide by 1.2:</p>
+    <p class="center"><code>p₁x₁ + p₂x₂ ≤ (1.1/1.2)M = 0.9167M</code></p>
+    <p>This is the <b>original prices with an income of about 91.7% of M</b>. So:</p>
+    <p><b>Slope unchanged</b> (both prices moved by the same proportion, so the ratio p₁/p₂ is
+    untouched) · <b>both intercepts fall</b> by the same factor → a <b>parallel inward shift</b>.</p>
+    <p class="small"><b>Not a pivot.</b> A pivot requires the <i>relative</i> price to change —
+    one price moving differently from the other. Here both moved together, so only the
+    <b>real income</b> fell. She is unambiguously worse off, and will end on a lower
+    indifference curve.</p>
+  </div>
+</section>
+
+<!-- ================= PART D: OPTIMAL CHOICE ================= -->
+<section class="slide" data-section="2.3 Optimal Choice">
+  <h2><span class="num">2.3</span>Bringing the two halves together</h2>
+  <div class="grid2">
+    <div class="card"><h4>From Part B</h4>
+      <p>The <b>indifference map</b> — what she <b>wants</b>. Higher curve = better.</p></div>
+    <div class="card"><h4>From Part C</h4>
+      <p>The <b>budget line</b> — what she can <b>afford</b>. On or below it only.</p></div>
+  </div>
+  <div class="box defn">
+    <span class="tag">The assumption of rationality</span>
+    <p>A <span class="term">rational consumer</span> knows her own preferences and always
+    chooses, from the bundles available to her, the one that gives her <b>maximum
+    satisfaction</b>.</p>
+  </div>
+  <div class="insight box">
+    <span class="tag">The consumer's problem, restated</span>
+    <p><b>Reach the highest possible indifference curve, given the budget set.</b></p>
+    <p>That single sentence is the whole of consumer theory. The next two slides just locate
+    the point.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Step 1 — the optimum must lie <i>on</i> the budget line<button class="info" data-term="budget-line"></button><button class="info" data-term="monotonic"></button></h2>
+  <div class="split">
+    <figure>
+      <svg viewBox="0 0 460 380" role="img" aria-label="A point below the budget line cannot be optimal">
+        <line class="axis" x1="70" y1="310" x2="70" y2="35"/>
+        <line class="axis" x1="70" y1="310" x2="430" y2="310"/>
+        <text class="lab" x="250" y="356" text-anchor="middle">BANANAS (x₁)</text>
+        <text class="lab" x="22" y="175" text-anchor="middle" transform="rotate(-90 22 175)">MANGOES (x₂)</text>
+        <text x="62" y="328" text-anchor="end">O</text>
+
+        <polygon points="70,310 70,60 400,310" fill="rgba(38,139,210,0.11)"/>
+        <line class="curve c-blue" x1="70" y1="60" x2="400" y2="310"/>
+
+        <!-- point below -->
+        <circle cx="180" cy="235" r="7" fill="#c62b28" stroke="#fdf6e3" stroke-width="2"/>
+        <text class="lab" x="150" y="258" style="fill:#b02522">Z</text>
+
+        <!-- arrows to better points -->
+        <defs>
+          <marker id="ar4" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+            <path d="M0,0 L9,3.5 L0,7 z" fill="#748500"/>
+          </marker>
+        </defs>
+        <line x1="188" y1="235" x2="258" y2="235" class="axis" stroke="#748500" marker-end="url(#ar4)"/>
+        <line x1="180" y1="227" x2="180" y2="145" class="axis" stroke="#748500" marker-end="url(#ar4)"/>
+        <line x1="188" y1="228" x2="228" y2="188" class="axis" stroke="#748500" marker-end="url(#ar4)"/>
+
+        <circle cx="266" cy="235" r="6" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+        <circle cx="180" cy="137" r="6" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+        <text x="272" y="228" style="fill:#586600">more bananas</text>
+        <text x="192" y="130" style="fill:#586600">more mangoes</text>
+        <text x="236" y="182" style="fill:#586600">more of both</text>
+      </svg>
+    </figure>
+    <div>
+      <div class="box eg">
+        <span class="tag">The argument</span>
+        <p>Take any point <b>Z strictly below</b> the budget line. Money is left unspent.</p>
+        <p>From Z, she can reach points on the budget line that have <b>more of at least one
+        good and no less of the other</b>.</p>
+        <p>By <b>monotonicity</b>, every such point is <b>strictly preferred</b> to Z.</p>
+        <p>So <b>Z cannot be the optimum.</b></p>
+      </div>
+      <div class="box warn">
+        <span class="tag">And above the line?</span>
+        <p>Points above the budget line are simply <b>not available</b> — she cannot afford them.</p>
+      </div>
+      <div class="box insight">
+        <span class="tag">Conclusion</span>
+        <p>The optimum bundle lies <b>on the budget line</b>: a rational consumer with monotonic
+        preferences <b>spends her entire income</b>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Step 2 — the optimum is the point of tangency<button class="info" data-term="ic"></button><button class="info" data-term="budget-line"></button></h2>
+  <figure>
+    <svg viewBox="0 0 560 400" role="img" aria-label="Consumer's optimum at the tangency of the budget line and an indifference curve">
+      <line class="axis" x1="70" y1="330" x2="70" y2="30"/>
+      <line class="axis" x1="70" y1="330" x2="530" y2="330"/>
+      <text class="lab" x="290" y="376" text-anchor="middle">BANANAS (x₁)</text>
+      <text class="lab" x="22" y="185" text-anchor="middle" transform="rotate(-90 22 185)">MANGOES (x₂)</text>
+      <text x="62" y="348" text-anchor="end">O</text>
+
+      <!-- budget line from (70,60) to (460,330) -->
+      <line class="curve c-blue" x1="70" y1="60" x2="460" y2="330"/>
+      <text class="lab" x="466" y="322" style="fill:#175f90">Budget line</text>
+
+      <!-- unattainable IC (grey/violet) -->
+      <path class="curve c-violet" d="M150,52 C205,108 258,158 310,192 C368,230 432,262 500,282" opacity="0.75"/>
+      <text class="lab" x="504" y="298" style="fill:#5055a0">IC₃</text>
+
+      <!-- tangent IC through (265,195); controls give slope 0.6923 = budget-line slope -->
+      <path class="curve c-amber" d="M118,72 C168,118 218,162.5 265,195 C322,234.5 386,262 452,284"/>
+      <text class="lab" x="456" y="300" style="fill:#755900">IC₂</text>
+
+      <!-- lower IC -->
+      <path class="curve c-teal" opacity="0.8" d="M118,70 C123.3,77.5 124.7,89.2 150,115 C175.3,140.8 230,197.2 270,225 C310,252.8 363.3,269.8 390,282 C416.7,294.2 423.3,295.3 430,298"/>
+      <text class="lab" x="434" y="314" style="fill:#586600">IC₁</text>
+
+      <!-- tangency point -->
+      <circle cx="265" cy="195" r="8" fill="#a17a00" stroke="#fdf6e3" stroke-width="2.5"/>
+      <line class="dash" stroke="#a17a00" x1="70"  y1="195" x2="265" y2="195"/>
+      <line class="dash" stroke="#a17a00" x1="265" y1="195" x2="265" y2="330"/>
+      <text class="lab" x="278" y="186" style="fill:#755900">E — the optimum</text>
+      <text x="62" y="200" text-anchor="end" style="fill:#755900">x₂*</text>
+      <text x="265" y="350" text-anchor="middle" style="fill:#755900">x₁*</text>
+
+      <!-- other points on the budget line -->
+      <circle cx="150" cy="115" r="6" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+      <circle cx="390" cy="282" r="6" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+      <text x="122" y="108" style="fill:#586600">F</text>
+      <text x="398" y="276" style="fill:#586600">G</text>
+    </svg>
+    <figcaption>At <b>E</b> the budget line just touches IC₂ — the highest curve the budget can reach.</figcaption>
+  </figure>
+  <div class="grid3">
+    <div class="card"><h4 style="color:#5055a0">IC₃ — above</h4>
+      <p>Higher satisfaction, but it lies <b>entirely above</b> the budget line.
+      <b>Unaffordable.</b></p></div>
+    <div class="card"><h4 style="color:#586600">IC₁ — below</h4>
+      <p>Points F and G are affordable, but they sit on a <b>lower</b> curve than E.
+      <b>Inferior.</b></p></div>
+    <div class="card"><h4 style="color:#755900">IC₂ — tangent</h4>
+      <p>Affordable <b>and</b> the highest reachable. <b>E is the optimum</b> — the bundle
+      <code>(x₁*, x₂*)</code>.</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The condition for consumer's equilibrium<button class="info" data-term="equilibrium"></button></h2>
+  <div class="box defn">
+    <span class="tag">The tangency condition</span>
+    <p>At the optimum the budget line<button class="info" data-term="budget-line"></button> is <b>tangent</b> to an indifference curve<button class="info" data-term="ic"></button>. Tangency means
+    the two curves have the <b>same slope</b> at that point:</p>
+  </div>
+  <div class="formula">
+    MRS<button class="info" data-term="mrs"></button> &nbsp;=&nbsp; <span class="frac"><span>p₁</span><span>p₂</span></span><button class="info" data-term="price-ratio"></button>
+  </div>
+  <div class="insight box">
+    <span class="tag">Reading it</span>
+    <p>The rate at which she is <b>willing</b> to trade mangoes for bananas equals the rate at
+    which the market <b>allows</b> her to trade them. When the two rates agree, there is no
+    trade left worth making — she is in <b>equilibrium</b>.</p>
+  </div>
+  <div class="warn box">
+    <span class="tag">Second condition</span>
+    <p>The IC must also be <b>convex</b> at that point (MRS must be <b>diminishing</b><button class="info" data-term="dmrs"></button>). Tangency
+    alone is not enough — on a concave curve the tangency point would be the <i>worst</i> point,
+    not the best.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Why any other point fails — the adjustment argument<button class="info" data-term="equilibrium"></button></h2>
+  <p>Suppose the two goods have the <b>same price</b>, so the price ratio<button class="info" data-term="price-ratio"></button> <code>p₁/p₂ = 1</code>. Compare it with her MRS<button class="info" data-term="mrs"></button>.</p>
+  <div class="grid2">
+    <div class="box warn">
+      <span class="tag">Case A · MRS = 2 &gt; price ratio = 1</span>
+      <p><b>She is willing</b> to give up <b>2 mangoes</b> for one more banana.</p>
+      <p><b>The market only asks</b> for <b>1 mango</b> for one more banana.</p>
+      <p>So she buys the banana but pays only 1 mango instead of the 2 she was prepared to give
+      up. She therefore ends up with <b>more of at least one good and no less of the other</b> —
+      a bundle she strictly prefers. <b>She is better off.</b></p>
+      <p class="small">⇒ She will keep buying bananas. Not an equilibrium.</p>
+    </div>
+    <div class="box warn">
+      <span class="tag">Case B · MRS = 0.5 &lt; price ratio = 1</span>
+      <p><b>She values</b> a banana at only half a mango.</p>
+      <p><b>The market charges</b> a full mango for it.</p>
+      <p>She is paying more than the banana is worth to her. Selling a banana back gains her a
+      full mango, though she'd have accepted half. <b>She is better off.</b></p>
+      <p class="small">⇒ She will buy fewer bananas. Not an equilibrium.</p>
+    </div>
+  </div>
+  <div class="insight box">
+    <span class="tag">Therefore</span>
+    <p>Whenever <b>MRS ≠ p₁/p₂</b>, a profitable readjustment exists and the consumer moves.
+    She stops moving <b>only</b> when <b>MRS = p₁/p₂</b>. That is why the optimum is at the
+    tangency — and nowhere else.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Check your understanding</h2>
+  <div class="qcard">
+    <span class="tag">Question 5</span>
+    <p>A consumer buys bananas and mangoes. At her current bundle, <b>MRS = 4</b><button class="info" data-term="mrs"></button><button class="info" data-term="equilibrium"></button>, the price of
+    a banana is <b>₹8</b> and the price of a mango is <b>₹4</b>.</p>
+    <p>(a) Is she in equilibrium? (b) If not, what will she do — and why?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>(a)</b> The price ratio is <code>p₁/p₂ = 8/4 = <b>2</b></code>.<br>
+    Since <b>MRS (4) &gt; price ratio (2)</b>, she is <b>not</b> in equilibrium.</p>
+    <p><b>(b)</b> She is <b>willing</b> to sacrifice <b>4 mangoes</b> for one extra banana, but
+    the market only <b>requires</b> her to sacrifice <b>2</b>. The banana is worth more to her
+    than it costs. So she will <b>buy more bananas and fewer mangoes</b>.</p>
+    <p>As she does so, by the Law of Diminishing MRS her MRS <b>falls</b> (more bananas → each
+    worth less; fewer mangoes → each worth more). She keeps adjusting until <b>MRS = 2</b>,
+    at which point equilibrium is reached.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Challenge</h2>
+  <div class="challenge">
+    <span class="tag">Challenge — section 2.3</span>
+    <p><button class="info" data-term="mrs"></button><button class="info" data-term="equilibrium"></button>Two consumers, <b>Anil</b> and <b>Bela</b>, shop in the same market and face the
+    <b>same prices</b>. Anil is far richer and buys much larger quantities of both goods. Their
+    tastes are completely different.</p>
+    <p>(a) At their respective optimum bundles, is there anything that must be <b>equal</b> for
+    both of them? Prove it.<br>
+    (b) Does this mean they derive the same satisfaction? Explain what the equality does and does
+    not tell us.<br>
+    (c) Why is this result impossible to state in the language of <b>cardinal</b> utility?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>(a) Yes — their MRS must be equal.</b></p>
+    <p>Each consumer optimises where <b>MRS = p₁/p₂</b>. They face the <b>same prices</b>, so the
+    same price ratio. Therefore:</p>
+    <div class="formula" style="font-size:1.15rem">
+      MRS<sub>Anil</sub> = p₁/p₂ = MRS<sub>Bela</sub>
+    </div>
+    <p>Despite different incomes, different quantities and different tastes, <b>at the margin they
+    value the two goods in exactly the same ratio</b>.</p>
+    <p><b>(b) It certainly does not mean they are equally satisfied.</b></p>
+    <div class="q">
+      <p>MRS is a <b>rate of substitution at the margin</b> — a slope. Equal slopes at their
+      respective optima say nothing about the <b>levels</b> of satisfaction they have reached.</p>
+    </div>
+    <p>Anil is on a <b>much higher indifference curve</b> — his larger budget set lets him reach
+    one Bela cannot afford. Their curves are tangent to <b>different</b> budget lines with the
+    <b>same slope</b>.</p>
+    <p><b>Why the result is interesting anyway:</b> it means no mutually beneficial trade is left
+    between them. If Anil valued bananas more highly at the margin than Bela did, they could both
+    gain by trading. Equal MRS means that opportunity is exhausted — which is a key ingredient of
+    what makes a competitive market efficient.</p>
+    <p><b>(c) Because cardinal utility invites a comparison that is meaningless.</b></p>
+    <p>The cardinal approach would tempt you to say "Anil gets 500 utils and Bela 200, so Anil is
+    2.5 times happier". But utility has <b>no natural unit</b>, and there is no way to compare one
+    person's utils with another's — an <b>interpersonal comparison</b> that no evidence can settle.</p>
+    <p>The ordinal approach never makes that claim. It only ever says each consumer <b>ranks</b>
+    her own bundles, and the result above uses nothing more: it compares a <b>slope</b> — which is
+    observable from choices — not a level of feeling. <b>That is precisely why the ordinal
+    approach is regarded as the more defensible of the two.</b></p>
+  </div>
+</section>
+
+<!-- ================= PART E: DEMAND ================= -->
+<section class="slide" data-section="2.4 Demand">
+  <h2><span class="num">2.4</span>From one optimum to a whole curve</h2>
+  <div class="insight box">
+    <span class="tag">The move we now make</span>
+    <p>So far we found <b>one</b> optimum bundle for <b>one</b> set of prices and income.</p>
+    <p>Now we change <b>one variable at a time</b> and watch the optimum move. Changing the
+    <b>price of bananas</b> traces out the <b>demand curve</b> — the single most important
+    object in this book.</p>
+  </div>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p>A consumer's <span class="term">demand function</span> for a good gives the amount of
+    the good she chooses at <b>different levels of its price</b>, when <b>other things remain
+    unchanged</b>.</p>
+  </div>
+  <div class="formula">X = f(P) &nbsp;&nbsp;&nbsp;&nbsp;<span class="small">…(2.12)</span></div>
+  <div class="warn box">
+    <span class="tag">"Other things remaining unchanged" — <i>ceteris paribus</i></span>
+    <p>Held constant: the consumer's <b>income</b>, the <b>prices of other goods</b>, and her
+    <b>tastes and preferences</b>. If any of those move, we are no longer on the same demand
+    curve. <b>This phrase is the difference between a movement and a shift.</b></p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Deriving the demand curve<button class="info" data-term="demand-curve"></button> from the indifference map<button class="info" data-term="ic-map"></button><button class="info" data-term="equilibrium"></button></h2>
+  <figure>
+    <svg viewBox="0 0 540 640" role="img" aria-label="Two-panel derivation of the demand curve from indifference curves and budget lines">
+      <!-- ===== TOP PANEL ===== -->
+      <line class="axis" x1="60" y1="300" x2="60" y2="30"/>
+      <line class="axis" x1="60" y1="300" x2="500" y2="300"/>
+      <text class="lab" x="20" y="165" text-anchor="middle" transform="rotate(-90 20 165)">MANGOES</text>
+      <text x="52" y="318" text-anchor="end">O</text>
+
+      <!-- three budget lines from common vertical intercept (60,70) -->
+      <line class="curve c-blue" x1="60" y1="70" x2="200" y2="300" opacity="0.9"/>
+      <line class="curve c-blue" x1="60" y1="70" x2="300" y2="300" opacity="0.7"/>
+      <line class="curve c-blue" x1="60" y1="70" x2="430" y2="300" opacity="0.5"/>
+      <circle cx="60" cy="70" r="6" fill="#1f7ab8" stroke="#fdf6e3" stroke-width="2"/>
+      <text x="72" y="62" style="fill:#175f90">M/p₂ fixed</text>
+
+      <!-- indifference curves tangent at C, D, E -->
+      <path class="curve c-violet" d="M84,120 C110,164 132,184 134,192 C168,214 196,230 224,240" opacity="0.85"/>
+      <path class="curve c-violet" d="M104,120 C150,180 184,204 208,212 C252,228 296,244 336,254" opacity="0.85"/>
+      <path class="curve c-violet" d="M126,118 C186,178 246,200 282,208 C338,222 400,238 452,248" opacity="0.85"/>
+
+      <circle class="pt" cx="134" cy="192" r="7"/>
+      <circle class="pt" cx="208" cy="212" r="7"/>
+      <circle class="pt" cx="282" cy="208" r="7"/>
+      <text class="lab" x="112" y="186">C</text>
+      <text class="lab" x="188" y="234">D</text>
+      <text class="lab" x="290" y="200">E</text>
+
+      <text x="200" y="52" style="fill:#5b6966">as p₁ falls, the budget line pivots outward…</text>
+
+      <!-- ===== connecting dashed lines ===== -->
+      <line class="dash" stroke="#a17a00" x1="134" y1="192" x2="134" y2="400"/>
+      <line class="dash" stroke="#a17a00" x1="208" y1="212" x2="208" y2="460"/>
+      <line class="dash" stroke="#a17a00" x1="282" y1="208" x2="282" y2="520"/>
+
+      <!-- ===== BOTTOM PANEL ===== -->
+      <line class="axis" x1="60" y1="560" x2="60" y2="350"/>
+      <line class="axis" x1="60" y1="560" x2="500" y2="560"/>
+      <text class="lab" x="20" y="455" text-anchor="middle" transform="rotate(-90 20 455)">PRICE of bananas</text>
+      <text class="lab" x="280" y="612" text-anchor="middle">BANANAS (x₁)</text>
+      <text x="52" y="578" text-anchor="end">O</text>
+
+      <!-- price levels -->
+      <line class="dash" stroke="#a17a00" x1="60" y1="400" x2="134" y2="400"/>
+      <line class="dash" stroke="#a17a00" x1="60" y1="460" x2="208" y2="460"/>
+      <line class="dash" stroke="#a17a00" x1="60" y1="520" x2="282" y2="520"/>
+      <text x="52" y="405" text-anchor="end" style="fill:#755900">p₁</text>
+      <text x="52" y="465" text-anchor="end" style="fill:#755900">p₁′</text>
+      <text x="52" y="525" text-anchor="end" style="fill:#755900">p₁″</text>
+
+      <!-- demand curve -->
+      <path class="curve c-teal" d="M104,368 C118,384 126,394 134,400
+                                     C160,420 186,444 208,460
+                                     C238,482 262,504 282,520
+                                     C318,542 358,552 400,556"/>
+      <circle cx="134" cy="400" r="7" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+      <circle cx="208" cy="460" r="7" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+      <circle cx="282" cy="520" r="7" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+      <text class="lab" x="146" y="394" style="fill:#586600">C′</text>
+      <text class="lab" x="220" y="454" style="fill:#586600">D′</text>
+      <text class="lab" x="294" y="514" style="fill:#586600">E′</text>
+      <text class="lab" x="406" y="548" style="fill:#586600">Demand curve</text>
+
+      <text x="134" y="582" text-anchor="middle" style="fill:#755900">x₁</text>
+      <text x="208" y="582" text-anchor="middle" style="fill:#755900">x₁′</text>
+      <text x="282" y="582" text-anchor="middle" style="fill:#755900">x₁″</text>
+    </svg>
+    <figcaption><b>Top:</b> as p₁ falls the budget line pivots outward and the tangency point
+    moves right (C → D → E), so more bananas are bought.
+    <b>Bottom:</b> plotting each price against its chosen quantity gives C′, D′, E′ — the
+    <b>demand curve</b>.</figcaption>
+  </figure>
+</section>
+
+<section class="slide">
+  <h2>The Law of Demand</h2>
+  <div class="box defn">
+    <span class="tag">Definition — learn word for word</span>
+    <p>The <span class="term">Law of Demand</span> states that, <b>other things remaining equal</b>,
+    there is a <b>negative (inverse) relationship</b> between the price of a commodity and its
+    quantity demanded: when price rises, demand falls; when price falls, demand rises.</p>
+  </div>
+  <div class="warn box">
+    <span class="tag">Reading the axes — a genuine oddity</span>
+    <p>In mathematics the <b>independent</b> variable goes on the horizontal axis. In economics
+    we do the <b>opposite</b> for the demand curve: <b>price (the independent variable) is on
+    the vertical axis</b> and <b>quantity on the horizontal</b>.</p>
+    <p class="small">A long-standing convention in economics, usually credited to Alfred Marshall
+    (though Cournot drew it this way earlier). Everyone follows it; just be aware you are reading
+    the diagram "sideways".</p>
+  </div>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p>The <span class="term">demand curve</span> is the graphical representation of the demand
+    function. It gives the quantity demanded by the consumer at each price.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Why demand rises when price falls — two effects<button class="info" data-term="law-of-demand"></button></h2>
+  <p class="lead">The downward slope has two separate causes. Both push in the same direction.</p>
+  <div class="grid2">
+    <div class="box defn">
+      <span class="tag">1 · Substitution effect</span>
+      <p>When bananas become cheaper, they become <b>relatively cheaper than mangoes</b>. The
+      consumer <b>substitutes bananas for mangoes</b> to get the same satisfaction more cheaply.</p>
+      <p class="small">Demand for bananas <b>rises</b>.</p>
+    </div>
+    <div class="box defn">
+      <span class="tag">2 · Income effect</span>
+      <p>When bananas become cheaper, the same money income now buys more — her
+      <b>real income (purchasing power) rises</b>. She can afford more of things generally.</p>
+      <p class="small">Demand for bananas <b>rises</b> (for a normal good).</p>
+    </div>
+  </div>
+  <div class="insight box">
+    <span class="tag">Together</span>
+    <p>For a <b>normal good</b> both effects work in the <b>same direction</b>, so a fall in
+    price definitely raises quantity demanded. The demand curve is <b>negatively sloped</b>.</p>
+  </div>
+  <div class="bridge box">
+    <span class="tag">Glossary definitions, for precision</span>
+    <p><b>Substitution effect:</b> the change in optimal quantity when the price changes and
+    income is adjusted so that she can just afford the <i>old</i> bundle.<br>
+    <b>Income effect:</b> the change in optimal quantity caused by the change in
+    <b>purchasing power</b> that the price change brings about.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The linear demand curve<button class="info" data-term="demand-curve"></button></h2>
+  <div class="split">
+    <figure>
+      <svg viewBox="0 0 460 380" role="img" aria-label="A linear demand curve d equals a minus b p">
+        <line class="axis" x1="70" y1="320" x2="70" y2="30"/>
+        <line class="axis" x1="70" y1="320" x2="430" y2="320"/>
+        <text class="lab" x="250" y="366" text-anchor="middle">QUANTITY (q)</text>
+        <text class="lab" x="22" y="175" text-anchor="middle" transform="rotate(-90 22 175)">PRICE (p)</text>
+        <text x="62" y="338" text-anchor="end">O</text>
+
+        <line class="curve c-blue" x1="70" y1="60" x2="390" y2="320"/>
+
+        <circle class="pt" cx="70" cy="60" r="7"/>
+        <circle class="pt" cx="390" cy="320" r="7"/>
+
+        <line class="dash" stroke="#a17a00" x1="70" y1="60" x2="70" y2="60"/>
+        <text class="lab" x="84" y="54" style="fill:#755900">p = a/b, q = 0</text>
+        <text class="lab" x="384" y="300" text-anchor="end" style="fill:#755900">p = 0, q = a</text>
+        <text class="lab" x="300" y="200" style="fill:#175f90">d(p) = a − bp</text>
+      </svg>
+    </figure>
+    <div>
+      <div class="formula" style="font-size:1.1rem">
+        d(p) = a − bp &nbsp;&nbsp; for 0 ≤ p ≤ a/b<br>
+        <span style="font-size:.9em">= 0 &nbsp;&nbsp; for p &gt; a/b</span>
+      </div>
+      <div class="box defn">
+        <span class="tag">Reading the parameters</span>
+        <ul>
+          <li><b>a</b> — the quantity demanded when <b>price is zero</b>. (The horizontal intercept.)</li>
+          <li><b>−b</b> — the <b>slope</b>. For every ₹1 rise in price, demand falls by
+          <b>b units</b>.</li>
+          <li><b>a/b</b> — the price at which demand becomes <b>zero</b>. (The vertical
+          intercept.) Beyond it nobody buys.</li>
+        </ul>
+      </div>
+      <div class="box eg">
+        <span class="tag">Concretely</span>
+        <p>If <code>d(p) = 20 − 2p</code>: at p = 0, demand is <b>20</b>; each ₹1 rise cuts demand
+        by <b>2</b>; demand hits zero at <code>p = 20/2 = <b>₹10</b></code>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.4.3</span>Normal and inferior goods</h2>
+  <p>Now hold <b>price</b> constant and change <b>income</b> instead.</p>
+  <div class="grid2">
+    <div class="box defn">
+      <span class="tag">Definition</span>
+      <p>A <span class="term">normal good</span> is one whose demand <b>increases</b> when the
+      consumer's income increases, and <b>decreases</b> when income decreases.</p>
+      <p class="small">Demand moves in the <b>same</b> direction as income.</p>
+      <p class="small"><b>Examples:</b> branded clothing, milk, restaurant meals, cars.</p>
+    </div>
+    <div class="box defn">
+      <span class="tag">Definition</span>
+      <p>An <span class="term">inferior good</span> is one whose demand <b>decreases</b> when
+      the consumer's income increases, and <b>increases</b> when income decreases.</p>
+      <p class="small">Demand moves in the <b>opposite</b> direction to income.</p>
+      <p class="small"><b>Examples:</b> coarse cereals, low-quality food items, second-hand clothes.</p>
+    </div>
+  </div>
+  <div class="warn box">
+    <span class="tag">"Inferior" is not an insult — and the label is not permanent</span>
+    <p>A good is inferior only <b>relative to a consumer's income level</b>. The <i>same</i> good
+    can be <b>normal at low incomes and inferior at higher incomes</b>.</p>
+    <p>At very low income, more money means <b>more</b> coarse cereal. Beyond a point, more money
+    means she <b>switches to better cereals</b>, and coarse cereal demand falls. The good crossed
+    over from normal to inferior.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The Giffen good — the exception that proves the rule<button class="info" data-term="inferior-good"></button><button class="info" data-term="law-of-demand"></button></h2>
+  <div class="box eg">
+    <span class="tag">The mechanism</span>
+    <p>For a <b>strongly inferior</b> good, a rise in purchasing power makes the consumer buy
+    <b>less</b>. So when the price <b>falls</b>:</p>
+    <ul>
+      <li><b>Substitution effect</b> says buy <b>more</b> (it is now relatively cheaper)</li>
+      <li><b>Income effect</b> says buy <b>less</b> (she feels richer, and it is inferior)</li>
+    </ul>
+    <p>The two effects now <b>oppose</b> each other.</p>
+  </div>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p>A <span class="term">Giffen good</span> is an inferior good for which the <b>income effect
+    is stronger than the substitution effect</b>, so that demand is <b>positively related</b>
+    to its price — demand <b>rises</b> when price rises.</p>
+  </div>
+  <div class="warn box">
+    <span class="tag">Keep the logic straight</span>
+    <ul>
+      <li>Every <b>Giffen good is inferior</b>, but <b>most inferior goods are not Giffen</b> —
+      usually the substitution effect still wins, and demand still slopes downward.</li>
+      <li>A Giffen good is the <b>only genuine exception to the Law of Demand</b> in this course.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.4.4</span>Substitutes and complements</h2>
+  <p>Now hold price and income constant, and change the price of a <b>related good</b>.</p>
+  <div class="grid2">
+    <div class="box defn">
+      <span class="tag">Definition</span>
+      <p><span class="term">Substitute goods</span> can be used <b>in place of</b> each other to
+      satisfy the same want.</p>
+      <p class="small"><b>Examples:</b> tea and coffee; Coke and Pepsi; rice and wheat.</p>
+      <p><b>Rule:</b> demand for a good moves in the <b>same direction</b> as the price of its
+      substitute.</p>
+      <p class="small">Price of coffee ↑ → people switch → demand for tea ↑</p>
+    </div>
+    <div class="box defn">
+      <span class="tag">Definition</span>
+      <p><span class="term">Complementary goods</span> are consumed <b>together</b> to satisfy
+      a want.</p>
+      <p class="small"><b>Examples:</b> tea and sugar; shoes and socks; pen and ink; car and petrol.</p>
+      <p><b>Rule:</b> demand for a good moves in the <b>opposite direction</b> to the price of
+      its complement.</p>
+      <p class="small">Price of sugar ↑ → tea becomes costlier to enjoy → demand for tea ↓</p>
+    </div>
+  </div>
+  <div class="insight box">
+    <span class="tag">A memory hook</span>
+    <p><b>Substitutes move <i>with</i></b> the related price. <b>Complements move <i>against</i></b> it.
+    Both words start with the direction they take: <b>S</b>ubstitute → <b>S</b>ame,
+    <b>C</b>omplement → <b>C</b>ontrary.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.4.6</span>Movement along vs shift of the demand curve<button class="info" data-term="demand-curve"></button><button class="info" data-term="law-of-demand"></button></h2>
+  <figure>
+    <svg viewBox="0 0 900 380" role="img" aria-label="Movement along a demand curve compared with a shift of the demand curve">
+      <!-- PANEL A -->
+      <line class="axis" x1="70" y1="310" x2="70" y2="35"/>
+      <line class="axis" x1="70" y1="310" x2="410" y2="310"/>
+      <text class="lab" x="230" y="352" text-anchor="middle">QUANTITY</text>
+      <text class="lab" x="24" y="175" text-anchor="middle" transform="rotate(-90 24 175)">PRICE</text>
+      <text class="lab" x="230" y="24" text-anchor="middle" style="fill:#755900">(a) MOVEMENT — price changes</text>
+
+      <line class="curve c-blue" x1="100" y1="60" x2="380" y2="300"/>
+      <text class="lab" x="384" y="292" style="fill:#175f90">D</text>
+
+      <line class="dash" stroke="#75837f" x1="70" y1="110" x2="158" y2="110"/>
+      <line class="dash" stroke="#75837f" x1="158" y1="110" x2="158" y2="310"/>
+      <line class="dash" stroke="#75837f" x1="70" y1="230" x2="298" y2="230"/>
+      <line class="dash" stroke="#75837f" x1="298" y1="230" x2="298" y2="310"/>
+
+      <circle class="pt" cx="158" cy="110" r="7"/>
+      <circle class="pt" cx="298" cy="230" r="7"/>
+      <text x="62" y="115" text-anchor="end">p₁</text>
+      <text x="62" y="235" text-anchor="end">p₂</text>
+      <text x="158" y="330" text-anchor="middle">q₁</text>
+      <text x="298" y="330" text-anchor="middle">q₂</text>
+
+      <defs>
+        <marker id="ar5" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+          <path d="M0,0 L9,3.5 L0,7 z" fill="#748500"/>
+        </marker>
+      </defs>
+      <path d="M172,124 Q230,160 286,216" fill="none" stroke="#748500" stroke-width="2.5" marker-end="url(#ar5)"/>
+      <text x="248" y="152" style="fill:#586600">along the</text>
+      <text x="248" y="170" style="fill:#586600">same curve</text>
+
+      <!-- PANEL B -->
+      <line class="axis" x1="520" y1="310" x2="520" y2="35"/>
+      <line class="axis" x1="520" y1="310" x2="870" y2="310"/>
+      <text class="lab" x="690" y="352" text-anchor="middle">QUANTITY</text>
+      <text class="lab" x="474" y="175" text-anchor="middle" transform="rotate(-90 474 175)">PRICE</text>
+      <text class="lab" x="690" y="24" text-anchor="middle" style="fill:#755900">(b) SHIFT — something else changes</text>
+
+      <line class="curve c-rose"   x1="500" y1="90"  x2="700" y2="300" opacity="0.85"/>
+      <line class="curve c-blue"   x1="550" y1="60"  x2="790" y2="300"/>
+      <line class="curve c-teal"   x1="620" y1="55"  x2="866" y2="296" opacity="0.85"/>
+
+      <text class="lab" x="640" y="288" style="fill:#b02522">D₂</text>
+      <text class="lab" x="794" y="292" style="fill:#175f90">D</text>
+      <text class="lab" x="866" y="288" style="fill:#586600">D₁</text>
+
+      <line class="dash" stroke="#a17a00" x1="520" y1="180" x2="866" y2="180"/>
+      <text x="512" y="185" text-anchor="end" style="fill:#755900">p</text>
+      <circle cx="586" cy="180" r="6" fill="#c62b28" stroke="#fdf6e3" stroke-width="2"/>
+      <circle cx="670" cy="180" r="6" fill="#1f7ab8" stroke="#fdf6e3" stroke-width="2"/>
+      <circle cx="748" cy="180" r="6" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+      <text x="560" y="205" style="fill:#b02522">less</text>
+      <text x="734" y="205" style="fill:#586600">more</text>
+      <text x="640" y="130" style="fill:#5b6966">same price, different quantity</text>
+    </svg>
+  </figure>
+  <div class="grid2">
+    <div class="card"><h4>Movement along the curve</h4>
+      <p>Caused <b>only</b> by a change in the <b>price of the good itself</b>.</p>
+      <p class="small">Downward movement (price ↓) = <b>extension</b> of demand.<br>
+      Upward movement (price ↑) = <b>contraction</b> of demand.</p></div>
+    <div class="card"><h4>Shift of the curve</h4>
+      <p>Caused by a change in <b>anything other than the good's own price</b>.</p>
+      <p class="small">Rightward shift = <b>increase</b> in demand.<br>
+      Leftward shift = <b>decrease</b> in demand.</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>What shifts the demand curve?<button class="info" data-term="movement-vs-shift"></button><button class="info" data-term="normal-good"></button><button class="info" data-term="inferior-good"></button><button class="info" data-term="substitutes"></button><button class="info" data-term="complements"></button></h2>
+  <table>
+    <thead><tr><th class="lbl">Change in…</th><th>Rightward shift (increase) if…</th><th>Leftward shift (decrease) if…</th></tr></thead>
+    <tbody>
+      <tr><td class="lbl">Income — <b>normal</b> good</td><td>Income <b>rises</b></td><td>Income <b>falls</b></td></tr>
+      <tr><td class="lbl">Income — <b>inferior</b> good</td><td>Income <b>falls</b></td><td>Income <b>rises</b></td></tr>
+      <tr><td class="lbl">Price of a <b>substitute</b></td><td>Substitute's price <b>rises</b></td><td>Substitute's price <b>falls</b></td></tr>
+      <tr><td class="lbl">Price of a <b>complement</b></td><td>Complement's price <b>falls</b></td><td>Complement's price <b>rises</b></td></tr>
+      <tr><td class="lbl">Tastes &amp; preferences</td><td>Change <b>in favour</b> of the good</td><td>Change <b>against</b> the good</td></tr>
+    </tbody>
+  </table>
+  <div class="grid2">
+    <div class="box eg">
+      <span class="tag">Example — rightward shift</span>
+      <p>Summer arrives and preferences turn towards ice cream. At <b>every</b> price, more ice
+      cream is demanded. The whole curve moves <b>right</b>.</p>
+    </div>
+    <div class="box eg">
+      <span class="tag">Example — leftward shift</span>
+      <p>A study reveals cold drinks may harm health. Preferences turn against them. At
+      <b>every</b> price, less is demanded. The curve moves <b>left</b>.</p>
+    </div>
+  </div>
+  <div class="warn box">
+    <span class="tag">The test that never fails</span>
+    <p>Ask: <b>did the price of this good itself change?</b> If <b>yes</b> → movement along the
+    curve. If <b>no</b> → shift of the curve. Nothing else matters.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Check your understanding</h2>
+  <div class="qcard">
+    <span class="tag">Question 6</span>
+    <p>For the market for <b>tea</b>, state whether there is a <b>movement along</b> the demand
+    curve or a <b>shift</b> — and in which direction:</p>
+    <ol>
+      <li>The price of tea falls.<button class="info" data-term="movement-vs-shift"></button></li>
+      <li>The price of coffee rises.</li>
+      <li>The price of sugar rises.</li>
+      <li>Consumers' incomes rise (tea is a normal good).</li>
+      <li>A medical report says tea improves health.</li>
+    </ol>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <ol>
+      <li><b>Movement</b> along the curve — downward (<b>extension</b> of demand). The good's
+      <i>own</i> price changed.</li>
+      <li><b>Rightward shift.</b> Coffee is a <b>substitute</b>; its price rose, so consumers
+      switch to tea. Demand for tea rises at every price.</li>
+      <li><b>Leftward shift.</b> Sugar is a <b>complement</b>; costlier sugar makes tea-drinking
+      more expensive overall, so tea demand falls at every price.</li>
+      <li><b>Rightward shift.</b> Tea is normal, so higher income raises demand at every price.</li>
+      <li><b>Rightward shift.</b> A favourable change in tastes and preferences.</li>
+    </ol>
+    <p class="small">Only <b>item 1</b> involved the price of tea itself — and only item 1 is a
+    movement. Everything else shifts the curve.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Challenge</h2>
+  <div class="challenge">
+    <span class="tag">Challenge — section 2.4</span>
+    <p>The price of a good <b>rises</b>, and the quantity bought <b>also rises</b>.</p>
+    <p>A student says this <b>disproves the Law of Demand</b>.</p>
+    <p>Give <b>three different</b> explanations that are each fully consistent with the Law of
+    Demand, and one that genuinely is an exception. For each, say whether it involves a
+    <b>movement along</b> or a <b>shift of</b> the demand curve.<button class="info" data-term="movement-vs-shift"></button><button class="info" data-term="giffen"></button></p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>The student has forgotten the phrase "other things remaining equal".</b> The Law of
+    Demand describes a <b>movement along</b> a demand curve. If something <i>else</i> also
+    changed, the curve itself moved, and what we observe is the <b>net</b> effect of two
+    separate changes.</p>
+    <p><b>1 · Income rose (normal good).</b> Higher income shifts the demand curve
+    <b>rightward</b>. If that shift outweighs the price rise, the quantity bought rises.
+    → <b>shift</b> (plus a movement along the new curve).</p>
+    <p><b>2 · The price of a substitute rose by more.</b> If coffee rose sharply, demand for tea
+    shifts <b>rightward</b>, and more tea is bought despite tea's own price rising.
+    → <b>shift</b>.</p>
+    <p><b>3 · Tastes changed in the good's favour.</b> A favourable report, a change of season,
+    a fashion — the curve shifts <b>rightward</b>. → <b>shift</b>.</p>
+    <div class="q">
+      <p>In all three, the demand curve is <b>still downward sloping</b>. We simply observed two
+      points on <b>two different curves</b> and mistook them for two points on one.</p>
+    </div>
+    <p><b>The genuine exception — a Giffen good.</b> For a strongly inferior good, a price rise
+    makes the consumer poorer in real terms, and because the good is inferior, that
+    <b>income effect</b> pushes her to buy <b>more</b> of it. If the income effect outweighs the
+    substitution effect, quantity demanded rises with price. → <b>movement along an
+    upward-sloping demand curve</b>.</p>
+    <p><b>This is the crucial distinction.</b> In cases 1–3 the law holds and something else moved.
+    In the Giffen case the law itself fails — the demand curve is genuinely positively sloped.</p>
+    <p class="small"><b>The methodological lesson.</b> To test the Law of Demand you cannot simply
+    observe price and quantity over time — too many things move at once. You must isolate the
+    effect of price with everything else held constant. This is why "<i>ceteris paribus</i>" is
+    not a formality but the substance of the claim.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.5</span>Market demand — horizontal summation<button class="info" data-term="market-demand"></button><button class="info" data-term="demand-curve"></button></h2>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Market demand</span> for a good at a particular price is the
+    <b>total demand of all consumers</b> in the market taken together at that price.</p>
+  </div>
+  <div class="insight box">
+    <span class="tag">The method: horizontal summation</span>
+    <p><b>Fix a price. Add up the quantities.</b> Repeat for every price.</p>
+    <p>We add <b>horizontally</b> (quantities, measured along the x-axis) — <b>never</b>
+    vertically. Prices are not added; the price is the same for everyone.</p>
+  </div>
+  <div class="bridge box">
+    <span class="tag">Looking ahead</span>
+    <p>The <b>identical technique</b> is used in <b>Chapter 4</b> to get the <b>market supply
+    curve</b> from individual firms' supply curves. Learn it once, use it twice.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Horizontal summation, drawn<button class="info" data-term="market-demand"></button></h2>
+  <p>Two consumers: <code>d₁(p) = 10 − p</code> and <code>d₂(p) = 15 − p</code>.</p>
+  <figure>
+    <svg viewBox="0 0 940 360" role="img" aria-label="Market demand as the horizontal sum of two individual demand curves">
+      <!-- PANEL A -->
+      <line class="axis" x1="40" y1="300" x2="40" y2="40"/>
+      <line class="axis" x1="40" y1="300" x2="300" y2="300"/>
+      <text class="lab" x="160" y="342" text-anchor="middle">Consumer 1</text>
+      <text x="32" y="65"  text-anchor="end">15</text>
+      <text x="32" y="145" text-anchor="end">10</text>
+      <text x="32" y="305" text-anchor="end">0</text>
+      <text x="260" y="322" text-anchor="middle">10</text>
+      <text class="lab" x="10" y="170" text-anchor="middle" transform="rotate(-90 10 170)">PRICE</text>
+
+      <line class="curve c-blue" x1="40" y1="140" x2="260" y2="300"/>
+      <line class="curve c-blue" x1="40" y1="140" x2="40" y2="60"/>
+      <text class="lab" x="264" y="292" style="fill:#175f90">d₁</text>
+      <circle class="pt" cx="40" cy="140" r="5"/>
+
+      <!-- PANEL B -->
+      <line class="axis" x1="350" y1="300" x2="350" y2="40"/>
+      <line class="axis" x1="350" y1="300" x2="610" y2="300"/>
+      <text class="lab" x="470" y="342" text-anchor="middle">Consumer 2</text>
+      <text x="342" y="65" text-anchor="end">15</text>
+      <text x="575" y="322" text-anchor="middle">15</text>
+
+      <line class="curve c-violet" x1="350" y1="60" x2="575" y2="300"/>
+      <text class="lab" x="580" y="292" style="fill:#5055a0">d₂</text>
+
+      <!-- PANEL C -->
+      <line class="axis" x1="660" y1="300" x2="660" y2="40"/>
+      <line class="axis" x1="660" y1="300" x2="920" y2="300"/>
+      <text class="lab" x="790" y="342" text-anchor="middle">Market (d₁ + d₂)</text>
+      <text x="652" y="65"  text-anchor="end">15</text>
+      <text x="652" y="145" text-anchor="end">10</text>
+      <text x="705" y="322" text-anchor="middle">5</text>
+      <text x="885" y="322" text-anchor="middle">25</text>
+
+      <line class="curve c-teal" x1="660" y1="60"  x2="705" y2="140"/>
+      <line class="curve c-teal" x1="705" y1="140" x2="885" y2="300"/>
+      <circle cx="705" cy="140" r="7" fill="#a17a00" stroke="#fdf6e3" stroke-width="2"/>
+      <text class="lab" x="716" y="132" style="fill:#755900">kink at p = 10</text>
+      <text class="lab" x="890" y="292" style="fill:#586600">D</text>
+
+      <line class="dash" stroke="#75837f" x1="660" y1="140" x2="705" y2="140"/>
+    </svg>
+    <figcaption>Notice the <b>kink</b> at p = 10 — the price above which consumer 1 drops out
+    of the market entirely.</figcaption>
+  </figure>
+  <div class="box eg">
+    <span class="tag">The market demand function, in three pieces</span>
+    <p><b>For p ≤ 10</b> (both buy): &nbsp;<code>(10 − p) + (15 − p) = <b>25 − 2p</b></code></p>
+    <p><b>For 10 &lt; p ≤ 15</b> (only consumer 2 buys): &nbsp;<code><b>15 − p</b></code></p>
+    <p><b>For p &gt; 15</b> (nobody buys): &nbsp;<code><b>0</b></code></p>
+    <p class="small"><b>Check at p = 10:</b> d₁ = 0, d₂ = 5, market = 5. And 25 − 2(10) = 5. ✓</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Check your understanding</h2>
+  <div class="qcard">
+    <span class="tag">Question 7 — NCERT Ex. 14 &amp; 15</span>
+    <p><b>(a)</b> Two consumers:<br>
+    <code>d₁(p) = 20 − p</code> for p ≤ 20, and 0 above;<br>
+    <code>d₂(p) = 30 − 2p</code> for p ≤ 15, and 0 above.<br>
+    Find the market demand function.</p>
+    <p><b>(b)</b> There are <b>20 identical consumers</b>, each with
+    <code>d(p) = 10 − 3p</code> for p ≤ 10/3, and 0 above. Find market demand.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>(a)</b> Consumer 2 leaves the market above p = 15; consumer 1 above p = 20. So there
+    are <b>three</b> price ranges:</p>
+    <p><b>For 0 ≤ p ≤ 15</b> (both buy):
+    <code>(20 − p) + (30 − 2p) = <b>50 − 3p</b></code><br>
+    <b>For 15 &lt; p ≤ 20</b> (only consumer 1): <code><b>20 − p</b></code><br>
+    <b>For p &gt; 20:</b> <code><b>0</b></code></p>
+    <p class="small"><b>Check at p = 15:</b> d₁ = 5, d₂ = 0, market = 5. And 50 − 3(15) = 5. ✓</p>
+    <p><b>(b)</b> All 20 consumers are identical, so simply multiply one consumer's demand by 20:</p>
+    <p><code>D(p) = 20 × (10 − 3p) = <b>200 − 60p</b></code> &nbsp;for 0 ≤ p ≤ 10/3<br>
+    <code>= <b>0</b></code> &nbsp;for p &gt; 10/3</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Check your understanding</h2>
+  <div class="qcard">
+    <span class="tag">Question 8 — NCERT Ex. 16</span>
+    <p>Two consumers. Compute the market demand at each price.</p>
+    <table>
+      <thead><tr><th>Price (₹)</th><th>d₁</th><th>d₂</th><th>Market demand</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>9</td><td>24</td><td>?</td></tr>
+        <tr><td>2</td><td>8</td><td>20</td><td>?</td></tr>
+        <tr><td>3</td><td>7</td><td>18</td><td>?</td></tr>
+        <tr><td>4</td><td>6</td><td>16</td><td>?</td></tr>
+        <tr><td>5</td><td>5</td><td>14</td><td>?</td></tr>
+        <tr><td>6</td><td>4</td><td>12</td><td>?</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p>Add the two quantities <b>at each price</b> (horizontal summation):</p>
+    <table>
+      <thead><tr><th>Price (₹)</th><th>d₁</th><th>d₂</th><th>Market demand</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>9</td><td>24</td><td class="hi2">33</td></tr>
+        <tr><td>2</td><td>8</td><td>20</td><td class="hi2">28</td></tr>
+        <tr><td>3</td><td>7</td><td>18</td><td class="hi2">25</td></tr>
+        <tr><td>4</td><td>6</td><td>16</td><td class="hi2">22</td></tr>
+        <tr><td>5</td><td>5</td><td>14</td><td class="hi2">19</td></tr>
+        <tr><td>6</td><td>4</td><td>12</td><td class="hi2">16</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Market demand falls as price rises — the market demand curve, like the
+    individual ones, is <b>downward sloping</b>.</p>
+  </div>
+</section>
+
+<!-- ================= PART F: ELASTICITY ================= -->
+<section class="slide" data-section="2.6 Elasticity of Demand">
+  <h2><span class="num">2.6</span>The Law of Demand<button class="info" data-term="law-of-demand"></button> is not enough</h2>
+  <div class="insight box">
+    <span class="tag">What the Law of Demand does <i>not</i> tell us</span>
+    <p>The Law of Demand says quantity moves in the <b>opposite direction</b> to price.
+    It says nothing about <b>by how much</b>.</p>
+  </div>
+  <div class="grid2">
+    <div class="card"><h4>Salt</h4>
+      <p>Price doubles. You still buy roughly the same amount. Demand barely responds.</p></div>
+    <div class="card"><h4>A particular brand of biscuit</h4>
+      <p>Price rises 10%. Buyers switch to a rival brand. Demand collapses.</p></div>
+  </div>
+  <p>Both obey the Law of Demand. But they behave <b>completely differently</b> — and that
+  difference decides whether a shopkeeper who raises prices earns more or less.</p>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p><span class="term">Price elasticity of demand</span> is a measure of the
+    <b>responsiveness of the quantity demanded of a good to a change in its price</b>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Measuring elasticity</h2>
+  <div class="formula">
+    e<sub>D</sub> =
+    <span class="frac"><span>percentage change in quantity demanded</span><span>percentage change in price</span></span>
+    &nbsp;&nbsp;<span class="small">…(2.16a)</span>
+  </div>
+  <p>Writing the percentages out:</p>
+  <div class="formula">
+    e<sub>D</sub> =
+    <span class="frac"><span>(ΔQ / Q) × 100</span><span>(ΔP / P) × 100</span></span>
+    &nbsp;=&nbsp;
+    <span class="frac"><span>ΔQ</span><span>Q</span></span> ×
+    <span class="frac"><span>P</span><span>ΔP</span></span>
+    &nbsp;&nbsp;<span class="small">…(2.16b)</span>
+  </div>
+  <div class="grid2">
+    <div class="box warn">
+      <span class="tag">The sign</span>
+      <p>Because price and quantity move in <b>opposite</b> directions, e<sub>D</sub> is
+      <b>always negative</b>. For convenience we conventionally report its
+      <b>absolute value</b> and drop the minus sign.</p>
+    </div>
+    <div class="box insight">
+      <span class="tag">Elasticity is a pure number</span>
+      <p>It is a <b>ratio of two percentages</b>, so the units cancel out. It does not matter
+      whether quantity is in kilograms or dozens, or price in rupees or dollars. This is what
+      makes elasticities <b>comparable across goods</b>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Worked example — Example 2.2<button class="info" data-term="ped"></button></h2>
+  <div class="box eg">
+    <span class="tag">The data</span>
+    <p>An individual buys <b>15 bananas</b> when the price is <b>₹5</b>. When the price rises to
+    <b>₹7</b>, she reduces her demand to <b>12 bananas</b>.</p>
+    <table>
+      <thead><tr><th>Price (₹)</th><th>Quantity</th></tr></thead>
+      <tbody>
+        <tr><td>Old: P₁ = 5</td><td>Old: Q₁ = 15</td></tr>
+        <tr><td>New: P₂ = 7</td><td>New: Q₂ = 12</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="grid2">
+    <div class="card"><h4>Step 1 — % change in quantity</h4>
+      <p><code>(Q₂ − Q₁)/Q₁ × 100</code><br>
+      <code>= (12 − 15)/15 × 100</code><br>
+      <code>= −3/15 × 100 = <b>−20%</b></code></p></div>
+    <div class="card"><h4>Step 2 — % change in price</h4>
+      <p><code>(P₂ − P₁)/P₁ × 100</code><br>
+      <code>= (7 − 5)/5 × 100</code><br>
+      <code>= 2/5 × 100 = <b>+40%</b></code></p></div>
+  </div>
+  <div class="formula">
+    e<sub>D</sub> = <span class="frac"><span>−20</span><span>40</span></span> = −0.5
+    &nbsp;&nbsp;⇒&nbsp;&nbsp; |e<sub>D</sub>| = <b>0.5</b>
+  </div>
+  <div class="insight box">
+    <span class="tag">Interpretation</span>
+    <p>|e<sub>D</sub>| = 0.5 &lt; 1, so demand for bananas is <b>inelastic</b> — a 40% price
+    rise caused only a 20% fall in demand. Quantity responded <b>proportionately less</b> than
+    price.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The five degrees of elasticity<button class="info" data-term="ped"></button></h2>
+  <table>
+    <thead><tr><th class="lbl">Value of |e<sub>D</sub>|</th><th>Name</th><th>Meaning</th><th>Typical goods</th></tr></thead>
+    <tbody>
+      <tr><td class="lbl">e<sub>D</sub> = 0</td><td><b>Perfectly inelastic</b></td><td>Quantity does not change at all when price changes</td><td>Life-saving medicine (idealised)</td></tr>
+      <tr><td class="lbl">0 &lt; e<sub>D</sub> &lt; 1</td><td><b>Inelastic</b></td><td>%ΔQ <b>less than</b> %ΔP</td><td>Salt, foodgrains, necessities</td></tr>
+      <tr><td class="lbl">e<sub>D</sub> = 1</td><td><b>Unitary elastic</b></td><td>%ΔQ <b>equals</b> %ΔP</td><td>—</td></tr>
+      <tr><td class="lbl">e<sub>D</sub> &gt; 1</td><td><b>Elastic</b></td><td>%ΔQ <b>greater than</b> %ΔP</td><td>Luxuries, branded goods</td></tr>
+      <tr><td class="lbl">e<sub>D</sub> = ∞</td><td><b>Perfectly elastic</b></td><td>Any rise in price drops demand to zero</td><td>Idealised competitive market</td></tr>
+    </tbody>
+  </table>
+  <div class="insight box">
+    <span class="tag">The single test</span>
+    <p>Compare the two percentages. <b>Quantity responds more than price → elastic.
+    Quantity responds less than price → inelastic.</b> Nothing more.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Constant elasticity demand curves<button class="info" data-term="ped"></button><button class="info" data-term="demand-curve"></button></h2>
+  <figure>
+    <svg viewBox="0 0 940 350" role="img" aria-label="Perfectly inelastic, perfectly elastic and unitary elastic demand curves">
+      <!-- (a) vertical -->
+      <line class="axis" x1="50" y1="290" x2="50" y2="40"/>
+      <line class="axis" x1="50" y1="290" x2="290" y2="290"/>
+      <text class="lab" x="170" y="332" text-anchor="middle">(a) e = 0 · perfectly inelastic</text>
+      <text class="lab" x="16" y="165" text-anchor="middle" transform="rotate(-90 16 165)">PRICE</text>
+      <line class="curve c-rose" x1="175" y1="55" x2="175" y2="290"/>
+      <text x="175" y="312" text-anchor="middle">q̄</text>
+      <line class="dash" stroke="#75837f" x1="50" y1="100" x2="175" y2="100"/>
+      <line class="dash" stroke="#75837f" x1="50" y1="200" x2="175" y2="200"/>
+      <text x="190" y="76" style="fill:#b02522">price changes…</text>
+      <text x="190" y="240" style="fill:#b02522">…quantity does not</text>
+
+      <!-- (b) horizontal -->
+      <line class="axis" x1="360" y1="290" x2="360" y2="40"/>
+      <line class="axis" x1="360" y1="290" x2="600" y2="290"/>
+      <text class="lab" x="480" y="332" text-anchor="middle">(b) e = ∞ · perfectly elastic</text>
+      <line class="curve c-teal" x1="360" y1="150" x2="600" y2="150"/>
+      <text x="352" y="155" text-anchor="end">p̄</text>
+      <text x="420" y="128" style="fill:#586600">any quantity at p̄</text>
+      <text x="420" y="196" style="fill:#586600">nothing at any other price</text>
+
+      <!-- (c) rectangular hyperbola -->
+      <line class="axis" x1="670" y1="290" x2="670" y2="40"/>
+      <line class="axis" x1="670" y1="290" x2="920" y2="290"/>
+      <text class="lab" x="795" y="332" text-anchor="middle">(c) e = 1 · unitary elastic</text>
+      <path class="curve c-blue" d="M700,58 C716,110 740,160 776,196 C816,236 866,262 912,274"/>
+      <text x="806" y="120" style="fill:#175f90">rectangular</text>
+      <text x="806" y="140" style="fill:#175f90">hyperbola</text>
+
+      <!-- equal-area rectangles -->
+      <rect x="670" y="82" width="42" height="208" fill="rgba(181,137,0,0.18)" stroke="#a17a00" stroke-dasharray="4 4"/>
+      <rect x="670" y="232" width="182" height="58" fill="rgba(181,137,0,0.18)" stroke="#a17a00" stroke-dasharray="4 4"/>
+    </svg>
+    <figcaption>In panel (c) the two shaded rectangles have <b>equal area</b> — price × quantity
+    is constant, so total expenditure never changes.</figcaption>
+  </figure>
+  <div class="grid3">
+    <div class="card"><h4 style="color:#b02522">Vertical curve</h4>
+      <p>Whatever the price, demand stays at q̄. Price never changes quantity, so
+      <b>|e| = 0</b>.</p></div>
+    <div class="card"><h4 style="color:#586600">Horizontal curve</h4>
+      <p>At p̄ any quantity is demanded; at any other price, demand is zero.
+      <b>|e| = ∞</b>.</p></div>
+    <div class="card"><h4 style="color:#175f90">Rectangular hyperbola</h4>
+      <p><code>p × q = constant</code>. Any % change in price causes an <b>equal</b> % change
+      in quantity. <b>|e| = 1</b> everywhere.</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.6.1</span>Elasticity varies along a linear demand curve<button class="info" data-term="ped"></button></h2>
+  <div class="warn box">
+    <span class="tag">The most common misconception in this chapter</span>
+    <p>A straight-line demand curve has a <b>constant slope</b>. Students therefore assume it
+    has <b>constant elasticity</b>. <b>It does not.</b></p>
+    <p>Slope is <code>Δq/Δp</code> — an <b>absolute</b> change. Elasticity is a ratio of
+    <b>percentage</b> changes, so it depends on the <b>p and q you start from</b>. Same slope,
+    different starting point, different elasticity.</p>
+  </div>
+  <p>For the linear demand curve <code>q = a − bp</code>, we have <code>Δq/Δp = −b</code>.
+  Substituting into (2.16b):</p>
+  <div class="formula">
+    e<sub>D</sub> = −b ×
+    <span class="frac"><span>p</span><span>q</span></span>
+    &nbsp;=&nbsp; −
+    <span class="frac"><span>bp</span><span>a − bp</span></span>
+    &nbsp;&nbsp;<span class="small">…(2.17)</span>
+  </div>
+  <p class="center">The <code>−b</code> is fixed. The ratio <code>p/q</code> is <b>not</b> —
+  and it is what drives elasticity.</p>
+</section>
+
+<section class="slide">
+  <h2>Elasticity at every point on a linear demand curve<button class="info" data-term="ped"></button></h2>
+  <figure>
+    <svg viewBox="0 0 540 400" role="img" aria-label="Elasticity values at different points along a linear demand curve">
+      <line class="axis" x1="60" y1="330" x2="60" y2="30"/>
+      <line class="axis" x1="60" y1="330" x2="510" y2="330"/>
+      <text class="lab" x="280" y="376" text-anchor="middle">QUANTITY (q)</text>
+      <text class="lab" x="20" y="180" text-anchor="middle" transform="rotate(-90 20 180)">PRICE (p)</text>
+      <text x="52" y="348" text-anchor="end">O</text>
+
+      <line class="curve c-blue" x1="60" y1="60" x2="440" y2="330"/>
+
+      <!-- e = infinity at price axis -->
+      <circle cx="60" cy="60" r="8" fill="#c62b28" stroke="#fdf6e3" stroke-width="2"/>
+      <text class="lab" x="76" y="52" style="fill:#b02522">e = ∞ &nbsp;(q = 0)</text>
+
+      <!-- elastic region -->
+      <circle cx="155" cy="127" r="7" fill="#6c71c4" stroke="#fdf6e3" stroke-width="2"/>
+      <text class="lab" x="170" y="120" style="fill:#5055a0">e &gt; 1 &nbsp;elastic</text>
+
+      <!-- midpoint e = 1 -->
+      <circle cx="250" cy="195" r="9" fill="#a17a00" stroke="#fdf6e3" stroke-width="2.5"/>
+      <line class="dash" stroke="#a17a00" x1="60" y1="195" x2="250" y2="195"/>
+      <line class="dash" stroke="#a17a00" x1="250" y1="195" x2="250" y2="330"/>
+      <text class="lab" x="264" y="188" style="fill:#755900">e = 1 &nbsp;MIDPOINT</text>
+      <text x="52" y="200" text-anchor="end" style="fill:#755900">a/2b</text>
+      <text x="250" y="350" text-anchor="middle" style="fill:#755900">a/2</text>
+
+      <!-- inelastic region -->
+      <circle cx="345" cy="262" r="7" fill="#238b84" stroke="#fdf6e3" stroke-width="2"/>
+      <text class="lab" x="360" y="256" style="fill:#196b65">e &lt; 1 &nbsp;inelastic</text>
+
+      <!-- e = 0 at quantity axis -->
+      <circle cx="440" cy="330" r="8" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+      <text class="lab" x="452" y="318" style="fill:#586600">e = 0 &nbsp;(p = 0)</text>
+      <text x="440" y="350" text-anchor="middle">a</text>
+
+      <text x="120" y="300" style="fill:#5b6966">same slope everywhere —</text>
+      <text x="120" y="318" style="fill:#5b6966">but elasticity falls from ∞ to 0</text>
+    </svg>
+  </figure>
+  <table>
+    <thead><tr><th>Position on the curve</th><th>p / q</th><th>Elasticity</th></tr></thead>
+    <tbody>
+      <tr><td class="lbl">At the price axis (q = 0)</td><td>infinite</td><td><b>e = ∞</b></td></tr>
+      <tr><td class="lbl">Above the midpoint</td><td>high</td><td><b>e &gt; 1</b> (elastic)</td></tr>
+      <tr><td class="lbl">At the midpoint (p = a/2b)</td><td>—</td><td><b>e = 1</b> (unitary)</td></tr>
+      <tr><td class="lbl">Below the midpoint</td><td>low</td><td><b>e &lt; 1</b> (inelastic)</td></tr>
+      <tr><td class="lbl">At the quantity axis (p = 0)</td><td>0</td><td><b>e = 0</b></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="slide">
+  <h2>The geometric method<button class="info" data-term="ped"></button></h2>
+  <div class="split">
+    <figure>
+      <svg viewBox="0 0 460 380" role="img" aria-label="Geometric measurement of elasticity as lower segment over upper segment">
+        <line class="axis" x1="70" y1="310" x2="70" y2="30"/>
+        <line class="axis" x1="70" y1="310" x2="430" y2="310"/>
+        <text class="lab" x="240" y="356" text-anchor="middle">QUANTITY</text>
+        <text class="lab" x="22" y="170" text-anchor="middle" transform="rotate(-90 22 170)">PRICE</text>
+        <text x="62" y="328" text-anchor="end">O</text>
+
+        <line class="curve c-blue" x1="70" y1="50" x2="390" y2="310"/>
+
+        <circle cx="70" cy="50" r="8" fill="#6c71c4" stroke="#fdf6e3" stroke-width="2"/>
+        <text class="lab" x="50" y="44" text-anchor="end" style="fill:#5055a0">B</text>
+
+        <circle cx="390" cy="310" r="8" fill="#748500" stroke="#fdf6e3" stroke-width="2"/>
+        <text class="lab" x="400" y="330" style="fill:#586600">A</text>
+
+        <!-- point D -->
+        <circle cx="182" cy="141" r="9" fill="#a17a00" stroke="#fdf6e3" stroke-width="2.5"/>
+        <text class="lab" x="150" y="136" style="fill:#755900">D</text>
+
+        <!-- highlight segments -->
+        <line x1="70" y1="50" x2="182" y2="141" stroke="#6c71c4" stroke-width="7" opacity="0.45"/>
+        <line x1="182" y1="141" x2="390" y2="310" stroke="#748500" stroke-width="7" opacity="0.45"/>
+
+        <text x="96" y="112" style="fill:#5055a0">upper</text>
+        <text x="96" y="130" style="fill:#5055a0">segment DB</text>
+        <text x="264" y="212" style="fill:#586600">lower</text>
+        <text x="264" y="230" style="fill:#586600">segment DA</text>
+      </svg>
+    </figure>
+    <div>
+      <div class="box defn">
+        <span class="tag">The rule</span>
+        <p>The elasticity of demand at any point on a <b>straight-line</b> demand curve equals</p>
+        <div class="formula" style="font-size:1.15rem">
+          e<sub>D</sub> = <span class="frac"><span>lower segment</span><span>upper segment</span></span>
+          = <span class="frac"><span>DA</span><span>DB</span></span>
+        </div>
+      </div>
+      <div class="box eg">
+        <span class="tag">It confirms everything on the previous slide</span>
+        <ul>
+          <li><b>At B</b> (the price axis): lower segment is the whole line, upper segment = 0
+          ⇒ <b>e = ∞</b></li>
+          <li><b>Above the midpoint:</b> lower &gt; upper ⇒ <b>e &gt; 1</b></li>
+          <li><b>At the midpoint:</b> lower = upper ⇒ <b>e = 1</b></li>
+          <li><b>Below the midpoint:</b> lower &lt; upper ⇒ <b>e &lt; 1</b></li>
+          <li><b>At A</b> (the quantity axis): lower segment = 0 ⇒ <b>e = 0</b></li>
+        </ul>
+      </div>
+      <div class="bridge box">
+        <span class="tag">Looking ahead</span>
+        <p><b>Chapter 4</b> uses the very same geometric trick for the <b>price elasticity of
+        supply</b>, measuring <code>Mq₀/Oq₀</code> along a straight-line supply curve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.6.2</span>What makes demand elastic or inelastic?<button class="info" data-term="ped"></button><button class="info" data-term="substitutes"></button></h2>
+  <div class="grid2">
+    <div class="box defn">
+      <span class="tag">1 · Nature of the commodity</span>
+      <p><b>Necessities</b> (salt, foodgrains, basic medicine) → demand is <b>inelastic</b>.
+      You must buy them whatever the price.</p>
+      <p><b>Luxuries</b> (jewellery, foreign holidays, branded goods) → demand is
+      <b>elastic</b>. You can simply do without.</p>
+    </div>
+    <div class="box defn">
+      <span class="tag">2 · Availability of close substitutes</span>
+      <p><b>Close substitutes available</b> → <b>elastic</b>. If one brand of pulses gets dearer,
+      switch to another.</p>
+      <p><b>No close substitutes</b> → <b>inelastic</b>. There is no substitute for salt.</p>
+    </div>
+  </div>
+  <div class="insight box">
+    <span class="tag">A subtle point worth marks</span>
+    <p>Demand for <b>food in general</b> is <b>inelastic</b> — you must eat.<br>
+    But demand for <b>one particular variety of pulses</b> is <b>elastic</b> — if its price
+    rises you switch to another variety.</p>
+    <p><b>The more narrowly a good is defined, the more elastic its demand</b>, because narrower
+    definitions mean more substitutes.</p>
+  </div>
+  <div class="box note">
+    <span class="tag">Other influences worth knowing</span>
+    <p>Share of income spent on the good (a larger share → more elastic); whether consumption
+    can be postponed; number of uses the good has; and the time period allowed for adjustment
+    (demand is more elastic in the long run).</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2><span class="num">2.6.3</span>Elasticity and total expenditure<button class="info" data-term="ped"></button></h2>
+  <p class="lead">This is where elasticity earns its keep. A shopkeeper raises his price —
+  does his revenue rise or fall? <b>Elasticity alone decides.</b></p>
+  <div class="formula">Total Expenditure = Price × Quantity = P × Q</div>
+  <div class="insight box">
+    <span class="tag">The tug of war</span>
+    <p>When price <b>rises</b>, P goes <b>up</b> but Q goes <b>down</b>. Expenditure is their
+    product, so the outcome depends on <b>which change is proportionately larger</b> — and that
+    is exactly what elasticity measures.</p>
+  </div>
+  <table>
+    <caption>Table 2.5 — Price changes and their effect on expenditure</caption>
+    <thead>
+      <tr><th>#</th><th>Price</th><th>Quantity</th><th>%ΔP</th><th>%ΔQ</th><th>Expenditure</th><th>Elasticity</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>↑</td><td>↓</td><td>+10</td><td>−8</td><td class="hi">↑ rises</td><td>Inelastic</td></tr>
+      <tr><td>2</td><td>↑</td><td>↓</td><td>+10</td><td>−12</td><td class="hi">↓ falls</td><td>Elastic</td></tr>
+      <tr><td>3</td><td>↑</td><td>↓</td><td>+10</td><td>−10</td><td class="hi">no change</td><td>Unit elastic</td></tr>
+      <tr><td>4</td><td>↓</td><td>↑</td><td>−10</td><td>+15</td><td class="hi2">↑ rises</td><td>Elastic</td></tr>
+      <tr><td>5</td><td>↓</td><td>↑</td><td>−10</td><td>+7</td><td class="hi2">↓ falls</td><td>Inelastic</td></tr>
+      <tr><td>6</td><td>↓</td><td>↑</td><td>−10</td><td>+10</td><td class="hi2">no change</td><td>Unit elastic</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="slide">
+  <h2>The three rules — condensed<button class="info" data-term="ped"></button></h2>
+  <div class="grid3">
+    <div class="card"><h4 style="color:#b02522">Elastic &nbsp;(e &gt; 1)</h4>
+      <p>Expenditure moves in the <b>OPPOSITE</b> direction to price.</p>
+      <p class="small">Price ↑ → expenditure ↓<br>Price ↓ → expenditure ↑</p>
+      <p class="small"><b>Quantity wins the tug of war.</b></p></div>
+    <div class="card"><h4 style="color:#586600">Inelastic &nbsp;(e &lt; 1)</h4>
+      <p>Expenditure moves in the <b>SAME</b> direction as price.</p>
+      <p class="small">Price ↑ → expenditure ↑<br>Price ↓ → expenditure ↓</p>
+      <p class="small"><b>Price wins the tug of war.</b></p></div>
+    <div class="card"><h4 style="color:#755900">Unit elastic &nbsp;(e = 1)</h4>
+      <p>Expenditure is <b>UNCHANGED</b>.</p>
+      <p class="small">The two changes cancel exactly.</p>
+      <p class="small"><b>A draw.</b></p></div>
+  </div>
+  <div class="eg box">
+    <span class="tag">A useful approximation for numericals</span>
+    <div class="formula" style="font-size:1.1rem">%Δ Expenditure ≈ %ΔP + %ΔQ</div>
+    <p>Example: price rises 10%, e = −0.2 ⇒ %ΔQ = −0.2 × 10 = −2%.<br>
+    So %ΔE ≈ 10 + (−2) = <b>+8%</b>. Expenditure rises — as expected for an inelastic good.</p>
+  </div>
+  <div class="insight box">
+    <span class="tag">Why a shopkeeper should care</span>
+    <p>To raise revenue: <b>raise</b> the price of an <b>inelastic</b> good, <b>lower</b> the
+    price of an <b>elastic</b> good. Getting this backwards costs money.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Check your understanding</h2>
+  <div class="qcard">
+    <span class="tag">Question 9 — NCERT Ex. 22 &amp; 23</span>
+    <p><b>(a)</b> At price ₹4 the demand is 25 units. Price rises to ₹5 and demand falls to
+    20 units. Calculate the price elasticity of demand.<button class="info" data-term="ped"></button></p>
+    <p><b>(b)</b> For the demand curve <code>D(p) = 10 − 3p</code>, find the elasticity at
+    <code>p = 5/3</code>.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>(a)</b> %ΔQ = <code>(20 − 25)/25 × 100 = −20%</code><br>
+    %ΔP = <code>(5 − 4)/4 × 100 = +25%</code></p>
+    <div class="formula" style="font-size:1.1rem">
+      e<sub>D</sub> = <span class="frac"><span>−20</span><span>25</span></span> = −0.8
+      &nbsp;⇒&nbsp; |e<sub>D</sub>| = <b>0.8</b>
+    </div>
+    <p class="small">Since 0.8 &lt; 1, demand is <b>inelastic</b> at this price.</p>
+    <p><b>(b)</b> Here <code>a = 10</code>, <code>b = 3</code>. First find the quantity:<br>
+    <code>q = 10 − 3(5/3) = 10 − 5 = 5</code></p>
+    <div class="formula" style="font-size:1.1rem">
+      e<sub>D</sub> = −b × <span class="frac"><span>p</span><span>q</span></span>
+      = −3 × <span class="frac"><span>5/3</span><span>5</span></span> = −1
+    </div>
+    <p class="small">|e<sub>D</sub>| = <b>1</b> — this is the <b>midpoint</b> of the demand curve.
+    Check: midpoint price = <code>a/2b = 10/6 = 5/3</code> ✓</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Check your understanding</h2>
+  <div class="qcard">
+    <span class="tag">Question 10 — NCERT Ex. 24, 25 &amp; 26</span>
+    <p><b>(a)</b> Price elasticity of demand is <b>−0.2</b><button class="info" data-term="ped"></button>. If price rises by <b>5%</b>, by what
+    percentage does demand fall?</p>
+    <p><b>(b)</b> Price elasticity is <b>−0.2</b>. How is expenditure affected by a <b>10%</b>
+    price rise?</p>
+    <p><b>(c)</b> A <b>4% decrease</b> in price caused expenditure to <b>increase by 2%</b>.
+    What can you say about elasticity?</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>(a)</b> From <code>e = %ΔQ / %ΔP</code>:<br>
+    <code>%ΔQ = e × %ΔP = (−0.2) × 5 = <b>−1%</b></code><br>
+    Demand falls by <b>1%</b>.</p>
+    <p><b>(b)</b> <code>%ΔQ = (−0.2) × 10 = −2%</code>.<br>
+    <code>%ΔE ≈ %ΔP + %ΔQ = 10 + (−2) = <b>+8%</b></code><br>
+    <b>Expenditure rises by about 8%.</b> This is the inelastic case — price rose, and since
+    quantity barely responded, expenditure moved in the <b>same</b> direction as price.</p>
+    <p><b>(c)</b> Price <b>fell</b> and expenditure <b>rose</b> — they moved in
+    <b>opposite</b> directions, so demand must be <b>elastic (|e| &gt; 1)</b>.</p>
+    <p>Quantitatively: <code>%ΔQ ≈ %ΔE − %ΔP = 2 − (−4) = +6%</code><br>
+    <code>e = 6 / (−4) = −1.5</code> &nbsp;⇒&nbsp; <b>|e| = 1.5</b>, confirming elastic demand.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Challenge</h2>
+  <div class="challenge">
+    <span class="tag">Challenge — section 2.6</span>
+    <p>A government wants to <b>reduce cigarette smoking</b> and also to <b>raise revenue</b> from
+    the tobacco tax. Demand for cigarettes is known to be <b>price inelastic</b> in the short run
+    and <b>more elastic</b> in the long run.<button class="info" data-term="ped"></button></p>
+    <p>(a) If it raises the price by 20%, what happens to consumption and to total expenditure on
+    cigarettes in the <b>short run</b>? Use the elasticity–expenditure rule.<br>
+    (b) Can it achieve <b>both</b> goals at once in the short run? In the long run?<br>
+    (c) A colleague proposes taxing a good with <b>elastic</b> demand instead, "because people will
+    cut back more". Evaluate this as revenue policy.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>(a)</b> Demand is inelastic, so |e| &lt; 1 and <b>%ΔQ is smaller than %ΔP</b>. Say
+    e = −0.4: a 20% price rise cuts consumption by only <code>0.4 × 20 = <b>8%</b></code>.</p>
+    <p>By the elasticity–expenditure rule, for an <b>inelastic</b> good expenditure moves in the
+    <b>same direction as price</b>:</p>
+    <p class="center"><code>%ΔE ≈ %ΔP + %ΔQ = 20 + (−8) = <b>+12%</b></code></p>
+    <p><b>Consumption falls 8%; total spending on cigarettes rises 12%.</b></p>
+    <p><b>(b) Yes in the short run — and this is exactly why tobacco is taxed so heavily.</b>
+    Consumption falls (the health goal) while revenue rises (the fiscal goal). Inelastic demand
+    is what makes both possible simultaneously.</p>
+    <div class="q">
+      <p>In the <b>long run</b> the tension appears. Demand becomes <b>more elastic</b> — people
+      have time to quit, switch, or never start. As |e| approaches and passes 1, the quantity
+      response grows and the revenue gain shrinks; beyond |e| = 1, further tax rises
+      <b>reduce</b> revenue.</p>
+    </div>
+    <p>So the two goals are compatible in the short run but increasingly <b>in conflict</b> over
+    time. A tax that succeeds completely at its health objective destroys its own tax base.</p>
+    <p><b>(c) The colleague has it exactly backwards for revenue purposes.</b></p>
+    <p>With <b>elastic</b> demand, expenditure moves <b>opposite</b> to price. Raising the price of
+    an elastic good makes consumers cut back <b>more than proportionately</b>, so total spending —
+    and hence the tax base — <b>falls</b>. It is a poor revenue source.</p>
+    <p><b>The general rule for revenue:</b> tax goods with <b>inelastic</b> demand — necessities,
+    goods with few substitutes, addictive goods. This is precisely why salt, fuel, alcohol and
+    tobacco have been taxed by governments for centuries.</p>
+    <p class="small"><b>But note the normative sting.</b> "Inelastic demand" often means
+    "necessity", and taxes on necessities fall hardest on the poor, who spend a larger share of
+    income on them. The <b>positive</b> analysis says such a tax raises revenue efficiently; whether
+    it is <b>fair</b> is a separate, normative question — the Chapter 1 distinction again.</p>
+  </div>
+</section>
+
+<!-- ================= WRAP ================= -->
+<section class="slide" data-section="Recap">
+  <h2>Chapter 2 — the argument in one page</h2>
+  <figure>
+    <svg viewBox="0 0 940 260" role="img" aria-label="Logical flow of Chapter 2 from preferences and budget to market demand">
+      <defs>
+        <marker id="ah9" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+          <path d="M0,0 L10,4 L0,8 z" fill="#a17a00"/>
+        </marker>
+      </defs>
+      <rect x="14" y="30" width="180" height="70" rx="12" fill="#eee8d5" stroke="#6c71c4" stroke-width="2"/>
+      <text class="lab" x="104" y="58" text-anchor="middle">PREFERENCES</text>
+      <text x="104" y="80" text-anchor="middle">indifference map</text>
+
+      <rect x="14" y="150" width="180" height="70" rx="12" fill="#eee8d5" stroke="#1f7ab8" stroke-width="2"/>
+      <text class="lab" x="104" y="178" text-anchor="middle">BUDGET</text>
+      <text x="104" y="200" text-anchor="middle">income &amp; prices</text>
+
+      <path d="M199,65 L245,65 L245,110" fill="none" class="axis" stroke="#a17a00"/>
+      <path d="M199,185 L245,185 L245,140" fill="none" class="axis" stroke="#a17a00"/>
+      <line x1="245" y1="125" x2="292" y2="125" class="axis" stroke="#a17a00" marker-end="url(#ah9)"/>
+
+      <rect x="300" y="88" width="180" height="76" rx="12" fill="#e4dcc4" stroke="#a17a00" stroke-width="2.5"/>
+      <text class="lab" x="390" y="116" text-anchor="middle">OPTIMUM</text>
+      <text x="390" y="138" text-anchor="middle">MRS = p₁/p₂</text>
+
+      <line x1="486" y1="125" x2="530" y2="125" class="axis" stroke="#a17a00" marker-end="url(#ah9)"/>
+
+      <rect x="538" y="88" width="180" height="76" rx="12" fill="#eee8d5" stroke="#748500" stroke-width="2"/>
+      <text class="lab" x="628" y="116" text-anchor="middle">vary p₁ ⇒</text>
+      <text class="lab" x="628" y="138" text-anchor="middle">DEMAND CURVE</text>
+
+      <line x1="724" y1="125" x2="768" y2="125" class="axis" stroke="#a17a00" marker-end="url(#ah9)"/>
+
+      <rect x="776" y="88" width="152" height="76" rx="12" fill="#eee8d5" stroke="#238b84" stroke-width="2"/>
+      <text class="lab" x="852" y="116" text-anchor="middle">add up ⇒</text>
+      <text class="lab" x="852" y="138" text-anchor="middle">MARKET DEMAND</text>
+
+      <text x="470" y="238" text-anchor="middle" style="fill:#5b6966">…which meets the market supply curve of Chapter 4, in Chapter 5.</text>
+    </svg>
+  </figure>
+  <div class="insight box">
+    <span class="tag">What you have actually built</span>
+    <p>Starting from nothing but "a person can rank bundles" and "she has limited money", you
+    have derived the <b>market demand curve</b> — a real, usable object that will determine the
+    price of a commodity two chapters from now.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Key concepts — recap</h2>
+  <div class="chips">
+    <span class="chip k">Utility</span><span class="chip">Total utility</span>
+    <span class="chip k">Marginal utility</span><span class="chip k">Law of DMU</span>
+    <span class="chip">Cardinal utility</span><span class="chip">Ordinal utility</span>
+    <span class="chip k">Preference</span><span class="chip k">Monotonic preferences</span>
+    <span class="chip k">Indifference curve</span><span class="chip">Indifference map</span>
+    <span class="chip k">MRS</span><span class="chip k">Diminishing MRS</span>
+    <span class="chip k">Budget set</span><span class="chip k">Budget line</span>
+    <span class="chip">Price ratio</span><span class="chip k">Consumer's optimum</span>
+    <span class="chip k">Demand</span><span class="chip k">Demand function</span>
+    <span class="chip k">Law of demand</span><span class="chip">Substitution effect</span>
+    <span class="chip">Income effect</span><span class="chip k">Normal good</span>
+    <span class="chip k">Inferior good</span><span class="chip">Giffen good</span>
+    <span class="chip k">Substitute</span><span class="chip k">Complement</span>
+    <span class="chip">Movement vs shift</span><span class="chip k">Market demand</span>
+    <span class="chip k">Price elasticity of demand</span>
+  </div>
+  <div class="grid2">
+    <div class="box insight">
+      <span class="tag">The three results to never forget</span>
+      <ol>
+        <li>Consumer's optimum: <b>MRS = p₁/p₂</b></li>
+        <li>Law of demand: price ↑ ⇒ quantity demanded ↓</li>
+        <li>Elastic ⇒ expenditure moves <b>opposite</b> to price; inelastic ⇒ <b>same</b> direction</li>
+      </ol>
+    </div>
+    <div class="box warn">
+      <span class="tag">The three traps to avoid</span>
+      <ol>
+        <li>Slope ≠ elasticity. A straight line has constant slope but <b>varying</b> elasticity.</li>
+        <li>Movement (own price) vs shift (everything else).</li>
+        <li>Monotonicity explains the IC's <b>direction</b>; diminishing MRS explains its
+        <b>curvature</b>.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>NCERT Exercises 1, 2 and 3</h2>
+  <div class="qcard">
+    <span class="tag">Exercises 1–3</span>
+    <p><b>1.</b> What do you mean by the budget set of a consumer?<br>
+    <b>2.</b> What is a budget line?<br>
+    <b>3.</b> Explain why the budget line is downward sloping.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>1.</b> The <b>budget set</b> is the collection of <b>all bundles</b> that a consumer
+    can buy with her income at the prevailing market prices — every bundle
+    <code>(x₁, x₂)</code> satisfying <code>p₁x₁ + p₂x₂ ≤ M</code>. It includes bundles costing
+    <i>less</i> than her income as well as those costing exactly her income.</p>
+    <p><b>2.</b> The <b>budget line</b> consists of all bundles that cost the consumer
+    <b>exactly</b> her entire income: <code>p₁x₁ + p₂x₂ = M</code>. It is the boundary of the
+    budget set, with vertical intercept <code>M/p₂</code>, horizontal intercept
+    <code>M/p₁</code> and slope <code>−p₁/p₂</code>.</p>
+    <p><b>3.</b> Every bundle on the budget line costs exactly M. If the consumer wants
+    <b>more of one good</b>, she must spend more on it — and since her income is
+    <b>fixed and fully spent</b>, she must spend <b>less</b> on the other good, and so buy
+    <b>less</b> of it. An increase in one quantity therefore necessarily accompanies a
+    decrease in the other, which is precisely what a <b>downward slope</b> means.</p>
+    <p class="small">Formally: the slope is <code>−p₁/p₂</code>. Since both prices are
+    positive, the slope is negative.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>NCERT Exercises 10 and 21</h2>
+  <div class="qcard">
+    <span class="tag">Exercises 10 &amp; 21</span>
+    <p><b>10.</b> What do you mean by 'monotonic preferences'?<br>
+    <b>21.</b> Explain price elasticity of demand.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>10.</b> A consumer's preferences are <b>monotonic</b> if and only if, between any two
+    bundles, the consumer prefers the bundle which has <b>more of at least one of the goods and
+    no less of the other good</b> as compared to the other bundle. In short: <b>more is
+    better</b>.</p>
+    <p class="small">Monotonicity is what makes an indifference curve slope downward, makes
+    higher indifference curves represent greater satisfaction, and forces the consumer's
+    optimum to lie on (not below) the budget line.</p>
+    <p><b>21.</b> <b>Price elasticity of demand</b> measures the <b>responsiveness of the
+    quantity demanded of a good to a change in its price</b>. It is defined as the percentage
+    change in demand divided by the percentage change in price:</p>
+    <div class="formula" style="font-size:1.05rem">
+      e<sub>D</sub> = <span class="frac"><span>%Δ quantity demanded</span><span>%Δ price</span></span>
+      = <span class="frac"><span>ΔQ</span><span>Q</span></span> ×
+        <span class="frac"><span>P</span><span>ΔP</span></span>
+    </div>
+    <p>It is <b>negative</b> (price and quantity move oppositely) but conventionally reported
+    as an absolute value, and it is a <b>pure number</b>, independent of units. Demand is
+    <b>elastic</b> if |e| &gt; 1, <b>inelastic</b> if |e| &lt; 1 and <b>unitary elastic</b>
+    if |e| = 1.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>NCERT Exercises 17–20</h2>
+  <div class="qcard">
+    <span class="tag">Exercises 17–20</span>
+    <p><b>17.</b> What do you mean by a normal good?<br>
+    <b>18.</b> What do you mean by an inferior good? Give some examples.<br>
+    <b>19.</b> What do you mean by substitutes? Give an example.<br>
+    <b>20.</b> What do you mean by complements? Give an example.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <p><b>17.</b> A <b>normal good</b> is one for which demand <b>increases</b> as the consumer's
+    income increases, and decreases as income decreases — demand moves in the <b>same
+    direction</b> as income. <i>Examples:</i> milk, branded clothing, cars.</p>
+    <p><b>18.</b> An <b>inferior good</b> is one for which demand <b>decreases</b> as the
+    consumer's income increases, and increases as income decreases — demand moves in the
+    <b>opposite direction</b> to income. <i>Examples:</i> coarse cereals, low-quality food
+    items, second-hand clothing.</p>
+    <p class="small">A good may be normal at low incomes and inferior at higher incomes.</p>
+    <p><b>19.</b> <b>Substitutes</b> are goods that can be used <b>in place of</b> each other to
+    satisfy the same want. The demand for a good moves in the <b>same direction</b> as the price
+    of its substitute. <i>Example:</i> <b>tea and coffee</b> — if the price of coffee rises,
+    consumers shift to tea, so the demand for tea rises.</p>
+    <p><b>20.</b> <b>Complements</b> are goods that are consumed <b>together</b> to satisfy a
+    want. The demand for a good moves in the <b>opposite direction</b> to the price of its
+    complement. <i>Example:</i> <b>tea and sugar</b> — if the price of sugar rises, the demand
+    for tea falls.</p>
+  </div>
+</section>
+
+<section class="slide title-slide">
+  <div class="kicker">End of Chapter 2</div>
+  <h1>Next: the producer</h1>
+  <div class="rule"></div>
+  <p class="sub">We have one blade of the scissors — the <b>demand curve</b>. Chapter 3 crosses
+  to the other side of the market to ask how a firm turns inputs into output and what that
+  costs. Chapter 4 turns those costs into the <b>supply curve</b>. Chapter 5 brings the two
+  blades together.</p>
+  <p style="margin-top:1.6rem" class="small">Watch for old friends in new clothes: <b>marginal
+  product</b> behaves exactly like marginal utility, the <b>isoquant</b> is an indifference
+  curve, and <b>market supply</b> is built by the same horizontal summation you learnt here.</p>
+  <p style="margin-top:1.6rem"><a href="index.html" style="color:#a17a00;font-weight:700">← Back to course home</a></p>
+</section>
+
+</div>
+
+<button class="nav" id="prev" title="Previous (←)">‹</button>
+<button class="nav" id="next" title="Next (→)">›</button>
+<script src="assets/deck.js"></script>
+</body>
+</html>
