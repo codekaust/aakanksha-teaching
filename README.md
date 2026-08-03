@@ -1,13 +1,19 @@
 # Class XII Teaching Decks
 
-Classroom presentation decks (plain HTML, no build step) for Class XII Economics and
-Computer Science.
+Classroom presentation decks (plain HTML, no build step) for Class XII Economics, Business
+Studies and Computer Science.
 
 | Subject | Folder | Chapters |
 | --- | --- | --- |
 | Introductory Microeconomics | [`microeconomics/`](microeconomics/) | 5 |
 | Introductory Macroeconomics | [`macro-economics/`](macro-economics/) | 6 |
 | Computer Science (CBSE 083) | [`computer-science/`](computer-science/) | 10 |
+| Business Studies (CBSE 054) | [`business-studies/`](business-studies/) | 12, in two books |
+
+Business Studies is published as two books — [Part 1 · Principles and Functions of
+Management](business-studies/part-1.html) (Units 1–8) and [Part 2 · Business Finance and
+Marketing](business-studies/part-2.html) (Units 9–12) — with
+[`business-studies/index.html`](business-studies/index.html) offering both.
 
 ## Published site
 
@@ -26,6 +32,7 @@ Each subject folder has a `start_class.sh` that serves that folder over plain HT
 cd microeconomics && ./start_class.sh   # port 8111
 cd macro-economics && ./start_class.sh  # port 8112
 cd computer-science && ./start_class.sh # port 8113
+cd business-studies && ./start_class.sh # port 8114
 ```
 
 To preview the whole site exactly as GitHub Pages serves it, serve the repository root

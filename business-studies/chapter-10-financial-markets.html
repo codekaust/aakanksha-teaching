@@ -1,0 +1,2251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 10 — Financial Markets | Class XII Business Studies</title>
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body>
+
+<div id="bar">
+  <span class="brand">CH 10 · FINANCIAL MARKETS</span>
+  <span class="sect" id="sect"></span>
+  <span class="tools">
+    <span id="counter">1 / 1</span>
+    <button id="menuBtn" title="Slide menu (m)">☰ Menu</button>
+    <button id="fsBtn" title="Fullscreen (f)">⛶</button>
+    <button onclick="location.href='part-2.html'" title="Back to this book">⌂</button>
+  </span>
+</div>
+<div id="progress" style="width:0"></div>
+
+<div id="menu">
+  <h3>Chapter 10 — Financial Markets</h3>
+  <p class="hint">Click any slide to jump · press <b>m</b> or <b>Esc</b> to close</p>
+  <div class="mlist"></div>
+</div>
+
+<div id="stage">
+
+<!-- ================= OPENING ================= -->
+<section class="slide title-slide" data-section="Opening">
+  <div class="kicker">Business Studies · Class XII · CBSE Unit 10 · Part B (30 marks)</div>
+  <h1>Chapter 10<br>Financial Markets</h1>
+  <div class="rule"></div>
+  <p class="sub">Chapter 9 ended with a firm that has <em>decided</em> to raise ₹200 crore of long-term
+  funds. It did not say where the ₹200 crore comes from. This chapter stands on the other side of that
+  transaction — at the household that has ₹50,000 it does not need this year — and shows the machinery
+  that carries money from the one to the other.</p>
+</section>
+
+<section class="slide" data-section="Where we were">
+  <h2>Where we were, and where the money actually comes from</h2>
+  <div class="box bridge">
+    <span class="tag">From Chapter 9 — Financial Management</span>
+    <p>Chapter 9 left the firm at the end of the <b>financing decision</b><button class="info" data-term="financing-decision"></button>:
+    how much to raise from <b>equity</b> and how much from <b>debt</b>, and in what proportion — the
+    <b>capital structure</b><button class="info" data-term="capital-structure"></button>. That was a decision taken
+    <i>inside</i> the boardroom.</p>
+    <p>Chapter 10 asks the question the boardroom cannot answer alone: <b>who hands the money over,
+    and through what?</b> A financing decision is only a wish until a saver somewhere agrees to part
+    with savings. This chapter is the market where those two meet.</p>
+  </div>
+  <div class="box warn">
+    <span class="tag">Read this before you look for the chapter in your NCERT book</span>
+    <p><b>This chapter is not in the NCERT textbook.</b> NCERT rationalised <i>Financial Markets</i> out
+    of <i>Business Studies Part 2</i>; the 2026-27 reprint contains only three chapters — Financial
+    Management, Marketing and Consumer Protection.</p>
+    <p>The <b>CBSE curriculum document for 2026-27 still lists it as Unit 10</b>, with its own learning
+    outcomes, inside the 15 marks it shares with Financial Management. <b>It is examinable.</b> This deck
+    is built from the curriculum document and from current market practice — so where a fact has moved
+    since the old chapter was written, the slide says so and gives the year.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="Route map">
+  <h2>Where this chapter is going</h2>
+  <p class="lead">Seven sections. The first defines the market; the last regulates it. Everything in
+  between is a subdivision of the first.</p>
+  <div class="chips">
+    <span class="chip k">1 · Financial market — concept and the allocative function</span>
+    <span class="chip k">2 · Money market and its five instruments</span>
+    <span class="chip k">3 · Capital market — concept and features</span>
+    <span class="chip k">4 · Primary market and the methods of floatation</span>
+    <span class="chip k">5 · Secondary market and the stock exchange</span>
+    <span class="chip k">6 · Trading procedure, demat and the depository</span>
+    <span class="chip k">7 · SEBI — objectives and functions</span>
+  </div>
+  <div class="box note">
+    <span class="tag">How the marks fall</span>
+    <p>Units 9 and 10 together carry <b>15 marks</b>. In practice Unit 10 supplies a 1-mark and a 3-mark
+    question almost every year, and a 4- or 6-marker on <b>either</b> a distinguish-between pair
+    (money/capital, primary/secondary) <b>or</b> the functions of a stock exchange <b>or</b> SEBI's
+    functions. Those three are the highest-yield slides in the chapter.</p>
+  </div>
+</section>
+
+<!-- ================= SECTION 1 — THE FINANCIAL MARKET ================= -->
+<section class="slide" data-section="1 · The financial market">
+  <h2>The problem a financial market exists to solve</h2>
+  <div class="figrow">
+    <figure>
+      <svg viewBox="0 0 900 290" role="img" aria-label="Households with surplus savings pass funds through the financial market to business firms with a deficit; returns flow back to the households, while a dashed arc shows the costly alternative of direct financing without a market">
+        <defs>
+          <marker id="arrow-flow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+            <path d="M0,0 L10,4 L0,8 z" fill="var(--ink-faint)"/>
+          </marker>
+          <marker id="arrow-flow-rose" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+            <path d="M0,0 L10,4 L0,8 z" fill="var(--rose)"/>
+          </marker>
+        </defs>
+
+        <rect class="node n-teal" x="25" y="95" width="190" height="85" rx="12"/>
+        <text class="nlab" x="120" y="126">Households</text>
+        <text class="nsub" x="120" y="147">SURPLUS units — they save</text>
+        <text class="nsub" x="120" y="165">more than they invest</text>
+
+        <rect class="node n-amber n-key" x="355" y="85" width="190" height="105" rx="12"/>
+        <text class="nlab" x="450" y="126">Financial market</text>
+        <text class="nsub" x="450" y="147">banks, stock exchanges,</text>
+        <text class="nsub" x="450" y="165">brokers, mutual funds</text>
+
+        <rect class="node n-blue" x="685" y="95" width="190" height="85" rx="12"/>
+        <text class="nlab" x="780" y="126">Business firms</text>
+        <text class="nsub" x="780" y="147">DEFICIT units — they invest</text>
+        <text class="nsub" x="780" y="165">more than they save</text>
+
+        <line class="link thick" x1="220" y1="120" x2="348" y2="120" marker-end="url(#arrow-flow)"/>
+        <text class="nsub" x="284" y="110">savings</text>
+        <line class="link thick" x1="550" y1="120" x2="678" y2="120" marker-end="url(#arrow-flow)"/>
+        <text class="nsub" x="614" y="110">funds to invest</text>
+
+        <path class="link dash" d="M780 185 L780 235 L120 235 L120 185" marker-end="url(#arrow-flow)"/>
+        <text class="nsub" x="450" y="255">the return trip — interest, dividend and capital gain flow back to the saver</text>
+
+        <path class="link dash l-rose" d="M120 90 C 260 20, 640 20, 776 90" marker-end="url(#arrow-flow-rose)"/>
+        <text class="nsub" x="450" y="28">direct financing — the saver must find the firm himself, judge it, and price the deal</text>
+      </svg>
+      <figcaption>The market sits in the middle because neither side can economically find the other.</figcaption>
+    </figure>
+    <aside class="readfig">
+      <span class="tag">How to read this</span>
+      <ol>
+        <li>Start at the <b>left</b> and run right — that is the direction savings travel.</li>
+        <li>The <b>dashed arrow along the bottom</b> is the return trip: interest, dividend or capital
+        gain going back to the saver.</li>
+        <li>The <b>dashed red arc over the top</b> is the alternative that has <i>no</i> market in it —
+        direct financing. It is drawn as a detour because that is what it costs.</li>
+        <li>The <b>amber box is the one this chapter is about</b>; everything after this slide is a
+        subdivision of it.</li>
+      </ol>
+    </aside>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Financial market — the definition</h2>
+  <div class="box defn">
+    <span class="tag">Definition — learn this wording</span>
+    <p class="term">Financial market</p>
+    <p>A financial market is a <b>market for the creation and exchange of financial assets</b>. It
+    <b>channelises savings from surplus units (households) to deficit units (business firms)</b> who
+    need those funds for investment.</p>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h4>A financial <i>asset</i>, not a physical one</h4>
+      <p>What changes hands is a <b>claim</b> — a share, a debenture, a bill, a deposit receipt. Nobody
+      carts away a machine. That is why a financial market needs no floor space and can be entirely
+      electronic.</p>
+    </div>
+    <div class="card">
+      <h4>"Creation" <i>and</i> "exchange"</h4>
+      <p>Two words, two halves of the chapter. <b>Creation</b> is the <b>primary market</b> — a new share
+      comes into existence. <b>Exchange</b> is the <b>secondary market</b> — an existing share changes
+      owner. Miss the pair and Section 4 and 5 will not make sense.</p>
+    </div>
+  </div>
+  <div class="box eg">
+    <span class="tag">Example</span>
+    <p>Vaishali Kamat, a schoolteacher in Belagavi, puts ₹40,000 of her savings into a bank fixed deposit.
+    The bank lends it to Deccan Ceramics for a new kiln. Vaishali has never heard of Deccan Ceramics and
+    never will. <b>The market did the finding, the judging and the pricing for her.</b></p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The allocative function — the reason it matters</h2>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p class="term">Allocative function</p>
+    <p>The allocative function of a financial market is the <b>allocation of scarce savings among
+    competing users of funds</b>, so that savings flow to the <b>most productive</b> investment.</p>
+    <p>Performed well, it raises <b>two</b> things at once — the <b>rate of return to the saver</b> and
+    the <b>rate of growth of the economy</b>.</p>
+  </div>
+  <div class="case">
+    <span class="tag">Case 1 · Two claims on the same ₹100 crore</span>
+    <p>Two Nashik firms approach the market in the same week. <span class="who">Godavari Agro Foods</span>
+    wants ₹100 crore for a cold-chain unit that will earn 18% a year. <span class="who">Satpura
+    Textiles</span> wants ₹100 crore for a loom line that will earn 6%. There is exactly ₹100 crore of
+    savings available. <mark class="ev">Investors bid the price of Godavari's issue up and left
+    Satpura's undersubscribed, so the cold-chain unit was built and the loom line was not.</mark></p>
+  </div>
+  <div class="box insight">
+    <span class="tag">The insight</span>
+    <p>Nobody decided this. No official ranked the two projects. <b>The price did it</b> — and that is the
+    allocative function working. A market that allocates badly injures <b>both</b> sides at once: savers
+    earn less than they could, and genuinely productive firms are starved of capital.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The four functions of a financial market</h2>
+  <p class="lead">Four functions, and the examiner wants all four named. <b>Mobilisation, price,
+  liquidity, cost.</b></p>
+  <div class="grid2">
+    <div class="card">
+      <h4>1 · Mobilisation of savings and channelling them into the most productive use</h4>
+      <p>It gathers scattered small savings and makes them available in the sizes firms actually need.
+      Vaishali's ₹40,000 is useless to a kiln project on its own; forty thousand Vaishalis are not.</p>
+    </div>
+    <div class="card">
+      <h4>2 · Facilitating price discovery</h4>
+      <p>The <b>interaction of demand and supply</b> of funds fixes the price of a financial asset — the
+      share price, the rate of interest. The market is where that number is found, not announced.</p>
+    </div>
+    <div class="card">
+      <h4>3 · Providing liquidity to financial assets</h4>
+      <p>A saver can <b>sell the asset and get cash whenever he wants</b>. Without that exit, almost
+      nobody would lend to a twenty-year project in the first place.</p>
+    </div>
+    <div class="card">
+      <h4>4 · Reducing the cost of transactions</h4>
+      <p>It saves the buyer and the seller <b>time, effort and money</b> spent on searching for each
+      other and on gathering information. That is the dashed red arc on the last-but-two slide, priced.</p>
+    </div>
+  </div>
+  <div class="mnemonic">
+    <span class="tag">Hook</span>
+    <span class="hook"><b>M</b>obilise · <b>P</b>rice · <b>L</b>iquidity · <b>C</b>ost — "<b>M</b>y
+    <b>P</b>rice <b>L</b>ooks <b>C</b>heap"</span>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Question — sizing the answer</h2>
+  <div class="box note">
+    <span class="tag">Say this once, then apply it all year</span>
+    <p><b>Points ≈ marks.</b> A 3-mark question wants <b>three</b> points; 4 marks want four; 5–6 marks
+    want five or six. Each point is a <b>bolded heading</b> plus one or two lines. A heading alone earns
+    about half; an unheaded paragraph earns less than either.</p>
+  </div>
+  <div class="qcard">
+    <span class="tag">Question 1 <span class="mk">3 marks</span></span>
+    <p>State any three functions of a financial market.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer — three points, because it is three marks</span>
+    <ol class="points">
+      <li><span class="h">Mobilisation of savings</span>it pools scattered household savings and
+      channels them into the <span class="kw">most productive use</span>.</li>
+      <li><span class="h">Price discovery</span>the interaction of the demand for and supply of funds
+      determines the price of the financial asset.</li>
+      <li><span class="h">Providing liquidity</span>the holder can sell the asset in the market at any
+      time and convert it into cash.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The map of the whole chapter, in one tree</h2>
+  <div class="figrow">
+    <figure>
+      <svg viewBox="0 0 900 400" role="img" aria-label="Taxonomy tree: the financial market divides into the money market and the capital market; the money market's leaves are treasury bill, commercial paper, call money, certificate of deposit and commercial bill; the capital market divides into primary and secondary markets, whose leaves are a new issue such as an IPO and trading in existing shares on the NSE">
+        <defs>
+          <marker id="arrow-tax" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+            <path d="M0,0 L9,3.5 L0,7 z" fill="var(--ink-faint)"/>
+          </marker>
+        </defs>
+
+        <rect class="node n-amber n-key" x="315" y="12" width="270" height="52" rx="12"/>
+        <text class="nlab" x="450" y="35">FINANCIAL MARKET</text>
+        <text class="nsub" x="450" y="53">creation and exchange of financial assets</text>
+
+        <path class="link" d="M450 66 L450 88 L215 88 L215 108" marker-end="url(#arrow-tax)"/>
+        <path class="link" d="M450 66 L450 88 L685 88 L685 108" marker-end="url(#arrow-tax)"/>
+
+        <rect class="node n-blue" x="105" y="112" width="220" height="56" rx="12"/>
+        <text class="nlab" x="215" y="136">Money market</text>
+        <text class="nsub" x="215" y="155">short term — up to 1 year</text>
+
+        <rect class="node n-blue" x="575" y="112" width="220" height="56" rx="12"/>
+        <text class="nlab" x="685" y="136">Capital market</text>
+        <text class="nsub" x="685" y="155">medium and long term</text>
+
+        <path class="link" d="M215 170 L215 192 L76 192 L76 210" marker-end="url(#arrow-tax)"/>
+        <path class="link" d="M215 170 L215 192 L218 192 L218 210" marker-end="url(#arrow-tax)"/>
+        <path class="link" d="M215 170 L215 192 L360 192 L360 210" marker-end="url(#arrow-tax)"/>
+        <path class="link" d="M147 192 L147 274 L135 274 L135 286" marker-end="url(#arrow-tax)"/>
+        <path class="link" d="M147 274 L320 274 L320 286" marker-end="url(#arrow-tax)"/>
+
+        <rect class="node n-teal" x="10" y="214" width="132" height="48" rx="9"/>
+        <text class="nsub" x="76" y="235">Treasury bill</text>
+        <text class="nsub" x="76" y="252">RBI, 91 days</text>
+        <rect class="node n-teal" x="152" y="214" width="132" height="48" rx="9"/>
+        <text class="nsub" x="218" y="235">Call money</text>
+        <text class="nsub" x="218" y="252">bank to bank</text>
+        <rect class="node n-teal" x="294" y="214" width="132" height="48" rx="9"/>
+        <text class="nsub" x="360" y="235">Commercial bill</text>
+        <text class="nsub" x="360" y="252">a trade bill</text>
+        <rect class="node n-teal" x="60" y="290" width="150" height="48" rx="9"/>
+        <text class="nsub" x="135" y="311">Commercial paper</text>
+        <text class="nsub" x="135" y="328">Tata Motors</text>
+        <rect class="node n-teal" x="240" y="290" width="160" height="48" rx="9"/>
+        <text class="nsub" x="320" y="311">Certificate of deposit</text>
+        <text class="nsub" x="320" y="328">issued by a bank</text>
+
+        <path class="link" d="M685 170 L685 200 L590 200 L590 218" marker-end="url(#arrow-tax)"/>
+        <path class="link" d="M685 170 L685 200 L790 200 L790 218" marker-end="url(#arrow-tax)"/>
+
+        <rect class="node n-violet" x="500" y="222" width="180" height="56" rx="11"/>
+        <text class="nlab" x="590" y="246">Primary market</text>
+        <text class="nsub" x="590" y="265">new issues — the company</text>
+
+        <rect class="node n-violet" x="700" y="222" width="180" height="56" rx="11"/>
+        <text class="nlab" x="790" y="246">Secondary market</text>
+        <text class="nsub" x="790" y="265">existing securities</text>
+
+        <path class="link" d="M590 280 L590 306" marker-end="url(#arrow-tax)"/>
+        <path class="link" d="M790 280 L790 306" marker-end="url(#arrow-tax)"/>
+
+        <rect class="node n-teal" x="500" y="310" width="180" height="52" rx="9"/>
+        <text class="nsub" x="590" y="331">IPO of Ceigall India,</text>
+        <text class="nsub" x="590" y="349">₹1,253 crore, 2024</text>
+        <rect class="node n-teal" x="700" y="310" width="180" height="52" rx="9"/>
+        <text class="nsub" x="790" y="331">Infosys shares bought</text>
+        <text class="nsub" x="790" y="349">on the NSE today</text>
+      </svg>
+      <figcaption>Every later slide in this chapter hangs off one node of this tree.</figcaption>
+    </figure>
+    <aside class="readfig">
+      <span class="tag">How to read this</span>
+      <ol>
+        <li>Read <b>downwards</b>. Each level is a subdivision of the box above it, never a sequence.</li>
+        <li><b>Blue boxes are the two markets</b>; violet are the capital market's two halves; green
+        boxes at the bottom are <b>real instruments and real issues</b>, not categories.</li>
+        <li>Notice the <b>asymmetry</b>: the money market splits straight into instruments, the capital
+        market splits once more first. That split is Sections 4 and 5.</li>
+        <li>The green leaf figures are <b>illustrative, not examinable</b> — the maturities and the
+        definitions above them are.</li>
+      </ol>
+    </aside>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>★ Challenge — where does this transaction belong?</h2>
+  <div class="case">
+    <span class="tag">Case 2 · Two cheques on the same morning</span>
+    <p><span class="who">Anwesha Bose</span> did two things on 4 June. She transferred ₹2 lakh to
+    <span class="who">Meghna Polymers Ltd</span> for shares in its new public issue, and
+    <mark class="ev">she bought 300 shares of Tata Steel from another investor through her broker on the
+    NSE for ₹1.7 lakh.</mark> Her friend Rohit says both are financial market transactions but only one
+    of them financed anything.</p>
+  </div>
+  <div class="challenge">
+    <span class="tag">Challenge <span class="mk">4 marks</span></span>
+    <p>Is Rohit right? Name the market each transaction belongs to, and say precisely who received
+    Anwesha's money in each case.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <ol class="points">
+      <li><span class="h">Rohit is right</span>both are financial market transactions, but only the
+      first one put fresh funds into a business.</li>
+      <li><span class="h">The ₹2 lakh is a primary market transaction</span>Meghna Polymers created new
+      shares and <b>received the ₹2 lakh itself</b>. Capital formation took place.</li>
+      <li><span class="h">The ₹1.7 lakh is a secondary market transaction</span>the Tata Steel shares
+      already existed. The money went to <b>the investor who sold them</b>; <span class="kw">Tata Steel
+      received nothing</span>.</li>
+      <li><span class="h">Why the second one still matters</span>without a secondary market giving
+      liquidity, Anwesha would not have subscribed to the first one either.</li>
+    </ol>
+    <div class="evidence">"…she bought 300 shares of Tata Steel from another investor through her
+    broker on the NSE for ₹1.7 lakh." — <b>from another investor</b> is the phrase that settles it.</div>
+  </div>
+</section>
+
+<!-- ================= SECTION 2 — MONEY MARKET ================= -->
+<section class="slide" data-section="2 · Money market">
+  <h2>The money market</h2>
+  <div class="box defn">
+    <span class="tag">Definition — learn this wording</span>
+    <p class="term">Money market</p>
+    <p>The money market is the market for <b>short-term funds</b>, dealing in monetary assets whose
+    period of maturity is <b>up to one year</b>. It is a market for <b>low-risk, unsecured, highly liquid
+    short-term debt instruments</b>.</p>
+  </div>
+  <h3>Features you can be asked to state</h3>
+  <div class="grid3">
+    <div class="card">
+      <h4>Wholesale, not retail</h4>
+      <p>The transaction sizes are <b>large</b>, so the players are the <b>RBI, commercial banks,
+      non-banking finance companies, mutual funds and large corporates</b> — not individuals.</p>
+    </div>
+    <div class="card">
+      <h4>No fixed place</h4>
+      <p>There is <b>no physical exchange</b>. Deals are done <b>over the counter</b> — by telephone and
+      by screen, directly between the two parties.</p>
+    </div>
+    <div class="card">
+      <h4>Low risk, low return</h4>
+      <p>Short maturity and creditworthy borrowers mean <b>safety and high liquidity</b> — and therefore
+      a <b>lower expected return</b> than the capital market. You are paid for risk; there is little here.</p>
+    </div>
+  </div>
+  <div class="box warn">
+    <span class="tag">The name misleads every single year</span>
+    <p>Students routinely write that "the money market is the market where currency notes and coins are
+    bought and sold." <b>It has nothing to do with cash.</b> Nothing is bought <i>with</i> money that is
+    not also bought with money elsewhere. "Money" here means <b>short-term debt</b> — a promise to repay
+    within a year. Write <b>"market for short-term funds, maturity up to one year"</b> and you cannot go
+    wrong.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Why a bank borrows for four days</h2>
+  <div class="case">
+    <span class="tag">Case 3 · A Friday-evening shortfall</span>
+    <p><span class="who">Sarvodaya Cooperative Bank, Kolhapur</span> discovers at 6 p.m. on Friday that
+    heavy withdrawals have left it ₹18 crore short of the cash reserve it is legally required to keep
+    with the RBI. <mark class="ev">It borrows ₹18 crore from Bank of Maharashtra at 6.4% per annum and
+    repays it on Monday morning.</mark> No security is pledged and no document is registered.</p>
+  </div>
+  <div class="qcard">
+    <span class="tag">Question 2 <span class="mk">3 marks</span></span>
+    <p>Name the market and the instrument involved, and state why a bank would ever borrow for three days.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <ol class="points">
+      <li><span class="h">The market — money market</span>the funds are needed for <b>less than one
+      year</b>, are unsecured, and the borrower and lender are both banks.</li>
+      <li><span class="h">The instrument — call money</span>short-term finance <b>repayable on demand</b>,
+      maturity one day to fifteen days; the rate paid is the <span class="kw">call rate</span>.</li>
+      <li><span class="h">Why three days</span>banks must meet the <b>Cash Reserve Ratio</b> on a
+      day-to-day basis; a shortfall today cannot wait for a loan sanctioned next month.</li>
+    </ol>
+    <div class="evidence">"It borrows ₹18 crore from Bank of Maharashtra at 6.4% per annum and repays
+    it on Monday morning." — bank to bank, three days, no security.</div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The five money market instruments, side by side</h2>
+  <p class="lead">Learn the <b>issuer</b> and the <b>maturity</b> of each. Nine questions out of ten give
+  you one of those two and ask for the name.</p>
+  <table>
+    <thead>
+      <tr><th class="lbl">Instrument</th><th class="lbl">Who issues it</th><th class="lbl">Maturity</th><th class="lbl">The one thing that identifies it</th></tr>
+    </thead>
+    <tbody>
+      <tr><th class="lbl">Treasury bill</th><td>RBI, on behalf of the <b>Government of India</b></td><td>91, 182 or 364 days</td><td class="hi">Issued at a <b>discount</b>, redeemed at par — a <b>Zero Coupon Bond</b></td></tr>
+      <tr><th class="lbl">Commercial paper</th><td>Large, <b>creditworthy companies</b></td><td>15 days to 1 year</td><td class="hi">Unsecured, and backed by <b>no trade transaction</b></td></tr>
+      <tr><th class="lbl">Call money</th><td><b>Banks</b>, to one another</td><td>1 day to 15 days</td><td class="hi">Repayable <b>on demand</b>; used to meet the <b>CRR</b></td></tr>
+      <tr><th class="lbl">Certificate of deposit</th><td><b>Commercial banks</b> and development financial institutions</td><td>91 days to 1 year</td><td class="hi">Issued <b>by a bank to a depositor</b> in tight liquidity</td></tr>
+      <tr><th class="lbl">Commercial bill</th><td>A <b>seller</b>, drawn on a <b>buyer</b></td><td>Usually 90 days</td><td class="hi">Arises from a <b>genuine trade transaction</b>; can be <b>discounted</b></td></tr>
+    </tbody>
+  </table>
+  <p class="small">These are the <b>examinable</b> maturities — learn them as they stand. The RBI has
+  since shortened the <i>legal</i> floor for commercial paper and the certificate of deposit to seven
+  days; that is flagged on the slide where the pair is defined. The rupee amounts on the following
+  slides are illustrative.</p>
+</section>
+
+<section class="slide">
+  <h2>Treasury bill — the government's IOU</h2>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p class="term">Treasury bill</p>
+    <p>A Treasury bill is a <b>short-term promissory note issued by the Reserve Bank of India on behalf
+    of the Government of India</b>. It is issued at a <b>discount and redeemed at par</b>, the difference
+    being the investor's return, and is therefore also called a <b>Zero Coupon Bond</b>. Maturities are
+    <b>91, 182 or 364 days</b>, and the minimum lot is <b>₹25,000</b>.</p>
+  </div>
+  <div class="case">
+    <span class="tag">Case 4 · The Government of India, 91 days</span>
+    <p>On 12 February the RBI auctions 91-day Treasury bills on behalf of the Government of India.
+    <span class="who">Sundaram Asset Management</span> buys a bill of face value ₹1,00,000.
+    <mark class="ev">It pays ₹98,300 for it and receives ₹1,00,000 from the government after 91
+    days.</mark> No interest is ever paid to it.</p>
+  </div>
+  <div class="formula">Return = ₹1,00,000 − ₹98,300 = <b>₹1,700 on a 91-day bill</b> — the discount
+  <i>is</i> the interest</div>
+  <div class="box insight">
+    <span class="tag">Why it is the safest instrument in the market</span>
+    <p>The borrower is the <b>sovereign</b>. A government that can tax and can print does not default in
+    its own currency — which is why the T-bill rate is the floor under every other short-term rate in
+    India. The figures above are illustrative; the <b>91/182/364-day maturities and "issued at a
+    discount" are what the paper asks for</b>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Commercial paper and the certificate of deposit — the mirror pair</h2>
+  <div class="grid2">
+    <div class="box defn">
+      <span class="tag">Definition</span>
+      <p class="term">Commercial paper</p>
+      <p>A <b>short-term, unsecured promissory note issued by large and creditworthy companies</b> to
+      raise funds. It is <b>negotiable, freely transferable and issued at a discount</b>, with a maturity
+      of <b>15 days to one year</b>.</p>
+      <p class="small">Its classic use is <b>bridge financing</b> — meeting the floatation cost of a
+      long-term issue that has not yet been made.</p>
+    </div>
+    <div class="box defn">
+      <span class="tag">Definition</span>
+      <p class="term">Certificate of deposit</p>
+      <p>An <b>unsecured, negotiable, short-term instrument issued by commercial banks and development
+      financial institutions to depositors</b>. It is issued in periods of <b>tight liquidity</b>, when
+      deposit growth is slow but the demand for credit is high.</p>
+      <p class="small">Maturity <b>91 days to one year</b>.</p>
+    </div>
+  </div>
+  <div class="case">
+    <span class="tag">Case 5 · A bank that cannot find deposits fast enough</span>
+    <p>In March, <span class="who">Yamuna Commercial Bank</span> finds loan demand from its
+    Ludhiana textile clients running far ahead of the deposits coming in.
+    <mark class="ev">It issues ₹500 crore of negotiable instruments of 180 days to insurance companies
+    and mutual funds, at a discount to face value.</mark> Its treasury head calls it "buying deposits".</p>
+  </div>
+  <div class="box warn">
+    <span class="tag">The pair students fuse</span>
+    <p>"Commercial paper and certificate of deposit are the same thing — both are short-term unsecured
+    notes." Both <i>are</i>, and that is exactly why the distinguishing word is the <b>issuer</b>:
+    <b>commercial paper is issued by a company</b>, a <b>certificate of deposit is issued by a bank</b>.
+    Case 5 says <i>bank</i> — so it is a <span class="kw">certificate of deposit</span>.</p>
+  </div>
+  <div class="box note">
+    <span class="tag">What the RBI actually allows today — and what to write in the paper</span>
+    <p>The maturities above are the <b>textbook figures, and they are what the board expects</b>. The
+    RBI has since shortened both floors: under the <b>RBI (Certificate of Deposit) Directions, 2021</b>
+    a CD may run from <b>7 days</b> to one year, and under the <b>RBI (Commercial Paper …) Directions,
+    2024</b>, in force from <b>1 April 2024</b>, commercial paper may also run from <b>7 days</b> to one
+    year. Both now carry a minimum denomination of <b>₹5 lakh</b>.</p>
+    <p><b>In the exam write 15 days–1 year for commercial paper and 91 days–1 year for a CD.</b> The
+    current RBI floors are worth knowing, and worth a sentence in an answer that asks about current
+    practice — but they are not the marked answer.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Call money and the commercial bill</h2>
+  <div class="grid2">
+    <div class="box defn">
+      <span class="tag">Definition</span>
+      <p class="term">Call money</p>
+      <p><b>Short-term finance repayable on demand</b>, with a maturity of <b>one day to fifteen days</b>.
+      It is used mainly by <b>banks borrowing from one another to meet the Cash Reserve Ratio (CRR)</b>,
+      and the interest paid on it is the <b>call rate</b>.</p>
+      <p class="small">The call rate is <b>highly volatile</b> and moves <b>inversely</b> with the price
+      of other short-term money market instruments.</p>
+    </div>
+    <div class="box defn">
+      <span class="tag">Definition</span>
+      <p class="term">Commercial bill (trade bill)</p>
+      <p>A <b>bill of exchange drawn by a seller on a buyer</b> for the value of goods sold on credit. If
+      the seller needs the money before the bill matures, he can have it <b>discounted with a commercial
+      bank</b>. When it is <b>accepted by a bank</b>, it becomes a bill of the highest quality.</p>
+      <p class="small">Self-liquidating, because a real sale stands behind it.</p>
+    </div>
+  </div>
+  <div class="case">
+    <span class="tag">Case 6 · Ninety days of credit, converted into cash today</span>
+    <p><span class="who">Ambika Steel Tubes, Raipur</span> sells ₹40 lakh of tubing to a Nagpur builder
+    on 90 days' credit and draws a bill on him, which he accepts.
+    <mark class="ev">Needing the money at once for wages, Ambika takes the accepted bill to Bank of
+    Baroda, which pays it ₹39.1 lakh today and collects ₹40 lakh from the builder in 90 days.</mark></p>
+  </div>
+  <div class="box insight">
+    <span class="tag">The line that separates it from commercial paper</span>
+    <p>A commercial bill exists <b>because goods moved</b>. Commercial paper exists because a company
+    wanted cash. If the case mentions <b>goods sold on credit</b>, it is a <b>commercial bill</b>; if it
+    mentions a company simply raising short-term funds, it is <b>commercial paper</b>.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Question — four cases, four instruments</h2>
+  <div class="qcard">
+    <span class="tag">Question 3 <span class="mk">4 marks</span></span>
+    <p>Identify the money market instrument in each, in one line with a reason.</p>
+    <ol class="points">
+      <li><span class="h">(a)</span>The RBI auctions ₹8,000 crore of 182-day paper for the Government of India at a discount.</li>
+      <li><span class="h">(b)</span>Bharat Cements Ltd raises ₹300 crore for 90 days to pay the issue expenses of a debenture issue it will make in July.</li>
+      <li><span class="h">(c)</span>Punjab National Bank borrows ₹250 crore from ICICI Bank overnight to meet its reserve requirement.</li>
+      <li><span class="h">(d)</span>A Coimbatore pump maker gets its 90-day accepted bill discounted with its bank.</li>
+    </ol>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer — four points, because it is four marks</span>
+    <ol class="points">
+      <li><span class="h">(a) Treasury bill</span>issued by the <b>RBI on behalf of the Government of
+      India</b>, at a <b>discount</b>, for 182 days.</li>
+      <li><span class="h">(b) Commercial paper</span>issued by a <b>creditworthy company</b> for a
+      short period, and used here for <span class="kw">bridge financing</span> the floatation cost.</li>
+      <li><span class="h">(c) Call money</span><b>bank to bank</b>, repayable on demand, to meet the
+      <b>CRR</b>.</li>
+      <li><span class="h">(d) Commercial bill</span>it arises out of a <b>genuine trade transaction</b>
+      and has been <b>discounted</b> before maturity.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>★ Challenge — the case that looks like two instruments</h2>
+  <div class="case">
+    <span class="tag">Case 7 · Ninety days, ₹120 crore, unsecured</span>
+    <p><span class="who">Konark Auto Components Ltd</span>, a listed Pune firm rated A1+, raised
+    ₹120 crore for 90 days last week. <mark class="ev">There was no sale of goods behind it and no
+    security was pledged; the instrument was sold at a discount to a mutual fund and is freely
+    transferable.</mark> A student writes: "Unsecured, discounted, 90 days — this is a commercial bill."</p>
+  </div>
+  <div class="challenge">
+    <span class="tag">Challenge <span class="mk">4 marks</span></span>
+    <p>Why is the student wrong? Name the correct instrument and give the two features that force the
+    reading. Then say what would have to change in the case for the student to be right.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <ol class="points">
+      <li><span class="h">The correct instrument — commercial paper</span><button class="info" data-term="commercial-paper"></button>a short-term
+      unsecured promissory note issued by a large, creditworthy <b>company</b>.</li>
+      <li><span class="h">Forcing feature 1 — no underlying trade</span>a
+      <span class="kw">commercial bill</span> can only exist where goods were sold on credit. The case
+      says expressly there was none.</li>
+      <li><span class="h">Forcing feature 2 — the issuer and the rating</span>commercial paper is
+      issued <b>by the company itself</b> on the strength of its credit rating (A1+), not drawn by a
+      seller on a buyer.</li>
+      <li><span class="h">What would make the student right</span>if Konark had <b>sold components on
+      90 days' credit</b> and drawn a bill on the buyer which the buyer accepted, the same ₹120 crore
+      discounted with a bank would be a <b>commercial bill</b>.</li>
+    </ol>
+    <div class="evidence">"There was no sale of goods behind it and no security was pledged…" — the
+    absence of a trade transaction is the whole answer.</div>
+  </div>
+</section>
+
+<!-- ================= SECTION 3 — CAPITAL MARKET ================= -->
+<section class="slide" data-section="3 · Capital market">
+  <h2>The capital market</h2>
+  <div class="box defn">
+    <span class="tag">Definition — learn this wording</span>
+    <p class="term">Capital market</p>
+    <p>The capital market is the market for <b>medium and long-term funds</b>. It deals in both
+    <b>debt and equity</b> instruments — shares, debentures and bonds — and it has two segments, the
+    <b>primary market</b> and the <b>secondary market</b>.</p>
+  </div>
+  <h3>Features you can be asked to state</h3>
+  <div class="grid2">
+    <div class="card">
+      <h4>1 · It links savers to investors</h4>
+      <p>It performs the <b>allocative function</b><button class="info" data-term="allocative-function"></button> for
+      long-term funds — routing savings to the projects that will earn most from them.</p>
+    </div>
+    <div class="card">
+      <h4>2 · It deals in long-term securities</h4>
+      <p>Shares, debentures and bonds with a maturity <b>beyond one year</b>, and in the case of equity
+      shares, <b>no maturity at all</b>.</p>
+    </div>
+    <div class="card">
+      <h4>3 · Both retail and institutional</h4>
+      <p>Individual investors, mutual funds, insurance companies, foreign portfolio investors, banks —
+      and the transaction can be <b>small</b>, unlike in the money market.</p>
+    </div>
+    <div class="card">
+      <h4>4 · Higher risk, higher expected return</h4>
+      <p>Long maturity plus the possibility of default or of a fall in price means <b>more risk</b> — and
+      so a <b>higher expected return</b> than the money market offers.</p>
+    </div>
+  </div>
+  <div class="box eg">
+    <span class="tag">Example</span>
+    <p>When <span class="who">Bajaj Housing Finance</span> raised roughly ₹6,560 crore through its
+    initial public offer in <b>September 2024</b>, that was a capital market transaction: long-term
+    equity, open to retail investors, and no maturity date. Figure illustrative; the classification is
+    the examinable part.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Two names, two traps</h2>
+  <div class="box warn">
+    <span class="tag">Written in the words students actually use</span>
+    <p><b>"The money market deals in money — notes, coins and currency."</b> It does not. It deals in
+    <b>short-term debt instruments of up to one year</b>. Nothing in Section 2 was cash.</p>
+    <p><b>"The capital market is a building in Mumbai."</b> It is not a place at all. It is the
+    <b>whole set of arrangements</b> — issues, brokers, exchanges, depositories — through which
+    medium and long-term funds are raised and traded. The <b>BSE building on Dalal Street</b> is one
+    institution operating <i>inside</i> the capital market, not the capital market.</p>
+    <p><b>"Capital market means shares."</b> It means <b>debt and equity both</b>. A ten-year
+    debenture is as much a capital market instrument as an equity share.</p>
+  </div>
+  <div class="box insight">
+    <span class="tag">The single distinguishing test</span>
+    <p>Ask one question of any instrument: <b>does it mature within one year?</b> If yes it is a
+    <b>money market</b> instrument, whatever it is called. If no — or if it never matures — it is a
+    <b>capital market</b> instrument. Every other difference follows from that one.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Distinguish — money market and capital market</h2>
+  <table class="distinguish">
+    <caption>Seven bases are given so you can choose. In the exam write <b>four</b> for a 4-mark
+    question — Participants, Instruments, Duration and Safety are the safest four.</caption>
+    <thead>
+      <tr><th class="basis">Basis</th><th>Money market<button class="info" data-term="money-market"></button></th><th>Capital market<button class="info" data-term="capital-market"></button></th></tr>
+    </thead>
+    <tbody>
+      <tr><th class="basis" scope="row">Participants</th><td>Few and largely <b>institutional</b> — the RBI, commercial banks, NBFCs, mutual funds, large companies. A wholesale market.</td><td>Many and <b>varied</b> — retail investors, mutual funds, insurance companies, foreign portfolio investors, banks, underwriters.</td></tr>
+      <tr><th class="basis" scope="row">Instruments</th><td>Treasury bill, commercial paper, call money, certificate of deposit, commercial bill — all <b>debt</b>.</td><td>Equity shares, preference shares, debentures and bonds — <b>debt and equity both</b>.</td></tr>
+      <tr><th class="basis" scope="row">Investment outlay</th><td><b>Large</b>. Instruments are issued in big denominations — a Treasury bill in lots of ₹25,000, commercial paper in crores.</td><td><b>Small</b>. A share can be bought in a single unit, so an investor with a few thousand rupees can participate.</td></tr>
+      <tr><th class="basis" scope="row">Duration</th><td><b>Short term — up to one year</b>, and often overnight.</td><td><b>Medium and long term</b>, and in the case of equity shares, <b>perpetual</b>.</td></tr>
+      <tr><th class="basis" scope="row">Liquidity</th><td><b>Highly liquid.</b> Short maturity plus a formal secondary arrangement means cash is never far away.</td><td><b>Liquid, but less so.</b> Liquidity depends on the security being <b>listed and traded</b>; an unlisted share can be very hard to sell.</td></tr>
+      <tr><th class="basis" scope="row">Safety</th><td><b>Safer.</b> Short maturity and financially sound issuers mean low default risk and little price risk.</td><td><b>Riskier.</b> Long maturity, and the issuer's fortunes can change; equity carries no promise of repayment at all.</td></tr>
+      <tr><th class="basis" scope="row">Expected return</th><td><b>Low</b> — you are paid little because you are risking little.</td><td><b>High</b> — dividend and capital appreciation, in exchange for bearing the risk.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="slide">
+  <h2>The case that can only be read one way</h2>
+  <div class="case">
+    <span class="tag">Case 8 · Two proposals on a Nagpur board table</span>
+    <p><span class="who">Vidarbha Agrotech Ltd</span> needs ₹15 crore for four months to buy the soybean
+    crop, and ₹90 crore for eight years to build a solvent extraction plant. Its finance director,
+    <span class="who">Nandini Sathe</span>, tells the board that the two requirements must be met in two
+    completely different markets. <mark class="ev">"The four-month money will be raised on our credit
+    rating and repaid before the next harvest; the eight-year money will be raised by issuing
+    debentures to the public."</mark></p>
+  </div>
+  <div class="qcard">
+    <span class="tag">Question 4 <span class="mk">4 marks</span></span>
+    <p>Name the market for each requirement, and state two differences between the two markets that
+    Nandini's sentence itself demonstrates.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <ol class="points">
+      <li><span class="h">The ₹15 crore — money market</span>the funds are needed for <b>four months</b>,
+      i.e. <b>less than one year</b>. The likely instrument is <span class="kw">commercial paper</span>,
+      raised on the company's credit rating.</li>
+      <li><span class="h">The ₹90 crore — capital market</span>the funds are needed for <b>eight
+      years</b>, so the maturity exceeds one year.</li>
+      <li><span class="h">Difference shown — duration</span>"four months" against "eight years" is the
+      one-year dividing line drawn in the case itself.</li>
+      <li><span class="h">Difference shown — instruments and participants</span>the short-term money is
+      unsecured paper placed with institutions; the long-term money is a <b>debenture issued to the
+      public</b>, which is a capital market instrument.</li>
+    </ol>
+    <div class="evidence">"The four-month money will be raised on our credit rating and repaid before
+    the next harvest; the eight-year money will be raised by issuing debentures to the public."</div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>★ Challenge — the instrument that sits on the boundary</h2>
+  <div class="case">
+    <span class="tag">Case 9 · A one-year deposit and a one-year debenture</span>
+    <p><span class="who">Shreyas Nadkarni</span> holds two instruments of exactly <b>364 days</b>. One is
+    a certificate of deposit issued by his bank. <mark class="ev">The other is a listed debenture of
+    Konkan Power Ltd which has 364 days left to run, out of an original term of ten years.</mark> He
+    argues that because both mature in 364 days, both are money market instruments.</p>
+  </div>
+  <div class="challenge">
+    <span class="tag">Challenge <span class="mk">4 marks</span></span>
+    <p>Is he right? Answer with the test that decides it, and say what the residual maturity of a
+    security does and does not tell you.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <ol class="points">
+      <li><span class="h">He is half right, and the half that is wrong costs the mark</span>the
+      certificate of deposit<button class="info" data-term="certificate-of-deposit"></button> is a money market instrument; the
+      debenture is not.</li>
+      <li><span class="h">The test is the term at issue, not the time left</span>an instrument is
+      classified by the <b>maturity it was issued with</b>. The Konkan Power debenture was issued for
+      <b>ten years</b> and is therefore a <span class="kw">capital market</span> instrument for its whole
+      life, including its last day.</li>
+      <li><span class="h">Every other feature agrees</span>the debenture is <b>listed and traded on a
+      stock exchange</b>, was sold to <b>retail investors in small lots</b>, and carries <b>price
+      risk</b> — none of which is true of a money market instrument.</li>
+      <li><span class="h">What residual maturity does tell you</span>only how soon your money comes
+      back. It is a fact about <b>Shreyas's position</b>, not about the <b>instrument's market</b>.</li>
+    </ol>
+    <div class="evidence">"…a listed debenture of Konkan Power Ltd which has 364 days left to run, out
+    of an original term of ten years." — "out of an original term of ten years" is the clause that
+    decides it.</div>
+  </div>
+</section>
+
+<!-- ================= SECTION 4 — PRIMARY MARKET ================= -->
+<section class="slide" data-section="4 · Primary market">
+  <h2>The primary market — where a security is born</h2>
+  <div class="box defn">
+    <span class="tag">Definition — learn this wording</span>
+    <p class="term">Primary market</p>
+    <p>The primary market, also called the <b>new issues market</b>, is the market in which a company
+    issues <b>fresh securities for the first time</b> in order to raise funds. The money raised goes
+    <b>directly to the company</b>, and the transaction is between the <b>company and the investor</b>.</p>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h4>Why it is the market that matters to the economy</h4>
+      <p>This is the <b>only</b> place in the whole chapter where <b>capital formation</b> occurs. A
+      factory gets built because a primary issue succeeded, never because a share changed hands on the
+      NSE.</p>
+    </div>
+    <div class="card">
+      <h4>Why it needs the secondary market to exist</h4>
+      <p>Almost nobody would give a company money for twenty years if he could never get out. The
+      promise of an <b>exit</b> in the secondary market is what makes a primary issue subscribable.</p>
+    </div>
+  </div>
+  <div class="box eg">
+    <span class="tag">Example</span>
+    <p>An <b>IPO</b> — an initial public offer — is a primary market transaction. So is a
+    <b>further public offer</b> by an already-listed company, and so is a <b>rights issue</b>. All three
+    create securities that did not exist before.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The life of one share — the diagram that settles primary vs secondary</h2>
+  <figure>
+    <svg viewBox="0 0 960 330" role="img" aria-label="The life of a single share: Meghna Polymers issues it in the primary market and receives one hundred rupees from investor A; the share is then resold from A to B and from B to C in the secondary market, with money flowing back only to the selling investor. A red dashed path from the later sales towards the company is blocked by a cross, showing that the company receives nothing from any resale">
+      <defs>
+        <marker id="arrow-share" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+          <path d="M0,0 L10,4 L0,8 z" fill="var(--ink-faint)"/>
+        </marker>
+        <marker id="arrow-share-amber" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+          <path d="M0,0 L10,4 L0,8 z" fill="var(--amber)"/>
+        </marker>
+      </defs>
+
+      <line class="link dash" x1="475" y1="18" x2="475" y2="300"/>
+      <text class="tier" x="30" y="40">Primary market — capital formation, once</text>
+      <text class="tier" x="492" y="40">Secondary market — liquidity, for ever</text>
+
+      <rect class="node n-amber n-key" x="20" y="90" width="175" height="70" rx="12"/>
+      <text class="nlab" x="107" y="118">Meghna</text>
+      <text class="nlab" x="107" y="135">Polymers Ltd</text>
+      <text class="nsub" x="107" y="152">the company</text>
+
+      <rect class="node n-blue" x="285" y="90" width="175" height="70" rx="12"/>
+      <text class="nlab" x="372" y="120">Investor A</text>
+      <text class="nsub" x="372" y="140">Anwesha, subscribes</text>
+      <text class="nsub" x="372" y="154">to the new issue</text>
+
+      <rect class="node n-blue" x="550" y="90" width="175" height="70" rx="12"/>
+      <text class="nlab" x="637" y="120">Investor B</text>
+      <text class="nsub" x="637" y="140">buys from Anwesha</text>
+      <text class="nsub" x="637" y="154">on the NSE</text>
+
+      <rect class="node n-blue" x="815" y="90" width="145" height="70" rx="12"/>
+      <text class="nlab" x="887" y="120">Investor C</text>
+      <text class="nsub" x="887" y="140">buys from B,</text>
+      <text class="nsub" x="887" y="154">two years later</text>
+
+      <line class="link thick" x1="200" y1="108" x2="280" y2="108" marker-end="url(#arrow-share)"/>
+      <text class="nsub" x="240" y="99">1 new share</text>
+      <line class="link thick" x1="465" y1="108" x2="545" y2="108" marker-end="url(#arrow-share)"/>
+      <text class="nsub" x="505" y="99">same share</text>
+      <line class="link thick" x1="730" y1="108" x2="810" y2="108" marker-end="url(#arrow-share)"/>
+      <text class="nsub" x="770" y="99">same share</text>
+
+      <line class="link thick l-amber" x1="280" y1="145" x2="200" y2="145" marker-end="url(#arrow-share-amber)"/>
+      <text class="nsub" x="240" y="163">₹100</text>
+      <line class="link" x1="545" y1="145" x2="465" y2="145" marker-end="url(#arrow-share)"/>
+      <text class="nsub" x="505" y="163">₹135</text>
+      <line class="link" x1="810" y1="145" x2="730" y2="145" marker-end="url(#arrow-share)"/>
+      <text class="nsub" x="770" y="163">₹120</text>
+
+      <path class="link dash l-rose" d="M637 168 L637 222 L887 222" />
+      <path class="link dash l-rose" d="M887 168 L887 222" />
+      <path class="link dash l-rose" d="M637 222 L278 222" />
+      <line class="link l-rose" x1="248" y1="210" x2="272" y2="234"/>
+      <line class="link l-rose" x1="272" y1="210" x2="248" y2="234"/>
+      <path class="link dash l-rose" d="M240 222 L107 222 L107 166" stroke-opacity=".3"/>
+      <text class="nsub" x="560" y="248">not one rupee of the ₹135 or the ₹120 ever reaches Meghna Polymers</text>
+
+      <text class="nsub" x="107" y="272">Meghna got ₹100</text>
+      <text class="nsub" x="107" y="288">— once, for ever</text>
+      <text class="nsub" x="700" y="272">A and B got their money out. That exit is</text>
+      <text class="nsub" x="700" y="288">the reason anyone subscribed in the first place.</text>
+    </svg>
+    <figcaption><b>How to read it —</b> start at the amber box on the far left and run right; the top
+    row of arrows is the <b>share</b> moving and the lower row is the <b>money</b> moving, always in the
+    opposite direction. The <b>amber money arrow is the only one that reaches the company</b>. The
+    <b>red dashed path is crossed out</b> because it does not exist: no later sale sends anything back
+    to Meghna Polymers, and <b>that absence is the whole distinction between the two markets</b>.</figcaption>
+  </figure>
+</section>
+
+<section class="slide">
+  <h2>The five methods of floatation</h2>
+  <p class="lead">A company in the primary market must choose <b>how</b> to place its securities. Five
+  methods, and the examiner names them exactly like this.</p>
+  <div class="mnemonic">
+    <span class="tag">Hook</span>
+    <span class="hook"><b>P</b>rospectus · <b>O</b>ffer for sale · <b>P</b>rivate placement ·
+    <b>R</b>ights issue · <b>e</b>-IPO — "<b>POPR-e</b>"</span>
+  </div>
+  <div class="grid3">
+    <div class="card">
+      <h4>Who is being asked?</h4>
+      <p><b>The general public</b> — prospectus, offer for sale, e-IPO. <b>A selected few</b> — private
+      placement. <b>Existing shareholders only</b> — rights issue.</p>
+    </div>
+    <div class="card">
+      <h4>Does the company face the public itself?</h4>
+      <p><b>Yes</b> under a prospectus and an e-IPO. <b>No</b> under an offer for sale — intermediaries
+      stand in between and do the selling.</p>
+    </div>
+    <div class="card">
+      <h4>Which is cheapest?</h4>
+      <p><b>Private placement</b> and <b>rights issue</b> — no prospectus, no underwriting, no
+      advertising. A public issue is the most expensive of the five.</p>
+    </div>
+  </div>
+  <div class="box note">
+    <span class="tag">Do not confuse the method with the market</span>
+    <p>All five are <b>primary market</b> methods. Choosing between them does not move you into the
+    secondary market — even an <b>e-IPO, which uses the stock exchange's electronic system</b>, is a
+    primary issue, because the securities are new and the company gets the money.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Offer through prospectus, and offer for sale</h2>
+  <div class="grid2">
+    <div class="box defn">
+      <span class="tag">Definition</span>
+      <p class="term">Offer through prospectus</p>
+      <p>The company makes a <b>direct appeal to the general public to subscribe to its securities
+      through a prospectus</b>. The issue must be <b>advertised in newspapers</b> and the prospectus
+      must satisfy <b>SEBI's disclosure requirements</b>.</p>
+      <p class="small">The commonest method. Also called a <b>public issue</b>. Under SEBI's ICDR
+      Regulations the public announcement and the pre-issue advertisement go into an <b>English
+      national daily, a Hindi national daily and a regional-language daily</b> at the place of the
+      registered office — <i>three</i>, not two. Write "advertised in newspapers"; the count is not
+      examinable.</p>
+    </div>
+    <div class="box defn">
+      <span class="tag">Definition</span>
+      <p class="term">Offer for sale</p>
+      <p>Securities are <b>not issued directly to the public</b> but are <b>sold in a block to
+      intermediaries — issue houses or stockbrokers — who then resell them to the investing public at a
+      higher price</b>.</p>
+      <p class="small">The company is spared the formalities, time and cost of a public issue; the
+      resale profit accrues to the <b>intermediary</b>.</p>
+    </div>
+  </div>
+  <div class="case">
+    <span class="tag">Case 10 · Two ways out of the same problem</span>
+    <p><span class="who">Aravali Ceramics Ltd, Alwar</span> needs ₹80 crore and has no experience of a
+    public issue. Its merchant banker offers two routes. Route one: file a prospectus, advertise in the
+    <i>Rajasthan Patrika</i> and the <i>Economic Times</i>, and take applications for six weeks.
+    <mark class="ev">Route two: sell the entire ₹80 crore issue in one block to two issue houses at ₹96
+    a share and let them place it with the public at ₹104.</mark></p>
+  </div>
+  <div class="qcard">
+    <span class="tag">Question 5 <span class="mk">3 marks</span></span>
+    <p>Name route two, and state the one advantage and the one cost it carries for Aravali Ceramics.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <ol class="points">
+      <li><span class="h">The method — offer for sale</span>the securities are sold <b>in a block to
+      intermediaries</b>, who resell them to the public at a higher price.</li>
+      <li><span class="h">The advantage — no public-issue formalities</span>Aravali is spared the
+      <b>time, effort and cost</b> of a prospectus issue, which matters because it has no experience
+      of one.</li>
+      <li><span class="h">The cost — the resale margin is lost</span>the <span class="kw">₹8 a
+      share</span> between ₹96 and ₹104 goes to the <b>issue houses, not to the company</b>.</li>
+    </ol>
+    <div class="evidence">"Route two: sell the entire ₹80 crore issue in one block to two issue houses
+    at ₹96 a share and let them place it with the public at ₹104."</div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Private placement, rights issue and e-IPO</h2>
+  <div class="grid3">
+    <div class="box defn">
+      <span class="tag">Definition</span>
+      <p class="term">Private placement</p>
+      <p>The <b>allotment of securities by a company to institutional investors and to some selected
+      individuals</b>, rather than to the general public. It saves the <b>floatation cost, time and
+      formalities</b> of a public issue.</p>
+    </div>
+    <div class="box defn">
+      <span class="tag">Definition</span>
+      <p class="term">Rights issue</p>
+      <p>The <b>offer of new shares by an existing company to its existing shareholders in proportion
+      to the shares they already hold</b>. It is a <b>pre-emptive right</b> — the shares must be offered
+      to them before they can be offered to anybody else.</p>
+    </div>
+    <div class="box defn">
+      <span class="tag">Definition</span>
+      <p class="term">e-IPO</p>
+      <p>The issue of securities to the public <b>through the on-line system of a stock exchange</b>.
+      The company must appoint <b>brokers registered with the exchange</b> to accept applications and a
+      <b>registrar to the issue</b> with electronic connectivity.</p>
+    </div>
+  </div>
+  <div class="case">
+    <span class="tag">Case 11 · Pune, and 1,860 shareholders who get the first refusal</span>
+    <p><span class="who">Sahyadri Precision Forgings Ltd</span>, a Pune auto-component maker with 1,860
+    shareholders, needs ₹24 crore to add a press line. Its promoter,
+    <span class="who">Kedar Bhagwat</span>, holds 51% and does not want that percentage diluted.
+    <mark class="ev">The board offers one new share at ₹120 for every four shares already held, and the
+    offer letter goes only to the names on the register as on 30 June.</mark></p>
+  </div>
+  <div class="qcard">
+    <span class="tag">Question 6 <span class="mk">4 marks</span></span>
+    <p>Identify the method of floatation and explain, in four points, why it suits Kedar Bhagwat
+    better than a public issue.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer — four points, because it is four marks</span>
+    <ol class="points">
+      <li><span class="h">The method — rights issue</span>new shares offered to <b>existing
+      shareholders in proportion to their holding</b> — here one for every four.</li>
+      <li><span class="h">Control is not diluted</span>a <span class="kw">pre-emptive right</span> lets
+      Kedar subscribe to his proportionate share, so his 51% survives the issue.</li>
+      <li><span class="h">It is cheap and quick</span>no prospectus, no underwriting, no newspaper
+      advertising — the floatation cost of a public issue is avoided almost entirely.</li>
+      <li><span class="h">The buyers are known and already committed</span>the offer goes to 1,860
+      people who have already backed the company, so the risk of undersubscription is far lower.</li>
+    </ol>
+    <div class="evidence">"The board offers one new share at ₹120 for every four shares already held,
+    and the offer letter goes only to the names on the register as on 30 June."</div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Now the other way round</h2>
+  <div class="reverse">
+    <span class="tag">Now the other way round</span>
+    <p>Write a four-line case set in a <b>Surat diamond-polishing firm</b> that could <b>only</b> be
+    answered <i>private placement</i> — not <i>offer for sale</i>, and not <i>rights issue</i>. Then
+    underline the words in your own case that force the reading.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for a model answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Model answer, with the forcing words marked</span>
+    <div class="case">
+      <span class="tag">Model case</span>
+      <p><span class="who">Hiralaxmi Gems Pvt Ltd, Surat</span>, needs ₹35 crore to buy laser-cutting
+      machines. It is <b>not listed</b> and cannot afford the cost of a prospectus issue.
+      <mark class="ev">It allots the whole ₹35 crore of debentures to three institutional investors —
+      an insurance company and two mutual funds — chosen by its merchant banker, without any offer to
+      the public or to its own existing shareholders.</mark></p>
+    </div>
+    <ol class="points">
+      <li><span class="h">"to three institutional investors … chosen by its merchant banker"</span>this
+      is the definition of <span class="kw">private placement</span> — allotment to institutions and
+      selected individuals.</li>
+      <li><span class="h">"without any offer to the public"</span>kills <b>offer for sale</b>, whose
+      whole point is that intermediaries <i>resell to the public</i>.</li>
+      <li><span class="h">"or to its own existing shareholders"</span>kills <b>rights issue</b>, which
+      by definition goes to existing shareholders first.</li>
+      <li><span class="h">"not listed … cannot afford the cost of a prospectus issue"</span>supplies
+      the <b>reason</b>, which is what a 4-mark answer needs after the identification.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>★ Challenge — one company, two issues, one week apart</h2>
+  <div class="case">
+    <span class="tag">Case 12 · Indore, the same fortnight</span>
+    <p><span class="who">Narmada Bioplastics Ltd</span> did two things in March. On the 6th it allotted
+    ₹60 crore of shares to four insurance companies after a private negotiation. On the 19th
+    <mark class="ev">its promoter family sold 40 lakh of the shares it already owned to the public
+    through the stock exchange, and the ₹52 crore raised went into the family's own accounts.</mark>
+    The company's finance manager tells the class both were primary market transactions.</p>
+  </div>
+  <div class="challenge">
+    <span class="tag">Challenge <span class="mk">6 marks</span></span>
+    <p>Is the finance manager right about both? Classify each transaction, name the floatation method
+    where one applies, and state the single test you used.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer — six points, because it is six marks</span>
+    <ol class="points">
+      <li><span class="h">He is right about the first and wrong about the second</span>only the 6 March
+      transaction is a primary market transaction.</li>
+      <li><span class="h">6 March — primary market</span>the shares were <b>newly created</b> and the
+      <b>₹60 crore went to Narmada Bioplastics itself</b>. Capital formation took place.</li>
+      <li><span class="h">6 March — the method is private placement</span><button class="info" data-term="private-placement"></button>allotment to
+      <b>institutional investors after private negotiation</b>, with no public offer.</li>
+      <li><span class="h">19 March — secondary market</span>the shares <b>already existed</b> and merely
+      changed owner. No new security was created.</li>
+      <li><span class="h">19 March — the company received nothing</span>the ₹52 crore went to the
+      <b>promoter family</b>, exactly as in the "life of one share" diagram.</li>
+      <li><span class="h">The test</span>ask <span class="kw">who receives the money</span>. Company →
+      primary. Any other seller → secondary. It is not affected by the sale being large, or by its
+      being routed through a stock exchange.</li>
+    </ol>
+    <div class="evidence">"…its promoter family sold 40 lakh of the shares it already owned to the
+    public through the stock exchange, and the ₹52 crore raised went into the family's own accounts."</div>
+    <div class="box note">
+      <span class="tag">Worth knowing, not examinable</span>
+      <p>In real Indian IPO documents this second kind of sale is called an <b>Offer for Sale (OFS)
+      component</b>, and most large IPOs contain both a fresh issue and an OFS. In the board paper,
+      "offer for sale" means the <b>method of floatation</b> defined two slides ago. Use the deck's
+      definition in the exam.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 5 — SECONDARY MARKET AND THE STOCK EXCHANGE ============ -->
+<section class="slide" data-section="5 · Secondary market">
+  <h2>The secondary market</h2>
+  <div class="box defn">
+    <span class="tag">Definition — learn this wording</span>
+    <p class="term">Secondary market</p>
+    <p>The secondary market, also called the <b>stock exchange</b> or the <b>after-market</b>, is the
+    market in which <b>existing and already-issued securities are bought and sold between investors</b>.
+    It provides <b>liquidity and marketability</b> to securities and continuously <b>determines their
+    price</b>. The issuing company is <b>not a party</b> to the transaction.</p>
+  </div>
+  <div class="box insight">
+    <span class="tag">The two are not rivals — they are a pair</span>
+    <p>The two markets are <b>interdependent</b>. A security must first be <b>created in the primary
+    market</b> before it can be traded at all; and investors subscribe to new issues <b>only because the
+    secondary market gives them an exit</b>. Kill either one and the other stops working within a year.</p>
+  </div>
+  <div class="box eg">
+    <span class="tag">Example</span>
+    <p>India has two stock exchanges of national significance — the <b>Bombay Stock Exchange (BSE),
+    established 1875 and the oldest in Asia</b>, and the <b>National Stock Exchange (NSE), which began
+    trading in 1994</b>. Both are electronic, order-driven and screen-based; the trading floor with
+    shouting brokers has not existed in India since the 1990s.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Primary and secondary — the three sentences students actually write</h2>
+  <div class="box warn">
+    <span class="tag">Written in the words students actually use</span>
+    <p><b>"The primary market is where a company sells shares and the secondary market is where it
+    sells them again."</b> A company never sells the same share twice. In the secondary market
+    <b>investors sell to investors</b>; the company is not in the room.</p>
+    <p><b>"Both markets raise money for the company."</b> Only the primary market does. In the secondary
+    market <span class="kw">the company receives nothing</span> — that is the crossed-out arrow in the
+    "life of one share" diagram.</p>
+    <p><b>"So the secondary market is useless to the company."</b> It is not. A liquid secondary market
+    is <b>why the primary issue got subscribed</b>, and the price it sets is what the company's
+    <i>next</i> issue will be priced against.</p>
+  </div>
+  <div class="box note">
+    <span class="tag">A wording point that costs marks</span>
+    <p>The primary market has <b>no fixed geographical location</b> — it is a set of arrangements, not a
+    place. The secondary market <b>does</b> have a definite place of operation, the stock exchange, even
+    though the exchange is now entirely electronic. Write "fixed place / no fixed place", not
+    "building".</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Distinguish — primary market and secondary market</h2>
+  <table class="distinguish">
+    <caption>Six bases. Write <b>four</b> for a 4-mark question — Securities, Buying and selling, Price
+    determination and Capital formation carry the most weight.</caption>
+    <thead>
+      <tr><th class="basis">Basis</th><th>Primary market<button class="info" data-term="primary-market"></button></th><th>Secondary market<button class="info" data-term="secondary-market"></button></th></tr>
+    </thead>
+    <tbody>
+      <tr><th class="basis" scope="row">Securities</th><td><b>New</b> securities, issued for the first time. Also called the <b>new issues market</b>.</td><td><b>Existing</b> securities that have already been issued once. Also called the <b>after-market</b>.</td></tr>
+      <tr><th class="basis" scope="row">Buying and selling</th><td>Between the <b>company and the investor</b> — the investor buys <b>directly from the company</b>.</td><td>Between <b>one investor and another</b>. The company is not a party at all.</td></tr>
+      <tr><th class="basis" scope="row">Intermediary</th><td>Merchant bankers, underwriters and the registrar to the issue.</td><td><b>Brokers</b>, who are members of the stock exchange, and depository participants.</td></tr>
+      <tr><th class="basis" scope="row">Price determination</th><td>The price is <b>decided by the management of the company</b> within SEBI's disclosure rules — a fixed price or a book-built band.</td><td>The price is <b>determined by the forces of demand and supply</b> in continuous trading, and changes minute to minute.</td></tr>
+      <tr><th class="basis" scope="row">Capital formation</th><td>It <b>directly promotes capital formation</b> — the funds go into the company and then into real assets.</td><td>It promotes capital formation only <b>indirectly</b>, by supplying the liquidity that makes primary issues subscribable.</td></tr>
+      <tr><th class="basis" scope="row">Entry and place</th><td><b>No fixed geographical location.</b> Any company that satisfies the requirements may make an issue.</td><td>Operates at a <b>defined place</b>, the stock exchange, and only <b>listed</b> securities may be traded.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="slide">
+  <h2>A case with only one reading</h2>
+  <div class="case">
+    <span class="tag">Case 13 · Two entries in a Mumbai investor's file</span>
+    <p><span class="who">Farhan Qureshi</span>, who invests from Andheri, shows you two documents. On
+    2 April he was <b>allotted</b> 250 shares of Saptagiri Renewables Ltd at a fixed price of ₹212 set by
+    the company's board. <mark class="ev">On 5 September he bought 250 shares of the same company at
+    ₹289 — a price no board fixed, quoted continuously on the NSE screen, from a seller he has never
+    met.</mark></p>
+  </div>
+  <div class="qcard">
+    <span class="tag">Question 7 <span class="mk">4 marks</span></span>
+    <p>Classify each purchase, and identify two bases of difference that the case itself demonstrates.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <ol class="points">
+      <li><span class="h">2 April — primary market</span>the word <b>"allotted"</b> settles it: shares
+      are allotted by a <b>company</b>, never by another investor.</li>
+      <li><span class="h">5 September — secondary market</span>existing shares bought <b>from another
+      investor</b> on the NSE; Saptagiri Renewables received nothing.</li>
+      <li><span class="h">Basis shown — price determination</span>₹212 was <b>fixed by the board</b>;
+      ₹289 was <b>determined by demand and supply</b> in continuous trading.</li>
+      <li><span class="h">Basis shown — parties to the transaction</span>company-to-investor in April,
+      <span class="kw">investor-to-investor</span> in September.</li>
+    </ol>
+    <div class="evidence">"On 5 September he bought 250 shares of the same company at ₹289 — a price no
+    board fixed, quoted continuously on the NSE screen, from a seller he has never met."</div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The stock exchange</h2>
+  <div class="box defn">
+    <span class="tag">Definition — learn this wording</span>
+    <p class="term">Stock exchange</p>
+    <p>A stock exchange is an <b>organised institution or market where securities that have already
+    been issued are bought and sold</b>, under prescribed rules and regulations. It deals only in
+    <b>listed</b> securities, and only in the <b>secondary</b> market.</p>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h4>"Organised" and "under prescribed rules"</h4>
+      <p>Both phrases earn marks. A stock exchange is not a bazaar — membership, listing, disclosure,
+      margins and settlement are all rule-bound, and SEBI stands over the rules.</p>
+    </div>
+    <div class="card">
+      <h4>Why only listed securities</h4>
+      <p><b>Listing</b> is the exchange's admission test: the company must file continuing disclosures
+      and maintain minimum public shareholding. It is the first protection the investor gets, before
+      any of the six functions begin.</p>
+    </div>
+  </div>
+  <div class="box warn">
+    <span class="tag">A trap the syllabus wording itself creates</span>
+    <p>"Secondary market" and "stock exchange" are used almost interchangeably, and the definition on
+    the earlier slide says so — but they are <b>not</b> identical. The secondary market is the
+    <b>whole activity</b> of trading existing securities; the stock exchange is the <b>institution</b>
+    in which most of that activity happens. A private transfer of unlisted shares between two people is
+    a secondary market transaction that never touches a stock exchange.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The six functions of a stock exchange</h2>
+  <div class="grid3">
+    <div class="card">
+      <h4>1 · Providing liquidity and marketability to existing securities</h4>
+      <p>Its basic function. It gives securities a <b>ready and continuous market</b>, so a holder can
+      sell at any moment and turn his holding into cash.</p>
+    </div>
+    <div class="card">
+      <h4>2 · Pricing of securities</h4>
+      <p>The constant interaction of <b>demand and supply</b> prices each security. That price is a
+      signal — it tells management and investors what the market thinks the company is worth.</p>
+    </div>
+    <div class="card">
+      <h4>3 · Safety of transactions</h4>
+      <p>Membership is regulated and dealings are <b>well defined and within the legal framework</b>,
+      so the investor is dealing under rules rather than on trust.</p>
+    </div>
+    <div class="card">
+      <h4>4 · Contributing to economic growth</h4>
+      <p>Through <b>disinvestment and reinvestment</b>, savings are continually shifted out of less
+      productive uses into more productive ones — <b>capital formation and economic growth</b>.</p>
+    </div>
+    <div class="card">
+      <h4>5 · Spreading the equity cult</h4>
+      <p>By educating the public and by regulating new issues and dealings, it encourages <b>wider
+      share ownership</b> and better trading practices.</p>
+    </div>
+    <div class="card">
+      <h4>6 · Providing scope for speculation</h4>
+      <p>A <b>reasonable degree of healthy speculation</b> is permitted, and is necessary, because it
+      is what keeps the market <b>liquid and prices continuously adjusting</b>.</p>
+    </div>
+  </div>
+  <div class="mnemonic">
+    <span class="tag">Hook</span>
+    <span class="hook"><b>L</b>iquidity · <b>P</b>ricing · <b>S</b>afety · <b>G</b>rowth ·
+    <b>E</b>quity cult · <b>S</b>peculation — "<b>L</b>et <b>P</b>eople <b>S</b>ee <b>G</b>ood
+    <b>E</b>xchange <b>S</b>ense"</span>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Speculation — the function nobody expects to be a function</h2>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p class="term">Speculation</p>
+    <p>Speculation is the <b>buying and selling of securities in the hope of profiting from short-term
+    movements in their price</b>, rather than for long-term investment. A <b>reasonable degree of
+    healthy speculation is necessary</b> on a stock exchange, because it supplies <b>liquidity and
+    continuous price adjustment</b>.</p>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h4>The investor</h4>
+      <p>Buys for <b>long-term returns</b> — dividend and capital appreciation. Holds through price
+      movements. Takes <b>calculated, moderate</b> risk.</p>
+    </div>
+    <div class="card">
+      <h4>The speculator</h4>
+      <p>Buys for a <b>short-term price difference</b>, and often does not want the security at all.
+      Takes <b>high</b> risk — and supplies the other side of the investor's trade when nobody else
+      will.</p>
+    </div>
+  </div>
+  <div class="box warn">
+    <span class="tag">Say "healthy", and say why</span>
+    <p>An answer that says only "a stock exchange provides scope for speculation" reads as though the
+    exchange encourages gambling. The examinable wording is <b>"a reasonable degree of healthy
+    speculation"</b> and the reason is <b>liquidity</b>. <b>Excessive speculation is harmful</b>, and is
+    curbed by SEBI through margins, circuit filters and position limits.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Question — functions in a case</h2>
+  <div class="case">
+    <span class="tag">Case 14 · A Mumbai investor changes her mind at 11 a.m.</span>
+    <p><span class="who">Preeti Vaidya</span> holds 800 shares of a Chennai cement company bought two
+    years ago at ₹340. At 11 a.m. she decides she wants the money for a house deposit.
+    <mark class="ev">Within ninety seconds her broker's screen shows a buyer at ₹506, the trade is
+    done, and the money is in her bank account the next working day.</mark> She had never met the buyer,
+    and nobody negotiated the ₹506 with her.</p>
+  </div>
+  <div class="qcard">
+    <span class="tag">Question 8 <span class="mk">6 marks</span></span>
+    <p>Identify and explain the functions of a stock exchange highlighted in the case. Six marks means
+    six points — name each function, then prove it from the case.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer — six points, because it is six marks</span>
+    <ol class="points">
+      <li><span class="h">Providing liquidity and marketability</span>an 800-share holding became cash
+      <b>within ninety seconds</b> — a ready and continuous market.</li>
+      <li><span class="h">Pricing of securities</span>₹506 was set by the <b>interaction of demand and
+      supply</b>, not negotiated: "nobody negotiated the ₹506 with her".</li>
+      <li><span class="h">Safety of transactions</span>she dealt with a stranger and was still paid,
+      because dealings are <b>within a defined legal framework</b> and members are regulated.</li>
+      <li><span class="h">Contributing to economic growth</span>her savings move out of cement and into
+      housing — <b>disinvestment and reinvestment</b> reallocating capital.</li>
+      <li><span class="h">Spreading the equity cult</span>an ordinary retail investor holding equity for
+      two years and exiting cleanly is exactly what widens share ownership.</li>
+      <li><span class="h">Providing scope for speculation</span>somebody had to be on the <b>other
+      side</b> of her sale at 11 a.m.; a <span class="kw">reasonable degree of healthy speculation</span>
+      is what put him there.</li>
+    </ol>
+    <div class="evidence">"Within ninety seconds her broker's screen shows a buyer at ₹506, the trade is
+    done, and the money is in her bank account the next working day."</div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>★ Challenge — is this the exchange's fault?</h2>
+  <div class="case">
+    <span class="tag">Case 15 · A share that fell 22% in three days</span>
+    <p><span class="who">Girish Menon</span> bought shares of a listed Hyderabad pharma company at ₹880
+    on Monday. By Thursday they were ₹686, after a poor results announcement.
+    <mark class="ev">He complains that the stock exchange has failed in its function of "safety of
+    transactions", because he lost ₹1.9 lakh on a trade the exchange itself arranged.</mark></p>
+  </div>
+  <div class="challenge">
+    <span class="tag">Challenge <span class="mk">4 marks</span></span>
+    <p>Is Girish right? Say precisely what "safety of transactions" does and does not guarantee, and
+    name the function that <i>is</i> doing its job in his case.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <ol class="points">
+      <li><span class="h">Girish is wrong</span>the exchange has not failed; he has misread what the
+      function promises.</li>
+      <li><span class="h">What safety of transactions means</span>that <b>dealings are well defined and
+      conducted within a legal framework</b> by regulated members — his shares were delivered, his
+      counterparty paid, and no forgery or default occurred. It is safety of the <b>transaction</b>, not
+      of the <b>investment</b>.</li>
+      <li><span class="h">What it does not mean</span>no exchange anywhere guarantees a <b>price</b>.
+      <span class="kw">Price risk</span> is borne by the investor, and always was.</li>
+      <li><span class="h">The function that is working</span><b>pricing of securities</b> — the fall to
+      ₹686 <i>is</i> the market repricing the company on new information. A market that did not fall on
+      bad results would be the broken one.</li>
+    </ol>
+    <div class="evidence">"He complains that the stock exchange has failed in its function of 'safety of
+    transactions', because he lost ₹1.9 lakh on a trade the exchange itself arranged."</div>
+  </div>
+</section>
+
+<!-- ============ SECTION 6 — TRADING PROCEDURE, DEMAT AND THE DEPOSITORY ============ -->
+<section class="slide" data-section="6 · Trading procedure">
+  <h2>How a share is actually bought — the trading procedure</h2>
+  <figure>
+    <svg viewBox="0 0 960 430" role="img" aria-label="Six-step trading procedure drawn as a snake, running from the investor to the settlement of the trade: the investor selects a broker, opens a demat and trading account, places the order, the broker executes it on the exchange's electronic system, the broker issues a contract note, and settlement takes place on the next working day. Below, a band shows the broker passing through the depository participant to the depository NSDL or CDSL and on to the investor's demat account">
+      <defs>
+        <marker id="arrow-trade" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+          <path d="M0,0 L10,4 L0,8 z" fill="var(--ink-faint)"/>
+        </marker>
+        <marker id="arrow-trade-blue" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+          <path d="M0,0 L10,4 L0,8 z" fill="var(--blue)"/>
+        </marker>
+      </defs>
+
+      <rect class="node n-blue" x="40" y="55" width="230" height="76" rx="12"/>
+      <text class="nlab" x="155" y="87">Select a broker</text>
+      <text class="nsub" x="155" y="107">the investor picks a member</text>
+      <text class="nsub" x="155" y="122">of the exchange, SEBI-registered</text>
+      <circle class="numdot" cx="58" cy="55" r="13"/>
+      <text class="numlab" x="58" y="55">1</text>
+
+      <rect class="node n-blue" x="365" y="55" width="230" height="76" rx="12"/>
+      <text class="nlab" x="480" y="87">Open the accounts</text>
+      <text class="nsub" x="480" y="107">demat account with a DP,</text>
+      <text class="nsub" x="480" y="122">trading account with the broker</text>
+      <circle class="numdot" cx="383" cy="55" r="13"/>
+      <text class="numlab" x="383" y="55">2</text>
+
+      <rect class="node n-blue" x="690" y="55" width="230" height="76" rx="12"/>
+      <text class="nlab" x="805" y="87">Place the order</text>
+      <text class="nsub" x="805" y="107">quantity and price limit;</text>
+      <text class="nsub" x="805" y="122">get the confirmation slip</text>
+      <circle class="numdot" cx="708" cy="55" r="13"/>
+      <text class="numlab" x="708" y="55">3</text>
+
+      <line class="link thick" x1="275" y1="93" x2="358" y2="93" marker-end="url(#arrow-trade)"/>
+      <line class="link thick" x1="600" y1="93" x2="683" y2="93" marker-end="url(#arrow-trade)"/>
+      <line class="link thick" x1="805" y1="136" x2="805" y2="219" marker-end="url(#arrow-trade)"/>
+      <text class="nsub" x="875" y="182">the order goes</text>
+      <text class="nsub" x="875" y="197">to the exchange</text>
+
+      <rect class="node n-amber n-key" x="690" y="224" width="230" height="76" rx="12"/>
+      <text class="nlab" x="805" y="256">Order executed</text>
+      <text class="nsub" x="805" y="276">matched on the exchange's</text>
+      <text class="nsub" x="805" y="291">electronic trading system</text>
+      <circle class="numdot" cx="708" cy="224" r="13"/>
+      <text class="numlab" x="708" y="224">4</text>
+
+      <rect class="node n-blue" x="365" y="224" width="230" height="76" rx="12"/>
+      <text class="nlab" x="480" y="256">Contract note</text>
+      <text class="nsub" x="480" y="276">the broker issues it — the</text>
+      <text class="nsub" x="480" y="291">legal proof of the trade</text>
+      <circle class="numdot" cx="383" cy="224" r="13"/>
+      <text class="numlab" x="383" y="224">5</text>
+
+      <rect class="node n-blue" x="40" y="224" width="230" height="76" rx="12"/>
+      <text class="nlab" x="155" y="256">Settlement — T+1</text>
+      <text class="nsub" x="155" y="276">money out of the bank,</text>
+      <text class="nsub" x="155" y="291">shares into the demat account</text>
+      <circle class="numdot" cx="58" cy="224" r="13"/>
+      <text class="numlab" x="58" y="224">6</text>
+
+      <line class="link thick" x1="685" y1="262" x2="600" y2="262" marker-end="url(#arrow-trade)"/>
+      <line class="link thick" x1="360" y1="262" x2="275" y2="262" marker-end="url(#arrow-trade)"/>
+
+      <line class="link dash l-blue" x1="155" y1="305" x2="155" y2="336" marker-end="url(#arrow-trade-blue)"/>
+
+      <rect class="node n-teal" x="40" y="342" width="180" height="58" rx="10"/>
+      <text class="nsub" x="130" y="366">Your broker</text>
+      <text class="nsub" x="130" y="384">acts as, or goes to, a DP</text>
+
+      <rect class="node n-teal" x="270" y="342" width="190" height="58" rx="10"/>
+      <text class="nsub" x="365" y="366">Depository Participant</text>
+      <text class="nsub" x="365" y="384">bank, broker or NBFC</text>
+
+      <rect class="node n-violet" x="510" y="342" width="200" height="58" rx="10"/>
+      <text class="nsub" x="610" y="366">Depository</text>
+      <text class="nsub" x="610" y="384">NSDL or CDSL</text>
+
+      <rect class="node n-amber" x="760" y="342" width="180" height="58" rx="10"/>
+      <text class="nsub" x="850" y="366">Your demat account</text>
+      <text class="nsub" x="850" y="384">credited by book entry</text>
+
+      <line class="link" x1="225" y1="371" x2="265" y2="371" marker-end="url(#arrow-trade)"/>
+      <line class="link" x1="465" y1="371" x2="505" y2="371" marker-end="url(#arrow-trade)"/>
+      <line class="link" x1="715" y1="371" x2="755" y2="371" marker-end="url(#arrow-trade)"/>
+      <text class="tier" x="330" y="330">The settlement machinery behind step 6</text>
+    </svg>
+    <figcaption><b>How to read it —</b> the six numbered discs run as a <b>snake</b>: left to right
+    along the top row, <b>down the right-hand side</b>, then right to left along the second row, so
+    step 6 finishes back on the left. The <b>amber box is step 4</b>, the only step that happens inside
+    the exchange rather than between you and your broker. The <b>dashed blue arrow drops out of step
+    6</b> into the settlement band below, which is read left to right: the shares reach you by
+    <b>book entry through a Depository Participant and a depository</b>, never as paper.</figcaption>
+  </figure>
+</section>
+
+<section class="slide">
+  <h2>The same six steps, in the words the paper wants</h2>
+  <ol class="steps">
+    <li><b>Selection of a broker.</b> Only a <b>member of the stock exchange</b>, registered with SEBI,
+    may buy and sell on the exchange. An investor cannot trade on his own account.</li>
+    <li><b>Opening a demat account and a trading account.</b> The <b>demat account</b> is opened with a
+    <b>Depository Participant</b> and holds the securities; the <b>trading account</b> is opened with the
+    broker and is used to place orders. A <b>bank account</b> holds the money. All three are needed.</li>
+    <li><b>Placing the order.</b> The investor states the security, the quantity and the price limit.
+    The broker must issue an <b>order confirmation slip</b>.</li>
+    <li><b>Execution of the order.</b> The broker enters the order on the exchange's <b>electronic
+    trading system</b>; the system matches it with an opposite order at the best available price.</li>
+    <li><b>Issue of the contract note.</b> Within 24 hours of execution, the broker issues a
+    <b>contract note</b> — the <b>legal document</b> proving the trade, showing the trade time, quantity,
+    price, brokerage and the broker's SEBI registration number.</li>
+    <li><b>Settlement.</b> On <b>T+1</b>, the money is paid and the securities are transferred by
+    <b>book entry</b> through the depository into the buyer's demat account.</li>
+  </ol>
+  <div class="box insight">
+    <span class="tag">The contract note is the mark</span>
+    <p>Almost every case on the trading procedure hinges on the <span class="kw">contract note</span>.
+    It is the <b>only legally enforceable evidence</b> the investor has if a broker later disputes the
+    price, the quantity or the brokerage charged. An answer on the trading procedure that omits it is
+    incomplete however many other steps it lists.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Dematerialisation, the demat account, the depository and the DP</h2>
+  <div class="box defn">
+    <span class="tag">Definition — learn this wording</span>
+    <p class="term">Dematerialisation</p>
+    <p>Dematerialisation is the process by which <b>physical share certificates are converted into an
+    equivalent number of securities in electronic form and credited to the investor's demat
+    account</b>. It is <b>compulsory</b> for trading on a stock exchange in India.</p>
+  </div>
+  <div class="grid3">
+    <div class="card">
+      <h4>Demat account</h4>
+      <p>The account in which securities are held <b>in electronic form</b>. Securities bought are
+      <b>credited</b> to it; securities sold are <b>debited</b> from it. Not the same as a trading
+      account, and not the same as a bank account.</p>
+    </div>
+    <div class="card">
+      <h4>Depository</h4>
+      <p>An institution that <b>holds securities in electronic form and transfers them by book
+      entry</b>. India has exactly two — <b>NSDL</b> and <b>CDSL</b>. Think of it as a <b>bank for
+      securities</b>.</p>
+    </div>
+    <div class="card">
+      <h4>Depository Participant (DP)</h4>
+      <p>The depository's <b>agent</b> — a bank, broker or financial institution registered with SEBI —
+      through which the investor <b>opens and operates</b> his demat account. The investor never deals
+      with the depository directly.</p>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="box eg">
+      <span class="tag">Example</span>
+      <p>Anwesha's shares are held by <b>CDSL</b>. She has never spoken to CDSL. She speaks to
+      <b>HDFC Securities</b>, which is her <b>DP</b> — exactly as she deals with a bank branch and never
+      with the bank's head office.</p>
+    </div>
+    <div class="box warn">
+      <span class="tag">The three accounts students fuse into one</span>
+      <p>"My demat account is where my money is." No. <b>Bank account = money. Demat account =
+      securities. Trading account = the order-placing facility with the broker.</b> A question that
+      says "the shares were credited" is talking about the <b>demat</b> account; "the amount was
+      debited" is the <b>bank</b> account.</p>
+    </div>
+  </div>
+  <div class="box note">
+    <span class="tag">The reverse process has a name too</span>
+    <p>Converting electronic holdings back into physical certificates is <b>rematerialisation</b>. It is
+    rarely used and cannot be used to trade on an exchange — but the word is worth a mark if it is
+    asked for.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The settlement cycle — and why your textbook says something else</h2>
+  <div class="box defn">
+    <span class="tag">Definition</span>
+    <p class="term">Rolling settlement</p>
+    <p>Rolling settlement means that <b>every trading day is a separate settlement day</b>, and a trade
+    is settled a fixed number of days after it is executed. India follows a <b>T+1 cycle</b> — a trade
+    executed on day T is settled on the <b>next working day</b>.</p>
+  </div>
+  <table>
+    <thead><tr><th class="lbl">Cycle</th><th class="lbl">Meaning</th><th class="lbl">In force in India</th></tr></thead>
+    <tbody>
+      <tr><th class="lbl">T+5, T+3, T+2</th><td>Settlement two to five working days after the trade</td><td>Historic. <b>T+2 applied from April 2003</b> until the phased move to T+1, which began in February 2022 and ended in January 2023.</td></tr>
+      <tr><th class="lbl">T+1</th><td>Settled on the <b>next working day</b></td><td class="hi"><b>Current, from 27 January 2023.</b> India was the <b>second market in the world</b> to complete the move, after China.</td></tr>
+      <tr><th class="lbl">T+0</th><td>Settled the <b>same day</b>, in a separate optional window</td><td class="hi2"><b>Optional, not compulsory.</b> Piloted on 25 stocks from <b>28 March 2024</b>; extended to the <b>top 500 stocks by market capitalisation</b> in phases of 100 a month <b>from 31 January 2025</b>, all 500 covered by <b>May 2025</b>. Verified August 2026.</td></tr>
+    </tbody>
+  </table>
+  <div class="box note">
+    <span class="tag">What the older books say, and what to write</span>
+    <p>The old NCERT chapter and most guidebooks still say <b>"T+2 rolling settlement"</b>, because they
+    were written before 2023. That is <b>out of date</b>. <b>Write T+1</b> in the board paper, and if
+    you have room, add that an <b>optional T+0 same-day cycle exists for the top 500 stocks</b>. Mention
+    T+2 only as history, with the years attached.</p>
+  </div>
+  <div class="box insight">
+    <span class="tag">Why the cycle keeps shortening</span>
+    <p>Every day between the trade and the settlement is a day on which one side could fail to pay or
+    deliver. Shortening the cycle cuts <b>counterparty risk</b> and frees up the margin money brokers
+    must keep locked. That is the whole argument, and it is worth a mark in an "explain why" question.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Question — a Mumbai investor, step by step</h2>
+  <div class="case">
+    <span class="tag">Case 16 · Malad, Tuesday morning</span>
+    <p><span class="who">Ritika Shenoy</span> tells her broker on Tuesday to buy 150 shares of a Pune
+    engineering company at not more than ₹740. The broker's terminal matches the order at ₹736 at
+    10:12 a.m. <mark class="ev">By Tuesday evening she has a document showing the time, the quantity,
+    the price, the brokerage and the broker's SEBI registration number; on Wednesday ₹1,10,400 leaves
+    her bank account and 150 shares appear in her account with CDSL.</mark></p>
+  </div>
+  <div class="qcard">
+    <span class="tag">Question 9 <span class="mk">4 marks</span></span>
+    <p>Name the document, name the settlement cycle being followed, name the two institutions involved
+    in delivering the shares, and state which of Ritika's three accounts each figure touches.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer — four points, because it is four marks</span>
+    <ol class="points">
+      <li><span class="h">The document — the contract note</span>issued by the broker after execution;
+      it is the <span class="kw">legal proof of the trade</span> and carries the time, quantity, price,
+      brokerage and the broker's SEBI registration number.</li>
+      <li><span class="h">The cycle — T+1 rolling settlement</span><button class="info" data-term="rolling-settlement"></button>the
+      trade was executed on Tuesday and settled on Wednesday, the <b>next working day</b>.</li>
+      <li><span class="h">The institutions — a Depository Participant and the depository</span>the
+      broker acts through a <b>DP</b><button class="info" data-term="depository-participant"></button>; the shares are held and transferred by
+      book entry by <b>CDSL</b>, one of India's two depositories.</li>
+      <li><span class="h">The accounts</span>₹1,10,400 left her <b>bank account</b>; the 150 shares
+      entered her <b>demat account</b><button class="info" data-term="demat-account"></button>; the order itself was placed through her
+      <b>trading account</b> with the broker.</li>
+    </ol>
+    <div class="evidence">"…on Wednesday ₹1,10,400 leaves her bank account and 150 shares appear in her
+    account with CDSL." — Tuesday to Wednesday is T+1, and CDSL is the depository.</div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Now the other way round</h2>
+  <div class="reverse">
+    <span class="tag">Now the other way round</span>
+    <p>Write a four-line case set in a <b>Coimbatore textile trader's office</b> in which the investor
+    is <b>certain to lose his dispute with the broker</b> — and the reason must be something he failed
+    to obtain in the trading procedure, not bad luck with the price.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for a model answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Model answer, with the forcing words marked</span>
+    <div class="case">
+      <span class="tag">Model case</span>
+      <p><span class="who">Ramanathan Iyer</span> telephoned his broker in Coimbatore and asked him to
+      buy 400 shares "at about ₹300". <mark class="ev">He asked for nothing in writing, took no order
+      confirmation slip and never collected the contract note.</mark> Three weeks later the broker's
+      statement shows the purchase at ₹318 with brokerage of ₹1,900, and Ramanathan cannot show what
+      price he had agreed.</p>
+    </div>
+    <ol class="points">
+      <li><span class="h">"never collected the contract note"</span>this is the forcing phrase. The
+      <span class="kw">contract note</span> is the <b>legal document</b> proving quantity, price and
+      brokerage. Without it he has no evidence at all.</li>
+      <li><span class="h">"took no order confirmation slip"</span>step 3 of the trading procedure
+      requires it. It is what would have fixed his <b>price limit</b> in writing.</li>
+      <li><span class="h">"at about ₹300"</span>no <b>price limit</b> was specified, so the broker was
+      free to execute at ₹318.</li>
+      <li><span class="h">Why the price movement is irrelevant</span>his complaint fails on
+      <b>evidence</b>, not on the market. Even if the share had risen he would still be unable to
+      dispute the brokerage.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>★ Challenge — two markets in one afternoon</h2>
+  <div class="case">
+    <span class="tag">Case 17 · A Mumbai broker's screen, 3 p.m.</span>
+    <p><span class="who">Devang Mehta</span>, a broker at Nariman Point, does three things for the same
+    client that afternoon. He submits an <b>application in an IPO</b> through the exchange's on-line
+    system. He <b>buys 500 listed shares</b> on the NSE. <mark class="ev">And he arranges for the
+    client's twelve old paper share certificates, issued in 1998, to be surrendered and credited to the
+    client's account with NSDL.</mark></p>
+  </div>
+  <div class="challenge">
+    <span class="tag">Challenge <span class="mk">6 marks</span></span>
+    <p>Classify each of the three activities — market, and where relevant the method or process — and
+    explain why the first one is <i>not</i> a secondary market transaction merely because it went
+    through the stock exchange's system.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer — six points, because it is six marks</span>
+    <ol class="points">
+      <li><span class="h">The IPO application — primary market</span>new securities are being created
+      and the <b>company will receive the money</b>.</li>
+      <li><span class="h">The IPO application — the method is an e-IPO</span><button class="info" data-term="e-ipo"></button>an issue of
+      securities to the public <b>through the on-line system of a stock exchange</b>, using brokers
+      registered with the exchange.</li>
+      <li><span class="h">Why it is still primary</span>the classification depends on <span class="kw">who
+      receives the money</span>, not on the <b>channel</b> the application travelled down. The exchange
+      is only the plumbing here.</li>
+      <li><span class="h">The 500 listed shares — secondary market</span>existing securities bought from
+      another investor; the company receives nothing.</li>
+      <li><span class="h">The paper certificates — dematerialisation</span>physical certificates
+      converted into an equivalent number of securities in <b>electronic form</b> and credited to the
+      demat account.</li>
+      <li><span class="h">Dematerialisation is neither market</span>it is a <b>process, not a
+      transaction</b>. No security is created and none changes owner — only the <b>form</b> of holding
+      changes, from paper to book entry with <b>NSDL</b>.</li>
+    </ol>
+    <div class="evidence">"…the client's twelve old paper share certificates, issued in 1998, to be
+    surrendered and credited to the client's account with NSDL."</div>
+  </div>
+</section>
+
+<!-- ================= SECTION 7 — SEBI ================= -->
+<section class="slide" data-section="7 · SEBI">
+  <h2>Why SEBI had to be created</h2>
+  <p class="lead">Everything so far assumed that the market is honest. In the 1980s in India, it very
+  often was not.</p>
+  <div class="grid2">
+    <div class="card">
+      <h4>What the market looked like before 1988</h4>
+      <p>Enormous growth in issues, and with it <b>price rigging</b>, <b>unofficial premia on new
+      issues</b>, <b>violation of company law provisions</b>, <b>delays in delivery of share
+      certificates</b>, and <b>insider trading</b> that nobody could act against.</p>
+    </div>
+    <div class="card">
+      <h4>Who was being injured</h4>
+      <p>The <b>investor</b>, whose confidence in the market was destroyed; and through him
+      <b>industry</b>, because a public that will not subscribe cannot finance a factory. The
+      allocative function<button class="info" data-term="allocative-function"></button> fails when the
+      market cannot be trusted.</p>
+    </div>
+  </div>
+  <div class="box defn">
+    <span class="tag">Definition — dates that are examinable</span>
+    <p class="term">SEBI — Securities and Exchange Board of India</p>
+    <p>SEBI was established by the Government of India on <b>12 April 1988</b> as a non-statutory body,
+    and was given <b>statutory status in 1992</b> by the Securities and Exchange Board of India Act,
+    1992. Its head office is in <b>Mumbai</b>.</p>
+  </div>
+  <div class="box note">
+    <span class="tag">Current fact, not examinable</span>
+    <p>SEBI's Board consists of a <b>Chairman</b>, two members from the Union Finance Ministry, one
+    member from the RBI and five members nominated by the Central Government. The Chairman since
+    <b>March 2025</b> is <b>Tuhin Kanta Pandey</b>. The board paper asks for SEBI's
+    <b>objectives and functions</b>, not for names — but do not write anything undated.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The objectives of SEBI</h2>
+  <div class="box defn">
+    <span class="tag">The overall objective</span>
+    <p>SEBI's overall objective is to <b>protect the interests of investors and to promote the
+    development of, and to regulate, the securities market</b>. That single sentence contains the three
+    words the whole answer hangs on — <b>protect, develop, regulate</b>.</p>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h4>1 · To regulate the stock exchange and the securities market</h4>
+      <p>So that they function <b>in an orderly manner</b>.</p>
+    </div>
+    <div class="card">
+      <h4>2 · To protect the rights and interests of investors</h4>
+      <p>Particularly the <b>individual investor</b>, and to <b>guide and educate</b> him.</p>
+    </div>
+    <div class="card">
+      <h4>3 · To prevent trading malpractices</h4>
+      <p>And to <b>achieve a balance</b> between self-regulation by the industry and statutory
+      regulation.</p>
+    </div>
+    <div class="card">
+      <h4>4 · To regulate and develop a code of conduct for intermediaries</h4>
+      <p>Brokers, merchant bankers and underwriters, so as to make them <b>competitive and
+      professional</b>.</p>
+    </div>
+  </div>
+  <div class="box insight">
+    <span class="tag">Objectives and functions are not the same question</span>
+    <p>An <b>objective</b> is what SEBI is <i>for</i>. A <b>function</b> is what it <i>does</i>. A
+    student who answers "objectives of SEBI" with "registration of brokers" has answered the wrong
+    question. Read the verb in the question stem.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The functions of SEBI — three baskets</h2>
+  <div class="figrow compact">
+    <figure>
+      <svg viewBox="0 0 740 350" role="img" aria-label="SEBI's functions divide into three branches: protective functions such as prohibiting insider trading and price rigging, developmental functions such as training intermediaries and permitting internet trading, and regulatory functions such as registering brokers and conducting inquiries and audits">
+        <defs>
+          <marker id="arrow-sebi" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+            <path d="M0,0 L9,3.5 L0,7 z" fill="var(--ink-faint)"/>
+          </marker>
+        </defs>
+
+        <rect class="node n-amber n-key" x="265" y="12" width="210" height="52" rx="12"/>
+        <text class="nlab" x="370" y="35">SEBI</text>
+        <text class="nsub" x="370" y="53">functions</text>
+
+        <path class="link" d="M370 66 L370 88 L120 88 L120 108" marker-end="url(#arrow-sebi)"/>
+        <path class="link" d="M370 66 L370 108" marker-end="url(#arrow-sebi)"/>
+        <path class="link" d="M370 66 L370 88 L620 88 L620 108" marker-end="url(#arrow-sebi)"/>
+
+        <rect class="node n-rose" x="15" y="112" width="210" height="44" rx="10"/>
+        <text class="nlab" x="120" y="139">Protective</text>
+        <rect class="node n-teal" x="265" y="112" width="210" height="44" rx="10"/>
+        <text class="nlab" x="370" y="139">Developmental</text>
+        <rect class="node n-blue" x="515" y="112" width="210" height="44" rx="10"/>
+        <text class="nlab" x="620" y="139">Regulatory</text>
+
+        <rect class="node" x="15" y="172" width="210" height="150" rx="10"/>
+        <text class="nsub" x="120" y="196">prohibits insider trading</text>
+        <text class="nsub" x="120" y="222">checks price rigging</text>
+        <text class="nsub" x="120" y="248">prohibits fraudulent and</text>
+        <text class="nsub" x="120" y="264">unfair trade practices</text>
+        <text class="nsub" x="120" y="292">promotes a fair code</text>
+        <text class="nsub" x="120" y="308">of conduct</text>
+
+        <rect class="node" x="265" y="172" width="210" height="150" rx="10"/>
+        <text class="nsub" x="370" y="196">trains intermediaries</text>
+        <text class="nsub" x="370" y="222">investor education and</text>
+        <text class="nsub" x="370" y="238">research</text>
+        <text class="nsub" x="370" y="266">permits internet trading</text>
+        <text class="nsub" x="370" y="282">and the e-IPO</text>
+        <text class="nsub" x="370" y="308">underwriting made optional</text>
+
+        <rect class="node" x="515" y="172" width="210" height="150" rx="10"/>
+        <text class="nsub" x="620" y="196">registers brokers, merchant</text>
+        <text class="nsub" x="620" y="212">bankers, underwriters</text>
+        <text class="nsub" x="620" y="240">registers mutual funds and</text>
+        <text class="nsub" x="620" y="256">collective investment schemes</text>
+        <text class="nsub" x="620" y="284">frames rules; levies fees</text>
+        <text class="nsub" x="620" y="310">conducts inquiries and audits</text>
+      </svg>
+      <figcaption>Name the basket first, then the example inside it — that is how the mark scheme reads.</figcaption>
+    </figure>
+    <aside class="readfig">
+      <span class="tag">How to read this</span>
+      <ol>
+        <li>Read <b>downwards</b>: SEBI, then the <b>three baskets</b>, then examples inside each.</li>
+        <li>The three baskets are not a sequence — they run <b>simultaneously</b>.</li>
+        <li><b>Rose = protective</b> (stopping something bad), <b>green = developmental</b> (building
+        something new), <b>blue = regulatory</b> (registering and policing).</li>
+        <li>In the exam, <b>name the basket, then give two examples from it</b>. An unbasketed list of
+        examples loses half the marks.</li>
+      </ol>
+    </aside>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>The three baskets, in the exam's words</h2>
+  <div class="grid3">
+    <div class="box warn">
+      <span class="tag">Protective functions</span>
+      <p>Those performed to <b>protect the interests of investors and other participants</b>.</p>
+      <ol class="points">
+        <li><span class="h">Prohibits insider trading</span>using unpublished price-sensitive
+        information for personal gain.</li>
+        <li><span class="h">Checks price rigging</span>manipulating prices to inflate or depress
+        them artificially.</li>
+        <li><span class="h">Prohibits fraudulent and unfair trade practices</span>including misleading
+        statements to induce the sale or purchase of securities.</li>
+        <li><span class="h">Promotes a fair code of conduct</span>in the securities market.</li>
+      </ol>
+    </div>
+    <div class="box eg">
+      <span class="tag">Developmental functions</span>
+      <p>Those performed to <b>promote and develop</b> activities in the securities market.</p>
+      <ol class="points">
+        <li><span class="h">Trains intermediaries</span>and conducts <b>investor education</b> and
+        research.</li>
+        <li><span class="h">Adopts a flexible approach</span>permitting <b>internet trading</b> and the
+        <b>e-IPO</b><button class="info" data-term="e-ipo"></button> through registered brokers.</li>
+        <li><span class="h">Made underwriting optional</span>which <b>reduced the cost of issue</b> for
+        companies.</li>
+      </ol>
+    </div>
+    <div class="box defn">
+      <span class="tag">Regulatory functions</span>
+      <p>Those performed to <b>regulate the business</b> in the securities market.</p>
+      <ol class="points">
+        <li><span class="h">Registration</span>of brokers, sub-brokers, merchant bankers, underwriters
+        and other intermediaries.</li>
+        <li><span class="h">Registration and regulation</span>of <b>mutual funds and collective
+        investment schemes</b>.</li>
+        <li><span class="h">Framing rules and a code of conduct</span>for intermediaries, and
+        <b>levying fees</b>.</li>
+        <li><span class="h">Conducting inquiries and audits</span>of stock exchanges and
+        intermediaries.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="box warn">
+    <span class="tag">The one that is always put in the wrong basket</span>
+    <p><b>Investor education</b> is <b>developmental</b>, not protective — SEBI is <i>building</i> the
+    market's capacity, not stopping a wrongdoer. Conversely <b>insider trading</b> is <b>protective</b>,
+    not regulatory, even though it involves punishment. Ask: is SEBI <i>stopping harm</i> (protective),
+    <i>building</i> (developmental) or <i>licensing and policing</i> (regulatory)?</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Question — put each act in its basket</h2>
+  <div class="case">
+    <span class="tag">Case 18 · Four items from one month's SEBI orders</span>
+    <p>(a) It bars <span class="who">Ashwin Gokhale</span>, company secretary of a Vadodara chemicals
+    firm, for buying his employer's shares two days before an unannounced merger. (b) It runs a
+    certification programme for research analysts. (c) It cancels the registration of
+    <span class="who">Trivedi Securities, Kanpur</span>, a sub-broker, after an audit shows client funds
+    were misused.
+    <mark class="ev">(d) It permits companies to make an initial public offer through the on-line
+    system of a stock exchange.</mark></p>
+  </div>
+  <div class="qcard">
+    <span class="tag">Question 10 <span class="mk">4 marks</span></span>
+    <p>Classify each item as a protective, developmental or regulatory function, and name the function
+    in SEBI's own words.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer — four points, because it is four marks</span>
+    <ol class="points">
+      <li><span class="h">(a) Protective</span><b>prohibiting <span class="kw">insider trading</span></b>
+      — using unpublished price-sensitive information for personal gain.</li>
+      <li><span class="h">(b) Developmental</span><b>training of intermediaries</b> associated with the
+      securities market.</li>
+      <li><span class="h">(c) Regulatory</span><b>registration of brokers and sub-brokers, and
+      conducting inquiries and audits</b> — registration implies the power to cancel.</li>
+      <li><span class="h">(d) Developmental</span><b>undertaking measures to develop the capital market
+      by adopting a flexible approach</b> — permitting the <b>e-IPO</b>.</li>
+    </ol>
+    <div class="evidence">"(d) It permits companies to make an initial public offer through the on-line
+    system of a stock exchange." — permitting something new is <b>developmental</b>; punishing
+    something is not.</div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>★ Challenge — one act, two baskets</h2>
+  <div class="case">
+    <span class="tag">Case 19 · A circular in three parts</span>
+    <p>SEBI issues one circular, and <span class="who">Devang Mehta</span>, the Nariman Point broker of
+    Case 17, reads all three parts of it. Part 1 requires every broker to <b>display its SEBI
+    registration number on all contract notes</b>. Part 2 makes it compulsory for brokers to
+    <b>segregate client funds from their own</b>. <mark class="ev">Part 3 launches a free investor
+    grievance portal on which any investor may file a complaint against a listed company or
+    intermediary and track it.</mark></p>
+  </div>
+  <div class="challenge">
+    <span class="tag">Challenge <span class="mk">6 marks</span></span>
+    <p>A student says all three are regulatory, "because SEBI is regulating brokers in all of them".
+    Answer him part by part, and state the test that decides which basket an act belongs to.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer — six points, because it is six marks</span>
+    <ol class="points">
+      <li><span class="h">The student is wrong, and the error is in his test</span>he is classifying by
+      <b>whom SEBI is speaking to</b>. The baskets are defined by <b>what SEBI is trying to
+      achieve</b>.</li>
+      <li><span class="h">The test</span>ask <span class="kw">what is the purpose of this act</span> —
+      stopping harm to the investor (<b>protective</b>), building the market's capacity
+      (<b>developmental</b>), or licensing and policing the business (<b>regulatory</b>).</li>
+      <li><span class="h">Part 1 — regulatory</span>it is an incident of the <b>registration</b> of
+      brokers and of <b>framing rules and a code of conduct</b> for intermediaries.</li>
+      <li><span class="h">Part 2 — protective</span>segregating client funds exists to stop the broker
+      using the investor's money — it <b>protects the interests of investors</b>, which is the
+      definition of the protective basket.</li>
+      <li><span class="h">Part 3 — developmental, with a protective edge</span>a grievance portal is
+      <b>investor education and facilitation</b>, and it is building new market capacity. Say so, then
+      note that <b>redressal of investor grievances is also listed as protective</b>; a good answer
+      names both and justifies the choice.</li>
+      <li><span class="h">Why part 3 is the interesting one</span>the baskets are <b>not watertight</b>.
+      The examiner rewards a candidate who <b>names a basket and proves it from the purpose</b>, not one
+      who has memorised a list.</li>
+    </ol>
+    <div class="evidence">"Part 3 launches a free investor grievance portal on which any investor may
+    file a complaint against a listed company or intermediary and track it."</div>
+  </div>
+</section>
+
+<!-- ================= RECAP AND EXAM PRACTICE ================= -->
+<section class="slide" data-section="Recap">
+  <h2>Recap — the whole chapter in thirty terms</h2>
+  <div class="chips">
+    <span class="chip k">financial market</span>
+    <span class="chip k">allocative function</span>
+    <span class="chip">mobilisation of savings</span>
+    <span class="chip">price discovery</span>
+    <span class="chip">liquidity</span>
+    <span class="chip">cost of transactions</span>
+    <span class="chip k">money market</span>
+    <span class="chip k">treasury bill</span>
+    <span class="chip k">commercial paper</span>
+    <span class="chip k">call money</span>
+    <span class="chip k">certificate of deposit</span>
+    <span class="chip k">commercial bill</span>
+    <span class="chip k">capital market</span>
+    <span class="chip k">primary market</span>
+    <span class="chip">offer through prospectus</span>
+    <span class="chip">offer for sale</span>
+    <span class="chip">private placement</span>
+    <span class="chip k">rights issue</span>
+    <span class="chip">e-IPO</span>
+    <span class="chip k">secondary market</span>
+    <span class="chip k">stock exchange</span>
+    <span class="chip">contract note</span>
+    <span class="chip k">dematerialisation</span>
+    <span class="chip">demat account</span>
+    <span class="chip">depository · NSDL · CDSL</span>
+    <span class="chip">depository participant</span>
+    <span class="chip k">T+1 rolling settlement</span>
+    <span class="chip k">SEBI</span>
+    <span class="chip">protective · developmental · regulatory</span>
+    <span class="chip">speculation</span>
+  </div>
+  <div class="box insight">
+    <span class="tag">If you remember only three things</span>
+    <p><b>One.</b> Money market or capital market is decided by <b>one year</b>. <b>Two.</b> Primary or
+    secondary is decided by <b>who receives the money</b>. <b>Three.</b> A SEBI function is classified
+    by <b>purpose</b> — stopping harm, building, or policing. Almost every question in this chapter is
+    one of those three tests wearing a costume.</p>
+  </div>
+</section>
+
+<section class="slide" data-section="Exam practice">
+  <h2>Exam practice — one mark each</h2>
+  <div class="qcard">
+    <span class="tag">Rapid fire <span class="mk">1 mark each</span></span>
+    <ol class="points">
+      <li><span class="h">(i)</span>Name the money market instrument that is also called a Zero Coupon
+      Bond.</li>
+      <li><span class="h">(ii)</span>Give the maximum maturity of a money market instrument.</li>
+      <li><span class="h">(iii)</span>Name the method of floatation in which shares are offered to
+      existing shareholders in proportion to their holding.</li>
+      <li><span class="h">(iv)</span>Name the document a broker must issue as legal proof of a trade.</li>
+      <li><span class="h">(v)</span>Name India's two depositories.</li>
+      <li><span class="h">(vi)</span>State the settlement cycle followed in India today.</li>
+    </ol>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answers? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answers — one line each, no explanation needed at one mark</span>
+    <ol class="points">
+      <li><span class="h">(i)</span><b>Treasury bill</b><button class="info" data-term="treasury-bill"></button>,
+      because it is issued at a discount and pays no interest coupon.</li>
+      <li><span class="h">(ii)</span><b>One year.</b></li>
+      <li><span class="h">(iii)</span><b>Rights issue.</b></li>
+      <li><span class="h">(iv)</span><b>Contract note.</b></li>
+      <li><span class="h">(v)</span><b>NSDL</b> and <b>CDSL</b>.</li>
+      <li><span class="h">(vi)</span><b>T+1</b> (since 27 January 2023), with an <b>optional T+0</b> for
+      the top 500 stocks since 31 January 2025.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Exam practice — three marks</h2>
+  <div class="qcard">
+    <span class="tag">Question 11 <span class="mk">3 marks</span></span>
+    <p>Explain the allocative function of a financial market, and state what happens to the economy when
+    it is performed badly.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <ol class="points">
+      <li><span class="h">Meaning</span>the <span class="kw">allocative function</span> is the allocation
+      of <b>scarce savings among competing users of funds</b>, so that savings flow to the <b>most
+      productive</b> investment.</li>
+      <li><span class="h">The two gains when it works</span>it raises the <b>rate of return to the
+      saver</b> and the <b>rate of growth of the economy</b> at the same time.</li>
+      <li><span class="h">When it fails</span>savers earn <b>less than they could</b>, and genuinely
+      productive firms are <b>starved of capital</b>, so growth is lower than it need have been.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Exam practice — four marks</h2>
+  <div class="qcard">
+    <span class="tag">Question 12 <span class="mk">4 marks</span></span>
+    <p>Distinguish between the money market and the capital market on any four bases.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer — a table with a named basis column, never two paragraphs</span>
+    <table class="distinguish">
+      <thead><tr><th class="basis">Basis</th><th>Money market</th><th>Capital market</th></tr></thead>
+      <tbody>
+        <tr><th class="basis" scope="row">Participants</th><td>Few and institutional — RBI, banks, NBFCs, mutual funds, large companies.</td><td>Many and varied — retail investors, mutual funds, insurance companies, foreign portfolio investors.</td></tr>
+        <tr><th class="basis" scope="row">Instruments</th><td>Treasury bill, commercial paper, call money, certificate of deposit, commercial bill.</td><td>Equity shares, preference shares, debentures and bonds.</td></tr>
+        <tr><th class="basis" scope="row">Duration</th><td>Short term — <b>up to one year</b>.</td><td>Medium and long term; equity shares are <b>perpetual</b>.</td></tr>
+        <tr><th class="basis" scope="row">Safety and return</th><td>Safer, and therefore a <b>lower</b> expected return.</td><td>Riskier, and therefore a <b>higher</b> expected return.</td></tr>
+      </tbody>
+    </table>
+    <p class="small">Four bases for four marks. A fifth adds nothing and costs you time you needed for
+    the case study.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Exam practice — six marks</h2>
+  <div class="qcard">
+    <span class="tag">Question 13 <span class="mk">6 marks</span></span>
+    <p>Explain any six functions of a stock exchange.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer — six points, because it is six marks</span>
+    <ol class="points">
+      <li><span class="h">Providing liquidity and marketability to existing securities</span>a ready and
+      continuous market, so a holder can sell at any time and convert his holding into cash.</li>
+      <li><span class="h">Pricing of securities</span>the interaction of <b>demand and supply</b> prices
+      each security continuously, and the price signals what the company is worth.</li>
+      <li><span class="h">Safety of transactions</span>membership is regulated and dealings are
+      <b>well defined and within the legal framework</b>, which protects the investor.</li>
+      <li><span class="h">Contributing to economic growth</span>through <b>disinvestment and
+      reinvestment</b>, savings move continually into more productive uses — capital formation.</li>
+      <li><span class="h">Spreading the equity cult</span>by educating the public and regulating new
+      issues and dealings, it encourages <b>wider share ownership</b>.</li>
+      <li><span class="h">Providing scope for speculation</span><button class="info" data-term="speculation"></button>a
+      <span class="kw">reasonable degree of healthy speculation</span> is necessary to keep the market
+      liquid and prices adjusting.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Full case study 1 — a Pune manufacturer raises money twice</h2>
+  <div class="case">
+    <span class="tag">Case 20 · Deccan Hydraulics Ltd, Chakan</span>
+    <p><span class="who">Deccan Hydraulics Ltd</span> has 4,000 shareholders and needs two sums.
+    ₹9 crore is required for <b>five months</b> to fund an unusually large order book, and it will be
+    raised as unsecured 150-day paper placed with two mutual funds on the strength of the company's A1+
+    rating. <mark class="ev">₹110 crore is required for <b>nine years</b> for a new plant, and the board
+    resolves to offer one new share at ₹185 for every three shares held, the offer going to the register
+    of members as it stands on 12 August.</mark> The promoter, <span class="who">Sulakshana
+    Deshpande</span>, holds 54% and insists that percentage must not fall.</p>
+  </div>
+  <div class="qcard">
+    <span class="tag">Question 14 <span class="mk">6 marks</span></span>
+    <p>(a) Name the market and the instrument for the ₹9 crore. (b) Name the market and the method of
+    floatation for the ₹110 crore. (c) Explain, quoting the case, why the method in (b) suits
+    Sulakshana. Six marks — six points.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer</span>
+    <ol class="points">
+      <li><span class="h">(a) Market — money market</span>the funds are needed for <b>five months</b>,
+      that is <b>less than one year</b>.</li>
+      <li><span class="h">(a) Instrument — commercial paper</span><button class="info" data-term="commercial-paper"></button>a
+      short-term <b>unsecured promissory note issued by a large, creditworthy company</b>, here on the
+      strength of an A1+ rating and with no underlying trade transaction.</li>
+      <li><span class="h">(b) Market — capital market, primary segment</span>nine-year money, and the
+      shares are <b>newly created</b>, so Deccan Hydraulics itself receives the ₹110 crore.</li>
+      <li><span class="h">(b) Method — rights issue</span><button class="info" data-term="rights-issue"></button>new
+      shares offered to <b>existing shareholders in proportion to their holding</b> — one for every
+      three.</li>
+      <li><span class="h">(c) It protects control</span>the <span class="kw">pre-emptive right</span>
+      lets Sulakshana subscribe to her proportionate entitlement, so her <b>54% is not diluted</b>.</li>
+      <li><span class="h">(c) It is cheap and certain</span>no prospectus, no underwriting and no
+      advertising, and the offer goes to 4,000 people who have already backed the company, so the risk
+      of undersubscription is low.</li>
+    </ol>
+    <div class="evidence">"₹110 crore is required for nine years for a new plant, and the board resolves
+    to offer one new share at ₹185 for every three shares held, the offer going to the register of
+    members as it stands on 12 August."</div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Full case study 2 — the whole chapter in one Tuesday</h2>
+  <div class="case">
+    <span class="tag">Case 21 · Nariman Point, and a bank in Jalandhar</span>
+    <p><span class="who">Sutlej Commercial Bank</span> issues ₹400 crore of 180-day negotiable
+    instruments to insurance companies because deposits are growing more slowly than loan demand. On the
+    same day, <span class="who">Sanchita Rao</span>, an investor in Mumbai, instructs her broker to buy
+    900 listed shares at not more than ₹455. The order is matched at ₹451 at 10:40 a.m., she receives a
+    document that evening showing the time, price and brokerage,
+    <mark class="ev">and on Wednesday the money leaves her bank account while the shares are credited by
+    book entry to her account with NSDL.</mark> A month later SEBI bars a bank executive who bought those
+    same shares two days before the bank's results were announced.</p>
+  </div>
+  <div class="qcard">
+    <span class="tag">Question 15 <span class="mk">6 marks</span></span>
+    <p>Identify: (a) the bank's instrument and its market; (b) Sanchita's market; (c) the document;
+    (d) the settlement cycle; (e) the institution named and its role; (f) the SEBI function involved
+    in the last sentence, with its basket.</p>
+  </div>
+  <div class="reveal ready ephemeral">Are you ready for the answer? 🤔</div>
+  <div class="reveal answer">
+    <span class="tag">Answer — six points, because it is six marks</span>
+    <ol class="points">
+      <li><span class="h">(a) Certificate of deposit, in the money market</span><button class="info" data-term="certificate-of-deposit"></button>an unsecured negotiable
+      short-term instrument <b>issued by a bank</b>, in a period of <b>tight liquidity</b> when deposit
+      growth lags credit demand. 180 days is under one year.</li>
+      <li><span class="h">(b) Secondary market</span>Sanchita bought <b>listed shares that already
+      existed</b>, from another investor; the company received nothing.</li>
+      <li><span class="h">(c) The contract note</span>the <span class="kw">legal proof of the trade</span>,
+      showing trade time, quantity, price, brokerage and the broker's SEBI registration number.</li>
+      <li><span class="h">(d) T+1 rolling settlement</span>traded Tuesday, settled Wednesday — the
+      <b>next working day</b>. (Older books say T+2; India moved to T+1 on <b>27 January 2023</b>.)</li>
+      <li><span class="h">(e) NSDL — a depository</span><button class="info" data-term="depository"></button>it holds securities in
+      <b>electronic form</b> and transfers them by <b>book entry</b>; Sanchita reaches it only through
+      her <b>Depository Participant</b>.</li>
+      <li><span class="h">(f) Prohibiting insider trading — a protective function</span>the executive
+      used <b>unpublished price-sensitive information</b> for personal gain; stopping that
+      <b>protects the interests of investors</b>.</li>
+    </ol>
+    <div class="evidence">"…and on Wednesday the money leaves her bank account while the shares are
+    credited by book entry to her account with NSDL."</div>
+  </div>
+</section>
+
+<!-- ================= CLOSING ================= -->
+<section class="slide title-slide" data-section="Closing">
+  <div class="kicker">End of Chapter 10</div>
+  <h1>Next: the firm has the money.<br>Now it has to sell something.</h1>
+  <div class="rule"></div>
+  <p class="sub">Chapters 9 and 10 financed the firm. Chapter 11 asks how it reaches the person who
+  will buy from it.</p>
+  <p class="small">What Chapter 11 will need from this one: the idea that a
+  <b>market is a set of arrangements rather than a place</b>, and the habit of asking, of every
+  transaction, <b>who receives the money and what they receive in return</b>. Marketing runs the same
+  question over goods instead of securities — and its four Ps are, in the end, four answers to it.</p>
+  <p><a class="nextlink" href="chapter-11-marketing.html">Chapter 11 — Marketing →</a></p>
+</section>
+
+</div>
+
+<button class="nav" id="prev" title="Previous (←)">‹</button>
+<button class="nav" id="next" title="Next (→)">›</button>
+<script src="assets/deck.js"></script>
+</body>
+</html>

@@ -18,10 +18,12 @@
   --amber:  #a17a00;
   --teal:   #748500;
   --blue:   #1f7ab8;
+  --violet: #6c71c4;
 
   --amber-t:  #755900;
   --teal-t:   #586600;
   --blue-t:   #175f90;
+  --violet-t: #5055a0;
 
   --radius: 14px;
 }
@@ -96,9 +98,23 @@ h1 {
 .courses .cmeta { color: var(--ink-faint); font-size: .82rem; margin: .5rem 0 0; }
 
 /* Per-subject accent */
-.courses a.micro { --accent: var(--blue);  --accent-t: var(--blue-t); }
-.courses a.macro { --accent: var(--teal);  --accent-t: var(--teal-t); }
-.courses a.cs    { --accent: var(--amber); --accent-t: var(--amber-t); }
+.courses a.micro { --accent: var(--blue);   --accent-t: var(--blue-t); }
+.courses a.macro { --accent: var(--teal);   --accent-t: var(--teal-t); }
+.courses a.cs    { --accent: var(--amber);  --accent-t: var(--amber-t); }
+.courses a.bst   { --accent: var(--violet); --accent-t: var(--violet-t); }
+
+/* Business Studies is published as two books examined as two parts, so its
+   card offers both entry points rather than only the course home. */
+.courses .parts {
+  display: flex; flex-wrap: wrap; gap: .5rem; margin: .7rem 0 0;
+}
+.courses .parts span {
+  display: inline-block; font-size: .8rem; color: var(--ink-dim);
+  background: var(--bg); border: 1px solid var(--line);
+  border-left: 3px solid var(--accent, var(--violet));
+  border-radius: 7px; padding: .18rem .6rem;
+}
+.courses .parts span b { color: var(--ink-strong); }
 
 /* ---------- Note box ---------- */
 .box {

@@ -4,12 +4,19 @@ Three independent courses of classroom presentation decks. Plain static HTML —
 step, no bundler, no dependencies**. What is in the repo is exactly what is served.
 
 ```
-microeconomics/    Introductory Microeconomics · 5 chapters · local port 8111
-macro-economics/   Introductory Macroeconomics · 6 chapters · local port 8112
+microeconomics/    Introductory Microeconomics · 5 chapters  · local port 8111
+macro-economics/   Introductory Macroeconomics · 6 chapters  · local port 8112
 computer-science/  Computer Science, CBSE 083  · 10 chapters · local port 8113
-index.html         Landing page linking to the three courses
+business-studies/  Business Studies, CBSE 054  · 12 chapters · local port 8114
+index.html         Landing page linking to the four courses
 assets/home.css    Styles the landing page ONLY
 ```
+
+`business-studies/` is published as **two books** — `part-1.html` (Units 1–8, Principles and
+Functions of Management) and `part-2.html` (Units 9–12, Business Finance and Marketing) — with
+`index.html` offering the two. It also carries a `SYLLABUS.md` recording the CBSE unit list as
+verified against the board's own curriculum document, and a dependency-free validator at
+`business-studies/tools/check.js` (`node tools/check.js`).
 
 ## Where the real instructions live
 
@@ -18,7 +25,7 @@ you are working in before writing or restyling a deck.** They define the teachin
 (definitions → examples → questions), the question → "ready?" → answer machinery, the info
 button, the diagram rules, and the palette. This root file deliberately does not repeat them.
 
-The three courses are independent: each has its own `assets/deck.css` and `assets/deck.js`,
+The four courses are independent: each has its own `assets/deck.css` and `assets/deck.js`,
 and **they are not identical**. Never "unify" them or edit one expecting the change to reach
 the others — fix the file in the subject you are working on.
 
