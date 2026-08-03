@@ -14,7 +14,7 @@ and nothing on screen that the teacher did not choose to reveal.
 ## 1. Files
 
 ```
-economics/
+microeconomics/
 ├── index.html                          course home, chapter cards
 ├── chapter-1-introduction.html         one self-contained deck per chapter
 ├── chapter-2-consumer-behaviour.html

@@ -57,10 +57,9 @@ the repository root instead:
 python3 -m http.server 8000
 ```
 
-## `economics/` is a set of redirect stubs
+## The old `economics/` path is gone
 
-The Microeconomics folder was renamed `economics/` → `microeconomics/`. Because students hold
-live links to the old path, `economics/` still exists containing **six one-line redirect
-files** — one per chapter plus `index.html` — which `location.replace()` to the new path,
-preserving the `#slide` hash. They are not decks. Never add content there, and never edit them
-to "fix" a chapter: edit the real file under `microeconomics/`.
+The Microeconomics folder was renamed `economics/` → `microeconomics/`. Redirect stubs kept
+the old path alive for a while; they have since been removed, so
+`/aakanksha-teaching/economics/…` now 404s. Do not recreate that folder — the decks live under
+`microeconomics/`.

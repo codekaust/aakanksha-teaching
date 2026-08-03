@@ -23,7 +23,7 @@ project subpath. Nothing needs rebuilding — pushing to `main` publishes.
 Each subject folder has a `start_class.sh` that serves that folder over plain HTTP:
 
 ```bash
-cd economics && ./start_class.sh        # port 8111
+cd microeconomics && ./start_class.sh   # port 8111
 cd macro-economics && ./start_class.sh  # port 8112
 cd computer-science && ./start_class.sh # port 8113
 ```
