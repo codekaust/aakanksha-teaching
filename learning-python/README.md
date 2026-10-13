@@ -79,9 +79,9 @@ taught in `../computer-science/`.
 ## Style
 
 - All styling lives in `assets/day.css`. Don't put inline styles in a day page, and don't
-  hard-code a colour that isn't a token there. Words use the `-t` tier and shapes use the
-  plain tier, the same contrast rule as the other courses.
-- This course's accent is Solarized **cyan**.
+  hard-code a colour that isn't a token there.
+- This course is **black on white**: no colour, only shades of grey. (The other courses use
+  Solarized; this one doesn't.)
 - These are **reading pages, not slide decks**: one long scrolling page per day, with no
   JavaScript. Reveals and hints use native `<details>`, which also print expanded.
 - Keep every path relative (the site is served from `/aakanksha-teaching/`).

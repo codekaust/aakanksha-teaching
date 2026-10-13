@@ -1,25 +1,26 @@
 /* ============================================================
    Learning Python — day-by-day course
-   Reading-page stylesheet · Solarized Light
-   Base tones mirror the other subjects; this course's accent is cyan.
+   Reading-page stylesheet · black on white
    ============================================================ */
 
 :root {
-  --bg:        #fdf6e3;  /* base3  — page */
-  --panel:     #eee8d5;  /* base2  — cards, boxes */
-  --line:      #d9d0b6;  /* borders */
-  --ink:       #52666d;  /* base01 — body text */
-  --ink-strong:#073642;  /* base02 — headings, emphasis */
-  --ink-dim:   #556a71;  /* base00 — secondary text */
-  --code-bg:   #073642;  /* base02 — code blocks */
-  --code-ink:  #eee8d5;  /* base2  — code text */
+  /* Black on white. Every accent is a shade of grey, so the boxes still differ by tone. */
+  --bg:        #ffffff;  /* page */
+  --panel:     #f2f2f2;  /* cards, boxes */
+  --line:      #cccccc;  /* borders */
+  --ink:       #222222;  /* body text */
+  --ink-strong:#000000;  /* headings, emphasis */
+  --ink-dim:   #555555;  /* secondary text */
+  --code-bg:   #111111;  /* code blocks */
+  --code-ink:  #f2f2f2;  /* code text */
+  --code-dim:  #999999;  /* code-block label */
 
-  /* Shape tier (borders, bars) and text tier (-t, passes contrast on beige) */
-  --cyan:   #2aa198;   --cyan-t:   #1d6f69;
-  --amber:  #a17a00;   --amber-t:  #755900;
-  --green:  #748500;   --green-t:  #586600;
-  --red:    #dc322f;   --red-t:    #a82623;
-  --blue:   #1f7ab8;   --blue-t:   #175f90;
+  /* Shape tier (borders, bars) and text tier (-t, passes contrast on white and panel) */
+  --cyan:   #000000;   --cyan-t:   #000000;
+  --amber:  #555555;   --amber-t:  #444444;
+  --green:  #333333;   --green-t:  #333333;
+  --red:    #000000;   --red-t:    #000000;
+  --blue:   #000000;   --blue-t:   #000000;
 
   --radius: 12px;
 }
@@ -66,7 +67,7 @@ b, strong { color: var(--ink-strong); }
 .box.mission { border-left-color: var(--amber); }  .box.mission .tag { color: var(--amber-t); }
 
 /* ---------- Concept card ---------- */
-.concept { border: 1px solid var(--line); border-radius: var(--radius); padding: .2rem 1.3rem 1.2rem; margin: 1.5rem 0; background: #fffaf0; }
+.concept { border: 1px solid var(--line); border-radius: var(--radius); padding: .2rem 1.3rem 1.2rem; margin: 1.5rem 0; background: var(--bg); }
 .concept h3 .num { display: inline-block; min-width: 2rem; color: var(--cyan-t); }
 
 /* ---------- Code ---------- */
@@ -76,7 +77,7 @@ pre { background: var(--code-bg); color: var(--code-ink); border-radius: var(--r
       padding: 1rem 1.2rem; overflow-x: auto; line-height: 1.45; margin: .8rem 0; }
 pre code { background: none; color: inherit; padding: 0; font-size: .95rem; }
 pre .label { display: block; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase;
-             color: var(--cyan); margin-bottom: .4rem; font-family: inherit; }
+             color: var(--code-dim); margin-bottom: .4rem; font-family: inherit; }
 pre.output { background: var(--panel); color: var(--ink-strong); border: 1px solid var(--line); }
 pre.output .label { color: var(--cyan-t); }
 
