@@ -19,11 +19,13 @@
   --teal:   #748500;
   --blue:   #1f7ab8;
   --violet: #6c71c4;
+  --cyan:   #2aa198;
 
   --amber-t:  #755900;
   --teal-t:   #586600;
   --blue-t:   #175f90;
   --violet-t: #5055a0;
+  --cyan-t:   #1d6f69;
 
   --radius: 14px;
 }
@@ -102,6 +104,7 @@ h1 {
 .courses a.macro { --accent: var(--teal);   --accent-t: var(--teal-t); }
 .courses a.cs    { --accent: var(--amber);  --accent-t: var(--amber-t); }
 .courses a.bst   { --accent: var(--violet); --accent-t: var(--violet-t); }
+.courses a.py    { --accent: var(--cyan);   --accent-t: var(--cyan-t); }
 
 /* Business Studies is published as two books examined as two parts, so its
    card offers both entry points rather than only the course home. */

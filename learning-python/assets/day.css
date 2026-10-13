@@ -1,0 +1,125 @@
+/* ============================================================
+   Learning Python — day-by-day course
+   Reading-page stylesheet · Solarized Light
+   Base tones mirror the other subjects; this course's accent is cyan.
+   ============================================================ */
+
+:root {
+  --bg:        #fdf6e3;  /* base3  — page */
+  --panel:     #eee8d5;  /* base2  — cards, boxes */
+  --line:      #d9d0b6;  /* borders */
+  --ink:       #52666d;  /* base01 — body text */
+  --ink-strong:#073642;  /* base02 — headings, emphasis */
+  --ink-dim:   #556a71;  /* base00 — secondary text */
+  --code-bg:   #073642;  /* base02 — code blocks */
+  --code-ink:  #eee8d5;  /* base2  — code text */
+
+  /* Shape tier (borders, bars) and text tier (-t, passes contrast on beige) */
+  --cyan:   #2aa198;   --cyan-t:   #1d6f69;
+  --amber:  #a17a00;   --amber-t:  #755900;
+  --green:  #748500;   --green-t:  #586600;
+  --red:    #dc322f;   --red-t:    #a82623;
+  --blue:   #1f7ab8;   --blue-t:   #175f90;
+
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(16px, 1.05vw, 19px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page { max-width: 820px; margin: 0 auto; padding: 2.5rem 1rem 4rem; }
+
+h1, h2, h3, h4 { color: var(--ink-strong); line-height: 1.2; }
+h1 { font-size: 2.2rem; margin: .2rem 0 .5rem; }
+h2 { font-size: 1.6rem; margin: 3rem 0 1rem; padding-bottom: .4rem; border-bottom: 3px solid var(--cyan); }
+h3 { font-size: 1.25rem; margin: 2rem 0 .6rem; }
+h4 { font-size: 1.05rem; margin: 1.2rem 0 .4rem; }
+a { color: var(--blue-t); }
+b, strong { color: var(--ink-strong); }
+
+.crumb { font-size: .9rem; color: var(--ink-dim); }
+.kicker { color: var(--cyan-t); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: .85rem; }
+.lead { font-size: 1.15rem; color: var(--ink-strong); }
+
+/* ---------- Meta strip under the title ---------- */
+.meta { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 1.5rem; padding: 0; list-style: none; }
+.meta li { background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: .2rem .8rem; font-size: .9rem; }
+
+/* ---------- Boxes ---------- */
+.box { background: var(--panel); border: 1px solid var(--line); border-left: 5px solid var(--cyan);
+       border-radius: var(--radius); padding: 1rem 1.2rem; margin: 1.2rem 0; }
+.box > :first-child { margin-top: 0; }
+.box > :last-child { margin-bottom: 0; }
+.box .tag { display: block; font-weight: 700; font-size: .85rem; text-transform: uppercase;
+            letter-spacing: .05em; color: var(--cyan-t); margin-bottom: .4rem; }
+.box.goal    { border-left-color: var(--green); }  .box.goal .tag    { color: var(--green-t); }
+.box.warn    { border-left-color: var(--red); }    .box.warn .tag    { color: var(--red-t); }
+.box.mission { border-left-color: var(--amber); }  .box.mission .tag { color: var(--amber-t); }
+
+/* ---------- Concept card ---------- */
+.concept { border: 1px solid var(--line); border-radius: var(--radius); padding: .2rem 1.3rem 1.2rem; margin: 1.5rem 0; background: #fffaf0; }
+.concept h3 .num { display: inline-block; min-width: 2rem; color: var(--cyan-t); }
+
+/* ---------- Code ---------- */
+code { font-family: "JetBrains Mono", Consolas, "Courier New", monospace; font-size: .92em;
+       background: var(--panel); color: var(--ink-strong); padding: .05em .3em; border-radius: 4px; }
+pre { background: var(--code-bg); color: var(--code-ink); border-radius: var(--radius);
+      padding: 1rem 1.2rem; overflow-x: auto; line-height: 1.45; margin: .8rem 0; }
+pre code { background: none; color: inherit; padding: 0; font-size: .95rem; }
+pre .label { display: block; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase;
+             color: var(--cyan); margin-bottom: .4rem; font-family: inherit; }
+pre.output { background: var(--panel); color: var(--ink-strong); border: 1px solid var(--line); }
+pre.output .label { color: var(--cyan-t); }
+
+/* ---------- Tables ---------- */
+table { border-collapse: collapse; width: 100%; margin: .8rem 0; font-size: .95rem; }
+th, td { border: 1px solid var(--line); padding: .45rem .7rem; text-align: left; vertical-align: top; }
+th { background: var(--panel); color: var(--ink-strong); }
+td.num, th.num { text-align: right; }
+.table-wrap { overflow-x: auto; }
+
+/* ---------- Question → ready? → answer (native <details>, no JS) ---------- */
+details.reveal { border: 1px dashed var(--cyan); border-radius: var(--radius); margin: 1rem 0; background: var(--bg); }
+details.reveal > summary { cursor: pointer; padding: .7rem 1rem; color: var(--ink-strong); font-weight: 600; list-style: none; }
+details.reveal > summary::-webkit-details-marker { display: none; }
+details.reveal > summary::before { content: "?"; display: inline-grid; place-items: center; width: 1.5rem; height: 1.5rem;
+       margin-right: .6rem; border-radius: 50%; background: var(--cyan); color: var(--bg); font-size: .85rem; }
+details.reveal > summary .ready { display: block; margin: .3rem 0 0 2.1rem; font-weight: 400; font-size: .88rem; color: var(--cyan-t); }
+details.reveal[open] > summary .ready { display: none; }
+details.reveal > .answer { padding: 0 1rem 1rem 3.1rem; }
+
+/* Hints — a ladder, each rung opens on its own */
+details.hint { margin: .5rem 0; border-left: 3px solid var(--amber); padding-left: .8rem; }
+details.hint > summary { cursor: pointer; color: var(--amber-t); font-weight: 600; }
+
+/* ---------- Checklist ---------- */
+ul.check { list-style: none; padding-left: 0; }
+ul.check li { padding-left: 1.8rem; position: relative; margin: .35rem 0; }
+ul.check li::before { content: "☐"; position: absolute; left: 0; color: var(--cyan-t); }
+
+/* ---------- Course home: day grid ---------- */
+.days { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1rem; margin: 1rem 0 2rem; }
+.days a, .days div { display: block; text-decoration: none; color: inherit; background: var(--panel);
+       border: 1px solid var(--line); border-left: 5px solid var(--cyan); border-radius: var(--radius); padding: .9rem 1rem; }
+.days a:hover { border-color: var(--cyan); }
+.days .dn { font-size: .8rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--cyan-t); }
+.days .dt { font-weight: 700; color: var(--ink-strong); margin: .15rem 0 .3rem; }
+.days .dd { font-size: .9rem; color: var(--ink-dim); margin: 0; }
+.days div.soon { border-left-color: var(--line); opacity: .75; }
+.days div.soon .dn { color: var(--ink-dim); }
+
+nav.pager { display: flex; justify-content: space-between; gap: 1rem; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+
+@media print {
+  details.reveal > .answer, details.hint > :not(summary) { display: block; }
+  pre { white-space: pre-wrap; }
+}

@@ -1,6 +1,6 @@
 # Class XII Teaching Decks — repository guide
 
-Three independent courses of classroom presentation decks. Plain static HTML — **no build
+Independent courses: classroom presentation decks, plus a day-by-day Python course. Plain static HTML — **no build
 step, no bundler, no dependencies**. What is in the repo is exactly what is served.
 
 ```
@@ -8,7 +8,8 @@ microeconomics/    Introductory Microeconomics · 5 chapters  · local port 8111
 macro-economics/   Introductory Macroeconomics · 6 chapters  · local port 8112
 computer-science/  Computer Science, CBSE 083  · 10 chapters · local port 8113
 business-studies/  Business Studies, CBSE 054  · 12 chapters · local port 8114
-index.html         Landing page linking to the four courses
+learning-python/   Learning Python (beginners) · day-by-day reading pages, no local server
+index.html         Landing page linking to the courses
 assets/home.css    Styles the landing page ONLY
 ```
 
@@ -18,6 +19,10 @@ Functions of Management) and `part-2.html` (Units 9–12, Business Finance and M
 verified against the board's own curriculum document, and a dependency-free validator at
 `business-studies/tools/check.js` (`node tools/check.js`).
 
+`learning-python/` is different from the decks: it's a set of scrolling **reading pages**, one per
+day, for a student working on their own. It has no slide engine and no `start_class.sh`. Its
+rules, including **always hands-on**, are in `learning-python/README.md`.
+
 ## Where the real instructions live
 
 **Each subject folder owns its own `CLAUDE.md` and `DESIGN.md`. Read the ones for the folder
@@ -25,7 +30,7 @@ you are working in before writing or restyling a deck.** They define the teachin
 (definitions → examples → questions), the question → "ready?" → answer machinery, the info
 button, the diagram rules, and the palette. This root file deliberately does not repeat them.
 
-The four courses are independent: each has its own `assets/deck.css` and `assets/deck.js`,
+The four deck courses are independent: each has its own `assets/deck.css` and `assets/deck.js`,
 and **they are not identical**. Never "unify" them or edit one expecting the change to reach
 the others — fix the file in the subject you are working on.
 

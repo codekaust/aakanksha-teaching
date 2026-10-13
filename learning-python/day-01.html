@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 1 · Your First Interactive Program — Learning Python</title>
+<link rel="stylesheet" href="assets/day.css">
+</head>
+<body>
+<main class="page">
+
+<p class="crumb"><a href="index.html">Learning Python</a> › Day 1</p>
+<p class="kicker">Day 1 of 30</p>
+<h1>Build Your First Interactive Python Program</h1>
+<p class="lead">Learn five fundamental Python ideas today, then use all five together to build
+one working program.</p>
+
+<ul class="meta">
+  <li>📅 13 October 2026</li>
+  <li>⏱ 60–90 minutes</li>
+  <li>🟢 Beginner</li>
+  <li>🎯 Program: Student Report Card Generator</li>
+</ul>
+
+<div class="box goal">
+  <span class="tag">By the end of today</span>
+  <p>You can write a program that <b>accepts information</b> from a user, <b>stores</b> it,
+  <b>performs calculations</b> on it, and <b>displays meaningful results</b>, without
+  copying a finished solution.</p>
+</div>
+
+<div class="box">
+  <span class="tag">How to use this page</span>
+  <ul>
+    <li><b>Type every example yourself.</b> Don't copy and paste. Your fingers learn the
+    syntax faster than your eyes do.</li>
+    <li>Before you run an example, <b>guess what it will print</b>. Then run it and compare.</li>
+    <li>Each concept ends with a question. Answer it out loud or on paper <b>before</b> you
+    click to reveal the answer.</li>
+  </ul>
+</div>
+
+<!-- =========================================================== -->
+<h2>Part 1 · Learn these 5 concepts</h2>
+
+<!-- Concept 1 -->
+<section class="concept" id="print">
+  <h3><span class="num">1</span>Printing output: <code>print()</code></h3>
+  <p><b>Goal:</b> understand how Python displays information.</p>
+
+  <div class="box">
+    <span class="tag">Definition</span>
+    <p><code>print()</code> is a <b>function</b>: a ready-made instruction that Python already
+    knows. Whatever you put inside its brackets gets shown on the screen.</p>
+  </div>
+
+  <ul>
+    <li><b>Text</b> goes inside quotation marks: <code>"Hello"</code> or <code>'Hello'</code>.
+    The quotes tell Python <i>"this is text, show it exactly as written."</i></li>
+    <li><b>Numbers and calculations</b> are written without quotes, so Python works them out first.</li>
+    <li><b>Several values</b> can be printed at once if you separate them with commas. Python puts a
+    space between them: <code>print("Age:", 17)</code> → <code>Age: 17</code></li>
+  </ul>
+
+  <pre><code><span class="label">Try this</span>print("Hello World!")
+print("My name is Punith")
+print(10 + 20)</code></pre>
+  <pre class="output"><code><span class="label">Output</span>Hello World!
+My name is Punith
+30</code></pre>
+
+  <details class="reveal">
+    <summary>Why does <code>print("10 + 20")</code> behave differently from <code>print(10 + 20)</code>?
+      <span class="ready">Answer it yourself first. Ready? Click to check.</span></summary>
+    <div class="answer">
+      <p><code>print("10 + 20")</code> shows <code>10 + 20</code>. The quotes make it
+      <b>text</b>, so Python prints the characters exactly as typed.</p>
+      <p><code>print(10 + 20)</code> shows <code>30</code>. Without quotes these are
+      <b>numbers</b>, so Python calculates first and then prints the result.</p>
+    </div>
+  </details>
+</section>
+
+<!-- Concept 2 -->
+<section class="concept" id="variables">
+  <h3><span class="num">2</span>Variables</h3>
+  <p><b>Goal:</b> understand how programs store information.</p>
+
+  <div class="box">
+    <span class="tag">Definition</span>
+    <p>A <b>variable</b> is a <b>name</b> that refers to a value stored in the computer's
+    memory. You create one with <code>=</code>, which is called <b>assignment</b>:</p>
+    <p ><code>name = value</code>. Python works out the right-hand side, then
+    attaches the name on the left to it.</p>
+  </div>
+
+  <p>In Python, <code>=</code> doesn't mean "equals" the way it does in maths. Read it as
+  <b>"gets"</b> or <b>"now refers to"</b>. <code>age = 17</code> means "<i>age</i> now refers to 17".</p>
+
+  <pre><code><span class="label">Try this</span>name = "Punith"
+age = 17
+marks = 85
+
+print(name)
+print(age)
+print(marks)</code></pre>
+  <pre class="output"><code><span class="label">Output</span>Punith
+17
+85</code></pre>
+
+  <h4>Changing a value</h4>
+  <p>Assign again and the name moves to the new value. The old value is forgotten.</p>
+  <pre><code>age = 17
+age = 18
+print(age)        # 18</code></pre>
+
+  <h4>Rules for naming variables</h4>
+  <div class="table-wrap"><table>
+    <tr><th>Rule</th><th>✅ Allowed</th><th>❌ Not allowed</th></tr>
+    <tr><td>Only letters, digits and underscore <code>_</code></td><td><code>total_marks</code></td><td><code>total-marks</code>, <code>my marks</code></td></tr>
+    <tr><td>Can't start with a digit</td><td><code>marks1</code></td><td><code>1marks</code></td></tr>
+    <tr><td>Can't be a Python keyword</td><td><code>class_name</code></td><td><code>class</code>, <code>if</code>, <code>for</code></td></tr>
+    <tr><td>Case-sensitive</td><td colspan="2"><code>Age</code> and <code>age</code> are two <i>different</i> variables</td></tr>
+  </table></div>
+  <p><b>Good habit:</b> use names that say what the value is. <code>maths_marks</code> is
+  better than <code>m</code> or <code>x</code>.</p>
+
+  <details class="reveal">
+    <summary>What happens if you change the value of <code>age</code> to 18?
+      <span class="ready">Answer it yourself first. Ready? Click to check.</span></summary>
+    <div class="answer">
+      <p>Write <code>age = 18</code> and the name <code>age</code> now refers to 18. Every
+      <code>print(age)</code> <b>after</b> that line prints <code>18</code>. Lines that ran
+      earlier have already printed <code>17</code>, because Python runs from top to bottom.
+      That's why it's called a <i>variable</i>: its value can vary.</p>
+    </div>
+  </details>
+</section>
+
+<!-- Concept 3 -->
+<section class="concept" id="types">
+  <h3><span class="num">3</span>Data types</h3>
+  <p><b>Goal:</b> understand the different kinds of information Python can store.</p>
+
+  <div class="box">
+    <span class="tag">Definition</span>
+    <p>Every value has a <b>data type</b>, which says what kind of value it is and what you
+    can do with it. <code>type(value)</code> tells you the type.</p>
+  </div>
+
+  <div class="table-wrap"><table>
+    <tr><th>Data type</th><th>Example</th><th>Meaning</th></tr>
+    <tr><td><code>int</code></td><td><code>15</code></td><td>Whole number (integer)</td></tr>
+    <tr><td><code>float</code></td><td><code>15.5</code></td><td>Number with a decimal point</td></tr>
+    <tr><td><code>str</code></td><td><code>"Punith"</code></td><td>Text (a <i>string</i> of characters)</td></tr>
+    <tr><td><code>bool</code></td><td><code>True</code></td><td>Either <code>True</code> or <code>False</code> (capital T / F)</td></tr>
+  </table></div>
+
+  <pre><code><span class="label">Try this</span>name = "Punith"
+age = 17
+height = 5.8
+is_student = True
+
+print(type(name))
+print(type(age))
+print(type(height))
+print(type(is_student))</code></pre>
+  <pre class="output"><code><span class="label">Output</span>&lt;class 'str'&gt;
+&lt;class 'int'&gt;
+&lt;class 'float'&gt;
+&lt;class 'bool'&gt;</code></pre>
+
+  <details class="reveal">
+    <summary>What is the difference between <code>17</code> and <code>"17"</code>?
+      <span class="ready">Answer it yourself first. Ready? Click to check.</span></summary>
+    <div class="answer">
+      <p><code>17</code> is an <b><code>int</code></b>, a number you can do maths with.
+      <code>"17"</code> is a <b><code>str</code></b>, just the two characters 1 and 7.</p>
+      <p>Look at what <code>+</code> does to each:</p>
+      <pre><code>print(17 + 3)       # 20      → adds numbers
+print("17" + "3")   # 173     → joins text
+print("17" + 3)     # TypeError: can't add text and a number</code></pre>
+    </div>
+  </details>
+</section>
+
+<!-- Concept 4 -->
+<section class="concept" id="input">
+  <h3><span class="num">4</span>Taking user input: <code>input()</code></h3>
+  <p><b>Goal:</b> make programs interactive.</p>
+
+  <div class="box">
+    <span class="tag">Definition</span>
+    <p><code>input("message")</code> shows the message, <b>waits</b> for the user to type
+    something and press Enter, then gives back what they typed. It <b>always gives back
+    a <code>str</code></b>, even if the user typed digits.</p>
+  </div>
+
+  <p>To do maths with what the user typed, <b>convert</b> it:</p>
+  <ul>
+    <li><code>int("17")</code> → <code>17</code>, a whole number</li>
+    <li><code>float("5.8")</code> → <code>5.8</code>, a decimal number</li>
+  </ul>
+
+  <pre><code><span class="label">Try this</span>name = input("What is your name? ")
+age = int(input("How old are you? "))
+
+print("Hello", name)
+print("You are", age, "years old")</code></pre>
+  <pre class="output"><code><span class="label">Sample run (what the user types is after the ?)</span>What is your name? Punith
+How old are you? 17
+Hello Punith
+You are 17 years old</code></pre>
+
+  <p>Read <code>int(input("How old are you? "))</code> from the <b>inside out</b>: first
+  <code>input</code> gets the text <code>"17"</code>, then <code>int</code> turns it into the
+  number <code>17</code>, then <code>=</code> stores it in <code>age</code>.</p>
+
+  <details class="reveal">
+    <summary>Why do we use <code>int()</code> when accepting someone's age?
+      <span class="ready">Answer it yourself first. Ready? Click to check.</span></summary>
+    <div class="answer">
+      <p>Because <code>input()</code> always returns <b>text</b>. Without <code>int()</code>,
+      <code>age</code> would be the string <code>"17"</code>, and something like
+      <code>age + 1</code> would crash with a <code>TypeError</code>. <code>int()</code> converts it
+      into a real number so Python can calculate with it.</p>
+    </div>
+  </details>
+</section>
+
+<!-- Concept 5 -->
+<section class="concept" id="operators">
+  <h3><span class="num">5</span>Arithmetic operators</h3>
+  <p><b>Goal:</b> make Python do calculations.</p>
+
+  <div class="table-wrap"><table>
+    <tr><th>Operator</th><th>Meaning</th><th>Example</th><th class="num">Result</th></tr>
+    <tr><td><code>+</code></td><td>Addition</td><td><code>10 + 5</code></td><td class="num"><code>15</code></td></tr>
+    <tr><td><code>-</code></td><td>Subtraction</td><td><code>10 - 5</code></td><td class="num"><code>5</code></td></tr>
+    <tr><td><code>*</code></td><td>Multiplication</td><td><code>10 * 5</code></td><td class="num"><code>50</code></td></tr>
+    <tr><td><code>/</code></td><td>Division (always gives a float)</td><td><code>10 / 5</code></td><td class="num"><code>2.0</code></td></tr>
+    <tr><td><code>//</code></td><td>Floor division (whole part only)</td><td><code>11 // 5</code></td><td class="num"><code>2</code></td></tr>
+    <tr><td><code>%</code></td><td>Remainder (modulus)</td><td><code>11 % 5</code></td><td class="num"><code>1</code></td></tr>
+    <tr><td><code>**</code></td><td>Exponent (power)</td><td><code>2 ** 3</code></td><td class="num"><code>8</code></td></tr>
+  </table></div>
+
+  <p><b>Order of operations</b> works like BODMAS: <code>**</code> first, then
+  <code>* / // %</code>, then <code>+ -</code>. Use brackets to be sure:
+  <code>(85 + 90) / 2</code>.</p>
+
+  <pre><code><span class="label">Try this</span>a = 15
+b = 4
+
+print(a + b)
+print(a - b)
+print(a * b)
+print(a / b)
+print(a // b)
+print(a % b)
+print(a ** b)</code></pre>
+
+  <details class="reveal">
+    <summary>Before running it, predict all seven outputs.
+      <span class="ready">Write your predictions down. Ready? Click to check.</span></summary>
+    <div class="answer">
+      <pre class="output"><code>19
+11
+60
+3.75
+3
+3
+50625</code></pre>
+      <p>Did <code>15 ** 4 = 50625</code> surprise you? It's 15 × 15 × 15 × 15.</p>
+    </div>
+  </details>
+
+  <details class="reveal">
+    <summary>What is the difference between <code>/</code>, <code>//</code> and <code>%</code>?
+      <span class="ready">Answer it yourself first. Ready? Click to check.</span></summary>
+    <div class="answer">
+      <p>Think of sharing 15 sweets among 4 friends:</p>
+      <ul>
+        <li><code>15 / 4</code> → <code>3.75</code>: the exact answer, as a decimal.</li>
+        <li><code>15 // 4</code> → <code>3</code>: each friend gets 3 whole sweets.</li>
+        <li><code>15 % 4</code> → <code>3</code>: 3 sweets are left over.</li>
+      </ul>
+      <p>Check: 4 × 3 + 3 = 15 ✔. So <code>//</code> and <code>%</code> always go together.</p>
+    </div>
+  </details>
+</section>
+
+<!-- =========================================================== -->
+<h2>Part 2 · Today's main assignment</h2>
+
+<div class="box mission">
+  <span class="tag">🎯 Project · Student Report Card Generator</span>
+  <p>Your school has asked you to build a program that calculates a student's marks
+  automatically and prints a report card.</p>
+</div>
+
+<h3>Requirements</h3>
+<p>Your program must:</p>
+<ol>
+  <li>Ask the student for their <b>name</b>.</li>
+  <li>Ask for their <b>class</b>.</li>
+  <li>Ask for their <b>school name</b>.</li>
+  <li>Ask for marks in <b>Mathematics, English and Science</b>, each out of 100.</li>
+  <li>Calculate the <b>total</b> marks out of 300.</li>
+  <li>Calculate the <b>percentage</b>.</li>
+  <li>Display the report card neatly.</li>
+</ol>
+
+<h3>Expected output</h3>
+<p>Your program should behave something like this:</p>
+<pre class="output"><code><span class="label">Sample run</span>Enter your name: Punith
+Enter your class: 12
+Enter your school: ABC School
+
+Enter Mathematics marks: 85
+Enter English marks: 90
+Enter Science marks: 95
+
+=================================
+         STUDENT REPORT CARD
+=================================
+
+Name: Punith
+Class: 12
+School: ABC School
+
+Mathematics: 85
+English: 90
+Science: 95
+
+Total Marks: 270 / 300
+Percentage: 90.0%
+
+=================================</code></pre>
+
+<div class="box warn">
+  <span class="tag">Rules</span>
+  <ul>
+    <li>Use <b>all five</b> concepts from today.</li>
+    <li>Don't type in the total or the percentage yourself. <b>The program must calculate them.</b></li>
+    <li>It must work for <b>any</b> student and <b>any</b> marks, not just the sample above.</li>
+    <li>Write the code <b>yourself</b>. This page shows no solution, on purpose.</li>
+  </ul>
+</div>
+
+<h3>Stuck? Open one hint at a time</h3>
+<p>Try for at least 10 minutes before you open the first hint. Only open the next one if you're still stuck.</p>
+
+<details class="hint"><summary>Hint 1 · Plan before you type</summary>
+  <p>Write the program as three blocks: <b>input</b> (ask for everything), <b>process</b>
+  (calculate), and <b>output</b> (print the card). Which of today's five concepts does each
+  block need?</p>
+</details>
+<details class="hint"><summary>Hint 2 · Which inputs need converting?</summary>
+  <p>You'll never do maths with the name, class or school. You <i>will</i> do maths with the
+  marks. Look back at Concept 4: which ones need <code>int()</code>?</p>
+</details>
+<details class="hint"><summary>Hint 3 · Calculating the percentage</summary>
+  <p>If you scored 45 out of 50, how would you work out your percentage on paper? Write that
+  calculation using Python's operators and your variable names.</p>
+</details>
+<details class="hint"><summary>Hint 4 · The <code>%</code> sign after the percentage</summary>
+  <p>Inside <code>print</code>, the <code>%</code> sign is just text. Where does text go? And
+  remember that commas in <code>print</code> add a space. Try it and see if that space
+  bothers you.</p>
+</details>
+<details class="hint"><summary>Hint 5 · The <code>=====</code> lines</summary>
+  <p>Typing 33 <code>=</code> signs works. But what do you think <code>"=" * 33</code> gives?
+  Try it in Python.</p>
+</details>
+
+<h3>Test your program</h3>
+<p>A program isn't finished just because it ran once. Run it with each of these and check
+the numbers by hand:</p>
+<div class="table-wrap"><table>
+  <tr><th>Test</th><th class="num">Maths</th><th class="num">English</th><th class="num">Science</th><th>Check the total and percentage are…</th></tr>
+  <tr><td>Sample</td><td class="num">85</td><td class="num">90</td><td class="num">95</td><td>270 and 90.0%</td></tr>
+  <tr><td>Full marks</td><td class="num">100</td><td class="num">100</td><td class="num">100</td><td>work out by hand</td></tr>
+  <tr><td>All zero</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td>work out by hand</td></tr>
+  <tr><td>Not a round number</td><td class="num">77</td><td class="num">64</td><td class="num">81</td><td>work out by hand: does your percentage have lots of decimal places?</td></tr>
+</table></div>
+
+<div class="box">
+  <span class="tag">⭐ Bonus challenge</span>
+  <p>Also calculate and display the <b>average</b> marks across the three subjects.</p>
+</div>
+
+<!-- =========================================================== -->
+<h2>Part 3 · Your video assignment 🎥</h2>
+<p><b>Length:</b> 5–7 minutes. Record your screen and talk through these five things:</p>
+<ol>
+  <li><b>Explain today's five concepts</b> in your own words: <code>print()</code>, variables,
+  data types, <code>input()</code> and arithmetic operators.</li>
+  <li><b>Demonstrate your program.</b> Run the Report Card Generator and show the output.</li>
+  <li><b>Explain your code:</b> how it accepts information, stores it, calculates marks, and
+  prints the report card.</li>
+  <li><b>Answer these without looking them up:</b>
+    <ul>
+      <li>Why do we need variables?</li>
+      <li>What is the difference between <code>int</code> and <code>str</code>?</li>
+      <li>What would happen if you removed <code>int()</code> from the lines that read the marks?</li>
+    </ul>
+  </li>
+  <li><b>Explain one mistake</b> you made while writing the program and how you fixed it.</li>
+</ol>
+
+<!-- =========================================================== -->
+<h2>Part 4 · Submission</h2>
+<ul class="check">
+  <li><b>📁 <code>day_01_report_card.py</code></b>: your working program.</li>
+  <li><b>🎥 <code>day_01_explanation.mp4</code></b>: your screen recording with the program
+  running and your explanation of the five concepts.</li>
+</ul>
+
+<h3>How Day 1 is evaluated</h3>
+<div class="table-wrap"><table>
+  <tr><th>Evaluation</th><th class="num">Marks</th></tr>
+  <tr><td>Understanding the five concepts</td><td class="num">5</td></tr>
+  <tr><td>Working report card program</td><td class="num">3</td></tr>
+  <tr><td>Explanation and demonstration</td><td class="num">1</td></tr>
+  <tr><td>Independent debugging</td><td class="num">1</td></tr>
+  <tr><th>Total</th><th class="num">10</th></tr>
+</table></div>
+<p><b>Passing score: 7 / 10.</b> Even after you pass, make sure you understand every concept
+before you move on to Day 2, even if that means spending extra time on one topic.</p>
+
+<nav class="pager">
+  <a href="index.html">← Course home</a>
+  <span>Day 2 · coming next</span>
+</nav>
+
+</main>
+</body>
+</html>
