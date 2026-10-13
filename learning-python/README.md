@@ -42,7 +42,7 @@ In practice:
 3. **Definition → example → question.** Each concept gets a clear definition, then code to
    run, then a question with the answer hidden behind a reveal (`<details class="reveal">`).
 4. **Understanding over speed.** The student shouldn't move to the next day until they
-   understand every concept, even if they passed the day's evaluation.
+   understand every concept.
 
 ## Shape of a day page
 
@@ -51,8 +51,6 @@ In practice:
 | Header | Day number, date, duration, difficulty, the program being built, the goal for the day |
 | Part 1 · Concepts | 3–5 concepts, each with a definition, a "Try this" block, its output, and a question to reveal |
 | Part 2 · Main program | Requirements, a sample run, rules, a hint ladder, a test table, a bonus challenge |
-| Part 3 · Video | 5–7 min recording: explain the concepts, demo the program, walk through the code, answer questions, describe one mistake |
-| Part 4 · Submission | `day_NN_<program>.py` + `day_NN_explanation.mp4`, the marking table (out of 10, pass at 7) |
 
 ## Planned direction (30 days)
 
