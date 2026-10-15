@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 2 · Working with Text — Learning Python</title>
+<link rel="stylesheet" href="assets/day.css">
+</head>
+<body>
+<main class="page">
+
+<p class="crumb"><a href="index.html">Learning Python</a> › Day 2</p>
+<p class="kicker">Day 2 of 30</p>
+<h1>Working with Text: Strings</h1>
+<p class="lead">Yesterday you printed text. Today you learn to take text apart, clean it up
+and put it back together, and you use that to build a program that turns messy typing into a
+neat student ID card.</p>
+
+<ul class="meta">
+  <li>📅 15 October 2026</li>
+  <li>⏱ 60–90 minutes</li>
+  <li>🟢 Beginner</li>
+  <li>🎯 Program: Student ID Card Generator</li>
+</ul>
+
+<div class="box goal">
+  <span class="tag">By the end of today</span>
+  <p>You can take text a user typed, <b>clean</b> it, <b>pick out parts</b> of it, mix it with
+  numbers, and <b>display it neatly</b>, all inside one program you wrote yourself.</p>
+</div>
+
+<div class="box">
+  <span class="tag">Warm-up · 5 minutes</span>
+  <p>Open your Day 1 report card program and run it with the marks <b>77, 64 and 80</b>.
+  Look at the percentage it prints. Does it look like something a school would print on a
+  report card?</p>
+  <p>Keep that program open. By the end of Concept 4 you'll be able to fix it.</p>
+</div>
+
+<!-- =========================================================== -->
+<h2>Part 1 · Learn these 5 concepts</h2>
+
+<!-- Concept 1 -->
+<section class="concept" id="joining">
+  <h3><span class="num">1</span>Joining and measuring text</h3>
+  <p><b>Goal:</b> build bigger pieces of text from smaller ones.</p>
+
+  <div class="box">
+    <span class="tag">Definition</span>
+    <p>A <b>string</b> (<code>str</code>) is a sequence of characters: letters, digits,
+    spaces and symbols, in order. Three things you can do with strings:</p>
+    <ul>
+      <li><code>+</code> <b>joins</b> two strings into one (this is called <i>concatenation</i>).</li>
+      <li><code>*</code> <b>repeats</b> a string a number of times.</li>
+      <li><code>len()</code> tells you <b>how many characters</b> a string has.</li>
+    </ul>
+  </div>
+
+  <pre><code><span class="label">Try this</span>first = "Punith"
+last = "Kumar"
+full = first + " " + last
+
+print(full)
+print("=" * 20)
+print(len(full))</code></pre>
+  <pre class="output"><code><span class="label">Output</span>Punith Kumar
+====================
+12</code></pre>
+
+  <p>Notice the <code>" "</code> in the middle. <code>+</code> joins exactly what you give it
+  and adds nothing on its own, so without that space you'd get <code>PunithKumar</code>.</p>
+
+  <details class="reveal">
+    <summary>"Punith" has 6 letters and "Kumar" has 5. Why does <code>len(full)</code> give 12, not 11?
+      <span class="ready">Answer it yourself first. Ready? Click to check.</span></summary>
+    <div class="answer">
+      <p><b>A space is a character too.</b> <code>full</code> is
+      <code>"Punith" + " " + "Kumar"</code>, which is 6 + 1 + 5 = 12 characters.
+      <code>len()</code> counts every character, including spaces and punctuation.</p>
+    </div>
+  </details>
+</section>
+
+<!-- Concept 2 -->
+<section class="concept" id="indexing">
+  <h3><span class="num">2</span>Indexing and slicing</h3>
+  <p><b>Goal:</b> pick out one character, or a piece, from a string.</p>
+
+  <div class="box">
+    <span class="tag">Definition</span>
+    <p>Every character in a string has a position number called its <b>index</b>.
+    <b>Counting starts at 0</b>, not 1. You can also count backwards from the end with
+    negative numbers: <code>-1</code> is the last character.</p>
+  </div>
+
+  <div class="table-wrap"><table>
+    <tr><th>Character</th><td><code>P</code></td><td><code>Y</code></td><td><code>T</code></td><td><code>H</code></td><td><code>O</code></td><td><code>N</code></td></tr>
+    <tr><th>Index</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+    <tr><th>Negative index</th><td>-6</td><td>-5</td><td>-4</td><td>-3</td><td>-2</td><td>-1</td></tr>
+  </table></div>
+
+  <ul>
+    <li><b>Indexing</b>, <code>name[3]</code>, gives <b>one</b> character.</li>
+    <li><b>Slicing</b>, <code>name[start:end]</code>, gives a <b>piece</b>. It starts at
+    <code>start</code> and stops <b>just before</b> <code>end</code>.</li>
+    <li>Leave out <code>start</code> to begin at the start; leave out <code>end</code> to go to the end.</li>
+  </ul>
+
+  <pre><code><span class="label">Try this · predict each line first</span>name = "PYTHON"
+
+print(name[0])
+print(name[3])
+print(name[-1])
+print(name[0:3])
+print(name[2:])
+print(name[:2])</code></pre>
+  <pre class="output"><code><span class="label">Output</span>P
+H
+N
+PYT
+THON
+PY</code></pre>
+
+  <div class="box warn">
+    <span class="tag">Two things that crash</span>
+    <ul>
+      <li><code>name[6]</code> → <code>IndexError: string index out of range</code>.
+      <code>"PYTHON"</code> has 6 characters, so the last index is 5.</li>
+      <li><code>name[0] = "J"</code> → <code>TypeError: 'str' object does not support item
+      assignment</code>. You <b>can't change</b> a character inside a string. Strings are
+      <b>immutable</b>, which means they can't be changed once made. To get a different
+      string, you build a new one.</li>
+    </ul>
+    <p>Type both and read the error messages. Learning to read errors is half of programming.</p>
+  </div>
+
+  <details class="reveal">
+    <summary>Given <code>word = "computer"</code>, which slice gives <code>"put"</code>?
+      <span class="ready">Write the index under each letter first. Ready? Click to check.</span></summary>
+    <div class="answer">
+      <p><code>c</code>=0, <code>o</code>=1, <code>m</code>=2, <code>p</code>=3,
+      <code>u</code>=4, <code>t</code>=5, <code>e</code>=6, <code>r</code>=7.</p>
+      <p><code>"put"</code> is indexes 3, 4 and 5. The slice stops <i>before</i> the end
+      number, so you need <code>word[3:6]</code>.</p>
+    </div>
+  </details>
+
+  <details class="reveal">
+    <summary>Slicing past the end: what does <code>"al"[0:4]</code> give? An error?
+      <span class="ready">Guess, then try it. Ready? Click to check.</span></summary>
+    <div class="answer">
+      <p>It gives <code>"al"</code>, and there's <b>no error</b>. A slice takes whatever
+      characters exist in that range, even if the string is shorter. Only <i>indexing</i> a
+      single position that doesn't exist (like <code>"al"[4]</code>) crashes.
+      Remember this. You'll need it in today's program.</p>
+    </div>
+  </details>
+</section>
+
+<!-- Concept 3 -->
+<section class="concept" id="methods">
+  <h3><span class="num">3</span>String methods</h3>
+  <p><b>Goal:</b> clean up and change text with ready-made tools.</p>
+
+  <div class="box">
+    <span class="tag">Definition</span>
+    <p>A <b>method</b> is a function that belongs to a value. You call it with a dot:
+    <code>value.method()</code>. String methods <b>give back a new string</b>, and they never
+    change the original.</p>
+  </div>
+
+  <div class="table-wrap"><table>
+    <tr><th>Method</th><th>What it does</th><th>Example → result</th></tr>
+    <tr><td><code>.strip()</code></td><td>Removes spaces from both ends</td><td><code>"  hi  ".strip()</code> → <code>"hi"</code></td></tr>
+    <tr><td><code>.upper()</code></td><td>All capitals</td><td><code>"hi".upper()</code> → <code>"HI"</code></td></tr>
+    <tr><td><code>.lower()</code></td><td>All small letters</td><td><code>"HI".lower()</code> → <code>"hi"</code></td></tr>
+    <tr><td><code>.title()</code></td><td>Capital first letter of each word</td><td><code>"new delhi".title()</code> → <code>"New Delhi"</code></td></tr>
+    <tr><td><code>.replace(a, b)</code></td><td>Swaps every <code>a</code> for <code>b</code></td><td><code>"banana".replace("a", "o")</code> → <code>"bonono"</code></td></tr>
+    <tr><td><code>.count(a)</code></td><td>How many times <code>a</code> appears</td><td><code>"banana".count("a")</code> → <code>3</code></td></tr>
+  </table></div>
+
+  <pre><code><span class="label">Try this</span>city = "  new delhi  "
+
+print(city.strip())
+print(city.strip().title())
+print(city.upper())</code></pre>
+  <pre class="output"><code><span class="label">Output</span>new delhi
+New Delhi
+  NEW DELHI  </code></pre>
+
+  <p>The second line <b>chains</b> two methods: <code>.strip()</code> runs first and gives
+  <code>"new delhi"</code>, then <code>.title()</code> runs on that. The third line keeps
+  the spaces, because nobody asked to strip them.</p>
+
+  <details class="reveal">
+    <summary>After <code>city.upper()</code> runs, what does <code>print(city)</code> show?
+      <span class="ready">Think about the word "immutable". Ready? Click to check.</span></summary>
+    <div class="answer">
+      <p>It still shows <code>"  new delhi  "</code>, unchanged. <code>.upper()</code> made a
+      <b>new</b> string and gave it back, but nothing stored it, so it was thrown away.</p>
+      <p>To keep the result, assign it: <code>city = city.upper()</code>.</p>
+    </div>
+  </details>
+</section>
+
+<!-- Concept 4 -->
+<section class="concept" id="fstrings">
+  <h3><span class="num">4</span>f-strings: putting values inside text</h3>
+  <p><b>Goal:</b> mix text and values neatly, with control over decimals.</p>
+
+  <div class="box">
+    <span class="tag">Definition</span>
+    <p>An <b>f-string</b> is a string with an <code>f</code> just before the opening quote.
+    Anything inside <code>{ }</code> is worked out by Python and its value is put into the
+    text at that spot.</p>
+    <p><code>{value:.2f}</code> shows a number with exactly 2 decimal places
+    (<code>.1f</code> for one, and so on).</p>
+  </div>
+
+  <pre><code><span class="label">Try this</span>name = "Punith"
+total = 77 + 64 + 80
+percentage = total / 300 * 100
+
+print(f"{name} scored {total} / 300")
+print(f"Percentage: {percentage}%")
+print(f"Percentage: {percentage:.2f}%")
+print(f"Next year you will be {17 + 1}")</code></pre>
+  <pre class="output"><code><span class="label">Output</span>Punith scored 221 / 300
+Percentage: 73.66666666666667%
+Percentage: 73.67%
+Next year you will be 18</code></pre>
+
+  <ul>
+    <li>Forget the <code>f</code> and Python prints the braces literally:
+    <code>{name} scored {total} / 300</code>. Try it.</li>
+    <li>You can put a calculation inside the braces, like <code>{17 + 1}</code>.</li>
+    <li>The <code>%</code> sits right against the number, with no extra space, because
+    everything outside the braces is printed exactly as you typed it.</li>
+  </ul>
+
+  <div class="box goal">
+    <span class="tag">Now fix your warm-up</span>
+    <p>Go back to your Day 1 report card and change the percentage line so it always shows
+    exactly one decimal place. Run it again with 77, 64 and 80.</p>
+  </div>
+
+  <details class="reveal">
+    <summary>Day 1's <code>print("Percentage:", 90.0, "%")</code> printed <code>Percentage: 90.0 %</code>. Why the space, and how does an f-string avoid it?
+      <span class="ready">Answer it yourself first. Ready? Click to check.</span></summary>
+    <div class="answer">
+      <p>When you give <code>print</code> several values separated by commas, it puts a
+      <b>space between each one</b>, so a space lands between <code>90.0</code> and
+      <code>%</code>.</p>
+      <p>An f-string is <b>one</b> string, and you decide exactly where every character goes:
+      <code>print(f"Percentage: {percentage}%")</code>.</p>
+    </div>
+  </details>
+</section>
+
+<!-- Concept 5 -->
+<section class="concept" id="converting">
+  <h3><span class="num">5</span>Converting between text and numbers</h3>
+  <p><b>Goal:</b> know when a value is text and when it is a number, and switch between them.</p>
+
+  <div class="box">
+    <span class="tag">Definition</span>
+    <p><b>Type conversion</b> turns a value of one type into another:</p>
+    <ul>
+      <li><code>int("2009")</code> → <code>2009</code> (text to whole number)</li>
+      <li><code>float("5.8")</code> → <code>5.8</code> (text to decimal)</li>
+      <li><code>str(17)</code> → <code>"17"</code> (number to text)</li>
+    </ul>
+  </div>
+
+  <pre><code><span class="label">Try this · predict each line first</span>year = "2009"
+
+print(year + "1")
+print(int(year) + 1)
+print(year[-2:])</code></pre>
+  <pre class="output"><code><span class="label">Output</span>20091
+2010
+09</code></pre>
+
+  <p>Same <code>year</code>, three different results. As text, <code>+</code> joins and
+  slicing picks out characters. As a number, <code>+</code> adds. Pick the type that
+  fits the job: to <b>cut</b> digits out, keep it as text; to <b>calculate</b>, convert it to
+  a number.</p>
+
+  <details class="reveal">
+    <summary><code>age = 17</code> then <code>print("Age: " + age)</code> crashes. Why? Give three different ways to fix it.
+      <span class="ready">Answer it yourself first. Ready? Click to check.</span></summary>
+    <div class="answer">
+      <p>It crashes with <code>TypeError: can only concatenate str (not "int") to str</code>.
+      <code>+</code> can join two strings or add two numbers, but it can't mix a string and a
+      number.</p>
+      <pre><code>print("Age: " + str(age))   # 1. convert the number to text
+print("Age:", age)          # 2. use a comma; print handles the types
+print(f"Age: {age}")        # 3. use an f-string</code></pre>
+      <p>All three print <code>Age: 17</code>.</p>
+    </div>
+  </details>
+</section>
+
+<!-- =========================================================== -->
+<h2>Part 2 · Today's main assignment</h2>
+
+<div class="box mission">
+  <span class="tag">🎯 Project · Student ID Card Generator</span>
+  <p>Your school is printing ID cards. People type their details carelessly, with extra
+  spaces, ALL CAPITALS and all small letters. Your program has to turn whatever they type into
+  a clean, correct ID card.</p>
+</div>
+
+<h3>Requirements</h3>
+<p>Your program must:</p>
+<ol>
+  <li>Ask for the student's <b>first name</b>, <b>last name</b>, <b>year of birth</b> and <b>city</b>.</li>
+  <li><b>Clean</b> the names and the city: no extra spaces, and a capital first letter on each word.</li>
+  <li>Show the <b>full name</b> and the <b>initials</b> (for example <code>P.K.</code>).</li>
+  <li>Calculate the student's <b>age</b> in 2026.</li>
+  <li>Make a <b>username</b>: the first 4 letters of the first name in small letters, followed
+  by the last 2 digits of the birth year.</li>
+  <li>Show how many <b>letters</b> are in the name (first name + last name, not counting the space).</li>
+  <li>Print the card neatly, with a border line made using <code>*</code>.</li>
+</ol>
+
+<h3>Expected output</h3>
+<p>Look at how messy the typing is, and how clean the card still comes out:</p>
+<pre class="output"><code><span class="label">Sample run</span>Enter your first name:    punith
+Enter your last name: KUMAR
+Enter your year of birth: 2009
+Enter your city:  new delhi
+
+==============================
+       STUDENT ID CARD
+==============================
+Name     : Punith Kumar
+Initials : P.K.
+City     : New Delhi
+Age      : 17
+Username : puni09
+Letters in name: 11
+==============================</code></pre>
+
+<div class="box warn">
+  <span class="tag">Rules</span>
+  <ul>
+    <li>Use <b>all five</b> concepts from today.</li>
+    <li>Nothing on the card may be typed in by you. Every line must be <b>worked out from what
+    the user typed</b>.</li>
+    <li>It must work for <b>any</b> name, year and city, however messily they're typed.</li>
+    <li>Write the code <b>yourself</b>. This page shows no solution, on purpose.</li>
+  </ul>
+</div>
+
+<h3>Build it step by step</h3>
+<p>Don't write the whole program at once. Build it in steps. <b>Run it after every
+step</b> and check you see what's described before moving on.</p>
+
+<h4>Step 1 · Ask and echo</h4>
+<p>Ask for the four inputs and print each one straight back. To <i>see</i> the spaces the
+user typed, print each value between square brackets, like <code>[   punith]</code>.
+(Which concept lets you put a variable between two brackets in one print?)</p>
+<p><b>Check:</b> with the sample input, you should see the extra spaces inside the brackets.</p>
+
+<h4>Step 2 · Clean the text</h4>
+<p>Clean the first name, last name and city. Print them in brackets again.</p>
+<p><b>Check:</b> <code>[Punith]</code>, <code>[Kumar]</code>, <code>[New Delhi]</code>, with no spaces
+at the ends, and capitals in the right places.</p>
+
+<h4>Step 3 · Full name, initials and letter count</h4>
+<p><b>Check:</b> <code>Punith Kumar</code>, <code>P.K.</code> and <code>11</code>.</p>
+
+<h4>Step 4 · Age and username</h4>
+<p><b>Check:</b> <code>17</code> and <code>puni09</code>. Think carefully about which of these
+needs the year as a <i>number</i> and which needs it as <i>text</i>.</p>
+
+<h4>Step 5 · Print the card</h4>
+<p>Use f-strings for every line and <code>*</code> for the border.</p>
+<p><b>Check:</b> your output matches the sample run above.</p>
+
+<h3>Stuck? Open one hint at a time</h3>
+<p>Try for at least 10 minutes before you open the first hint. Only open the next one if
+you're still stuck.</p>
+
+<details class="hint"><summary>Hint 1 · Cleaning in one line</summary>
+  <p>Look back at Concept 3. Two methods were chained with dots. Which two do you need here,
+  and in which order? Don't forget to <b>store</b> the result.</p>
+</details>
+<details class="hint"><summary>Hint 2 · Initials</summary>
+  <p>The first letter of any string is at which index? Do that for both names, then join them
+  with dots using <code>+</code> or an f-string.</p>
+</details>
+<details class="hint"><summary>Hint 3 · Last two digits of the year</summary>
+  <p><code>input()</code> gives you text. Is <code>"2009"</code> easier to cut digits from
+  as text or as a number? Which slice gives the last two characters of any string?
+  (Look at Concept 5.)</p>
+</details>
+<details class="hint"><summary>Hint 4 · The age</summary>
+  <p>Can you subtract a string from 2026? What do you need to do to the year first?</p>
+</details>
+<details class="hint"><summary>Hint 5 · Lining up the colons</summary>
+  <p>Everything outside the braces in an f-string is printed exactly. Count the characters
+  in <code>"Initials"</code> and <code>"Name"</code>. How many spaces does <code>"Name"</code>
+  need after it so the colons line up?</p>
+</details>
+
+<h3>Test your program</h3>
+<p>Run it with each of these and check every line on the card by hand:</p>
+<div class="table-wrap"><table>
+  <tr><th>Test</th><th>First name</th><th>Last name</th><th>Year</th><th>City</th><th>Check…</th></tr>
+  <tr><td>Sample</td><td><code>&nbsp;&nbsp;&nbsp;punith</code></td><td><code>KUMAR</code></td><td><code>2009</code></td><td><code>&nbsp;new delhi</code></td><td>matches the sample run</td></tr>
+  <tr><td>Already neat</td><td><code>Asha</code></td><td><code>Rao</code></td><td><code>2010</code></td><td><code>Pune</code></td><td>nothing breaks when there's nothing to clean</td></tr>
+  <tr><td>All capitals</td><td><code>MEERA</code></td><td><code>SHARMA</code></td><td><code>2008</code></td><td><code>NAVI MUMBAI</code></td><td>username is all small letters</td></tr>
+  <tr><td>Short name</td><td><code>al</code></td><td><code>khan</code></td><td><code>2011</code></td><td><code>agra</code></td><td>username when the name has fewer than 4 letters. Does it crash? (Concept 2's last question)</td></tr>
+</table></div>
+
+<div class="box">
+  <span class="tag">⭐ Bonus challenge</span>
+  <p>Also ask for the <b>school name</b> and add a school email to the card, all in small
+  letters with no spaces. For <code>ABC School</code>, that's
+  <code>punith.kumar@abcschool.in</code>. (Which method from Concept 3 can remove
+  spaces?)</p>
+</div>
+
+</main>
+</body>
+</html>
