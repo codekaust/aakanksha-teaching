@@ -155,7 +155,13 @@ cards = []
 manifest = []
 for lesson in lessons:
     day = lesson['day']; slug = f'day-{day:02}'
-    key = passwords.setdefault(slug, '-'.join(''.join(secrets.choice(string.ascii_lowercase+string.digits) for _ in range(4)) for _ in range(4)))
+    if slug not in passwords:
+        while True:
+            candidate = ''.join(secrets.choice(string.ascii_lowercase) for _ in range(6))
+            if candidate not in passwords.values():
+                passwords[slug] = candidate
+                break
+    key = passwords[slug]
     # Save credentials before producing encrypted output so an interrupted build cannot lose them.
     key_path.write_text(json.dumps(passwords, indent=2)+'\n'); key_path.chmod(0o600)
     code = lesson['code']; lines = code.splitlines()
@@ -197,5 +203,5 @@ for lesson in lessons:
 (COURSE/'index.html').write_text(page('One program a day',f'''<header><p class="eyebrow">LEARNING PYTHON · THE NOTEBOOK PROGRAMS</p><h1>One program.<br>One paper run.</h1><p class="lead">Understand what happens at every step.<br>Then write the program yourself.</p></header><section class="routine"><h2>A simple daily routine</h2><ol><li><strong>Trace on paper.</strong> Read your assigned program. In your notebook, write its purpose, every step, every variable change and the output. Submit it to your teacher.</li><li><strong>Check, then write.</strong> Use the password your teacher gives you to check the answer key. Correct your trace, cover the code, then write the program yourself.</li></ol><p class="muted">Do only the day your teacher assigns. Each answer key has a different password.</p></section><div class="course-heading"><h2>The 14 class programs</h2><p>One per day · in notebook experiment order</p></div><div class="day-grid">{''.join(cards)}</div>'''))
 (COURSE/'programs'/'sources.json').write_text(json.dumps(manifest,indent=2)+'\n')
 password_rows = ''.join(f'<tr><td>{l["day"]:02}</td><td>{e(l["title"])}</td><td><code>{passwords[f"day-{l['day']:02}"]}</code></td><td><a href="https://codekaust.github.io/aakanksha-teaching/learning-python/day-{l['day']:02}.html">Open lesson</a></td></tr>' for l in lessons)
-(PRIVATE/'teacher-passwords.html').write_text(f'''<!doctype html><html lang="en"><meta charset="utf-8"><title>Python · Teacher passwords</title><style>body{{font:17px system-ui;max-width:1100px;margin:40px auto;padding:20px}}table{{border-collapse:collapse;width:100%}}th,td{{text-align:left;padding:12px;border-bottom:1px solid #ccc}}code{{white-space:nowrap}}@media print{{body{{font-size:12px}}}}</style><h1>Python · Teacher passwords</h1><p>Private teacher copy. Give only the assigned program’s password after reviewing the student’s paper trace. Do not upload this file to the website or GitHub.</p><table><thead><tr><th>Day</th><th>Program</th><th>Password</th><th>Lesson</th></tr></thead><tbody>{password_rows}</tbody></table><p>Keep a backup of this private folder: it contains the authoring sources, passwords and readable answer documents. Passwords are case-sensitive; all letters are lowercase.</p></html>''')
+(PRIVATE/'teacher-passwords.html').write_text(f'''<!doctype html><html lang="en"><meta charset="utf-8"><title>Python · Teacher passwords</title><style>body{{font:17px system-ui;max-width:1100px;margin:40px auto;padding:20px}}table{{border-collapse:collapse;width:100%}}th,td{{text-align:left;padding:12px;border-bottom:1px solid #ccc}}code{{white-space:nowrap}}@media print{{body{{font-size:12px}}}}</style><h1>Python · Teacher passwords</h1><p>Private teacher copy. Give only the assigned program’s password after reviewing the student’s paper trace. Do not upload this file to the website or GitHub.</p><table><thead><tr><th>Day</th><th>Program</th><th>Password</th><th>Lesson</th></tr></thead><tbody>{password_rows}</tbody></table><p>Keep a backup of this private folder: it contains the authoring sources, passwords and readable answer documents. Each password is exactly six lowercase letters, with no numbers or symbols. Passwords are case-sensitive.</p></html>''')
 print('Private teacher password sheet saved outside the repository.')

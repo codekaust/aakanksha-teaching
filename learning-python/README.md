@@ -47,7 +47,7 @@ use it with untrusted lesson sources: it executes the programs. The private dire
 must be outside the repository. The site itself has no dependencies or build step.
 
 Answer keys use AES-256-GCM with random 12-byte IVs and 16-byte salts; password keys use
-PBKDF2-SHA-256 with 600,000 iterations. Passwords are randomly generated separately per
+PBKDF2-SHA-256 with 600,000 iterations. Passwords are six randomly generated lowercase letters, unique to each
 program. No plaintext answer, password, password hash or master password is published.
 Unlocking needs HTTPS (GitHub Pages) or localhost. Once released, a password and the
 unlocked answer can be shared; this is teacher-controlled release, not student accounts.
