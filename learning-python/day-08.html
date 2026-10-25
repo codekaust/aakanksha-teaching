@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 08 · Bubble sort · Learning Python</title><link rel="stylesheet" href="assets/day.css">
+<script src="assets/unlock.js" defer></script></head>
+<body><a class="skip" href="#main">Skip to content</a><div class="page"><nav aria-label="Course"><a href="../index.html">All subjects</a><span>/</span><a href="index.html">Learning Python</a></nav><main id="main"><header><p class="eyebrow">DAY 08 / 14 · PAPER FIRST</p><h1>Bubble sort</h1><p class="lead">Sort a list by comparing adjacent elements and swapping them when they are out of order.</p></header>
+<section class="routine"><h2>Two things to do today</h2><ol><li><strong>Run it in your head, on paper.</strong> In your notebook, write what the program does. Trace the assigned run below, one executed line at a time. Write every variable change, condition result and output. Repeat the steps for every loop iteration or function call. Show your teacher.</li><li><strong>Write the program yourself.</strong> After your teacher gives you the password, check and correct your trace. Then cover the code and write it from memory. You may run it after you finish.</li></ol></section>
+<section><div class="section-heading"><h2>The program</h2><a href="programs/day-08.py" download>Download .py</a></div><pre class="program"><code><span class="code-line" id="line-1"><span class="line-number" aria-hidden="true">01</span>def bubble_sort(list1):
+</span><span class="code-line" id="line-2"><span class="line-number" aria-hidden="true">02</span>    n = len(list1)
+</span><span class="code-line" id="line-3"><span class="line-number" aria-hidden="true">03</span>    for i in range(n):
+</span><span class="code-line" id="line-4"><span class="line-number" aria-hidden="true">04</span>        for j in range(0, n - i - 1):
+</span><span class="code-line" id="line-5"><span class="line-number" aria-hidden="true">05</span>            if list1[j] &gt; list1[j + 1]:
+</span><span class="code-line" id="line-6"><span class="line-number" aria-hidden="true">06</span>                list1[j], list1[j + 1] = list1[j + 1], list1[j]
+</span><span class="code-line" id="line-7"><span class="line-number" aria-hidden="true">07</span>
+</span><span class="code-line" id="line-8"><span class="line-number" aria-hidden="true">08</span>def input_list():
+</span><span class="code-line" id="line-9"><span class="line-number" aria-hidden="true">09</span>    list = []
+</span><span class="code-line" id="line-10"><span class="line-number" aria-hidden="true">10</span>    n = int(input(&quot;How many elements? &quot;))
+</span><span class="code-line" id="line-11"><span class="line-number" aria-hidden="true">11</span>    print(&quot;Enter the elements:&quot;)
+</span><span class="code-line" id="line-12"><span class="line-number" aria-hidden="true">12</span>    for i in range(n):
+</span><span class="code-line" id="line-13"><span class="line-number" aria-hidden="true">13</span>        ele = int(input())
+</span><span class="code-line" id="line-14"><span class="line-number" aria-hidden="true">14</span>        list.append(ele)
+</span><span class="code-line" id="line-15"><span class="line-number" aria-hidden="true">15</span>    return list
+</span><span class="code-line" id="line-16"><span class="line-number" aria-hidden="true">16</span>list = input_list()
+</span><span class="code-line" id="line-17"><span class="line-number" aria-hidden="true">17</span>
+</span><span class="code-line" id="line-18"><span class="line-number" aria-hidden="true">18</span>print(&quot;Original list:&quot;, list)
+</span><span class="code-line" id="line-19"><span class="line-number" aria-hidden="true">19</span>bubble_sort(list)
+</span><span class="code-line" id="line-20"><span class="line-number" aria-hidden="true">20</span>print(&quot;Sorted list:&quot;, list)
+</span></code></pre><details class="source-note"><summary>About the notebook transcription</summary><p>The function and loops follow the notebook. The last outer pass has an empty inner range. List indices start at 0. The name list is retained from the notebook.</p><p>Source: supplied notebook photos 24, 25, numbered in ZIP order. Spelling, whitespace and identifier capitalisation are normalised for readable Python. Worked-output photos are not published with the exercise.</p></details></section>
+<section><h2>Your paper run</h2><p><strong>Keep track of:</strong> i, j, n, both compared values; complete list after each swap.</p><article class="exercise"><h3>1. Four elements</h3><p>Trace every pass and every comparison, including comparisons that do not swap. Write the whole list after each swap.</p><p class="label">Inputs, one per prompt, in this order</p><pre>4
+5
+1
+4
+2</pre></article><h3>Use this layout in your notebook</h3><p>Make as many rows as the program needs. Include the final condition that stops a loop. For functions, name the current call; each recursive call has its own variables.</p><div class="table-wrap"><table><thead><tr><th scope="col">Step / line</th><th scope="col">What happens?</th><th scope="col">Variables: before → after</th><th scope="col">Output / file change</th></tr></thead><tbody><tr><td>1</td><td>…</td><td>…</td><td>…</td></tr><tr><td>2</td><td>…</td><td>…</td><td>…</td></tr><tr><td>…</td><td>…</td><td>…</td><td>…</td></tr></tbody></table></div></section>
+<section class="unlock" aria-labelledby="unlock-title"><h2 id="unlock-title">Check with your teacher’s password</h2><p>Submit your paper run first. Your teacher will give you this program’s password when it is time to compare.</p><form data-answer="answers/day-08.json"><label for="password">Password for Day 08</label><div class="password-row"><input id="password" name="password" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" required aria-describedby="unlock-status"><button type="submit">Unlock answer key</button></div></form><p id="unlock-status" role="status" aria-live="polite"></p><noscript><p>Enable JavaScript to unlock the answer key. You can still read and print the exercise.</p></noscript></section>
+<section id="answer" hidden aria-label="Unlocked answer key"><div class="answer-actions"><button type="button" id="print-answer">Print answer key</button><button type="button" id="lock-answer">Lock again</button></div><div id="answer-content"></div></section>
+<div class="page-actions"><button type="button" id="print-exercise">Print paper exercise</button></div><nav class="day-nav" aria-label="Days"><a href="day-07.html">← Day 07</a><a href="day-09.html">Day 09 →</a></nav></main><footer>One program. Trace it on paper. Then write it yourself.</footer></div></body></html>

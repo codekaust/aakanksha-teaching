@@ -9,7 +9,7 @@ Studies and Computer Science.
 | Introductory Macroeconomics | [`macro-economics/`](macro-economics/) | 6 |
 | Computer Science (CBSE 083) | [`computer-science/`](computer-science/) | 10 |
 | Business Studies (CBSE 054) | [`business-studies/`](business-studies/) | 12, in two books |
-| Learning Python (beginners) | [`learning-python/`](learning-python/) | day by day (Days 1–2 so far) |
+| Learning Python (paper first) | [`learning-python/`](learning-python/) | 14 notebook programs + protected answer keys |
 
 Business Studies is published as two books — [Part 1 · Principles and Functions of
 Management](business-studies/part-1.html) (Units 1–8) and [Part 2 · Business Finance and

@@ -8,7 +8,7 @@ microeconomics/    Introductory Microeconomics · 5 chapters  · local port 8111
 macro-economics/   Introductory Macroeconomics · 6 chapters  · local port 8112
 computer-science/  Computer Science, CBSE 083  · 10 chapters · local port 8113
 business-studies/  Business Studies, CBSE 054  · 12 chapters · local port 8114
-learning-python/   Learning Python (beginners) · day-by-day reading pages, no local server
+learning-python/   Learning Python (paper first) · 14 notebook programs with encrypted answer keys
 index.html         Landing page linking to the courses
 assets/home.css    Styles the landing page ONLY
 ```
@@ -21,7 +21,7 @@ verified against the board's own curriculum document, and a dependency-free vali
 
 `learning-python/` is different from the decks: it's a set of scrolling **reading pages**, one per
 day, for a student working on their own. It has no slide engine and no `start_class.sh`. Its
-rules, including **always hands-on**, are in `learning-python/README.md`.
+paper-first rules and private answer-key workflow are in `learning-python/README.md`.
 
 ## Where the real instructions live
 

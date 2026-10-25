@@ -3,3 +3,8 @@ Thumbs.db
 *.swp
 __pycache__/
 image*.png
+# Private teacher materials must stay outside the published repository.
+passwords.json
+teacher-passwords*
+*-answer.html
+lessons.json

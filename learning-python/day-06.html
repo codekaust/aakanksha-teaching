@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 06 · Create and read a binary file · Learning Python</title><link rel="stylesheet" href="assets/day.css">
+<script src="assets/unlock.js" defer></script></head>
+<body><a class="skip" href="#main">Skip to content</a><div class="page"><nav aria-label="Course"><a href="../index.html">All subjects</a><span>/</span><a href="index.html">Learning Python</a></nav><main id="main"><header><p class="eyebrow">DAY 06 / 14 · PAPER FIRST</p><h1>Create and read a binary file</h1><p class="lead">Store student names and six subject marks in a binary file, then read the records back.</p></header>
+<section class="routine"><h2>Two things to do today</h2><ol><li><strong>Run it in your head, on paper.</strong> In your notebook, write what the program does. Trace the assigned run below, one executed line at a time. Write every variable change, condition result and output. Repeat the steps for every loop iteration or function call. Show your teacher.</li><li><strong>Write the program yourself.</strong> After your teacher gives you the password, check and correct your trace. Then cover the code and write it from memory. You may run it after you finish.</li></ol></section>
+<section><div class="section-heading"><h2>The program</h2><a href="programs/day-06.py" download>Download .py</a></div><pre class="program"><code><span class="code-line" id="line-1"><span class="line-number" aria-hidden="true">01</span>import pickle
+</span><span class="code-line" id="line-2"><span class="line-number" aria-hidden="true">02</span>while True:
+</span><span class="code-line" id="line-3"><span class="line-number" aria-hidden="true">03</span>    print(&quot;1. Create a binary file&quot;)
+</span><span class="code-line" id="line-4"><span class="line-number" aria-hidden="true">04</span>    print(&quot;2. Display the contents&quot;)
+</span><span class="code-line" id="line-5"><span class="line-number" aria-hidden="true">05</span>    print(&quot;3. Exit&quot;)
+</span><span class="code-line" id="line-6"><span class="line-number" aria-hidden="true">06</span>    a = int(input(&quot;Enter the option from 1 to 3: &quot;))
+</span><span class="code-line" id="line-7"><span class="line-number" aria-hidden="true">07</span>    if a == 1:
+</span><span class="code-line" id="line-8"><span class="line-number" aria-hidden="true">08</span>        f = open(&quot;student.dat&quot;, &quot;wb&quot;)
+</span><span class="code-line" id="line-9"><span class="line-number" aria-hidden="true">09</span>        x = int(input(&quot;How many students? &quot;))
+</span><span class="code-line" id="line-10"><span class="line-number" aria-hidden="true">10</span>        for i in range(x):
+</span><span class="code-line" id="line-11"><span class="line-number" aria-hidden="true">11</span>            name = input(&quot;Enter the name: &quot;)
+</span><span class="code-line" id="line-12"><span class="line-number" aria-hidden="true">12</span>            eng = int(input(&quot;English marks: &quot;))
+</span><span class="code-line" id="line-13"><span class="line-number" aria-hidden="true">13</span>            lang = int(input(&quot;Language marks: &quot;))
+</span><span class="code-line" id="line-14"><span class="line-number" aria-hidden="true">14</span>            eco = int(input(&quot;Economics marks: &quot;))
+</span><span class="code-line" id="line-15"><span class="line-number" aria-hidden="true">15</span>            bs = int(input(&quot;Business Studies marks: &quot;))
+</span><span class="code-line" id="line-16"><span class="line-number" aria-hidden="true">16</span>            acc = int(input(&quot;Accountancy marks: &quot;))
+</span><span class="code-line" id="line-17"><span class="line-number" aria-hidden="true">17</span>            cs = int(input(&quot;Computer Science marks: &quot;))
+</span><span class="code-line" id="line-18"><span class="line-number" aria-hidden="true">18</span>            t = [name, eng, lang, eco, bs, acc, cs]
+</span><span class="code-line" id="line-19"><span class="line-number" aria-hidden="true">19</span>            pickle.dump(t, f)
+</span><span class="code-line" id="line-20"><span class="line-number" aria-hidden="true">20</span>        f.close()
+</span><span class="code-line" id="line-21"><span class="line-number" aria-hidden="true">21</span>    elif a == 2:
+</span><span class="code-line" id="line-22"><span class="line-number" aria-hidden="true">22</span>        f = open(&quot;student.dat&quot;, &quot;rb&quot;)
+</span><span class="code-line" id="line-23"><span class="line-number" aria-hidden="true">23</span>        try:
+</span><span class="code-line" id="line-24"><span class="line-number" aria-hidden="true">24</span>            while True:
+</span><span class="code-line" id="line-25"><span class="line-number" aria-hidden="true">25</span>                p = pickle.load(f)
+</span><span class="code-line" id="line-26"><span class="line-number" aria-hidden="true">26</span>                print(p)
+</span><span class="code-line" id="line-27"><span class="line-number" aria-hidden="true">27</span>        except EOFError:
+</span><span class="code-line" id="line-28"><span class="line-number" aria-hidden="true">28</span>            f.close()
+</span><span class="code-line" id="line-29"><span class="line-number" aria-hidden="true">29</span>    else:
+</span><span class="code-line" id="line-30"><span class="line-number" aria-hidden="true">30</span>        break
+</span></code></pre><details class="source-note"><summary>About the notebook transcription</summary><p>Create the file before choosing Display. The notebook’s bare except is narrowed to EOFError so an unrelated error is not hidden. The file closes after the entire writing loop. Use only binary files created by this program.</p><p>Source: supplied notebook photos 10, 12, 11, 13, 14, 15, numbered in ZIP order. Spelling, whitespace and identifier capitalisation are normalised for readable Python. Worked-output photos are not published with the exercise.</p></details></section>
+<section><h2>Your paper run</h2><p><strong>Keep track of:</strong> a, x, i, name, six marks, t, p; records written/read and the EOFError.</p><article class="exercise"><h3>1. Write, read, exit</h3><p>Choose 1 and write two records, choose 2 to read them, then choose 3. Draw the file as an ordered list of records. Show EOFError after the last record.</p><p class="label">Inputs, one per prompt, in this order</p><pre>1
+2
+Ada
+80
+81
+82
+83
+84
+85
+Ben
+90
+91
+92
+93
+94
+95
+2
+3</pre></article><h3>Use this layout in your notebook</h3><p>Make as many rows as the program needs. Include the final condition that stops a loop. For functions, name the current call; each recursive call has its own variables.</p><div class="table-wrap"><table><thead><tr><th scope="col">Step / line</th><th scope="col">What happens?</th><th scope="col">Variables: before → after</th><th scope="col">Output / file change</th></tr></thead><tbody><tr><td>1</td><td>…</td><td>…</td><td>…</td></tr><tr><td>2</td><td>…</td><td>…</td><td>…</td></tr><tr><td>…</td><td>…</td><td>…</td><td>…</td></tr></tbody></table></div></section>
+<section class="unlock" aria-labelledby="unlock-title"><h2 id="unlock-title">Check with your teacher’s password</h2><p>Submit your paper run first. Your teacher will give you this program’s password when it is time to compare.</p><form data-answer="answers/day-06.json"><label for="password">Password for Day 06</label><div class="password-row"><input id="password" name="password" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" required aria-describedby="unlock-status"><button type="submit">Unlock answer key</button></div></form><p id="unlock-status" role="status" aria-live="polite"></p><noscript><p>Enable JavaScript to unlock the answer key. You can still read and print the exercise.</p></noscript></section>
+<section id="answer" hidden aria-label="Unlocked answer key"><div class="answer-actions"><button type="button" id="print-answer">Print answer key</button><button type="button" id="lock-answer">Lock again</button></div><div id="answer-content"></div></section>
+<div class="page-actions"><button type="button" id="print-exercise">Print paper exercise</button></div><nav class="day-nav" aria-label="Days"><a href="day-05.html">← Day 05</a><a href="day-07.html">Day 07 →</a></nav></main><footer>One program. Trace it on paper. Then write it yourself.</footer></div></body></html>

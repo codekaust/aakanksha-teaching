@@ -1,0 +1,125 @@
+[
+  {
+    "day": 1,
+    "title": "Fibonacci series",
+    "photos": [
+      1,
+      2
+    ]
+  },
+  {
+    "day": 2,
+    "title": "Factorial and sum using recursion",
+    "photos": [
+      3,
+      4
+    ]
+  },
+  {
+    "day": 3,
+    "title": "Simple and compound interest",
+    "photos": [
+      5,
+      6
+    ]
+  },
+  {
+    "day": 4,
+    "title": "Count vowels, consonants and letter case",
+    "photos": [
+      7,
+      9,
+      8
+    ]
+  },
+  {
+    "day": 5,
+    "title": "Count lines, words and characters",
+    "photos": [
+      22,
+      23
+    ]
+  },
+  {
+    "day": 6,
+    "title": "Create and read a binary file",
+    "photos": [
+      10,
+      12,
+      11,
+      13,
+      14,
+      15
+    ]
+  },
+  {
+    "day": 7,
+    "title": "Copy records with at least 90%",
+    "photos": [
+      16,
+      18,
+      17,
+      19,
+      20,
+      21
+    ]
+  },
+  {
+    "day": 8,
+    "title": "Bubble sort",
+    "photos": [
+      24,
+      25
+    ]
+  },
+  {
+    "day": 9,
+    "title": "Selection sort",
+    "photos": [
+      26,
+      27
+    ]
+  },
+  {
+    "day": 10,
+    "title": "Insertion sort",
+    "photos": [
+      28,
+      29
+    ]
+  },
+  {
+    "day": 11,
+    "title": "Linear search",
+    "photos": [
+      30,
+      31
+    ]
+  },
+  {
+    "day": 12,
+    "title": "Binary search",
+    "photos": [
+      32,
+      34,
+      33,
+      35
+    ]
+  },
+  {
+    "day": 13,
+    "title": "Stack: push and pop",
+    "photos": [
+      36,
+      37
+    ]
+  },
+  {
+    "day": 14,
+    "title": "Queue: enqueue and dequeue",
+    "photos": [
+      38,
+      39
+    ]
+  }
+]
